@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Rspress v1.45.0">
+    <title data-rh="true">第 1 章 入门指南 - SailWind</title><meta data-rh="true" name="description" content="SailWind"/>
+  <script>{;const saved = localStorage.getItem('rspress-theme-appearance');const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;const isDark = !saved || saved === 'auto' ? preferDark : saved === 'dark';document.documentElement.classList.toggle('dark', isDark);document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';}</script><link rel="icon" href="/sailwind_docs/favicon.ico"><script defer src="/sailwind_docs/static/js/styles.f5ec16c7.js"></script><script defer src="/sailwind_docs/static/js/lib-react.36f9b428.js"></script><script defer src="/sailwind_docs/static/js/lib-router.971f4280.js"></script><script defer src="/sailwind_docs/static/js/2886.6c8a4c3c.js"></script><script defer src="/sailwind_docs/static/js/index.ef746291.js"></script><link href="/sailwind_docs/static/css/styles.6524924d.css" rel="stylesheet"></head>
+
+  <body >
+    <div id="root"><div class="navContainer_d18b1 rspress-nav px-6  sticky_ddfa7"><div class="container_e4235 flex justify-between items-center h-full"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div><div class="flex flex-1 justify-end items-center"><div class="rightNav_a2fea"><div class="flex sm:flex-1 items-center sm:pl-4 sm:pr-2"><div class="rspress-nav-search-button navSearchButton_df1fb"><button><svg width="18" height="18" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg><p class="searchWord_af2c1">搜索</p><div style="opacity:0"><span></span><span>K</span></div></button></div><div class="mobileNavSearchButton_d85a9"><svg width="24" height="24" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg></div></div><div class="rspress-nav-menu menu h-14"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div><div class="flex-center flex-row"><div class="mx-2"><div class="md:mr-2 rspress-nav-appearance"><div class="p-1 border border-solid border-gray-300 text-gray-400  cursor-pointer rounded-md hover:border-gray-600 hover:text-gray-600 dark:hover:border-gray-200 dark:hover:text-gray-200 transition-all duration-300 w-7 h-7"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="dark:hidden" width="18" height="18" fill="currentColor"><path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6m0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4M12 4c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M12 24c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M5.6 6.6c-.3 0-.5-.1-.7-.3L3.5 4.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.1.2-.4.3-.7.3M19.8 20.8c-.3 0-.5-.1-.7-.3l-1.4-1.4c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.2.2-.5.3-.7.3M3 13H1c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M23 13h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M4.2 20.8c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.4.3-.7.3M18.4 6.6c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.5.3-.7.3"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="hidden dark:block" width="18" height="18" fill="currentColor"><path d="M12.1 22h-.9c-5.5-.5-9.5-5.4-9-10.9.4-4.8 4.2-8.6 9-9 .4 0 .8.2 1 .5s.2.8-.1 1.1c-2 2.7-1.4 6.4 1.3 8.4 2.1 1.6 5 1.6 7.1 0 .3-.2.7-.3 1.1-.1.3.2.5.6.5 1-.2 2.7-1.5 5.1-3.6 6.8-1.9 1.4-4.1 2.2-6.4 2.2M9.3 4.4c-2.9 1-5 3.6-5.2 6.8-.4 4.4 2.8 8.3 7.2 8.7 2.1.2 4.2-.4 5.8-1.8 1.1-.9 1.9-2.1 2.4-3.4-2.5.9-5.3.5-7.5-1.1-2.8-2.2-3.9-5.9-2.7-9.2"></path></svg></div></div></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div><div class="mobileNavMenu_e7045"><div class="navScreen_ec30c  rspress-nav-screen" id="navScreen"><div class="container_c935d"><div class="navMenu_b887b"><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div></div><div class="flex-center flex-col gap-2"><div class="mt-2 navAppearance_bf893 flex justify-center"></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div></div><button aria-label="mobile hamburger" class=" rspress-mobile-hamburger navHamburger_ac64c text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><circle cx="8" cy="16" r="2" fill="currentColor"></circle><circle cx="16" cy="16" r="2" fill="currentColor"></circle><circle cx="24" cy="16" r="2" fill="currentColor"></circle></svg></button></div></div></div></div><section><div class="docLayout_af141 pt-0"><aside class="sidebar_dd719 rspress-sidebar "><div class="navTitleMask_fb17c"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div></div><div class="rspress-scrollbar sidebarContent_da296"><nav class="pb-2"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:14px;margin-left:0;border-radius:0 var(--rp-radius) var(--rp-radius) 0;padding-left:24px;font-weight:bold"><span>章节预览</span></div></a><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">指南(Guide)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItemActive_de63c mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 1 章 入门指南</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 2 章 用户偏好设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 3 章 焊盘图形计算器</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 4 章 库管理器</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 5 章 焊盘图形向导</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 6 章 孔和过孔计算器</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 7 章 命名规范</span></div></a></div></div></div></section></nav></div></aside><div class="flex-1 relative min-w-0"><div class="rspress-sidebar-menu-container "><div class="rspress-sidebar-menu"><button type="button" class="flex-center mr-auto"><div class="text-md mr-2"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"></path></svg></div><span class="text-sm">Menu</span></button><button type="button" class="flex-center ml-auto"><span class="text-sm">本页目录</span><div class="text-md mr-2" style="transform:rotate(0deg);transition:transform 0.2s ease-out;margin-top:2px"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></button><div class="rspress-local-toc-container "><ul><li><a href="#plb-文件说明" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block"><code>PLB</code> 文件说明</span></a></li><li><a href="#教程" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">教程</span></a></li><li><a href="#创建个人偏好-xml-规则文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">创建个人偏好 XML 规则文件</span></a></li><li><a href="#向-plb-文件添加个人属性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">向 <code>PLB</code> 文件添加个人属性</span></a></li><li><a href="#创建个人-plb-文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">创建个人 <code>PLB</code> 文件</span></a></li><li><a href="#将个人-plb-文件加载到库管理器" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">将个人 <code>PLB</code> 文件加载到库管理器</span></a></li><li><a href="#选择默认-cad-工具" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">选择默认 <code>CAD</code> 工具</span></a></li><li><a href="#使用计算器和向导" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">使用计算器和向导</span></a></li><li><a href="#常见问题" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">常见问题</span></a></li><li><a href="#计算器技巧" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">计算器技巧</span></a></li><li><a href="#主工具栏选项" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">主工具栏选项</span></a></li><li><a href="#操作模式" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">操作模式</span></a></li></ul></div></div></div><div class="content_ff766 rspress-doc-container flex"><div class="flex-1 overflow-x-auto"><div class="rspress-doc"><!--$--><h1 id="第-1-章-入门指南" class="rspress-doc-title text-3xl mb-10 leading-10 tracking-tight title_fb7eb">第 1 章 入门指南<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#第-1-章-入门指南">#</a></h1>
+<p class="my-4 leading-7"><code>SailWind Land Pattern Creator</code> 使用 <code>PLB</code> 文件的概念来存储元件尺寸和焊盘图形构建规则。理解这些文件的结构以及它们在焊盘图形创建过程中的应用方式，对于获得期望的输出结果至关重要。本节将介绍创建和使用 <code>PLB</code> 文件的过程。</p>
+<h2 id="plb-文件说明" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb"><code>PLB</code> 文件说明<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#plb-文件说明">#</a></h2>
+<p class="my-4 leading-7"><code>PLB</code> 文件存储所有元件尺寸和 IPC-7351B 规则。软件附带 17 个 <code>PLB</code> 文件作为起始库供您使用。<code>PLB</code> 文件中存储了超过 10,000 种不同的元件封装。</p>
+<p class="my-4 leading-7">SMT、通孔元件和连接器被有意分开保存在不同的 <code>PLB</code> 文件中，以便更快地获得搜索结果、更快地创建每个 <code>CAD</code> 库，并让您能够轻松更新每个元件系列的规则并重新生成整个新库。但是，您的个人用户 <code>PLB</code> 文件可以包含所有 3 种元件组在一个文件中。只有当您使用不同的环境级别时，才有必要使用多个 <code>PLB</code> 文件，这时最好将所有&quot;最小&quot;环境元件保存在单独的 <code>PLB</code> 文件中。<code>PLB</code> 按环境分离的主要原因是针对特定环境进行规则更改并批量创建新库。多元件向导将通过单个现有的偏好规则文件处理 <code>PLB</code> 文件，以创建 <code>CAD</code> 库和新的 <code>PLB</code> 文件。因此，如果您在单个 <code>PLB</code> 文件中混合了最小、标称和最大环境，并使用多元件向导重新生成 <code>CAD</code> 库，则所有 <code>PLB</code> 数据都将通过一组规则处理，并且只输出单一环境。</p>
+<p class="my-4 leading-7">以下四个 <code>PLB</code> 文件不包含任何元件制造商的数据。它们的预期用途是通过多元件功能批量创建整个 <code>CAD</code> 库。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">BGA7351B</strong> 包含 BGA、LGA 和 CGA 元件系列的所有&quot;网格阵列&quot;元件</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">SML7351B</strong> 表面贴装最小环境</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">SMN7351B</strong> 表面贴装标称环境</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">SMM7351B</strong> 表面贴装最大环境</p>
+</li>
+</ul>
+<p class="my-4 leading-7">由于 PCBM-STARTER <code>PLB</code> 文件包含元件制造商零件编号，因此它包含多个制造商针对同一焊盘图形的数据。在某些情况下，单个焊盘图形会列出 4-10 次，带有不同的制造商零件编号和数据表网页链接。PCBM-STARTER <code>PLB</code> 文件的主要目的是搜索制造商数据以快速定位现有焊盘图形来节省时间。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2"><strong class="font-semibold">PCBM-STARTER</strong> 包含所有 BGA7351B 和 SMN7351B 元件，并包括制造商数据。</li>
+</ul>
+<p class="my-4 leading-7">级别 A-C 是 IPC 的可制造性级别。级别 P(比例)使用所有 3 个 IPC 级别，小孔从级别 C 开始，中等孔尺寸使用级别 B，较大孔尺寸使用级别 A，非常大的孔尺寸具有坚固的环形环。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">CNA7251</strong> 连接器级别 A(最大)环境</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">CNB7251</strong> 连接器级别 B(标称)环境</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">CNC7251</strong> 连接器级别 C(最小)环境</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">CNP7251</strong> 连接器级别 P(比例)环境</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">THA7251</strong> 通孔元件级别 A(最大)环境</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">THB7251</strong> 通孔元件级别 B(标称)环境</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">THC7251</strong> 通孔元件级别 C(最小)环境</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">THP7251</strong> 通孔元件级别 P(比例)环境</p>
+</li>
+</ul>
+<p class="my-4 leading-7">以下三个 <code>PLB</code> 文件包含非标准元件，这些元件是使用元件制造商推荐的焊盘图形在 <code>CAD</code> 工具中手动创建的。由于这些元件不是使用 <code>SailWind Land Pattern Creator</code> 创建的，因此无法在软件中查看。您可以使用它们重新创建 <code>CAD</code> 库元件并在 <code>CAD</code> 工具中查看。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">CONNECTORS</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">SM_MFR</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">TH</strong></p>
+</li>
+</ul>
+<p class="my-4 leading-7">Wizard <code>PLB</code> 文件主要用于练习构建库元件。它不包含任何元件，但在创建将替换 Wizard <code>PLB</code> 文件的个人 <code>PLB</code> 文件之前，它作为默认 <code>PLB</code> 文件提供。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2"><strong class="font-semibold">Wizard</strong></li>
+</ul>
+<h2 id="教程" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">教程<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#教程">#</a></h2>
+<p class="my-4 leading-7">本节介绍配置和使用 <code>SailWind Land Pattern Creator</code> 所需的步骤。它解释了如何设置规则文件、添加个人属性、创建 <code>PLB</code> 文件、将其加载到库管理器中、选择 <code>CAD</code> 工具，最后如何使用 SailWind Land Pattern 计算器和向导。</p>
+<h3 id="创建个人偏好-xml-规则文件" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">创建个人偏好 XML 规则文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建个人偏好-xml-规则文件">#</a></h3>
+<p class="my-4 leading-7">创建公司偏好 XML 文件以存储您在偏好菜单中的所有独特更改非常重要。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要创建个人 XML 偏好文件，请单击主工具栏中的&quot;Preferences&quot;按钮。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/1/_page_2_Picture_9.jpeg" alt=""/></p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 本文档中的图片仅供参考。如因版本变更等因素导致界面差异，以实际使用的<code>SailWind Land Pattern Creator</code> 界面为准。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">默认 XML 文件名为 DefaultUser.xml。要复制它，请选择右侧的按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">出现以下对话框，您需要将 DefaultUser.xml 更改为您的公司名称或用户名.xml。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择&quot;Open&quot;按钮，然后在弹出的对话框中选择&quot;Yes&quot;以创建个人 xml 偏好文件。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">您可以随时通过删除主安装文件夹中的 DefaultUser.xml 来重新创建它，当您运行软件时，它将自动重新生成一个全新的 DefaultUser.xml 文件，该文件与原始默认设置匹配。</p>
+</div></div>
+</li>
+</ol>
+<h3 id="向-plb-文件添加个人属性" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">向 <code>PLB</code> 文件添加个人属性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#向-plb-文件添加个人属性">#</a></h3>
+<p class="my-4 leading-7"><code>PLB</code> 属性用于搜索库以快速定位正确的焊盘图形。个人属性的一个例子是&quot;公司零件编号&quot;。大多数大公司为 PCB 布局中使用的每个新元件分配一个零件编号。当您在 <code>PLB</code> 文件中添加公司零件编号时，它将成为快速定位正确焊盘图形的强大搜索功能。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">接下来在偏好对话框的左上角选择&quot;Library Manager&quot;文件夹以查看数据属性列。现有属性用于软件附带的所有 <code>PLB</code> 文件。您可以删除除几何高度和描述之外的任何这些属性。&quot;几何高度&quot;属性由软件用于为每个 <code>CAD</code> 库元件自动生成 IDF 3D 模型数据。&quot;描述&quot;属性信息由元件系列和物理封装尺寸自动生成。</p>
+<p class="my-4 leading-7">如果您删除或重命名任何现有属性，因为它们出现在 <code>SailWind Land Pattern Creator</code> <code>PLB</code> 文件中，当您将元件从 <code>SailWind Land Pattern Creator</code> <code>PLB</code> 文件传输到您的 <code>PLB</code> 文件时，现有属性将传输到您的 <code>PLB</code> 文件中。</p>
+<p class="my-4 leading-7">以下是现有属性的说明：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">几何高度 用于自动生成 IDF 3D 模型数据</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">描述 由元件系列和物理封装尺寸自动生成</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">标准名称 用于 JEDEC 或行业标准零件编号</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">制造商 元件制造商</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">制造商封装名称 出现在元件尺寸数据表上的封装名称</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">制造商封装代码 出现在元件尺寸数据表上的封装代码</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">制造商封装描述 出现在元件尺寸数据表上的封装描述</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在线链接 在元件制造商网站上打开数据表</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">本地存档 打开存储在您网络上的 PDF 文件数据表</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在库管理器偏好设置中，选择&quot;数据属性列&quot;部分中的&quot;添加&quot;按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在本练习中，您将添加一个名为&quot;公司零件编号&quot;的新属性。选择&quot;添加&quot;按钮后，将出现一个新属性框。键入文本 - &quot;公司零件编号&quot;，然后在键盘上键入&quot;Enter&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">接下来选择&quot;上移&quot;按钮将公司零件编号属性重新定位到&quot;描述&quot;属性之后。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">接下来选择右下角的&quot;保存并关闭&quot;按钮。这将关闭偏好窗口并保存您的 <code>PLB</code> 文件。</p>
+</li>
+</ol>
+<h3 id="创建个人-plb-文件" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">创建个人 <code>PLB</code> 文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建个人-plb-文件">#</a></h3>
+<p class="my-4 leading-7">您可以创建自己的 .plb 文件来存储所有属性偏好。创建后，此文件可在将来的编辑会话中调用。它也可以与网络上的其他设计人员共享。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择下拉按钮&quot;Library&quot;并单击&quot;Editor&quot;。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/1/_page_7_Picture_3.jpeg" alt=""/></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在库编辑器中，选择&quot;Library:&quot;下拉菜单并选择最后一个选项&quot;New Library&quot;。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/1/_page_7_Picture_5.jpeg" alt=""/></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">您刚刚创建了带有个人属性的个人 <code>PLB</code> 文件。请注意&quot;公司零件编号&quot;位于&quot;描述&quot;和&quot;标准名称&quot;之间的属性标题中。现在选择下拉&quot;保存&quot;并单击&quot;另存为...&quot;</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">以您的公司名称命名新的个人 <code>PLB</code> 文件。您还可以将 <code>PLB</code> 文件保存在网络上的文件夹中，以便其他人可以将其导入免费查看器或其他 <code>SailWind Land Pattern Creator</code> 用户访问它，也可以向其添加其他库元件。完成后单击&quot;保存&quot;按钮。</p>
+</li>
+</ol>
+<h3 id="将个人-plb-文件加载到库管理器" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">将个人 <code>PLB</code> 文件加载到库管理器<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#将个人-plb-文件加载到库管理器">#</a></h3>
+<p class="my-4 leading-7">您的个人.plb 文件包含您为构建焊盘图形指定的所有属性偏好。创建后，必须将其添加到库管理器中，以便在编辑会话中使用。您还可以使用库管理器删除不必要或过时的 .plb 文件。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">创建个人 <code>PLB</code> 文件后，您需要将其加载到库管理器偏好设置中。选择主工具栏中的&quot;Preferences&quot;按钮。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/1/_page_8_Picture_8.jpeg" alt=""/></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">然后在左上角选择&quot;Library Manager&quot;文件夹，在库文件部分单击&quot;添加&quot;按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">当您单击<strong class="font-semibold">添加</strong>按钮时，会出现以下对话框，允许您搜索放置个人 <code>PLB</code> 文件的网络位置。选择个人 <code>PLB</code> 文件后，单击右下角的&quot;打开&quot;，您的 <code>PLB</code> 文件将被添加到列表底部。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择您的 <code>PLB</code> 文件并使用菜单右侧的&quot;上移&quot;按钮将个人 <code>PLB</code> 文件重新定位到列表顶部。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">当您在库管理器中时，现在是删除所有您不需要的 <code>PLB</code> 文件的好时机。例如，如果您使用&quot;标称&quot;环境创建 <code>CAD</code> 库，则可以从列表中删除最小和最大 <code>PLB</code> 文件。您必须一次删除一个 <code>PLB</code> 文件。当您从列表中删除 <code>PLB</code> 文件时，它们仍然在您的计算机上，以便在需要时重新加载。不要忘记 SMN7351B 和 BGA7351B 在 PCBM-STARTER <code>PLB</code> 文件中合并在一起。</p>
+<p class="my-4 leading-7">我建议您从库管理器中删除这些 <code>PLB</code> 文件：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">BGA731B</strong> BGA</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">SML7351B</strong> 表面贴装最小环境</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">SMN7351B</strong> 表面贴装标称环境</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">SMM7351B</strong> 表面贴装最大环境</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">CNA7251</strong> 连接器级别 A(最大)环境</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">CNB7251</strong> 连接器级别 B(标称)环境</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">CNC7251</strong> 连接器级别 C(最小)环境</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">THA7251</strong> 通孔元件级别 A(最大)环境</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">THB7251</strong> 通孔元件级别 B(标称)环境</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">THC7251</strong> 通孔元件级别 C(最小)环境</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">这些是应保留在库管理器中的 <code>PLB</code> 文件：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">MY_LIBRARY</strong> 无论您的个人 <code>PLB</code> 文件名称是什么</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">PCBM-STARTER</strong> BGA7351B 和 SMN7351B 合并</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">CNP7251</strong> 连接器级别 P(比例)环境</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">THP7251</strong> 通孔元件级别 P(比例)环境</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">CONNECTORS</strong> 5,000 个手动构建的连接器</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">SM_MFR</strong> 独特的手动构建表面贴装元件</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">TH</strong> 独特的手动构建通孔元件</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">Wizard</strong> 用于测试目的的空 <code>PLB</code> 文件</p>
+</li>
+</ul>
+<p class="my-4 leading-7">当您完成时，库管理器菜单将如下所示：</p>
+</li>
+</ol>
+<p class="my-4 leading-7"><strong class="font-semibold">将个人 <code>PLB</code> 文件加载到默认&quot;保存到&quot;<code>PLB</code> 库</strong></p>
+<p class="my-4 leading-7">将个人 <code>PLB</code> 文件加载到每个元件系列模板中，以便每次构建 <code>CAD</code> 库元件时，元件尺寸和规则都将保存到您的个人 <code>PLB</code> 文件中。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">展开&quot;Surface Mount Calculators&quot;文件夹，然后选择&quot;Aluminum Electrolytic Capacitor&quot;文件夹。然后选择&quot;Default save-to <code>PLB</code> library for this type of part:&quot;的下拉菜单，然后搜索并选择您的个人 <code>PLB</code> 文件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">出现一个弹出对话框，询问您：&quot;是否要将此设为所有元件系列的默认库？&quot;单击&quot;是&quot;按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">现在您的个人 <code>PLB</code> 文件已自动加载到每个元件系列中作为主要的&quot;保存到&quot;<code>PLB</code> 文件。您可以通过选择其他元件系列来验证您的个人 <code>PLB</code> 文件是否已加载。</p>
+</li>
+</ol>
+<h3 id="选择默认-cad-工具" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">选择默认 <code>CAD</code> 工具<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#选择默认-cad-工具">#</a></h3>
+<p class="my-4 leading-7">设置偏好的最后一步是选择要导出到的 <code>CAD</code> 工具以及要保存库数据的目录路径。如果要导出到多个 <code>CAD</code> 工具，则需要定义要保存数据的所有文件夹。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">展开&quot;Wizard&quot;文件夹，选择&quot;<code>CAD</code> Tools&quot;文件夹，然后选择您的 <code>CAD</code> 工具。在此示例中，我选择了 SailWind Layout。选择&quot;Library directory&quot;浏览按钮并搜索库所在的文件夹。对于 SailWind 工具，您还需要在下拉菜单中设置&quot;Version&quot;并输入 <code>CAD</code> 库名称，因为库数据直接从 <code>SailWind Land Pattern Creator</code> 移动到 SailWind 库中。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">接下来选择&quot;Options&quot;文件夹，选择&quot;Default <code>CAD</code> Tool&quot;下拉菜单并选择您的 <code>CAD</code> 工具。然后，选择右下角的&quot;保存并关闭&quot;按钮。您现在可以开始在焊盘图形计算器中构建 <code>CAD</code> 库元件了。</p>
+</li>
+</ol>
+<h3 id="使用计算器和向导" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">使用计算器和向导<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用计算器和向导">#</a></h3>
+<p class="my-4 leading-7">创建 .plb 文件并通过库管理器使其可用于编辑会话后，执行计算器和向导的测试运行以验证一切是否正常工作以及您的偏好是否正确实施。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在主工具栏中选择&quot;Calculate&quot;下拉菜单并选择&quot;SMD Calculator&quot;。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/1/_page_14_Picture_5.jpeg" alt=""/></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在列表中选择&quot;Quad Flat Plack (QFP)&quot;元件系列，然后单击<strong class="font-semibold">OK</strong>打开计算器。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/1/_page_15_Figure_1.jpeg" alt=""/></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">例如，单击<strong class="font-semibold">Clear</strong>清除所有参数，然后输入制造商数据表中的一些元件尺寸，如间距(P)= 0.50 和引脚计数(用于搜索)= 100，然后选择工具栏中的&quot;Find&quot;按钮。只有包含该搜索条件的元件才会出现在图片上方的列表中。您在元件尺寸列中输入的内容越多，搜索结果就越精细。目标是快速浏览现有库，查看您要查找的元件是否已在库中。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/1/_page_16_Figure_1.jpeg" alt=""/></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">您可以通过&quot;单击&quot;每列的标题对属性列进行排序。例如：如果您正在搜索 Texas Instruments 焊盘图形，您将能够快速滚动到该制造商，以查看 <code>PLB</code> 文件中的尺寸数据是否与数据表上的元件尺寸匹配。当您找到要查找的正确元件时，&quot;双击&quot;该行项目以在计算器中打开焊盘图形。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/1/_page_17_Figure_1.jpeg" alt=""/></p>
+<p class="my-4 leading-7">找不到与数据表匹配的现有焊盘图形，请打开具有最多尺寸匹配的焊盘图形，然后更新尺寸以使它们全部匹配您的元件尺寸数据表。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">完成后选择&quot;OK&quot;按钮。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/1/_page_17_Figure_6.jpeg" alt=""/></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">接下来选择工具栏中的&quot;Wizard&quot;按钮以创建库元件并将元件尺寸和规则数据写入个人 <code>PLB</code> 文件。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/1/_page_18_Picture_1.jpeg" alt=""/></p>
+<p class="my-4 leading-7">当 <code>SailWind Land Pattern Creator</code> 菜单打开时，您的个人用户 <code>PLB</code> 文件将被加载并准备写入 <code>CAD</code> 工具，库目录和库名称已设置并准备就绪。</p>
+<p class="my-4 leading-7">还要注意，所有属性数据都从 PCBM-STARTER 文件传输过来，并自动加载到 <code>SailWind Land Pattern Creator</code> 菜单中以传输到您的 <code>PLB</code> 文件中。</p>
+<p class="my-4 leading-7">软件自动生成&quot;焊盘图形名称&quot;和&quot;描述&quot;字段数据。</p>
+<p class="my-4 leading-7">此时您可以更改任何字段。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">当您完成所有更改后，选择菜单右上角的&quot;Create and Close&quot;按钮。这将同时完成两件事 -</p>
+</li>
+</ol>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将元件尺寸和规则数据写入个人 <code>PLB</code> 文件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">自动将焊盘图形添加到 <code>CAD</code> 库中。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">如果您使用 <code>SailWind Layout</code> 作为 <code>CAD</code> 工具，则必须在选择&quot;Create and Close&quot;按钮之前打开 SailWind Layout。</p>
+<h2 id="常见问题" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">常见问题<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#常见问题">#</a></h2>
+<p class="my-4 leading-7">使用计算器和向导时，您可能会遇到一些不熟悉的情况。这些常见问题可能有助于您入门。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">什么是&#x27;引脚封装&#x27;？</strong></p>
+<p class="my-4 leading-7">引脚封装是元件封装可以容纳的没有缺失引脚的引脚数量。例如，三引脚 SOT 将是六引脚封装，其中三个引脚缺失。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">如何创建 3 引脚 SOT23？</strong></p>
+<p class="my-4 leading-7">要创建 3 或 5 引脚 SOT，请输入 6 作为引脚封装，然后填写其余元件数据并计算具有 6 引脚的焊盘图形。然后单击&quot;选择引脚&quot;工具栏按钮，将光标移动到要删除的引脚，单击每个引脚(引脚将高亮显示)，然后从工具栏或右键上下文菜单中选择&quot;删除&quot;。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">如何将数据从一个 <code>PLB</code> 复制到另一个 <code>PLB</code>？</strong></p>
+<p class="my-4 leading-7">在编辑模式下打开两个库管理器会话。在一个会话中打开目标库，在另一个会话中打开源库。在源库中，单击要复制的每行的行标题(或使用 shift-click 选择多行)。然后<strong class="font-semibold">右键</strong>单击以显示编辑上下文菜单。选择复制。在目标库中，将光标放在库表中的任何位置，<strong class="font-semibold">右键</strong>单击以显示编辑上下文菜单并选择粘贴。任何重复的列将被映射并复制到目标库，而新列将添加到现有列之后。如果需要列映射，则此操作无法撤消。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">计算器咨询消息是什么意思？</strong></p>
+<p class="my-4 leading-7">咨询消息用于提醒影响计算的某些条件或导致意外事件的某些方面。</p>
+<p class="my-4 leading-7">典型的咨询将报告修改了计算以防止违反规则，或者计算的几何形状的某些方面阻止了焊盘图形元素(如丝印或阻焊)的正常应用。如果从库中选择的焊盘图形未能正确验证，也会显示咨询。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">示例：</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">咨询：</strong> &#x27;焊盘图形几何形状太小，无法放置丝印边框&#x27;</p>
+<p class="my-4 leading-7">含义：丝印无法放置在元件边界内而不违反丝印到焊盘的间距规则。</p>
+<p class="my-4 leading-7">解决方案：更改丝印到焊盘间距的规则或减小丝印线宽。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">如何阻止计算器在修剪焊盘时更改焊盘形状？</strong></p>
+<p class="my-4 leading-7">计算器在某些条件下会自动修剪某些焊盘图形，例如焊盘到焊盘间距或焊盘延伸到元件体下方而没有足够的焊料间隙。在自动修剪是一个因素的情况下，有一个用户选项可以选择修剪焊盘的形状。此选项可以在计算器的&quot;Calculator Settings&quot;选项卡中的&quot;Settings&quot;组框中找到。修剪形状可以设置为用户偏好(应用于每个计算)或计算器偏好(用于个别计算)。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">为什么制造商推荐的焊盘图形似乎相对于计算器焊盘图形旋转了 90 度？</strong></p>
+<p class="my-4 leading-7">通常制造商没有考虑脚趾和脚跟目标(或者它们太小)。您通常可以通过将计算器环境设置为&quot;用户&quot;并将所有目标更改为零来验证这一点。计算的焊盘图形将显著缩小，并可能旋转到与制造商相同的方向。</p>
+<h2 id="计算器技巧" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">计算器技巧<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#计算器技巧">#</a></h2>
+<p class="my-4 leading-7">使用计算器时，有一些有用的技巧可能有助于您的编辑任务，特别是当您想要保留属性时。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">为长度小于 1.6mm 的芯片元件创建焊盘图形时，使端子(&quot;T&quot;尺寸)的最小值和最大值相同(即零公差)。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在计算器中编辑从库中选择的元件时保留属性：</p>
+<p class="my-4 leading-7">a. 焊盘图形被选中并进入计算器后，简要打开向导并双击任何单元格，就像要编辑其内容一样。</p>
+<p class="my-4 leading-7">b. 按&quot;Esc&quot;键放弃编辑，然后单击&quot;取消&quot;关闭向导。</p>
+<p class="my-4 leading-7">c. 当您重新进入向导时，系统会询问您是否要保留最后一组属性，回答&quot;是&quot;。</p>
+</li>
+</ul>
+<h2 id="主工具栏选项" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">主工具栏选项<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#主工具栏选项">#</a></h2>
+<p class="my-4 leading-7">主工具栏是程序打开时出现的第一个工具栏，也是激活所有计算器功能的手段。</p>
+<p class="my-4 leading-7">所有功能都使用工具栏按钮访问。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/1/_page_21_Figure_13.jpeg" alt=""/></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">Exit</strong>—关闭程序。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">Library</strong>—是一个下拉菜单，可在搜索或编辑模式下打开库管理器。在&quot;搜索&quot;模式下，可以以只读方式查看库内容。在&quot;编辑&quot;模式下，可以搜索、修改和保存库内容。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">Calculate</strong>—是一个下拉菜单，可打开任何表面贴装、通孔或连接器计算器、孔尺寸计算器、孔焊盘堆叠计算器和过孔计算器。此处还提供了一个额外的单位转换计算器，可以方便地在微米(微米)、毫米、密耳和英寸之间来回转换。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">Preferences</strong>—打开用户偏好窗口。在此处可以选择和修改程序选项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">Help</strong>—是一个下拉菜单，可用于访问本文档。</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">主工具栏选项上下文菜单</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2"><strong class="font-semibold">右键</strong>单击上下文菜单提供所有工具栏选项(退出除外)。</li>
+</ul>
+<h2 id="操作模式" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">操作模式<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#操作模式">#</a></h2>
+<p class="my-4 leading-7">程序可以在四种模式中的任何一种下运行。模式类型与修订级别和构建号一起显示在主菜单窗口的标题中。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 2. 操作模式示例 - 计算器</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/1/_page_22_Picture_8.jpeg" alt=""/></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">Viewer</strong>—(基本共享软件模式)包括焊盘图形查看器和库管理器搜索功能。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">Calculator</strong>—(高级共享软件模式)查看器加上所有焊盘图形计算器。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">Librarian</strong>—(许可模式)计算器、库管理器搜索和编辑功能，以及保存计算器生成的焊盘图形的能力。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">Wizard</strong>—(许可模式)计算器、库管理员加上能够以一种或多种 <code>CAD</code> 格式创建焊盘图形的模式构建向导。</p>
+</li>
+</ul><!--/$--></div><div class="rspress-doc-footer"><footer class="mt-8"><div class="xs:flex pb-5 px-2 justify-end items-center"><div class="flex text-sm text-text-2 leading-6 sm:leading-8 font-medium"><p>最近更新时间<!-- -->: <span>2025/7/15 05:55:33</span></p></div></div><div class="flex flex-col"></div><div class="flex flex-col sm:flex-row sm:justify-around gap-4 pt-6"><div class="prev_c92d1 flex flex-col"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea pager-link_e0d2d"><span class="desc_dcc01">上一页</span><span class="title_a3acb">章节预览</span></a></div><div class="next_c11be flex flex-col"><a href="/sailwind_docs/lpcreator/guide/2_zh.html" class="link_a7cea pager-link_e0d2d next_ad355"><span class="desc_dcc01">下一页</span><span class="title_a3acb">第 2 章 用户偏好设置</span></a></div></div></footer></div></div><div class="aside-container_bc5fa"><div class="flex flex-col"><div id="aside-container" class="relative text-sm font-medium"><div class="leading-7 block text-sm font-semibold pl-3">本页目录</div><nav class="mt-1"><ul class="relative"><li><a href="#plb-文件说明" title="PLB 文件说明" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block"><code>PLB</code> 文件说明</span></a></li><li><a href="#教程" title="教程" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">教程</span></a></li><li><a href="#创建个人偏好-xml-规则文件" title="创建个人偏好 XML 规则文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">创建个人偏好 XML 规则文件</span></a></li><li><a href="#向-plb-文件添加个人属性" title="向 PLB 文件添加个人属性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">向 <code>PLB</code> 文件添加个人属性</span></a></li><li><a href="#创建个人-plb-文件" title="创建个人 PLB 文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">创建个人 <code>PLB</code> 文件</span></a></li><li><a href="#将个人-plb-文件加载到库管理器" title="将个人 PLB 文件加载到库管理器" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">将个人 <code>PLB</code> 文件加载到库管理器</span></a></li><li><a href="#选择默认-cad-工具" title="选择默认 CAD 工具" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">选择默认 <code>CAD</code> 工具</span></a></li><li><a href="#使用计算器和向导" title="使用计算器和向导" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">使用计算器和向导</span></a></li><li><a href="#常见问题" title="常见问题" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">常见问题</span></a></li><li><a href="#计算器技巧" title="计算器技巧" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">计算器技巧</span></a></li><li><a href="#主工具栏选项" title="主工具栏选项" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">主工具栏选项</span></a></li><li><a href="#操作模式" title="操作模式" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">操作模式</span></a></li></ul></nav></div></div></div></div></div></div></section></div>
+    <div id="search-container"></div>
+  </body>
+</html>

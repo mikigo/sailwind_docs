@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Rspress v1.45.0">
+    <title data-rh="true">第 22 章 报告 - SailWind</title><meta data-rh="true" name="description" content="SailWind"/>
+  <script>{;const saved = localStorage.getItem('rspress-theme-appearance');const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;const isDark = !saved || saved === 'auto' ? preferDark : saved === 'dark';document.documentElement.classList.toggle('dark', isDark);document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';}</script><link rel="icon" href="/sailwind_docs/favicon.ico"><script defer src="/sailwind_docs/static/js/styles.f5ec16c7.js"></script><script defer src="/sailwind_docs/static/js/lib-react.36f9b428.js"></script><script defer src="/sailwind_docs/static/js/lib-router.971f4280.js"></script><script defer src="/sailwind_docs/static/js/2886.6c8a4c3c.js"></script><script defer src="/sailwind_docs/static/js/index.ef746291.js"></script><link href="/sailwind_docs/static/css/styles.6524924d.css" rel="stylesheet"></head>
+
+  <body >
+    <div id="root"><div class="navContainer_d18b1 rspress-nav px-6  sticky_ddfa7"><div class="container_e4235 flex justify-between items-center h-full"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div><div class="flex flex-1 justify-end items-center"><div class="rightNav_a2fea"><div class="flex sm:flex-1 items-center sm:pl-4 sm:pr-2"><div class="rspress-nav-search-button navSearchButton_df1fb"><button><svg width="18" height="18" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg><p class="searchWord_af2c1">搜索</p><div style="opacity:0"><span></span><span>K</span></div></button></div><div class="mobileNavSearchButton_d85a9"><svg width="24" height="24" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg></div></div><div class="rspress-nav-menu menu h-14"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div><div class="flex-center flex-row"><div class="mx-2"><div class="md:mr-2 rspress-nav-appearance"><div class="p-1 border border-solid border-gray-300 text-gray-400  cursor-pointer rounded-md hover:border-gray-600 hover:text-gray-600 dark:hover:border-gray-200 dark:hover:text-gray-200 transition-all duration-300 w-7 h-7"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="dark:hidden" width="18" height="18" fill="currentColor"><path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6m0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4M12 4c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M12 24c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M5.6 6.6c-.3 0-.5-.1-.7-.3L3.5 4.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.1.2-.4.3-.7.3M19.8 20.8c-.3 0-.5-.1-.7-.3l-1.4-1.4c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.2.2-.5.3-.7.3M3 13H1c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M23 13h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M4.2 20.8c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.4.3-.7.3M18.4 6.6c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.5.3-.7.3"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="hidden dark:block" width="18" height="18" fill="currentColor"><path d="M12.1 22h-.9c-5.5-.5-9.5-5.4-9-10.9.4-4.8 4.2-8.6 9-9 .4 0 .8.2 1 .5s.2.8-.1 1.1c-2 2.7-1.4 6.4 1.3 8.4 2.1 1.6 5 1.6 7.1 0 .3-.2.7-.3 1.1-.1.3.2.5.6.5 1-.2 2.7-1.5 5.1-3.6 6.8-1.9 1.4-4.1 2.2-6.4 2.2M9.3 4.4c-2.9 1-5 3.6-5.2 6.8-.4 4.4 2.8 8.3 7.2 8.7 2.1.2 4.2-.4 5.8-1.8 1.1-.9 1.9-2.1 2.4-3.4-2.5.9-5.3.5-7.5-1.1-2.8-2.2-3.9-5.9-2.7-9.2"></path></svg></div></div></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div><div class="mobileNavMenu_e7045"><div class="navScreen_ec30c  rspress-nav-screen" id="navScreen"><div class="container_c935d"><div class="navMenu_b887b"><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div></div><div class="flex-center flex-col gap-2"><div class="mt-2 navAppearance_bf893 flex justify-center"></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div></div><button aria-label="mobile hamburger" class=" rspress-mobile-hamburger navHamburger_ac64c text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><circle cx="8" cy="16" r="2" fill="currentColor"></circle><circle cx="16" cy="16" r="2" fill="currentColor"></circle><circle cx="24" cy="16" r="2" fill="currentColor"></circle></svg></button></div></div></div></div><section><div class="docLayout_af141 pt-0"><aside class="sidebar_dd719 rspress-sidebar "><div class="navTitleMask_fb17c"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div></div><div class="rspress-scrollbar sidebarContent_da296"><nav class="pb-2"><a href="/sailwind_docs/router/index.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:14px;margin-left:0;border-radius:0 var(--rp-radius) var(--rp-radius) 0;padding-left:24px;font-weight:bold"><span>章节预览</span></div></a><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">指南(Guide)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 1 章 自动布线快速入门</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 2 章 交互式布线快速入门</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 3 章 设计准备</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 4 章 文件操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 5 章 界面元素</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 6 章 无模命令与快捷键</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 7 章 视图</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 8 章 撤销、重做、重复与删除</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 9 章 搜索与选择</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 10 章 电气网络</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 11 章 设置规则</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 12 章 启用设计规则检查</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 13 章 元件放置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 14 章 虚拟引脚</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 15 章 覆铜平面与铜形状</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/16_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 16 章 布线设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/17_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 17 章 自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/18_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 18 章 选择性自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/19_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 19 章 手动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/20_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 20 章 手动编辑</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/21_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 21 章 设计验证</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/22_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItemActive_de63c mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 22 章 报告</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/23_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 23 章 授权许可</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/24_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 24 章 SailWind 布线器 GUI 参考</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/25_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 25 章 软件启动选项</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/26_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 26 章 自定义界面</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">教程(Tutorial)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>学习用户界面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>约束条件分配</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>设计准备</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>元件放置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>交互式布线创建走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用交互式布线创建高速走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用 SailWind Router 进行自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>设计规则检查</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">快速参考(Quick Reference)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/qr/modless.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>无模命令</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/qr/shortcut.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>键盘快捷键</span></div></a></div></div></div></section></nav></div></aside><div class="flex-1 relative min-w-0"><div class="rspress-sidebar-menu-container "><div class="rspress-sidebar-menu"><button type="button" class="flex-center mr-auto"><div class="text-md mr-2"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"></path></svg></div><span class="text-sm">Menu</span></button><button type="button" class="flex-center ml-auto"><span class="text-sm">本页目录</span><div class="text-md mr-2" style="transform:rotate(0deg);transition:transform 0.2s ease-out;margin-top:2px"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></button><div class="rspress-local-toc-container "><ul><li><a href="#报告设计信息" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">报告设计信息</span></a></li><li><a href="#设计报告" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">设计报告</span></a></li><li><a href="#生成设计报告" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">生成设计报告</span></a></li><li><a href="#生成布线前分析报告" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">生成布线前分析报告</span></a></li><li><a href="#可测试性报告" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">可测试性报告</span></a></li><li><a href="#创建可测试性报告" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建可测试性报告</span></a></li><li><a href="#测试点报告" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">测试点报告</span></a></li><li><a href="#创建测试点报告" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建测试点报告</span></a></li><li><a href="#布线报告" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">布线报告</span></a></li><li><a href="#创建布线报告" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建布线报告</span></a></li><li><a href="#测试数据库完整性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">测试数据库完整性</span></a></li><li><a href="#创建完整性测试报告" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建完整性测试报告</span></a></li></ul></div></div></div><div class="content_ff766 rspress-doc-container flex"><div class="flex-1 overflow-x-auto"><div class="rspress-doc"><!--$--><h1 id="第-22-章-报告" class="rspress-doc-title text-3xl mb-10 leading-10 tracking-tight title_fb7eb">第 22 章 报告<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#第-22-章-报告">#</a></h1>
+<p class="my-4 leading-7">SailWind Router 允许您生成一系列报告，帮助分析设计的各种特性。使用这些报告可以查看设计统计数据、执行布线前分析，并检查最终组件的可测试性。</p>
+<h2 id="报告设计信息" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">报告设计信息<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#报告设计信息">#</a></h2>
+<p class="my-4 leading-7">SailWind Router 为给定设计提供多种类型的报告。</p>
+<p class="my-4 leading-7">SailWind Router 报告可从以下主要类别获取：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">设计</strong> 提供与自动布线相关的设计元素信息，如网络数量、连接数、走线数、过孔数、未布线数量以及设计中已布线连接的百分比</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">布线前分析</strong> 提供可能阻碍自动布线的设计属性信息，如网格设置、布线状态被禁用的网络或具有防推挤状态的引脚对</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">可测试性</strong> 提供关于哪些网络不可访问及其原因的信息</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">测试点</strong> 提供设计中所有测试点的信息，如总数、位置、探针直径、测试点分配的对象和网络名称</p>
+</li>
+</ul>
+<p class="my-4 leading-7">大多数报告可通过<strong class="font-semibold">文件</strong>菜单中的<strong class="font-semibold">报告</strong>命令生成。</p>
+<h2 id="设计报告" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">设计报告<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设计报告">#</a></h2>
+<p class="my-4 leading-7">设计报告显示与自动布线相关的设计元素信息，如网络数量、连接数、走线数、过孔数、未布线数量以及设计中已布线连接的百分比。</p>
+<p class="my-4 leading-7">报告 设计报告</p>
+<p class="my-4 leading-7">SailWind Router 将此报告 <em>DesignReport.txt</em> 存储在 <em>\SailWind Projects</em> 中。要查看报告，请点击输出窗口<strong class="font-semibold">状态</strong>选项卡中的报告文件链接 <em>\SailWind Projects\DesignReport.txt</em>。</p>
+<p class="my-4 leading-7">设计报告的格式如下。更多信息请参考<a href="#page-2-0" class="link_a7cea  link_a9ef4 inline-link_f855c">&quot;生成设计报告</a>&quot;</p>
+<p class="my-4 leading-7"><strong class="font-semibold">设计报告格式</strong></p>
+<p class="my-4 leading-7">设计报告允许您详细检查设计的统计数据。</p>
+<p class="my-4 leading-7">设计报告格式如下：</p>
+<p class="my-4 leading-7"><strong class="font-semibold">页眉</strong></p>
+<p class="my-4 leading-7">SailWind Router 版本 &lt;版本号&gt; 报告名称(设计统计) 设计：打开设计的文件名</p>
+<p class="my-4 leading-7"><strong class="font-semibold">计数</strong></p>
+<p class="my-4 leading-7">网络：设计中的网络数量</p>
+<p class="my-4 leading-7">连接：设计中引脚对连接的数量</p>
+<p class="my-4 leading-7">走线：设计中走线的数量</p>
+<p class="my-4 leading-7">过孔：设计中过孔的数量</p>
+<p class="my-4 leading-7">未布线：设计中未布线实例的数量</p>
+<p class="my-4 leading-7">完成率：设计中已完成布线连接的百分比</p>
+<p class="my-4 leading-7"><strong class="font-semibold">走线长度(设计单位)</strong></p>
+<p class="my-4 leading-7">设计总计：设计中所有走线的总长度 层：设计每层走线的总长度 网络：设计中每个网络的走线总长度</p>
+<p class="my-4 leading-7"><strong class="font-semibold">示例设计报告</strong></p>
+<p class="my-4 leading-7">设计报告包含帮助您分析设计的信息。</p>
+<p class="my-4 leading-7">SailWind Router 版本 v2004 SPac1，设计统计</p>
+<p class="my-4 leading-7">设计：\SailWind Projects\Samples\pwrdemoe.pcb</p>
+<p class="my-4 leading-7">__________________________________________________________</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">计数</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络：</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">40</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">连接：</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">119</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">走线：</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">132</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">过孔：</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">29</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">未布线：</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">17</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">完成率：</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">85.7</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">__________________________________________________________</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">走线长度(密尔)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">总计：</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">49599</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">顶层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">22872</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">底层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">26727</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+</tbody>
+</table>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">$$$1906</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">1816</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">$$$1928</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">1795</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">$$$1951</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">1880</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">X</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">1880</td>
+</tr>
+</tbody>
+</table>
+<h2 id="生成设计报告" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">生成设计报告<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#生成设计报告">#</a></h2>
+<p class="my-4 leading-7">设计报告提供与自动布线相关的设计元素信息，如网络数量、引脚对连接数、走线数、过孔数、未布线实例数量以及设计中已布线连接的百分比。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">选择<strong class="font-semibold">文件 &gt; 报告 &gt; 设计</strong>菜单项。</p>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">SailWind Router 在 <em>\SailWind Projects</em> 文件夹中创建 <em>DesignReport.txt</em> 文件，并在输出窗口的<strong class="font-semibold">状态</strong>选项卡中显示报告链接。点击链接查看报告。</p>
+<h2 id="生成布线前分析报告" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">生成布线前分析报告<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#生成布线前分析报告">#</a></h2>
+<p class="my-4 leading-7">布线前分析报告提供可能阻碍自动布线的设计属性信息，如网格设置、布线状态被禁用的网络或具有防推挤状态的引脚对。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">点击<strong class="font-semibold">工具 &gt; 布线前分析</strong>菜单项。</p>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">任何错误或警告都会写入输出窗口的<strong class="font-semibold">状态</strong>选项卡。</p>
+<h2 id="可测试性报告" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">可测试性报告<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#可测试性报告">#</a></h2>
+<p class="my-4 leading-7">可测试性报告允许您评估设计的整体可测试性，并帮助定位可能没有可访问测试点的网络。</p>
+<p class="my-4 leading-7">报告以两种方式提供测试点结果：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">通过在不可访问网络末尾的数字，指示未添加测试点的原因（在每次布线通过后显示在输出窗口的<strong class="font-semibold">状态</strong>选项卡中）。要使用此数字报告，请在选项对话框的<strong class="font-semibold">测试点</strong>选项卡上选择生成测试点。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">通过可测试性报告。此报告 <em>TestabilityReport.txt</em> 显示关于不可访问网络的信息。原因也会显示，以便您可以纠正问题。这增加了设计 100%可访问的概率。此报告存储在 <em>\SailWind Projects</em> 中。要查看报告，请点击输出窗口<strong class="font-semibold">状态</strong>选项卡中的报告文件链接 <em>\SailWind Projects\TestabilityReport.txt</em>。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">更多信息请参考&quot;创建<a href="#page-7-0" class="link_a7cea  link_a9ef4 inline-link_f855c">可测试性</a>报告&quot;。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">可测试性报告格式</strong></p>
+<p class="my-4 leading-7">可测试性报告使用预定义格式，允许您查看和分析与设计相关的测试点数据。</p>
+<p class="my-4 leading-7">页眉</p>
+<p class="my-4 leading-7">系统名称(DFT 审计)</p>
+<p class="my-4 leading-7">报告名称(板级报告)</p>
+<p class="my-4 leading-7">板名称：打开设计的名称</p>
+<p class="my-4 leading-7">生成日期：报告生成的日期和时间</p>
+<p class="my-4 leading-7">元素：PCB 中使用的元素总数。</p>
+<p class="my-4 leading-7">元素可以是组件和/或过孔。</p>
+<p class="my-4 leading-7">组件：PCB 中使用的组件数量</p>
+<p class="my-4 leading-7">过孔：PCB 中使用的过孔数量</p>
+<p class="my-4 leading-7">侧边：为审计选择的 PCB 侧边：</p>
+<p class="my-4 leading-7">底部或底部和顶部</p>
+<p class="my-4 leading-7">引脚：组件引脚总数</p>
+<p class="my-4 leading-7">已连接引脚：连接到网络的组件引脚数量</p>
+<p class="my-4 leading-7">可访问引脚：可访问的组件引脚数量</p>
+<p class="my-4 leading-7">不可访问引脚：不可访问的组件引脚数量</p>
+<p class="my-4 leading-7">探针引脚：连接到测试探针(测试器引脚)的组件引脚数量</p>
+<p class="my-4 leading-7">非探针引脚：未连接到测试探针(测试器引脚)的组件引脚数量</p>
+<p class="my-4 leading-7">未使用引脚：未连接到网络的组件引脚数量</p>
+<p class="my-4 leading-7">可访问未使用引脚：可访问的未使用组件引脚数量</p>
+<p class="my-4 leading-7">不可访问未使用引脚：不可访问的未使用组件引脚数量</p>
+<p class="my-4 leading-7">探针未使用引脚：连接到测试探针(测试器引脚)的未使用组件引脚数量</p>
+<p class="my-4 leading-7">过孔：过孔总数</p>
+<p class="my-4 leading-7">可访问过孔：可访问的过孔数量</p>
+<p class="my-4 leading-7">不可访问过孔：不可访问的过孔数量</p>
+<p class="my-4 leading-7">探针过孔：连接到测试探针(测试器引脚)的过孔数量</p>
+<p class="my-4 leading-7"><strong class="font-semibold">非探针过孔：</strong> 未连接到测试探针(测试器引脚)的过孔数量 <strong class="font-semibold">网络</strong>：PCB 上的网络总数，包括未连接的网络 <strong class="font-semibold">带测试点的网络</strong>：PCB 中连接到测试探针的网络总数。此数字与选择的 PCB 侧边无关。 <strong class="font-semibold">无测试点的网络</strong>：PCB 中未连接到测试探针的网络总数。此数字与选择的 PCB 侧边无关。在测试探针(测试器引脚)放置前，此数字等于 PCB 上的网络数量。 <strong class="font-semibold">可访问网络</strong>：从指定板侧可被测试探针(钉针)访问的网络数量 <strong class="font-semibold">部分测试网络</strong>：未完全布线且未满足网络指定最小测试点数量的网络数量 <strong class="font-semibold">不可访问网络</strong>：从指定板侧无法被测试探针(钉针)访问的网络数量</p>
+<p class="my-4 leading-7"><a href="#page-4-0" class="link_a7cea  link_a9ef4 inline-link_f855c">表格</a> <a href="#page-4-0" class="link_a7cea  link_a9ef4 inline-link_f855c">86</a> 列出了不可访问的可能原因。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">原因</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">解释</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">编号：</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">表格条目编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络名称：</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">不可访问的网络名称</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚：</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">该网络上的组件引脚和过孔。组件引脚名称指定为：<!-- -->组件名称.组件引脚编号。<!-- -->过孔指定为过孔名称和位置。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">原因：</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">不可访问网络上每个组件引脚不可访问的原因。<!-- -->不可访问的原因如下。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">从<!-- -->对面侧可访问</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组件引脚可从板的另一侧访问。<!-- -->在选项对话框的测试点选项卡中从板的另一侧探测。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SMD 引脚</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组件引脚是 SMD 引脚；因此，在测试点通过中无法测试。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">被覆盖的引脚</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组件引脚被另一个组件覆盖(隐藏)；因此，测试探针无法到达它。</td>
+</tr>
+</tbody>
+</table>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">原因</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">解释</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">焊盘太小</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组件引脚或过孔的焊盘尺寸小于指定的<!-- -->最小焊盘或过孔尺寸；因此，可用测试探针无法测试此<!-- -->组件引脚。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在选项对话框的测试点选项卡中更改最小焊盘探测尺寸。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">不允许探测</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">过孔不能被探测。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在选项对话框的测试点选项卡中选择探测过孔。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">埋入式过孔</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">从底部(或探测时的顶部)不可访问的埋入式过孔<!-- -->不可访问。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">超出板边框</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">板边框外的过孔和组件引脚不可访问。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">探针到探针<!-- -->最小距离</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">即使满足其他<!-- -->可访问性要求，在指定的探针到探针间隙最小距离要求下的<!-- -->组件引脚或过孔也无法被探测。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">探针到组件<!-- -->最小距离</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">即使满足其他<!-- -->可访问性要求，在指定的探针到组件间隙最小距离要求下的<!-- -->组件引脚或过孔也无法被探测。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">探针到板<!-- -->最小距离</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">即使满足其他<!-- -->可访问性要求，在指定的探针到板间隙最小距离要求下的<!-- -->组件引脚或过孔也无法被探测。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组件测试点<!-- -->禁止区违规</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">与<!-- -->组件关联的禁止区中的组件引脚或过孔无法被探测。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">板级测试点<!-- -->禁止区违规</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在板级定义的禁止区中的组件引脚或过孔无法被探测。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">钻孔尺寸大于<!-- -->焊盘尺寸</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组件引脚或过孔的钻孔尺寸大于焊盘尺寸。焊盘无法被<!-- -->探测。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络指定零钉针数<!-- -->计数</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SailWind Layout 中的 DFT 审计网络首选项指定网络有零个<!-- -->测试点。您也可以在网络属性对话框的测试点选项卡上设置此首选项。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">工具孔</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组件引脚是 SailWind Layout 中DFT 审计首选项指定的工具孔。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+</tbody>
+</table>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">表 86. 不可访问原因(续)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">--</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">----------------------------------------------</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">测试点：</strong> 用于测试 PCB 两侧的测试探针总数。此数字与选择的 PCB 侧边无关，并提供顶部侧的探针数量和底部侧的探针数量。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">钉针尺寸表：</strong> 在测试选择的 PCB 侧边时使用的钉针数量。此外，</p>
+<p class="my-4 leading-7">表格显示每种尺寸使用的钉针总数</p>
+<p class="my-4 leading-7">以及在测试选择的 PCB 侧边时</p>
+<p class="my-4 leading-7">使用的钉针总数。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">示例可测试性报告</strong></p>
+<p class="my-4 leading-7">使用可测试性报告中的信息来审查设计的可测试性，并识别可能需要关注的区域。</p>
+<hr class="my-12 border-t border-solid border-divider-light"/>
+<p class="my-4 leading-7">SailWind Router 版本 v2004 SPac1 DFT 审计</p>
+<p class="my-4 leading-7">板级报告</p>
+<p class="my-4 leading-7">板名称：\SailWind Projects\Samples\pwrdemoe.pcb</p>
+<p class="my-4 leading-7">生成日期：2004 年 6 月 1 日 星期二 13:44:32</p>
+<hr class="my-12 border-t border-solid border-divider-light"/>
+<p class="my-4 leading-7">元素：79</p>
+<hr class="my-12 border-t border-solid border-divider-light"/>
+<p class="my-4 leading-7">组件：23</p>
+<p class="my-4 leading-7">过孔：56</p>
+<p class="my-4 leading-7">侧边：底部</p>
+<p class="my-4 leading-7">============</p>
+<p class="my-4 leading-7">引脚：212</p>
+<hr class="my-12 border-t border-solid border-divider-light"/>
+<p class="my-4 leading-7">已连接引脚：159</p>
+<hr class="my-12 border-t border-solid border-divider-light"/>
+<p class="my-4 leading-7">可访问引脚：154</p>
+<p class="my-4 leading-7">不可访问引脚：5</p>
+<p class="my-4 leading-7">探针引脚：40</p>
+<p class="my-4 leading-7">非探针引脚：119</p>
+<p class="my-4 leading-7">未使用引脚：53</p>
+<hr class="my-12 border-t border-solid border-divider-light"/>
+<p class="my-4 leading-7">可访问未使用引脚：N/A</p>
+<p class="my-4 leading-7">不可访问未使用引脚：N/A</p>
+<p class="my-4 leading-7">探针未使用引脚：0</p>
+<p class="my-4 leading-7">非探针引脚：53</p>
+<p class="my-4 leading-7">过孔：56</p>
+<hr class="my-12 border-t border-solid border-divider-light"/>
+<p class="my-4 leading-7">可访问过孔：56</p>
+<p class="my-4 leading-7">不可访问过孔：0</p>
+<p class="my-4 leading-7">探针过孔：0</p>
+<p class="my-4 leading-7">非探针过孔：56</p>
+<p class="my-4 leading-7">网络：40</p>
+<hr class="my-12 border-t border-solid border-divider-light"/>
+<p class="my-4 leading-7">带测试点的网络：40</p>
+<p class="my-4 leading-7">无测试点的网络：0</p>
+<p class="my-4 leading-7">报告 创建可测试性报告</p>
+<p class="my-4 leading-7">可访问网络：40</p>
+<p class="my-4 leading-7">部分测试网络：0</p>
+<p class="my-4 leading-7">===========================</p>
+<p class="my-4 leading-7">测试点：40</p>
+<hr class="my-12 border-t border-solid border-divider-light"/>
+<p class="my-4 leading-7">顶部侧：0</p>
+<p class="my-4 leading-7">底部侧：40</p>
+<p class="my-4 leading-7">钉针尺寸：</p>
+<p class="my-4 leading-7">|------|------|------|------|</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">100</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">75</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">50</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">顶部</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">------</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">------</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">------</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">------</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">底部</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">40</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">------</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">------</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">------</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">------</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">总计</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">40</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">------</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">------</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">------</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">------</td>
+</tr>
+</tbody>
+</table>
+<h2 id="创建可测试性报告" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建可测试性报告<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建可测试性报告">#</a></h2>
+<p class="my-4 leading-7">可测试性报告提供有关电路板可测试性的信息，包括哪些网络可访问和哪些不可访问。</p>
+<p class="my-4 leading-7">运行可测试性报告会在 <em>\SailWind projects</em> 文件夹中创建 <em>TestabilityReport.txt</em> 文件。报告链接会出现在输出窗口的 <strong class="font-semibold">状态</strong> 选项卡中。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">点击 <strong class="font-semibold">文件 &gt; 报告 &gt; 可测试性</strong> 菜单项。</p>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7"><em>TestabilityReport.txt</em> 文件会在 \SailWind projects 文件夹中创建，报告链接会出现在输出窗口的 <strong class="font-semibold">状态</strong> 选项卡中。点击链接可查看报告。</p>
+<h2 id="测试点报告" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">测试点报告<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#测试点报告">#</a></h2>
+<p class="my-4 leading-7">测试点报告显示设计中所有测试点的信息，如总数、位置、探针直径、对象以及每个测试点分配的网络名称。SailWind Router 将报告 <em>TestPointReport.txt</em> 存储在 <em>\SailWind Projects</em> 中。要查看报告，请点击输出窗口 <strong class="font-semibold">状态</strong> 选项卡中的报告文件链接 <em>\SailWind Projects\TestPointReport.txt</em>。</p>
+<p class="my-4 leading-7">测试点报告的格式如下所述。更多信息，请参考<a href="#page-8-0" class="link_a7cea  link_a9ef4 inline-link_f855c">&quot;创建</a>测试<a href="#page-8-0" class="link_a7cea  link_a9ef4 inline-link_f855c">点报告</a>&quot;。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">测试点报告格式</strong></p>
+<p class="my-4 leading-7">测试点报告提供描述设计中测试点数量和位置的信息。</p>
+<p class="my-4 leading-7">HEADER</p>
+<p class="my-4 leading-7">Product (SailWind Router)</p>
+<p class="my-4 leading-7">Report Name (Test Point List)</p>
+<p class="my-4 leading-7">Design Name: 打开设计的名称</p>
+<hr class="my-12 border-t border-solid border-divider-light"/>
+<p class="my-4 leading-7">Test Points: 设计中测试点的总数</p>
+<hr class="my-12 border-t border-solid border-divider-light"/>
+<p class="my-4 leading-7">X: 每个测试点的 X坐标</p>
+<p class="my-4 leading-7">Y: 每个测试点的 Y坐标</p>
+<p class="my-4 leading-7">Side: 测试点分配的 PCB 面</p>
+<p class="my-4 leading-7">Probe: 探针直径</p>
+<p class="my-4 leading-7">Object: 测试点分配的元件引脚或过孔类型</p>
+<p class="my-4 leading-7">Net Name: 测试点连接的网络名称</p>
+<p class="my-4 leading-7"><strong class="font-semibold">测试点报告示例</strong></p>
+<p class="my-4 leading-7">使用测试点报告查看和分析描述设计中测试点数量和位置的信息。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">设计: \SailWind Projects\Samples\pwrdemoe.pcb</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"><em><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold"><strong class="font-semibold">测试点: 40</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></em></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">X</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Y</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Side<!-- -->_____________________________________________________________</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Probe</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Object</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Net Name</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">950</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">900</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BOTTOM</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">100</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">R3.8</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">$$$261</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">650</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">1100</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BOTTOM</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">100</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">U5.32</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">$$$464</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">1150</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">1700</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BOTTOM</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">100</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">U5.66</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">$$$1002</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">1150</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">1000</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BOTTOM</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">100</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">U5.59</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">$$$1019</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">1050</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">1300</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BOTTOM</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">100</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">U5.52</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">$$$1497</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">250</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">1800</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BOTTOM</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">100</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">U5.9</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">$$$1562</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BOTTOM</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">100</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">U2.1</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">$$$1879</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">200</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">725</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BOTTOM</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">100</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">U1.12</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SIG002</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">1225</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">725</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BOTTOM</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">100</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">U4.10</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SIG004</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">250</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">1600</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BOTTOM</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">100</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">U5.7</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SIGA</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">1025</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">425</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BOTTOM</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">100</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">U4.3</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">X</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">1125</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BOTTOM</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">100</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">U3.4</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">XX</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7">SailWind Router 版本 v2004 SPac1 测试点列表</p>
+<h2 id="创建测试点报告" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建测试点报告<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建测试点报告">#</a></h2>
+<p class="my-4 leading-7">测试点报告提供设计中所有测试点的信息，如设计中的总数、位置、探针直径以及测试点分配的对象和网络名称。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">点击 <strong class="font-semibold">文件 &gt; 报告 &gt; 测试点</strong> 菜单项。</p>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">SailWind Router 在 <em>\SailWind Projects</em> 文件夹中创建 <em>TestPointReport.txt</em> 文件，报告链接会出现在输出窗口的 <strong class="font-semibold">状态</strong> 选项卡中。点击链接可查看报告。</p>
+<h2 id="布线报告" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">布线报告<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#布线报告">#</a></h2>
+<p class="my-4 leading-7">布线报告显示自动布线进度的信息。SailWind Router 将报告 <em>RoutingReport.txt</em> 存储在 <em>\SailWind Projects</em> 中。要查看报告，请点击输出窗口 <strong class="font-semibold">状态</strong> 选项卡中的报告文件链接 <em>\SailWind Projects\RoutingReport.txt</em>。</p>
+<p class="my-4 leading-7">布线报告的格式如下。更多信息，请参考<a href="#page-11-0" class="link_a7cea  link_a9ef4 inline-link_f855c">&quot;创建布线报告&quot;在</a> <a href="#page-11-0" class="link_a7cea  link_a9ef4 inline-link_f855c">第 380 页</a>。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">布线报告格式</strong></p>
+<p class="my-4 leading-7">布线报告使用预定义格式组织与设计布线相关的数据。</p>
+<p class="my-4 leading-7">HEADER</p>
+<p class="my-4 leading-7">SailWind Router 版本 <!-- -->, 布线报告</p>
+<p class="my-4 leading-7">设计: D:\design\demob1.pcb</p>
+<p class="my-4 leading-7">SUMMARY</p>
+<p class="my-4 leading-7">Number of passes: 自动布线器执行的遍数</p>
+<p class="my-4 leading-7">Routed: 完全布线的连接数</p>
+<p class="my-4 leading-7">Vias Total: 设计中过孔总数，后面括号中</p>
+<p class="my-4 leading-7">(added) 显示添加(+)或移除(-)的过孔数</p>
+<p class="my-4 leading-7">Trace Length Total: 设计中走线总长度，后面括号中</p>
+<p class="my-4 leading-7">(increased) 显示增加(+)或减少(-)的长度</p>
+<p class="my-4 leading-7">Test Points Total : 测试点总数，后面括号中</p>
+<p class="my-4 leading-7">(added) 显示添加的测试点数</p>
+<p class="my-4 leading-7">Total Time: 布线器花费的总时间</p>
+<p class="my-4 leading-7">PASS DETAILS</p>
+<p class="my-4 leading-7">Pass: 遍数后跟遍名称，</p>
+<p class="my-4 leading-7">括号中显示策略</p>
+<p class="my-4 leading-7">选项卡上显示的名称</p>
+<p class="my-4 leading-7">Pins Processed: 仅针对扇出遍。程序中尝试</p>
+<p class="my-4 leading-7">扇出的引脚数。</p>
+<p class="my-4 leading-7">包括成功和失败的</p>
+<p class="my-4 leading-7">扇出。</p>
+<p class="my-4 leading-7">Fanouts Created: 该遍中创建的扇出数。</p>
+<p class="my-4 leading-7">Links Selected: 该遍中要布线的未布线数。该</p>
+<p class="my-4 leading-7">数字由布线顺序或</p>
+<p class="my-4 leading-7">选择决定。</p>
+<p class="my-4 leading-7">Links Processed: 程序中尝试在该遍中布线</p>
+<p class="my-4 leading-7">的未布线数。包括完成</p>
+<p class="my-4 leading-7">和未完成的布线。</p>
+<p class="my-4 leading-7">处理的未布线数多于</p>
+<p class="my-4 leading-7">选择的未布线数，因为</p>
+<p class="my-4 leading-7">布线时会考虑未被未布线</p>
+<p class="my-4 leading-7">连接的引脚。例如，一个网络</p>
+<p class="my-4 leading-7">由三个引脚(A,B 和C)和两个</p>
+<p class="my-4 leading-7">未布线(A 到B 和A 到C)组成。布线器</p>
+<p class="my-4 leading-7">会考虑 B和 C之间的未布线。因此，</p>
+<p class="my-4 leading-7">布线报告列出两个选择的未布线</p>
+<p class="my-4 leading-7">和三个处理的未布线。</p>
+<p class="my-4 leading-7">Routed: 该遍中布线的未布线数。</p>
+<p class="my-4 leading-7">Vias: 设计中过孔数，后面括号中</p>
+<p class="my-4 leading-7">显示该遍中添加(+)或</p>
+<p class="my-4 leading-7">移除(-)的过孔数</p>
+<p class="my-4 leading-7">Trace Length: 设计中走线总长度，以密耳为单位，</p>
+<p class="my-4 leading-7">后面括号中显示该遍中</p>
+<p class="my-4 leading-7">增加(+)或减少(-)的总长度</p>
+<p class="my-4 leading-7">Test Points: 设计中测试点总数，</p>
+<p class="my-4 leading-7">后面括号中显示该遍中</p>
+<p class="my-4 leading-7">添加(+)或移除(-)的测试点数</p>
+<p class="my-4 leading-7">Accessible Nets: 设计中可访问网络总数，</p>
+<p class="my-4 leading-7">后面括号中显示该遍中</p>
+<p class="my-4 leading-7">变为可访问(+)或不可访问(-)的</p>
+<p class="my-4 leading-7">网络数</p>
+<p class="my-4 leading-7">Time: 布线器在该遍中花费的时间，</p>
+<p class="my-4 leading-7">后面括号中显示布线</p>
+<p class="my-4 leading-7">花费的总时间</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 并非所有项目都会出现在每一遍中。</p>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">布线报告示例</strong></p>
+<p class="my-4 leading-7">使用布线报告中的信息分析和评估设计的可布线性。</p>
+<p class="my-4 leading-7">SailWind Router 版本 v2004 SPac1, 布线报告</p>
+<p class="my-4 leading-7">设计: \SailWind Projects\Samples\pwrdemoe.pcb</p>
+<p class="my-4 leading-7">=============================================================</p>
+<p class="my-4 leading-7">Tue Nov 09 12:22:19 2002</p>
+<p class="my-4 leading-7">自动布线 \SailWind Projects\Samples\pwrdemoe.pcb</p>
+<p class="my-4 leading-7">=============================================================</p>
+<p class="my-4 leading-7">Number of Passes: 0 of 2</p>
+<p class="my-4 leading-7">Routed: 102</p>
+<p class="my-4 leading-7">Vias: 29(+29)</p>
+<p class="my-4 leading-7">Trace Length: 49599(+49599) Mils</p>
+<p class="my-4 leading-7">Test Points: 40(+0)</p>
+<p class="my-4 leading-7">SailWind Router 指南 379</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">报告</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">创建布线报告</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+</tbody>
+</table>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">Accessible Nets:<!-- -->Time</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">40(+0)<!-- -->00:00:18<!-- -->=============================================================</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Pass:<!-- -->Links Selected:<!-- -->Processed:<!-- -->Routed:<!-- -->Vias:<!-- -->Trace Length:<!-- -->Time</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">4 (Route)<!-- -->119<!-- -->130<!-- -->102<!-- -->29(+29)<!-- -->49599(+49599) Mils<!-- -->00:00:18(+00:00:18)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">=============================================================<!-- -->Tue Nov 09 12:27:32 2002</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">自动布线 \SailWind Projects\Samples\pwrdemoe.pcb<!-- -->=============================================================</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Number of Passes:<!-- -->Routed:<!-- -->Vias:<!-- -->Trace Length:<!-- -->Test Points:<!-- -->Accessible Nets:<!-- -->Time</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">2 of 2<!-- -->11<!-- -->55(+26)<!-- -->78524(+28925) Mils<!-- -->40(+0)<!-- -->40(+0)<!-- -->00:00:19</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Pass:<!-- -->Links Selected:<!-- -->Processed:<!-- -->Routed:<!-- -->Vias:<!-- -->Trace length:<!-- -->Time</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">=============================================================<!-- -->4 (Route)<!-- -->17<!-- -->27<!-- -->11<!-- -->55(+26)<!-- -->78525(+28926) Mils<!-- -->00:00:15(+00:00:15)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Pass:<!-- -->Vias:<!-- -->Trace Length:<!-- -->Rerouted:<!-- -->Time</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">=============================================================<!-- -->5 (Optimize)<!-- -->55(+0)<!-- -->78524(-0) Mils<!-- -->0<!-- -->00:00:04(+00:00:04)<!-- -->=============================================================</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="创建布线报告" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建布线报告<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建布线报告">#</a></h2>
+<p class="my-4 leading-7">该报告提供自动布线过程中自动布线进度的信息，如遍数、完全布线的连接数、过孔和设计中的测试点。</p>
+<p class="my-4 leading-7">运行报告会在 <em>\SailWind projects</em> 文件夹中创建 <em>RoutingReport.txt</em> 文件。报告链接会出现在输出窗口的 <strong class="font-semibold">状态</strong> 选项卡中。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">点击 <strong class="font-semibold">布线工具栏</strong> 按钮，然后点击 <strong class="font-semibold">开始自动布线</strong> 按钮。</p>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">SailWind Router 在 <em>\SailWind Projects</em> 文件夹中创建 <em>RoutingReport.txt</em> 文件，报告链接会出现在输出窗口的 <strong class="font-semibold">状态</strong> 选项卡中。点击链接可查看报告。</p>
+<h2 id="测试数据库完整性" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">测试数据库完整性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#测试数据库完整性">#</a></h2>
+<p class="my-4 leading-7">文件加载时，SailWind Router 会对数据库执行完整性测试。SailWind Router 的完整性测试基于 SailWind Layout 中执行的完整性测试。任何完整性测试错误消息都会出现在输出窗口的 <strong class="font-semibold">状态</strong> 选项卡中。每个错误都直接链接到设计中错误的位置。点击错误链接可放大查看设计中的错误。<strong class="font-semibold">状态</strong> 选项卡最多显示 20 个错误。所有错误都会保存到名为 <em>TestIntegrity.txt</em> 的报告中，该报告位于 <em>\SailWind Projects</em> 中。要查看报告，请点击输出窗口 <strong class="font-semibold">状态</strong> 选项卡中的报告文件链接。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">检查数据库完整性</strong></p>
+<p class="my-4 leading-7">您可以随时运行相同的数据库完整性检查。完整性检查验证数据库中的值是否在可接受范围内。如果完整性检查遇到任何问题，输出窗口的 <strong class="font-semibold">状态</strong> 选项卡会显示错误。</p>
+<p class="my-4 leading-7">更多信息，请参考<a href="#page-13-0" class="link_a7cea  link_a9ef4 inline-link_f855c">&quot;创建</a>完整性测试报告。&quot;</p>
+<p class="my-4 leading-7"><strong class="font-semibold">完整性测试报告格式</strong></p>
+<p class="my-4 leading-7">完整性测试报告使用预定义格式组织与设计数据库完整性相关的信息。</p>
+<p class="my-4 leading-7">HEADING</p>
+<p class="my-4 leading-7">Product (SailWind Router)</p>
+<p class="my-4 leading-7">Report Name (Database Integrity Test Results)</p>
+<p class="my-4 leading-7">Design Name: 打开设计的名称</p>
+<p class="my-4 leading-7">Errors: 错误描述</p>
+<p class="my-4 leading-7"><strong class="font-semibold">完整性测试报告示例</strong></p>
+<p class="my-4 leading-7">使用完整性测试报告中的信息分析和评估设计数据库的完整性。</p>
+<p class="my-4 leading-7">SailWind Router. 数据库完整性测试结果 &lt;\SailWind</p>
+<p class="my-4 leading-7">Projects\Samples\bench98ulrouted.pcb&gt;</p>
+<p class="my-4 leading-7">Trace of net AVDD placed on non routable layer</p>
+<p class="my-4 leading-7">Trace of net AVDD placed on non routable layer</p>
+<p class="my-4 leading-7">Trace of net AVDD placed on non routable layer</p>
+<p class="my-4 leading-7">Trace of net AVDD placed on non routable layer</p>
+<p class="my-4 leading-7">Trace of net AVDD placed on non routable layer</p>
+<p class="my-4 leading-7">Trace of net AVDD placed on non routable layer</p>
+<p class="my-4 leading-7">Trace of net AVDD placed on non routable layer</p>
+<p class="my-4 leading-7">Trace of net AVDD placed on non routable layer</p>
+<p class="my-4 leading-7">Trace of net AVDD placed on non routable layer</p>
+<p class="my-4 leading-7"><strong class="font-semibold">报告 创建完整性测试报告</strong></p>
+<p class="my-4 leading-7">Trace of net AVDD placed on non routable layer Trace of net AVDD placed on non routable layer Trace of net TLCLK placed on non routable layer Trace of net TSPCLK placed on non routable layer Total problems found: 13</p>
+<h2 id="创建完整性测试报告" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建完整性测试报告<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建完整性测试报告">#</a></h2>
+<p class="my-4 leading-7">完整性测试报告验证设计数据库中的值是否在可接受范围内。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">点击 <strong class="font-semibold">工具 &gt; 完整性测试</strong> 菜单项。</p>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">SailWind Router 在 <em>\SailWind Projects</em> 文件夹中创建 <em>TestIntegrity.txt</em> 文件，报告链接会出现在输出窗口的 <strong class="font-semibold">状态</strong> 选项卡中。点击链接可查看报告。</p><!--/$--></div><div class="rspress-doc-footer"><footer class="mt-8"><div class="xs:flex pb-5 px-2 justify-end items-center"><div class="flex text-sm text-text-2 leading-6 sm:leading-8 font-medium"><p>最近更新时间<!-- -->: <span>2025/7/16 03:51:48</span></p></div></div><div class="flex flex-col"></div><div class="flex flex-col sm:flex-row sm:justify-around gap-4 pt-6"><div class="prev_c92d1 flex flex-col"><a href="/sailwind_docs/router/guide/21_zh.html" class="link_a7cea pager-link_e0d2d"><span class="desc_dcc01">上一页</span><span class="title_a3acb">第 21 章 设计验证</span></a></div><div class="next_c11be flex flex-col"><a href="/sailwind_docs/router/guide/23_zh.html" class="link_a7cea pager-link_e0d2d next_ad355"><span class="desc_dcc01">下一页</span><span class="title_a3acb">第 23 章 授权许可</span></a></div></div></footer></div></div><div class="aside-container_bc5fa"><div class="flex flex-col"><div id="aside-container" class="relative text-sm font-medium"><div class="leading-7 block text-sm font-semibold pl-3">本页目录</div><nav class="mt-1"><ul class="relative"><li><a href="#报告设计信息" title="报告设计信息" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">报告设计信息</span></a></li><li><a href="#设计报告" title="设计报告" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">设计报告</span></a></li><li><a href="#生成设计报告" title="生成设计报告" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">生成设计报告</span></a></li><li><a href="#生成布线前分析报告" title="生成布线前分析报告" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">生成布线前分析报告</span></a></li><li><a href="#可测试性报告" title="可测试性报告" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">可测试性报告</span></a></li><li><a href="#创建可测试性报告" title="创建可测试性报告" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建可测试性报告</span></a></li><li><a href="#测试点报告" title="测试点报告" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">测试点报告</span></a></li><li><a href="#创建测试点报告" title="创建测试点报告" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建测试点报告</span></a></li><li><a href="#布线报告" title="布线报告" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">布线报告</span></a></li><li><a href="#创建布线报告" title="创建布线报告" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建布线报告</span></a></li><li><a href="#测试数据库完整性" title="测试数据库完整性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">测试数据库完整性</span></a></li><li><a href="#创建完整性测试报告" title="创建完整性测试报告" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建完整性测试报告</span></a></li></ul></nav></div></div></div></div></div></div></section></div>
+    <div id="search-container"></div>
+  </body>
+</html>

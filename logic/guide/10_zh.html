@@ -1,0 +1,1155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Rspress v1.45.0">
+    <title data-rh="true">第 10 章 原理图元件 - SailWind</title><meta data-rh="true" name="description" content="SailWind"/>
+  <script>{;const saved = localStorage.getItem('rspress-theme-appearance');const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;const isDark = !saved || saved === 'auto' ? preferDark : saved === 'dark';document.documentElement.classList.toggle('dark', isDark);document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';}</script><link rel="icon" href="/sailwind_docs/favicon.ico"><script defer src="/sailwind_docs/static/js/styles.f5ec16c7.js"></script><script defer src="/sailwind_docs/static/js/lib-react.36f9b428.js"></script><script defer src="/sailwind_docs/static/js/lib-router.971f4280.js"></script><script defer src="/sailwind_docs/static/js/2886.6c8a4c3c.js"></script><script defer src="/sailwind_docs/static/js/index.ef746291.js"></script><link href="/sailwind_docs/static/css/styles.6524924d.css" rel="stylesheet"></head>
+
+  <body >
+    <div id="root"><div class="navContainer_d18b1 rspress-nav px-6  sticky_ddfa7"><div class="container_e4235 flex justify-between items-center h-full"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div><div class="flex flex-1 justify-end items-center"><div class="rightNav_a2fea"><div class="flex sm:flex-1 items-center sm:pl-4 sm:pr-2"><div class="rspress-nav-search-button navSearchButton_df1fb"><button><svg width="18" height="18" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg><p class="searchWord_af2c1">搜索</p><div style="opacity:0"><span></span><span>K</span></div></button></div><div class="mobileNavSearchButton_d85a9"><svg width="24" height="24" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg></div></div><div class="rspress-nav-menu menu h-14"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div><div class="flex-center flex-row"><div class="mx-2"><div class="md:mr-2 rspress-nav-appearance"><div class="p-1 border border-solid border-gray-300 text-gray-400  cursor-pointer rounded-md hover:border-gray-600 hover:text-gray-600 dark:hover:border-gray-200 dark:hover:text-gray-200 transition-all duration-300 w-7 h-7"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="dark:hidden" width="18" height="18" fill="currentColor"><path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6m0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4M12 4c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M12 24c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M5.6 6.6c-.3 0-.5-.1-.7-.3L3.5 4.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.1.2-.4.3-.7.3M19.8 20.8c-.3 0-.5-.1-.7-.3l-1.4-1.4c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.2.2-.5.3-.7.3M3 13H1c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M23 13h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M4.2 20.8c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.4.3-.7.3M18.4 6.6c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.5.3-.7.3"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="hidden dark:block" width="18" height="18" fill="currentColor"><path d="M12.1 22h-.9c-5.5-.5-9.5-5.4-9-10.9.4-4.8 4.2-8.6 9-9 .4 0 .8.2 1 .5s.2.8-.1 1.1c-2 2.7-1.4 6.4 1.3 8.4 2.1 1.6 5 1.6 7.1 0 .3-.2.7-.3 1.1-.1.3.2.5.6.5 1-.2 2.7-1.5 5.1-3.6 6.8-1.9 1.4-4.1 2.2-6.4 2.2M9.3 4.4c-2.9 1-5 3.6-5.2 6.8-.4 4.4 2.8 8.3 7.2 8.7 2.1.2 4.2-.4 5.8-1.8 1.1-.9 1.9-2.1 2.4-3.4-2.5.9-5.3.5-7.5-1.1-2.8-2.2-3.9-5.9-2.7-9.2"></path></svg></div></div></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div><div class="mobileNavMenu_e7045"><div class="navScreen_ec30c  rspress-nav-screen" id="navScreen"><div class="container_c935d"><div class="navMenu_b887b"><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div></div><div class="flex-center flex-col gap-2"><div class="mt-2 navAppearance_bf893 flex justify-center"></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div></div><button aria-label="mobile hamburger" class=" rspress-mobile-hamburger navHamburger_ac64c text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><circle cx="8" cy="16" r="2" fill="currentColor"></circle><circle cx="16" cy="16" r="2" fill="currentColor"></circle><circle cx="24" cy="16" r="2" fill="currentColor"></circle></svg></button></div></div></div></div><section><div class="docLayout_af141 pt-0"><aside class="sidebar_dd719 rspress-sidebar "><div class="navTitleMask_fb17c"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div></div><div class="rspress-scrollbar sidebarContent_da296"><nav class="pb-2"><a href="/sailwind_docs/logic/index.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:14px;margin-left:0;border-radius:0 var(--rp-radius) var(--rp-radius) 0;padding-left:24px;font-weight:bold"><span>章节预览</span></div></a><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">指南(Guide)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 1 章 SailWind Logic 快速开始</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 2 章 开始 SailWind Logic</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 3 章 用户界面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 4 章 文件操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 5 章 设计设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 6 章 管理库和库数据</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 7 章 库元件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 8 章 特殊示意图符号</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 9 章 设计和编辑基础</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItemActive_de63c mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 10 章 原理图元件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 11 章 图页</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 12 章 非电气对象</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 13 章 连接</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 14 章 层次化设计</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 15 章 原理图对象修改</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/16_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 16 章 规则</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/17_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 17 章 报告</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/18_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 18 章 与 Layout 和 Router 协作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/19_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 19 章 绘图和打印</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/20_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 20 章 对象链接与嵌入 ❌</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/21_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 21 章 使用高级程序 ❌</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/22_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 22 章 自定义界面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/23_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 23 章 崩溃检测、BMW 和 BLT</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/24_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 24 章 SailWind Logic 对话框</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">教程(Tutorial)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>学习用户界面教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建库元件教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>添加与复制元件教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>添加连接教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>添加总线教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>编辑设计元素教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>分配约束教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建报告教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>连接 SailWind 布局教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>更新原理图设计变更教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>打印和绘制电路图教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>管理多页原理图教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>模拟仿真设计教程</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">快速参考(Quick Reference)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/qr/modless.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>无模命令</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/qr/shortcut.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>键盘快捷键</span></div></a></div></div></div></section></nav></div></aside><div class="flex-1 relative min-w-0"><div class="rspress-sidebar-menu-container "><div class="rspress-sidebar-menu"><button type="button" class="flex-center mr-auto"><div class="text-md mr-2"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"></path></svg></div><span class="text-sm">Menu</span></button><button type="button" class="flex-center ml-auto"><span class="text-sm">本页目录</span><div class="text-md mr-2" style="transform:rotate(0deg);transition:transform 0.2s ease-out;margin-top:2px"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></button><div class="rspress-local-toc-container "><ul><li><a href="#添加元件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">添加元件</span></a></li><li><a href="#添加连接器管脚" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">添加连接器管脚</span></a></li><li><a href="#添加单门元件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">添加单门元件</span></a></li><li><a href="#添加多门元件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">添加多门元件</span></a></li><li><a href="#控制元件的文本可见性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">控制元件的文本可见性</span></a></li><li><a href="#使用备选符号" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">使用备选符号</span></a></li><li><a href="#交换参考指示器" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">交换参考指示器</span></a></li><li><a href="#使用动词模式交换参考指示符" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">使用动词模式交换参考指示符</span></a></li><li><a href="#通过一次选择一个元件来交换参考指示器" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">通过一次选择一个元件来交换参考指示器</span></a></li><li><a href="#通过首先选择两个元件来交换参考指示符" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">通过首先选择两个元件来交换参考指示符</span></a></li><li><a href="#将元件类型保存到库中" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">将元件类型保存到库中</span></a></li><li><a href="#在原理图中保存一个或多个元件类型" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">在原理图中保存一个或多个元件类型</span></a></li><li><a href="#保存原理图中的所有元件类型" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">保存原理图中的所有元件类型</span></a></li><li><a href="#将页间连接符保存到库中" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">将页间连接符保存到库中</span></a></li><li><a href="#从库中更新" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">从库中更新</span></a></li><li><a href="#撤消更新" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">撤消更新</span></a></li><li><a href="#从库中更新原理图" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">从库中更新原理图</span></a></li><li><a href="#从库中更新选定的元件类型" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">从库中更新选定的元件类型</span></a></li><li><a href="#从库中更新选定的-cae-封装" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">从库中更新选定的 CAE 封装</span></a></li><li><a href="#从库中更新选定的管脚封装" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">从库中更新选定的管脚封装</span></a></li><li><a href="#使用从库更新对话框更新选定的管脚封装" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">使用“从库更新”对话框更新选定的管脚封装</span></a></li><li><a href="#使用原理图编辑器更新选定的管脚封装" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">使用原理图编辑器更新选定的管脚封装</span></a></li><li><a href="#比较更新过程" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">比较/更新过程</span></a></li><li><a href="#如何阅读更新报告" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">如何阅读更新报告</span></a></li><li><a href="#删除元件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">删除元件</span></a></li><li><a href="#删除元件及其连接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">删除元件及其连接</span></a></li><li><a href="#剪切复制和粘贴" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">剪切、复制和粘贴</span></a></li><li><a href="#复制为-bmp-文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">复制为 BMP 文件</span></a></li><li><a href="#创建群组" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建群组</span></a></li><li><a href="#创建组" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">创建组</span></a></li><li><a href="#设置组的原点" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">设置组的原点</span></a></li><li><a href="#组锚点" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">组锚点</span></a></li><li><a href="#组管理" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">组管理</span></a></li><li><a href="#复制现有组" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">复制现有组</span></a></li><li><a href="#移动组" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">移动组</span></a></li><li><a href="#删除组" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">删除组</span></a></li><li><a href="#保存组" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">保存组</span></a></li><li><a href="#从文件粘贴组" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">从文件粘贴组</span></a></li><li><a href="#粘贴时自动连接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">粘贴时自动连接</span></a></li><li><a href="#旋转或镜像组" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">旋转或镜像组</span></a></li><li><a href="#属性概述" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">属性概述</span></a></li><li><a href="#管理原理图中的属性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">管理原理图中的属性</span></a></li><li><a href="#创建属性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">创建属性</span></a></li><li><a href="#重命名属性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">重命名属性</span></a></li><li><a href="#删除属性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">删除属性</span></a></li><li><a href="#元件上定义的电阻值" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">元件上定义的电阻值</span></a></li></ul></div></div></div><div class="content_ff766 rspress-doc-container flex"><div class="flex-1 overflow-x-auto"><div class="rspress-doc"><!--$--><h1 id="第-10-章-原理图元件" class="rspress-doc-title text-3xl mb-10 leading-10 tracking-tight title_fb7eb">第 10 章 原理图元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#第-10-章-原理图元件">#</a></h1>
+<p class="my-4 leading-7">您可以使用多种方法来添加、交换、保存、更新和控制设计中元件的可见性。这些操作可以针对单个设计对象或对象组执行。</p>
+<h2 id="添加元件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">添加元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#添加元件">#</a></h2>
+<p class="my-4 leading-7">使用“从库中添加元件”对话框将元件从库加载到当前原理图绘图中。
+当您添加元件时，SailWind Logic 会自动分配一个参考指示器。</p>
+<p class="my-4 leading-7">有关更多信息，请参阅添加单门元件和添加多门元件主题。</p>
+<p class="my-4 leading-7">有关通过复制原理图中已存在的元件来添加元件的信息，请参阅使用复制模式主题。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在原理图编辑工具栏上，单击添加元件按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在项目列表中选择一个元件，或者从“从库中添加元件”对话框中的元件名称下拉列表框中选择一个元件。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">使用筛选条件查找元件。使用通配符约定（带或不带前导字符）来扩展或缩小筛选条件范围。单击“应用”以激活筛选条件。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“添加”。该元件将附加到光标并跟随光标移动。</p>
+<p class="my-4 leading-7">（可选）您可以旋转或镜像项目，然后再指定其位置。<strong class="font-semibold">右键</strong>单击，然后根据需要多次单击“旋转 90 度”、“X 镜像”和“Y 镜像”，以设置项目的正确方向。单击“备选”以放置备选符号（如果可用）。单击“下一个类型”以选择元件中的其他门（如果可用）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击原理图来放置元件；另一个实例会自动附加到光标。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">添加完元件后，<strong class="font-semibold">右键</strong>单击并单击取消弹出菜单项或按 Esc 键。</p>
+</li>
+</ol>
+<h2 id="添加连接器管脚" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">添加连接器管脚<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#添加连接器管脚">#</a></h2>
+<p class="my-4 leading-7">连接器管脚是 SailWind Logic 库中的特殊符号。您可以像添加多门元件一样添加它们，每次添加连接器符号时，管脚编号都会递增。只有当您使用完所有连接器管脚后，SailWind Logic 才会递增参考标识符。</p>
+<p class="my-4 leading-7">添加连接器的一个或多个管脚并建立参考标识符后，使用“使用复制模式”添加其他管脚。这会使 SailWind Logic 对新管脚使用相同的参考标识符。</p>
+<h2 id="添加单门元件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">添加单门元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#添加单门元件">#</a></h2>
+<p class="my-4 leading-7">单门元件是指用单个原理图符号表示的元件。将元件添加到原理图时，唯一的参考指示器分配将从下一个可用的参考指示器编号开始。</p>
+<p class="my-4 leading-7">添加元件部分列出了逐步的过程。</p>
+<p class="my-4 leading-7">创建元件时，可以在元件信息对话框的第 136 页上的常规选项卡中指定参考指示器前缀。</p>
+<h2 id="添加多门元件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">添加多门元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#添加多门元件">#</a></h2>
+<p class="my-4 leading-7">多门元件是指由多个符号或门组成，以表示一个完整元件的元件；例如，7400 包含 4 个门。您可以创建包含多个同类型门或多个不同类型的门的元件。</p>
+<p class="my-4 leading-7">添加新的多门元件时，将使用管脚号最低的门，以及下一个可用的参考标识符和字母数字后缀（或门修饰符）。参考标识符和后缀之间用短划线 (-) 分隔。例如，添加到新原理图中的 7400 将使用管脚 1 至 3 的门，并将其指定为元件 U1-A。添加同一元件的其他门时，将使用下一个可用的门和门修饰符，例如，将添加管脚 4 至 6 的门并将其指定为 U1-B。</p>
+<p class="my-4 leading-7">SailWind Logic 持续管理原理图中门的封装。如果您删除、重命名或更改了门的元件类型，SailWind Logic 会跟踪这些更改，并在添加新门时填补空缺。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">使用字母数字前缀</strong></p>
+<p class="my-4 leading-7">您可以在 SailWind Logic 中使用任意字母和数字组合来定义参考指示器前缀。</p>
+<p class="my-4 leading-7">创建元件时，可以在元件信息对话框的第 136 页上的常规选项卡中指定此前缀。</p>
+<p class="my-4 leading-7">如果您指定包含字母数字字符的参考指示器前缀，SailWind Logic 会为多门元件保留此前缀。对于包含四个门的元件，如果前缀为 U1A，则在添加到设计中时，将使用参考指示器分配 U1A-A、U1A-B、U1A-C 和 U1A-D。</p>
+<h2 id="控制元件的文本可见性" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">控制元件的文本可见性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#控制元件的文本可见性">#</a></h2>
+<p class="my-4 leading-7">使用“元件文本可见性”对话框可以控制与选定元件关联的文本的显示。您可以控制一个元件或所有同类型的元件的可见性。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个部分，<strong class="font-semibold">右键</strong>单击并单击可见性弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在属性列表中，选中要在原理图中显示的属性的复选框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“项目可见性”区域中，选中复选框以显示相应的标签，例如 par 类型或管脚编号。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“属性名称显示”区域中，设置属性名称选项。选择仅显示属性值或同时显示属性名称及其值，例如 PCB DECAL = SO14。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">全部禁用 - 使所有属性名称不可见，仅显示属性值。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">无更改 - 保持当前属性名称可见性设置。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">全部启用 - 显示所有属性名称及其值。</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“将更新应用于”区域中，设置所选元件的更新选项。如果您在原理图上选择了多个元件，则此区域不可用。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">此门 — 更新选定的门。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">此元件 — 更新某个元件或该元件的所有关联门。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">所有元件 此类型 — 更新设计中所有匹配的门或元件</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">使用位于第 177 页的对象模式选择时，如果选择了多个元件，复选框可能会处于中间状态（已选中，但无法编辑），因为某些选定元件的复选框已选中，而其他元件的复选框已清除。您可以选中或清除复选框并更新所有选定的元件。</p>
+</div></div>
+</li>
+</ol>
+<h2 id="使用备选符号" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">使用备选符号<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用备选符号">#</a></h2>
+<p class="my-4 leading-7">某些元件在原理图中可以用多种表示方式显示。一个例子 NAND 门，其德摩根表示法。第二个例子是使用 IEEE 和 ANSII 符号标准。在 SailWind Logic 的符号库中，可以为一个元件定义一个主符号和最多三个备用符号。</p>
+<p class="my-4 leading-7">在将元件放置在原理图中时，可以使用“备选”命令选择要在原理图中使用的版本。</p>
+<p class="my-4 leading-7">电源符号、接地符号和页间连接符参考符号也可作为备选符号</p>
+<p class="my-4 leading-7">当您添加新元件或复制现有元件时，如果您需要备选表示，请在放置元件之前单击鼠标右键，然后单击“备选”。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">在复制或移动模式下，<strong class="font-semibold">右键</strong>单击并单击备用弹出菜单项。</p>
+<h2 id="交换参考指示器" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">交换参考指示器<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#交换参考指示器">#</a></h2>
+<p class="my-4 leading-7">要交换参考指示符，您可以使用原理图编辑工具栏上的“交换参考指示符”按钮或弹出菜单上的“交换参考指示符”。如果所选元件的参考指示符前缀不同，则交换操作还会更新封装中其他元件的参考指示符。</p>
+<p class="my-4 leading-7">使用动词模式交换参考指示器 通过一次选择一个部分来交换参考指示器 通过首先选择两个部分来交换参考指示器</p>
+<h3 id="使用动词模式交换参考指示符" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">使用动词模式交换参考指示符<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用动词模式交换参考指示符">#</a></h3>
+<p class="my-4 leading-7">您可以使用动词模式交换引用指示符。使用动词模式，您可以启动命令，然后执行连续的交换操作，而无需每次重新启动命令。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">在原理图编辑工具栏上，单击交换引用位置按钮。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">选择第一部分。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">选择要交换参考指示器的第二个元件。软件会更改或交换所选元件上的参考指示器。或者，要使用弹出菜单交换参考指示器，您可以一次选择一个元件，也可以同时选择两个元件。</li>
+</ol>
+<h3 id="通过一次选择一个元件来交换参考指示器" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">通过一次选择一个元件来交换参考指示器<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#通过一次选择一个元件来交换参考指示器">#</a></h3>
+<p class="my-4 leading-7">您可以通过一次选择一个元件来交换参考指示器。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">选择第一个组件。</li>
+<li class="[&amp;:not(:first-child)]:mt-2"><strong class="font-semibold">右键</strong>单击并单击“交换参考目标”弹出菜单项。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">选择另一个组件来完成交换。</li>
+</ol>
+<h3 id="通过首先选择两个元件来交换参考指示符" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">通过首先选择两个元件来交换参考指示符<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#通过首先选择两个元件来交换参考指示符">#</a></h3>
+<p class="my-4 leading-7">您可以通过先选择两个部分，然后指定命令来交换参考指示器。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">使用 Ctrl + 单击，选择要交换的组件参考指示器。</li>
+<li class="[&amp;:not(:first-child)]:mt-2"><strong class="font-semibold">右键</strong>单击并单击“交换参考目标”弹出菜单项以完成交换。</li>
+</ol>
+<h2 id="将元件类型保存到库中" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">将元件类型保存到库中<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#将元件类型保存到库中">#</a></h2>
+<p class="my-4 leading-7">您可以将原理图中的一个元件类型、多个元件类型或所有元件类型保存到库中。</p>
+<p class="my-4 leading-7">在原理图中保存一种或多种元件类型 在原理图中保存所有元件类型 将页面外的数据保存到库中</p>
+<h3 id="在原理图中保存一个或多个元件类型" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">在原理图中保存一个或多个元件类型<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#在原理图中保存一个或多个元件类型">#</a></h3>
+<p class="my-4 leading-7">您可以将一种或多种元件类型保存到库中。保存到库后，这些元件即可在当前设计以及未来的设计过程中使用。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">在原理图中选择一个或多个元件。</li>
+<li class="[&amp;:not(:first-child)]:mt-2"><strong class="font-semibold">右键</strong>单击并单击“保存到库”弹出菜单项。
+出现“将元件类型保存到库”对话框。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">选择您想要保存元件类型的库。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“确定”。</li>
+</ol>
+<h3 id="保存原理图中的所有元件类型" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">保存原理图中的所有元件类型<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#保存原理图中的所有元件类型">#</a></h3>
+<p class="my-4 leading-7">您可以将原理图中的所有元件类型保存到库中。这样您就可以快速保存所有元件类型，并供当前和未来的设计会话使用。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并单击选择元件弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">再次<strong class="font-semibold">右键</strong>单击并单击“在原理图上全选”弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并单击“保存到库”弹出菜单项。
+出现“将元件类型保存到库”对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择您想要保存元件类型的库。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">保存元件类型时，请遵循以下事项：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">如果库中已存在您正在保存的元件类型或逻辑封装，则会出现一个消息框。单击“是”可覆盖库中的元件类型或逻辑封装。单击“否”可仅保存库中尚不存在的元件类型。单击“取消”可返回“将元件保存到库”对话框，而不将元件类型保存到库中</li>
+<li class="[&amp;:not(:first-child)]:mt-2">当同类型的元件具有相同值的属性时，属性名称和值将与元件类型一起保存在库中。当同类型的元件的相同属性名称具有不同的值时，只有值为空的属性名称会保存到库中。</li>
+</ul>
+</div></div>
+</li>
+</ol>
+<h3 id="将页间连接符保存到库中" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">将页间连接符保存到库中<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#将页间连接符保存到库中">#</a></h3>
+<p class="my-4 leading-7">使用“保存页间连接符到库”功能，使用原理图中的当前版本更新库中的页间连接符、接地或电源符号。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">单击“工具 &gt; “ 将页间连接符保存到库中”菜单项。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">选择要更新的符号。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">点击“确定”。选定的项目将在元件编辑器中打开。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">根据需要修改符号。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击主页 &gt; 保存菜单项。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">按照提示替换库中当前的版本并更新
+示意图。</li>
+</ol>
+<h2 id="从库中更新" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">从库中更新<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#从库中更新">#</a></h2>
+<p class="my-4 leading-7">在 SailWind Logic 中，当您将元件库中的元件添加到原理图时，元件库内容的副本会写入原理图。然而，随着时间的推移，随着元件库的更新，原理图中的元件可能会与库中的较新版本不同步。使用“从库更新”功能可以将设计中的元件与库中的最新版本同步。</p>
+<p class="my-4 leading-7">使用从库中更新 (UFL) 来：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">创建当前原理图和库之间任何部分差异的报告。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">更新原理图以反映库的当前状态。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">您可以比较或更新以下类别的项目：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">元件类型</li>
+<li class="[&amp;:not(:first-child)]:mt-2">CAE 封装</li>
+<li class="[&amp;:not(:first-child)]:mt-2">管脚封装</li>
+<li class="[&amp;:not(:first-child)]:mt-2">接地符号</li>
+<li class="[&amp;:not(:first-child)]:mt-2">电源符号</li>
+<li class="[&amp;:not(:first-child)]:mt-2">页间连接符</li>
+</ul>
+<p class="my-4 leading-7">您可以比较或更新：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">以上任何或所有类别的全部。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">选定的元件类型、CAE 封装和管脚封装。您无法比较/更新选定的接地、电源或页间连接符。</li>
+</ul>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">由于库和原理图内容之间的唯一链接是条目的名称，因此更新可能会产生无法预料的意外后果。当在原理图中全局替换元件类型或门时，它们的替换与条目的本地编辑无关；已编辑的元件或门实例将被库中的通用实例替换。此类更改的不良后果可能很小，例如标签重新定位，也可能非常严重，例如管脚被删除或网络断开。</p>
+</div></div>
+<p class="my-4 leading-7">为了避免此类意外后果，更新功能在更新原理图中任何时间戳比库中对应项更新的项目之前，都会提示您。为了做好响应这些提示的准备，在更新之前您应该：</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">生成比较报告（使用“从库更新”对话框中的“生成比较报告”按钮）。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在比较报告中，找到标识时间戳比库中更新的项目的状态消息。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">确定并写下更新期间出现每个提示时您的响应。</li>
+</ol>
+<p class="my-4 leading-7">您可能还想更新原理图的副本，并检查/测试更新后的副本是否存在不必要的更改或行为。</p>
+<h3 id="撤消更新" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">撤消更新<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#撤消更新">#</a></h3>
+<p class="my-4 leading-7">更新过程会在开始更新之前创建一个撤消检查点。如果您在更新后决定将设计恢复到之前的状态，则可以恢复到上一个检查点。</p>
+<p class="my-4 leading-7">您可以使用编辑 &gt; 撤消菜单命令撤消对上次保存的检查点的任何更新（无论是已完成、取消还是失败） 。</p>
+<h3 id="从库中更新原理图" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">从库中更新原理图<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#从库中更新原理图">#</a></h3>
+<p class="my-4 leading-7">库中的信息可能会发生变更和更新。为了确保您的设计内容与最新更新的库内容一致，您可以使用库中元件的新版本来更新原理图。</p>
+<p class="my-4 leading-7">您可以更新以下任意或所有类别中的所有项目：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">元件类型</li>
+<li class="[&amp;:not(:first-child)]:mt-2">CAE 封装</li>
+<li class="[&amp;:not(:first-child)]:mt-2">管脚封装</li>
+<li class="[&amp;:not(:first-child)]:mt-2">接地符号</li>
+<li class="[&amp;:not(:first-child)]:mt-2">电源符号</li>
+<li class="[&amp;:not(:first-child)]:mt-2">页间连接符</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击工具 &gt; 选项菜单项，然后单击设计类别。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在选项区域中，根据需要选中或清除“允许使用库中的空白值覆盖设计中的属性值”复选框；单击确定关闭选项对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击主页 &gt; 库菜单项，然后单击管理库列表按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">设置“从库更新”在库中搜索与设计中的项目匹配的项目时使用的库列表顺序。（请参阅“常规比较/更新规则”。）单击“确定”，然后关闭“库管理器”对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“工具 &gt; 从库更新菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">根据需要修改“从库更新”对话框中的设置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">比较或更新操作完成后，更新报告将打开，并且报告文件的链接将显示在输出窗口中。</p>
+</div></div>
+</li>
+</ol>
+<h3 id="从库中更新选定的元件类型" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">从库中更新选定的元件类型<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#从库中更新选定的元件类型">#</a></h3>
+<p class="my-4 leading-7">在对库内容进行更改和更新时，您可能还需要选择性地更新设计中的元件。您可以选择一个或多个元件，然后更新所有具有相同元件类型的元件的元件类型，以与库中的最新版本同步。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">所有与选定元件具有相同元件类型的元件都会被更新，但仅更新实际选定元件的属性。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击工具 &gt; 选项菜单项，然后单击设计类别。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在选项区域中，根据需要选中或清除“允许使用库中的空白值覆盖设计中的属性值”复选框，然后单击“确定”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击主页 &gt; 库菜单项，然后单击管理库列表按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">设置“从库更新”在库中搜索与设计中的项目匹配的项目时使用的库列表顺序。（请参阅“常规比较/更新规则”。）单击“确定”，然后关闭“库管理器”对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在原理图编辑器中，未选择任何内容，<strong class="font-semibold">右键</strong>单击并单击选择元件（或选择门）弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择您想要比较/更新其元件类型的元件。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">如果要更新除少数元件类型之外的所有元件类型，请选择所有元件/门，然后在步骤 8 中清除不想更新的元件类型的复选框。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并单击更新 &gt; 元件类型弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">根据需要修改“从库中更新选定元件类型”对话框中的设置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">当比较或更新操作完成时，更新报告将打开，并且报告文件的链接将显示在输出窗口中。</p>
+<h3 id="从库中更新选定的-cae-封装" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">从库中更新选定的 CAE 封装<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#从库中更新选定的-cae-封装">#</a></h3>
+<p class="my-4 leading-7">您可以选择一个或多个元件，然后更新使用相同封装的所有元件的 CAE 封装</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">此过程会更新 CAE 封装中的管脚封装分配，但不会更新管脚封装本身。请使用“从库中更新选定管脚封装”中的步骤之一来更新管脚封装。</p>
+<p class="my-4 leading-7">因此，例如，如果您将 CAE 封装 X 更新为使用 管脚 B 而不是 管脚 A，它将使用原理图中当前 管脚 B 几何体的版本。如果原理图没有 PINB，则会从库中安装。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击主页 &gt; 库菜单项，然后单击管理库列表按钮</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">设置“从库更新”在库中搜索与设计中的项目匹配的项目时使用的库列表顺序。（请参阅“常规比较/更新规则”。）单击“确定”，然后关闭“库管理器”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在原理图编辑器中，未选择任何内容，<strong class="font-semibold">右键</strong>单击并单击选择元件（或选择门）菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择您想要比较/更新其 CAE 封装的元件/门。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">如果要更新除少数 CAE 封装之外的所有封装，请选择所有元件/门，然后在步骤 6 中清除您不想更新的封装的复选框。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并单击更新 &gt; CAE 封装菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">根据需要修改“从库中更新选定的 CAE 封装”对话框中的设置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">当比较或更新操作完成时，更新报告将打开，并且报告文件的链接将显示在输出窗口中。</p>
+<h3 id="从库中更新选定的管脚封装" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">从库中更新选定的管脚封装<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#从库中更新选定的管脚封装">#</a></h3>
+<p class="my-4 leading-7">您可以使用“从库更新”对话框或直接从原理图编辑器中更新库中选定的管脚封装。</p>
+<p class="my-4 leading-7">使用“从库更新”对话框更新选定的管脚封装 使用原理图编辑器更新选定的管脚封装</p>
+<h4 id="使用从库更新对话框更新选定的管脚封装" class="mt-8 leading-6 text-lg title_fb7eb">使用“从库更新”对话框更新选定的管脚封装<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用从库更新对话框更新选定的管脚封装">#</a></h4>
+<p class="my-4 leading-7">当您对库中的内容进行更改和更新时，可能需要将设计中的管脚封装与更新后的库内容同步。您可以使用“从库更新”对话框来更新一个或多个选定管脚封装的所有实例。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">单击主页 &gt; 库菜单项，然后单击管理库列表按钮</li>
+<li class="[&amp;:not(:first-child)]:mt-2">设置“从库更新”在库中搜索与设计中的项目匹配的项目时使用的库列表顺序。（请参阅“常规比较/更新规则”。）单击“确定”，然后关闭“库管理器”对话框。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“工具 &gt; 从库更新菜单项。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">选中管脚封装 复选框，然后选择要比较/更新的封装。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“确定”。</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">当比较或更新操作完成时，更新报告将打开，并且报告文件的链接将显示在输出窗口中。</p>
+<h4 id="使用原理图编辑器更新选定的管脚封装" class="mt-8 leading-6 text-lg title_fb7eb">使用原理图编辑器更新选定的管脚封装<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用原理图编辑器更新选定的管脚封装">#</a></h4>
+<p class="my-4 leading-7">当您更改库中的内容时，可能需要刷新设计内容以反映这些更新。您可以使用“从库中更新选定管脚封装”对话框选择一个或多个管脚，并更新选定管脚所使用的管脚封装的所有实例。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击主页 &gt; 库菜单项，然后单击管理库列表按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">设置“从库更新”在库中搜索与设计中的项目匹配的项目时使用的库列表顺序。（请参阅“常规比较/更新规则”。）单击“确定”，然后关闭“库管理器”对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在原理图编辑器中，不选择任何内容，<strong class="font-semibold">右键</strong>单击并单击选择管脚弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择您想要比较/更新的管脚。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">如果您想更新除少数管脚封装之外的所有管脚封装，请选择所有元件/门，然后在步骤 6 中清除您不想更新的封装的复选框。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并单击更新 &gt;管脚封装 菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">根据需要修改“从库中更新选定管脚封装”对话框中的设置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">当比较或更新操作完成时，更新报告将打开，并且报告文件的链接将显示在输出窗口中。</p>
+<h3 id="比较更新过程" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">比较/更新过程<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#比较更新过程">#</a></h3>
+<p class="my-4 leading-7">更新过程首先会将原理图内容与库内容进行比较。如果发现原理图内容与库内容不同，则会根据“从库更新”对话框中设置的选项更新原理图内容，并将结果记录在报告文件中。比较过程与此相同，只是原理图不会更新。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">一般比较/更新规则</strong></p>
+<p class="my-4 leading-7">有许多规则控制比较/更新过程。</p>
+<p class="my-4 leading-7">在比较和更新时，以下一般规则适用于所有项目：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">匹配项 — 对于原理图中的每个项，系统会搜索所有可用的库以查找匹配的命名条目，并使用找到的第一个匹配条目。如果未找到匹配项，则跳过该项的比较，并在报告文件中创建“未找到”条目。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">库的搜索顺序按照“库列表”对话框中显示的顺序进行。您可以使用此对话框更改搜索顺序。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">时间戳 — 原理图和库中的每个项目都有时间戳。2005 SPac2 之前版本的 PADS 原理图没有时间戳。时间戳的比较将决定比较/更新的内容，如下所示：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">原理图中的时间戳较旧 - 如果原理图中的时间戳比库中的时间戳旧，则始终会比较/更新原理图中的项。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">时间戳相同 — 如果库和原理图中的时间戳相同，则项目的比较/更新取决于“从库更新”对话框中“包含具有相同时间戳的项目”复选框的设置。如果清除此复选框，则不进行比较/更新；如果选中此复选框，则无论时间戳如何，都会比较/更新所有项目。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">原理图中的时间戳较新 — 如果原理图中的时间戳比库中的时间戳新：<!-- -->
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">比较时，状态消息会写入报告中。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">更新时，状态消息会写入更新报告中，并提示您选择是否更新原理图。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">更新的内容 — 当某个项目更新时，库中的内容将替换原理图中该项目的全部内容。</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">跳过的更新</strong></p>
+<p class="my-4 leading-7">有 3 种情况会跳过项目的更新。</p>
+<p class="my-4 leading-7">这些情况包括：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">当设计中的某个项目比库中的等效项目更新时，您会对“原理图中的时间戳比库中的时间戳更新。确定覆盖原理图中的版本吗？”提示回答“否”。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">当库中较新的项目的管脚数比设计中等效较旧的项目的管脚数少时。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">当库中的 GND、POWER 或 OFF 符号数量少于设计中可用符号的数量时。</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">旧原理图</strong></p>
+<p class="my-4 leading-7">2005 SPac2 之前版本的 PADS 原理图没有时间戳。打开这些原理图时，所有元件类型、封装、管脚封装以及页间连接符、电源和接地符号上的时间戳均会设置为零。要确定原理图中元件类型和封装的内容是否与库同步，请选中“隐藏相同结果”复选框，并比较原理图和库。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">比较什么</strong></p>
+<p class="my-4 leading-7">在比较过程中会检查许多设计对象。</p>
+<p class="my-4 leading-7">下表列出了针对每个选定的进行比较或更新的项目所比较和报告的内容。</p>
+<p class="my-4 leading-7">表 25. 比较和报告的元件结构</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">物品</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">组件项目</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">比较和报告的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">时间戳</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">请参阅第 193 页的“常规比较/更新规则”。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">元件类型</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">逻辑系列、门数量、连接器管脚数量、信号管脚数量、属性名称列表</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">对于每个门：</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAE 封装数量、CAE 封装名称、门上的电气管脚数量、门交换类别。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">对于每个门管脚：</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">管脚编号（如果已定义，则为字母数字）、管脚名称、管脚类型、管脚交换类</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">对于每个信号管脚：</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">管脚编号（如果定义则为字母数字）、网络名称</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">对于每个属性：</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">值字符串注意：库中可能存在一些属性，它们只是占位符，其值为空，必须为原理图中的每个单独元件设置这些值。库中任何值为空的属性都被视为此类占位符，原理图中相应属性的更新由“选项”对话框“设计”类别中的“允许使用库中的空值覆盖设计中的属性值”复选框控制。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PCB 封装分配</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">元件的指定 PCB 封装名称位于库元件类型的 PCB 封装备选列表中。如果不在，则会在报告中写入警告，但封装</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PCB 封装针数</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">对于连接器：</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PCB 封装中分配给每个连接器元件的管脚数等于为该元件类型定义的连接器管脚数。PCB 封装中分配给每个普通元件的管脚数为</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">对于普通元件：</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">等于或大于库元件类型定义的门电路中使用的最高电气管脚数。限制：管脚数无法在原理图中更新。管脚数差异将在更新报告中标记为警告。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAE 封装</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">门封装详细信息：</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">属性标签数量、属性标签名称、文本数量、终端数量。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">终端详情：</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">文本项的详细信息未进行比较。管脚封装名称已分配给每个终端。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7">表 25. 比较和报告的元件结构（续）</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">物品</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">组件项目</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">比较和报告的内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">管脚封装</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">固定封装名称。更新说明：· 因为默认管脚名称和管脚编号标签位置在创建 CAE 封装时是“硬连线”的，所以当管脚封装更新时，原理图中的管脚名称和编号不受影响。· 管脚封装确实为原理图上的网络名称提供了默认位置，但实际使用的网络名称位置是单独存储的，因此网络名称位置不受更新的影响。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">电源和接地符号</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">符号名称、类型、信号管脚名称</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">页间连接符</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">符号名称、类型</td>
+</tr>
+</tbody>
+</table>
+<h3 id="如何阅读更新报告" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">如何阅读更新报告<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#如何阅读更新报告">#</a></h3>
+<p class="my-4 leading-7">每次从库中更新设计或生成比较报告时，“从库更新”都会将操作结果写入 C:\SailWind Projects 中的新 UpdateReport.txt 文件。您可以使用文本编辑器打开并查看此报告的内容，并验证设计对象是否为预期版本。</p>
+<p class="my-4 leading-7">更新报告为您提供有关您选择进行比较或更新的项目的信息，例如：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">设计中项目的时间戳是否与库中项目的时间戳更旧、更新或相同。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">设计中项目的内容是否与库中项目的内容相同或不同。</li>
+</ul>
+<p class="my-4 leading-7">报告由 4 个部分组成：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">报告标题信息——报告本身的常规信息。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">报告选项 — 在“从库更新”对话框中为此操作选择的选项列表。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">报告摘要 — 以表格形式列出比较的元件类型、CAE 封装、页间连接符、接地符号和电源符号，并显示整个软件包的比较结果和更新状态。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">报告详情 — 完整比较所有比较套餐，并更新所有套餐的详细信息。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">表 26 列出并描述了更新报告中比较/更新的项目所返回的消息。</p>
+<p class="my-4 leading-7">表 26. 更新报告消息</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">信息</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">报告部分</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">参考：</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">方法</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">无法从库中获取 CAE DECAL！！！</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAE 封装</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAE 封装存在于设计中但不在库中。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7">表 26. 更新报告消息（续）</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">信息</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">报告部分</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">参考：</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">方法</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">无法从库获取 GATE！！！</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">门</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">门在设计中存在，但在库中不存在。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">无法从库中获取 GATE - 跳过比较</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">门</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">门在设计中存在，但在库中不存在。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">无法从库中获取包！！！</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">包裹</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">包存在于设计中但不在库中。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">无法从库获取管脚DECAL！！！</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">管脚封装</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">管脚封装存在于设计中但不在库中。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CANCELLED</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">概括</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">商品更新</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">操作已被用户取消。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">比较已取消</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">摘要和详细信息</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">比较操作</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">操作已被用户取消。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">比较错误</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">比较操作</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">未选择任何商品或商品不可用。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">跳过比较</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">比较操作</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">无法比较，因为 CAE 封装终端数量在设计和库中不同。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">比较已停止！</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">比较操作</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">操作已被用户取消。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">比较项目匹配</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">概括</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">项目内容</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">所有比较项目的内容在设计和库中均相同。以下项目不进行比较：· CAE Decal 图形 · CAE Decal 详细信息</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">内容已更新</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">商品更新状态</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计中的文本项内容使用库中的内容进行更新。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">封装数量不匹配</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAE 封装</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计中的 CAE 封装终端数量与库中的数量不同。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">不同的</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">摘要和详细信息</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">项目内容</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计中的项目内容与库中的内容不同。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7">表 26. 更新报告消息（续）</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">信息</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">报告部分</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">参考：</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">方法</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">不同的时间戳</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">概括</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">管脚封装时间戳</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计和库中的时间戳不同。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">FAILED</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">概括</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">商品更新状态</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">由于未指定的错误，更新失败。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在库中：不在设计中</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">商品状态</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在设计中未找到库中的项目。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">比库新</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">摘要和详细信息</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计中的时间戳</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计中的时间戳比库中的时间戳新。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">未找到 CAE 封装！！！</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAE 封装</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">对话框中选中了 CAE 封装复选框，但在设计中未找到 CAE 封装。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">未找到或未选择 管脚 封装！！！</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">管脚封装</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">或者：· 在设计中未找到对话框中选择的管脚封装，或者· 选择了管脚封装复选框，但未选择管脚。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">未分配</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">栅极管脚</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计中分配的门极管脚未在库中分配。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">未在库部分分配</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">比较商品</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计中分配给该元件的 PCB 封装不在库中分配给该元件的封装集中。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">不在设计中</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">概括</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">页间连接符、PWR 和 GND 符号</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">该符号存在于库中，但未在设计中使用。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">不在库</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">比较商品</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在库中未找到设计中的项目。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">比库还古老</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">摘要和详细信息</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计中的时间戳</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计中的时间戳比库中的时间戳要旧。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">操作已被用户取消！！！</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">更新或比较操作</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">操作已被用户取消。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">已执行撤消操作</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">更新或比较操作</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">操作已被用户取消。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7">表 26. 更新报告消息（续）</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">信息</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">报告部分</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">参考：</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">方法</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">与库相同</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">摘要和详细信息</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计中的时间戳 设计中的项目内容</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计和库中的时间戳相同。项目内容在设计和库中相同。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SKIPPED</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">概括</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">商品更新</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">用户对“原理图中的时间戳比库中的时间戳更新。可以覆盖原理图中的版本吗？”提示回答“否”。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">STOPPED</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">概括</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">商品更新</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">操作已被用户取消。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">更新已取消</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">商品更新</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">操作已被用户取消。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">更新失败</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">商品更新</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">更新过程中出现错误，更新失败。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">更新消息</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">商品更新</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">解释更新失败的原因。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">跳过更新</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">商品更新</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">用户对“原理图中的时间戳比库中的时间戳更新。可以覆盖原理图中的版本吗？”提示回答“否”。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">更新已停止！</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">商品更新</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">操作已被用户取消。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">WARNING</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">细节</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PCB 封装</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">库中的 PCB 封装的管脚比设计中的少。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="删除元件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">删除元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#删除元件">#</a></h2>
+<p class="my-4 leading-7">删除对象模式下选定的元件时，您可以选择仅删除该元件，或者删除该元件及其连接。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个部分。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果要保留与元件的连接，请<strong class="font-semibold">右键</strong>单击并点击弹出菜单项“保留连接”以启用该选项。“保留连接”选项默认启用。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">当菜单中“保留连接”旁边出现复选标记时，表示已启用该功能。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并单击删除弹出菜单项。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">软件将连接保留在其原始位置。</p>
+<h2 id="删除元件及其连接" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">删除元件及其连接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#删除元件及其连接">#</a></h2>
+<p class="my-4 leading-7">如果设计不再需要某个元件，并且您不打算用类似的元件替换该元件（因此您不需要保留其连接），则可以删除该元件及其连接。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个部分。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果要移除连接到元件的连接，请<strong class="font-semibold">右键</strong>单击，然后单击“保留连接”弹出菜单项以将其禁用。“保留连接”选项默认启用。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">如果菜单中“保留连接”旁边没有出现复选标记，则表示该选项被禁用。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并单击删除弹出菜单项。</p>
+<p class="my-4 leading-7">软件将删除该元件及其连接。</p>
+</li>
+</ol>
+<h2 id="剪切复制和粘贴" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">剪切、复制和粘贴<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#剪切复制和粘贴">#</a></h2>
+<p class="my-4 leading-7">与其他标准应用程序类似的方式，您可以在设计中剪切、复制和粘贴对象。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">使用编辑菜单项或 Ctr + X 、 Ctrl + C 或 Ctrl + P 快捷键。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">延伸到选择范围之外的连接在断点处被分配页间连接符。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">SailWind Logic 仅在粘贴缓冲区中维护一个剪切或复制。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">您可以粘贴到新的设计中。</li>
+</ul>
+<h2 id="复制为-bmp-文件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">复制为 BMP 文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#复制为-bmp-文件">#</a></h2>
+<p class="my-4 leading-7">“复制为位图”命令允许您定义一个矩形区域，将图形信息作为位图图像复制到粘贴缓冲区。复制完成后，您可以切换到 Microsoft Word，然后使用“主页 &gt; 粘贴”菜单项将位图插入文档。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">单击编辑 &gt; 复制为 BMP 文件菜单项。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">将光标拖到要复制的区域上。矩形内的所有项目（包括背景、点阵、颜色等）都将被复制。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">打开要放置位图的应用程序并使用粘贴命令放置图像。</li>
+</ol>
+<h2 id="创建群组" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建群组<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建群组">#</a></h2>
+<p class="my-4 leading-7">组是原理图上的对象集合。默认情况下，超出组范围的连接会被剪裁，使其停止在用于定义组的边界处。选择某个组后，您可以移动它、将其复制到粘贴缓冲区、删除它、复制它，或将其保存到文件中以供其他设计使用。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">组不同于组合，组合仅由 2D 线条或 2D 线条和文本组成。</p>
+</div></div>
+<h3 id="创建组" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">创建组<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建组">#</a></h3>
+<p class="my-4 leading-7">要同时对多个对象执行操作，请创建一个组，然后移动它、将其复制到粘贴缓冲区、删除它、复制它或将其保存到文件中以供其他设计使用。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">某些组命令仅在组由混合项组成时可用。例如，如果组仅由组件组成，则“按边界保留”弹出菜单项不可用。</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">将选择筛选条件设置为要选择的对象。另请参阅使用选择筛选条件。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">区域选择组中的对象。或者，您也可以按住 Ctrl 键并单击来选择要添加到组中的所有对象。软件会高亮显示已添加到组中的对象。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">要保留延伸到组边界之外的连接，请<strong class="font-semibold">右键</strong>单击，然后单击“按边界保留”弹出菜单项。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">要保留删除元件或总线后剩下的单管脚网络，请<strong class="font-semibold">右键</strong>单击并单击“保留连接”弹出菜单项。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">根据需要，按住 Ctr + 键单击组内的对象将其删除，或按住 Ctrl + 键单击组外的对象将其添加到组中。</li>
+</ol>
+<p class="my-4 leading-7">该软件突出显示所包含的对象。</p>
+<h3 id="设置组的原点" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">设置组的原点<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设置组的原点">#</a></h3>
+<p class="my-4 leading-7">创建组时，软件会自动创建原点。移动或放置组时，软件会使用此原点。当原点位于特定位置时，您可能需要更改原点。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">您必须启用“按边界保留”选项，并且边界必须可见才能设置原点。
+当边界不可见时，该组围绕选择的中心旋转。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">选择组。</li>
+<li class="[&amp;:not(:first-child)]:mt-2"><strong class="font-semibold">右键</strong>单击，然后点击“设置原点”弹出菜单项。靶心将附加到指针上。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">将光标移动到新的原点并单击进行设置。</li>
+</ol>
+<h2 id="组锚点" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">组锚点<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#组锚点">#</a></h2>
+<p class="my-4 leading-7">复制或移动组时，SailWind Logic 会将组的锚点放置在预定义的位置。</p>
+<p class="my-4 leading-7">请记住以下锚点标准：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果您启用了“按边界保留”功能，SailWind Logic 会锚定到设计网格上最靠近组原点的点。</p>
+<p class="my-4 leading-7">图 3. 具有“按边界保留”的锚点</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/logic/guide/d32e54e8cb1ae658180598cc59ef9cd0d715a4453d17c44f7099b39a8ba0c58c.jpg" alt=""/></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果您尚未启用“按边界保留”功能，SailWind Logic 将锚定到位于设计网格上的组对象，或者（如果组的任何部分都不在设计网格上）锚定到最靠近原点的组对象。</p>
+<p class="my-4 leading-7">图 4. 没有“边界保留”的锚点</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/logic/guide/d18b456e202eaffd72640cfcc7c07bf84e7b15e5629b5f8b0a85d951d73288b4.jpg" alt=""/></p>
+</li>
+</ul>
+<h2 id="组管理" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">组管理<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#组管理">#</a></h2>
+<p class="my-4 leading-7">使用组，您可以将其内容作为单个实体执行操作。创建组后，您可以保存、删除、移动或重复使用它。</p>
+<h3 id="复制现有组" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">复制现有组<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#复制现有组">#</a></h3>
+<p class="my-4 leading-7">您可以复制原理图上已存在的组中所有项目。复制一组对象时，系统会自动分配参考指示器名称。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个组，<strong class="font-semibold">右键</strong>单击并单击复制弹出菜单项。</p>
+<div class="rspress-directive info"><div class="rspress-directive-title">INFO</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">重复组的锚点取决于特定条件。有关更多信息，请参阅组锚点。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将光标移动到重复的位置，然后单击以放置它。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">重复上述步骤来创建其他副本。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">您可以设置 SailWind Logic 在复制操作期间仅显示组的边框。</p>
+</div></div>
+<p class="my-4 leading-7">另请参阅创建组。</p>
+</li>
+</ol>
+<h3 id="移动组" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">移动组<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#移动组">#</a></h3>
+<p class="my-4 leading-7">使用移动命令，您可以将组移动到图页上的任何位置。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个组，<strong class="font-semibold">右键</strong>单击并单击移动弹出菜单项。</p>
+<div class="rspress-directive info"><div class="rspress-directive-title">INFO</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">移动群组时，其锚点取决于特定条件。有关更多信息，请参阅群组锚点。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将光标移动到新的组位置并单击以放置它。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">您可以设置 SailWind Logic 在移动操作期间仅显示组的边框。</p>
+</div></div>
+<p class="my-4 leading-7">另请参阅创建组。</p>
+</li>
+</ol>
+<h3 id="删除组" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">删除组<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#删除组">#</a></h3>
+<p class="my-4 leading-7">删除组时，您可以选择删除或保留组边界之外的连接。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个组，<strong class="font-semibold">右键</strong>单击，然后单击删除弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要保留延伸到组边界之外的连接，请<strong class="font-semibold">右键</strong>单击，然后单击“按边界保留”弹出菜单项。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">保留连接时，请注意以下事项：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">必须选中“按边界保留”才能使用此功能，否则该功能将被禁用。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">保留组边界外的连接时，删除时会自动为这些连接分配页间连接符。未命名的连接以 &quot;$$$&quot; 为前缀，具有唯一名称。</li>
+</ul>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要保留删除元件或总线后剩下的单管脚网络，请<strong class="font-semibold">右键</strong>单击并单击“保留连接”弹出菜单选项。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">另请参阅分离、使用浮动连接。</p>
+<h3 id="保存组" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">保存组<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#保存组">#</a></h3>
+<p class="my-4 leading-7">您可以保存组的内容，以便在其他原理图图页或其他设计中使用。已保存的组存储在 \SailWind Projects 文件夹中，扩展名为 .grp。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">该组必须由混合项目组成。如果仅选择组件或其他对象，“保存到文件”命令不可用。</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">选择一个组，<strong class="font-semibold">右键</strong>单击并单击保存到文件弹出菜单项。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在文件名区域中，键入名称。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“保存”。</li>
+</ol>
+<h3 id="从文件粘贴组" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">从文件粘贴组<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#从文件粘贴组">#</a></h3>
+<p class="my-4 leading-7">您可以将组保存到文件中，以便在当前或将来的设计中再次使用。使用“从文件粘贴”可插入之前保存到文件中的组。</p>
+<p class="my-4 leading-7">将组粘贴到图页中时：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">命名网络保留其名称，未命名网络则分配默认信号名称。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">所有元件均采用下一个可用的参考指示器名称命名。</li>
+</ul>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">要控制参考指示器的重命名，请使用“选项”对话框“设计”类别中的“粘贴时保留参考指示器”复选框。</p>
+</div></div>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击编辑 &gt; 从文件粘贴菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在加载组文件对话框中，选择要粘贴的组。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击“打开”。该组将附加到光标处。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将指针移动到组的位置，然后单击以放置它。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">如果设计包含与组中的元件具有相同参考名称的元件，则会生成报告。</p>
+</div></div>
+<p class="my-4 leading-7">另请参阅保留参考指示器。</p>
+</li>
+</ol>
+<h3 id="粘贴时自动连接" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">粘贴时自动连接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#粘贴时自动连接">#</a></h3>
+<p class="my-4 leading-7">将文件中的组粘贴到您的设计中时，组中未连接的管脚、未端接的电线或总线可以自动连接。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">未连接的管脚自动与未端接的电线末端或未连接的管脚连接。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">仅当未端接的电线是总线的命名子网时，未端接的电线末端才会自动连接到总线。</li>
+</ul>
+<h3 id="旋转或镜像组" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">旋转或镜像组<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#旋转或镜像组">#</a></h3>
+<p class="my-4 leading-7">您可以在选定组时旋转或镜像该组。您还可以在移动过程中旋转或镜像该组。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个组并<strong class="font-semibold">右键</strong>单击。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击旋转 90 度、X 镜像或 Y 镜像弹出菜单项。</p>
+<div class="rspress-directive info"><div class="rspress-directive-title">INFO</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">该组必须由混合项目组成。如果仅选择组件，则这些命令不可用。</p>
+</div></div>
+</li>
+</ol>
+<h2 id="属性概述" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">属性概述<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#属性概述">#</a></h2>
+<p class="my-4 leading-7">属性可用于将信息与原理图符号关联起来。属性由两部分组成：属性名称及其对应的值。例如，您可以创建一个名为“元件描述”的属性，并将其值指定为“十六进制逆变器”。</p>
+<p class="my-4 leading-7">您可以创建一个属性，将其分配给库中的每个元件、开放设计中的每个元件、某个元件类型或设计中的某个元件。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要为库中的所有元件添加属性，请在“管理属性库”对话框中创建属性。另请参阅“管理属性库”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要为打开的设计中的每个元件添加属性，请在“管理原理图属性”对话框中创建属性。另请参阅“管理原理图中的属性”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要为特定元件添加属性，请在编辑该元件时使用“属性”选项卡创建属性。另请参阅“管理属性”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要为原理图上的元件添加属性而不更新元件类型，请使用“元件属性”对话框。另请参阅修改元件属性和元件上定义的电阻值。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要在原理图中显示创建后的属性，请使用可见性控件。</p>
+<p class="my-4 leading-7">另请参阅控制元件的文本可见性。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要在 CAE 封装 (Decal) 中创建占位符，以便将属性放置在预定义的位置，请使用属性标签。另请参阅属性标签。</p>
+</li>
+</ul>
+<h2 id="管理原理图中的属性" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">管理原理图中的属性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#管理原理图中的属性">#</a></h2>
+<p class="my-4 leading-7">使用“管理原理图属性”对话框管理原理图级别的属性。您可以创建新属性并将其自动分配给设计中的每个元件。您还可以重命名或删除原理图中的属性。所有元件都会自动更新。</p>
+<p class="my-4 leading-7">另请参阅属性概述。</p>
+<h3 id="创建属性" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">创建属性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建属性">#</a></h3>
+<p class="my-4 leading-7">您可以创建一个新属性并自动将其分配给设计中的每个部分。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击编辑 &gt; 属性管理器菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在管理原理图属性对话框中，单击添加属性。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“添加新属性”对话框中，执行以下操作之一：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">在“属性名称”文本框中输入属性名称。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“浏览属性库”以选择库中已定义的属性。从此对话框中选择属性名称，然后单击“确定”。</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在属性值文本框中键入属性的值。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”关闭“添加新属性”对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击关闭以关闭管理原理图属性对话框。</p>
+</li>
+</ol>
+<h3 id="重命名属性" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">重命名属性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#重命名属性">#</a></h3>
+<p class="my-4 leading-7">您可以重命名现有属性并将更改应用到设计中的每个部分。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击编辑 &gt; 属性管理器菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在管理原理图属性对话框中，在属性中选择一个或多个属性
+示意图列表。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“添加”。该属性将添加到“选择重命名的属性”列表中。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择新名称列中的属性，然后单击编辑新名称。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在属性名称文本框中，执行以下操作之一：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">键入属性的名称</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“浏览属性库”以选择库中已定义的属性。从此对话框中选择属性名称，然后单击“确定”。</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“重命名属性”可重命名该属性并将其从“为重命名而选择的属性”列表框中删除。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“关闭”。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">单击“移除”或“全部移除”可将选定的属性放回到示意图中的属性列表中并保留当前名称。</p>
+</div></div>
+</li>
+</ol>
+<h3 id="删除属性" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">删除属性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#删除属性">#</a></h3>
+<p class="my-4 leading-7">您可以从设计中的所有部分中删除属性：</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">单击编辑 &gt; 属性管理器菜单项。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在示意图中的属性列表中选择一个或多个属性。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“删除属性”，然后在提示符下单击“是”。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“关闭”。</li>
+</ol>
+<h2 id="元件上定义的电阻值" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">元件上定义的电阻值<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#元件上定义的电阻值">#</a></h2>
+<p class="my-4 leading-7">电阻器和电容器等分立元件具有“值”和“公差”属性。这些属性的值未在元件符号中定义，而是在将元件添加到工程图时设置的。</p>
+<p class="my-4 leading-7">使用位于第 283 页的元件属性对话框来修改这些值。</p><!--/$--></div><div class="rspress-doc-footer"><footer class="mt-8"><div class="xs:flex pb-5 px-2 justify-end items-center"><div class="flex text-sm text-text-2 leading-6 sm:leading-8 font-medium"><p>最近更新时间<!-- -->: <span>2025/7/15 10:22:42</span></p></div></div><div class="flex flex-col"></div><div class="flex flex-col sm:flex-row sm:justify-around gap-4 pt-6"><div class="prev_c92d1 flex flex-col"><a href="/sailwind_docs/logic/guide/9_zh.html" class="link_a7cea pager-link_e0d2d"><span class="desc_dcc01">上一页</span><span class="title_a3acb">第 9 章 设计和编辑基础</span></a></div><div class="next_c11be flex flex-col"><a href="/sailwind_docs/logic/guide/11_zh.html" class="link_a7cea pager-link_e0d2d next_ad355"><span class="desc_dcc01">下一页</span><span class="title_a3acb">第 11 章 图页</span></a></div></div></footer></div></div><div class="aside-container_bc5fa"><div class="flex flex-col"><div id="aside-container" class="relative text-sm font-medium"><div class="leading-7 block text-sm font-semibold pl-3">本页目录</div><nav class="mt-1"><ul class="relative"><li><a href="#添加元件" title="添加元件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">添加元件</span></a></li><li><a href="#添加连接器管脚" title="添加连接器管脚" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">添加连接器管脚</span></a></li><li><a href="#添加单门元件" title="添加单门元件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">添加单门元件</span></a></li><li><a href="#添加多门元件" title="添加多门元件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">添加多门元件</span></a></li><li><a href="#控制元件的文本可见性" title="控制元件的文本可见性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">控制元件的文本可见性</span></a></li><li><a href="#使用备选符号" title="使用备选符号" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">使用备选符号</span></a></li><li><a href="#交换参考指示器" title="交换参考指示器" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">交换参考指示器</span></a></li><li><a href="#使用动词模式交换参考指示符" title="使用动词模式交换参考指示符" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">使用动词模式交换参考指示符</span></a></li><li><a href="#通过一次选择一个元件来交换参考指示器" title="通过一次选择一个元件来交换参考指示器" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">通过一次选择一个元件来交换参考指示器</span></a></li><li><a href="#通过首先选择两个元件来交换参考指示符" title="通过首先选择两个元件来交换参考指示符" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">通过首先选择两个元件来交换参考指示符</span></a></li><li><a href="#将元件类型保存到库中" title="将元件类型保存到库中" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">将元件类型保存到库中</span></a></li><li><a href="#在原理图中保存一个或多个元件类型" title="在原理图中保存一个或多个元件类型" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">在原理图中保存一个或多个元件类型</span></a></li><li><a href="#保存原理图中的所有元件类型" title="保存原理图中的所有元件类型" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">保存原理图中的所有元件类型</span></a></li><li><a href="#将页间连接符保存到库中" title="将页间连接符保存到库中" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">将页间连接符保存到库中</span></a></li><li><a href="#从库中更新" title="从库中更新" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">从库中更新</span></a></li><li><a href="#撤消更新" title="撤消更新" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">撤消更新</span></a></li><li><a href="#从库中更新原理图" title="从库中更新原理图" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">从库中更新原理图</span></a></li><li><a href="#从库中更新选定的元件类型" title="从库中更新选定的元件类型" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">从库中更新选定的元件类型</span></a></li><li><a href="#从库中更新选定的-cae-封装" title="从库中更新选定的 CAE 封装" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">从库中更新选定的 CAE 封装</span></a></li><li><a href="#从库中更新选定的管脚封装" title="从库中更新选定的管脚封装" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">从库中更新选定的管脚封装</span></a></li><li><a href="#使用从库更新对话框更新选定的管脚封装" title="使用“从库更新”对话框更新选定的管脚封装" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">使用“从库更新”对话框更新选定的管脚封装</span></a></li><li><a href="#使用原理图编辑器更新选定的管脚封装" title="使用原理图编辑器更新选定的管脚封装" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">使用原理图编辑器更新选定的管脚封装</span></a></li><li><a href="#比较更新过程" title="比较/更新过程" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">比较/更新过程</span></a></li><li><a href="#如何阅读更新报告" title="如何阅读更新报告" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">如何阅读更新报告</span></a></li><li><a href="#删除元件" title="删除元件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">删除元件</span></a></li><li><a href="#删除元件及其连接" title="删除元件及其连接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">删除元件及其连接</span></a></li><li><a href="#剪切复制和粘贴" title="剪切、复制和粘贴" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">剪切、复制和粘贴</span></a></li><li><a href="#复制为-bmp-文件" title="复制为 BMP 文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">复制为 BMP 文件</span></a></li><li><a href="#创建群组" title="创建群组" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建群组</span></a></li><li><a href="#创建组" title="创建组" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">创建组</span></a></li><li><a href="#设置组的原点" title="设置组的原点" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">设置组的原点</span></a></li><li><a href="#组锚点" title="组锚点" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">组锚点</span></a></li><li><a href="#组管理" title="组管理" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">组管理</span></a></li><li><a href="#复制现有组" title="复制现有组" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">复制现有组</span></a></li><li><a href="#移动组" title="移动组" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">移动组</span></a></li><li><a href="#删除组" title="删除组" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">删除组</span></a></li><li><a href="#保存组" title="保存组" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">保存组</span></a></li><li><a href="#从文件粘贴组" title="从文件粘贴组" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">从文件粘贴组</span></a></li><li><a href="#粘贴时自动连接" title="粘贴时自动连接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">粘贴时自动连接</span></a></li><li><a href="#旋转或镜像组" title="旋转或镜像组" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">旋转或镜像组</span></a></li><li><a href="#属性概述" title="属性概述" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">属性概述</span></a></li><li><a href="#管理原理图中的属性" title="管理原理图中的属性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">管理原理图中的属性</span></a></li><li><a href="#创建属性" title="创建属性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">创建属性</span></a></li><li><a href="#重命名属性" title="重命名属性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">重命名属性</span></a></li><li><a href="#删除属性" title="删除属性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">删除属性</span></a></li><li><a href="#元件上定义的电阻值" title="元件上定义的电阻值" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">元件上定义的电阻值</span></a></li></ul></nav></div></div></div></div></div></div></section></div>
+    <div id="search-container"></div>
+  </body>
+</html>

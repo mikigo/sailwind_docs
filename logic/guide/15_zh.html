@@ -1,0 +1,948 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Rspress v1.45.0">
+    <title data-rh="true">第 15 章 原理图对象修改 - SailWind</title><meta data-rh="true" name="description" content="SailWind"/>
+  <script>{;const saved = localStorage.getItem('rspress-theme-appearance');const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;const isDark = !saved || saved === 'auto' ? preferDark : saved === 'dark';document.documentElement.classList.toggle('dark', isDark);document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';}</script><link rel="icon" href="/sailwind_docs/favicon.ico"><script defer src="/sailwind_docs/static/js/styles.f5ec16c7.js"></script><script defer src="/sailwind_docs/static/js/lib-react.36f9b428.js"></script><script defer src="/sailwind_docs/static/js/lib-router.971f4280.js"></script><script defer src="/sailwind_docs/static/js/2886.6c8a4c3c.js"></script><script defer src="/sailwind_docs/static/js/index.ef746291.js"></script><link href="/sailwind_docs/static/css/styles.6524924d.css" rel="stylesheet"></head>
+
+  <body >
+    <div id="root"><div class="navContainer_d18b1 rspress-nav px-6  sticky_ddfa7"><div class="container_e4235 flex justify-between items-center h-full"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div><div class="flex flex-1 justify-end items-center"><div class="rightNav_a2fea"><div class="flex sm:flex-1 items-center sm:pl-4 sm:pr-2"><div class="rspress-nav-search-button navSearchButton_df1fb"><button><svg width="18" height="18" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg><p class="searchWord_af2c1">搜索</p><div style="opacity:0"><span></span><span>K</span></div></button></div><div class="mobileNavSearchButton_d85a9"><svg width="24" height="24" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg></div></div><div class="rspress-nav-menu menu h-14"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div><div class="flex-center flex-row"><div class="mx-2"><div class="md:mr-2 rspress-nav-appearance"><div class="p-1 border border-solid border-gray-300 text-gray-400  cursor-pointer rounded-md hover:border-gray-600 hover:text-gray-600 dark:hover:border-gray-200 dark:hover:text-gray-200 transition-all duration-300 w-7 h-7"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="dark:hidden" width="18" height="18" fill="currentColor"><path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6m0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4M12 4c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M12 24c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M5.6 6.6c-.3 0-.5-.1-.7-.3L3.5 4.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.1.2-.4.3-.7.3M19.8 20.8c-.3 0-.5-.1-.7-.3l-1.4-1.4c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.2.2-.5.3-.7.3M3 13H1c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M23 13h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M4.2 20.8c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.4.3-.7.3M18.4 6.6c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.5.3-.7.3"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="hidden dark:block" width="18" height="18" fill="currentColor"><path d="M12.1 22h-.9c-5.5-.5-9.5-5.4-9-10.9.4-4.8 4.2-8.6 9-9 .4 0 .8.2 1 .5s.2.8-.1 1.1c-2 2.7-1.4 6.4 1.3 8.4 2.1 1.6 5 1.6 7.1 0 .3-.2.7-.3 1.1-.1.3.2.5.6.5 1-.2 2.7-1.5 5.1-3.6 6.8-1.9 1.4-4.1 2.2-6.4 2.2M9.3 4.4c-2.9 1-5 3.6-5.2 6.8-.4 4.4 2.8 8.3 7.2 8.7 2.1.2 4.2-.4 5.8-1.8 1.1-.9 1.9-2.1 2.4-3.4-2.5.9-5.3.5-7.5-1.1-2.8-2.2-3.9-5.9-2.7-9.2"></path></svg></div></div></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div><div class="mobileNavMenu_e7045"><div class="navScreen_ec30c  rspress-nav-screen" id="navScreen"><div class="container_c935d"><div class="navMenu_b887b"><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div></div><div class="flex-center flex-col gap-2"><div class="mt-2 navAppearance_bf893 flex justify-center"></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div></div><button aria-label="mobile hamburger" class=" rspress-mobile-hamburger navHamburger_ac64c text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><circle cx="8" cy="16" r="2" fill="currentColor"></circle><circle cx="16" cy="16" r="2" fill="currentColor"></circle><circle cx="24" cy="16" r="2" fill="currentColor"></circle></svg></button></div></div></div></div><section><div class="docLayout_af141 pt-0"><aside class="sidebar_dd719 rspress-sidebar "><div class="navTitleMask_fb17c"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div></div><div class="rspress-scrollbar sidebarContent_da296"><nav class="pb-2"><a href="/sailwind_docs/logic/index.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:14px;margin-left:0;border-radius:0 var(--rp-radius) var(--rp-radius) 0;padding-left:24px;font-weight:bold"><span>章节预览</span></div></a><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">指南(Guide)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 1 章 SailWind Logic 快速开始</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 2 章 开始 SailWind Logic</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 3 章 用户界面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 4 章 文件操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 5 章 设计设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 6 章 管理库和库数据</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 7 章 库元件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 8 章 特殊示意图符号</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 9 章 设计和编辑基础</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 10 章 原理图元件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 11 章 图页</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 12 章 非电气对象</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 13 章 连接</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 14 章 层次化设计</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItemActive_de63c mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 15 章 原理图对象修改</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/16_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 16 章 规则</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/17_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 17 章 报告</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/18_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 18 章 与 Layout 和 Router 协作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/19_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 19 章 绘图和打印</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/20_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 20 章 对象链接与嵌入 ❌</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/21_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 21 章 使用高级程序 ❌</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/22_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 22 章 自定义界面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/23_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 23 章 崩溃检测、BMW 和 BLT</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/24_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 24 章 SailWind Logic 对话框</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">教程(Tutorial)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>学习用户界面教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建库元件教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>添加与复制元件教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>添加连接教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>添加总线教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>编辑设计元素教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>分配约束教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建报告教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>连接 SailWind 布局教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>更新原理图设计变更教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>打印和绘制电路图教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>管理多页原理图教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>模拟仿真设计教程</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">快速参考(Quick Reference)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/qr/modless.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>无模命令</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/qr/shortcut.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>键盘快捷键</span></div></a></div></div></div></section></nav></div></aside><div class="flex-1 relative min-w-0"><div class="rspress-sidebar-menu-container "><div class="rspress-sidebar-menu"><button type="button" class="flex-center mr-auto"><div class="text-md mr-2"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"></path></svg></div><span class="text-sm">Menu</span></button><button type="button" class="flex-center ml-auto"><span class="text-sm">本页目录</span><div class="text-md mr-2" style="transform:rotate(0deg);transition:transform 0.2s ease-out;margin-top:2px"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></button><div class="rspress-local-toc-container "><ul><li><a href="#修改绘图对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">修改绘图对象</span></a></li><li><a href="#修改字段" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">修改字段</span></a></li><li><a href="#修改元件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">修改元件</span></a></li><li><a href="#更改参考指示器" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">更改参考指示器</span></a></li><li><a href="#更改元件类型" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">更改元件类型</span></a></li><li><a href="#更改元件信息" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">更改元件信息</span></a></li><li><a href="#更改文本的可见性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">更改文本的可见性</span></a></li><li><a href="#更改元件属性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">更改元件属性</span></a></li><li><a href="#更换-pcb-封装" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">更换 PCB 封装</span></a></li><li><a href="#将未使用的管脚分配为信号管脚" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">将未使用的管脚分配为信号管脚</span></a></li><li><a href="#参考指示符重新编号" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">参考指示符重新编号</span></a></li><li><a href="#自动重新编号参考指示器" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">自动重新编号参考指示器</span></a></li><li><a href="#在新原理图中按图页设置参考指示器" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">在新原理图中按图页设置参考指示器</span></a></li><li><a href="#在已完成的原理图中按图页设置参考指示器" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">在已完成的原理图中按图页设置参考指示器</span></a></li><li><a href="#修改元件属性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">修改元件属性</span></a></li><li><a href="#修改元件属性标签" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">修改元件属性标签</span></a></li><li><a href="#修改元件类型标签" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">修改元件类型标签</span></a></li><li><a href="#在库里搜索封装" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">在库里搜索封装</span></a></li><li><a href="#重命名元件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">重命名元件</span></a></li><li><a href="#重命名门" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">重命名门</span></a></li><li><a href="#修改参考指示器标签" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">修改参考指示器标签</span></a></li><li><a href="#修改管脚" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">修改管脚</span></a></li><li><a href="#修改管脚标签字体" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">修改管脚标签字体</span></a></li><li><a href="#修改网络" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">修改网络</span></a></li><li><a href="#修改网络名称标签" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">修改网络名称标签</span></a></li><li><a href="#修改-buses" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">修改 Buses</span></a></li><li><a href="#更改总线名称" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">更改总线名称</span></a></li><li><a href="#更改总线类型" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">更改总线类型</span></a></li><li><a href="#管理-bus-网络" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">管理 Bus 网络</span></a></li><li><a href="#修改总线名称标签" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">修改总线名称标签</span></a></li><li><a href="#修改页外标签" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">修改页外标签</span></a></li><li><a href="#修改标签字体大小" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">修改标签字体大小</span></a></li><li><a href="#修改文本" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">修改文本</span></a></li><li><a href="#修改分层组件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">修改分层组件</span></a></li></ul></div></div></div><div class="content_ff766 rspress-doc-container flex"><div class="flex-1 overflow-x-auto"><div class="rspress-doc"><!--$--><h1 id="第-15-章-原理图对象修改" class="rspress-doc-title text-3xl mb-10 leading-10 tracking-tight title_fb7eb">第 15 章 原理图对象修改<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#第-15-章-原理图对象修改">#</a></h1>
+<p class="my-4 leading-7">SailWind Logic 完全支持对设计对象的更改和编辑。这包括修改绘图对象、字段、元件、参考指示器、元件属性、标签、管脚和总线。您可以修改对象的单个实例，也可以选择更新库对象，以便将来的设计会话中可以使用任何修改。</p>
+<h2 id="修改绘图对象" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">修改绘图对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改绘图对象">#</a></h2>
+<p class="my-4 leading-7">使用“绘图特性”对话框修改选定绘图对象的线宽、样式和方向。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">使用原理图编辑工具栏修改 2D 线的形状。</p>
+</div></div>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个绘图对象，<strong class="font-semibold">右键</strong>单击，然后单击“特性”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“宽度”框中，为绘图对象输入新的线宽。宽度框列出了所选绘图对象的当前线宽。使用“选项”对话框中的“线宽”选项卡可以更改默认线宽。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选中“填充”复选框可以从选定的多边形创建填充形状。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">此选项不适用于圆形、路径以及使用“拉弧”修改多边形的情况。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在样式区域中，为选定的绘图对象选择线条样式选项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在旋转框中，从旋转列表中选择旋转度数。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">旋转物体时，请遵守以下事项：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">旋转可以是 0 度或 90 度。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">选择对象时使用的点也是旋转点。</li>
+</ul>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选中“按 X 镜像”或“按 Y 镜像”复选框，以在 X（水平）或 Y（垂直）方向镜像选定的绘图对象。</p>
+</li>
+</ol>
+<h2 id="修改字段" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">修改字段<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改字段">#</a></h2>
+<p class="my-4 leading-7">使用“字段属性”对话框可以修改字段名称或更改其文本大小、方向或对齐方式。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个字段，<strong class="font-semibold">右键</strong>单击，然后单击“属性”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“字段属性”对话框中，“名称”框将显示选定的字段字符串。您可以修改现有字符串、选择新字符串或键入新的文本字符串。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“值”框中，键入要显示的值。</p>
+<p class="my-4 leading-7">请注意，系统字段无法使用“值”框，因为该值源自您的系统。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要将字段放置在精确的 X,Y 坐标位置，请在 X 和 Y 框中键入值。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">如果单击“确定”时此字段为空白，则该字段将附加到指针，直到您单击以指示位置。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在旋转列表中，选择所需的旋转度数。</p>
+<p class="my-4 leading-7">旋转可以是 0 度或 90 度。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“大小”框中，键入所需的字体大小。</p>
+<p class="my-4 leading-7">描边字体大小必须介于 10 到 1000 毫米之间；系统字体大小必须介于 1 到 72 点之间。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于描边字体，在“线宽”框中键入线宽。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于系统字体，在字体列表中选择要使用的字体。</p>
+<p class="my-4 leading-7">您还可以单击要应用的系统字体样式：B 表示粗体、I 表示斜体、U 表示下划线。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要设置对齐方式，请单击所需的水平和垂直选项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”。</p>
+</li>
+</ol>
+<h2 id="修改元件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">修改元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改元件">#</a></h2>
+<p class="my-4 leading-7">使用“元件属性”对话框创建和编辑元件属性。您还可以定义信号管脚并控制分配给元件的属性的可见性。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">此对话框包含多个子对话框。在使用任何子对话框之前，必须先将打开的对话框中所做的更改应用到设计中。</p>
+</div></div>
+<h3 id="更改参考指示器" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">更改参考指示器<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#更改参考指示器">#</a></h3>
+<p class="my-4 leading-7">如果您需要在设计中重新分配门，您可以更改选定门的参考指示器</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">选择一个元件，单击鼠标右键，然后单击“特性”。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在参考指示器区域，单击重命名门以更改所选门的参考指示器，输入新的门参考指示器信息，然后单击确定。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“重命名元件”以更改所选元件的参考指示器，键入新元件参考指示器信息，然后单击“确定”。</li>
+</ol>
+<h3 id="更改元件类型" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">更改元件类型<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#更改元件类型">#</a></h3>
+<p class="my-4 leading-7">使用“更改元件类型”对话框将选定的元件更改为新的元件类型。新的元件类型可以是原理图或元件库中已存在的元件类型。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击工具 &gt; 选项菜单项，然后单击设计类别。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">适当设置“允许使用库中的空白值覆盖设计中的属性值”复选框，以允许或阻止使用库中的空白（“占位符”）值覆盖非空白属性值。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个或多个元件，<strong class="font-semibold">右键</strong>单击，然后单击“特性”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在元件类型区域中，单击更改类型将选定的元件更改为新的元件类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“更改元件类型”对话框中，使用筛选条件将搜索结果限制为特定元件或项目名称的选定库（或多个库），或与第 105 页上的通配符或表达式匹配的名称。单击“应用”以搜索库并显示搜索结果。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用库下拉列表选择特定的库目录或所有库设置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">输入 * 以查看所选库中的所有元件或项目。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">滚动元件列表来查找元件类型。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">检查元件清单时，请注意以下事项：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">元件列表框显示与搜索筛选条件设置相匹配的元件。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">选定元件的封装显示在列表框左侧的预览区域中。</li>
+</ul>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">设置在特性区域中如何更新特性。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“应用更新到”区域中设置元件的更新方式。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">更新元件时，请遵循以下事项：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">您可以使用库中修改后的版本来更新原理图中的元件定义。
+选择相同的元件名称，然后单击“应用更新到”区域中的“此类型的所有元件”。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">如果您将元件类型更改为管脚数较少的元件类型，则连接到缺失管脚的连接不会被删除。这些连接将附加到自动生成的页间连接符上。所有断开的管脚都会通知您。</li>
+</ul>
+</div></div>
+</li>
+</ol>
+<h3 id="更改元件信息" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">更改元件信息<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#更改元件信息">#</a></h3>
+<p class="my-4 leading-7">随着设计需求的变化，您可以根据需要更改元件特性。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">选择一个元件，单击鼠标右键，然后单击“特性”。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“统计信息”可显示所选元件的门和连接信息。此信息显示在默认文本编辑器中，以便您可以将内容保存到文件中。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">从门封装列表中选择一个门封装名称，将选定门或元件的门封装更改为预定义的替代封装之一。</li>
+</ol>
+<h3 id="更改文本的可见性" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">更改文本的可见性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#更改文本的可见性">#</a></h3>
+<p class="my-4 leading-7">您可能决定保留设计中某些文本对象的可见性，但将其关闭。例如，关闭一组元件（例如电阻器）的公差值显示，因为这些元件都分配有默认值。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">选择一个元件，单击鼠标右键，然后单击“特性”。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“可见性”可更改关联文本的可见性。另请参见控制元件的文本可见性。</li>
+</ol>
+<h3 id="更改元件属性" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">更改元件属性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#更改元件属性">#</a></h3>
+<p class="my-4 leading-7">随着设计进展，您可能会发现需要更改或修改属性。您可以通过修改元件属性来更改属性。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">选择一个元件，单击鼠标右键，然后单击“属性”。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“属性”以分配或修改元件属性。另请参阅修改元件属性。</li>
+</ol>
+<h3 id="更换-pcb-封装" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">更换 PCB 封装<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#更换-pcb-封装">#</a></h3>
+<p class="my-4 leading-7">使用“PCB 封装分配”对话框，为原理图元件分配备用 PCB 封装。封装名称包含在网表文件中，以便在文件导入 PCB 设计文件时显示正确的封装或封装。您可以在元件创建期间选择已分配的备用封装，使用库中的封装覆盖该封装，或者为计划稍后在 PCB 设计中创建的未定义封装输入名称。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个元件，单击鼠标右键，然后单击“属性”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击 PCB 封装以分配备用 PCB 封装。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 PCB 封装分配对话框的原理图分配框中，为您计划稍后在 PCB 设计中创建的封装键入一个新的封装名称。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">“原理图中指定”框显示当前选定封装的名称，因为它是从当前库分配给原理图的。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选中“无特定 PCB 封装”复选框以删除指定的封装。</p>
+<p class="my-4 leading-7">当将网表导入 <code>SailWind Layout</code> 时，使用分配给元件类型的默认封装；
+网表中未出现封装分配。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“库中的替代品”列表中，从库中的当前元件类型定义中选择一个封装。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“分配”将封装分配给元件。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">预览窗口显示当前选定的封装。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“浏览”按钮在库中搜索封装。另请参见在库中搜索封装。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“应用更新到”区域中设置如何更新元件。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">此部分 — 仅更新选定的部分。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">此类型的所有元件 — 使用新封装更新设计中所有匹配的元件。</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”。</p>
+</li>
+</ol>
+<h3 id="将未使用的管脚分配为信号管脚" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">将未使用的管脚分配为信号管脚<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#将未使用的管脚分配为信号管脚">#</a></h3>
+<p class="my-4 leading-7">使用“元件信号管脚”对话框将任何未使用的管脚分配为附加信号管脚。创建元件类型并将其存储在库中时，将定义元件类型的标准电源管脚和接地管脚。</p>
+<p class="my-4 leading-7">无法通过此对话框修改元件创建期间分配的信号管脚。请使用库管理器中的“为元件分配信号管脚名称”对话框。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个元件，单击鼠标右键，然后单击“特性”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“信号管脚”。</p>
+<p class="my-4 leading-7">元件信号管脚对话框列出了管脚及其对应的信号名称。信号管脚是指在创建元件类型期间由原理图捕获程序分配了信号网络（例如 GND）的管脚。</p>
+<p class="my-4 leading-7">另请参阅第 147 页上的“元件信息 - 管脚”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在元件信号管脚对话框中，从未使用的管脚列表中选择一个管脚。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“添加”将未使用的管脚添加到信号管脚列表。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在信号管脚区域分配信号名称。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要修改管脚的信号名称，请在信号管脚列表中选择该管脚，然后单击编辑。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要将管脚移动到未使用的管脚列表，请在信号管脚列表中选择该管脚，然后单击删除。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“应用更新到”区域中设置更新设置。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">此部分 — 仅更新选定部分。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">此类型的所有元件 — 更新同一类型的所有元件。</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”。</p>
+</li>
+</ol>
+<h2 id="参考指示符重新编号" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">参考指示符重新编号<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#参考指示符重新编号">#</a></h2>
+<p class="my-4 leading-7">手动重新编号原理图中的单个或自动重新编号参考标号。SailWind Layout 可以自动按模式重新编号参考标号，从而优化在制造的印刷电路板上查找元件。在 <code>SailWind Layout</code> 中重新编号元件后，您可以通过反向注释更改标号的 .eco 文件来再次同步设计。</p>
+<p class="my-4 leading-7">要在 SailWind Logic 中手动重新编号参考指示器，请参阅更改参考指示器。</p>
+<p class="my-4 leading-7">要在 SailWind Logic 中自动重新编号参考指示器，请参阅第 280 页上的“自动重新编号参考指示器”。</p>
+<p class="my-4 leading-7">要在 <code>SailWind Layout</code> 中自动重新编号参考指示器，请参阅 <code>SailWind Layout</code> 指南中的在 ECO 模式下更改多个组件的参考指示器（自动重新编号）。</p>
+<h2 id="自动重新编号参考指示器" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">自动重新编号参考指示器<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#自动重新编号参考指示器">#</a></h2>
+<p class="my-4 leading-7">通过控制起始值、增量和模式，逐张重新编号参考指示器。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在原理图编辑工具条上，单击自动重新编号元件按钮</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在第 473 页的“自动重新编号元件对话框”中，选择要重新编号的图页。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择要重新编号的参考指示器前缀。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果需要，请将单元格大小设置为较小的单元格。参见下方示例。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">根据您的情况设置重新编号设置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">设置优先模式。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”。</p>
+<p class="my-4 leading-7">自动生成一个 ECO 文件。如果“输出”窗口已打开，则日志中会显示该文件的链接。如果“输出”窗口已关闭，则 ECO 文件会在您的默认文本编辑器中打开。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果电路板布局已在 <code>SailWind Layout</code> 中启动，则必须导入 ECO 文件来更新 <code>SailWind Layout</code> 中的参考指示器。必须使用该文件。在 <code>SailWind Layout</code> 完成重新编号更新之前，请勿用新文件覆盖此文件或使用比较/ECO 工具生成 ECO 文件。在 <code>SailWind Layout</code> 中，点击主页 &gt; 导入”菜单项。浏览并找到 .eco 文件并导入更改。</p>
+</li>
+</ol>
+<p class="my-4 leading-7"><strong class="font-semibold">示例</strong></p>
+<p class="my-4 leading-7">下图显示了原理图中元件采用较小单元尺寸的效果。图中绘制了单元边框以说明其工作原理。单元内的元件按优先顺序重新编号，单元也按相同顺序进行处理。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/logic/guide/1e9466fcf0b9cdcbeb56363131e9ac0f098246e722771cf02eedda687f1aea6b.jpg" alt=""/>
+图 5. 细胞尺寸图</p>
+<h2 id="在新原理图中按图页设置参考指示器" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">在新原理图中按图页设置参考指示器<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#在新原理图中按图页设置参考指示器">#</a></h2>
+<p class="my-4 leading-7">按图页设置参考指示器的起始值。如果您有多个通道，每个通道占用一张原理图图页，并且您希望参考指示器具有预定的范围，则可以为指定图页设置起始值。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">单击“设置 &gt; 图页菜单项。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在第 717 页的“图页对话框”中，单击添加按钮并添加多个通道的所有图页。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">命名原理图图页。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在每个通道表的“参考编号起始值”列中，键入添加或复制并粘贴到原理图表的元件的参考指示器的起始值。</li>
+</ol>
+<h2 id="在已完成的原理图中按图页设置参考指示器" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">在已完成的原理图中按图页设置参考指示器<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#在已完成的原理图中按图页设置参考指示器">#</a></h2>
+<p class="my-4 leading-7">重新编号已分配参考指示器的原理图中的参考指示器。如果您有多个通道，每个通道占用一张原理图，并且您希望参考指示器具有预定范围，您可以重新编号它们。</p>
+<p class="my-4 leading-7">😎<strong class="font-semibold">前提</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">确定哪些原理图图页需要重新编号以及这些图页上的哪些参考指示器需要重新编号。</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在原理图编辑工具栏上，单击自动重新编号元件按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在第 473 页的“自动重新编号元件对话框”中，选择要重新编号的图页。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择要重新编号的参考指示器前缀。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果需要，请将单元格大小设置为较小的单元格。参见下方示例。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">设置起始值和增量值。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选中“按表增加起始值”复选框。</p>
+<p class="my-4 leading-7">这会将起始编号设置为与图页编号匹配，而不是列表中图页的顺序。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">设置优先模式。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”。</p>
+</li>
+</ol>
+<p class="my-4 leading-7"><strong class="font-semibold">示例</strong></p>
+<p class="my-4 leading-7">下图显示了原理图中元件采用较小单元尺寸的效果。图中绘制了单元边框以说明其工作原理。单元内的元件按优先顺序重新编号，单元也按相同顺序进行处理。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/logic/guide/734f466438bc7fe002f3bac984a44c03eb80f6abeec2b2bc22ac65b10af49b03.jpg" alt=""/>
+图 6. 细胞尺寸图</p>
+<h2 id="修改元件属性" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">修改元件属性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改元件属性">#</a></h2>
+<p class="my-4 leading-7">使用元件属性对话框来分配或修改元件属性，即有关元件的信息，例如制造商和成本。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个部分，<strong class="font-semibold">右键</strong>单击，然后单击“属性”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要向原理图上的某个元件添加属性，请单击“添加”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在名称列中键入名称或单击浏览属性库以选择现有属性名称。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在值列中，键入属性的值。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要在属性列表中编辑名称或值，请选择一个名称或值，然后单击编辑或双击
+名称或值。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要删除属性，请选择名称或值，然后单击“删除”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“应用更新到”区域中设置元件的更新方式。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">此部分 — 仅更新选定的部分。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">此类型的所有元件 — 更新设计中所有匹配的元件。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">在原理图级别添加或更改元件的属性不会更新元件类型（在库中）。请在元件编辑器中编辑该元件以更新库元件。</p>
+</div></div>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="修改元件属性标签" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">修改元件属性标签<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改元件属性标签">#</a></h2>
+<p class="my-4 leading-7">使用“属性特性”对话框为一个或多个元件属性标签提供文本和字体设置。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">不选择任何内容，<strong class="font-semibold">右键</strong>单击并单击选择文档。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个元件属性标签，<strong class="font-semibold">右键</strong>单击，然后单击“特性”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“属性特性”对话框中，键入属性的新值。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">如果选择了多个属性标签，则无法更改其值。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“旋转”框中，从“旋转”列表中选择旋转度数。旋转度数可以是 0 度或 90 度。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“大小”框中，输入描边字体的高度（从最高字符的顶部到最低字符的底部），以密耳为单位，或输入系统字体的高度（以磅为单位）。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">键入介于 10 到 1000 毫米之间的笔画字体大小或介于 1 到 72 点之间的系统字体大小。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于描边字体，在线宽框中，键入用于创建字符的线条的宽度。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于系统字体，选择您想要使用的字体。</p>
+<p class="my-4 leading-7">您还可以单击要应用的系统字体样式：B 表示粗体、I 表示斜体、U 表示下划线。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要设置对齐方式，请单击所需的水平和垂直选项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”。</p>
+</li>
+</ol>
+<h2 id="修改元件类型标签" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">修改元件类型标签<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改元件类型标签">#</a></h2>
+<p class="my-4 leading-7">使用“元件类型标签属性”对话框可以为一个或多个元件类型标签提供文本和字体设置。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">不选择任何内容，<strong class="font-semibold">右键</strong>单击并单击选择文档。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个元件类型标签，单击鼠标右键，然后单击“特性”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“元件类型标签属性”对话框中，如果要更改元件类型，请单击“更改类型”。另请参见更改元件类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“旋转”框中，从“旋转”列表中选择旋转度数。旋转度数可以是 0 度或 90 度。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“大小”框中，输入描边字体的高度（从最高字符的顶部到最低字符的底部），以密耳为单位，或输入系统字体的点数。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">键入介于 10 到 1000 毫米之间的笔画字体大小或介于 1 到 72 点之间的系统字体大小。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于描边字体，在线宽框中，键入用于创建字符的线条的宽度。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于系统字体，请选择要使用的字体。您也可以点击要应用的系统字体样式：B 表示粗体，I 表示斜体，U 表示下划线。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要设置对齐方式，请单击所需的水平和垂直选项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”。</p>
+</li>
+</ol>
+<h2 id="在库里搜索封装" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">在库里搜索封装<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#在库里搜索封装">#</a></h2>
+<p class="my-4 leading-7">使用“从库中获取封装”对话框在库中搜索封装。您可以使用筛选器快速缩小搜索参数，以找到所需的精确元件。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个元件，<strong class="font-semibold">右键</strong>单击，单击“特性”，然后单击“PCB 封装”按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 PCB 封装分配对话框中，单击浏览按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在从库中获取封装对话框中，使用筛选条件将搜索结果限制为特定元件或项目名称的选定库（或多个库），或与第 105 页上的通配符或表达式匹配的名称。单击应用以搜索库并显示搜索结果。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">搜索时，请遵循以下几点：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">使用库下拉列表选择特定库目录或所有库设置。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在“项目”文本框中输入前缀和星号。例如，输入 DIP* 可查看所有以 DIP 开头的封装。仅输入星号可查看所选库中的所有封装。仅输入* 可查看所选库中的所有元件或项目。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在“管脚数”文本框中输入一个值，以进一步缩小搜索范围。如果所选元件已定义封装，则“管脚数”将灰显。如果“PCB 封装分配”对话框中的“无特定 PCB 封装”处于启用状态，则“管脚数”将启用。</li>
+</ul>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">滚动浏览封装列表框来查找并选择封装。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">封装显示如下：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">封装列表框显示与搜索筛选条件设置相匹配的封装。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">选定的封装显示在列表框左侧的预览区域中。</li>
+</ul>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”退出对话框。</p>
+<p class="my-4 leading-7">您将返回到 PCB 封装分配对话框。</p>
+</li>
+</ol>
+<h2 id="重命名元件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">重命名元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#重命名元件">#</a></h2>
+<p class="my-4 leading-7">使用“重命名元件”可更改所选元件或门的参考指示器。如果您更改多门元件中某个门的参考指示器，则所有门都会被重命名。系统将阻止您分配已使用的参考指示器。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">选择一个元件，单击鼠标右键，然后单击“特性”。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在“元件属性”对话框中，单击“重命名元件”。
+将显示一个信息窗口。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">键入新元件参考指示器信息。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“确定”。</li>
+</ol>
+<h2 id="重命名门" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">重命名门<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#重命名门">#</a></h2>
+<p class="my-4 leading-7">使用“重命名门”可更改所选门的参考指示器。系统将阻止您分配已使用的参考指示器，或分配其他元件类型的未使用门。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">选择一个元件，单击鼠标右键，然后单击“特性”。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在元件属性对话框中，单击重命名门。
+将显示一个信息窗口。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">输入新的门参考指示器信息。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“确定”。</li>
+</ol>
+<h2 id="修改参考指示器标签" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">修改参考指示器标签<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改参考指示器标签">#</a></h2>
+<p class="my-4 leading-7">使用“参考指示器属性”对话框可以查看和修改标签大小和对齐方式以及一个或多个参考指示器标签的文本和字体设置。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">不选择任何内容，<strong class="font-semibold">右键</strong>单击并单击选择文档。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择参考指示器标签，<strong class="font-semibold">右键</strong>单击，然后单击“特性”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“参考指示器属性”对话框的“重命名”区域中，选择“门”可仅重命名单个门。选择“元件”可重命名整个元件。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">如果选择仅包含一个元件的门，则门不可用。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“旋转”框中，从“旋转”列表中选择旋转度数。旋转度数可以是 0 度或 90 度。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“大小”框中，输入描边字体的高度（从最高字符的顶部到最低字符的底部），以密耳为单位，或输入系统字体的高度（以磅为单位）。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">键入介于 10 到 1000 毫米之间的笔画字体大小或介于 1 到 72 点之间的系统字体大小。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于描边字体，在线宽框中，键入用于创建字符的线条的宽度。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于系统字体，请选择要使用的字体。您也可以点击要应用的字体样式：B 表示粗体，I 表示斜体，U 表示下划线。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要设置对齐方式，请单击所需的水平和垂直选项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”。</p>
+</li>
+</ol>
+<h2 id="修改管脚" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">修改管脚<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改管脚">#</a></h2>
+<p class="my-4 leading-7">使用“管脚属性”对话框可以查看管脚信息、修改选定管脚所连接的元件和网络，还可以设置管脚编号和管脚名称标签的字体设置。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个管脚，<strong class="font-semibold">右键</strong>单击，然后单击“特性”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“管脚特性”对话框中，单击“元件/门”按钮可更改元件或门的属性信息。另请参阅“修改元件”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“网络”按钮可修改网络名称和命名网络的属性。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">修改网络名称或属性 $$$ 命名网络，使用查询模式按钮选择一个管脚附近的网络，将其从 $$$ 命名网络。</p>
+</div></div>
+<p class="my-4 leading-7">另请参阅修改网络。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击字体按钮打开管脚标签字体对话框，您可以在其中设置字体首选项。</p>
+<p class="my-4 leading-7">另请参阅修改管脚标签字体。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击确定。</p>
+</li>
+</ol>
+<h2 id="修改管脚标签字体" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">修改管脚标签字体<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改管脚标签字体">#</a></h2>
+<p class="my-4 leading-7">为了提高原理图的可读性，您可以使用管脚标签字体对话框更改管脚标签的字体。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个管脚标签，<strong class="font-semibold">右键</strong>单击，然后单击“特性”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在管脚标签字体对话框的管脚区域中，在线宽度框中输入笔触字体的线宽。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于笔触字体或系统字体，在大小框中输入大小（笔触字体以密耳为单位，系统字体以磅为单位）。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">输入介于 10 到 1000 密耳之间的笔触字体大小或介于 1 到 72 磅之间的系统字体大小。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于系统字体，选择要使用的字体。如果需要，您还可以单击字体样式：B 表示粗体、I 表示斜体或 U 表示带下划线。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击确定。</p>
+</li>
+</ol>
+<h2 id="修改网络" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">修改网络<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改网络">#</a></h2>
+<p class="my-4 leading-7">要重命名网络或编辑其属性和值，可以使用网络属性对话框访问网络特定属性。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个网络，<strong class="font-semibold">右键</strong>单击，然后单击特性。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">选择它进入或退出元件的连接段。选择连接的任何其他段将不允许添加网络名称标签。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在网络名称框中键入新名称或从列表中选择现有名称。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">使用网络名称时，请注意以下事项：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">如果从列表中选择一个名称，则会显示消息“网络已存在 - 可以合并网络（Y/N）吗？”。单击“是”合并网络，或单击“否”输入其他网络名称。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">如果删除所有可见的网络名称标签，则网络和所有子网将保留该网络名称。网络名称不会恢复为生成的。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">如果您尝试将命名网络与未命名网络组合，则生成的网络将始终采用命名网络的名称。任何类似的属性名称都将始终从命名网络获取其值。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">连接报告通过将没有可见网络名称的子网绑定在一起来标识它们，方法是将它们标记为“缺少网络名称的子网”。</li>
+</ul>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“重命名”区域中，单击“此实例”将新的网络名称应用于所选连接，或单击“所有实例”将新的网络名称应用于此连接的所有实例。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">选择此实例将导致网络的当前段采用新的网络名称并与其他实例分离。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选中“网络名称标签”复选框，为所选网段添加可见标签。
+您必须选择它进入或退出零件的连接段，或网络名称标签复选框将不可用。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">清除“网络名称标签”复选框将删除可见标签。网络和所有子网保留网络名称。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“统计信息”以在默认文本编辑器中显示连接信息。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“属性”打开“网络属性”对话框并修改网络属性。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“规则”打开“网络规则”对话框并修改网络规则。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”。</p>
+</li>
+</ol>
+<h2 id="修改网络名称标签" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">修改网络名称标签<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改网络名称标签">#</a></h2>
+<p class="my-4 leading-7">使用“网络名称属性”对话框为一个或多个网络提供或更改文本和字体设置名称标签。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">不选择任何内容，单击鼠标右键，然后单击“选择文档”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个网络名称标签，单击鼠标右键，然后单击“属性”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“网络名称”框中键入新名称或从列表中选择现有名称。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">使用网络名称时，请遵守以下几点：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">如果从列表中选择一个名称，则消息“Net<!-- -->已存在-确定
+组合网（是/否）？”出现。单击“是”组合网络，或单击“否”输入
+不同的网名。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">如果删除所有可见的网络名称标签，则网络和所有子网将保留网络名称。Net
+名称不会还原为生成的$$$nnnn 系统号。您必须重命名网络。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">如果您尝试将命名网络和未命名网络组合在一起，则生成的网络将始终
+取命名网络的名称。任何类似的属性名称都将始终取其值
+从命名的网络。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">连接报告通过以下方式识别连接在一起但没有可见网络名称的子网
+将它们标记为缺少网络名称的子网。</li>
+</ul>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“重命名”区域中，单击“此实例”将新的网络名称应用于所选连接，或单击“所有实例”将新的网络名称应用于此连接的所有实例。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">选择此实例将导致网络的当前段采用新的网络名称并与其他实例分离。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“旋转”框中，从“旋转”列表中选择旋转程度。
+旋转可以是 0 度或 90 度。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“大小”框中，键入笔划字体高度的大小（从最高字体的顶部开始），单位为 mils 字符到最低字符的底部）或系统字体的点数。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">键入介于 10 和 1000 mils 之间的笔划字体大小或介于 1 和 72 之间的系统字体大小点。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于笔划字体，在“线宽”框中键入用于创建字符的线条宽度。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于系统字体，请选择要使用的字体。</p>
+<p class="my-4 leading-7">您还可以单击要应用的系统字体样式：B 表示粗体，I 表示斜体，U 表示下划线。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要设置“对齐”，请单击所需的“水平”和“垂直”选项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”。</p>
+</li>
+</ol>
+<h2 id="修改-buses" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">修改 Buses<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改-buses">#</a></h2>
+<p class="my-4 leading-7">使用总线属性对话框可以更改总线名称或更改总线类型。</p>
+<h3 id="更改总线名称" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">更改总线名称<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#更改总线名称">#</a></h3>
+<p class="my-4 leading-7">随着设计的进展，您可能需要在总线中添加或删除网络。完成这些修改后，您可以更改总线的名称以反映这些更改。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一条总线，单击鼠标右键，然后单击“特性”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“总线名称”框中输入总线的新名称，或从列表中选择现有名称。另请参阅命名总线。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">如果您更改位格式总线的位范围，则新的位范围 (nn:mm) 必须等于或大于旧的位范围。连接到该总线的信号将保留其旧的位数，但采用新的名称。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在重命名区域中，单击此实例将新总线名称应用到选定的总线，或单击所有实例将新总线名称应用到此总线的所有实例。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选中“总线名称标签”复选框可为选定的总线添加可见的标签。</p>
+</li>
+</ol>
+<h3 id="更改总线类型" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">更改总线类型<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#更改总线类型">#</a></h3>
+<p class="my-4 leading-7">随着设计的进展，您可能需要将总线类型从位格式总线更改为混合网络总线，反之亦然。您可以使用属性来更改总线类型。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一条总线，单击鼠标右键，然后单击“特性”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“总线类型”区域中，单击所需的总线类型。“总线类型”决定了哪些总线名称会显示在“总线名称”列表中。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">如果将总线类型从位格式更改为混合网络总线，则总线名称将更改为仅包含前缀。总线名称前缀和位范围将添加到“总线网络”列表框中。</p>
+</div></div>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">只有当所有连接的网络都符合您在“总线名称”文本框中定义的位序列名称时，才能将混合网络总线更改为位格式总线。在将混合网络总线更改为位格式总线之前，必须先从“总线网络”列表框中删除相应的总线网络。</p>
+</div></div>
+</li>
+</ol>
+<h3 id="管理-bus-网络" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">管理 Bus 网络<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#管理-bus-网络">#</a></h3>
+<p class="my-4 leading-7">您可能需要扩展总线的范围以包含其他顺序网络。使用“属性”可将顺序网络添加到总线。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">当选择位格式总线类型时，总线网络区域不可用。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一条总线，单击鼠标右键，然后单击“特性”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“添加”在总线网络列表中添加新行。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在名称/前缀列中输入总线前缀。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">使用以下命名约定：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">对于单个网络，键入网络名称。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">对于一系列顺序网络，请键入网络序列的前缀。</li>
+</ul>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“开始”列中，输入网络序列的起始位数。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“结束”列中，输入网络序列的结束位数。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">要将单个网络添加到总线，请在“前缀/名称”列中输入网络名称。请勿为未按位编号排序的单个网络输入起始值和结束值。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“编辑”可修改总线网络列表中选定的单元格。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“删除”可从总线网络列表中删除网络。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“向下”可将总线网络列表中选定的行向下移动一个位置。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">网络在总线网络列表中出现的顺序决定了网络连接到总线时命名网络的默认顺序。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“向上”可将选定行在总线网络列表中向上移动一个位置。</p>
+</li>
+</ol>
+<h2 id="修改总线名称标签" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">修改总线名称标签<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改总线名称标签">#</a></h2>
+<p class="my-4 leading-7">使用总线名称属性对话框提供或更改一个或多个总线名称标签的文本和字体设置。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">不选择任何内容，<strong class="font-semibold">右键</strong>单击并单击选择文档。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择总线名称标签，<strong class="font-semibold">右键</strong>单击，然后单击“特性”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“总线名称属性”对话框中，单击“总线”以打开“总线属性”对话框。另请参阅修改总线。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“旋转”框中，从“旋转”列表中选择旋转度数。旋转度数可以是 0 度或 90 度。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“大小”框中，输入描边字体的高度（从最高字符的顶部到最低字符的底部），以密耳为单位，或输入系统字体的高度（以磅为单位）。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">键入介于 10 到 1000 毫米之间的笔画字体大小或介于 1 到 72 点之间的系统字体大小。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于描边字体，在线宽框中，键入用于创建字符的线条的宽度。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于系统字体，请选择要使用的字体。您也可以点击要应用的</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">系统字体样式：B 表示粗体，I 表示斜体，U 表示下划线。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要设置对齐方式，请单击所需的水平和垂直选项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">您在网络名称标签属性对话框中指定的字体属性也适用于页间连接符标签。</p>
+</div></div>
+<h2 id="修改页外标签" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">修改页外标签<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改页外标签">#</a></h2>
+<p class="my-4 leading-7">使用“页外属性”对话框设置每行的最大页数和页外标签的旋转设置。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">选择一个页外标签，<strong class="font-semibold">右键</strong>单击，然后单击“特性”。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在“页外属性”对话框中，输入每行允许的最大图页数量，从 0 到 99。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在“旋转”框中，从“旋转”列表中选择旋转度数。旋转度数可以是 0 度或 90 度。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“确定”。</li>
+</ol>
+<h2 id="修改标签字体大小" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">修改标签字体大小<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改标签字体大小">#</a></h2>
+<p class="my-4 leading-7">新建的标注会使用系统默认字体大小。您无法更改此默认字体大小，但可以在创建标注后修改其字体大小。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择要更改的标签，<strong class="font-semibold">右键</strong>单击，然后单击“特性”。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">所有选定的标签必须属于同一类型；例如，所有网络名称标签或所有参考指示器标签。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“特性”对话框中，输入新的“尺寸”值。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">键入介于 10 到 1000 毫米之间的笔画字体大小或介于 1 到 72 点之间的系统字体大小。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”。</p>
+</li>
+</ol>
+<h2 id="修改文本" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">修改文本<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改文本">#</a></h2>
+<p class="my-4 leading-7">使用“文本属性”对话框修改自由文本或更改其大小、方向或对齐方式。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择文本，<strong class="font-semibold">右键</strong>单击，然后单击“特性”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“文本特性”对话框中，文本框显示选定的文本字符串。修改现有文本字符串，或键入新的文本字符串。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 X,Y 位置框中，输入新值以将文本字符串移动到指定位置。如果需要将文本移动到图页外部，则必须使用光标移动文本。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“旋转”框中，从“旋转”列表中选择旋转度数。旋转度数可以是 0 度或 90 度。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于描边字体，在“线宽”框中键入线宽。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“大小”框中，输入大小（描边字体以密耳为单位，系统字体以磅为单位）。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">键入介于 10 到 1000 毫米之间的笔画字体大小或介于 1 到 72 点之间的系统字体大小。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于系统字体，选择您想要使用的字体。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">您还可以单击字体样式：B 表示粗体，I 表示斜体，U 表示下划线。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">在对齐方式区域中，设置文本的水平和垂直对齐方式。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">如果将选定的文本字符串与绘图对象组合，请单击“父级”以显示“绘图对象属性”对话框来修改绘图对象。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“确定”。</li>
+</ol>
+<h2 id="修改分层组件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">修改分层组件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改分层组件">#</a></h2>
+<p class="my-4 leading-7">创建并添加到现有图页后，除非显示父图页，否则无法通过工具栏中的“图页”列表访问分层组件。它们也会从“设置”菜单中的“图页”命令中排除。使用“分层组件属性”对话框将分层组件分配到下一个可用的图页编号，以便在显示父图页以外的图页时，可以从“图页”列表访问该组件。</p>
+<p class="my-4 leading-7">使用设置菜单下的 Sheets 命令来修改图页名称或数字顺序。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">选择一个分层组件，<strong class="font-semibold">右键</strong>单击，然后单击“特性”。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在“查询分层组件”对话框中，在“名称”框中键入新名称以重命名分层组件。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">选中名称框右侧的可见性复选框，以在原理图中的分层组件顶部显示名称。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“已编号”可为分层组件分配下一个可用的图页编号。分配的图页编号显示在此选项上方的字段中。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“取消编号”可从分层组件中删除图页编号分配。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在关联图页区域中，选中可见性复选框以在原理图中显示图页编号。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“确定”。</li>
+</ol><!--/$--></div><div class="rspress-doc-footer"><footer class="mt-8"><div class="xs:flex pb-5 px-2 justify-end items-center"><div class="flex text-sm text-text-2 leading-6 sm:leading-8 font-medium"><p>最近更新时间<!-- -->: <span>2025/7/15 10:20:16</span></p></div></div><div class="flex flex-col"></div><div class="flex flex-col sm:flex-row sm:justify-around gap-4 pt-6"><div class="prev_c92d1 flex flex-col"><a href="/sailwind_docs/logic/guide/14_zh.html" class="link_a7cea pager-link_e0d2d"><span class="desc_dcc01">上一页</span><span class="title_a3acb">第 14 章 层次化设计</span></a></div><div class="next_c11be flex flex-col"><a href="/sailwind_docs/logic/guide/16_zh.html" class="link_a7cea pager-link_e0d2d next_ad355"><span class="desc_dcc01">下一页</span><span class="title_a3acb">第 16 章 规则</span></a></div></div></footer></div></div><div class="aside-container_bc5fa"><div class="flex flex-col"><div id="aside-container" class="relative text-sm font-medium"><div class="leading-7 block text-sm font-semibold pl-3">本页目录</div><nav class="mt-1"><ul class="relative"><li><a href="#修改绘图对象" title="修改绘图对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">修改绘图对象</span></a></li><li><a href="#修改字段" title="修改字段" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">修改字段</span></a></li><li><a href="#修改元件" title="修改元件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">修改元件</span></a></li><li><a href="#更改参考指示器" title="更改参考指示器" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">更改参考指示器</span></a></li><li><a href="#更改元件类型" title="更改元件类型" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">更改元件类型</span></a></li><li><a href="#更改元件信息" title="更改元件信息" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">更改元件信息</span></a></li><li><a href="#更改文本的可见性" title="更改文本的可见性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">更改文本的可见性</span></a></li><li><a href="#更改元件属性" title="更改元件属性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">更改元件属性</span></a></li><li><a href="#更换-pcb-封装" title="更换 PCB 封装" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">更换 PCB 封装</span></a></li><li><a href="#将未使用的管脚分配为信号管脚" title="将未使用的管脚分配为信号管脚" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">将未使用的管脚分配为信号管脚</span></a></li><li><a href="#参考指示符重新编号" title="参考指示符重新编号" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">参考指示符重新编号</span></a></li><li><a href="#自动重新编号参考指示器" title="自动重新编号参考指示器" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">自动重新编号参考指示器</span></a></li><li><a href="#在新原理图中按图页设置参考指示器" title="在新原理图中按图页设置参考指示器" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">在新原理图中按图页设置参考指示器</span></a></li><li><a href="#在已完成的原理图中按图页设置参考指示器" title="在已完成的原理图中按图页设置参考指示器" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">在已完成的原理图中按图页设置参考指示器</span></a></li><li><a href="#修改元件属性" title="修改元件属性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">修改元件属性</span></a></li><li><a href="#修改元件属性标签" title="修改元件属性标签" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">修改元件属性标签</span></a></li><li><a href="#修改元件类型标签" title="修改元件类型标签" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">修改元件类型标签</span></a></li><li><a href="#在库里搜索封装" title="在库里搜索封装" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">在库里搜索封装</span></a></li><li><a href="#重命名元件" title="重命名元件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">重命名元件</span></a></li><li><a href="#重命名门" title="重命名门" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">重命名门</span></a></li><li><a href="#修改参考指示器标签" title="修改参考指示器标签" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">修改参考指示器标签</span></a></li><li><a href="#修改管脚" title="修改管脚" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">修改管脚</span></a></li><li><a href="#修改管脚标签字体" title="修改管脚标签字体" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">修改管脚标签字体</span></a></li><li><a href="#修改网络" title="修改网络" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">修改网络</span></a></li><li><a href="#修改网络名称标签" title="修改网络名称标签" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">修改网络名称标签</span></a></li><li><a href="#修改-buses" title="修改 Buses" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">修改 Buses</span></a></li><li><a href="#更改总线名称" title="更改总线名称" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">更改总线名称</span></a></li><li><a href="#更改总线类型" title="更改总线类型" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">更改总线类型</span></a></li><li><a href="#管理-bus-网络" title="管理 Bus 网络" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">管理 Bus 网络</span></a></li><li><a href="#修改总线名称标签" title="修改总线名称标签" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">修改总线名称标签</span></a></li><li><a href="#修改页外标签" title="修改页外标签" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">修改页外标签</span></a></li><li><a href="#修改标签字体大小" title="修改标签字体大小" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">修改标签字体大小</span></a></li><li><a href="#修改文本" title="修改文本" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">修改文本</span></a></li><li><a href="#修改分层组件" title="修改分层组件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">修改分层组件</span></a></li></ul></nav></div></div></div></div></div></div></section></div>
+    <div id="search-container"></div>
+  </body>
+</html>

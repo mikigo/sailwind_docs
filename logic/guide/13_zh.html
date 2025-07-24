@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Rspress v1.45.0">
+    <title data-rh="true">第 13 章 连接 - SailWind</title><meta data-rh="true" name="description" content="SailWind"/>
+  <script>{;const saved = localStorage.getItem('rspress-theme-appearance');const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;const isDark = !saved || saved === 'auto' ? preferDark : saved === 'dark';document.documentElement.classList.toggle('dark', isDark);document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';}</script><link rel="icon" href="/sailwind_docs/favicon.ico"><script defer src="/sailwind_docs/static/js/styles.f5ec16c7.js"></script><script defer src="/sailwind_docs/static/js/lib-react.36f9b428.js"></script><script defer src="/sailwind_docs/static/js/lib-router.971f4280.js"></script><script defer src="/sailwind_docs/static/js/2886.6c8a4c3c.js"></script><script defer src="/sailwind_docs/static/js/index.ef746291.js"></script><link href="/sailwind_docs/static/css/styles.6524924d.css" rel="stylesheet"></head>
+
+  <body >
+    <div id="root"><div class="navContainer_d18b1 rspress-nav px-6  sticky_ddfa7"><div class="container_e4235 flex justify-between items-center h-full"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div><div class="flex flex-1 justify-end items-center"><div class="rightNav_a2fea"><div class="flex sm:flex-1 items-center sm:pl-4 sm:pr-2"><div class="rspress-nav-search-button navSearchButton_df1fb"><button><svg width="18" height="18" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg><p class="searchWord_af2c1">搜索</p><div style="opacity:0"><span></span><span>K</span></div></button></div><div class="mobileNavSearchButton_d85a9"><svg width="24" height="24" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg></div></div><div class="rspress-nav-menu menu h-14"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div><div class="flex-center flex-row"><div class="mx-2"><div class="md:mr-2 rspress-nav-appearance"><div class="p-1 border border-solid border-gray-300 text-gray-400  cursor-pointer rounded-md hover:border-gray-600 hover:text-gray-600 dark:hover:border-gray-200 dark:hover:text-gray-200 transition-all duration-300 w-7 h-7"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="dark:hidden" width="18" height="18" fill="currentColor"><path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6m0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4M12 4c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M12 24c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M5.6 6.6c-.3 0-.5-.1-.7-.3L3.5 4.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.1.2-.4.3-.7.3M19.8 20.8c-.3 0-.5-.1-.7-.3l-1.4-1.4c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.2.2-.5.3-.7.3M3 13H1c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M23 13h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M4.2 20.8c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.4.3-.7.3M18.4 6.6c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.5.3-.7.3"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="hidden dark:block" width="18" height="18" fill="currentColor"><path d="M12.1 22h-.9c-5.5-.5-9.5-5.4-9-10.9.4-4.8 4.2-8.6 9-9 .4 0 .8.2 1 .5s.2.8-.1 1.1c-2 2.7-1.4 6.4 1.3 8.4 2.1 1.6 5 1.6 7.1 0 .3-.2.7-.3 1.1-.1.3.2.5.6.5 1-.2 2.7-1.5 5.1-3.6 6.8-1.9 1.4-4.1 2.2-6.4 2.2M9.3 4.4c-2.9 1-5 3.6-5.2 6.8-.4 4.4 2.8 8.3 7.2 8.7 2.1.2 4.2-.4 5.8-1.8 1.1-.9 1.9-2.1 2.4-3.4-2.5.9-5.3.5-7.5-1.1-2.8-2.2-3.9-5.9-2.7-9.2"></path></svg></div></div></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div><div class="mobileNavMenu_e7045"><div class="navScreen_ec30c  rspress-nav-screen" id="navScreen"><div class="container_c935d"><div class="navMenu_b887b"><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div></div><div class="flex-center flex-col gap-2"><div class="mt-2 navAppearance_bf893 flex justify-center"></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div></div><button aria-label="mobile hamburger" class=" rspress-mobile-hamburger navHamburger_ac64c text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><circle cx="8" cy="16" r="2" fill="currentColor"></circle><circle cx="16" cy="16" r="2" fill="currentColor"></circle><circle cx="24" cy="16" r="2" fill="currentColor"></circle></svg></button></div></div></div></div><section><div class="docLayout_af141 pt-0"><aside class="sidebar_dd719 rspress-sidebar "><div class="navTitleMask_fb17c"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div></div><div class="rspress-scrollbar sidebarContent_da296"><nav class="pb-2"><a href="/sailwind_docs/logic/index.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:14px;margin-left:0;border-radius:0 var(--rp-radius) var(--rp-radius) 0;padding-left:24px;font-weight:bold"><span>章节预览</span></div></a><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">指南(Guide)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 1 章 SailWind Logic 快速开始</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 2 章 开始 SailWind Logic</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 3 章 用户界面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 4 章 文件操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 5 章 设计设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 6 章 管理库和库数据</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 7 章 库元件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 8 章 特殊示意图符号</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 9 章 设计和编辑基础</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 10 章 原理图元件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 11 章 图页</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 12 章 非电气对象</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItemActive_de63c mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 13 章 连接</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 14 章 层次化设计</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 15 章 原理图对象修改</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/16_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 16 章 规则</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/17_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 17 章 报告</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/18_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 18 章 与 Layout 和 Router 协作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/19_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 19 章 绘图和打印</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/20_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 20 章 对象链接与嵌入 ❌</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/21_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 21 章 使用高级程序 ❌</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/22_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 22 章 自定义界面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/23_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 23 章 崩溃检测、BMW 和 BLT</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/24_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 24 章 SailWind Logic 对话框</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">教程(Tutorial)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>学习用户界面教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建库元件教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>添加与复制元件教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>添加连接教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>添加总线教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>编辑设计元素教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>分配约束教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建报告教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>连接 SailWind 布局教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>更新原理图设计变更教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>打印和绘制电路图教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>管理多页原理图教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>模拟仿真设计教程</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">快速参考(Quick Reference)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/qr/modless.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>无模命令</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/qr/shortcut.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>键盘快捷键</span></div></a></div></div></div></section></nav></div></aside><div class="flex-1 relative min-w-0"><div class="rspress-sidebar-menu-container "><div class="rspress-sidebar-menu"><button type="button" class="flex-center mr-auto"><div class="text-md mr-2"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"></path></svg></div><span class="text-sm">Menu</span></button><button type="button" class="flex-center ml-auto"><span class="text-sm">本页目录</span><div class="text-md mr-2" style="transform:rotate(0deg);transition:transform 0.2s ease-out;margin-top:2px"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></button><div class="rspress-local-toc-container "><ul><li><a href="#添加连接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">添加连接</span></a></li><li><a href="#命名连接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">命名连接</span></a></li><li><a href="#网络属性概述" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">网络属性概述</span></a></li><li><a href="#创建网络属性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建网络属性</span></a></li><li><a href="#网络的默认属性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">网络的默认属性</span></a></li><li><a href="#添加电源和接地连接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">添加电源和接地连接</span></a></li><li><a href="#使用浮空连接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">使用浮空连接</span></a></li><li><a href="#启用浮空连接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">启用浮空连接</span></a></li><li><a href="#禁用浮空连接并运行连接报告" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">禁用浮空连接并运行连接报告</span></a></li><li><a href="#添加浮空连接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">添加浮空连接</span></a></li><li><a href="#创建悬空连接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">创建悬空连接</span></a></li><li><a href="#创建浮空连接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">创建浮空连接</span></a></li><li><a href="#编辑浮空连接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">编辑浮空连接</span></a></li><li><a href="#复制浮空连接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">复制浮空连接</span></a></li><li><a href="#删除对象时创建浮空连接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">删除对象时创建浮空连接</span></a></li><li><a href="#将对象附加到浮空连接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">将对象附加到浮空连接</span></a></li><li><a href="#添加页间连接符" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">添加页间连接符</span></a></li><li><a href="#编辑每行的页间连接符表编号" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">编辑每行的页间连接符表编号</span></a></li><li><a href="#更改连接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">更改连接</span></a></li><li><a href="#移动连接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">移动连接</span></a></li><li><a href="#分割连接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">分割连接</span></a></li><li><a href="#分割片段" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">分割片段</span></a></li><li><a href="#交换管脚" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">交换管脚</span></a></li><li><a href="#使用动词模式下的交换管脚按钮交换管脚" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">使用动词模式下的“交换管脚”按钮交换管脚</span></a></li><li><a href="#通过一次选择一个管脚来交换管脚" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">通过一次选择一个管脚来交换管脚</span></a></li><li><a href="#通过先选择两个管脚来交换管脚" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">通过先选择两个管脚来交换管脚</span></a></li><li><a href="#管理-bus" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">管理 Bus</span></a></li><li><a href="#选择总线类型" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">选择总线类型</span></a></li><li><a href="#命名总线" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">命名总线</span></a></li><li><a href="#命名位格式总线" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">命名位格式总线</span></a></li><li><a href="#命名混合网络总线" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">命名混合网络总线</span></a></li><li><a href="#添加-bus" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">添加 Bus</span></a></li><li><a href="#添加总线连接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">添加总线连接</span></a></li><li><a href="#将网络添加到混合网络总线" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">将网络添加到混合网络总线</span></a></li><li><a href="#延伸总线" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">延伸总线</span></a></li><li><a href="#移动总线线路" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">移动总线线路</span></a></li><li><a href="#分割总线" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">分割总线</span></a></li><li><a href="#删除总线" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">删除总线</span></a></li><li><a href="#删除总线-1" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">删除总线</span></a></li><li><a href="#仅删除总线" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">仅删除总线</span></a></li><li><a href="#删除总线及其连接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">删除总线及其连接</span></a></li><li><a href="#删除连接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">删除连接</span></a></li><li><a href="#分离" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">分离</span></a></li></ul></div></div></div><div class="content_ff766 rspress-doc-container flex"><div class="flex-1 overflow-x-auto"><div class="rspress-doc"><!--$--><h1 id="第-13-章-连接" class="rspress-doc-title text-3xl mb-10 leading-10 tracking-tight title_fb7eb">第 13 章 连接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#第-13-章-连接">#</a></h1>
+<p class="my-4 leading-7">连接是设计的核心，它使您能够捕捉并传达设计的互连性。SailWind Logic 提供了一系列强大的命令，可用于添加、命名和连接网络。您可以完全连接设计对象，或使用浮空连接作为占位符，用于未来的设计决策。您可以添加、移动分割网络或段。您还可以根据需要交换元件上的管脚。此外，还有一组强大的命令可用于创建、编辑和管理总线。</p>
+<h2 id="添加连接" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">添加连接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#添加连接">#</a></h2>
+<p class="my-4 leading-7">添加连接时，必须具有电气上有意义的起点和终点。连接可以从符号管脚或其他连接开始。连接可以从符号管脚、其他连接、总线、页间连接符或接地或电源符号结束。除非启用“浮空连接”，否则 SailWind Logic 会阻止您在数据库中的任意位置开始或结束连接。</p>
+<p class="my-4 leading-7">另请参阅使用浮空连接。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击添加连接按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">指定连接的起点。连接跟随光标移动。<strong class="font-semibold">右键</strong>单击并单击“角度”以指定连接中的对角线段。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">根据需要指示角点。<strong class="font-semibold">右键</strong>单击，然后单击“删除角点”可返回到上一个角点（如有必要）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">连接不能在空白处结束。找到光标并双击即可结束连接。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要结束与电源、接地或页间连接符的连接，请在此过程的最后一步从弹出菜单中选择适当的符号。</p>
+<p class="my-4 leading-7">如果结束总线上的连接，请参阅“添加总线连接”主题中的其余步骤。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">SailWind Logic 中的特殊符号包括电源符号、接地符号和页间连接符。更多信息，请参阅特殊原理图符号。</p>
+</div></div>
+<div class="rspress-directive info"><div class="rspress-directive-title">INFO</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">当您将一个连接终止于另一个连接时，SailWind Logic 会在连接点处放置一个连接点。生成的网络名称是新添加的连接的名称，而不是现有连接的名称，除非您为现有连接指定了名称。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要为连接分配固定网络名称，必须先添加连接，然后选择直接连接到元件类型管脚的线段。然后，选择该网络，<strong class="font-semibold">右键</strong>单击，单击“属性”，并在“网络属性”（第 289 页）对话框中输入新的网络名称。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">如果您选择并移动一个可见的网络名称，并启用“对齐网格”功能，则新的网络名称将对齐到“标签和文本”网格。要设置标签和文本网格，请使用 &gt; “选项 &gt; “ 常规”页面上的设置。请参阅第 595 页上的““选项”对话框，“常规”类别”。</p>
+</div></div>
+</li>
+</ol>
+<h2 id="命名连接" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">命名连接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#命名连接">#</a></h2>
+<p class="my-4 leading-7">添加连接时，SailWind Logic 会自动分配一个名称，格式为 $$$nnnn，其中 nnnn 是随机数。您可以指定其他网络名称来替换已分配的名称。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个连接段。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击，然后单击“属性”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在网络名称框中键入新的网络名称。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">网络名称标签复选框表现出以下行为：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">仅当您选择连接段时，“网络名称标签”复选框才可用进入或退出某个部分。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">清除“网络名称标签”复选框将删除可见的标签。网络和所有子网保留网络名称。</p>
+</li>
+</ul>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要在网络名称上方添加横线，请在文本前添加 \ 字符。要仅在部分文本上方添加横线，请在该部分文本的两端添加 \ 字符。</p>
+<p class="my-4 leading-7">例如，输入 MAIN_\CLK\ 会在 CLK 上方放置一个横线。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">\ 字符计入网络名称的 47 个字符限制。</p>
+</div></div>
+</li>
+</ol>
+<h2 id="网络属性概述" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">网络属性概述<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#网络属性概述">#</a></h2>
+<p class="my-4 leading-7">网络属性使您能够将信息与原理图上的单个网络或一组网络关联起来。
+属性由两部分组成：属性名称和其对应的值。</p>
+<p class="my-4 leading-7">如果连接到 SailWind Layout，这些属性将与示意图的其余部分一起传递。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">网络名称标签复选框表现出以下行为：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">仅当您选择连接段时，“网络名称标签”复选框才可用进入或退出某个部分。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">清除“网络名称标签”复选框将删除可见的标签。网络和所有子网保留网络名称。</p>
+</li>
+</ul>
+</div></div>
+<p class="my-4 leading-7">另请参阅创建网络属性。</p>
+<h2 id="创建网络属性" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建网络属性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建网络属性">#</a></h2>
+<p class="my-4 leading-7">您可以创建网络属性并将其分配给特定网络。创建后，您可以编辑或删除这些属性。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个网络，<strong class="font-semibold">右键</strong>单击，然后单击“属性”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在网络属性对话框中，单击添加以添加属性。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“名称”列，输入新的属性名称。另请参阅“网络的默认属性”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击值列并输入属性值。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要删除选定的网络属性，请单击“删除”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要编辑选定的名称或值，请单击编辑。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”。</p>
+</li>
+</ol>
+<h2 id="网络的默认属性" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">网络的默认属性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#网络的默认属性">#</a></h2>
+<p class="my-4 leading-7">请参阅网络默认属性列表表来确定 <code>SailWind Layout</code> 检查哪些网络属性以获取正确的值和单位。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">描述和用途列中的某些值区分大小写，必须这样书写。</p>
+</div></div>
+<p class="my-4 leading-7">表 30. 网络默认属性列表</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">属性</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">类型</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述和使用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HyperLynx.Frequency</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">频率（测量）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列出 BoardSim 仿真中网络的工作频率。范围：0 Hz-1000 GHz 单位：Hz kHz MHz GHz（区分大小写）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HyperLynx.占空比</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">百分比（测量）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列出信号处于高电平状态的时间百分比。用于 BoardSim 仿真。范围：0%-100%</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HyperLynx 信号类型</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列表</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列出信号类型。用于 BoardSim 仿真。值（不区分大小写）：时钟、频闪、数据、地址、电源、模拟高速、模拟低速、禁止</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HyperLynx.Default ic.Model</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">自由文本</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">分析列出文件中用于 BoardSim 仿真的元件模型。值：文本（模型名称）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HyperLynx.Default iC.Model File</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">自由文本</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列出用于 BoardSim 仿真的文件中元件模型文件。值：文本（文件名）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HyperLynx.Default IC.Model 管脚</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">自由文本</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列出上述属性中模型的特定管脚（如适用）。用于 BoardSim 仿真。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PowerGround</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是/否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">值：文本（管脚名称或编号）将网络标识为地线和电源网络。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7">表 30. 网络默认属性列表（续）</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">属性</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">类型</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述和使用</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">电压</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">测量</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">描述网络电压。范围：-100kV-100kV (-100,000-100,000V) 单位：nV uV mV V kV (区分大小写)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DFT.Nail Count Per Net</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Number</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">表示测试夹具中探针的 ID。值：（整数）0-2000（允许所有精确限制；例如，0 和 2000 均可接受）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="添加电源和接地连接" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">添加电源和接地连接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#添加电源和接地连接">#</a></h2>
+<p class="my-4 leading-7">将元件连接到地线或电源网络时，通常使用特殊符号来表示网络。地线符号表示连接与地线相连。电源符号表示连接增加电压。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">按照添加连接主题中的说明指定连接。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并点击“接地”或“电源”。符号将附加到连接上并跟随光标移动。</p>
+<p class="my-4 leading-7">（可选）您可以通过从弹出菜单中选择相应的命令来旋转或镜像符号。您还可以通过<strong class="font-semibold">右键</strong>单击并点击“替换”来修改符号的表示形式。<strong class="font-semibold">右键</strong>单击并点击“显示 PG 名称”可切换电源或接地符号的网络名称的可见性。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">找到光标并双击以结束连接或<strong class="font-semibold">右键</strong>单击并单击完成。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">您可以在库中创建并存储多个接地符号，每个符号都有各自的网络名称。要选择合适的接地符号，请<strong class="font-semibold">右键</strong>单击，然后单击“替换”。</p>
+<p class="my-4 leading-7">标准库中提供了三个符号。您可以修改这些符号或添加其他符号。</p>
+<p class="my-4 leading-7">SailWind Logic 会将与接地符号关联的网络名称分配给连接（例如，GND、底盘接地、模拟接地等）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于每个备用电源符号，都有一个不同的信号名称：+5V_{i}、+24\vee 等。要选择适当的信号名称，请在放置符号时单击“符号”。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">当您在工作窗口中查看电源或接地交替时，您可以在状态栏中找到要绑定连接的网络名称。</p>
+</div></div>
+</li>
+</ol>
+<h2 id="使用浮空连接" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">使用浮空连接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用浮空连接">#</a></h2>
+<p class="my-4 leading-7">浮空连接为您的原理图设计增添了更高级别的灵活性。启用浮空连接后，您可以添加从管脚到尚不存在元件位置的连接，而无需使用页间连接符。您还可以在空白处开始连接，稍后再进行连接。未连接的网络将以方形标记终止。</p>
+<h3 id="启用浮空连接" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">启用浮空连接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#启用浮空连接">#</a></h3>
+<p class="my-4 leading-7">您可以在设计中启用浮空连接。这使您可以创建一端或两端未端接的连接。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">单击工具 &gt; 选项菜单项，然后单击设计类别。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在参数区域中，选中允许浮空连接复选框以在设计中启用浮空连接。</li>
+</ol>
+<h3 id="禁用浮空连接并运行连接报告" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">禁用浮空连接并运行连接报告<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#禁用浮空连接并运行连接报告">#</a></h3>
+<p class="my-4 leading-7">您可以在设计中禁用浮空连接。完成启用浮空连接的设计后，您可以禁用浮空连接并对设计运行连通性检查，以确保所有连接均已正确终止。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击“工具”&gt;“选项”菜单项，然后点击“设计”类别。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“参数”区域中，清除“允许浮空连接”复选框以禁用设计中的浮空连接。</p>
+<p class="my-4 leading-7">如果设计中存在浮空连接，则会显示一条警告消息。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">禁用浮空连接并不会将其从设计中移除。</p>
+<p class="my-4 leading-7">禁用此首选项仅可防止创建额外的浮空连接。</p>
+<p class="my-4 leading-7">完成的原理图上不需要浮空连接。浮空端应连接到管脚或终止于页间连接符。运行连接报告以查找设计中浮空连接的位置。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击主页 &gt; 报告菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在报告对话框中，选中连接复选框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”创建报告。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">可轻松选择多个浮动连接进行删除。在“搜索和选择”框中。在选择工具栏中，输入“dangling”以选择所有浮动连接。</p>
+</div></div>
+</li>
+</ol>
+<h3 id="添加浮空连接" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">添加浮空连接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#添加浮空连接">#</a></h3>
+<p class="my-4 leading-7">启用“浮空连接”首选项后，您可以将连接浮空在空间中，以便稍后进行连接。您还可以在空间中启动连接，以备稍后连接。通过 ECO 导入自动添加的新元件和连接短截线将接收未连接的标记，而不是页间连接符。通过 ECO 导入添加到现有元件的网络短截线将继续接收页间连接符。</p>
+<h4 id="创建悬空连接" class="mt-8 leading-6 text-lg title_fb7eb">创建悬空连接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建悬空连接">#</a></h4>
+<p class="my-4 leading-7">悬空连接仅在一端与设计对象绑定，以预期在设计过程的未来某个时间点将其连接到另一端。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在管脚上开始连接。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">绘制连接。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要在空间中结束连接，请双击。</p>
+<p class="my-4 leading-7">或者，您可以<strong class="font-semibold">右键</strong>单击，然后单击“结束”。</p>
+</li>
+</ol>
+<h4 id="创建浮空连接" class="mt-8 leading-6 text-lg title_fb7eb">创建浮空连接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建浮空连接">#</a></h4>
+<p class="my-4 leading-7">浮空连接两端均不受约束。使用浮空连接可以将连接作为占位符添加到设计中，以便在设计过程的后期完成连接。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">要在空间中启动连接，请双击。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">绘制连接。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">要在空间中结束连接，请双击。或者，您可以<strong class="font-semibold">右键</strong>单击，然后单击“结束”。</li>
+</ol>
+<h3 id="编辑浮空连接" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">编辑浮空连接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#编辑浮空连接">#</a></h3>
+<p class="my-4 leading-7">您可以将浮空连接添加到设计中，并在稍后进行连接。创建后，您可以在设计中编辑浮空连接。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用移动模式或添加连接模式从未连接的标记继续连接。</p>
+</li>
+</ul>
+<h3 id="复制浮空连接" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">复制浮空连接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#复制浮空连接">#</a></h3>
+<p class="my-4 leading-7">启用“浮空连接”首选项后，您可以复制连接段并将其粘贴到空间中。无需将它们粘贴到管脚到管脚的连接位置。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择连接的一段（或多段）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击，然后单击“复制”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将光标定位到粘贴位置并单击。</p>
+<p class="my-4 leading-7">另请参阅“分布和重复”。</p>
+</li>
+</ol>
+<h3 id="删除对象时创建浮空连接" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">删除对象时创建浮空连接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#删除对象时创建浮空连接">#</a></h3>
+<p class="my-4 leading-7">启用“浮空连接”首选项后，已删除元件的连接将以“未连接标记”而非“页间连接符”终止。删除总线时，连接到该总线的网络也将以“未连接标记”而非“页间连接符”终止。</p>
+<h3 id="将对象附加到浮空连接" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">将对象附加到浮空连接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#将对象附加到浮空连接">#</a></h3>
+<p class="my-4 leading-7">启用“浮空连接”首选项后，任何接触浮空连接端的组件管脚都会自动连接。接触其他组件管脚的管脚也会自动连接。将组件移开即可使连接可见。</p>
+<h3 id="添加页间连接符" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">添加页间连接符<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#添加页间连接符">#</a></h3>
+<p class="my-4 leading-7">要连接原理图不同图页上或同一张图页两端的两个管脚（无需图形连接），请使用具有相同网络名称的页间连接符。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">按照添加连接主题中的描述指定连接。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击鼠标右键，然后单击“页面外”。</p>
+<p class="my-4 leading-7">符号附加到连接并跟随光标移动。</p>
+<p class="my-4 leading-7">带有右侧管脚的默认封装定义为源管脚；带有左侧管脚的替代封装定义为负载管脚。此管脚类型方向在创建图页的分层符号时会发挥作用。所有页外源均位于分层符号边框的左侧，所有负载均位于右侧。您可以放置默认封装，也可以<strong class="font-semibold">右键</strong>单击并单击“替代”。</p>
+<p class="my-4 leading-7">（可选）您可以使用适当的命令旋转或镜像符号。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">找到光标并双击以结束连接或<strong class="font-semibold">右键</strong>单击并单击完成</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在对话框中输入网络名称，然后单击“确定”。</p>
+<p class="my-4 leading-7">如果在“选项”对话框的“设计”类别中选择了“显示页外图页编号”选项，则连接符号的图页编号将显示在页间连接符旁边。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">如果显示离页数字，可以通过在“工具”&gt;“选项”&gt;“设计”类别中指定“每行数字”来排列或堆叠它们</p>
+</div></div>
+</li>
+</ol>
+<h2 id="编辑每行的页间连接符表编号" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">编辑每行的页间连接符表编号<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#编辑每行的页间连接符表编号">#</a></h2>
+<p class="my-4 leading-7">跨页引用旁边显示的页码编号默认设置为允许在单个文本字符串中列出 5 个页码编号，并以逗号分隔。您可以使用“属性”模式编辑每行跨页符号页码编号的数量。</p>
+<p class="my-4 leading-7">例如，如果设置为 1，并且有两个包含相同网络的图页，则图页将列在两行中。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">选择页间连接符文本字符串。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在原理图编辑工具条上，单击属性按钮。随即显示一个信息对话框。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">更改每行页数的设置。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“确定”。另请参见“选项”对话框、“设计”类别。</li>
+</ol>
+<h2 id="更改连接" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">更改连接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#更改连接">#</a></h2>
+<p class="my-4 leading-7">使用移动将连接从一个端点更改为另一个端点，而不删除连接的其余部分。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">选择进入或退出元件的线段上任意点处的连接，或选择进入另一个连接的位置处的连接。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击鼠标右键，然后单击“移动”。连接将跟随光标移动。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击鼠标右键，然后单击“角度”以指定连接中的对角线段。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">根据需要指定角点，或<strong class="font-semibold">右键</strong>单击并单击“添加角点”。如有必要，<strong class="font-semibold">右键</strong>单击并单击“删除角点”可返回到上一个角点。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">连接无法在空白处结束。找到光标并双击以结束连接，或<strong class="font-semibold">右键</strong>单击并单击“完成”。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">要结束与电源、接地或页间连接符的连接，请在此过程的最后一步中<strong class="font-semibold">右键</strong>单击并单击相应的符号。</li>
+</ol>
+<h2 id="移动连接" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">移动连接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#移动连接">#</a></h2>
+<p class="my-4 leading-7">移动元件时，现有的元件连接会随之移动。重新定位元件后，可能需要移动连接以改善流动。</p>
+<p class="my-4 leading-7">您可以重新定位非连接端点的连接段，也可以重新连接段端点。有关如何断开与某个元件或连接的连接并重新连接到另一个元件或连接的信息，请参阅“更改连接”主题。</p>
+<h2 id="分割连接" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">分割连接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#分割连接">#</a></h2>
+<p class="my-4 leading-7">您可以分割连接以创建新的角落或 90 度转弯。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">您不能分割进入或退出某个部分的段。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">选择一个段，单击鼠标右键，然后单击“移动”。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击鼠标右键，然后单击“分割线段”。移动光标以定义线段长度。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击鼠标右键，然后单击“交换角”以定义相反方向的端点。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">指示新段的端点以完成分割。</li>
+</ol>
+<h2 id="分割片段" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">分割片段<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#分割片段">#</a></h2>
+<p class="my-4 leading-7">分割将一条线段转换为两条独立的线段，由垂直于原始线段的第三条线段连接起来。</p>
+<p class="my-4 leading-7">2D 线中的所有线段必须具有相同的线宽和样式。如果需要创建具有多种线宽或样式的二维元素，请创建两条单独的 2D 线，然后使用“合并”命令将它们连接起来。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“原理图编辑”工具栏上，单击“修改 2D 线”按钮。2. 选择要分割的线。3. <strong class="font-semibold">右键</strong>单击，然后单击“分割”。新的和分割的线段将跟随光标移动。分割线段时，您可以<strong class="font-semibold">右键</strong>单击并单击以下任一选项：</p>
+<p class="my-4 leading-7">表 31. 分割段选项</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">选项</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">交换角</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">选择分割创建的另一个角或线段。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">从角落</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">删除当前角。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">宽度</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">更改项目的线宽。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">实线样式和虚线样式</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将线条样式更改为实线或虚线。圆或圆弧不能指定为虚线。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">正交</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">移动以 90 度为增量进行。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">对角线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">移动以 45 度为增量进行。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">任意角度</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">可以以任意角度进行移动。</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">指示新段的端点以完成分割。</p>
+</li>
+</ol>
+<h2 id="交换管脚" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">交换管脚<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#交换管脚">#</a></h2>
+<p class="my-4 leading-7">要交换两个元件的管脚，您可以使用原理图编辑工具栏中的“交换管脚”按钮或弹出菜单中的“交换管脚”。SailWind Logic 会交换您选择的管脚的管脚编号、名称和终端。您还可以在放置元件时使用弹出菜单中的“镜像 X”和“镜像 Y”来交换管脚。这通常有助于改善原理图的流程。</p>
+<p class="my-4 leading-7">使用动词模式下的“交换管脚”按钮交换管脚 通过一次选择一个管脚来交换管脚 通过首先选择两个管脚来交换管脚</p>
+<h3 id="使用动词模式下的交换管脚按钮交换管脚" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">使用动词模式下的“交换管脚”按钮交换管脚<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用动词模式下的交换管脚按钮交换管脚">#</a></h3>
+<p class="my-4 leading-7">您可以使用“交换管脚”按钮交换管脚。使用此方法，您可以先启动命令，然后选择要交换的管脚。您可以继续选择要交换的管脚对，直到取消命令为止。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">在原理图编辑工具栏上，单击交换管脚按钮。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">选择第一个密码。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">选择要与第一个选定的管脚交换的管脚号。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">如果您选择的管脚类型不匹配，则会显示消息“警告，管脚交换类型不匹配...”
+出现消息。单击“是”继续。单击“否”取消交换。</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">还可能出现“是否将连接绑定到同一电气管脚？”消息。单击“是”可保留与管脚编号相同的连接。单击“否”可重新连接到重新编号的管脚。</p>
+</div></div>
+<p class="my-4 leading-7">要使用弹出菜单交换管脚，您可以一次选择一个管脚，也可以同时选择两个管脚：</p>
+<h3 id="通过一次选择一个管脚来交换管脚" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">通过一次选择一个管脚来交换管脚<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#通过一次选择一个管脚来交换管脚">#</a></h3>
+<p class="my-4 leading-7">您可以通过一次选择一个管脚来交换管脚。此方法允许您选择第一个管脚，启动命令，然后选择第二个管脚。要创建另一个管脚交换，您需要重复此过程。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">选择第一个密码。</li>
+<li class="[&amp;:not(:first-child)]:mt-2"><strong class="font-semibold">右键</strong>单击并单击“交换管脚”。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">选择另一个密码来完成交换。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">如果您选择的管脚类型不匹配，则会显示“警告，管脚交换类型不匹配…”消息。点击“是”继续。点击“否”取消交换。</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">还可能出现“是否将连接绑定到同一电气管脚？”消息。单击“是”可保留与管脚编号相同的连接。单击“否”可重新连接到重新编号的管脚。</p>
+</div></div>
+<h3 id="通过先选择两个管脚来交换管脚" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">通过先选择两个管脚来交换管脚<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#通过先选择两个管脚来交换管脚">#</a></h3>
+<p class="my-4 leading-7">您可以通过先选中两个管脚来交换管脚。选中两个管脚后，即可启动命令。要创建另一个管脚交换，请重复此过程。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">使用 Ctrl+单击，选择要交换的管脚。</li>
+<li class="[&amp;:not(:first-child)]:mt-2"><strong class="font-semibold">右键</strong>单击，然后点击“交换管脚”。如果出现“交换已连接管脚？”消息，请点击“是”继续。点击“否”取消交换。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">如果您选择的管脚类型不匹配，则会显示“警告，管脚交换类型不匹配…”消息。点击“是”继续。点击“否”取消交换。</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">还可能出现“是否将连接绑定到同一电气管脚？”消息。单击“是”可保留与管脚编号相同的连接。单击“否”可重新连接到重新编号的管脚。</p>
+</div></div>
+<h2 id="管理-bus" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">管理 Bus<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#管理-bus">#</a></h2>
+<p class="my-4 leading-7">SailWind Logic 允许您使用一系列灵活的可用命令在设计中创建、命名、编辑和删除总线。使用总线命令可以减少设计中的视觉混乱，并准确地传达您的设计意图，而无需将每个网络以图形方式表示为单独的线路。</p>
+<h3 id="选择总线类型" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">选择总线类型<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#选择总线类型">#</a></h3>
+<p class="my-4 leading-7">总线类型有两种：位格式总线和混合总线。请选择最能体现您设计意图的总线结构。位格式总线将显示顺序总线网络。混合总线格式允许您将顺序命名的位格式总线网络与单个网络组合在一起。</p>
+<p class="my-4 leading-7">位格式总线包含一系列具有连续网络名称的网络。例如，位格式总线 AD[0:4] 包含网络 AD0、AD1、AD2、AD3 和 AD4。</p>
+<p class="my-4 leading-7">混合网络总线除了包含不一定连续的独立网络外，还可以包含一条或多条位格式总线。例如，混合网络总线 BUS1 可以包含名为 RAS、CAS 和 EN 的独立网络，以及位格式总线 AD[0:7]。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">您选择的总线类型决定了“总线名称”列表中显示的选项。例如，如果您选择“位格式总线类型”，则“总线名称”列表中仅显示位格式总线名称。</p>
+</div></div>
+<h3 id="命名总线" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">命名总线<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#命名总线">#</a></h3>
+<p class="my-4 leading-7">SailWind Logic 定义了出现在同一张表或任何其他表上的总线，其名称与同一条总线相同。</p>
+<p class="my-4 leading-7">位格式和混合网络总线的命名规则不同如下：</p>
+<h4 id="命名位格式总线" class="mt-8 leading-6 text-lg title_fb7eb">命名位格式总线<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#命名位格式总线">#</a></h4>
+<p class="my-4 leading-7">位格式总线名称由两部分组成：前缀和总线的位范围。格式为 PREFIX[nn:mm]，其中 nn 表示最低位数，mm 表示最高位数。您可以使用前导零来确定最低位数。例如，DD[00:15] 表示允许网络 DD00、DD01、...DD15 连接到总线；而 DD[0:15] 表示允许网络 DD0、DD1、DD2、...DD15 连接到总线。</p>
+<p class="my-4 leading-7">如果“选项”对话框的“设计”类别中有“显示页间连接符”选项，则图页编号也会与总线名称一起显示。</p>
+<p class="my-4 leading-7">总位格式总线名称（包括前缀、括号和冒号）不能超过 47 个字符。
+位号必须在 0 至 32767 范围内，并且不能包含字母字符。</p>
+<h4 id="命名混合网络总线" class="mt-8 leading-6 text-lg title_fb7eb">命名混合网络总线<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#命名混合网络总线">#</a></h4>
+<p class="my-4 leading-7">混合网络总线名称最多可包含 47 个字母数字字符。混合格式总线名称不能包含位范围后缀或空格。您不能创建与网络名称相同的总线名称。</p>
+<h3 id="添加-bus" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">添加 Bus<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#添加-bus">#</a></h3>
+<p class="my-4 leading-7">您可以将总线添加到您的设计中，以便将相关网络的集合显示为单个实体。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“原理图编辑”工具栏上，单击添加总线按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">指示起点。Bus 跟随指针移动。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">根据需要指示总线转角，或<strong class="font-semibold">右键</strong>单击并单击“添加转角”。如果需要返回到上一个转角，请<strong class="font-semibold">右键</strong>单击并单击“删除转角”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">双击以在空白处结束总线或<strong class="font-semibold">右键</strong>单击并单击“完成”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“添加总线”对话框的“总线名称”框中，键入总线的新名称，或从列表中选择名称。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">限制：重命名区域仅在查询模式下可用</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择总线类型。总线类型决定了哪些总线名称会出现在“总线名称”列表中。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选中添加总线名称标签复选框，将总线名称作为标签添加到距离您选择总线位置最近的总线末端。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">使用总线标签时，请遵循以下几点：</p>
+</div></div>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">一辆总线可以有两个标签，每端各一个。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">当选定总线的末端有标签时，该复选框不可用。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">不需要总线标签。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">要删除总线标签，请在原理图中选中该标签，然后单击标准工具栏上的“删除”按钮。</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果总线是混合网络总线，请在总线网络区域添加总线名称。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">要在放置文本之前旋转文本，请<strong class="font-semibold">右键</strong>单击并单击“旋转”，然后指定名称地点</p>
+</div></div>
+</li>
+</ol>
+<h3 id="添加总线连接" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">添加总线连接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#添加总线连接">#</a></h3>
+<p class="my-4 leading-7">连接到总线时，连接必须垂直于总线。SailWind Logic 会在连接点添加一个倾斜的总线分接头段，并为该连接指定总线中下一个连续的网络名称。</p>
+<p class="my-4 leading-7">在对话框中确认或输入网络名称。文本将跟随光标移动。定位文本并指示其位置。要交换总线抽头角度，请<strong class="font-semibold">右键</strong>单击，然后单击“交换角度”。</p>
+<h3 id="将网络添加到混合网络总线" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">将网络添加到混合网络总线<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#将网络添加到混合网络总线">#</a></h3>
+<p class="my-4 leading-7">使用“添加总线”对话框或“总线属性”对话框中的“总线网络”列表，将网络添加到混合网络总线。选择“位格式”总线类型时，“总线网络”区域不可用。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">添加总线后，在“添加总线”对话框中，单击“添加”以在“总线网络”列表中添加新行。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在名称/前缀文本框中输入总线前缀。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">按如下方式输入名称：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">对于单个网络，键入网络名称。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">对于一系列顺序网络，请键入网络序列的前缀。</li>
+</ul>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在“开始”文本框中，输入网络序列的起始位数。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在结束文本框中，输入网络序列的结束位数。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要将单个网络添加到总线，请在“前缀/名称”文本框中输入网络名称。请勿为未按位编号排序的单个网络输入起始值和结束值。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“编辑”可修改总线网络列表中选定的单元格。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“删除”可从总线网络列表中删除网络。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“向下”可将总线网络列表中选定的行向下移动一个位置。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">网络在总线网络列表框中出现的顺序决定了网络连接到总线时命名网络的默认顺序。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“向上”可将选定行在总线网络列表中向上移动一个位置。</p>
+</li>
+</ol>
+<h3 id="延伸总线" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">延伸总线<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#延伸总线">#</a></h3>
+<p class="my-4 leading-7">如果您需要更多空间来分散总线连接，或者需要延长现有总线的路径，则可以延伸总线。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">在“原理图编辑”工具栏上，单击“延伸总线”按钮。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">选择总线的任一端点。结束段将跟随指针移动。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击以指示延伸所需的角，或<strong class="font-semibold">右键</strong>单击并单击“添加角”。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">双击以指示新的端点或<strong class="font-semibold">右键</strong>单击并单击“完成”。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">您无法使用“延长母线”命令来缩短母线段。要缩短母线，请删除较长的母线段，然后使用“延长母线”命令重新定义该母线段；或者，您也可以使用“分组”命令来缩短母线段。另请参阅“创建组”。</li>
+</ol>
+<h3 id="移动总线线路" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">移动总线线路<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#移动总线线路">#</a></h3>
+<p class="my-4 leading-7">如果您需要重新定位总线以适应对原理图的其他编辑，您可以移动总线。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">选择一个总线，单击鼠标右键，然后单击“移动”。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">使用指针指示新位置，然后单击以放置。</li>
+</ol>
+<h3 id="分割总线" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">分割总线<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#分割总线">#</a></h3>
+<p class="my-4 leading-7">如果您需要编辑 Bus，您可以在 Bus 上创建新的弯道或 90 度转弯。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">单击“分割总线”按钮。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">选择总线。新的和分割的段将跟随指针移动。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">移动指针以定义线段长度。要定义相反方向的端点，<strong class="font-semibold">右键</strong>单击，然后单击“交换角”。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">指示新段的端点并单击以完成分割。</li>
+</ol>
+<h3 id="删除总线" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">删除总线<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#删除总线">#</a></h3>
+<p class="my-4 leading-7">随着设计的进展，如果您确定不再需要某个总线，则可以删除该总线的一段。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">选择总线。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击鼠标右键，然后单击“删除”。</li>
+</ol>
+<p class="my-4 leading-7">如果删除操作将总线分割为两条独立的总线，则会显示总线名称，以标识任何未命名的总线。每条总线均保留相同的属性。</p>
+<h3 id="删除总线-1" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">删除总线<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#删除总线-1">#</a></h3>
+<p class="my-4 leading-7">如果您确定需要删除在对象模式下选择的总线，您可以选择仅删除总线或删除总线及其连接。</p>
+<p class="my-4 leading-7">另请参阅对象选择模式（首先选择对象）。</p>
+<h4 id="仅删除总线" class="mt-8 leading-6 text-lg title_fb7eb">仅删除总线<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#仅删除总线">#</a></h4>
+<p class="my-4 leading-7">如果需要删除一条总线，您可以选择仅删除一条总线并保持连接不变。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一辆 Bus。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果要保留与总线的连接，请<strong class="font-semibold">右键</strong>单击并单击“保留连接”以启用它。</p>
+<p class="my-4 leading-7">默认情况下启用“保留连接”。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">当菜单中“保留连接”旁边出现复选标记时，表示已启用该功能。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击鼠标右键，然后单击“删除”。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">连接仍保留在原来的位置。</p>
+<h4 id="删除总线及其连接" class="mt-8 leading-6 text-lg title_fb7eb">删除总线及其连接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#删除总线及其连接">#</a></h4>
+<p class="my-4 leading-7">如果需要删除一辆 Bus，您可以选择删除 Bus 及其连接。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一辆 Bus。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果要删除连接到总线的连接，请<strong class="font-semibold">右键</strong>单击并单击“保留连接”以禁用它。</p>
+<p class="my-4 leading-7">默认情况下启用“保留连接”。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">如果菜单中“保留连接”旁边没有出现复选标记，则表示“保留连接”被禁用。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击鼠标右键，然后单击“删除”。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">总线和连接被删除。</p>
+<h2 id="删除连接" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">删除连接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#删除连接">#</a></h2>
+<p class="my-4 leading-7">您可以删除连接，但请注意，当删除的连接是子网时，结果可能会有所不同。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个连接，<strong class="font-semibold">右键</strong>单击，然后单击“删除”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">当通过删除连接将具有系统分配名称的子网分割为两个子网时，其中一个子网会自动分配一个新的系统名称。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">当通过删除连接将具有用户分配名称的子网分割为两个子网时，两个新子网都会保留用户分配的名称，即使没有可见的网络名称标签。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">当子网连接在一起并且都具有用户指定的名称时，即使没有可见的网络名称标签，也会提示用户为组合网络选择一个名称。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">当系统命名子网与用户命名子网连接时，合并后的子网将自动继承用户分配的名称。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">当两个系统命名子网加入时，合并后的子网将继承其中一个子网的名称。</p>
+</li>
+</ul>
+<h2 id="分离" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">分离<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#分离">#</a></h2>
+<p class="my-4 leading-7">使用分离命令从任何连接的网络中释放门、元件、组件组或组选择。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">做出选择。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击鼠标右键，然后单击“分离”。</li>
+</ol>
+<p class="my-4 leading-7">所有网络均已分离。根据“浮空连接”首选项，网络将被赋予未连接的标记或页间连接符。</p>
+<div class="rspress-directive info"><div class="rspress-directive-title">INFO</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">启用“按边界保留”的组选择会在边界处（而非网络终端处）分离网络。网络将被分割为两个实例。命名网络在分割的两侧均保留其原始名称。</p>
+</div></div><!--/$--></div><div class="rspress-doc-footer"><footer class="mt-8"><div class="xs:flex pb-5 px-2 justify-end items-center"><div class="flex text-sm text-text-2 leading-6 sm:leading-8 font-medium"><p>最近更新时间<!-- -->: <span>2025/7/15 10:22:42</span></p></div></div><div class="flex flex-col"></div><div class="flex flex-col sm:flex-row sm:justify-around gap-4 pt-6"><div class="prev_c92d1 flex flex-col"><a href="/sailwind_docs/logic/guide/12_zh.html" class="link_a7cea pager-link_e0d2d"><span class="desc_dcc01">上一页</span><span class="title_a3acb">第 12 章 非电气对象</span></a></div><div class="next_c11be flex flex-col"><a href="/sailwind_docs/logic/guide/14_zh.html" class="link_a7cea pager-link_e0d2d next_ad355"><span class="desc_dcc01">下一页</span><span class="title_a3acb">第 14 章 层次化设计</span></a></div></div></footer></div></div><div class="aside-container_bc5fa"><div class="flex flex-col"><div id="aside-container" class="relative text-sm font-medium"><div class="leading-7 block text-sm font-semibold pl-3">本页目录</div><nav class="mt-1"><ul class="relative"><li><a href="#添加连接" title="添加连接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">添加连接</span></a></li><li><a href="#命名连接" title="命名连接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">命名连接</span></a></li><li><a href="#网络属性概述" title="网络属性概述" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">网络属性概述</span></a></li><li><a href="#创建网络属性" title="创建网络属性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建网络属性</span></a></li><li><a href="#网络的默认属性" title="网络的默认属性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">网络的默认属性</span></a></li><li><a href="#添加电源和接地连接" title="添加电源和接地连接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">添加电源和接地连接</span></a></li><li><a href="#使用浮空连接" title="使用浮空连接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">使用浮空连接</span></a></li><li><a href="#启用浮空连接" title="启用浮空连接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">启用浮空连接</span></a></li><li><a href="#禁用浮空连接并运行连接报告" title="禁用浮空连接并运行连接报告" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">禁用浮空连接并运行连接报告</span></a></li><li><a href="#添加浮空连接" title="添加浮空连接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">添加浮空连接</span></a></li><li><a href="#创建悬空连接" title="创建悬空连接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">创建悬空连接</span></a></li><li><a href="#创建浮空连接" title="创建浮空连接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">创建浮空连接</span></a></li><li><a href="#编辑浮空连接" title="编辑浮空连接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">编辑浮空连接</span></a></li><li><a href="#复制浮空连接" title="复制浮空连接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">复制浮空连接</span></a></li><li><a href="#删除对象时创建浮空连接" title="删除对象时创建浮空连接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">删除对象时创建浮空连接</span></a></li><li><a href="#将对象附加到浮空连接" title="将对象附加到浮空连接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">将对象附加到浮空连接</span></a></li><li><a href="#添加页间连接符" title="添加页间连接符" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">添加页间连接符</span></a></li><li><a href="#编辑每行的页间连接符表编号" title="编辑每行的页间连接符表编号" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">编辑每行的页间连接符表编号</span></a></li><li><a href="#更改连接" title="更改连接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">更改连接</span></a></li><li><a href="#移动连接" title="移动连接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">移动连接</span></a></li><li><a href="#分割连接" title="分割连接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">分割连接</span></a></li><li><a href="#分割片段" title="分割片段" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">分割片段</span></a></li><li><a href="#交换管脚" title="交换管脚" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">交换管脚</span></a></li><li><a href="#使用动词模式下的交换管脚按钮交换管脚" title="使用动词模式下的“交换管脚”按钮交换管脚" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">使用动词模式下的“交换管脚”按钮交换管脚</span></a></li><li><a href="#通过一次选择一个管脚来交换管脚" title="通过一次选择一个管脚来交换管脚" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">通过一次选择一个管脚来交换管脚</span></a></li><li><a href="#通过先选择两个管脚来交换管脚" title="通过先选择两个管脚来交换管脚" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">通过先选择两个管脚来交换管脚</span></a></li><li><a href="#管理-bus" title="管理 Bus" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">管理 Bus</span></a></li><li><a href="#选择总线类型" title="选择总线类型" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">选择总线类型</span></a></li><li><a href="#命名总线" title="命名总线" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">命名总线</span></a></li><li><a href="#命名位格式总线" title="命名位格式总线" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">命名位格式总线</span></a></li><li><a href="#命名混合网络总线" title="命名混合网络总线" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">命名混合网络总线</span></a></li><li><a href="#添加-bus" title="添加 Bus" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">添加 Bus</span></a></li><li><a href="#添加总线连接" title="添加总线连接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">添加总线连接</span></a></li><li><a href="#将网络添加到混合网络总线" title="将网络添加到混合网络总线" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">将网络添加到混合网络总线</span></a></li><li><a href="#延伸总线" title="延伸总线" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">延伸总线</span></a></li><li><a href="#移动总线线路" title="移动总线线路" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">移动总线线路</span></a></li><li><a href="#分割总线" title="分割总线" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">分割总线</span></a></li><li><a href="#删除总线" title="删除总线" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">删除总线</span></a></li><li><a href="#删除总线-1" title="删除总线" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">删除总线</span></a></li><li><a href="#仅删除总线" title="仅删除总线" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">仅删除总线</span></a></li><li><a href="#删除总线及其连接" title="删除总线及其连接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">删除总线及其连接</span></a></li><li><a href="#删除连接" title="删除连接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">删除连接</span></a></li><li><a href="#分离" title="分离" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">分离</span></a></li></ul></nav></div></div></div></div></div></div></section></div>
+    <div id="search-container"></div>
+  </body>
+</html>

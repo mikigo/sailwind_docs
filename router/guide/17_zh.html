@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Rspress v1.45.0">
+    <title data-rh="true">第 17 章 自动布线 - SailWind</title><meta data-rh="true" name="description" content="SailWind"/>
+  <script>{;const saved = localStorage.getItem('rspress-theme-appearance');const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;const isDark = !saved || saved === 'auto' ? preferDark : saved === 'dark';document.documentElement.classList.toggle('dark', isDark);document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';}</script><link rel="icon" href="/sailwind_docs/favicon.ico"><script defer src="/sailwind_docs/static/js/styles.f5ec16c7.js"></script><script defer src="/sailwind_docs/static/js/lib-react.36f9b428.js"></script><script defer src="/sailwind_docs/static/js/lib-router.971f4280.js"></script><script defer src="/sailwind_docs/static/js/2886.6c8a4c3c.js"></script><script defer src="/sailwind_docs/static/js/index.ef746291.js"></script><link href="/sailwind_docs/static/css/styles.6524924d.css" rel="stylesheet"></head>
+
+  <body >
+    <div id="root"><div class="navContainer_d18b1 rspress-nav px-6  sticky_ddfa7"><div class="container_e4235 flex justify-between items-center h-full"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div><div class="flex flex-1 justify-end items-center"><div class="rightNav_a2fea"><div class="flex sm:flex-1 items-center sm:pl-4 sm:pr-2"><div class="rspress-nav-search-button navSearchButton_df1fb"><button><svg width="18" height="18" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg><p class="searchWord_af2c1">搜索</p><div style="opacity:0"><span></span><span>K</span></div></button></div><div class="mobileNavSearchButton_d85a9"><svg width="24" height="24" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg></div></div><div class="rspress-nav-menu menu h-14"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div><div class="flex-center flex-row"><div class="mx-2"><div class="md:mr-2 rspress-nav-appearance"><div class="p-1 border border-solid border-gray-300 text-gray-400  cursor-pointer rounded-md hover:border-gray-600 hover:text-gray-600 dark:hover:border-gray-200 dark:hover:text-gray-200 transition-all duration-300 w-7 h-7"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="dark:hidden" width="18" height="18" fill="currentColor"><path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6m0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4M12 4c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M12 24c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M5.6 6.6c-.3 0-.5-.1-.7-.3L3.5 4.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.1.2-.4.3-.7.3M19.8 20.8c-.3 0-.5-.1-.7-.3l-1.4-1.4c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.2.2-.5.3-.7.3M3 13H1c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M23 13h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M4.2 20.8c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.4.3-.7.3M18.4 6.6c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.5.3-.7.3"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="hidden dark:block" width="18" height="18" fill="currentColor"><path d="M12.1 22h-.9c-5.5-.5-9.5-5.4-9-10.9.4-4.8 4.2-8.6 9-9 .4 0 .8.2 1 .5s.2.8-.1 1.1c-2 2.7-1.4 6.4 1.3 8.4 2.1 1.6 5 1.6 7.1 0 .3-.2.7-.3 1.1-.1.3.2.5.6.5 1-.2 2.7-1.5 5.1-3.6 6.8-1.9 1.4-4.1 2.2-6.4 2.2M9.3 4.4c-2.9 1-5 3.6-5.2 6.8-.4 4.4 2.8 8.3 7.2 8.7 2.1.2 4.2-.4 5.8-1.8 1.1-.9 1.9-2.1 2.4-3.4-2.5.9-5.3.5-7.5-1.1-2.8-2.2-3.9-5.9-2.7-9.2"></path></svg></div></div></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div><div class="mobileNavMenu_e7045"><div class="navScreen_ec30c  rspress-nav-screen" id="navScreen"><div class="container_c935d"><div class="navMenu_b887b"><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div></div><div class="flex-center flex-col gap-2"><div class="mt-2 navAppearance_bf893 flex justify-center"></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div></div><button aria-label="mobile hamburger" class=" rspress-mobile-hamburger navHamburger_ac64c text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><circle cx="8" cy="16" r="2" fill="currentColor"></circle><circle cx="16" cy="16" r="2" fill="currentColor"></circle><circle cx="24" cy="16" r="2" fill="currentColor"></circle></svg></button></div></div></div></div><section><div class="docLayout_af141 pt-0"><aside class="sidebar_dd719 rspress-sidebar "><div class="navTitleMask_fb17c"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div></div><div class="rspress-scrollbar sidebarContent_da296"><nav class="pb-2"><a href="/sailwind_docs/router/index.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:14px;margin-left:0;border-radius:0 var(--rp-radius) var(--rp-radius) 0;padding-left:24px;font-weight:bold"><span>章节预览</span></div></a><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">指南(Guide)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 1 章 自动布线快速入门</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 2 章 交互式布线快速入门</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 3 章 设计准备</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 4 章 文件操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 5 章 界面元素</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 6 章 无模命令与快捷键</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 7 章 视图</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 8 章 撤销、重做、重复与删除</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 9 章 搜索与选择</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 10 章 电气网络</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 11 章 设置规则</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 12 章 启用设计规则检查</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 13 章 元件放置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 14 章 虚拟引脚</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 15 章 覆铜平面与铜形状</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/16_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 16 章 布线设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/17_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItemActive_de63c mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 17 章 自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/18_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 18 章 选择性自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/19_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 19 章 手动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/20_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 20 章 手动编辑</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/21_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 21 章 设计验证</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/22_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 22 章 报告</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/23_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 23 章 授权许可</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/24_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 24 章 SailWind 布线器 GUI 参考</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/25_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 25 章 软件启动选项</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/26_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 26 章 自定义界面</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">教程(Tutorial)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>学习用户界面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>约束条件分配</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>设计准备</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>元件放置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>交互式布线创建走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用交互式布线创建高速走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用 SailWind Router 进行自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>设计规则检查</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">快速参考(Quick Reference)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/qr/modless.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>无模命令</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/qr/shortcut.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>键盘快捷键</span></div></a></div></div></div></section></nav></div></aside><div class="flex-1 relative min-w-0"><div class="rspress-sidebar-menu-container "><div class="rspress-sidebar-menu"><button type="button" class="flex-center mr-auto"><div class="text-md mr-2"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"></path></svg></div><span class="text-sm">Menu</span></button><button type="button" class="flex-center ml-auto"><span class="text-sm">本页目录</span><div class="text-md mr-2" style="transform:rotate(0deg);transition:transform 0.2s ease-out;margin-top:2px"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></button><div class="rspress-local-toc-container "><ul><li><a href="#创建布线前分析报告" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建布线前分析报告</span></a></li><li><a href="#自动布线策略" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">自动布线策略</span></a></li><li><a href="#自动布线走线类型" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">自动布线走线类型</span></a></li><li><a href="#居中走线" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">居中走线</span></a></li><li><a href="#扇出走线" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">扇出走线</span></a></li><li><a href="#斜切走线" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">斜切走线</span></a></li><li><a href="#优化走线" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">优化走线</span></a></li><li><a href="#模式走线" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">模式走线</span></a></li><li><a href="#布线走线" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">布线走线</span></a></li><li><a href="#调谐走线" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">调谐走线</span></a></li><li><a href="#设置自动布线策略" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">设置自动布线策略</span></a></li><li><a href="#指定要执行的布线阶段" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">指定要执行的布线阶段</span></a></li><li><a href="#设置布线顺序" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">设置布线顺序</span></a></li><li><a href="#自动布线设计" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">自动布线设计</span></a></li><li><a href="#暂停自动布线" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">暂停自动布线</span></a></li><li><a href="#恢复自动布线" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">恢复自动布线</span></a></li><li><a href="#停止自动布线" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">停止自动布线</span></a></li><li><a href="#布线进度指示器" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">布线进度指示器</span></a></li><li><a href="#报告布线结果" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">报告布线结果</span></a></li><li><a href="#在自动布线期间分配测试点" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">在自动布线期间分配测试点</span></a></li><li><a href="#自动布线消息" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">自动布线消息</span></a></li><li><a href="#预布线分析" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">预布线分析</span></a></li><li><a href="#布线状态" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">布线状态</span></a></li><li><a href="#布线完成" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">布线完成</span></a></li><li><a href="#布线进度指示工具提示" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">布线进度指示工具提示</span></a></li><li><a href="#布线报告" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">布线报告</span></a></li></ul></div></div></div><div class="content_ff766 rspress-doc-container flex"><div class="flex-1 overflow-x-auto"><div class="rspress-doc"><!--$--><h1 id="第-17-章-自动布线" class="rspress-doc-title text-3xl mb-10 leading-10 tracking-tight title_fb7eb">第 17 章 自动布线<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#第-17-章-自动布线">#</a></h1>
+<p class="my-4 leading-7">设置走线类型和布线顺序策略可确保批量自动布线时获得最佳结果。</p>
+<h2 id="创建布线前分析报告" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建布线前分析报告<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建布线前分析报告">#</a></h2>
+<p class="my-4 leading-7">布线前分析报告提供可能阻碍自动布线的设计属性信息，例如网格设置、禁用布线状态的网络或具有推挤保护状态的引脚对。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">工具 &gt; 布线前分析</strong> 菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">布线前分析完成后，查看发送到输出窗口 <strong class="font-semibold">状态</strong> 标签页的任何错误或警告。</p>
+</li>
+</ol>
+<h2 id="自动布线策略" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">自动布线策略<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#自动布线策略">#</a></h2>
+<p class="my-4 leading-7">自动布线策略是一组定义电路板应如何自动布线的选项。策略包含多个走线。您可以使用策略对整个设计进行自动布线，也可以选择组件并使用走线类型逐个布线。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 本节讨论对整个设计进行自动布线以及策略中的走线类型。有关逐个选择组件进行布线的更多信息，请参阅&quot;按选择自动布线&quot;。</p>
+</div></div>
+<p class="my-4 leading-7">自动布线策略定义了自动布线期间要执行的顺序操作，包括：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">自动布线器应运行的走线</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">自动布线期间运行的走线类型</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">走线保护</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">每条走线结束时暂停</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">自动布线强度</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">自动布线组件、网络、网络类、差分对和匹配长度组的顺序</p>
+</li>
+</ul>
+<p class="my-4 leading-7">您无法保存自动布线策略。为要自动布线的每个文件设置策略。</p>
+<p class="my-4 leading-7">更多信息，请参阅<a href="#page-11-0" class="link_a7cea  link_a9ef4 inline-link_f855c">&quot;指定要布线的走线&quot;第 274 页</a>和<a href="#page-12-0" class="link_a7cea  link_a9ef4 inline-link_f855c">&quot;设置布线顺序&quot;第 275 页</a>。</p>
+<h2 id="自动布线走线类型" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">自动布线走线类型<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#自动布线走线类型">#</a></h2>
+<p class="my-4 leading-7">自动布线策略包含多种走线类型。每种走线完成特定任务；它也可能执行多个子走线。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">布线前走线</strong> 仅在必要时使用这些走线，因为它们可能阻碍布线完成。默认策略从 Route 走线开始并跳过这些布线前走线。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">扇出走线</strong> 仅适用于复杂或密集的组件，如 BGA。如果对整个设计使用扇出走线，生成的扇出会占用电路板上过多空间。结果导致布线更加困难，放置更多过孔，需要更多时间布线，完成率下降。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">模式走线</strong> 仅适用于连接极其规则的电路板。您也可以使用此走线创建设计的多个版本进行比较。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">布线后走线</strong> 居中、优化、斜切、测试点和调谐是布线后走线。<strong class="font-semibold">策略</strong>标签页中的强度设置显著影响这些走线。更多信息，请参阅<a href="#page-0-1" class="link_a7cea  link_a9ef4 inline-link_f855c">&quot;自动布线策略&quot;第 263 页</a>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><a href="#page-2-1" class="link_a7cea  link_a9ef4 inline-link_f855c">居中走线</a> <a href="#page-3-0" class="link_a7cea  link_a9ef4 inline-link_f855c">扇出走线</a> <a href="#page-5-0" class="link_a7cea  link_a9ef4 inline-link_f855c">斜切走线</a> <a href="#page-6-0" class="link_a7cea  link_a9ef4 inline-link_f855c">优化走线</a> <a href="#page-8-0" class="link_a7cea  link_a9ef4 inline-link_f855c">模式走线</a> <a href="#page-8-1" class="link_a7cea  link_a9ef4 inline-link_f855c">布线走线</a> <a href="#page-9-0" class="link_a7cea  link_a9ef4 inline-link_f855c">调谐</a>走线</p>
+</li>
+</ul>
+<h3 id="居中走线" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">居中走线<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#居中走线">#</a></h3>
+<p class="my-4 leading-7">居中走线自动将走线等距放置在相邻组件引脚或过孔的焊盘之间，以均匀分配通道中的可用空间。居中不会违反设计规则。</p>
+<p class="my-4 leading-7">SailWind Router 在居中过程中保持差分对。差分对的肩部区域（起始和结束区域）像普通走线段一样居中。控制间隙部分的线段作为一个宽走线居中。围绕障碍物分割的差分对不居中。</p>
+<p class="my-4 leading-7">如果从引脚或过孔投射的路径重叠，则通道符合居中条件。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 56. 符合居中条件的通道</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/17/_page_3_Figure_2.jpeg" alt=""/></p>
+<p class="my-4 leading-7">要限制居中的通道数量，请设置最大通道宽度。任何大于此宽度的通道都不符合居中条件。在选项对话框的<strong class="font-semibold">布线</strong>标签页中设置最大通道宽度。</p>
+<p class="my-4 leading-7">居中走线有以下限制：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">居中走线仅居中与通道方向平行的走线。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">软件通过&quot;拉伸&quot;垂直于通道的线段来实现走线居中。如果没有可用的垂直走线或没有足够的空间拉伸，则不进行走线居中。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">居中走线不会添加拐角来实现居中。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">居中走线只能调整通过通道的走线。它不能调整附近的走线以适应居中。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">居中走线不调整任何角度走线段。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">居中走线不保持长度规则或蛇形线。居中走线将作为常规走线段调整蛇形线部分的走线段；它不保留蛇形线。但是，如果导致新错误，则不执行居中。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">更多信息，请参阅&quot;选项对话框，布线类别，常规子类别&quot;第 450 页中的居中值和<a href="#page-0-1" class="link_a7cea  link_a9ef4 inline-link_f855c">&quot;自动布线策略&quot;第 263 页</a>。</p>
+<h3 id="扇出走线" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">扇出走线<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#扇出走线">#</a></h3>
+<p class="my-4 leading-7">通过执行扇出走线，您可以缩短整体自动布线时间并提高完成率，因为此走线在过程早期创建对引脚的访问。</p>
+<p class="my-4 leading-7">此走线为不可访问的 SMD 组件引脚放置过孔，并从过孔布线到引脚。此走线定位设计中的所有 SMD 引脚，并从每个引脚布设一条短走线，以过孔终止。在&quot;属性对话框，扇出标签页&quot;第 486 页设置扇出走线的选项。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 保护您创建的任何扇出，以防止扇出后布线或编辑操作推挤或重新布线扇出走线。这些扇出后操作忽略属性对话框<strong class="font-semibold">扇出</strong>标签页中的扇出长度设置。</p>
+</div></div>
+<p class="my-4 leading-7">扇出走线包括两个过程：预放置扇出和自由扇出。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">预放置扇出</strong></p>
+<p class="my-4 leading-7">此过程尝试放置遵守当前最小间距规则和您设置的过孔间距的过孔。如果过孔放置违反规则，SailWind Router 不放置过孔，也不为该引脚创建扇出。成功放置过孔后，SailWind Router 布设扇出。</p>
+<p class="my-4 leading-7">您可以指定过孔是放置在固定网格上还是间隔以适应一条或两条走线在它们之间运行。使用属性对话框<strong class="font-semibold">扇出</strong>标签页中的过孔间距选项设置间距。</p>
+<p class="my-4 leading-7">您还可以指定是否共享引脚和过孔以完成扇出。您可以通过将它们互连到单个公共过孔来扇出多个引脚。通过<strong class="font-semibold">扇出</strong>标签页（属性对话框）中的共享选项设置此共享功能。</p>
+<p class="my-4 leading-7">您还可以自定义过孔的扇出模式以帮助避免障碍物或不可用的电路板区域。在<strong class="font-semibold">扇出</strong>标签页的对齐列表和方向列表中设置模式。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/17/_page_4_Figure_9.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 57. 自定义扇出模式</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">自由扇出</strong></p>
+<p class="my-4 leading-7">自由扇出过程通过搜索路径、使用推挤和推挤功能以及使用&quot;撕开&quot;和&quot;重试&quot;功能为扇出腾出空间来完成预布线扇出过程失败的扇出，如下图所示。自由扇出过程忽略模式设置以完成扇出。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 58. 自由扇出过程</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/17/_page_5_Figure_2.jpeg" alt=""/></p>
+<h3 id="斜切走线" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">斜切走线<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#斜切走线">#</a></h3>
+<p class="my-4 leading-7">斜切走线将指定角度的所有布线拐角转换为对角拐角。您可以在选项对话框的<strong class="font-semibold">布线</strong>标签页中设置斜切选项。根据<strong class="font-semibold">布线</strong>标签页中的设置，您可以将任何角度的拐角转换为斜切。</p>
+<p class="my-4 leading-7">SailWind Router 仅在空间允许时向走线拐角添加斜切。如果斜切创建间距或第一拐角规则违规，软件跳过该拐角且不添加斜切。</p>
+<p class="my-4 leading-7">如果选择使用圆弧作为斜切，软件使用以下计算创建斜切：&lt;走线宽度&gt; / 2 X 比率</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/17/_page_5_Figure_7.jpeg" alt=""/></p>
+<p class="my-4 leading-7">小段和间距违规提供了使用圆弧作为斜切的两个原因。</p>
+<p class="my-4 leading-7">如果走线有小段，并且无法创建足够大的斜切，SailWind Router 为三个段创建一个圆弧：</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/17/_page_5_Picture_10.jpeg" alt=""/></p>
+<p class="my-4 leading-7">如果由于间距违规无法创建所需大小的圆弧，软件不执行任何推挤和犁耕或走线调整。它创建一个较小的圆弧：</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/17/_page_6_Picture_1.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">斜切和长度调谐</strong></p>
+<p class="my-4 leading-7">调谐操作假定在添加蛇形线之前走线已平滑。如果在斜切走线之前执行调谐，斜切的添加会改变走线长度，可能创建长度违规。SailWind Router 尝试在修改走线的第一个平行段或属于同一网络的其他走线上添加/移除长度差异（如果需要）。</p>
+<p class="my-4 leading-7">对于差分对，斜切可能导致走线上的不同违规。在这种情况下，SailWind Router 尝试调整两条走线共有的控制间隙部分的长度，以及每条走线单独的肩部。</p>
+<h3 id="优化走线" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">优化走线<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#优化走线">#</a></h3>
+<p class="my-4 leading-7">优化走线分析每条走线，并尝试通过移除额外段、减少过孔使用和缩短走线长度来提高布线模式的质量。优化走线包括以下过程：过孔最小化、抛光和平滑。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">过孔最小化</strong></p>
+<p class="my-4 leading-7">过孔最小化过程通过撕开现有走线并找到使用较少过孔的新路径来减少设计中的过孔使用，如下图所示。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/17/_page_6_Figure_9.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">表 62. 过孔最小化过程</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">抛光</strong></p>
+<p class="my-4 leading-7">抛光过程减少走线的曼哈顿比率，如下图所示。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">表 63. 抛光过程</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/17/_page_7_Figure_2.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">平滑</strong></p>
+<p class="my-4 leading-7">平滑移除走线中不必要的拐角和段，同时保持相同路径。平滑还可以减少长度，这不仅为电路板上的额外走线腾出空间，还有助于满足和维护焊盘入口和第一拐角规则。</p>
+<p class="my-4 leading-7">平滑过程执行以下操作：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">减少曼哈顿比率。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">改善焊盘入口和走线连接。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">优化走线模式而不改变其拓扑结构。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">消除推挤过程可能留下的同网络走线交叉。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">通过将走线直接连接到引脚来消除同网络走线到拐角的违规。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">消除同网络走线到走线的违规。</p>
+</li>
+</ul>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 平滑不保持长度控制走线的长度规则。</p>
+</div></div>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/17/_page_7_Figure_14.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">表 64. 平滑过程</strong></p>
+<p class="my-4 leading-7">更多信息，请参阅&quot;交互式布线设置&quot;第 291 页和&quot;走线平滑&quot;第 351 页。</p>
+<h3 id="模式走线" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">模式走线<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#模式走线">#</a></h3>
+<p class="my-4 leading-7">模式走线搜索可以使用典型 C布线模式、Z 布线模式和存储器模式完成的未布线连接组。然后模式走线对它们进行布线。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/17/_page_8_Figure_3.jpeg" alt=""/></p>
+<p class="my-4 leading-7">在模式走线期间，边界框包围要模式布线的未布线组。如果有足够的空间创建走线并遵守间距规则，SailWind Router 创建模式。如果边界框内出现障碍物或模式违反规则，则模式失败。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 60. 模式走线期间的边界框</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/17/_page_8_Figure_6.jpeg" alt=""/></p>
+<p class="my-4 leading-7">对于 C模式，形成 C模式的引脚必须沿 X轴或 Y轴对齐，否则模式失败。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 61. 模式走线期间的 C模式</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/17/_page_8_Figure_9.jpeg" alt=""/></p>
+<h3 id="布线走线" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">布线走线<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#布线走线">#</a></h3>
+<p class="my-4 leading-7">布线走线是核心走线，执行大部分自动布线。在此走线期间，SailWind Router 尝试依次布线每个未布线，直到尝试所有连接。布线走线包含许多过程——串行、撕开重试、推挤和交叉触摸。</p>
+<p class="my-4 leading-7">下表显示布线走线过程。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">过程</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">操作</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">串行</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">通过找到未布线端点之间障碍物周围的最短路径将未布线转换为走线。路径中不能存在障碍物。<!-- -->如果未找到路径，SailWind Router 跳过未布线。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">撕开重试</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">通过撕开现有走线并找到新路径为其他走线创建空间来提高完成率。<!-- -->如果 SailWind Router 无法找到新路径，则取消过程并将走线恢复到原始状态。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">推挤</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">推开走线为新走线创建空间。软件与撕开重试过程一起执行此过程。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">交叉触摸</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">消除由其他自动布线操作创建或修改现有走线或模式时创建的交叉触摸违规。<!-- -->例如，推挤过程可能迫使走线&quot;跳过&quot;引脚，为退出引脚的走线创建交叉违规。此过程<!-- -->连续尝试重新布线走线以消除违规。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">如果软件无法解决违规，则取消操作并将走线恢复到原始状态。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 65. 布线走线过程</strong></p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> SailWind Router 与所有其他走线和过程一起执行此过程。它不会完成带有违规的走线。它要么移除所有违规，要么取消走线布线。</p>
+</div></div>
+<h3 id="调谐走线" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">调谐走线<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#调谐走线">#</a></h3>
+<p class="my-4 leading-7">调谐走线调整长度控制走线的长度。此走线仅检查完全布线的网络、电气网络、引脚对或差分对的走线长度，并在启用长度规则和长度控制时分析当前长度。</p>
+<p class="my-4 leading-7">调谐走线根据以下条件进行调整：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果相邻走线段的累积长度在最小和最大走线长度范围内，调谐走线跳过该走线且不调整它。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果走线长于最大走线长度，调谐走线撕开它并将其放入布线队列。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果走线长度小于最小走线长度，调谐走线通过添加蛇形模式来改变长度。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果差分对中只有一个成员满足匹配长度组规则，则认为该对不匹配，调谐走线调整不符合的对成员。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果差分对成员之间的长度差大于 300 mils，调谐走线跳过该对，保持其先前状态（未布线或未调谐）。</p>
+</li>
+</ul>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 调谐差分对时，SailWind Router 在较短走线的肩部区域添加小蛇形线，而不犁耕或推挤障碍物。如果肩部区域无法容纳小蛇形线，SailWind Router 在控制间隙区域尽可能靠近肩部区域添加蛇形线。</p>
+</div></div>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/17/_page_10_Figure_4.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">最大层级</strong></p>
+<p class="my-4 leading-7">长度调整分阶段创建。第一阶段是常规水平或垂直蛇形线。如果这仍然不够长度，蛇形线方向旋转 90 度并创建额外的蛇形线。SailWind Router 将继续以 90 度添加蛇形线，直到满足长度调整或达到最大层级。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">常规蛇形线</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">添加 90 度蛇形线</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">最大层级为 3 的蛇形线</th>
+</tr>
+</thead>
+</table>
+<p class="my-4 leading-7">默认情况下，在 PADS Router 9.0 之前创建的设计中，最大层级值设置为 8。</p>
+<h2 id="设置自动布线策略" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">设置自动布线策略<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设置自动布线策略">#</a></h2>
+<p class="my-4 leading-7">SailWind Router 在设置自动布线策略方面提供极大灵活性。您可以从一系列特定的布线走线类型中选择以完成所需的自动布线任务。您还可以系统地设置布线策略以指定 SailWind Router 布线特定设计对象的顺序。</p>
+<p class="my-4 leading-7">例如，您可以设置策略执行以下操作：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">扇出特定的高引脚数组件并保护布线</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">扇出其余组件</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">布线关键信号如时钟</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">布线电源网络</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">布线与特定组件关联的所有网络</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在特定层上布线数据总线以控制返回路径</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在特定层上布线地址总线以控制网络分布</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在特定层上布线差分对网络以控制阻抗</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在特定层上布线其余杂项网络</p>
+</li>
+</ul>
+<p class="my-4 leading-7">您可以完全控制布线顺序、布线走线强度以及在过程中任何点启动、停止、暂停和检查布线结果的能力。</p>
+<h2 id="指定要执行的布线阶段" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">指定要执行的布线阶段<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#指定要执行的布线阶段">#</a></h2>
+<p class="my-4 leading-7">使用<strong class="font-semibold">Routing</strong>类别 &gt; <strong class="font-semibold">Strategy</strong>子类别来指定要运行的阶段、使用的布线强度、是否保护生成的走线，以及是否在阶段完成后暂停。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">Tools &gt; Options</strong>菜单项；然后在 Options 对话框中，点击<strong class="font-semibold">Routing</strong>类别 &gt; <strong class="font-semibold">Strategy</strong>子类别。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 Pass 列中，选择要运行的每个阶段类型。您可以运行任意组合的阶段。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果希望 SailWind Router 在执行选定阶段后保护任何生成的走线，请选中&quot;Protect&quot;复选框（位于&quot;Pass definition&quot;区域表格的 Protect 列中）。例如，如果希望 SailWind Router 保护在 Center 阶段生成的走线更改，请为 Center 阶段类型选中 Protect 复选框。（这会保护在相应阶段类型中完成的走线并固定过孔。）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 Pause 列中，如果希望 SailWind Router 在完成相应阶段后暂停布线，请选中该阶段的复选框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 Intensity 列中，选择适当的强度。</p>
+</li>
+</ol>
+<p class="my-4 leading-7"><em>Intensity</em>决定了布线器在一个阶段可以投入的精力与时间。您不能为 Center 阶段设置强度。</p>
+<ol start="6" class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">设置<a href="#page-12-0" class="link_a7cea  link_a9ef4 inline-link_f855c">布线顺序在第 275 页</a>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">OK</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">定义策略后，点击 Routing 工具栏上的<strong class="font-semibold">Start Autorouting</strong>按钮来自动布线设计。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">如果 Options 对话框处于打开状态，每个完成的阶段都会在 Done 列中显示一个勾选标记。这些勾选标记会保留在<strong class="font-semibold">Routing</strong>类别 &gt; <strong class="font-semibold">Strategy</strong>子类别中，直到您修改自动布线策略或重新启动自动布线。这是一个只读列；您不能手动将阶段标记为完成。</p>
+<p class="my-4 leading-7">该策略默认保存在*\SailWind Projects*文件夹中。</p>
+<h2 id="设置布线顺序" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">设置布线顺序<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设置布线顺序">#</a></h2>
+<p class="my-4 leading-7">使用 Routing order 列表来指定为选定阶段自动布线组件、网络、网络类、差分对和匹配长度组的顺序。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">Routing order 定义窗格中的某些对象类型对布线顺序操作无效。<strong class="font-semibold">Selected</strong>按钮仅在对象视图窗格、设计本身或 Routing order 定义窗格中选择了组件、网络、网络类、差分对和匹配长度组时可用。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">Tools &gt; Options</strong>菜单项；然后在 Options 对话框中，点击<strong class="font-semibold">Routing</strong>类别 &gt; <strong class="font-semibold">Strategy</strong>子类别。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 Pass Type 列（位于&quot;Pass definition&quot;表格中），点击要设置布线顺序的阶段类型。默认布线顺序显示在表格下方的 Routing Order 框中。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要向布线顺序添加项目，请执行以下任一操作：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要添加与平面层关联的所有网络，点击<strong class="font-semibold">Plane Nets</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要添加所有网络，点击<strong class="font-semibold">All Nets</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要添加单个网络，在左侧窗格（Routing order definition）中选择要添加的组件或网络，然后点击<strong class="font-semibold">Selected</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要从 Routing Order 列表中移除所有项目，点击<strong class="font-semibold">Clear</strong>。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p class="my-4 leading-7">您还可以使用以下方法将连接到组件的网络添加到布线顺序中：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">Project Explorer 的Object View 选项卡</strong> 您可以从<strong class="font-semibold">Object View</strong>选项卡添加网络，方法与使用 Routing order definition 列表添加网络完全相同。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">工作区</strong> 确保在 Selection Filter 工具栏上使网络可供选择。</p>
+</li>
+</ul>
+<ol start="4" class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用 Routing Order 窗格按钮删除和移动项目。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">OK</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">布线策略保存在*\SailWind Projects*文件夹中。当您自动布线设计时，将使用这些设置。如果对话框处于打开状态，每个阶段完成后会在 Done 列中显示一个勾选标记。</p>
+<h2 id="自动布线设计" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">自动布线设计<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#自动布线设计">#</a></h2>
+<p class="my-4 leading-7">Autoroute 命令启动自动布线器，并开始执行您在 Options 对话框 &gt; <strong class="font-semibold">Routing</strong>类别 &gt; <strong class="font-semibold">Strategy</strong>子类别中指定的布线算法和阶段。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">您不能自动布线没有板边框或板边框不是闭合形状的设计。尝试这样做会导致&quot;无法布线具有开放板边框的设计&quot;错误消息。使用 SailWind Layout 创建板边框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果您选择在<a href="#page-0-1" class="link_a7cea  link_a9ef4 inline-link_f855c">设置策略在第 263 页</a>之前自动布线设计，则会显示一条消息提示您设置策略。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">当您自动布线选定的对象时，布线顺序中的 All Nets 设置（在 Options 对话框 &gt; <strong class="font-semibold">Routing</strong>类别 &gt; <strong class="font-semibold">Strategy</strong>子类别中设置）将被忽略。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">在 Routing 工具栏上，点击<strong class="font-semibold">Start Autorouting</strong>按钮或点击<strong class="font-semibold">Tools &gt; Autoroute &gt; Start</strong>菜单项。当您开始自动布线或在选择上运行阶段类型时，程序会执行预布线分析，并将任何错误或警告报告到 Output 窗口的<strong class="font-semibold">Status</strong>选项卡。如果您想纠正任何报告的问题，必须先停止自动布线。</p>
+<h2 id="暂停自动布线" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">暂停自动布线<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#暂停自动布线">#</a></h2>
+<p class="my-4 leading-7">使用 Pause 在阶段之间暂停自动布线，以检查统计信息和完成率，然后再继续或取消自动布线。Pause 功能在当前子阶段结束时停止布线。SailWind Router 存储阶段和阶段内的点，以便您可以从暂停的点恢复自动布线。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在标准工具栏上，点击<strong class="font-semibold">Routing toolbar</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">Pause</strong>按钮。</p>
+</li>
+</ol>
+<h2 id="恢复自动布线" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">恢复自动布线<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#恢复自动布线">#</a></h2>
+<p class="my-4 leading-7">使用 Resume 在暂停后开始自动布线。布线从您暂停的子阶段开始。使用 Stop 结束自动布线。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在标准工具栏上，点击<strong class="font-semibold">Routing</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">Resume</strong>按钮。</p>
+</li>
+</ol>
+<h2 id="停止自动布线" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">停止自动布线<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#停止自动布线">#</a></h2>
+<p class="my-4 leading-7">使用<strong class="font-semibold">Stop</strong>随时结束自动布线。<strong class="font-semibold">Stop</strong>按钮在当前连接结束时停止布线。然后 SailWind Router 清除 Options 对话框 &gt; <strong class="font-semibold">Routing</strong>类别 &gt; <strong class="font-semibold">Strategy</strong>子类别中的所有 Done 复选框。</p>
+<p class="my-4 leading-7">当您选择<strong class="font-semibold">Stop</strong>时，无法恢复自动布线。您只能从策略的开始处启动自动布线。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在标准工具栏上，点击<strong class="font-semibold">Routing</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">Stop</strong>按钮。</p>
+</li>
+</ol>
+<h2 id="布线进度指示器" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">布线进度指示器<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#布线进度指示器">#</a></h2>
+<p class="my-4 leading-7">状态栏包含一个布线进度指示器，带有显示布线器执行的每个阶段和子阶段完成率的 ToolTip。这有助于您评估策略和您为布线选择的设置的有效性。</p>
+<h2 id="报告布线结果" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">报告布线结果<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#报告布线结果">#</a></h2>
+<p class="my-4 leading-7">当您通过运行阶段类型或启动自动布线命令来自动布线设计时，SailWind Router 报告两种类型的消息：预布线分析消息和布线状态消息。这些消息出现在布线报告中，该报告列出了预布线消息、设计名称、阶段数量、执行的阶段类型以及每个阶段的其他统计信息。</p>
+<p class="my-4 leading-7">布线报告<em>RoutingReport.txt</em>位于*\SailWind Projects*文件夹中。此文件的链接会自动创建在 Output 窗口的<strong class="font-semibold">Status</strong>选项卡中。您可以通过点击<strong class="font-semibold">Status</strong>选项卡上的链接来打开和查看该文件。</p>
+<h2 id="在自动布线期间分配测试点" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">在自动布线期间分配测试点<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#在自动布线期间分配测试点">#</a></h2>
+<p class="my-4 leading-7">您可以在自动布线期间创建可访问的网络。此过程使测试点能够在自动布线&quot;Route&quot;阶段放置。当添加走线时，自动布线器还尝试为每个网络添加测试点，使用沿网络的过孔或组件引脚。当有人将 PCB 插入自动测试设备(ATE)时，过孔或引脚充当网络的测试点。在自动布线期间添加测试点会牺牲完成率以获得可访问性。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">Tools &gt; Options</strong>菜单项；然后在 Options 对话框中，点击 Test Points 类别。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选中&quot;Create test points during autorouting&quot;复选框。根据需要设置其他可测试性选项。更多信息，请参见第 459 页的&quot;Options Dialog Box, Test Points Category&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">OK</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 Routing 工具栏上，点击<strong class="font-semibold">Start</strong>按钮。当您自动布线设计时，SailWind Router 会使用测试点设置。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 在测试点放置期间，SailWind Router 会遵守在 SailWind Layout 中设置的测试点禁区。</p>
+</div></div>
+<h2 id="自动布线消息" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">自动布线消息<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#自动布线消息">#</a></h2>
+<p class="my-4 leading-7">当您自动布线设计（通过使用自动布线命令或运行阶段类型）时，SailWind Router 报告两种类型的消息：预布线分析和布线状态。</p>
+<p class="my-4 leading-7">当自动布线完成，或当您停止自动布线时，SailWind Router 会创建一个详细说明自动布线结果的布线报告。更多信息，请参见<a href="#page-21-0" class="link_a7cea  link_a9ef4 inline-link_f855c">布线报告</a>。</p>
+<p class="my-4 leading-7"><a href="#page-16-1" class="link_a7cea  link_a9ef4 inline-link_f855c">预布线分析</a> <a href="#page-17-0" class="link_a7cea  link_a9ef4 inline-link_f855c">布线状态</a> <a href="#page-20-0" class="link_a7cea  link_a9ef4 inline-link_f855c">布线完成</a> 布线<a href="#page-20-1" class="link_a7cea  link_a9ef4 inline-link_f855c">进度</a> 指示器 ToolTip <a href="#page-21-0" class="link_a7cea  link_a9ef4 inline-link_f855c">布线报告</a></p>
+<h3 id="预布线分析" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">预布线分析<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#预布线分析">#</a></h3>
+<p class="my-4 leading-7">当您开始自动布线时，SailWind Router 会分析设计中可能影响或取消布线的问题条件。相关消息出现在 Output 窗口的<strong class="font-semibold">Status</strong>选项卡中。这些消息仅在布线整个设计时出现在布线报告中。要纠正任何报告的问题，必须先停止布线。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">选择依赖性</strong></p>
+<p class="my-4 leading-7">如下表所示，预布线分析的类型取决于当前选择。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">选择</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">分析范围</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">分析内容</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">无</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">整个设计</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">全部</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">热状态</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">潜在的平面网络</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">无布线设置</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">过孔设置</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">过孔到平面</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚对</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚对</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">热状态</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">无布线设置</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">取消布线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">取消布线与相邻引脚和过孔</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">热状态</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">所属网络无布线设置</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组件</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">连接到组件引脚的引脚对</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">热状态</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">无布线设置</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">连接到引脚的引脚对</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">热状态</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">无布线设置</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 66. 选择依赖性</strong></p>
+<h3 id="布线状态" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">布线状态<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#布线状态">#</a></h3>
+<p class="my-4 leading-7">当您开始自动布线时，当前布线状态会出现。这些消息出现在状态栏和 Output 窗口的<strong class="font-semibold">Status</strong>选项卡中。布线状态消息出现在会话日志中，标题为&quot;Batch Router Statistics&quot;。布线状态消息随着布线器的每个阶段和子阶段更新。</p>
+<p class="my-4 leading-7">有关会话日志的更多信息，请参见第 57 页的&quot;Status Tab&quot;。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">Center 阶段消息</strong></p>
+<p class="my-4 leading-7">以下是 center 阶段消息，其部分在以下表中解释。</p>
+<p class="my-4 leading-7">Centering gate 264/1738 (HorDir, layer6)</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">消息部分</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">gate</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">当前正在处理的 gate</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Dir</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">当前 gate 的方向(Hor, Vert, 或 135)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">layer</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">当前 gate 的层</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 67. Center 阶段消息的部分</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">Fanout 阶段消息</strong></p>
+<p class="my-4 leading-7">以下是 fanout 阶段消息，其部分在以下表中解释。</p>
+<div class="language-bash"><div class="rspress-code-content rspress-scrollbar"><code>
+Pins 162 of 198 (82%) Duration 00:00:31 (+00:00:20)
+
+</code></div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">表 68. Fanout 阶段消息的部分</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">消息部分</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Pins</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">已扇出的引脚数量，后跟为扇出选择的总引脚数量，以及括号中的扇出完成百分比。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Duration</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">布线器在此阶段花费的时间量，后跟括号中布线花费的总时间。</td>
+</tr>
+</tbody>
+</table>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> SailWind Router 单独报告属于同一岛的扇出引脚的状态。例如，如果三个引脚属于同一个岛（通过走线相互连接），SailWind Router 在扇出阶段使用一个共享过孔扇出所有三个引脚。在这种情况下，消息显示三个引脚已扇出（Pins 3 of 3 (100%) Vias 1 Duration 00:00:01 (+00:00:01))。</p>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">Patterns 阶段消息</strong></p>
+<p class="my-4 leading-7">以下是 patterns 阶段消息，其部分在以下表中解释。</p>
+<p class="my-4 leading-7">Routed 15 Total 65 of 650 (10%) Vias 181 Duration 00:01:31 (+00:01:00)</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">消息部分</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Routed</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在此阶段布线的连接数量，后跟设计中已布线和未布线连接的总数，以及括号中的模式完成百分比。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Vias</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在此阶段添加的过孔数量。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Duration</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">布线器在此阶段花费的时间量，后跟括号中布线花费的总时间。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">Route 阶段消息</strong></p>
+<p class="my-4 leading-7">以下是 route 阶段消息，其部分在以下表中解释。</p>
+<p class="my-4 leading-7">Routed 635 Total 650 of 650 (100%) Vias 481 Duration 00:06:41 (+00:05:10)</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">消息部分</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Routed</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在此阶段布线的连接数量，后跟设计中已布线连接的总数，以及括号中的布线连接完成百分比。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Vias</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在此阶段添加的过孔总数。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Duration</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">布线器在此阶段花费的时间量，后跟括号中布线花费的总时间。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">Optimize 阶段消息</strong></p>
+<p class="my-4 leading-7">以下是 optimize 阶段消息，其部分在以下表中解释。</p>
+<div class="language-bash"><div class="rspress-code-content rspress-scrollbar"><code>
+Optimized 5% Vias 451 (-30) Trace length 66 (-5) inches Duration 00:07:41 
+
+(+00:01:00)
+
+</code></div></div>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">消息部分</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Optimized</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">优化完成百分比。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Vias</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计中的过孔总数，后跟括号中通过优化减少的过孔数量。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Trace Length</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在此阶段布线的走线总长度，后跟括号中通过优化减少的走线总长度。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Duration</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">布线器在此阶段花费的时间量，后跟括号中布线花费的总时间。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 71. Optimize 阶段消息的部分(续)</strong></p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 英寸用于 Mils 和Inches 设置。米用于 Microns 和Metric 设置。</p>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">Miters 阶段消息</strong></p>
+<p class="my-4 leading-7">以下是 miters 阶段消息，其部分在以下表中解释。</p>
+<p class="my-4 leading-7">Trace 15 of 172 Miters 20 Duration 00:08:52 (+00:01:11)</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">消息部分</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Trace</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">已处理的走线总数，后跟为斜切选择的走线总数。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Miters</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在此阶段添加的斜切总数。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Duration</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">布线器在此阶段花费的时间量，后跟括号中布线花费的总时间。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 72. Miters 阶段消息的部分</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">Test Point 阶段消息</strong></p>
+<p class="my-4 leading-7">以下是 test point 阶段消息，其部分在以下表中解释。</p>
+<p class="my-4 leading-7">Accessible nets 46 of 100 (46%) Duration 00:09:52 (+00:01:00)</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">消息部分</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Accessible Nets</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在此阶段变得可访问的网络数量，后跟设计中具有测试点要求的网络总数，以及括号中的测试点完成百分比。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Duration</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">布线器在此阶段花费的时间量，后跟括号中布线花费的总时间。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 73. Points 阶段消息的部分</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">Tune 阶段消息</strong></p>
+<p class="my-4 leading-7">以下是 tune 阶段消息，其部分在以下表中解释。</p>
+<p class="my-4 leading-7">Nets tuned 25 of 32 Pinpairs tuned 78 of 500 Duration 00:04:33 (+00:03:59)</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">消息部分</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Nets tuned</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在此阶段调谐的网络数量，后跟具有长度限制的网络总数。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Pinpairs tuned</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在此阶段调谐的引脚对数量，后跟具有长度限制的引脚对总数。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Duration</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">布线器布线花费的总时间，后跟括号中布线器在此阶段花费的时间量。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 74. Tune 阶段消息的部分</strong></p>
+<h3 id="布线完成" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">布线完成<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#布线完成">#</a></h3>
+<p class="my-4 leading-7">SailWind 布线器在所有走线完成后会在状态栏显示消息。</p>
+<p class="my-4 leading-7">所有走线完成后状态栏会显示以下消息：</p>
+<p class="my-4 leading-7">Done&gt; 未布线 0 已布线 164/164 (100%) 过孔 100 耗时 00:09:52</p>
+<p class="my-4 leading-7">下表解释了消息的各个部分：</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">消息部分</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">未布线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计中未布线的总数。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">已布线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">已布线的连接总数，后跟设计中已布线和未布线的连接总数，括号内为布线完成百分比。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">过孔</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计中的过孔总数。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">耗时</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">布线器在该走线上花费的时间，后跟括号内布线总耗时。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 75. 布线完成消息的组成部分</strong></p>
+<h3 id="布线进度指示工具提示" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">布线进度指示工具提示<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#布线进度指示工具提示">#</a></h3>
+<p class="my-4 leading-7">状态栏还提供一个进度指示工具提示，显示自动布线器执行的每个走线和子走线的完成率。在自动布线期间将指针悬停在状态栏上可查看进度指示工具提示。此工具提示有助于评估策略和布线设置的有效性。</p>
+<p class="my-4 leading-7">以下是悬停在状态栏上时出现的工具提示消息示例。工具提示消息可能包含<a href="#page-21-1" class="link_a7cea  link_a9ef4 inline-link_f855c">表</a> <a href="#page-21-1" class="link_a7cea  link_a9ef4 inline-link_f855c">76</a>中显示的组成部分。</p>
+<p class="my-4 leading-7">子走线 1/12 尝试 15/100 完成 10 (U1.1-过孔)</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">消息部分</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">子走线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">当前走线中的子走线编号，后跟当前走线中的子走线总数。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">尝试</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">当前子走线中尝试的连接数，后跟为当前子走线选择的连接数。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">完成</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">当前子走线中成功的尝试数，后跟括号内当前连接。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 76. 工具提示消息的组成部分</strong></p>
+<h3 id="布线报告" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">布线报告<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#布线报告">#</a></h3>
+<p class="my-4 leading-7">自动布线完成或停止自动布线时会自动生成布线报告。它列出了正在布线的设计名称、走线次数、执行的走线类型以及每个走线的其他统计信息。布线报告<em>RoutingReport.txt</em>位于*\SailWind Projects*目录中。此文件的链接会自动出现在输出窗口的<strong class="font-semibold">状态</strong>选项卡中。点击链接选项卡可打开并查看该文件。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">预布线分析消息也会出现在此报告中，但仅在布线完成时。如果停止自动布线，预布线分析消息不会出现在报告中。</p>
+</div></div>
+<p class="my-4 leading-7">如需更详细信息，请参阅布线报告。</p><!--/$--></div><div class="rspress-doc-footer"><footer class="mt-8"><div class="xs:flex pb-5 px-2 justify-end items-center"><div class="flex text-sm text-text-2 leading-6 sm:leading-8 font-medium"><p>最近更新时间<!-- -->: <span>2025/7/16 03:51:48</span></p></div></div><div class="flex flex-col"></div><div class="flex flex-col sm:flex-row sm:justify-around gap-4 pt-6"><div class="prev_c92d1 flex flex-col"><a href="/sailwind_docs/router/guide/16_zh.html" class="link_a7cea pager-link_e0d2d"><span class="desc_dcc01">上一页</span><span class="title_a3acb">第 16 章 布线设置</span></a></div><div class="next_c11be flex flex-col"><a href="/sailwind_docs/router/guide/18_zh.html" class="link_a7cea pager-link_e0d2d next_ad355"><span class="desc_dcc01">下一页</span><span class="title_a3acb">第 18 章 选择性自动布线</span></a></div></div></footer></div></div><div class="aside-container_bc5fa"><div class="flex flex-col"><div id="aside-container" class="relative text-sm font-medium"><div class="leading-7 block text-sm font-semibold pl-3">本页目录</div><nav class="mt-1"><ul class="relative"><li><a href="#创建布线前分析报告" title="创建布线前分析报告" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建布线前分析报告</span></a></li><li><a href="#自动布线策略" title="自动布线策略" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">自动布线策略</span></a></li><li><a href="#自动布线走线类型" title="自动布线走线类型" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">自动布线走线类型</span></a></li><li><a href="#居中走线" title="居中走线" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">居中走线</span></a></li><li><a href="#扇出走线" title="扇出走线" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">扇出走线</span></a></li><li><a href="#斜切走线" title="斜切走线" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">斜切走线</span></a></li><li><a href="#优化走线" title="优化走线" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">优化走线</span></a></li><li><a href="#模式走线" title="模式走线" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">模式走线</span></a></li><li><a href="#布线走线" title="布线走线" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">布线走线</span></a></li><li><a href="#调谐走线" title="调谐走线" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">调谐走线</span></a></li><li><a href="#设置自动布线策略" title="设置自动布线策略" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">设置自动布线策略</span></a></li><li><a href="#指定要执行的布线阶段" title="指定要执行的布线阶段" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">指定要执行的布线阶段</span></a></li><li><a href="#设置布线顺序" title="设置布线顺序" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">设置布线顺序</span></a></li><li><a href="#自动布线设计" title="自动布线设计" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">自动布线设计</span></a></li><li><a href="#暂停自动布线" title="暂停自动布线" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">暂停自动布线</span></a></li><li><a href="#恢复自动布线" title="恢复自动布线" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">恢复自动布线</span></a></li><li><a href="#停止自动布线" title="停止自动布线" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">停止自动布线</span></a></li><li><a href="#布线进度指示器" title="布线进度指示器" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">布线进度指示器</span></a></li><li><a href="#报告布线结果" title="报告布线结果" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">报告布线结果</span></a></li><li><a href="#在自动布线期间分配测试点" title="在自动布线期间分配测试点" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">在自动布线期间分配测试点</span></a></li><li><a href="#自动布线消息" title="自动布线消息" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">自动布线消息</span></a></li><li><a href="#预布线分析" title="预布线分析" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">预布线分析</span></a></li><li><a href="#布线状态" title="布线状态" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">布线状态</span></a></li><li><a href="#布线完成" title="布线完成" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">布线完成</span></a></li><li><a href="#布线进度指示工具提示" title="布线进度指示工具提示" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">布线进度指示工具提示</span></a></li><li><a href="#布线报告" title="布线报告" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">布线报告</span></a></li></ul></nav></div></div></div></div></div></div></section></div>
+    <div id="search-container"></div>
+  </body>
+</html>

@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Rspress v1.45.0">
+    <title data-rh="true">创建库元件 - SailWind</title><meta data-rh="true" name="description" content="SailWind"/>
+  <script>{;const saved = localStorage.getItem('rspress-theme-appearance');const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;const isDark = !saved || saved === 'auto' ? preferDark : saved === 'dark';document.documentElement.classList.toggle('dark', isDark);document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';}</script><link rel="icon" href="/sailwind_docs/favicon.ico"><script defer src="/sailwind_docs/static/js/styles.f5ec16c7.js"></script><script defer src="/sailwind_docs/static/js/lib-react.36f9b428.js"></script><script defer src="/sailwind_docs/static/js/lib-router.971f4280.js"></script><script defer src="/sailwind_docs/static/js/2886.6c8a4c3c.js"></script><script defer src="/sailwind_docs/static/js/index.ef746291.js"></script><link href="/sailwind_docs/static/css/styles.6524924d.css" rel="stylesheet"></head>
+
+  <body >
+    <div id="root"><div class="navContainer_d18b1 rspress-nav px-6  sticky_ddfa7"><div class="container_e4235 flex justify-between items-center h-full"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div><div class="flex flex-1 justify-end items-center"><div class="rightNav_a2fea"><div class="flex sm:flex-1 items-center sm:pl-4 sm:pr-2"><div class="rspress-nav-search-button navSearchButton_df1fb"><button><svg width="18" height="18" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg><p class="searchWord_af2c1">搜索</p><div style="opacity:0"><span></span><span>K</span></div></button></div><div class="mobileNavSearchButton_d85a9"><svg width="24" height="24" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg></div></div><div class="rspress-nav-menu menu h-14"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div><div class="flex-center flex-row"><div class="mx-2"><div class="md:mr-2 rspress-nav-appearance"><div class="p-1 border border-solid border-gray-300 text-gray-400  cursor-pointer rounded-md hover:border-gray-600 hover:text-gray-600 dark:hover:border-gray-200 dark:hover:text-gray-200 transition-all duration-300 w-7 h-7"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="dark:hidden" width="18" height="18" fill="currentColor"><path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6m0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4M12 4c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M12 24c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M5.6 6.6c-.3 0-.5-.1-.7-.3L3.5 4.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.1.2-.4.3-.7.3M19.8 20.8c-.3 0-.5-.1-.7-.3l-1.4-1.4c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.2.2-.5.3-.7.3M3 13H1c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M23 13h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M4.2 20.8c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.4.3-.7.3M18.4 6.6c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.5.3-.7.3"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="hidden dark:block" width="18" height="18" fill="currentColor"><path d="M12.1 22h-.9c-5.5-.5-9.5-5.4-9-10.9.4-4.8 4.2-8.6 9-9 .4 0 .8.2 1 .5s.2.8-.1 1.1c-2 2.7-1.4 6.4 1.3 8.4 2.1 1.6 5 1.6 7.1 0 .3-.2.7-.3 1.1-.1.3.2.5.6.5 1-.2 2.7-1.5 5.1-3.6 6.8-1.9 1.4-4.1 2.2-6.4 2.2M9.3 4.4c-2.9 1-5 3.6-5.2 6.8-.4 4.4 2.8 8.3 7.2 8.7 2.1.2 4.2-.4 5.8-1.8 1.1-.9 1.9-2.1 2.4-3.4-2.5.9-5.3.5-7.5-1.1-2.8-2.2-3.9-5.9-2.7-9.2"></path></svg></div></div></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div><div class="mobileNavMenu_e7045"><div class="navScreen_ec30c  rspress-nav-screen" id="navScreen"><div class="container_c935d"><div class="navMenu_b887b"><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div></div><div class="flex-center flex-col gap-2"><div class="mt-2 navAppearance_bf893 flex justify-center"></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div></div><button aria-label="mobile hamburger" class=" rspress-mobile-hamburger navHamburger_ac64c text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><circle cx="8" cy="16" r="2" fill="currentColor"></circle><circle cx="16" cy="16" r="2" fill="currentColor"></circle><circle cx="24" cy="16" r="2" fill="currentColor"></circle></svg></button></div></div></div></div><section><div class="docLayout_af141 pt-0"><aside class="sidebar_dd719 rspress-sidebar "><div class="navTitleMask_fb17c"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div></div><div class="rspress-scrollbar sidebarContent_da296"><nav class="pb-2"><a href="/sailwind_docs/layout/index.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:14px;margin-left:0;border-radius:0 var(--rp-radius) var(--rp-radius) 0;padding-left:24px;font-weight:bold"><span>章节预览</span></div></a><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">指南(Guide)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 2 章 用户界面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 3 章 无模命令与快捷键</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 4 章 设计与编辑基础</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 5 章 设置颜色</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 6 章 库与库数据管理</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 7 章 创建和编辑 PCB 封装</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 8 章 创建和修改元件类型</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 9 章 开始新设计</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 10 章 文件操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 11 章 设计环境设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 12 章 使用 SailWind Logic</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 13 章 导入与导出</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 14 章 层</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 15 章 过孔设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/16_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 16 章 电气网络</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/17_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 17 章 选项设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/18_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 18 章 属性控制</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/19_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 19 章 设置规则和使用禁止区</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/20_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 20 章 AI 驱动的先进功能</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/21_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 21 章 元件布局</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/22_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 22 章 SailWind 3D</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/23_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 23 章 与机械设计团队的数据交换</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/24_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 24 章 虚拟过孔</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/25_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 25 章 标签操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/26_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 26 章 设计或设计部分的复用</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/27_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 27 章 绘图操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/28_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 28 章 安全间距检查</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/29_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 29 章 铜箔操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/30_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 30 章 为布铜区或覆铜平面分配网络</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/31_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 31 章 覆铜平面操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/32_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 32 章 设计布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/33_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 33 章 SailWind 布线器</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/34_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 34 章 铜填充与覆铜平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/35_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 35 章 参考标志符</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/36_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 36 章 工程变更单(ECO)</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/37_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 37 章 设计比较</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/38_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 38 章 报告功能</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/39_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 39 章 设计错误检查</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/40_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 40 章 尺寸标注</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/41_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 41 章 CAM 输出</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/42_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 42 章 对象链接与嵌入 ❌</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/43_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 43 章 故障排除</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/44_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 44 章 SPECCTRA 链接</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/45_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 45 章 错误检测、BMW与BLT、脚本与宏</span></div></a></div><div class="rspress-sidebar-item"><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:18px"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex"><span class="flex-center" style="font-size:13px">第 46 - 55 章 Dialogs</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:0"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/46_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 46 章 GUI 参考元素 A</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/47_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 47 章 GUI 参考元素 B 至 C</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/48_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 48 章 GUI 参考元素 D</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/49_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 49 章 GUI 参考元素 E 至 G</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/50_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 50 章 GUI 参考元素 H 至 J</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/51_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 51 章 GUI 参考元素 K 至 O</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/52_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 52 章 GUI 参考元素 P</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/53_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 53 章 GUI 参考元素 Q 至 R</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/54_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 54 章 GUI 参考元素 S</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/55_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 55 章 GUI 参考元素 T 至 Z</span></div></a></div></div></div></section></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">教程(Tutorial)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>用户界面学习</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItemActive_de63c mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建库元件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>设计准备</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>导入设计数据</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>分配约束规则</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>移动与放置组件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建和编辑走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用动态布线创建走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用 <code>SailWind Router</code> 进行自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建分割平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建覆铜平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>添加尺寸标注</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>检查设计规则违规</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>更新原理图</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建报告和 CAM 文件</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">快速参考(Quick Reference)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/qr/modless.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>无模命令</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/qr/shortcut.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>键盘快捷键</span></div></a></div></div></div></section></nav></div></aside><div class="flex-1 relative min-w-0"><div class="rspress-sidebar-menu-container "><div class="rspress-sidebar-menu"><button type="button" class="flex-center mr-auto"><div class="text-md mr-2"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"></path></svg></div><span class="text-sm">Menu</span></button><button type="button" class="flex-center ml-auto"><span class="text-sm">本页目录</span><div class="text-md mr-2" style="transform:rotate(0deg);transition:transform 0.2s ease-out;margin-top:2px"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></button><div class="rspress-local-toc-container "><ul><li><a href="#理解-sailwind-元件类型与-pcb-封装" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">理解 SailWind 元件类型与 PCB 封装</span></a></li><li><a href="#创建-pcb-封装" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建 PCB 封装</span></a></li><li><a href="#为-pcb-封装添加禁止区域" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">为 PCB 封装添加禁止区域</span></a></li><li><a href="#分配-pcb-封装属性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">分配 PCB 封装属性</span></a></li><li><a href="#为-pcb-封装添加属性标签" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">为 PCB 封装添加属性标签</span></a></li><li><a href="#创建新元件类型" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建新元件类型</span></a></li><li><a href="#使用封装向导创建-pcb-封装" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">使用封装向导创建 PCB 封装</span></a></li></ul></div></div></div><div class="content_ff766 rspress-doc-container flex"><div class="flex-1 overflow-x-auto"><div class="rspress-doc"><!--$--><h1 id="创建库元件" class="rspress-doc-title text-3xl mb-10 leading-10 tracking-tight title_fb7eb">创建库元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建库元件">#</a></h1>
+<p class="my-4 leading-7">您可以使用库管理器和 PCB 封装编辑器在 SAILWIND 库中创建构成元件类型的库元素。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">本课程内容：</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">理解 SailWind 元件类型与 PCB 封装</li>
+<li class="[&amp;:not(:first-child)]:mt-2">创建 PCB 封装</li>
+<li class="[&amp;:not(:first-child)]:mt-2">为 PCB 封装添加禁止区域</li>
+<li class="[&amp;:not(:first-child)]:mt-2">分配 PCB 封装属性</li>
+<li class="[&amp;:not(:first-child)]:mt-2">为 PCB 封装添加属性标签</li>
+<li class="[&amp;:not(:first-child)]:mt-2">创建新元件类型</li>
+<li class="[&amp;:not(:first-child)]:mt-2">使用封装向导创建 PCB 封装</li>
+</ul>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">本教程需要具备&quot;绘图编辑&quot;、&quot;常规编辑&quot;和&quot;库编辑器&quot;许可选项。在帮助菜单中点击<strong class="font-semibold">已安装选项</strong>以确认您是否可以继续。</p>
+<p class="my-4 leading-7">😎<strong class="font-semibold">前提</strong></p>
+<p class="my-4 leading-7">如果 <code>SailWind Layout</code> 尚未运行，请先启动程序。</p>
+<h2 id="理解-sailwind-元件类型与-pcb-封装" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">理解 SailWind 元件类型与 PCB 封装<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#理解-sailwind-元件类型与-pcb-封装">#</a></h2>
+<p class="my-4 leading-7"><strong class="font-semibold">元件类型</strong></p>
+<p class="my-4 leading-7">在将元件添加到设计之前，它必须作为 SailWind 元件类型存在于库中。一个元件类型由三个元素组成：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">原理图符号（在库中称为 Logic decal）</li>
+<li class="[&amp;:not(:first-child)]:mt-2">元件封装（在库中称为 PCB decal）</li>
+<li class="[&amp;:not(:first-child)]:mt-2">电气参数（如管脚编号和门电路分配）</li>
+</ul>
+<p class="my-4 leading-7">以 <code>SailWind Layout</code> 元件类型 7404 为例：</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">元素</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">元件类型名称</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">7404</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">逻辑封装</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">INV（反相器）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PCB 封装</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DIP14（14 管脚双列直插封装）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">电气参数</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">六个逻辑门（A 至 F）使用 14 个管脚中的 12 个<!-- -->包含一个电源管脚和一个接地管脚。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7">您可以在 <code>SailWind Logic</code> 或 <code>SailWind Layout</code> 中创建元件类型，但逻辑封装只能在 <code>SailWind Logic</code> 中创建，PCB 封装只能在 <code>SailWind Layout</code> 中创建。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">PCB 封装编辑器</strong></p>
+<p class="my-4 leading-7">PCB 封装是元件的物理表示，通常称为<em>封装</em>。PCB 封装包含多个代表元件管脚的焊盘和一个元件边框。您可以在 PCB 封装编辑器中创建 PCB 封装。</p>
+<p class="my-4 leading-7">在工具菜单中，点击 PCB 封装编辑器。</p>
+<p class="my-4 leading-7">进入 PCB 封装编辑器后，会显示文本标签和 PCB 封装原点标记：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2"><strong class="font-semibold">NAME</strong> 文本标签是<strong class="font-semibold">元件位号</strong>的占位符。</li>
+<li class="[&amp;:not(:first-child)]:mt-2"><strong class="font-semibold">TYPE</strong> 文本标签是<strong class="font-semibold">元件类型名称</strong>的占位符。在封装中放置这些标签的位置决定了当使用该 PCB 封装的元件添加到设计时，位号或元件类型显示的位置。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">原点标记标识了元件的原点，用于在 <code>SailWind Layout</code> 中移动、旋转或定位元件。封装原点也被自动装配和贴片机引用。</li>
+</ul>
+<h2 id="创建-pcb-封装" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建 PCB 封装<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建-pcb-封装">#</a></h2>
+<p class="my-4 leading-7">在以下练习中，您将通过添加新焊盘、元件边框和分配焊盘栈，为下图所示的 26 管脚连接器创建 PCB 封装。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/tutorial/2/_page_1_Figure_10.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">添加焊盘</strong></p>
+<p class="my-4 leading-7">定义 PCB 封装的第一步是为元件的每个管脚添加焊盘。每个焊盘按添加顺序编号，焊盘编号即为其管脚编号，例如焊盘 1 为管脚 1，焊盘 2 为管脚 2，依此类推。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">绘图</strong>按钮 &gt; <strong class="font-semibold">端点</strong>按钮 <strong class="font-semibold">。</strong></p>
+<p class="my-4 leading-7">当&quot;添加端点&quot;对话框打开时，接受默认设置并点击确定。此时进入添加焊盘模式，每次点击鼠标都会在点击位置添加一个新焊盘。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">输入<strong class="font-semibold">g50</strong>并按<strong class="font-semibold">Enter</strong>，将设计网格设置为 50。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">输入<strong class="font-semibold">gd50</strong>并按<strong class="font-semibold">Enter</strong>，将显示网格设置为 50。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将指针移动到封装原点标记上，点击以在原点添加第一个焊盘。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将指针移动到 <strong class="font-semibold">X50,Y50</strong> 位置（参考状态栏的 X,Y 坐标显示），点击添加第二个焊盘。</p>
+</li>
+</ol>
+<p class="my-4 leading-7"><strong class="font-semibold">使用&quot;分布和重复&quot;添加多个端点</strong></p>
+<p class="my-4 leading-7">您可以使用&quot;分布和重复&quot;命令快速复制对象（如焊盘）形成重复模式。</p>
+<ol start="2" class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">右键点击并选择<strong class="font-semibold">选择端点</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击第一个端点。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">按住 Ctrl 键点击添加第二个端点到选择集。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">右键点击并选择<strong class="font-semibold">分布和重复</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;分布和重复&quot;对话框中，点击<strong class="font-semibold">线性</strong>选项卡。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">&quot;径向布局&quot;许可选项可启用极坐标和径向布局选项卡。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择<strong class="font-semibold">向右</strong>为方向，设置数量为<strong class="font-semibold">12</strong>，距离为<strong class="font-semibold">100</strong>，然后点击<strong class="font-semibold">确定</strong>。</p>
+<div class="rspress-directive note"><div class="rspress-directive-title">NOTE</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">自动添加 24 个新焊盘完成连接器管脚布局。</p>
+</div></div>
+</li>
+</ol>
+<p class="my-4 leading-7"><strong class="font-semibold">分配焊盘形状和尺寸</strong></p>
+<p class="my-4 leading-7">定义封装的下一步是分配焊盘形状和尺寸，这通过焊盘栈编辑器完成。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">设置 &gt; 焊盘栈</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从&quot;形状:尺寸:层&quot;列表中选择 <strong class="font-semibold">&lt;安装层&gt;</strong>（Mounted Side）。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7"><code>Mounted Side</code> 是印刷电路板上安装元件的正面或背面。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在参数区域，点击<strong class="font-semibold">圆形</strong>焊盘形状按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在参数区域，通过在直径框（Diameter）中输入 <strong class="font-semibold">55</strong> 来更改焊盘直径。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在钻孔尺寸框（Drill Size）中输入 <strong class="font-semibold">28</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">为其他层更改焊盘形状和尺寸，从&quot;形状:尺寸:层&quot;列表中选择 <strong class="font-semibold">&lt;内层&gt;</strong> （Inner Layers）和 <strong class="font-semibold">&lt;对立面&gt;</strong> （Opposite Side），并将每层的焊盘直径（Diameter）设置为<strong class="font-semibold">55</strong>。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">内层是印刷电路板顶层和底层以外的设计层，可能是布线层、平面层或两者的组合。对立面是印刷电路板上与安装面相对的外层。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">如果钻孔不可见，输入 <strong class="font-semibold">do</strong> 并按 <strong class="font-semibold">Enter</strong>。do 无模命令可切换钻孔边框显示设置。</p>
+</div></div>
+</li>
+</ol>
+<p class="my-4 leading-7"><strong class="font-semibold">创建元件边框</strong></p>
+<p class="my-4 leading-7">使用 2D 线条绘图工具创建元件边框。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">绘图 &gt; 2D 线</strong> <strong class="font-semibold">。</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">右键点击并选择<strong class="font-semibold">矩形</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">输入<strong class="font-semibold">s -100 100</strong>（s, 负 100, 空格, 100）并按<strong class="font-semibold">Enter</strong>，将指针定位到边框的左上角。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">不移动指针，按<strong class="font-semibold">空格键</strong>开始新的矩形多边形。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将指针移动到 <strong class="font-semibold">X1350,Y -50</strong> 位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击完成多边形。</p>
+</li>
+</ol>
+<h2 id="为-pcb-封装添加禁止区域" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">为 PCB 封装添加禁止区域<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#为-pcb-封装添加禁止区域">#</a></h2>
+<p class="my-4 leading-7">在 <code>SailWind Layout</code> 中，您可以将某个区域定义为过孔、走线和其他设计对象的禁止区域。可以在 PCB 上或 PCB 封装内定义禁止区域。</p>
+<p class="my-4 leading-7">在本练习中，您将为连接器定义过孔禁止区域。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">禁止区域</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">右键点击并选择<strong class="font-semibold">矩形</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将指针定位到边框的左上角，点击开始绘制禁止区域矩形。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将指针移动到边框的右下角，点击完成多边形。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;添加绘图&quot;对话框的限制区域，勾选<strong class="font-semibold">过孔和跳线</strong>复选框以分配禁止区域限制。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在层列表中点击**&lt;所有层&gt;**将禁止区域分配到所有层。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>完成禁止区域定义。</p>
+</li>
+</ol>
+<h2 id="分配-pcb-封装属性" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">分配 PCB 封装属性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#分配-pcb-封装属性">#</a></h2>
+<p class="my-4 leading-7">在 <code>SailWind Layout</code> 中，您可以为元件或元件类型分配属性，如制造商零件编号、公司零件编号、高度和其他元件特定信息。您也可以为 PCB 封装分配属性。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">添加高度属性</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">编辑</strong>菜单 &gt; <strong class="font-semibold">属性管理器</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果 Geometry.Height 属性不在列表中：</p>
+<p class="my-4 leading-7">a) 在&quot;封装属性&quot;对话框中，点击<strong class="font-semibold">浏览库属性</strong>。</p>
+<p class="my-4 leading-7">b) 在&quot;浏览库属性&quot;对话框中，点击<strong class="font-semibold">刷新</strong>更新属性列表以查看库中所有使用的属性。</p>
+<p class="my-4 leading-7">c) 在属性列表中点击<strong class="font-semibold">Geometry.Height</strong>，然后点击<strong class="font-semibold">确定</strong>将高度属性添加到封装。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">双击值框，输入<strong class="font-semibold">300</strong>（当前单位为密耳，即 0.300 英寸）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">关闭</strong>。</p>
+</li>
+</ol>
+<h2 id="为-pcb-封装添加属性标签" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">为 PCB 封装添加属性标签<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#为-pcb-封装添加属性标签">#</a></h2>
+<p class="my-4 leading-7">您可以在设计中以文本标签形式显示属性。您还可以添加额外的标签以满足位号的不同尺寸和位置要求。每个标签的可见性和位置在布局编辑器中管理。</p>
+<p class="my-4 leading-7">您可以通过在 PCB 封装中添加占位标签来预定义属性标签的位置。这些占位标签将成为布局编辑器中新增或可见标签的默认位置。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">为封装添加位号标签</strong></p>
+<p class="my-4 leading-7">在本练习中，您将为连接器封装添加装配图位号标签。使用&quot;添加新标签&quot;命令将标签添加到 PCB 封装。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击添加新标签按钮 。</p>
+<div class="rspress-directive note"><div class="rspress-directive-title">NOTE</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">点击&quot;添加新标签&quot;按钮后，新标签会出现在当前 Name 标签下方，并打开&quot;添加新封装标签&quot;对话框。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在属性列表中，点击**Ref.Des.**将新标签分配为附加位号标签的占位符。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在显示列表中，点击<strong class="font-semibold">值</strong>，仅启用属性值的显示。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">通过在 X 框中输入<strong class="font-semibold">600</strong>，Y 框中输入<strong class="font-semibold">150</strong>来更改标签位置。在水平和垂直对齐列表中点击<strong class="font-semibold">居中</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在层列表中，点击<strong class="font-semibold">顶层装配图</strong>将文本分配到顶层装配图层。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>关闭对话框并完成标签添加。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">如果在&quot;显示颜色设置&quot;对话框中没有为&quot;顶层装配图&quot;层上的对象分配颜色，新标签将不会显示。</p>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">例外：</strong> 位号颜色由 Pin Num.标签选项控制，而非属性。元件类型颜色由 Type 标签选项控制，而非属性。</p>
+</li>
+</ol>
+<p class="my-4 leading-7"><strong class="font-semibold">定位其他标签</strong></p>
+<p class="my-4 leading-7">将 Name 和 Type 标签定位在封装中文本不会被遮挡的位置。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">未选择任何对象时，右键点击并选择<strong class="font-semibold">选择文本/绘图</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择每个标签，按<strong class="font-semibold">Ctrl+E</strong>移动。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将它们放置在教程开头&quot;创建 PCB 封装&quot;部分所示的大致位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击完成移动。</p>
+</li>
+</ol>
+<p class="my-4 leading-7"><strong class="font-semibold">保存 PCB 封装</strong></p>
+<p class="my-4 leading-7">您已在 <code>SailWind Layout</code> 中创建了第一个 PCB 封装。将其保存到库中。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">点击保存按钮 <strong class="font-semibold">。</strong></li>
+<li class="[&amp;:not(:first-child)]:mt-2">在&quot;保存 PCB 封装到库&quot;对话框中，点击**…\preview**库。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在 PCB 封装名称框中输入<strong class="font-semibold">26pinconn</strong>。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">点击<strong class="font-semibold">确定</strong>并确认可能出现的覆盖文件提示。</li>
+</ol>
+<h2 id="创建新元件类型" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建新元件类型<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建新元件类型">#</a></h2>
+<p class="my-4 leading-7">现在您已完成教程所需的 PCB 封装，接下来将使用元件类型编辑器为新的 26 管脚连接器创建元件类型。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">分配常规参数</strong></p>
+<p class="my-4 leading-7">创建连接器元件类型的第一步是将其定义为连接器并分配 PCB 封装。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2"><strong class="font-semibold">主页</strong>菜单 &gt; <strong class="font-semibold">库</strong>。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">要在 preview 库中创建新元件类型，在库列表中点击**…\preview**。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">点击<strong class="font-semibold">元件</strong>按钮。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">点击<strong class="font-semibold">新建</strong>。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在&quot;元件信息&quot;对话框中，点击<strong class="font-semibold">常规</strong>选项卡。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在逻辑系列列表中滚动并选择<strong class="font-semibold">CON</strong>系列类型，这将为此元件类型设置默认位号前缀 J。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">要将元件类型定义为连接器，在选项区域勾选&quot;特殊用途&quot;复选框，并点击<strong class="font-semibold">连接器</strong>。</li>
+</ol>
+<p class="my-4 leading-7"><strong class="font-semibold">分配 PCB 封装</strong></p>
+<p class="my-4 leading-7">下一步是为元件类型分配 PCB 封装。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">点击<strong class="font-semibold">PCB 封装</strong>选项卡。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在库列表中点击**…\preview**库。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在筛选框中输入<strong class="font-semibold">26p*</strong>并点击<strong class="font-semibold">应用</strong>。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在未分配封装列表中点击<strong class="font-semibold">26PINCONN</strong>封装。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">点击<strong class="font-semibold">分配</strong>将封装移动到已分配封装列表。</li>
+</ol>
+<p class="my-4 leading-7"><strong class="font-semibold">添加元件类型属性</strong></p>
+<p class="my-4 leading-7">您可以在 PCB 封装中添加属性标签。对于元件类型，您需要添加属性及其对应的值。可以直接在属性单元格中输入属性，或从 SailWind 库中的所有属性列表中选择。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/tutorial/2/_page_5_Picture_28.jpeg" alt=""/></p>
+<p class="my-4 leading-7">在本练习中，您将从库中为连接器元件类型添加属性。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">点击<strong class="font-semibold">属性</strong>选项卡。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">点击<strong class="font-semibold">添加</strong>。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">点击<strong class="font-semibold">浏览库属性</strong>。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在&quot;浏览库属性&quot;对话框中，点击<strong class="font-semibold">Description</strong>属性并点击<strong class="font-semibold">确定</strong>。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">双击值单元格。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在值单元格中输入<strong class="font-semibold">CONNECTOR, RIBBON, 26 PIN</strong>。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">再次点击<strong class="font-semibold">添加</strong>，重复上述步骤添加以下属性和值：</li>
+</ol>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">属性</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">值</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Cost</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（留空）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Part Number</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">MGEG26R</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Manufacturer #1</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">ACME</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Manufacturer #2</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（留空）</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">分配 CAE 封装</strong></p>
+<p class="my-4 leading-7">现在为元件类型分配逻辑封装。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">点击<strong class="font-semibold">连接器</strong>选项卡。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">点击<strong class="font-semibold">添加</strong>。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">从特殊符号单元格中点击<strong class="font-semibold">浏览</strong>按钮。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在&quot;浏览特殊符号&quot;对话框中，选择**…\misc<strong class="font-semibold">库中的</strong>EXTIN<strong class="font-semibold">符号，点击</strong>确定**。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">双击管脚类型单元格。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在列表中点击<strong class="font-semibold">源</strong>将输入管脚分配为源。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">再次点击<strong class="font-semibold">添加</strong>，从新增的特殊符号单元格中点击<strong class="font-semibold">浏览</strong>按钮。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在&quot;浏览特殊符号&quot;对话框中，选择**…\misc<strong class="font-semibold">库中的</strong>EXTOUT<strong class="font-semibold">符号，点击</strong>确定**。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">双击管脚类型单元格。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在列表中点击<strong class="font-semibold">负载</strong>。</li>
+</ol>
+<p class="my-4 leading-7"><strong class="font-semibold">保存元件类型</strong></p>
+<p class="my-4 leading-7">现在元件类型定义已完成，保存新元件类型。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">点击<strong class="font-semibold">确定</strong>。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在&quot;保存元件类型到库&quot;对话框中，导航到**…\preview<strong class="font-semibold">库，将元件类型命名为</strong>26pinconn**，点击<strong class="font-semibold">确定</strong>。确认可能出现的覆盖文件提示。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在库管理器对话框中，点击<strong class="font-semibold">关闭</strong>。</li>
+</ol>
+<h2 id="使用封装向导创建-pcb-封装" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">使用封装向导创建 PCB 封装<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用封装向导创建-pcb-封装">#</a></h2>
+<p class="my-4 leading-7">PCB 封装编辑器提供对话框驱动的 PCB 封装向导。这些向导提供自动化工具，可自动创建标准封装图案。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">创建 SOIC 封装</strong></p>
+<p class="my-4 leading-7">现在您已体验了使用 PCB 封装编辑器中的交互工具创建 PCB 封装，接下来将使用 PCB 封装编辑器中的自动化工具创建下图所示的 SO28 PCB 封装。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在绘图工具栏中，点击向导按钮 <strong class="font-semibold">。</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;封装向导&quot;对话框中，点击<strong class="font-semibold">双列</strong>选项卡。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在封装区域的器件类型部分，点击<strong class="font-semibold">SMD</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在方向部分，点击<strong class="font-semibold">水平</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在管脚区域输入以下内容：</p>
+<p class="my-4 leading-7">a. 在管脚数量框中输入<strong class="font-semibold">28</strong></p>
+<p class="my-4 leading-7">b. 在宽度框中输入<strong class="font-semibold">24</strong></p>
+<p class="my-4 leading-7">c. 在长度框中输入<strong class="font-semibold">90</strong></p>
+<p class="my-4 leading-7">d. 在管脚间距框中输入<strong class="font-semibold">50</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在行间距区域，点击<strong class="font-semibold">中心到中心</strong>并在值框中输入<strong class="font-semibold">450</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在<strong class="font-semibold">管脚 1 形状</strong>和<strong class="font-semibold">管脚形状</strong>部分，均点击<strong class="font-semibold">椭圆形</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在布局边框区域，在宽度框中输入<strong class="font-semibold">600</strong>，在高度框中输入<strong class="font-semibold">800</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在散热焊盘区域，取消勾选<strong class="font-semibold">创建</strong>复选框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>。PCB 封装将自动创建。</p>
+<div class="rspress-directive note"><div class="rspress-directive-title">NOTE</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">您只需几个简单步骤就创建了一个 28 管脚 SOIC。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件菜单中，点击<strong class="font-semibold">退出封装编辑器</strong>返回布局编辑器。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">不要保存设计副本。</p>
+</li>
+</ol>
+<p class="my-4 leading-7"><strong class="font-semibold">您已完成元件创建教程。</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/tutorial/2/_page_7_Figure_22.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/tutorial/2/_page_7_Figure_24.jpeg" alt=""/></p><!--/$--></div><div class="rspress-doc-footer"><footer class="mt-8"><div class="xs:flex pb-5 px-2 justify-end items-center"><div class="flex text-sm text-text-2 leading-6 sm:leading-8 font-medium"><p>最近更新时间<!-- -->: <span>2025/7/15 05:55:33</span></p></div></div><div class="flex flex-col"></div><div class="flex flex-col sm:flex-row sm:justify-around gap-4 pt-6"><div class="prev_c92d1 flex flex-col"><a href="/sailwind_docs/layout/tutorial/1_zh.html" class="link_a7cea pager-link_e0d2d"><span class="desc_dcc01">上一页</span><span class="title_a3acb">用户界面学习</span></a></div><div class="next_c11be flex flex-col"><a href="/sailwind_docs/layout/tutorial/3_zh.html" class="link_a7cea pager-link_e0d2d next_ad355"><span class="desc_dcc01">下一页</span><span class="title_a3acb">设计准备</span></a></div></div></footer></div></div><div class="aside-container_bc5fa"><div class="flex flex-col"><div id="aside-container" class="relative text-sm font-medium"><div class="leading-7 block text-sm font-semibold pl-3">本页目录</div><nav class="mt-1"><ul class="relative"><li><a href="#理解-sailwind-元件类型与-pcb-封装" title="理解 SailWind 元件类型与 PCB 封装" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">理解 SailWind 元件类型与 PCB 封装</span></a></li><li><a href="#创建-pcb-封装" title="创建 PCB 封装" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建 PCB 封装</span></a></li><li><a href="#为-pcb-封装添加禁止区域" title="为 PCB 封装添加禁止区域" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">为 PCB 封装添加禁止区域</span></a></li><li><a href="#分配-pcb-封装属性" title="分配 PCB 封装属性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">分配 PCB 封装属性</span></a></li><li><a href="#为-pcb-封装添加属性标签" title="为 PCB 封装添加属性标签" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">为 PCB 封装添加属性标签</span></a></li><li><a href="#创建新元件类型" title="创建新元件类型" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建新元件类型</span></a></li><li><a href="#使用封装向导创建-pcb-封装" title="使用封装向导创建 PCB 封装" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">使用封装向导创建 PCB 封装</span></a></li></ul></nav></div></div></div></div></div></div></section></div>
+    <div id="search-container"></div>
+  </body>
+</html>

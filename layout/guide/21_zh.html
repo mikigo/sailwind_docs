@@ -1,0 +1,1533 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Rspress v1.45.0">
+    <title data-rh="true">第 21 章 元件布局 - SailWind</title><meta data-rh="true" name="description" content="SailWind"/>
+  <script>{;const saved = localStorage.getItem('rspress-theme-appearance');const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;const isDark = !saved || saved === 'auto' ? preferDark : saved === 'dark';document.documentElement.classList.toggle('dark', isDark);document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';}</script><link rel="icon" href="/sailwind_docs/favicon.ico"><script defer src="/sailwind_docs/static/js/styles.f5ec16c7.js"></script><script defer src="/sailwind_docs/static/js/lib-react.36f9b428.js"></script><script defer src="/sailwind_docs/static/js/lib-router.971f4280.js"></script><script defer src="/sailwind_docs/static/js/2886.6c8a4c3c.js"></script><script defer src="/sailwind_docs/static/js/index.ef746291.js"></script><link href="/sailwind_docs/static/css/styles.6524924d.css" rel="stylesheet"></head>
+
+  <body >
+    <div id="root"><div class="navContainer_d18b1 rspress-nav px-6  sticky_ddfa7"><div class="container_e4235 flex justify-between items-center h-full"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div><div class="flex flex-1 justify-end items-center"><div class="rightNav_a2fea"><div class="flex sm:flex-1 items-center sm:pl-4 sm:pr-2"><div class="rspress-nav-search-button navSearchButton_df1fb"><button><svg width="18" height="18" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg><p class="searchWord_af2c1">搜索</p><div style="opacity:0"><span></span><span>K</span></div></button></div><div class="mobileNavSearchButton_d85a9"><svg width="24" height="24" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg></div></div><div class="rspress-nav-menu menu h-14"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div><div class="flex-center flex-row"><div class="mx-2"><div class="md:mr-2 rspress-nav-appearance"><div class="p-1 border border-solid border-gray-300 text-gray-400  cursor-pointer rounded-md hover:border-gray-600 hover:text-gray-600 dark:hover:border-gray-200 dark:hover:text-gray-200 transition-all duration-300 w-7 h-7"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="dark:hidden" width="18" height="18" fill="currentColor"><path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6m0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4M12 4c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M12 24c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M5.6 6.6c-.3 0-.5-.1-.7-.3L3.5 4.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.1.2-.4.3-.7.3M19.8 20.8c-.3 0-.5-.1-.7-.3l-1.4-1.4c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.2.2-.5.3-.7.3M3 13H1c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M23 13h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M4.2 20.8c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.4.3-.7.3M18.4 6.6c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.5.3-.7.3"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="hidden dark:block" width="18" height="18" fill="currentColor"><path d="M12.1 22h-.9c-5.5-.5-9.5-5.4-9-10.9.4-4.8 4.2-8.6 9-9 .4 0 .8.2 1 .5s.2.8-.1 1.1c-2 2.7-1.4 6.4 1.3 8.4 2.1 1.6 5 1.6 7.1 0 .3-.2.7-.3 1.1-.1.3.2.5.6.5 1-.2 2.7-1.5 5.1-3.6 6.8-1.9 1.4-4.1 2.2-6.4 2.2M9.3 4.4c-2.9 1-5 3.6-5.2 6.8-.4 4.4 2.8 8.3 7.2 8.7 2.1.2 4.2-.4 5.8-1.8 1.1-.9 1.9-2.1 2.4-3.4-2.5.9-5.3.5-7.5-1.1-2.8-2.2-3.9-5.9-2.7-9.2"></path></svg></div></div></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div><div class="mobileNavMenu_e7045"><div class="navScreen_ec30c  rspress-nav-screen" id="navScreen"><div class="container_c935d"><div class="navMenu_b887b"><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div></div><div class="flex-center flex-col gap-2"><div class="mt-2 navAppearance_bf893 flex justify-center"></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div></div><button aria-label="mobile hamburger" class=" rspress-mobile-hamburger navHamburger_ac64c text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><circle cx="8" cy="16" r="2" fill="currentColor"></circle><circle cx="16" cy="16" r="2" fill="currentColor"></circle><circle cx="24" cy="16" r="2" fill="currentColor"></circle></svg></button></div></div></div></div><section><div class="docLayout_af141 pt-0"><aside class="sidebar_dd719 rspress-sidebar "><div class="navTitleMask_fb17c"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div></div><div class="rspress-scrollbar sidebarContent_da296"><nav class="pb-2"><a href="/sailwind_docs/layout/index.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:14px;margin-left:0;border-radius:0 var(--rp-radius) var(--rp-radius) 0;padding-left:24px;font-weight:bold"><span>章节预览</span></div></a><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">指南(Guide)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 2 章 用户界面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 3 章 无模命令与快捷键</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 4 章 设计与编辑基础</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 5 章 设置颜色</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 6 章 库与库数据管理</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 7 章 创建和编辑 PCB 封装</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 8 章 创建和修改元件类型</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 9 章 开始新设计</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 10 章 文件操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 11 章 设计环境设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 12 章 使用 SailWind Logic</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 13 章 导入与导出</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 14 章 层</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 15 章 过孔设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/16_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 16 章 电气网络</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/17_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 17 章 选项设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/18_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 18 章 属性控制</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/19_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 19 章 设置规则和使用禁止区</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/20_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 20 章 AI 驱动的先进功能</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/21_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItemActive_de63c mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 21 章 元件布局</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/22_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 22 章 SailWind 3D</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/23_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 23 章 与机械设计团队的数据交换</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/24_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 24 章 虚拟过孔</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/25_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 25 章 标签操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/26_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 26 章 设计或设计部分的复用</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/27_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 27 章 绘图操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/28_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 28 章 安全间距检查</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/29_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 29 章 铜箔操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/30_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 30 章 为布铜区或覆铜平面分配网络</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/31_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 31 章 覆铜平面操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/32_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 32 章 设计布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/33_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 33 章 SailWind 布线器</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/34_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 34 章 铜填充与覆铜平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/35_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 35 章 参考标志符</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/36_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 36 章 工程变更单(ECO)</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/37_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 37 章 设计比较</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/38_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 38 章 报告功能</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/39_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 39 章 设计错误检查</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/40_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 40 章 尺寸标注</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/41_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 41 章 CAM 输出</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/42_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 42 章 对象链接与嵌入 ❌</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/43_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 43 章 故障排除</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/44_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 44 章 SPECCTRA 链接</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/45_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 45 章 错误检测、BMW与BLT、脚本与宏</span></div></a></div><div class="rspress-sidebar-item"><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:18px"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex"><span class="flex-center" style="font-size:13px">第 46 - 55 章 Dialogs</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:0"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/46_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 46 章 GUI 参考元素 A</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/47_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 47 章 GUI 参考元素 B 至 C</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/48_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 48 章 GUI 参考元素 D</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/49_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 49 章 GUI 参考元素 E 至 G</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/50_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 50 章 GUI 参考元素 H 至 J</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/51_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 51 章 GUI 参考元素 K 至 O</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/52_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 52 章 GUI 参考元素 P</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/53_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 53 章 GUI 参考元素 Q 至 R</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/54_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 54 章 GUI 参考元素 S</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/55_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 55 章 GUI 参考元素 T 至 Z</span></div></a></div></div></div></section></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">教程(Tutorial)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>用户界面学习</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建库元件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>设计准备</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>导入设计数据</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>分配约束规则</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>移动与放置组件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建和编辑走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用动态布线创建走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用 <code>SailWind Router</code> 进行自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建分割平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建覆铜平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>添加尺寸标注</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>检查设计规则违规</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>更新原理图</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建报告和 CAM 文件</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">快速参考(Quick Reference)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/qr/modless.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>无模命令</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/qr/shortcut.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>键盘快捷键</span></div></a></div></div></div></section></nav></div></aside><div class="flex-1 relative min-w-0"><div class="rspress-sidebar-menu-container "><div class="rspress-sidebar-menu"><button type="button" class="flex-center mr-auto"><div class="text-md mr-2"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"></path></svg></div><span class="text-sm">Menu</span></button><button type="button" class="flex-center ml-auto"><span class="text-sm">本页目录</span><div class="text-md mr-2" style="transform:rotate(0deg);transition:transform 0.2s ease-out;margin-top:2px"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></button><div class="rspress-local-toc-container "><ul><li><a href="#布局策略" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">布局策略</span></a></li><li><a href="#布局指南" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">布局指南</span></a></li><li><a href="#元件布局流程" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">元件布局流程</span></a></li><li><a href="#设置对象的原点" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">设置对象的原点</span></a></li><li><a href="#布局与长度最小化" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">布局与长度最小化</span></a></li><li><a href="#控制长度最小化" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">控制长度最小化</span></a></li><li><a href="#最小化未布线连接长度" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">最小化未布线连接长度</span></a></li><li><a href="#与布局相关的工程变更指令ecos" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">与布局相关的工程变更指令（ECOs）</span></a></li><li><a href="#布局期间使用查找对话框" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">布局期间使用查找对话框</span></a></li><li><a href="#元件间距" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">元件间距</span></a></li><li><a href="#移动元件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">移动元件</span></a></li><li><a href="#通过原点移动项目" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">通过原点移动项目</span></a></li><li><a href="#移动时拉伸走线" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">移动时拉伸走线</span></a></li><li><a href="#径向移动设计对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">径向移动设计对象</span></a></li><li><a href="#径向移动快捷菜单" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">径向移动快捷菜单</span></a></li><li><a href="#顺序元件放置" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">顺序元件放置</span></a></li><li><a href="#使用查找对话框顺序放置元件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">使用查找对话框顺序放置元件</span></a></li><li><a href="#在工作区中顺序放置元件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">在工作区中顺序放置元件</span></a></li><li><a href="#修改元件的板侧位置" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">修改元件的板侧位置</span></a></li><li><a href="#翻转元件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">翻转元件</span></a></li><li><a href="#翻转组" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">翻转组</span></a></li><li><a href="#使用ntl-开关" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">使用/NTL 开关</span></a></li><li><a href="#元件阵列" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">元件阵列</span></a></li><li><a href="#元件阵列示例" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">元件阵列示例</span></a></li><li><a href="#创建元件阵列" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">创建元件阵列</span></a></li><li><a href="#修改元件阵列" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">修改元件阵列</span></a></li><li><a href="#对齐对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">对齐对象</span></a></li><li><a href="#旋转-90-度对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">旋转 90 度对象</span></a></li><li><a href="#旋转对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">旋转对象</span></a></li><li><a href="#交换元件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">交换元件</span></a></li><li><a href="#交互式放置工具" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">交互式放置工具</span></a></li><li><a href="#推挤元器件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">推挤元器件</span></a></li><li><a href="#推挤和设计规则检查drc" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">推挤和设计规则检查(DRC)</span></a></li><li><a href="#推挤重叠元件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">推挤重叠元件</span></a></li><li><a href="#推挤所有元件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">推挤所有元件</span></a></li><li><a href="#推挤单个元件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">推挤单个元件</span></a></li><li><a href="#更改元件边框宽度" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">更改元件边框宽度</span></a></li><li><a href="#修改元件特性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">修改元件特性</span></a></li><li><a href="#创建标签" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建标签</span></a></li><li><a href="#编辑标签" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">编辑标签</span></a></li><li><a href="#簇和组合放置" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">簇和组合放置</span></a></li><li><a href="#组合" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">组合</span></a></li><li><a href="#创建新组合" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">创建新组合</span></a></li><li><a href="#创建相似组合" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">创建相似组合</span></a></li><li><a href="#组合的选择" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">组合的选择</span></a></li><li><a href="#从组合成员选择组合" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">从组合成员选择组合</span></a></li><li><a href="#选择组合成员时自动选中整个组合" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">选择组合成员时自动选中整个组合</span></a></li><li><a href="#向组合中添加元件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">向组合中添加元件</span></a></li><li><a href="#修改组合" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">修改组合</span></a></li><li><a href="#删除组合或组合成员" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">删除组合或组合成员</span></a></li><li><a href="#从组合中移除元件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">从组合中移除元件</span></a></li><li><a href="#删除整个组合" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">删除整个组合</span></a></li><li><a href="#簇布局" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">簇布局</span></a></li><li><a href="#创建新簇" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">创建新簇</span></a></li><li><a href="#修改现有簇" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">修改现有簇</span></a></li><li><a href="#簇视图模式" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">簇视图模式</span></a></li><li><a href="#在簇视图模式下显示元件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">在簇视图模式下显示元件</span></a></li><li><a href="#交互式移动簇" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">交互式移动簇</span></a></li><li><a href="#删除簇" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">删除簇</span></a></li><li><a href="#删除单个簇" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">删除单个簇</span></a></li><li><a href="#删除所有簇" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">删除所有簇</span></a></li><li><a href="#折叠簇" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">折叠簇</span></a></li><li><a href="#折叠所有簇" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">折叠所有簇</span></a></li><li><a href="#折叠簇成员" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">折叠簇成员</span></a></li><li><a href="#自动布局" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">自动布局</span></a></li><li><a href="#准备自动布局" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">准备自动布局</span></a></li><li><a href="#自动放置元件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">自动放置元件</span></a></li><li><a href="#簇管理" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">簇管理</span></a></li><li><a href="#向簇中添加元件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">向簇中添加元件</span></a></li><li><a href="#将簇成员合并到其他簇" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">将簇成员合并到其他簇</span></a></li></ul></div></div></div><div class="content_ff766 rspress-doc-container flex"><div class="flex-1 overflow-x-auto"><div class="rspress-doc"><!--$--><h1 id="第-21-章-元件布局" class="rspress-doc-title text-3xl mb-10 leading-10 tracking-tight title_fb7eb">第 21 章 元件布局<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#第-21-章-元件布局">#</a></h1>
+<p class="my-4 leading-7">阅读以下主题，了解元件布局操作的多种方法和策略。您还可以了解元件布局命令的操作，以及如何更改或修改布局、分散元件、使用组合（unions）和簇（clusters）的相关信息。</p>
+<h2 id="布局策略" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">布局策略<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#布局策略">#</a></h2>
+<p class="my-4 leading-7">元件布局取决于多种因素。除了连接长度和间距容差外，制造考虑因素（如贴片机的可访问性和焊接处理）也会影响布局。在确定制造策略并导入网络表后，使用交互式布局工具优化布局方案。</p>
+<p class="my-4 leading-7">辅助元件布局的工具包括：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">通过参考标识符或位置查找和选择元件的“查找”功能</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">通过无模命令设置的 x 和 y 坐标独立网格</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">交互式元件对齐功能</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">启用 <code>DRC</code> 的“轻推”交互式元件推挤功能</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">网络长度最小化</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">连接长度最小化</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">自动和交互式元件、管脚和门交换</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">自动元件重新编号</p>
+</li>
+</ul>
+<p class="my-4 leading-7">请记得将工程变更指令（ECO）反向标注到原理图。</p>
+<h2 id="布局指南" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">布局指南<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#布局指南">#</a></h2>
+<p class="my-4 leading-7">以下指南将帮助您优化元件布局设计。</p>
+<p class="my-4 leading-7">良好的布局方案应：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">遵守所有对元件位置和走线布线的限制。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">提供最简单的布线解决方案。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">布局的一般顺序如下：</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">放置所有位置固定的元件，如连接器、需要特定位置的 IC 和安装孔。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">由于连接器通常具有密集的连接模式，需在连接器与其他连接器或第一排 IC 之间留出足够的空间。连接器与最近的 IC 行之间至少保留 0.5 密耳间距。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">放置有工程限制的元件，如必须保持一定距离的元件、不能相邻的元件以及必须靠近连接器的元件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">放置没有严格布局要求的元件。遵循以下通用指南：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">元件的焊盘应落在自动布线时使用的网格上。常用网格增量包括 100、50、25、20、16.67、12.5 或 10 密耳。放置元件前设置设计网格。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">连接应尽量垂直或水平走线，减少对角线连接。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">元件焊盘应垂直或水平对齐，以免阻塞布线通道。如果两个 IC 并排放置且焊盘错开 50 密耳，其中一个 IC 的焊盘会阻塞另一个 IC 的布线通道。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">出于制造考虑，板上所有 IC 最好保持同一方向，而非部分垂直、部分水平。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="元件布局流程" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">元件布局流程<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#元件布局流程">#</a></h2>
+<p class="my-4 leading-7"><code>SailWind Layout</code> 最初将所有元件叠加在顶层的原点处。在放置元件之前，需创建板框、设置设计层、定义网格值，并配置与元件布局相关的间距设计规则。</p>
+<p class="my-4 leading-7">布局时可使用多种命令：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">切换到 <code>SailWind Router</code> 并完成所有布局操作。</li>
+</ul>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 在<code>SailWind Router</code> 中无法使用组合、簇或复用项目辅助布局。</p>
+</div></div>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">工具 &gt; 分散元件</strong> 菜单项，将所有元件分散到板框周围。</p>
+</li>
+</ul>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 分散元件后，点击<strong class="font-semibold">视图 &gt; 范围</strong> 菜单项以显示所有设计对象。</p>
+</div></div>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">移动设计中的元件。更多信息，请参阅“移动元件”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在极坐标网格上径向排列元件。更多信息，请参阅“设置极坐标网格”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">依次移动多个元件。更多信息，请参阅“顺序元件布局”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将元件翻转到底层。更多信息，请参阅“修改元件的板面位置（底视图）”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">创建元件阵列。更多信息，请参阅“创建元件阵列”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对齐多个元件的边缘或中心线。更多信息，请参阅“对齐对象”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">以 90 度增量或任意角度旋转对象。更多信息，请参阅“旋转对象、旋转对象”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">交换两个元件的位置。更多信息，请参阅“交换元件”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">自动轻推重叠元件以符合间距规则。如果禁用设计规则检查（DRC），可将元件放置在违反设计规则的位置。更多信息，请参阅“轻推重叠元件”。</p>
+</li>
+</ul>
+<h2 id="设置对象的原点" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">设置对象的原点<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设置对象的原点">#</a></h2>
+<p class="my-4 leading-7">设置对象的原点以移动或放置它。可以为板框、2D 线、封装形状（在 PCB 封装编辑器中）、铜箔形状、禁止区域形状和尺寸标注形状设置原点。</p>
+<p class="my-4 leading-7">在创建尺寸标注形状或绘图形状时，可通过弹出菜单设置对象的原点。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择整个形状。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">选择形状</strong>、<strong class="font-semibold">选择文档</strong> 或 <strong class="font-semibold">选择板框</strong> 快捷菜单项以选择整个形状。或者，按住 Shift 键并选择一段——这将选择形状而非线段或角落。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">设置原点</strong> 弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击设置新的原点。系统会显示确认消息。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">是</strong> 更改原点，或点击 <strong class="font-semibold">否</strong> 保留原原点。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">按 Esc 键退出“设置原点”模式。</p>
+</li>
+</ol>
+<h2 id="布局与长度最小化" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">布局与长度最小化<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#布局与长度最小化">#</a></h2>
+<p class="my-4 leading-7">开始布局前，设置网络、网络类别或规则层次结构中默认级别的拓扑类型。<em>拓扑</em>是走线的连接模式和网络中管脚连接的顺序。长度最小化工具会根据您设置的拓扑类型重新排序管脚连接。</p>
+<p class="my-4 leading-7">长度最小化不会更改网络表，它只是根据网络表找到更好的连接方式。例如，如果为网络指定“最小化”拓扑，长度最小化会找到产生最短管脚到管脚连接的管脚顺序。</p>
+<p class="my-4 leading-7">移动元件时，长度最小化会实时进行。如果拓扑类型未设置为“保护”，您可以看到飞线连接在移动元件的管脚与其他元件最近的可用端子之间链接或断开。同时，移动元件时，消息行会显示“新长度/旧长度”的实时比例。100 表示移动时所有连接网络的长度为原始长度的 100%。若比例小于 100，表示长度优化；若大于 100，表示长度变差。</p>
+<p class="my-4 leading-7">若对布局满意，还可使用“长度最小化”命令对整个板进行长度优化。</p>
+<p class="my-4 leading-7">通常，最小化连接长度应是布局的主要目标。但仅依赖最小连接长度可能导致连接密集区域（通常在板中心），超出该区域的可用布线通道。因此，在最小化连接长度后，需检查是否存在关键密集区域，并局部调整元件位置以分散连接。</p>
+<p class="my-4 leading-7">元件交换也依赖于拓扑类型。长度最小化和元件交换无需生成 <code>ECO</code> 文件。但门交换、管脚交换和 ECL 终端交换均需记录在 <code>ECO</code> 文件中以反向标注。某些高速或关键网络可能需要设置为“保护”拓扑类型后再开始布局。</p>
+<h2 id="控制长度最小化" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">控制长度最小化<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#控制长度最小化">#</a></h2>
+<p class="my-4 leading-7">可通过不同方法控制长度最小化，每种方法对设计环境的影响不同。</p>
+<p class="my-4 leading-7">长度最小化的控制分为两个层级：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">“选项”对话框“设计”类别中的“长度最小化”设置，决定移动元件时是否及何时进行长度最小化——移动过程中或移动后（后者占用更少显示内存）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">更详细的控制在“默认”或规则层次中的“布线规则”对话框中配置。更多信息，请参阅第 1666 页的“布线规则对话框”主题。</p>
+</li>
+</ul>
+<h2 id="最小化未布线连接长度" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">最小化未布线连接长度<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#最小化未布线连接长度">#</a></h2>
+<p class="my-4 leading-7">开始布局前，考虑设置所需的拓扑类型。运行长度最小化不会更改网络表，它只是根据您设置的拓扑类型找到更好的连接方式。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">点击 <strong class="font-semibold">查看 &gt; 长度最小化</strong> 菜单项。</p>
+<p class="my-4 leading-7">网络将重新排序以最小化连接点之间的长度。</p>
+<h2 id="与布局相关的工程变更指令ecos" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">与布局相关的工程变更指令（ECOs）<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#与布局相关的工程变更指令ecos">#</a></h2>
+<p class="my-4 leading-7">工程变更指令（ECO）是从原理图传递到板设计的更改，或在布局中发生并影响原理图的更改。</p>
+<p class="my-4 leading-7">由于普通长度最小化和元件交换不会更改网络表，无需将其反向标注到原理图。但门交换、管脚交换和参考标识符重新编号等操作需记录在*.eco 文件中。因此，这些命令位于 <code>ECO</code> 工具栏上。访问 <code>ECO</code> 工具栏时，系统会自动提示创建此文件。</p>
+<h2 id="布局期间使用查找对话框" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">布局期间使用查找对话框<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#布局期间使用查找对话框">#</a></h2>
+<p class="my-4 leading-7">如果使用*.asc 格式导入元件，布局通常从设计原点叠加所有元件开始。</p>
+<p class="my-4 leading-7">您可以使用查找对话框选择特定元件或某类封装组。该对话框还可将元件附加到指针上以便单独放置。</p>
+<h2 id="元件间距" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">元件间距<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#元件间距">#</a></h2>
+<p class="my-4 leading-7"><code>SailWind Layout</code> 提供自动规则检查以确保元件间有足够的间距。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">间距基础</strong></p>
+<p class="my-4 leading-7">启用设计网格的“对齐到网格”设置时，软件会根据设计网格的单位放置元件。</p>
+<p class="my-4 leading-7">如果设置了“本体到本体间距”规则（第 1167 页）且在线 DRC（第 1503 页）处于“防止错误”模式，软件会阻止元件重叠。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/21/_page_5_Figure_10.jpeg" alt=""/></p>
+<p class="my-4 leading-7">上图展示了 <code>DRC</code> 在不同设计场景中对间距规则的解释示例。</p>
+<p class="my-4 leading-7">在布局操作期间（启用在线 <code>DRC</code> 时），系统会检查待放置元件的设计规则，并与其他设计对象（包括其他元件、板框和板切口）进行比较。</p>
+<p class="my-4 leading-7">所有设计规则均独立且平等执行。如果为每条间距规则指定了值，则会单独检查。布局操作期间（启用在线 <code>DRC</code> 时），若任何间距规则违反指定值，系统会阻止元件放置。</p>
+<p class="my-4 leading-7">通常，当元件靠近另一个元件时，系统会检查以下设计规则（如果已赋值）：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">本体/层 20（放置）边框与其他本体/层 20（放置）边框</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">本体/层 20（放置）边框与板框或板切口</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">焊盘/SMD 与焊盘/过孔/SMD/走线/铜箔/文本/板/钻孔的间距（支持完整规则层次）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">焊盘和 SMD 同网络间距（支持完整规则层次）</p>
+</li>
+</ul>
+<p class="my-4 leading-7">元件本体被视为以下层上任何 2D 线对象的最远延伸：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">元件层（顶层或底层）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">元件层关联的丝印层（丝印顶层或底层）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">所有层/层 0（零）。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">只有一个“本体到本体”间距值适用于所有元件。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">本体到本体检查规则</strong></p>
+<p class="my-4 leading-7">启用 <code>DRC</code> 的布局操作中，“本体到本体”检查有特定规则：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">若本体边框遇到另一个本体边框且无其他间距违规，则应用“本体到本体”规则。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><code>SailWind Layout</code> 没有“本体到焊盘/SMD”设计规则，因此当元件本体/层 20（放置）边框靠近另一个元件的通孔或 SMD 焊盘时，检查时会使用“本体到本体”间距值作为最小目标间距。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">若元件的通孔或 SMD 焊盘靠近另一个元件的通孔或 SMD 焊盘，且元件本体/层 20（放置）边框未违反“本体到本体”间距值，则系统强制执行相应的焊盘/SMD 与焊盘/过孔/SMD/走线/铜箔/文本/板/钻孔间距（支持完整规则层次）。</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><code>DRC</code> 检查以下对象之间的“本体到本体”间距：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">元件本体边框与元件本体边框</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">层 20 边框与层 20 边框</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">元件本体边框与层 20 边框</p>
+</li>
+</ul>
+<p class="my-4 leading-7">软件通过定义元件本体的 2D 线边缘测量“本体到本体”间距。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">高级间距</strong></p>
+<p class="my-4 leading-7">虽然单个“本体到本体”间距可能满足多数元件需求，但某些元件可能需要额外间距（如贴片或返工时）。</p>
+<p class="my-4 leading-7">可在层 20 上创建自定义间距边框。软件在布局过程中使用此更大的放置边框（称为“元件 courtyard”或“轻推边框”）为元件周围创建更多空间。软件将层 20（放置）边框视为元件本体的一部分，遇到时即触发“本体到本体”间距规则。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 在扩展层模式（第 315 页）下，层 20 变为层 120。</p>
+</div></div>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/21/_page_7_Picture_10.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">碰撞预防</strong></p>
+<p class="my-4 leading-7">若将“轻推”选项设置为“自动”或“提示”，尝试重叠元件时，元件会自动轻推或提示移动方向以避开当前放置的元件。</p>
+<p class="my-4 leading-7">若禁用“轻推”并在布局期间关闭在线 DRC，可通过 <strong class="font-semibold">工具 &gt; 轻推元件</strong> 命令轻推所有违规元件，但无法控制其移动位置。</p>
+<p class="my-4 leading-7">使用“创建阵列”对话框可按指定值自动排列元件的行和列。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">间距验证</strong></p>
+<p class="my-4 leading-7">若不确定元件是否违反设计规则，可运行间距检查（点击 <strong class="font-semibold">验证设计 &gt; 间距</strong> 菜单项）。确保元件的所有部分（包括层 20 的边框颜色）可见，因为间距检查仅验证可见且在视图内的对象。</p>
+<p class="my-4 leading-7">在“间距检查设置”（第 1164 页）中勾选以下选项：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">“本体到本体”：检查元件本体之间的“本体到本体”间距值。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">“放置边框”：检查层 20 边框之间的“本体到本体”间距值。</p>
+</li>
+</ul>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">若同时勾选“本体到本体”和“放置边框”，系统还会检查元件本体边框与层 20 边框之间的间距违规。</p>
+</div></div>
+<h2 id="移动元件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">移动元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#移动元件">#</a></h2>
+<p class="my-4 leading-7">可按需移动元件以优化布局。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">通过以下方法之一将元件附加到指针：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在标准工具栏上，点击 <strong class="font-semibold">设计工具栏</strong> 按钮显示设计工具栏。点击 <strong class="font-semibold">移动</strong>，然后选择元件。每次只能移动一个元件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">未选择任何对象时，<strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">选择元件</strong>，然后选择一个或多个元件拖动到目标位置。“拖动移动”选项（第 1531 页）需设置为“拖动并附加”或“拖动并放置”。更多信息，请参阅“全局 &gt; 常规选项”中的“拖动移动”区域（第 1531 页）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">未选择任何对象时，<strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">选择元件</strong>，然后选择一个或多个元件，<strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">移动</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">未选择任何对象时，<strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">选择元件</strong>，然后选择一个或多个元件，在设计工具栏上点击 <strong class="font-semibold">移动</strong> 按钮。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">若移动带有锁定测试点的元件，会显示警告。更多信息，请参阅“故障排除”。</p>
+<p class="my-4 leading-7">移动组时，可能在“走线复制”对话框中显示错误。</p>
+<p class="my-4 leading-7">若尝试移动物理设计复用的一部分，会显示消息“复用元素不可修改，请先解除复用”。点击 <strong class="font-semibold">确定</strong> 取消移动。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">根据“移动偏好”选项（第 1503 页），元件将附加到指针。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">元件附加到光标时，可<strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">旋转 90 度</strong>、<strong class="font-semibold">旋转</strong>、<strong class="font-semibold">翻转面</strong>、更改移动偏好、启用“对齐到对象”（第 1540 页）或设置在线 DRC（第 1503 页）以忽略间距规则。放置底层元件时，使用“底视图”可获得更真实的视角。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">通过以下方法之一放置元件：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">移动指针到新位置并点击放置元件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用无模命令定位到特定坐标。按空格键放置元件（替代可能移动指针的鼠标点击）。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="通过原点移动项目" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">通过原点移动项目<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#通过原点移动项目">#</a></h2>
+<p class="my-4 leading-7">同时选择多个对象时，可使用不同的移动原点。</p>
+<p class="my-4 leading-7">若在“选项”对话框的“设计”类别中选择“通过原点移动”，指针会吸附到组的中心（根据组范围计算），并将其作为移动原点。</p>
+<h2 id="移动时拉伸走线" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">移动时拉伸走线<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#移动时拉伸走线">#</a></h2>
+<p class="my-4 leading-7">选择带有部分走线连接的元件时，若在“选项”对话框的“设计”类别中启用“移动元件时拉伸走线”，走线会保持与管脚的连接。</p>
+<p class="my-4 leading-7">每条连接到移动元件管脚的走线会重新连接到新管脚位置。若 <code>DRC</code> 关闭，则添加直线段；若 <code>DRC</code> 开启，则使用自动布线平滑走线。若未启用“移动元件时拉伸走线”，则会在走线连接点之间创建未布线连接。</p>
+<h2 id="径向移动设计对象" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">径向移动设计对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#径向移动设计对象">#</a></h2>
+<p class="my-4 leading-7">使用“径向移动”调整对象的朝向。此命令支持创建圆形封装和圆形板设计，也可用于文本和参考标识符。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">需设置极坐标网格（第 352 页）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 PCB 封装编辑器中，仅能对端子使用径向移动。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择单个或多个元件或组合。在 PCB 封装编辑器中，选择单个或多个端子。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在标准工具栏上，点击 <strong class="font-semibold">设计工具栏</strong> 按钮显示设计工具栏。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在设计工具栏上，点击 <strong class="font-semibold">径向移动</strong> 按钮。状态栏会显示当前极坐标半径、极角位置以及角度和半径增量。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 也可通过动词模式径向移动设计对象。首先点击<strong class="font-semibold">径向移动</strong> 按钮，然后选择要移动的对象。此方法可保持径向移动命令激活，便于重复操作。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">若未提前设置极坐标网格，点击 <strong class="font-semibold">设置 &gt; 选项</strong>，选择 <strong class="font-semibold">网格</strong> 类别，然后点击 <strong class="font-semibold">径向移动设置</strong>。在对话框中设置极坐标网格和移动选项后点击 <strong class="font-semibold">确定</strong>。<code>SailWind Layout</code> 会保存设置供当前会话后续使用。</p>
+<p class="my-4 leading-7">极坐标网格显示，所选对象附加到指针。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将所选对象移动到极坐标网格上的有效位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击放置对象。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 退出径向移动后，极坐标网格关闭。使用无模命令 GP（第 83 页）可独立开关极坐标网格。</p>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">示例</strong></p>
+<p class="my-4 leading-7">在极坐标网格上放置或移动元件的方法与标准 x/y 网格略有不同。以下示例展示极坐标网格下的放置和移动行为。</p>
+<p class="my-4 leading-7">下图展示了一个极坐标网格定义示例。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/21/_page_11_Figure_1.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 31. 极坐标网格定义示例</strong></p>
+<p class="my-4 leading-7">下表展示了上图极坐标网格的径向移动设置。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">选项</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">设置</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">极坐标原点</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">X=1000, Y=1000</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">内半径</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">100（密耳）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">半径增量</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">100（密耳）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">起始角度</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">30.000（度）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">角度范围</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">360.000（度）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">角度增量</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">20.000（度）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">每环站点数</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">18</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">方向</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">顺时针</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">自动旋转</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">开启</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">分散</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">开启</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">使用离散半径</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">开启</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">使用离散角度</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">开启</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">极坐标朝向</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">手动指定, 0.000（度）</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 96. 径向移动设置</strong></p>
+<h2 id="径向移动快捷菜单" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">径向移动快捷菜单<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#径向移动快捷菜单">#</a></h2>
+<p class="my-4 leading-7">径向移动快捷菜单提供了一组特定命令，用于在径向移动操作期间使用，例如旋转或翻转对象，或指定在移动过程中抓取对象的位置。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击可打开径向移动快捷菜单（表 97）。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">命令</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">属性</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">查询元件或组合。<!-- -->更多信息请参见&quot;修改元件属性&quot;。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">旋转 90 度</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">旋转元件，同时计算元件相对于径向方向的方位，从网格原点到元件移动原点的当前位置。<!-- -->每个元件或组合使用其单独的原始点旋转。<!-- -->更多信息请参见&quot;旋转对象&quot;。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">翻转侧面</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">围绕其径向方向单独翻转每个对象。<!-- -->更多信息请参见&quot;翻转元件&quot;。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">按光标位置移动</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">根据光标位置与移动对象原点之间的关系移动对象。<!-- -->默认移动首选项可在选项对话框的设计类别中找到。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">按原点移动</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">通过对象的原点移动对象。<!-- -->默认移动首选项可在选项对话框的设计类别中找到。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">按中点移动</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">通过对象或对象组的中点移动对象。<!-- -->捕捉到当前指针位置。<!-- -->默认移动首选项可在选项对话框的设计类别中找到。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">忽略间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">暂时忽略设计规则的间距。<!-- -->默认在线 <code>DRC</code> 设置可在选项对话框的设计类别中找到。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 97. 径向移动快捷菜单项</strong></p>
+<h2 id="顺序元件放置" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">顺序元件放置<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#顺序元件放置">#</a></h2>
+<p class="my-4 leading-7">选择预定的元件组后，您可以使用&quot;顺序移动&quot;命令依次将元件放置在指针上以便在设计中进行放置。</p>
+<h3 id="使用查找对话框顺序放置元件" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">使用查找对话框顺序放置元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用查找对话框顺序放置元件">#</a></h3>
+<p class="my-4 leading-7">使用查找对话框通过从列表中选择元件来选择它们。此方法按字母数字顺序将元件放置在光标上。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击<strong class="font-semibold">编辑&gt;查找</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在查找对话框中，将查找依据设置为参考标识符、元件类型、封装、组合或簇。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 选择多个参考标识符前缀、元件类型或封装以扩展可用元件列表。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从结果列表中，选择所有要移动的元件。拖动或使用 Shift+单击选择一系列元件，和/或使用 Ctrl+单击选择多个元件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在操作列表中，选择顺序移动。</p>
+<p class="my-4 leading-7">当与查找对话框一起使用时，按升序参考标识符顺序移动没有功能。元件始终按升序参考标识符顺序添加到指针上。此功能仅用于工作区中顺序放置元件的方法。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击<strong class="font-semibold">确定</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在对话框中，&quot;继续下一个对象？&lt;值&gt;&quot;，单击：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">是</strong> 以依次将元件附加到光标上，但在每次放置后提示，以便您根据需要跳过元件</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">全部是</strong> 如果选择的字母数字顺序可以接受且您不打算跳过元件</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">否</strong> 跳过此元件，转到下一个</p>
+</li>
+</ul>
+<p class="my-4 leading-7">第一个元件附加到指针上以便放置。元件按升序参考标识符顺序附加到指针上。</p>
+<p class="my-4 leading-7">当元件附加到指针上时，您可以<strong class="font-semibold">右键</strong>单击以访问旋转 90 度、旋转模式、翻转、移动首选项和捕捉到功能和命令。您还可以使用无模命令。如果为顺序移动选择的元件有一个锁定测试点的管脚，则会显示警告对话框，通知您对测试点所做的更改。测试点在布线选项第 1542 页被锁定。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击以放置每个元件、组合或簇。</p>
+</li>
+</ol>
+<h3 id="在工作区中顺序放置元件" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">在工作区中顺序放置元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#在工作区中顺序放置元件">#</a></h3>
+<p class="my-4 leading-7">您可以通过使用项目资源管理器或直接在工作区中<strong class="font-semibold">右键</strong>单击应用顺序移动命令来选择元件。此方法按您选择顺序的相反顺序将元件放置在光标上 - 最后选择的元件首先附加到光标上。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用以下一种或两种方法选择元件：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在项目资源管理器中启用允许选择第 53 页后，使用 Ctrl+单击选择多个元件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在工作区中，未选择任何内容时，<strong class="font-semibold">右键</strong>单击并单击<strong class="font-semibold">选择元件</strong>、<strong class="font-semibold">选择组合/元件</strong>或<strong class="font-semibold">选择簇</strong>弹出菜单项。使用 Ctrl+单击，选择多个元件、组合或簇。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">元件按选择顺序附加到指针上。第一个选择的元件是第一个附加到指针上的元件。您可以在后续步骤中覆盖此顺序。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在工作区中，<strong class="font-semibold">右键</strong>单击并单击<strong class="font-semibold">顺序移动</strong>弹出菜单项。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 按升序参考标识符顺序移动可以覆盖您选择元件的顺序，并按升序参考标识符顺序将元件放置在指针上。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在对话框中，&quot;继续下一个对象？&lt;值&gt;&quot;，单击：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">是</strong> 以依次将元件附加到光标上，但在每次放置后提示，以便您根据需要跳过元件</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">全部是</strong> 如果选择的字母数字顺序可以接受且您不打算跳过元件</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">否</strong> 跳过此元件，转到下一个</p>
+</li>
+</ul>
+<p class="my-4 leading-7">第一个元件附加到指针上以便放置。当元件附加到指针上时，您可以<strong class="font-semibold">右键</strong>单击以访问旋转 90 度、旋转模式、翻转、移动首选项和捕捉到功能和命令。您还可以使用无模命令。</p>
+<p class="my-4 leading-7">您可以在设计选项第 1503 页将移动首选项设置为通过其原点或中点选择元件。</p>
+<p class="my-4 leading-7">放置使用当前设计网格。要使用径向移动放置元件，请使用 GP 无模命令第 83 页打开极坐标网格。</p>
+<p class="my-4 leading-7">如果为顺序移动选择的元件有一个锁定测试点的管脚，则会显示警告对话框，通知您对测试点所做的更改。测试点在布线选项第 1542 页被锁定。更多信息请参见&quot;故障排除&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击以放置元件。</p>
+</li>
+</ol>
+<h2 id="修改元件的板侧位置" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">修改元件的板侧位置<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改元件的板侧位置">#</a></h2>
+<p class="my-4 leading-7">使用翻转侧面将元件或元件移动到板的另一侧。翻转的元件以铰链运动移动到另一侧，围绕通过元件原点的垂直轴旋转。</p>
+<p class="my-4 leading-7">文本被镜像，因此始终以正确的方向显示。使用翻转组第 488 页围绕您指定的原点翻转一个或多个元件。</p>
+<p class="my-4 leading-7">当您将元件翻转到另一侧时，层关联会随元件一起改变。要关闭随元件移动层关联，请在使用翻转侧面或翻转组之前设置/NTL 开关第 488 页。</p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 在焊料或焊膏掩模中使用关联铜而不是自由铜。当 TrueLayer 开启且您使用自由铜时，结果不可预测。</p>
+</div></div>
+<h3 id="翻转元件" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">翻转元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#翻转元件">#</a></h3>
+<p class="my-4 leading-7">您可以使用其原点作为镜像点将元件移动到板的另一侧。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个或多个要移动到另一侧的元件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用以下方法之一：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并单击<strong class="font-semibold">翻转侧面</strong>弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并单击<strong class="font-semibold">属性</strong>弹出菜单项。在元件属性对话框中，在层列表中选择相反的层。</p>
+</li>
+</ul>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">如果 <code>DRC</code> 开启且系统遇到间距违规，则翻转被取消。测试点随翻转的元件一起翻转。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 在板的底部放置元件时，使用底部视图以获得更真实的视图。</p>
+</div></div>
+<h3 id="翻转组" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">翻转组<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#翻转组">#</a></h3>
+<p class="my-4 leading-7">您可以通过指定镜像位置将一组元件移动到板的另一侧。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择元件，<strong class="font-semibold">右键</strong>单击，然后单击<strong class="font-semibold">翻转组</strong>弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击以指示镜像位置。</p>
+</li>
+</ol>
+<h3 id="使用ntl-开关" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">使用/NTL 开关<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用ntl-开关">#</a></h3>
+<p class="my-4 leading-7">当您将元件翻转到另一侧时，层关联会自动切换。</p>
+<p class="my-4 leading-7">通常您会希望层关联随元件一起移动。例如，您将表面安装元件移动到板的底部。组装图、丝印、焊料掩模和焊膏掩模层信息从顶部文档层移动到底部文档层。</p>
+<p class="my-4 leading-7">如果出于某些特殊原因，您不希望这种情况发生，请在启动 <code>SailWind Layout</code> 之前设置/NTL 开关以关闭 TrueLayer 关联。更多信息请参见&quot;软件启动选项&quot;。</p>
+<h2 id="元件阵列" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">元件阵列<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#元件阵列">#</a></h2>
+<p class="my-4 leading-7">您可以通过创建<em>阵列</em>来排列元件。元件阵列是一个组合，其成员放置在用户定义矩阵的站点上。</p>
+<h3 id="元件阵列示例" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">元件阵列示例<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#元件阵列示例">#</a></h3>
+<p class="my-4 leading-7">您可以创建平面阵列或圆形阵列。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">极坐标网格或圆形阵列</strong></p>
+<p class="my-4 leading-7">在配置极坐标网格或圆形阵列时使用了许多特定值。</p>
+<p class="my-4 leading-7">下图显示了您设置以创建极坐标网格或圆形阵列的不同值。在圆形阵列中，元件在一个或多个环上彼此等距放置。通过打开极坐标网格和捕捉到网格，您可以创建角位于极坐标网格节点上的绘图项目。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/21/_page_18_Figure_9.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/21/_page_18_Figure_10.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">平面阵列</strong></p>
+<p class="my-4 leading-7">平面阵列是一个组合，其元件放置在等距平行线的交点上。</p>
+<p class="my-4 leading-7">下图显示了您设置以创建平面阵列的不同值。平行线可以同时存在于 X 和 Y 方向。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 33. 平面阵列</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/21/_page_19_Figure_2.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">元件阵列示例</strong></p>
+<p class="my-4 leading-7">示例将说明可用于设置元件阵列的不同方法。</p>
+<p class="my-4 leading-7">下图表示一个原始 PCB 设计，选择了八个元件来创建阵列。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 34. 带阵列的 PCB 设计</strong></p>
+<p class="my-4 leading-7">以下示例表示相同的八个元件使用不同的网格和阵列设置。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">示例 1</strong></p>
+<p class="my-4 leading-7">下图显示了原始八个元件的平面阵列，最小体间间距为 6 密耳，元件旋转 45 度：</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/21/_page_20_Picture_1.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 35. 平面阵列示例（最小体间间距 6 密耳）</strong></p>
+<p class="my-4 leading-7">下表显示了在平面阵列选项卡上用于创建上图中平面网格的设置。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">选项</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">设置</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">行到行</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">193.7 (密耳)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列到列</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">140.24 (密耳)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列数</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">4</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">按列放置</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">开启</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">旋转</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">开启</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">方向</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">45 (度)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">对齐方式</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">原点</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 98. 平面阵列设置（6 密耳）</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">示例 2</strong></p>
+<p class="my-4 leading-7">下图显示了原始八个元件的平面阵列示例，最小体间间距为 200 密耳。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/21/_page_21_Picture_2.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 36. 平面阵列示例（最小体间间距 200 密耳）：</strong></p>
+<p class="my-4 leading-7">下表显示了在平面阵列选项卡上用于创建上图中平面网格的设置。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">表 99. 平面阵列设置（200 密耳）</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">选项</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">设置</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">行到行</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">430.15 (密耳)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列到列</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">293.4 (密耳)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列数</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">4</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">按列放置</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">开启</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">旋转</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">开启</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">方向</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0.000 (度)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">对齐方式</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">原点</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">示例 3</strong></p>
+<p class="my-4 leading-7">下图显示了原始八个元件的圆形阵列示例，最小体间间距为 200 密耳：</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/21/_page_22_Picture_3.jpeg" alt=""/></p>
+<p class="my-4 leading-7">下表显示了在平面阵列选项卡上用于创建上图中圆形阵列的设置。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 37. 圆形阵列示例</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">选项</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">设置</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">内半径</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">576.68 (密耳)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">增量半径</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0 (密耳)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">起始角度</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">5 (度)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">角度范围</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">360 (度)，锁定</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">增量范围</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">45.000</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">每环站点数</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">8</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">方向</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">逆时针</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">旋转</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">开启</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">方向</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0.000</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">对齐方式</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">原点</td>
+</tr>
+</tbody>
+</table>
+<h3 id="创建元件阵列" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">创建元件阵列<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建元件阵列">#</a></h3>
+<p class="my-4 leading-7">您可以通过创建圆形或平面阵列来排列元件。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择您想要的元件，<strong class="font-semibold">右键</strong>单击，然后单击<strong class="font-semibold">创建阵列</strong>弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击表示您要创建的阵列的选项卡：平面阵列或圆形阵列。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">设置阵列选项并单击<strong class="font-semibold">确定</strong>。出现一个对话框，要求您输入阵列或组合名称。更多信息请参见&quot;元件阵列&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">键入阵列的名称或接受默认名称并单击<strong class="font-semibold">确定</strong>。默认情况下，阵列按顺序命名，带有 ARR_前缀；例如，您设计中的第一个阵列命名为 ARR_1，第二个阵列命名为 ARR_2，依此类推。</p>
+<p class="my-4 leading-7">阵列被创建并附加到您的指针上。</p>
+<p class="my-4 leading-7">您可以在放置阵列时使用移动快捷菜单命令，如翻转、旋转和旋转。</p>
+<p class="my-4 leading-7">如果您移动一个带有锁定测试点管脚的元件，会出现警告。更多信息请参见&quot;故障排除&quot;。</p>
+<p class="my-4 leading-7">如果您尝试移动作为物理设计重用一部分的元件，会出现消息&quot;重用元素无法修改。请先中断重用&quot;。单击<strong class="font-semibold">确定</strong>取消移动。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击以指示阵列的位置。</p>
+</li>
+</ol>
+<h3 id="修改元件阵列" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">修改元件阵列<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改元件阵列">#</a></h3>
+<p class="my-4 leading-7">使用修改阵列，您可以在放置后重新排列阵列中的元件，或者修改组合。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">修改元件阵列时：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">您必须在选择筛选条件中选择组合以选择阵列和组合。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">您一次只能修改一个阵列或组合。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个阵列或组合，<strong class="font-semibold">右键</strong>单击，然后单击<strong class="font-semibold">修改阵列</strong>弹出菜单项。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果您正在修改阵列，则会出现修改阵列对话框，显示用于创建阵列的选项卡和选项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果您正在从组合创建阵列，则会出现一个对话框，询问是否要打散组合以创建阵列。单击<strong class="font-semibold">是</strong>从组合创建阵列。出现创建阵列对话框。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">根据需要修改阵列选项。</p>
+<p class="my-4 leading-7">修改阵列不像创建阵列那样进入移动模式。</p>
+<p class="my-4 leading-7">除非在线 <code>DRC</code> 处于防止错误或警告错误模式，否则修改阵列不会警告也不会防止放置违规。</p>
+<p class="my-4 leading-7">如果您修改包含带有锁定测试点管脚的元件阵列的位置，会出现警告。更多信息请参见&quot;故障排除&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击<strong class="font-semibold">确定</strong>。阵列被修改或从组合创建。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果在线 <code>DRC</code> 处于防止错误或警告错误模式，单击以指示修改后的阵列的新位置。</p>
+</li>
+</ol>
+<h2 id="对齐对象" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">对齐对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#对齐对象">#</a></h2>
+<p class="my-4 leading-7">对齐功能将选中的元件沿着参考元件某侧或中心延伸出的虚拟线对齐。在粗略放置对象后，您可以选择多个对象并自动对齐它们。对齐命令会使所有选中对象与最后选中的对象对齐。</p>
+<p class="my-4 leading-7">您可以在以下情况下使用对齐功能：管脚（并通过这些管脚对齐元件）、参考标识符、布局编辑器中的组合，以及 PCB 封装编辑器中的端子和端子编号。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用 Ctrl+单击选择要包含在对齐中的对象，确保最后选择主对象。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">对齐</strong>。</p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">您无法在物理设计复用中对齐元素。当选择物理设计复用元素时，对齐功能不可用。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 1080 页的对齐对话框中，单击您想要使用的对齐方案。对象将根据最后选中对象的位置自动对齐。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">如果未启用在线 DRC，自动对齐不保证最小间距，但您可以使用推挤功能交互式实现这一点。如果在线 <code>DRC</code> 设置为&quot;阻止&quot;或&quot;警告&quot;，当对齐会导致违规时，对齐操作不会执行。违规情况将在状态栏中报告。</p>
+<h2 id="旋转-90-度对象" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">旋转 90 度对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#旋转-90-度对象">#</a></h2>
+<p class="my-4 leading-7">您可以以 90 度为增量旋转对象。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择要旋转的对象。您可以一次选择多个对象。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">旋转 90 度</strong>。选中的对象将逆时针旋转 90 度。</p>
+<p class="my-4 leading-7">如果旋转带有锁定测试点管脚的元件，将出现警告。更多信息请参阅&quot;故障排除&quot;。</p>
+<p class="my-4 leading-7">当旋转一个组时，可能会在某个&quot;轨迹复制&quot;对话框中显示错误。更多信息请参阅&quot;轨迹复制对话框&quot;。</p>
+<p class="my-4 leading-7">如果尝试旋转作为物理设计复用一部分的元件，将显示消息&quot;复用元素无法修改。请先解除复用&quot;。单击<strong class="font-semibold">确定</strong>取消操作。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 要在动词模式下使用旋转 90 度功能，请单击设计工具栏上的<strong class="font-semibold">旋转</strong>按钮，然后选择要旋转的元件。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">重复步骤 2 继续旋转对象。</p>
+</li>
+</ol>
+<h2 id="旋转对象" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">旋转对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#旋转对象">#</a></h2>
+<p class="my-4 leading-7">您可以在元件放置期间绕其轴旋转对象。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择要旋转的对象。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择<strong class="font-semibold">旋转</strong>。元件将附着到指针上。当您移动指针时，元件会跟随，改变旋转角度。</p>
+<p class="my-4 leading-7">您可以以相同方式多选并旋转一组元件；每个元件都绕自己的轴旋转。</p>
+<p class="my-4 leading-7">要查看旋转时的角度，<strong class="font-semibold">右键</strong>单击并选择<strong class="font-semibold">属性</strong>。当前角度显示在旋转框中。</p>
+<p class="my-4 leading-7">如果旋转带有锁定测试点管脚的元件，将出现警告。更多信息请参阅&quot;故障排除&quot;。</p>
+<p class="my-4 leading-7">如果尝试旋转作为物理设计复用一部分的元件，将显示消息&quot;复用元素无法修改。请先解除复用&quot;。单击<strong class="font-semibold">确定</strong>取消操作。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击以指示新角度。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要在动词模式下使用旋转功能，请单击设计工具栏上的<strong class="font-semibold">旋转</strong>按钮，然后选择要旋转的元件。单击以指示新角度。</p>
+</li>
+</ol>
+<h2 id="交换元件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">交换元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#交换元件">#</a></h2>
+<p class="my-4 leading-7">有时简单地交换相邻元件的位置可以改善连接长度。您可以使用&quot;交换元件&quot;命令在板上任意位置交换两个元件的位置。当选择在线 <code>DRC</code> 时，将检查交换是否存在放置违规。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">开始操作，使用以下方法之一：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">单次交换</strong> 选择一个元件 &gt; 设计工具栏按钮 &gt; <strong class="font-semibold">交换元件</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">多次交换</strong> 设计工具栏按钮 &gt; <strong class="font-semibold">交换元件</strong>按钮 &gt; 选择要交换的第一个元件。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择要交换的第二个元件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">系统会提示您允许交换，同时在状态栏中显示交换前后的 X+Y 连接长度，以便您查看长度是否改善。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击<strong class="font-semibold">是</strong>完成交换。元件以原点对原点方式交换。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">如果您选择了多次交换方法并且仍处于交换元件模式，则可以继续选择要交换的元件。</p>
+<h2 id="交互式放置工具" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">交互式放置工具<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#交互式放置工具">#</a></h2>
+<p class="my-4 leading-7">您可以使用对齐和推挤工具将元件精确放置到公差范围内。</p>
+<p class="my-4 leading-7">在交互式放置元件时，请注意对齐和推挤的以下效果：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对齐使选中的元件沿着参考元件某侧或中心延伸出的虚拟线对齐。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">推挤通过推开元件为拥挤的元件腾出空间，从而消除重叠和间距违规。</p>
+</li>
+</ul>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 对于推挤，所有元件元素都被视为已粘合。当选择物理设计复用元素时，对齐和推挤不可用。</p>
+</div></div>
+<h3 id="推挤元器件" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">推挤元器件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#推挤元器件">#</a></h3>
+<p class="my-4 leading-7">当元件距离足够近以至于违反焊盘间或本体间间距规则时，它们被视为重叠。</p>
+<h4 id="推挤和设计规则检查drc" class="mt-8 leading-6 text-lg title_fb7eb">推挤和设计规则检查(DRC)<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#推挤和设计规则检查drc">#</a></h4>
+<p class="my-4 leading-7">当 <code>DRC</code> 设置为&quot;阻止&quot;时，<code>SailWind Layout</code> 会通过取消非法移动的完成并将选中的元件返回到移动模式来主动防止重叠。</p>
+<p class="my-4 leading-7">可以使用推挤进一步优化此自动检查。推挤是元件的推挤功能；它通过移动周围的元件远离您尝试放置的元件来解决重叠问题。推挤有三种操作模式，您可以在选项对话框的<strong class="font-semibold">设计</strong>类别中设置。如下表所示，推挤操作取决于当前的 <code>DRC</code> 设置：</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"><code>DRC</code> 设置</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">阻止</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">警告</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">关闭或忽略间距</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">自动</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">重叠元件会自动移动并取消高亮显示。如果由于可用空间不足无法重新定位，<!-- -->则显示消息。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">警告</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示推挤对话框供用户交互。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">关闭</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">不执行推挤操作<!-- -->选中的元件保持附着于光标。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示间距违规<!-- -->对话框。可<!-- -->选择：</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">放置元件<!-- -->而不移动<!-- -->重叠元件。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">忽略 — 放置元件<!-- -->而不调整重叠<!-- -->元件。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">说明 — 列出<!-- -->相交的元件。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">取消 — 取消<!-- -->命令；元件保持<!-- -->附着于光标。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 101. <code>DRC</code> 设置和推挤模式</strong></p>
+<p class="my-4 leading-7">当您使用推挤进行放置时，<code>SailWind Layout</code> 会近似计算元件尺寸。例如，如果您放置一个 L 形元件，<code>SailWind Layout</code> 会将该元件区域近似为正方形，而不是 L 形。然后推挤使用设计规则设置中定义的焊盘间或本体间间距中的较大值来确定两个元件之间必须存在的距离。</p>
+<p class="my-4 leading-7">在许多情况下，会调整多个元件以适应移动的元件。推挤不会移动已粘合的元件或板框外的元件。推挤将测试点视为粘合对象。推挤不会将板框内的元件移动到边框外。当存在重叠时，会显示&quot;元件和组合推挤&quot;对话框。</p>
+<p class="my-4 leading-7">推挤确实遵循当前网格设置，因此请确保将网格设置得足够精细，以便在布线策略的限制内放置命令。</p>
+<h4 id="推挤重叠元件" class="mt-8 leading-6 text-lg title_fb7eb">推挤重叠元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#推挤重叠元件">#</a></h4>
+<p class="my-4 leading-7">使用推挤移动重叠元件。推挤的操作方式取决于当前的 <code>DRC</code> 设置。</p>
+<p class="my-4 leading-7">更多信息，请参阅推挤元器件。</p>
+<h4 id="推挤所有元件" class="mt-8 leading-6 text-lg title_fb7eb">推挤所有元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#推挤所有元件">#</a></h4>
+<p class="my-4 leading-7">您可以使用&quot;推挤元件&quot;命令一次性移动所有重叠元件。推挤通过推开元件为拥挤的元件腾出空间，从而消除重叠和间距违规。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">单击<strong class="font-semibold">工具 &gt; 推挤元件</strong>菜单命令。</p>
+<p class="my-4 leading-7">所有元件将根据设计规则自动推挤。</p>
+<h4 id="推挤单个元件" class="mt-8 leading-6 text-lg title_fb7eb">推挤单个元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#推挤单个元件">#</a></h4>
+<p class="my-4 leading-7">推挤通过推开元件为拥挤的元件腾出空间，从而消除重叠和间距违规。您可以使用推挤移动与另一个元件重叠的单个元件。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个元件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">推挤</strong>。更多信息请参阅</p>
+<p class="my-4 leading-7">推挤不会移动已粘合的元件或板框外的元件。板框内的元件不会被推挤到边框外。</p>
+<p class="my-4 leading-7">推挤将测试点视为粘合对象。</p>
+<p class="my-4 leading-7">您无法推挤物理设计复用中的元素。所有元件元素都被视为已粘合。当选择物理设计复用元素时，推挤不可用。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 1495 页的&quot;元件和组合推挤对话框&quot;中，单击推挤方向和移动重叠元件的方向。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击<strong class="font-semibold">运行</strong>执行推挤。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">通常，会调整多个元件以适应移动的元件。推挤通过以特定颜色显示这些元件来识别它们，并允许进一步调整：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">选择颜色</strong> 受推挤例程影响的所有元件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">高亮颜色</strong> 在推挤下一轮中要移动的元件。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="更改元件边框宽度" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">更改元件边框宽度<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#更改元件边框宽度">#</a></h2>
+<p class="my-4 leading-7">您可以使用此过程更改表示丝印顶层/底层上元件边框的 2D 线宽度。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">此过程不适用于在第 20 层创建的放置(推挤)边框。</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个元件，<strong class="font-semibold">右键</strong>单击，然后选择弹出菜单中的<strong class="font-semibold">特性</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在元件边框宽度框中输入宽度(0 到 250 之间)。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击<strong class="font-semibold">确定</strong>。</p>
+<p class="my-4 leading-7">此更改仅反映在设计中；库不会更新。</p>
+<p class="my-4 leading-7">正在使用的替代封装会被修改；未使用的替代封装不会被修改。</p>
+<p class="my-4 leading-7">在线 DRC&quot;本体间&quot;检查和验证设计在检查时会查看元件边框。</p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">    在<code>SailWind Layout</code> 中，&quot;本体间&quot;间距检查是在定义元件本体边框的线边缘之间执行的。增加这些线的宽度可能会影响设计中现有元件之间的间距，并要求您执行验证设计间距检查，以确保所有&quot;本体间&quot;间距得到保持。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要使用新的元件边框宽度更新所有具有与选中元件相同封装的元件，请单击<strong class="font-semibold">继续</strong>。</p>
+</li>
+</ol>
+<h2 id="修改元件特性" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">修改元件特性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改元件特性">#</a></h2>
+<p class="my-4 leading-7">您可以编辑或更改元件属性以反映设计中的更改。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个元件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">特性</strong>。显示元件特性对话框。</p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">当元件是物理设计复用的一部分时，对话框上的几个选项不可用。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">进行任何必要的更改并单击<strong class="font-semibold">确定</strong>。</p>
+</li>
+</ol>
+<h2 id="创建标签" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建标签<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建标签">#</a></h2>
+<p class="my-4 leading-7">您可以使用元件属性对话框中的<strong class="font-semibold">标签</strong>选项卡创建标签。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个元件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">特性</strong>。显示元件特性对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在<strong class="font-semibold">标签</strong>选项卡上，在标签列表中单击&lt;新建&gt;并单击<strong class="font-semibold">标签</strong>按钮。更多信息请参阅添加新元件标签。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从属性列表中，单击要为其创建标签的属性。当您单击一个属性时，该属性的值会显示在值框中。</p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">跳线唯一可用的属性是参考标识符。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">接受当前值或输入新值。如果从属性列表中选择参考标识符或元件类型，则无法更改值。</p>
+<p class="my-4 leading-7">如果属性是只读的(1853 页)，此框不可用。如果属性是 <code>ECO</code> 注册的(1824 页)且 <code>SailWind Layout</code> 不处于 <code>ECO</code> 模式，此框也不可用。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">设置标签的可见性状态和放置信息。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">设置标签的对齐方式、右可读性、高度和宽度。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击要放置标签的层，然后单击<strong class="font-semibold">确定</strong>创建标签。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 如果您不设置可见性信息(如步骤 4、5 和 6)，则使用默认位置。更多信息请参阅标签默认值。</p>
+</div></div>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">不检查标签的间距违规。如果您想从 CAM 输出金属或铜的标签，例如在布线层上，请仔细检查标签放置。</p>
+</div></div>
+<h2 id="编辑标签" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">编辑标签<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#编辑标签">#</a></h2>
+<p class="my-4 leading-7">标签列表包含参考标识符、元件类型和属性的现有标签。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个元件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">特性</strong>。显示元件属性对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在<strong class="font-semibold">标签</strong>选项卡上，单击列表中的一个标签并单击此选项卡中的<strong class="font-semibold">标签</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择标签而不是元件，显示相应的元件标签属性对话框(590 页)，您可以在其中修改标签。</p>
+</li>
+</ol>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 修改跳线名称属性时，参考标识符是唯一可用的标签。</p>
+</div></div>
+<h2 id="簇和组合放置" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">簇和组合放置<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#簇和组合放置">#</a></h2>
+<p class="my-4 leading-7">使用簇放置功能创建连接元件的关联或分组。</p>
+<p class="my-4 leading-7">使用两种对象类型：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">组合</strong> 是用户创建的元件关联，彼此之间具有严格的关系。一个例子是将滤波电容与 IC 关联放置在其上方。当移动或放置选中的组合时，元件或组合成员之间的物理关系保持不变。组合不是使用簇放置例程创建的，但在簇创建和自动放置操作期间会考虑它们。有关信息，请参阅组合主题。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">簇</strong> 是基于连接性的单个元件、组合和其他簇的集合。一系列 IC 和相关的分立元件组成的内存阵列可以构成一个簇。簇与组合的不同之处在于，属于簇的元件或簇成员会在簇内重新排列以改善放置。</p>
+<p class="my-4 leading-7">簇在非常大的设计中或板的不同区域分为不同功能的设计中非常有用。您可以手动或自动创建或修改簇。您还可以使用此功能自动放置单个元件。更多信息请参阅自动放置元件和交互式移动簇主题。</p>
+<p class="my-4 leading-7">任何创建、显示或修改簇的操作(簇管理器除外)都会自动将您置于簇视图模式。更多信息请参阅簇视图模式主题。</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">簇显示设置</strong></p>
+<p class="my-4 leading-7">表示簇的圆在显示颜色设置对话框中分配为顶层的 2D 线属性。表示簇名称的文本分配为第 20 层的文本属性。</p>
+<p class="my-4 leading-7">从簇中心发出的连接线(与普通视图相同)在显示颜色设置对话框中分配为连接设置。</p>
+<h2 id="组合" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">组合<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#组合">#</a></h2>
+<p class="my-4 leading-7"><em>组合</em> 是用户创建的元件关联，彼此之间具有严格的关系，如距离、旋转角度、顶部或底部。</p>
+<p class="my-4 leading-7">一个常见的例子是将滤波电容放置在 IC 上方。当移动或放置选中的组合时，元件或组合成员之间的物理关系保持不变。</p>
+<h3 id="创建新组合" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">创建新组合<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建新组合">#</a></h3>
+<p class="my-4 leading-7">您可以创建由两个或多个元件组成的组合。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择并定位您想要组成组合的元件为特定模式。保持元件选中状态。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">创建组合</strong>。显示带有默认名称的组合名称定义对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用默认名称或输入组合的新名称，然后单击<strong class="font-semibold">确定</strong>。</p>
+</li>
+</ol>
+<h3 id="创建相似组合" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">创建相似组合<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建相似组合">#</a></h3>
+<p class="my-4 leading-7">您可以使用组合作为示例自动创建其他相同配置的组合。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个组合，<strong class="font-semibold">右键</strong>单击，然后选择<strong class="font-semibold">创建相似组合</strong>。</p>
+<p class="my-4 leading-7">显示&quot;确认创建相似组合&quot;对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击<strong class="font-semibold">是</strong>继续。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在出现的提示&quot;是否分散新组合？&quot;的对话框中，执行以下操作之一：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击<strong class="font-semibold">是</strong>将新创建的组合分散在板框周围。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击<strong class="font-semibold">否</strong>分散元件，并显示消息&quot;保留基准？&quot;。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">此消息询问是否将新组合的成员定位为与用于创建的组合匹配。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击<strong class="font-semibold">是</strong>将新组合精确重新定位为基准元件</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击<strong class="font-semibold">否</strong>将新组合保留在当前位置。</p>
+</li>
+</ul>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 创建相似组合会忽略带有测试点的元件。</p>
+</div></div>
+<h3 id="组合的选择" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">组合的选择<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#组合的选择">#</a></h3>
+<p class="my-4 leading-7">您可以手动或自动选择组合。</p>
+<h4 id="从组合成员选择组合" class="mt-8 leading-6 text-lg title_fb7eb">从组合成员选择组合<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#从组合成员选择组合">#</a></h4>
+<p class="my-4 leading-7">选择组合中的第一个项目，然后找到相关对象。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择组合的一个成员。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">选择组合</strong>。</p>
+</li>
+</ol>
+<h4 id="选择组合成员时自动选中整个组合" class="mt-8 leading-6 text-lg title_fb7eb">选择组合成员时自动选中整个组合<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#选择组合成员时自动选中整个组合">#</a></h4>
+<p class="my-4 leading-7">当选择组合中的第一个对象时，自动选中该组合的所有成员。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">编辑 &gt; 筛选器</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">勾选“元件”和“组合”选项。更多信息，请参阅“精确对象选择”。</p>
+</li>
+</ol>
+<h3 id="向组合中添加元件" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">向组合中添加元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#向组合中添加元件">#</a></h3>
+<p class="my-4 leading-7">可根据需要向现有组合中添加元件。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">设置筛选器，以便选择组合成员时选中整个组合。更多信息，请参阅“精确对象选择”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用多选功能（Ctrl+点击）选择要添加的元件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">创建组合</strong> 弹出菜单项。系统显示消息“是否解除组合并将元件包含到新组合中？”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">是</strong> 添加新元件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">是</strong> 使用相同的组合名称。</p>
+</li>
+</ol>
+<h3 id="修改组合" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">修改组合<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改组合">#</a></h3>
+<p class="my-4 leading-7">启动 <code>SailWind Layout</code> 时，系统会自动启用“组合修改锁定”设置以防止修改组合。您可更改此设置。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择任意组合的成员。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">修改组合成员</strong> 弹出菜单项。此选项在当前会话中保持激活状态。再次点击可恢复默认设置。</p>
+</li>
+</ol>
+<h3 id="删除组合或组合成员" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">删除组合或组合成员<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#删除组合或组合成员">#</a></h3>
+<p class="my-4 leading-7">可移除组合中的单个元件或删除整个组合。</p>
+<p class="my-4 leading-7">根据设计需求选择以下方法：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">从组合中移除元件</strong>：用于移除组合中的单个元件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">删除整个组合</strong>：用于从设计中移除整个组合。</p>
+</li>
+</ul>
+<h3 id="从组合中移除元件" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">从组合中移除元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#从组合中移除元件">#</a></h3>
+<p class="my-4 leading-7">可根据需要将元件从组合中打散。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择要移除的元件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">从组合中打散</strong> 弹出菜单项。</p>
+</li>
+</ol>
+<h3 id="删除整个组合" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">删除整个组合<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#删除整个组合">#</a></h3>
+<p class="my-4 leading-7">可根据需要打散组合。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择组合。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">打散</strong> 弹出菜单项。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 使用“打散同类组合”和“打散所有组合”选项可移除所有同类组合或所有组合。</p>
+</div></div>
+<h2 id="簇布局" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">簇布局<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#簇布局">#</a></h2>
+<p class="my-4 leading-7">通过簇布局，可以创建连接元件的关联或分组。</p>
+<p class="my-4 leading-7">簇布局支持以下两种对象类型：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">组合</strong>：用户创建的元件关联，成员间具有严格关系。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">簇</strong>：基于连接性的单个元件、组合及其他簇的集合。</p>
+</li>
+</ul>
+<h3 id="创建新簇" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">创建新簇<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建新簇">#</a></h3>
+<p class="my-4 leading-7">可手动创建新簇。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择要包含在簇中的元件、组合及其他簇。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">创建簇</strong> 弹出菜单项。簇元件将消失，替换为一个圆形，所有连接从其中心引出。此圆形代表簇。</p>
+</li>
+</ol>
+<h3 id="修改现有簇" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">修改现有簇<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改现有簇">#</a></h3>
+<p class="my-4 leading-7">可手动、半自动或自动向簇中添加元件或簇，但只能手动移除元件。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择要修改的簇。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择以下弹出菜单项：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">编辑手册</strong>：点击“添加到簇”以向选中簇添加项目。项目将以当前高亮颜色显示。 点击“从簇移除”可移除高亮项目。点击快捷菜单中的“完成”结束修改。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">增量增长</strong>：打开“簇增量增长”对话框（第 1177 页），显示高亮簇信息及以下按钮：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">接受</strong>：将高亮项目添加到选中簇。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">跳过</strong>：跳过当前项目并高亮下一个。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">停止</strong>：添加已接受的项目并结束操作。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">取消</strong>：取消操作且不修改选中簇。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">自动增长</strong>：打开“簇大小限制定义”对话框（第 1177 页），显示簇当前大小（成员数量）及推荐成员数的文本框。点击 <strong class="font-semibold">确定</strong> 接受新值，或输入更大值以添加更多元件。</p>
+</li>
+</ul>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 使用簇管理器（第 1171 页）可通过对话框修改现有簇。</p>
+</div></div>
+<h3 id="簇视图模式" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">簇视图模式<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#簇视图模式">#</a></h3>
+<p class="my-4 leading-7">创建或修改簇时，<code>SailWind Layout</code> 会自动切换到簇视图模式（使用簇管理器时除外）。点击 <strong class="font-semibold">查看 &gt; 簇</strong> 可在簇视图与普通视图间切换。</p>
+<p class="my-4 leading-7">簇视图模式下，部分命令和选项不可用或受限。</p>
+<h3 id="在簇视图模式下显示元件" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">在簇视图模式下显示元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#在簇视图模式下显示元件">#</a></h3>
+<p class="my-4 leading-7">可在簇视图模式下显示簇所属元件。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">编辑 &gt; 筛选器</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">勾选 <strong class="font-semibold">簇</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择簇。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">显示内容</strong> 弹出菜单项。元件将以当前高亮颜色显示。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">取消</strong> 可返回簇视图模式。</p>
+</li>
+</ol>
+<h3 id="交互式移动簇" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">交互式移动簇<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#交互式移动簇">#</a></h3>
+<p class="my-4 leading-7">必要时可重新定位簇。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择簇，<strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">移动</strong> 弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将簇移动到新位置并点击。簇移动后，其成员将折叠（第 1816 页）。可通过设置使移动后簇不折叠，更多信息请参阅“折叠簇”。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 自动布局功能会忽略物理设计复用中的元件。</p>
+</div></div>
+<h3 id="删除簇" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">删除簇<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#删除簇">#</a></h3>
+<p class="my-4 leading-7">可删除单个簇或所有簇。</p>
+<h4 id="删除单个簇" class="mt-8 leading-6 text-lg title_fb7eb">删除单个簇<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#删除单个簇">#</a></h4>
+<p class="my-4 leading-7">可从设计中移除单个簇。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择簇（支持多选）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">打散</strong> 弹出菜单项。</p>
+</li>
+</ol>
+<h4 id="删除所有簇" class="mt-8 leading-6 text-lg title_fb7eb">删除所有簇<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#删除所有簇">#</a></h4>
+<p class="my-4 leading-7">可一次性移除设计中的所有簇。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择任意簇。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">打散所有簇</strong> 弹出菜单项。</p>
+</li>
+</ol>
+<h3 id="折叠簇" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">折叠簇<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#折叠簇">#</a></h3>
+<p class="my-4 leading-7">“折叠”命令将簇成员重新定位到簇中心。簇布局的“放置元件”过程会消除折叠时产生的重叠。</p>
+<p class="my-4 leading-7">也可手动移动每个元件。折叠操作会忽略已粘合对象或包含粘合对象的组合。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 点击<strong class="font-semibold">视图 &gt; 簇</strong> 可在元件视图与簇视图间切换。</p>
+</div></div>
+<h3 id="折叠所有簇" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">折叠所有簇<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#折叠所有簇">#</a></h3>
+<p class="my-4 leading-7">可一次性折叠设计中的所有簇。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">未选择任何对象时，<strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">选择簇</strong> 弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">全选</strong> 弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">折叠成员</strong> 弹出菜单项。</p>
+</li>
+</ol>
+<h3 id="折叠簇成员" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">折叠簇成员<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#折叠簇成员">#</a></h3>
+<p class="my-4 leading-7">默认情况下，<code>SailWind Layout</code> 中的簇移动后会折叠。但可更改此设置。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">移动簇时，<strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">折叠簇成员</strong> 弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">簇将被折叠。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 每次启动<code>SailWind Layout</code> 时，“折叠簇成员”选项默认启用。</p>
+</div></div>
+<h3 id="自动布局" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">自动布局<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#自动布局">#</a></h3>
+<p class="my-4 leading-7">使用“簇布局”对话框可创建新簇、在板框内放置簇及元件。</p>
+<h4 id="准备自动布局" class="mt-8 leading-6 text-lg title_fb7eb">准备自动布局<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#准备自动布局">#</a></h4>
+<p class="my-4 leading-7">创建板框并导入网络表后，<code>SailWind Layout</code> 会将所有元件定位在板原点。随后可准备自动布局并启动该流程。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">设置设计网格以适配待放置元件。英制单位中，IC 常用网格为 100 或 50 密耳，分立元件为 50 密耳。建议从 IC 的最大公约网格开始。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">放置所有需固定位置的元件（如连接器、安装孔等），并选中这些元件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">特性</strong> 按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在属性对话框中勾选“胶粘”复选框，防止自动布局移动这些元件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">工具 &gt; 分散元件</strong> 菜单项，将所有未粘合元件移至板框外。分散操作会根据元件高度和长度排列位置。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 分散操作会忽略物理设计复用中的元件。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在<strong class="font-semibold">绘图</strong>菜单中点击 <strong class="font-semibold">元件禁止区域</strong> 按钮，创建自动布局时不放置元件的区域。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用 <strong class="font-semibold">旋转</strong> 和 <strong class="font-semibold">翻转</strong> 按钮调整需倾斜放置或位于底层的元件。</p>
+</li>
+</ol>
+<h4 id="自动放置元件" class="mt-8 leading-6 text-lg title_fb7eb">自动放置元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#自动放置元件">#</a></h4>
+<p class="my-4 leading-7">为节省时间，可选择自动放置 PCB 设计中的元件。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">工具 &gt; 簇布局</strong> 菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">放置元件</strong> 按钮。点击 <strong class="font-semibold">设置</strong> 按钮（位于“放置元件”下方）可修改自动布局选项。更多信息请参阅“放置元件设置对话框”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">运行</strong>。状态对话框将显示布局进度。更多信息请参阅“自动布局”。</p>
+</li>
+</ol>
+<h3 id="簇管理" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">簇管理<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#簇管理">#</a></h3>
+<p class="my-4 leading-7">使用簇管理器可显示和管理簇成员及组合。可将成员和组合在簇间移动，或打散簇。</p>
+<p class="my-4 leading-7">簇管理器类似 Windows 资源管理器，可查看顶层或层级结构中任意级别的项目。</p>
+<p class="my-4 leading-7">簇管理器对话框主要由两个列表框组成，显示设计中所有簇、组合及元件。</p>
+<h4 id="向簇中添加元件" class="mt-8 leading-6 text-lg title_fb7eb">向簇中添加元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#向簇中添加元件">#</a></h4>
+<p class="my-4 leading-7">可根据需要向现有簇添加更多元件。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">工具 &gt; 簇管理器</strong> 菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在一个列表框中查看目标簇的层级结构。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在另一个列表框中选择要添加的元件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">移动箭头</strong> 按钮。</p>
+</li>
+</ol>
+<h4 id="将簇成员合并到其他簇" class="mt-8 leading-6 text-lg title_fb7eb">将簇成员合并到其他簇<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#将簇成员合并到其他簇">#</a></h4>
+<p class="my-4 leading-7">可根据需要将一个簇的成员合并到另一个簇中。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">工具 &gt; 簇管理器</strong> 菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在任一列表框中查看目标簇的层级结构。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在另一个列表框中查看待合并成员的簇层级结构。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">高亮要移动的成员。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">移动箭头</strong> 按钮。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">移除所有成员后，簇将为空，但点击 <strong class="font-semibold">确定</strong> 结束会话前不会删除簇名称。点击 <strong class="font-semibold">确定</strong> 前，可双击空簇并重复上述步骤添加成员。</p><!--/$--></div><div class="rspress-doc-footer"><footer class="mt-8"><div class="xs:flex pb-5 px-2 justify-end items-center"><div class="flex text-sm text-text-2 leading-6 sm:leading-8 font-medium"><p>最近更新时间<!-- -->: <span>2025/7/15 05:55:33</span></p></div></div><div class="flex flex-col"></div><div class="flex flex-col sm:flex-row sm:justify-around gap-4 pt-6"><div class="prev_c92d1 flex flex-col"><a href="/sailwind_docs/layout/guide/20_zh.html" class="link_a7cea pager-link_e0d2d"><span class="desc_dcc01">上一页</span><span class="title_a3acb">第 20 章 AI 驱动的先进功能</span></a></div><div class="next_c11be flex flex-col"><a href="/sailwind_docs/layout/guide/22_zh.html" class="link_a7cea pager-link_e0d2d next_ad355"><span class="desc_dcc01">下一页</span><span class="title_a3acb">第 22 章 SailWind 3D</span></a></div></div></footer></div></div><div class="aside-container_bc5fa"><div class="flex flex-col"><div id="aside-container" class="relative text-sm font-medium"><div class="leading-7 block text-sm font-semibold pl-3">本页目录</div><nav class="mt-1"><ul class="relative"><li><a href="#布局策略" title="布局策略" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">布局策略</span></a></li><li><a href="#布局指南" title="布局指南" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">布局指南</span></a></li><li><a href="#元件布局流程" title="元件布局流程" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">元件布局流程</span></a></li><li><a href="#设置对象的原点" title="设置对象的原点" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">设置对象的原点</span></a></li><li><a href="#布局与长度最小化" title="布局与长度最小化" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">布局与长度最小化</span></a></li><li><a href="#控制长度最小化" title="控制长度最小化" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">控制长度最小化</span></a></li><li><a href="#最小化未布线连接长度" title="最小化未布线连接长度" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">最小化未布线连接长度</span></a></li><li><a href="#与布局相关的工程变更指令ecos" title="与布局相关的工程变更指令（ECOs）" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">与布局相关的工程变更指令（ECOs）</span></a></li><li><a href="#布局期间使用查找对话框" title="布局期间使用查找对话框" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">布局期间使用查找对话框</span></a></li><li><a href="#元件间距" title="元件间距" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">元件间距</span></a></li><li><a href="#移动元件" title="移动元件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">移动元件</span></a></li><li><a href="#通过原点移动项目" title="通过原点移动项目" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">通过原点移动项目</span></a></li><li><a href="#移动时拉伸走线" title="移动时拉伸走线" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">移动时拉伸走线</span></a></li><li><a href="#径向移动设计对象" title="径向移动设计对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">径向移动设计对象</span></a></li><li><a href="#径向移动快捷菜单" title="径向移动快捷菜单" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">径向移动快捷菜单</span></a></li><li><a href="#顺序元件放置" title="顺序元件放置" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">顺序元件放置</span></a></li><li><a href="#使用查找对话框顺序放置元件" title="使用查找对话框顺序放置元件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">使用查找对话框顺序放置元件</span></a></li><li><a href="#在工作区中顺序放置元件" title="在工作区中顺序放置元件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">在工作区中顺序放置元件</span></a></li><li><a href="#修改元件的板侧位置" title="修改元件的板侧位置" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">修改元件的板侧位置</span></a></li><li><a href="#翻转元件" title="翻转元件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">翻转元件</span></a></li><li><a href="#翻转组" title="翻转组" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">翻转组</span></a></li><li><a href="#使用ntl-开关" title="使用/NTL 开关" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">使用/NTL 开关</span></a></li><li><a href="#元件阵列" title="元件阵列" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">元件阵列</span></a></li><li><a href="#元件阵列示例" title="元件阵列示例" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">元件阵列示例</span></a></li><li><a href="#创建元件阵列" title="创建元件阵列" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">创建元件阵列</span></a></li><li><a href="#修改元件阵列" title="修改元件阵列" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">修改元件阵列</span></a></li><li><a href="#对齐对象" title="对齐对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">对齐对象</span></a></li><li><a href="#旋转-90-度对象" title="旋转 90 度对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">旋转 90 度对象</span></a></li><li><a href="#旋转对象" title="旋转对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">旋转对象</span></a></li><li><a href="#交换元件" title="交换元件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">交换元件</span></a></li><li><a href="#交互式放置工具" title="交互式放置工具" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">交互式放置工具</span></a></li><li><a href="#推挤元器件" title="推挤元器件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">推挤元器件</span></a></li><li><a href="#推挤和设计规则检查drc" title="推挤和设计规则检查(DRC)" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">推挤和设计规则检查(DRC)</span></a></li><li><a href="#推挤重叠元件" title="推挤重叠元件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">推挤重叠元件</span></a></li><li><a href="#推挤所有元件" title="推挤所有元件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">推挤所有元件</span></a></li><li><a href="#推挤单个元件" title="推挤单个元件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">推挤单个元件</span></a></li><li><a href="#更改元件边框宽度" title="更改元件边框宽度" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">更改元件边框宽度</span></a></li><li><a href="#修改元件特性" title="修改元件特性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">修改元件特性</span></a></li><li><a href="#创建标签" title="创建标签" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建标签</span></a></li><li><a href="#编辑标签" title="编辑标签" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">编辑标签</span></a></li><li><a href="#簇和组合放置" title="簇和组合放置" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">簇和组合放置</span></a></li><li><a href="#组合" title="组合" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">组合</span></a></li><li><a href="#创建新组合" title="创建新组合" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">创建新组合</span></a></li><li><a href="#创建相似组合" title="创建相似组合" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">创建相似组合</span></a></li><li><a href="#组合的选择" title="组合的选择" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">组合的选择</span></a></li><li><a href="#从组合成员选择组合" title="从组合成员选择组合" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">从组合成员选择组合</span></a></li><li><a href="#选择组合成员时自动选中整个组合" title="选择组合成员时自动选中整个组合" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">选择组合成员时自动选中整个组合</span></a></li><li><a href="#向组合中添加元件" title="向组合中添加元件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">向组合中添加元件</span></a></li><li><a href="#修改组合" title="修改组合" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">修改组合</span></a></li><li><a href="#删除组合或组合成员" title="删除组合或组合成员" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">删除组合或组合成员</span></a></li><li><a href="#从组合中移除元件" title="从组合中移除元件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">从组合中移除元件</span></a></li><li><a href="#删除整个组合" title="删除整个组合" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">删除整个组合</span></a></li><li><a href="#簇布局" title="簇布局" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">簇布局</span></a></li><li><a href="#创建新簇" title="创建新簇" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">创建新簇</span></a></li><li><a href="#修改现有簇" title="修改现有簇" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">修改现有簇</span></a></li><li><a href="#簇视图模式" title="簇视图模式" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">簇视图模式</span></a></li><li><a href="#在簇视图模式下显示元件" title="在簇视图模式下显示元件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">在簇视图模式下显示元件</span></a></li><li><a href="#交互式移动簇" title="交互式移动簇" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">交互式移动簇</span></a></li><li><a href="#删除簇" title="删除簇" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">删除簇</span></a></li><li><a href="#删除单个簇" title="删除单个簇" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">删除单个簇</span></a></li><li><a href="#删除所有簇" title="删除所有簇" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">删除所有簇</span></a></li><li><a href="#折叠簇" title="折叠簇" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">折叠簇</span></a></li><li><a href="#折叠所有簇" title="折叠所有簇" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">折叠所有簇</span></a></li><li><a href="#折叠簇成员" title="折叠簇成员" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">折叠簇成员</span></a></li><li><a href="#自动布局" title="自动布局" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">自动布局</span></a></li><li><a href="#准备自动布局" title="准备自动布局" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">准备自动布局</span></a></li><li><a href="#自动放置元件" title="自动放置元件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">自动放置元件</span></a></li><li><a href="#簇管理" title="簇管理" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">簇管理</span></a></li><li><a href="#向簇中添加元件" title="向簇中添加元件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">向簇中添加元件</span></a></li><li><a href="#将簇成员合并到其他簇" title="将簇成员合并到其他簇" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">将簇成员合并到其他簇</span></a></li></ul></nav></div></div></div></div></div></div></section></div>
+    <div id="search-container"></div>
+  </body>
+</html>

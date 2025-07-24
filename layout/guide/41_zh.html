@@ -1,0 +1,2073 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Rspress v1.45.0">
+    <title data-rh="true">第 41 章 CAM 输出 - SailWind</title><meta data-rh="true" name="description" content="SailWind"/>
+  <script>{;const saved = localStorage.getItem('rspress-theme-appearance');const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;const isDark = !saved || saved === 'auto' ? preferDark : saved === 'dark';document.documentElement.classList.toggle('dark', isDark);document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';}</script><link rel="icon" href="/sailwind_docs/favicon.ico"><script defer src="/sailwind_docs/static/js/styles.f5ec16c7.js"></script><script defer src="/sailwind_docs/static/js/lib-react.36f9b428.js"></script><script defer src="/sailwind_docs/static/js/lib-router.971f4280.js"></script><script defer src="/sailwind_docs/static/js/2886.6c8a4c3c.js"></script><script defer src="/sailwind_docs/static/js/index.ef746291.js"></script><link href="/sailwind_docs/static/css/styles.6524924d.css" rel="stylesheet"></head>
+
+  <body >
+    <div id="root"><div class="navContainer_d18b1 rspress-nav px-6  sticky_ddfa7"><div class="container_e4235 flex justify-between items-center h-full"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div><div class="flex flex-1 justify-end items-center"><div class="rightNav_a2fea"><div class="flex sm:flex-1 items-center sm:pl-4 sm:pr-2"><div class="rspress-nav-search-button navSearchButton_df1fb"><button><svg width="18" height="18" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg><p class="searchWord_af2c1">搜索</p><div style="opacity:0"><span></span><span>K</span></div></button></div><div class="mobileNavSearchButton_d85a9"><svg width="24" height="24" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg></div></div><div class="rspress-nav-menu menu h-14"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div><div class="flex-center flex-row"><div class="mx-2"><div class="md:mr-2 rspress-nav-appearance"><div class="p-1 border border-solid border-gray-300 text-gray-400  cursor-pointer rounded-md hover:border-gray-600 hover:text-gray-600 dark:hover:border-gray-200 dark:hover:text-gray-200 transition-all duration-300 w-7 h-7"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="dark:hidden" width="18" height="18" fill="currentColor"><path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6m0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4M12 4c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M12 24c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M5.6 6.6c-.3 0-.5-.1-.7-.3L3.5 4.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.1.2-.4.3-.7.3M19.8 20.8c-.3 0-.5-.1-.7-.3l-1.4-1.4c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.2.2-.5.3-.7.3M3 13H1c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M23 13h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M4.2 20.8c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.4.3-.7.3M18.4 6.6c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.5.3-.7.3"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="hidden dark:block" width="18" height="18" fill="currentColor"><path d="M12.1 22h-.9c-5.5-.5-9.5-5.4-9-10.9.4-4.8 4.2-8.6 9-9 .4 0 .8.2 1 .5s.2.8-.1 1.1c-2 2.7-1.4 6.4 1.3 8.4 2.1 1.6 5 1.6 7.1 0 .3-.2.7-.3 1.1-.1.3.2.5.6.5 1-.2 2.7-1.5 5.1-3.6 6.8-1.9 1.4-4.1 2.2-6.4 2.2M9.3 4.4c-2.9 1-5 3.6-5.2 6.8-.4 4.4 2.8 8.3 7.2 8.7 2.1.2 4.2-.4 5.8-1.8 1.1-.9 1.9-2.1 2.4-3.4-2.5.9-5.3.5-7.5-1.1-2.8-2.2-3.9-5.9-2.7-9.2"></path></svg></div></div></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div><div class="mobileNavMenu_e7045"><div class="navScreen_ec30c  rspress-nav-screen" id="navScreen"><div class="container_c935d"><div class="navMenu_b887b"><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div></div><div class="flex-center flex-col gap-2"><div class="mt-2 navAppearance_bf893 flex justify-center"></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div></div><button aria-label="mobile hamburger" class=" rspress-mobile-hamburger navHamburger_ac64c text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><circle cx="8" cy="16" r="2" fill="currentColor"></circle><circle cx="16" cy="16" r="2" fill="currentColor"></circle><circle cx="24" cy="16" r="2" fill="currentColor"></circle></svg></button></div></div></div></div><section><div class="docLayout_af141 pt-0"><aside class="sidebar_dd719 rspress-sidebar "><div class="navTitleMask_fb17c"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div></div><div class="rspress-scrollbar sidebarContent_da296"><nav class="pb-2"><a href="/sailwind_docs/layout/index.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:14px;margin-left:0;border-radius:0 var(--rp-radius) var(--rp-radius) 0;padding-left:24px;font-weight:bold"><span>章节预览</span></div></a><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">指南(Guide)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 2 章 用户界面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 3 章 无模命令与快捷键</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 4 章 设计与编辑基础</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 5 章 设置颜色</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 6 章 库与库数据管理</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 7 章 创建和编辑 PCB 封装</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 8 章 创建和修改元件类型</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 9 章 开始新设计</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 10 章 文件操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 11 章 设计环境设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 12 章 使用 SailWind Logic</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 13 章 导入与导出</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 14 章 层</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 15 章 过孔设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/16_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 16 章 电气网络</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/17_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 17 章 选项设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/18_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 18 章 属性控制</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/19_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 19 章 设置规则和使用禁止区</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/20_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 20 章 AI 驱动的先进功能</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/21_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 21 章 元件布局</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/22_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 22 章 SailWind 3D</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/23_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 23 章 与机械设计团队的数据交换</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/24_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 24 章 虚拟过孔</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/25_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 25 章 标签操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/26_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 26 章 设计或设计部分的复用</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/27_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 27 章 绘图操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/28_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 28 章 安全间距检查</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/29_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 29 章 铜箔操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/30_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 30 章 为布铜区或覆铜平面分配网络</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/31_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 31 章 覆铜平面操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/32_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 32 章 设计布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/33_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 33 章 SailWind 布线器</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/34_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 34 章 铜填充与覆铜平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/35_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 35 章 参考标志符</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/36_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 36 章 工程变更单(ECO)</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/37_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 37 章 设计比较</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/38_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 38 章 报告功能</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/39_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 39 章 设计错误检查</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/40_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 40 章 尺寸标注</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/41_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItemActive_de63c mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 41 章 CAM 输出</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/42_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 42 章 对象链接与嵌入 ❌</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/43_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 43 章 故障排除</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/44_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 44 章 SPECCTRA 链接</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/45_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 45 章 错误检测、BMW与BLT、脚本与宏</span></div></a></div><div class="rspress-sidebar-item"><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:18px"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex"><span class="flex-center" style="font-size:13px">第 46 - 55 章 Dialogs</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:0"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/46_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 46 章 GUI 参考元素 A</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/47_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 47 章 GUI 参考元素 B 至 C</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/48_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 48 章 GUI 参考元素 D</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/49_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 49 章 GUI 参考元素 E 至 G</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/50_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 50 章 GUI 参考元素 H 至 J</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/51_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 51 章 GUI 参考元素 K 至 O</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/52_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 52 章 GUI 参考元素 P</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/53_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 53 章 GUI 参考元素 Q 至 R</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/54_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 54 章 GUI 参考元素 S</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/55_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 55 章 GUI 参考元素 T 至 Z</span></div></a></div></div></div></section></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">教程(Tutorial)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>用户界面学习</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建库元件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>设计准备</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>导入设计数据</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>分配约束规则</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>移动与放置组件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建和编辑走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用动态布线创建走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用 <code>SailWind Router</code> 进行自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建分割平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建覆铜平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>添加尺寸标注</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>检查设计规则违规</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>更新原理图</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建报告和 CAM 文件</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">快速参考(Quick Reference)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/qr/modless.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>无模命令</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/qr/shortcut.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>键盘快捷键</span></div></a></div></div></div></section></nav></div></aside><div class="flex-1 relative min-w-0"><div class="rspress-sidebar-menu-container "><div class="rspress-sidebar-menu"><button type="button" class="flex-center mr-auto"><div class="text-md mr-2"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"></path></svg></div><span class="text-sm">Menu</span></button><button type="button" class="flex-center ml-auto"><span class="text-sm">本页目录</span><div class="text-md mr-2" style="transform:rotate(0deg);transition:transform 0.2s ease-out;margin-top:2px"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></button><div class="rspress-local-toc-container "><ul><li><a href="#cam-文档" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">CAM 文档</span></a></li><li><a href="#关联布铜区与-cam" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">关联布铜区与 CAM</span></a></li><li><a href="#rs-274-x-格式" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">RS-274-X 格式</span></a></li><li><a href="#创建-cam-输出以制造-pcb" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建 CAM 输出以制造 PCB</span></a></li><li><a href="#cam-输出创建" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">CAM 输出创建</span></a></li><li><a href="#创建自定义-cam-输出" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">创建自定义 CAM 输出</span></a></li><li><a href="#使用自动定义创建-cam-文档集" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">使用自动定义创建 CAM 文档集</span></a></li><li><a href="#创建丝印-gerber-格式文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">创建丝印 Gerber 格式文件</span></a></li><li><a href="#创建阻焊-gerber-格式文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">创建阻焊 Gerber 格式文件</span></a></li><li><a href="#创建焊膏层-gerber-格式文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">创建焊膏层 Gerber 格式文件</span></a></li><li><a href="#创建装配图" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">创建装配图</span></a></li><li><a href="#创建布线分割平面-gerber-格式文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">创建布线/分割平面 Gerber 格式文件</span></a></li><li><a href="#创建-cam-平面-gerber-格式文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">创建 CAM 平面 Gerber 格式文件</span></a></li><li><a href="#创建-nc-钻孔文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">创建 NC 钻孔文件</span></a></li><li><a href="#创建带钻孔表的钻孔图" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">创建带钻孔表的钻孔图</span></a></li><li><a href="#验证-gerber-文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">验证 Gerber 文件</span></a></li><li><a href="#创建所有输出" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">创建所有输出</span></a></li><li><a href="#创建可重复使用的制造注释" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建可重复使用的制造注释</span></a></li><li><a href="#报告光绘文件的光圈" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">报告光绘文件的光圈</span></a></li><li><a href="#truelayer-关联" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">TrueLayer 关联</span></a></li><li><a href="#cam-文档中的颜色" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">CAM 文档中的颜色</span></a></li><li><a href="#将过欠尺寸值应用于所有层" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">将过(欠)尺寸值应用于所有层</span></a></li><li><a href="#钻孔图选项" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">钻孔图选项</span></a></li><li><a href="#排序钻孔图表数据" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">排序钻孔图表数据</span></a></li><li><a href="#修改钻孔表条目" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">修改钻孔表条目</span></a></li><li><a href="#装配变量" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">装配变量</span></a></li><li><a href="#为装配变量替换元件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">为装配变量替换元件</span></a></li><li><a href="#替换元件操作" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">替换元件操作</span></a></li><li><a href="#元件状态解释" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">元件状态解释</span></a></li><li><a href="#显示替换差异" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">显示替换差异</span></a></li><li><a href="#预览变量" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">预览变量</span></a></li><li><a href="#创建装配变量" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">创建装配变量</span></a></li><li><a href="#创建装配变量-1" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">创建装配变量</span></a></li><li><a href="#安装卸载或替换变量设计元件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">安装、卸载或替换变量设计元件</span></a></li><li><a href="#修改装配变量" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">修改装配变量</span></a></li><li><a href="#按元件修改装配变量" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">按元件修改装配变量</span></a></li><li><a href="#删除装配变量" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">删除装配变量</span></a></li><li><a href="#预览装配变量" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">预览装配变量</span></a></li><li><a href="#创建变量元件清单" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">创建变量元件清单</span></a></li><li><a href="#创建装配变量装配图" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">创建装配变量装配图</span></a></li><li><a href="#cam-预览" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">CAM 预览</span></a></li><li><a href="#打印" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">打印</span></a></li><li><a href="#打印到-windows-打印机" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">打印到 Windows 打印机</span></a></li><li><a href="#打印-postscript-到文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">打印 PostScript 到文件</span></a></li><li><a href="#设置打印机输出到文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">设置打印机输出到文件</span></a></li><li><a href="#将-cam-文档打印到文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">将 CAM 文档打印到文件</span></a></li><li><a href="#cam-文档的-dfm-分析-" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">CAM 文档的 DFM 分析 ❌</span></a></li><li><a href="#设置-dfm-分析" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">设置 DFM 分析</span></a></li><li><a href="#运行-dfm-分析" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">运行 DFM 分析</span></a></li><li><a href="#cam-plus-组装机接口" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">CAM Plus 组装机接口</span></a></li><li><a href="#批处理模式和掩码模式" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">批处理模式和掩码模式</span></a></li><li><a href="#运行-cam-plus" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">运行 CAM Plus</span></a></li><li><a href="#cam-plus-报告文件名" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">CAM Plus 报告文件名</span></a></li><li><a href="#cam350" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">CAM350</span></a></li></ul></div></div></div><div class="content_ff766 rspress-doc-container flex"><div class="flex-1 overflow-x-auto"><div class="rspress-doc"><!--$--><h1 id="第-41-章-cam-输出" class="rspress-doc-title text-3xl mb-10 leading-10 tracking-tight title_fb7eb">第 41 章 CAM 输出<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#第-41-章-cam-输出">#</a></h1>
+<p class="my-4 leading-7">以下主题描述了打印机、绘图仪、光绘机、数控钻孔设备及与各种自动装配和贴片机兼容的输出文件的设置、预览和输出。</p>
+<p class="my-4 leading-7">您可以使用文件菜单中的 CAM 命令生成激光复印、绘图、Gerber 文件、钻孔图纸和其他制造输出。</p>
+<h2 id="cam-文档" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">CAM 文档<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#cam-文档">#</a></h2>
+<p class="my-4 leading-7">CAM 是计算机辅助制造的缩写。使用 CAM 工具，您不仅可以生成 Gerber 格式的光绘或制造输出，还可以生成打印输出和绘图。</p>
+<p class="my-4 leading-7">绘图类型(钻孔、丝印或布线)与关联的输出设备设置一起称为 CAM 文档。</p>
+<p class="my-4 leading-7">开始新设计时没有默认的输出配置集 - 定义 CAM 文档对话框为空。不同类型的设计需要独特的输出文件集。具有 14 层设计需要的输出文件比只有 2 层的设计更多。您必须为每个设计定义自己所需的输出文档配置列表。您的配置可以保存在 <em>.pcb</em> 文件中，因此每个文件都有自己的 CAM 文档列表。您可以导出然后导入文档配置以在类似设计中重复使用。</p>
+<p class="my-4 leading-7">当您添加 CAM 文档时，您正在添加预设的输出配置，类似于脚本，您可以针对设计运行以创建所需的输出文档类型。预设(CAM 文档)包含文档类型、可见对象、设计定位和输出设备。</p>
+<p class="my-4 leading-7">当您在定义 CAM 文档对话框中有文档配置列表时，您可以快速针对当前设计运行这些配置并创建输出，无论是打印输出还是光绘或两者。您可以单独打印文档或以批处理模式打印。</p>
+<p class="my-4 leading-7">您可以使用导入和导出在 <em>.pcb</em> 文件之间移动 CAM 文档列表，包括光圈列表和钻孔进给速度表。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">您最多可以创建 250 个 CAM 文档配置。</p>
+</div></div>
+<h2 id="关联布铜区与-cam" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">关联布铜区与 CAM<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#关联布铜区与-cam">#</a></h2>
+<p class="my-4 leading-7">当焊盘和其他对象在 PCB 封装编辑器中与布铜区关联时，CAM 会以不同方式解释它们。</p>
+<p class="my-4 leading-7">有关更多信息，请参阅&quot;将布铜区与端子关联&quot;。关联布铜区形状和开放布铜区是在封装中创建硬突破的一种方法。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">端子被解释为过孔</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">闭合布铜区形状被解释为焊盘</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">开放布铜区(用铜绘制的路径)被解释为走线</p>
+</li>
+</ul>
+<h2 id="rs-274-x-格式" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">RS-274-X 格式<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#rs-274-x-格式">#</a></h2>
+<p class="my-4 leading-7">RS-274-X 格式基于 Gerber 系统公司的 Gerber 格式指南(文档编号：0000-00-RM-000，元件编号：414-100-002)。<code>SailWind Layout</code> 中的 RS-274-X 是 CAM 中为光绘机创建的数据格式。</p>
+<p class="my-4 leading-7">从光绘机高级设置对话框中选择 RS-274-X 输出格式会创建一个包含表 133 所示信息的 Gerber 文件。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">字段</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">AM</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">光圈宏</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">AD</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">光圈描述</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">FS</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">格式声明</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">MO</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">单位模式</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">IN</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">图像名称</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LN</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层名称</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LP</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层极性</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">G36,G37</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">填充区域控制</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 133. RS-274-X 字段</strong></p>
+<p class="my-4 leading-7">这些功能适用于 9500、9800、9900、GPC 和 Insight/2020 光绘机，它们也支持 G74、G75 多象限圆弧插补功能代码。根据光绘机设置，其中一些参数会出现在 Gerber 文件中；但是，表 134 中的参数始终存在于 Gerber 文件中。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">字段</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计名称</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">%IN 作业名称 *% 其中作业名称为设计的名称。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">模式参数</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">表示单位，例如%MOIN*%或%MOMM*%。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">格式声明参数</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">描述在光绘机高级设置对话框中选择的格式选项，例如%FSLAX45Y45*%。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 134. Gerber 文件字段</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">光圈表</strong></p>
+<p class="my-4 leading-7">所有简单光圈(如圆形、椭圆形或矩形)在输出 Gerber 文件中描述为%ADDxx*%参数。同时也会创建光绘机光圈报告文件。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">光圈宏</strong></p>
+<p class="my-4 leading-7">与管脚关联的布铜区区域作为独特的光圈闪光输出。</p>
+<p class="my-4 leading-7">光圈支持如下：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">支持顶点数不超过 50 的线形多边形布铜区和圆形布铜区</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">支持顶点数不超过 50 的线形实心多边形布铜区和圆形实心布铜区</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">弧形布铜区边框在 Gerber 中使用顶点数不超过 50 的多边形近似作为光圈宏。%AM*%参数将顶点数限制为 50</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">CAM 平面的热释放作为宏闪光输出</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><code>SailWind Layout</code> 不支持与元件管脚关联的布铜区切口。</p>
+<p class="my-4 leading-7"><code>SailWind Layout</code> 不支持与元件管脚关联的网格布铜区。所有关联的布铜区在 CAM 中都显示并输出为实心，无论网格间距和线宽如何。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">填充区域</strong></p>
+<p class="my-4 leading-7">实心(非网格)布铜区和覆铜平面以填充区域模式(G36,G37 括号)输出。网格区域以矢量格式输出。支持圆形布铜区区域、弧形多边形以及圆形和多边形布铜区切口。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">验证光绘</strong></p>
+<p class="my-4 leading-7">验证光绘文档类型支持 <code>SailWind Layout</code> Gerber 输出的宏、光圈选择和填充区域命令。验证光绘只能处理由 <code>SailWind Layout</code> 创建的 RS-274-X Gerber 文件。</p>
+<h2 id="创建-cam-输出以制造-pcb" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建 CAM 输出以制造 PCB<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建-cam-输出以制造-pcb">#</a></h2>
+<p class="my-4 leading-7">制造 PCB 需要典型的 Gerber 文件、钻孔文件、装配坐标文件和图纸。请与您的制造商核对具体要求清单。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">生成顶层输出：</p>
+<p class="my-4 leading-7">a. 为光绘机创建导电元件 Gerber 格式文件。在以下层类型中选择：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">布线/分割平面(Gerber 格式文件)第 948 页</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">CAM 平面(Gerber 格式文件)第 951 页</p>
+</li>
+</ul>
+<p class="my-4 leading-7">b. 为光绘机创建丝印 Gerber 格式文件(Gerber 格式文件)第 938 页</p>
+<p class="my-4 leading-7">c. 为光绘机创建阻焊 Gerber 格式文件(Gerber 格式文件)第 941 页</p>
+<p class="my-4 leading-7">d. 为光绘机创建焊膏 Gerber 格式文件(Gerber 格式文件)第 943 页</p>
+<p class="my-4 leading-7">e. 创建装配图纸(非 Gerber)第 946 页</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">为每个内层生成光绘机导电元件 Gerber 格式文件输出。在以下层类型中选择：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">布线/分割平面(Gerber 格式文件)第 948 页</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">CAM 平面(Gerber 格式文件)第 951 页</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">生成底层输出：</p>
+<p class="my-4 leading-7">a. 为光绘机创建导电元件 Gerber 格式文件。在以下层类型中选择：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">布线/分割平面(Gerber 格式文件)第 948 页</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">CAM 平面(Gerber 格式文件)第 951 页</p>
+</li>
+</ul>
+<p class="my-4 leading-7">b. 为光绘机创建丝印 Gerber 格式文件(Gerber 格式文件)第 938 页</p>
+<p class="my-4 leading-7">c. 为光绘机创建阻焊 Gerber 格式文件(Gerber 格式文件)第 941 页</p>
+<p class="my-4 leading-7">d. 为光绘机创建焊膏 Gerber 格式文件(Gerber 格式文件)第 943 页</p>
+<p class="my-4 leading-7">e. 创建装配图纸(非 Gerber)第 946 页</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">为每个钻孔对生成输出：</p>
+<p class="my-4 leading-7">a. 创建带钻孔表的钻孔图纸(非 Gerber)第 954 页</p>
+<p class="my-4 leading-7">b. 为钻孔机创建 NC 钻孔文件(钻孔文件)第 953 页</p>
+</li>
+</ol>
+<h2 id="cam-输出创建" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">CAM 输出创建<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#cam-输出创建">#</a></h2>
+<p class="my-4 leading-7">可以创建以下输出类型。</p>
+<h3 id="创建自定义-cam-输出" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">创建自定义 CAM 输出<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建自定义-cam-输出">#</a></h3>
+<p class="my-4 leading-7">您可以创建自定义 CAM 输出。此设置没有预设。您从没有默认分配的层或对象开始，并选择要在输出中包含的项目。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 如果使用 TrueLayer 选项，请参阅&quot;TrueLayer 关联&quot;了解 TrueLayer 如何影响层和 CAM 文档。</p>
+</div></div>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页&gt; CAM</strong>菜单项</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在定义 CAM 文档对话框中，点击<strong class="font-semibold">添加</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在添加文档对话框第 1044 页，键入<strong class="font-semibold">文档名称</strong></p>
+<p class="my-4 leading-7">在文档名称中添加自定义输出的描述很有帮助。键入描述绘图类型和输出设备的文档名称；例如，丝印顶层 - 用于打印。如果将此文档输出到文件，这不是它将保存到的文件名；您将在后续步骤的输出文件框中定义该文件名。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在<strong class="font-semibold">文档类型列表</strong>中，点击<strong class="font-semibold">自定义</strong></p>
+<p class="my-4 leading-7">当您选择特定文档类型时，程序会自动生成一组预配置的层和要绘制的项目。您可以使用这些或自定义它们。您可以在摘要框中查看默认文档类型的设置摘要。如果在选择文档类型时提示您选择层关联，而该层不在列表中，您可能需要重新访问层设置。点击设置层以快速访问层设置对话框；否则您需要关闭所有 CAM 对话框才能访问设置菜单。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出文件框中，键入您正在创建的文件的名称</p>
+<p class="my-4 leading-7">输出文件框中会出现自动生成的名称。这是您可能发送给制造商的文件的名称。如果此文件名与其功能和层堆叠中的位置相关，您的制造商会发现这很有帮助。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在<strong class="font-semibold">自定义文档</strong>区域，点击<strong class="font-semibold">层</strong>按钮</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在选择项目对话框中，选择哪些层和层项目应出现在您的输出中，然后点击预览按钮检查输出中将包含的内容</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>接受更改并关闭选择项目对话框</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在<strong class="font-semibold">自定义文档</strong>区域，点击<strong class="font-semibold">选项</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在绘图选项对话框中，在定位区域，设置定位选项</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>关闭绘图选项对话框</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出设备区域，选择设备并根据需要更新设备设置</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>将新文件配置添加到定义 CAM 文档对话框</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 虽然您可以从添加文档对话框点击<strong class="font-semibold">运行</strong>并创建输出文件，但您可能希望将此配置添加到定义 CAM 文档对话框中，以防您需要再次生成该文件。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 CAM 目录列表中，选择要保存输出文件的文件夹</p>
+<p class="my-4 leading-7">如果您要将其发送到打印机，可以跳过此步骤。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文档名称列表中选择要输出的文档，然后点击<strong class="font-semibold">运行</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">保存</strong></p>
+<p class="my-4 leading-7">如果您关闭.pcb 设计而不保存设计，您将丢失定义 CAM 文档对话框中的任何添加内容。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">如果您不将输出发送到打印机，您的文件将出现在<em>C:\SailWind Projects\Cam</em>目录中(如果您创建了子目录，则在子目录中)。</p>
+<h3 id="使用自动定义创建-cam-文档集" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">使用自动定义创建 CAM 文档集<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用自动定义创建-cam-文档集">#</a></h3>
+<p class="my-4 leading-7">您可以使用自动定义快速为设计生成一组 CAM 文档。此功能使用预定义的默认参数组生成&quot;起始&quot;CAM 文档集，您可以进一步优化以满足特定的设计要求。</p>
+<p class="my-4 leading-7">使用自动定义创建基线 CAM 文档后，您可以编辑每个单独的 CAM 文档配置以更改文件名并修改设计对象选择以满足制造输出要求。编辑完成后，您可以保存并导出配置以在其他设计中使用。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">自动定义仅创建光绘(<em>.pho</em>)文件。您必须手动创建设计流程所需的任何其他类型的 CAM 文档以进行打印或笔式绘图。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">自动定义使用通用命名约定来标识每种不同类型的 CAM 文档文件(阻焊、焊膏、布线/平面层、装配图纸、钻孔文件等)。您可以重命名文件以反映您的特定命名偏好或公司标准。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">自动定义分析设计并为镀通孔、非镀孔和单个部分过孔钻孔对(如果设计中存在)创建单独的钻孔文件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">自动定义尝试根据您的特定设计设置创建完整的 CAM 文档集。它不会覆盖您可能已为设计创建的任何现有 CAM 文档配置。自动定义检测并保留任何现有的 CAM 文档配置，仅将剩余的缺失文件附加到设计中。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">您不能修改用于自动生成 CAM 文档配置的默认参数；但是，一旦创建，您可以编辑并保存修改后的 CAM 文档配置，导出它们并在其他设计中使用。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页&gt; CAM</strong>菜单项</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在定义 CAM 文档对话框中，点击<strong class="font-semibold">自动定义</strong>按钮</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">新创建的 CAM 文档配置将出现在 CAM 文档区域中。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">自动定义始终尝试根据您的特定设计设置生成完整的 CAM 文档配置集。如果您想使用自动定义创建 CAM 文档配置的子集，请运行自动定义以创建完整的 CAM 文档配置集，然后手动删除任何不需要的 CAM 文档配置。</p>
+</div></div>
+<h3 id="创建丝印-gerber-格式文件" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">创建丝印 Gerber 格式文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建丝印-gerber-格式文件">#</a></h3>
+<p class="my-4 leading-7">您为制造商的光绘机创建丝印 Gerber 格式文件以生成丝印顶层或丝印底层。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页&gt; CAM</strong>菜单项</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在定义 CAM 文档对话框中，点击<strong class="font-semibold">添加</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在添加文档对话框第 1044 页，键入文档名称，如丝印顶层或丝印底层</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文档类型列表中，点击丝印，并在出现的层关联对话框中选择板的顶部或底部。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 层可能不命名为顶部或底部，但将具有您在层设置对话框中选择的设计顶层和底层的名称。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出文件框中，键入您正在创建的文件的名称</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 输出文件框中会出现自动生成的名称。这是您将发送给制造商的文件的名称。如果此文件名与其功能相关，您的制造商会发现这很有帮助。将文件命名为<em>silkscreen_top.pho</em>或<em>silkscreen_bottom.pho</em>。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在自定义文档区域，点击<strong class="font-semibold">层</strong>按钮</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在选择项目对话框中，选择哪些层和层项目应出现在丝印数据中：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果所有丝印元素都已添加到丝印层，您可以删除选定列表中的其他层</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在典型的丝印中，您需要正在处理的层(顶层安装或底层安装)的元件边框，以及参考标识和边框</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于大型元件，通常会添加在测试或故障排除期间有助于定位管脚的属性(如管脚 1 处的点和元件周围的数字)。如果您已在丝印层上添加了此类属性，则应选择显示丝印层的属性</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击预览按钮检查输出中将包含的内容</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>接受更改并关闭选择项目对话框</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在自定义文档区域，点击<strong class="font-semibold">选项</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在绘图选项对话框中，在定位区域，设置定位选项</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 重要的是，您为设计输出的每个 Gerber 格式文件必须与其他文件完全对齐。您必须对每个层使用相同的定位设置，并且必须确保一个层上的对象不会使层偏离对齐设置。例如，您选择通过左上角对齐层，并决定在所有输出中包含板框。板框将在每个输出的左上角对齐，但如果您在板的左侧有一个超出板框的元件，则您的丝印层可能无法与您创建的其他层对齐，因为对齐是基于左侧的元件边框(和顶部的板框)。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在抑制区域，您可以抑制显示一些参考标识</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 例如，如果您有一组使用参考标识前缀 X 的安装孔，您可以选择不在丝印中包含这些参考标识。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>关闭绘图选项对话框</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出设备区域，如果尚未选择，点击<strong class="font-semibold">照片</strong>按钮</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">设备设置</strong>，在光绘机设置对话框中，根据需要更改设置</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">高级</strong>按钮，在光绘机高级设置对话框中，根据需要更改设置</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 您可能希望使用 RS-274X 格式。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>关闭光绘机高级设置对话框</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>关闭光绘机设置对话框</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>将新文件配置添加到定义 CAM 文档对话框</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 虽然您可以从添加文档对话框点击<strong class="font-semibold">运行</strong>并创建输出文件，但您可能希望将此配置添加到定义 CAM 文档对话框中，以防您需要再次生成该文件。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">再次重复这些步骤以创建板的另一侧的丝印输出(如果适用)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 CAM 目录列表中，选择要保存输出文件的文件夹</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文档名称列表中选择要输出的文档，然后点击<strong class="font-semibold">运行</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">保存</strong></p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 如果您关闭设计而不保存设计，您将丢失定义 CAM 文档对话框中的任何添加内容。</p>
+</div></div>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">您的文件将出现在 <em>C:\SailWind Projects\Cam</em> 目录中，如果您创建了子目录，则在子目录中。</p>
+<p class="my-4 leading-7">查看丝印预览时，黑线代表丝印图稿。您通常会看到正在处理的层(顶层安装或底层安装)的元件边框、任何板标识或版本文本、公司徽标，以及重新编号(从原始网表导入)为易于搜索模式的参考标识(位于元件边框外)。</p>
+<p class="my-4 leading-7">您可以使用两组参考标识，一组在丝印层上用于丝印图稿，位于元件外部，在元件放置并焊接到板上后不会被隐藏；另一组在装配图纸层上，位于元件中心用于装配图纸。如果您的库封装中没有构建这第二组装配图纸参考标识，您可以快速将它们添加到设计中。有关更多信息，请参阅&quot;为装配图纸生成第二组参考标识&quot;。</p>
+<h3 id="创建阻焊-gerber-格式文件" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">创建阻焊 Gerber 格式文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建阻焊-gerber-格式文件">#</a></h3>
+<p class="my-4 leading-7">您为制造商的光绘机创建阻焊 Gerber 格式文件以生成阻焊顶层或阻焊底层。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 设计中的虚拟过孔作为过孔输出。</p>
+</div></div>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页&gt; CAM</strong>菜单项</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在定义 CAM 文档对话框中，点击<strong class="font-semibold">添加</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在添加文档对话框第 1044 页，键入文档名称，如阻焊顶层或阻焊底层</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文档类型列表中，点击阻焊，并在出现的层关联对话框中选择板的顶部或底部</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 层可能不命名为顶部或底部，但将具有您在层设置对话框中选择的设计顶层和底层的名称。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出文件框中，键入您正在创建的文件的名称</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 输出文件框中会出现自动生成的名称。这是您将发送给制造商的文件的名称。如果此文件名与其功能相关，您的制造商会发现这很有帮助。将文件命名为<em>soldermask_top.pho</em>或<em>soldermask_bottom.pho</em>。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在自定义文档区域，点击<strong class="font-semibold">层</strong>按钮</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在选择项目对话框中，选择哪些层和层项目应出现在阻焊数据中：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">您需要每个元件的每个焊盘和(可选)每个过孔的阻焊开窗</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果您已在焊盘栈中添加这些开窗，并且所有阻焊元素都已添加到阻焊层，您可以删除选定列表中的其他层</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果您未在焊盘栈中添加这些开窗，有一种简单的方法可以获得所需的开窗而无需编辑所有焊盘栈。您可以将顶层添加到选定列表并选择该层的焊盘复选框。这会在阻焊中添加与焊盘大小完全相同的开窗。您只需要在绘图选项中放大焊盘</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击预览按钮检查输出中将包含的内容。查看预览时，白色区域将是阻焊。黑色区域是阻焊中的开窗</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>接受更改并关闭选择项目对话框</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在自定义文档区域，点击<strong class="font-semibold">选项</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在绘图选项对话框中，在定位区域，设置定位选项</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 重要的是，您为设计输出的每个 Gerber 格式文件必须与其他文件完全对齐。您必须对每个层使用相同的定位设置，并且必须确保一个层上的对象不会使层偏离对齐设置。例如，您选择通过左上角对齐层，并决定在所有输出中包含板框。板框将在每个输出的左上角对齐，但如果您在板的左侧有一个超出板框的元件，则您的阻焊层可能无法与您创建的其他层对齐，因为对齐是基于左侧的元件边框(和顶部的板框)。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在过(欠)尺寸焊盘框中，如果需要全局修改焊盘开窗大小，请键入一个值</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 如果您使用外层焊盘形状创建阻焊层的阻焊开窗，您可能希望在此处添加全局放大。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>关闭绘图选项对话框</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出设备区域，如果尚未选择，点击<strong class="font-semibold">照片</strong>按钮</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">设备设置</strong>。在光绘机设置对话框中，根据需要更改设置</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">高级</strong>按钮。在光绘机高级设置对话框中，根据需要更改设置</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 您可能希望使用 RS-274X 格式。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>关闭光绘机高级设置对话框</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>关闭光绘机设置对话框</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>将新文件配置添加到定义 CAM 文档对话框</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 虽然您可以从添加文档对话框点击<strong class="font-semibold">运行</strong>并创建输出文件，但您可能希望将此配置添加到定义 CAM 文档对话框中，以防您需要再次生成该文件。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">再次重复这些步骤以创建板的另一侧的阻焊输出(如果适用)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 CAM 目录列表中，选择要保存输出文件的文件夹</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文档名称列表中选择要输出的文档，然后点击<strong class="font-semibold">运行</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">保存</strong></p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 如果您关闭设计而不保存设计，您将丢失定义 CAM 文档对话框中的任何添加内容。</p>
+</div></div>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">您的文件将出现在<em>C:\SailWind Projects\Cam</em>目录中，如果您创建了子目录，则在子目录中。</p>
+<p class="my-4 leading-7">查看阻焊预览时，白色区域将是阻焊。黑色区域是阻焊中的开窗。您通常会看到每个元件的每个焊盘和任何未覆盖(掩膜)的过孔的阻焊开窗。</p>
+<h3 id="创建焊膏层-gerber-格式文件" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">创建焊膏层 Gerber 格式文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建焊膏层-gerber-格式文件">#</a></h3>
+<p class="my-4 leading-7">您需要为制造商的曝光机制作焊膏层（顶层或底层）创建 Gerber 格式文件。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">主页 &gt; CAM</strong> 菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在定义 CAM 文档对话框中，点击 <strong class="font-semibold">添加</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 1044 页的添加文档对话框中，输入文档名称如&quot;焊膏层顶层&quot;或&quot;焊膏层底层&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文档类型列表中，点击&quot;焊膏层&quot;，然后在出现的层关联对话框中选择电路板的顶层或底层。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 层名称可能不是&quot;顶层&quot;或&quot;底层&quot;，而是您在层设置对话框中为设计顶层和底层选择的名称。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出文件框中，输入您要创建的文件名。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 输出文件框中会显示自动生成的文件名。这是您将发送给制造商的文件名。如果文件名与其功能相关，对制造商会有帮助。可将文件命名为<em>pastemask_top.pho</em>或<em>pastemask_bottom.pho</em>。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在自定义文档区域，点击 <strong class="font-semibold">层</strong> 按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在选择项目对话框中，选择应出现在焊膏层数据中的层和层项目：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">您需要为每个表面贴装元件的每个焊盘创建焊膏层开口。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果已在焊盘栈中添加这些开口，且所有焊膏层元素都已添加到焊膏层，则可以移除选中列表中的其他层。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果未在焊盘栈中添加这些开口，有一种简单方法可以获取所需开口而无需编辑所有焊盘栈。您可以将顶层添加到选中列表并选择该层的焊盘复选框。这将添加与焊盘尺寸完全相同的焊膏层开口。您可以在绘图选项中放大或缩小焊盘（焊膏层开口）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果所有焊膏层元素都已添加到焊膏层顶层，则可以移除选中列表中的其他层。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击预览按钮检查输出中将包含的内容。预览时，黑色区域是焊膏层开口，将成为电路板上的焊膏位置。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">确定</strong> 接受更改并关闭选择项目对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在自定义文档区域，点击 <strong class="font-semibold">选项</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在绘图选项对话框的定位区域，设置定位选项。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 重要的是，您为设计输出的每个 Gerber 格式文件必须与其他文件完全对齐。您必须为每个层使用相同的定位设置，并确保一个层上的对象不会使该层偏离对齐设置。例如，您选择以左上角对齐层，并决定在所有输出中包含板框。板框将在每个输出的左上角对齐，但如果电路板左侧有一个延伸到板框之外的元件，则您的丝印层可能无法与您创建的其他层对齐，因为对齐是基于左侧的元件边框（和顶部的板框）。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在抑制区域，您可以抑制元件的焊膏层开口。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 例如，如果您有一个边缘连接器，您不希望在其焊盘上添加焊膏层开口。如果您使用外层焊盘形状创建焊膏层的开口，您需要将边缘连接器的参考标识符添加到抑制框中，以防止其在制造过程中获得焊膏。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在焊盘放大(缩小)框中，如果需要全局修改焊盘开口尺寸，请输入一个值。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">确定</strong> 关闭绘图选项对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出设备区域，如果尚未选择，点击 <strong class="font-semibold">照片</strong> 按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">设备设置</strong>，在照片绘图仪设置对话框中，根据需要更改设置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">高级</strong> 按钮，在照片绘图仪高级设置对话框中，根据需要更改设置。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 您可能需要使用 RS-274X 格式。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">确定</strong> 关闭照片绘图仪高级设置对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">确定</strong> 关闭照片绘图仪设置对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">确定</strong> 将新文件配置添加到定义 CAM 文档对话框中。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 虽然您可以从添加文档对话框中点击<strong class="font-semibold">运行</strong> 并创建输出文件，但您可能希望将此配置添加到定义 CAM 文档对话框中，以防需要再次生成文件。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">重复这些步骤为电路板的另一侧创建焊膏层输出（如适用）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 CAM 目录列表中，选择要保存输出文件的文件夹。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文档名称列表中选择要输出的文档，然后点击 <strong class="font-semibold">运行</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">保存</strong>。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 如果您在不保存设计的情况下关闭设计，将丢失对定义 CAM 文档对话框的任何添加。</p>
+</div></div>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">您的文件将出现在<em>C:\SailWind Projects\Cam</em>目录或其子目录中（如果您创建了子目录）。</p>
+<p class="my-4 leading-7">查看焊膏层预览时请记住，与阻焊层不同，焊膏层不是艺术品层 - 它不是应用于电路板的物质。在这方面它与阻焊层相反。黑色区域实际上是焊膏层模板中的开口，是将焊膏应用到电路板上的位置。您通常应该看到每个表面贴装元件焊盘的焊膏层开口（焊膏位置）。</p>
+<h3 id="创建装配图" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">创建装配图<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建装配图">#</a></h3>
+<p class="my-4 leading-7">您需要为制造商在电路板上组装元件时参考创建装配图。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">主页 &gt; CAM</strong> 菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在定义 CAM 文档对话框中，点击 <strong class="font-semibold">添加</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 1044 页的添加文档对话框中，输入文档名称如&quot;装配顶层&quot;或&quot;装配底层&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文档类型列表中，点击&quot;装配&quot;，然后在出现的层关联对话框中选择电路板的顶层或底层。</p>
+<p class="my-4 leading-7">层名称可能不是&quot;顶层&quot;或&quot;底层&quot;，而是您在层设置对话框中为设计顶层和底层选择的名称。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出文件框中，输入您要创建的文件名。</p>
+<p class="my-4 leading-7">输出文件框中会显示自动生成的文件名。这是您将发送给制造商的文件名。如果文件名与其功能相关，对制造商会有帮助。可将文件命名为<em>assembly_top.pho</em>或<em>assembly_bottom.pho</em>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果需要创建装配变量的装配图，请执行以下操作：</p>
+<p class="my-4 leading-7">a. 在自定义文档区域，点击 <strong class="font-semibold">装配</strong>。</p>
+<p class="my-4 leading-7">b. 在选择装配变量对话框中，点击使用装配变量复选框，将装配变量作为装配图的设计输入。</p>
+<p class="my-4 leading-7">c. 在名称列表中，选择一个变量并点击 <strong class="font-semibold">确定</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出设备区域，选择设备并根据需要更新设备设置。</p>
+<p class="my-4 leading-7">通常，您会将装配图发送到打印机、绘图仪或 PDF 文件，而不是输出为 Gerber 文件。当您激活打印机或绘图仪作为输出时，可以选择为输出文档中的项目应用不同颜色。例如，您可以在装配图中使用浅灰色包含走线和焊盘，而元件边框和参考标识符保持黑色。这在手动组装电路板时可以提供更多上下文。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在自定义文档区域，点击 <strong class="font-semibold">层</strong> 按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在选择项目对话框中，选择应出现在装配图中的层和层项目：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">您可以向装配层添加一组参考标识符，并将这些参考标识符居中放置在元件边框内，而不是使用散布在元件外部的丝印参考标识符。这将使装配图更易于阅读。有关步骤，请参阅&quot;为装配图生成第二组参考标识符&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">您可能还希望在装配图中添加元件类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果您在属性中添加了标记来标记管脚 1，将这些标记添加到装配图中可能有益。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果所有装配元素都已添加到装配层，则可以移除选中列表中的其他层。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">预览</strong> 按钮检查输出中将包含的内容。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">确定</strong> 接受更改并关闭选择项目对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在自定义文档区域，点击 <strong class="font-semibold">选项</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在绘图选项对话框的定位区域，设置定位选项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在抑制区域，您可以抑制显示某些参考标识符。</p>
+<p class="my-4 leading-7">例如，如果您有一组使用 Ref Des 前缀 X 的安装孔，您可以选择不在装配中包含这些参考标识符。它们不是真正的元件，您不需要装配人员认为需要填充元件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于装配底层图，您可能需要选择镜像图像复选框以镜像图像。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">确定</strong> 关闭绘图选项对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">确定</strong> 将新文件配置添加到定义 CAM 文档对话框中。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 虽然您可以从添加文档对话框中点击<strong class="font-semibold">运行</strong> 并创建输出文件，但您可能希望将此配置添加到定义 CAM 文档对话框中，以防需要再次生成文件。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">重复这些步骤为电路板的另一侧创建装配图（如适用）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 CAM 目录列表中，选择要保存输出文件的文件夹。</p>
+<p class="my-4 leading-7">如果您将其发送到打印机，可以跳过此步骤。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文档名称列表中选择要输出的文档，然后点击 <strong class="font-semibold">运行</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">保存</strong>。</p>
+<p class="my-4 leading-7">如果您在不保存 <em>.pcb</em> 设计的情况下关闭设计，将丢失对定义 CAM 文档对话框的任何添加。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">如果您没有将输出发送到打印机，您的文件将出现在<em>C:\SailWind Projects\Cam</em>目录或其子目录中（如果您创建了子目录）。</p>
+<p class="my-4 leading-7">查看装配图预览时，您通常会看到正在处理的层（顶层安装或底层安装）的元件边框，以及重新编号（从原始网表导入）为易于搜索模式的参考标识符，这些标识符居中放置在元件边框内。</p>
+<p class="my-4 leading-7">您使用两组参考标识符，一组在装配图上居中于元件上用于装配图，另一组在丝印层上位于元件外部，在元件放置后不会被隐藏。如果您尚未将此第二组装配图参考标识符构建到库封装中，可以快速将其添加到设计中。有关更多信息，请参阅 808 页的&quot;为装配图生成第二组参考标识符&quot;。</p>
+<h3 id="创建布线分割平面-gerber-格式文件" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">创建布线/分割平面 Gerber 格式文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建布线分割平面-gerber-格式文件">#</a></h3>
+<p class="my-4 leading-7">导电元件层分为两种类型的输出。您的层要么是布线/分割平面层，要么是 CAM 平面层。您需要为制造商的曝光机制作 PCB 的导电层创建布线/分割平面 Gerber 格式文件。</p>
+<p class="my-4 leading-7">😎<strong class="font-semibold">前提</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在为此导电层实际创建 Gerber 格式文件之前，必须确保所有覆铜平面都已填充铜。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">设计中的虚拟过孔将作为过孔输出。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">主页 &gt; CAM</strong> 菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在定义 CAM 文档对话框中，点击 <strong class="font-semibold">添加</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 1044 页的添加文档对话框中，输入文档名称。</p>
+<p class="my-4 leading-7">在名称中添加层的用途及其在板层堆叠中的位置是有益的。例如，&quot;信号 2 - L6&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文档类型列表中，点击&quot;布线/分割平面&quot;，然后在出现的层关联对话框中选择您的层。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出文件框中，输入您要创建的文件名。</p>
+<p class="my-4 leading-7">输出文件框中会显示自动生成的文件名。这是您将发送给制造商的文件名。如果文件名与其功能和在层堆叠中的位置相关，对制造商会有帮助。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在自定义文档区域，点击 <strong class="font-semibold">层</strong> 按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在选择项目对话框中，选择应出现在丝印数据中的层和层项目：</p>
+</li>
+</ol>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在典型的导电元件输出中，您需要一个层的所有导电元件。您可能需要焊盘、走线、过孔、铜和相关的管脚铜（如果存在）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果您向此层添加绘图元素，如线条或文本，它们将被制作为铜。您可能希望将这些项目移动到丝印层。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">预览</strong> 按钮检查输出中将包含的内容。</p>
+</li>
+</ul>
+<ol start="8" class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">确定</strong> 接受更改并关闭选择项目对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在自定义文档区域，点击 <strong class="font-semibold">选项</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在绘图选项对话框的定位区域，设置定位选项。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 重要的是，您为设计输出的每个 Gerber 格式文件必须与其他文件完全对齐。您必须为每个层使用相同的定位设置，并确保一个层上的对象不会使该层偏离对齐设置。例如，您选择以左上角对齐层，并决定在所有输出中包含板框。板框将在每个输出的左上角对齐，但如果电路板左侧有一个延伸到板框之外的元件，则您的丝印层可能无法与您创建的其他层对齐，因为对齐是基于左侧的元件边框（和顶部的板框）。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">确定</strong> 关闭绘图选项对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出设备区域，如果尚未选择，点击 <strong class="font-semibold">照片</strong> 按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">设备设置</strong>，在照片绘图仪设置对话框中，根据需要更改设置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">高级</strong> 按钮，在照片绘图仪高级设置对话框中，根据需要更改设置。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 您可能需要使用 RS-274X 格式。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">确定</strong> 关闭照片绘图仪高级设置对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">确定</strong> 关闭照片绘图仪设置对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">确定</strong> 将新文件配置添加到定义 CAM 文档对话框中。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 虽然您可以从添加文档对话框中点击<strong class="font-semibold">运行</strong> 并创建输出文件，但您可能希望将此配置添加到定义 CAM 文档对话框中，以防需要再次生成文件。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 CAM 目录列表中，选择要保存输出文件的文件夹。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文档名称列表中选择要输出的文档，然后点击 <strong class="font-semibold">运行</strong>。</p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">  如果您的设计有没有填充铜的覆铜平面，必须在创建 Gerber 格式输出之前填充这些区域。您将被提示填充它们以创建输出文件。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">保存</strong>。如果您在不保存 <em>.pcb</em> 设计的情况下关闭设计，将丢失对定义 CAM 文档对话框的任何添加。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">您的文件将出现在<em>C:\SailWind Projects\Cam</em>目录或其子目录中（如果您创建了子目录）。</p>
+<p class="my-4 leading-7">查看布线/分割平面预览时，您通常看到黑色 - 仅位于选定层上的铜项目 - 所有走线、过孔、铜、覆铜平面。如果这是一个元件层，您还将看到所有元件焊盘和相关的管脚铜（如果存在）。白色区域是无铜区域。</p>
+<h3 id="创建-cam-平面-gerber-格式文件" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">创建 CAM 平面 Gerber 格式文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建-cam-平面-gerber-格式文件">#</a></h3>
+<p class="my-4 leading-7">导电元件层分为两种类型的输出。您的层要么是布线/分割平面层，要么是 CAM 平面层。您需要为制造商的曝光机制作 PCB 的导电层创建 CAM 平面 Gerber 格式文件。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">设计中的虚拟过孔将作为过孔输出。</p>
+</div></div>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">主页 &gt; CAM</strong> 菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在定义 CAM 文档对话框中，点击 <strong class="font-semibold">添加</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 1044 页的添加文档对话框中，输入文档名称。</p>
+<p class="my-4 leading-7">在名称中添加层的用途及其在板层堆叠中的位置是有益的。例如，&quot;GND CAM 平面 - L3&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文档类型列表中，点击&quot;CAM 平面&quot;，然后在出现的层关联对话框中选择您的层。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出文件框中，输入您要创建的文件名。</p>
+<p class="my-4 leading-7">输出文件框中会显示自动生成的文件名。这是您将发送给制造商的文件名。如果文件名与其功能和在层堆叠中的位置相关，对制造商会有帮助。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在自定义文档区域，点击 <strong class="font-semibold">层</strong> 按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在选择项目对话框中，选择应出现在丝印数据中的层和层项目：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在典型的 CAM 平面输出中，您可能需要焊盘、过孔和铜。由于这是负片平面，铜对象将显示为 CAM 平面中的切口。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果您向此层添加绘图元素，如线条或文本，它们将被制作为铜。您可能希望将这些项目移动到丝印层。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">预览</strong> 按钮检查输出中将包含的内容。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> CAM 平面在工作区和 CAM 预览中都是负片图像。查看布线/分割平面层文档类型时，白色区域是铜中的开口，但查看 CAM（负片）平面时，白色区域是铜。</p>
+</div></div>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">确定</strong> 接受更改并关闭选择项目对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在自定义文档区域，点击 <strong class="font-semibold">选项</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在绘图选项对话框的定位区域，设置定位选项。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 重要的是，您为设计输出的每个 Gerber 格式文件必须与其他文件完全对齐。您必须为每个层使用相同的定位设置，并确保一个层上的对象不会使该层偏离对齐设置。例如，您选择以左上角对齐层，并决定在所有输出中包含板框。板框将在每个输出的左上角对齐，但如果电路板左侧有一个延伸到板框之外的元件，则您的丝印层可能无法与您创建的其他层对齐，因为对齐是基于左侧的元件边框（和顶部的板框）。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 CAM 平面层区域，根据需要设置设置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">确定</strong> 关闭绘图选项对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出设备区域，如果尚未选择，点击 <strong class="font-semibold">照片</strong> 按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">设备设置</strong>，在照片绘图仪设置对话框中，根据需要更改设置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">高级</strong> 按钮，在照片绘图仪高级设置对话框中，根据需要更改设置。您可能需要使用 RS-274X 格式。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">确定</strong> 关闭照片绘图仪高级设置对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">确定</strong> 关闭照片绘图仪设置对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">确定</strong> 将新文件配置添加到定义 CAM 文档对话框中。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 虽然您可以从添加文档对话框中点击<strong class="font-semibold">运行</strong> 并创建输出文件，但您可能希望将此配置添加到定义 CAM 文档对话框中，以防需要再次生成文件。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 CAM 目录列表中，选择要保存输出文件的文件夹。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文档名称列表中选择要输出的文档，然后点击 <strong class="font-semibold">运行</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">保存</strong>。如果您在不保存 <em>.pcb</em> 设计的情况下关闭设计，将丢失对定义 CAM 文档对话框的任何添加。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">您的文件将出现在<em>C:\SailWind Projects\Cam</em>目录或其子目录中（如果您创建了子目录）。</p>
+<p class="my-4 leading-7">查看 CAM 平面预览时，您看到的是与布线/分割平面层相反的负片图像。白色区域是铜，黑色对象 - 通常只有过孔或通孔管脚位置 - 是无铜区域。由于这是负片图像，您在此层放置铜以创建铜空隙（无铜区域）。如果您使用了这些空隙，应该能看到它们。</p>
+<p class="my-4 leading-7">CAM 平面热焊盘显示在 CAM 预览对话框（和布局编辑器中）中。以下计算也用于打印、笔绘图和 RS-274-X 曝光绘图操作期间的输出结果：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">热焊盘的外径与照片绘图仪设置对话框中设置的光圈宽度匹配。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">内径为外径的 75%。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">辐条数量始终为四个，呈对角线排列。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">辐条宽度为外径的 1/6。</p>
+</li>
+</ul>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 自定义 CAM 平面热焊盘的内宽设置为焊盘栈属性对话框中定义的焊盘尺寸。外宽设置为默认同网络焊盘到拐角规则。</p>
+</div></div>
+<h3 id="创建-nc-钻孔文件" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">创建 NC 钻孔文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建-nc-钻孔文件">#</a></h3>
+<p class="my-4 leading-7">您可以为设计中的每个钻孔对创建 NC 钻孔文件。这使得电路板制造商在板制造过程中可以对特定层对使用单独的钻孔操作。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; CAM</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在定义 CAM 文档对话框中，点击<strong class="font-semibold">添加</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在添加文档对话框(第 1044 页)中，输入文档名称。</p>
+<p class="my-4 leading-7">在名称中不仅添加文件用途，如果使用部分过孔还需添加钻孔对信息会很有帮助。例如：NC 钻孔 L1-3。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文档类型列表中，点击 NC 钻孔。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出文件框中，输入您要创建的文件名称。</p>
+<p class="my-4 leading-7">输出文件框中会显示自动生成的名称。这是您将发送给制造商的文件名。如果该文件名与其功能和代表的钻孔对相关，制造商将更容易理解。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在自定义文档区域，点击<strong class="font-semibold">选项</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 NC 钻孔选项对话框中，设置文件选项。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 如果使用部分过孔，您可以通过选择&quot;部分过孔&quot;复选框并选择钻孔对来指定该文件代表的钻孔对。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>关闭 NC 钻孔选项对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出设备区域(自动选择钻孔按钮)，点击<strong class="font-semibold">设备设置</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 NC 钻孔设置对话框中，根据需要更改设置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>关闭 NC 钻孔设置对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>将新文件配置添加到定义 CAM 文档对话框中。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 您可以在添加文档对话框中点击<strong class="font-semibold">运行</strong>创建输出文件；但更好的做法是点击<strong class="font-semibold">确定</strong>将此配置添加到定义 CAM 文档对话框中，以便需要时再次生成文件。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 CAM 目录列表中，选择保存输出文件的文件夹。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文档名称列表中选择要输出的文档，然后点击<strong class="font-semibold">运行</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">保存</strong>。如果关闭 <em>.pcb</em> 设计而不保存，您将丢失定义 CAM 文档对话框中的所有新增内容。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">您的文件将出现在<em>C:\SailWind Projects\Cam</em>目录中(如果您创建了子目录，则在子目录中)。</p>
+<p class="my-4 leading-7">查看 NC 钻孔文件预览时，您会看到钻孔位置，但此文件不像其他输出文件那样用于查看。要检查钻孔符号及其位置，请改为查看第 954 页的钻孔图。</p>
+<h3 id="创建带钻孔表的钻孔图" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">创建带钻孔表的钻孔图<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建带钻孔表的钻孔图">#</a></h3>
+<p class="my-4 leading-7">您可以为一个或多个钻孔对创建钻孔图。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">钻孔图表仅在钻孔图 CAM 文档中输出。它不会嵌入到设计中。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择<strong class="font-semibold">主页 &gt; CAM</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在定义 CAM 文档对话框中，点击<strong class="font-semibold">钻孔符号</strong>打开&quot;全局钻孔符号对话框&quot;(第 1387 页)定义钻孔符号。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果使用部分过孔，选择<strong class="font-semibold">唯一通孔/部分列</strong>复选框以过滤钻孔。</p>
+<p class="my-4 leading-7">选择此复选框将在表格中显示通孔/部分列，以区分部分孔和通孔钻孔。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如有必要，点击<strong class="font-semibold">重新生成</strong>更新表格数据。</p>
+<p class="my-4 leading-7">通过手动添加条目或点击<strong class="font-semibold">补充</strong>或<strong class="font-semibold">重新生成</strong>从设计数据库收集信息来填充钻孔图表数据。如果您没有保存任何新的默认设置且表格中之前没有数据，点击<strong class="font-semibold">补充</strong>或<strong class="font-semibold">重新生成</strong>将按尺寸升序排列填充表格，然后是有镀层孔，最后是无镀层孔。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">根据需要自定义钻孔数据设置。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">自定义文本大小。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">修改使用的符号和公差。更多信息请参见&quot;修改钻孔表条目&quot;(第 963 页)。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">通过点击钻孔尺寸、孔数量或镀层类型的列标题对钻孔图表数据进行排序。更多信息请参见&quot;排序钻孔图表数据&quot;(第 962 页)。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>关闭全局钻孔符号对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在定义 CAM 文档对话框中，点击<strong class="font-semibold">添加</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在添加文档对话框(第 1044 页)中，在文档名称框中输入名称。</p>
+<p class="my-4 leading-7">在名称中不仅添加文件用途，如果使用部分过孔还需添加钻孔对信息会很有帮助。例如：钻孔图 L1-3。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从文档类型下拉列表中选择&quot;<strong class="font-semibold">钻孔图</strong>&quot;，然后在出现的&quot;层关联对话框&quot;(第 1437 页)中选择钻孔对中的一个层并点击<strong class="font-semibold">确定</strong>。</p>
+<p class="my-4 leading-7">如果仅使用通孔过孔，任何层都可以。如果要在同一图中显示多个钻孔对的钻孔，请选择钻孔对中的一个层。您将在后续步骤中添加其他层。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出文件框中，输入您要创建的文件名称。</p>
+<p class="my-4 leading-7">(输出文件框中会显示自动生成的名称，但您可以覆盖它。)这是您将发送给制造商的文件名。如果该文件名与其功能和代表的钻孔对相关，制造商将更容易理解。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在自定义文档区域，点击<strong class="font-semibold">层</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;选择项目对话框&quot;(第 954 页)中，选择要包含的层，并检查以下条件：</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">必须将需要钻孔的对象添加到钻孔图中才能创建钻孔图表。图表仅显示在选择项目对话框(第 1699 页)中添加到钻孔图的项目的钻孔数据。例如，如果没有从电气层添加焊盘或过孔，图表将不会显示这些位置的钻孔信息。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果已向钻孔图层添加尺寸，必须启用线和文本。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于仅使用通孔的设计，只需包含一个电气层。对于使用部分过孔的设计，需要添加至少一个部分过孔开始、穿过或结束的层。尽管列表中显示了每个钻孔对的一个层，但您可以使用钻孔图选项来限制图中显示的钻孔。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">预览</strong>按钮查看输出中将包含的内容。</p>
+</li>
+</ul>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>接受更改并关闭选择项目对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在自定义文档区域，点击<strong class="font-semibold">选项</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;绘图选项对话框&quot;(第 1641 页)中，在定位区域设置定位选项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在钻孔图表区域，如有必要，为图表位置输入新坐标。</p>
+<p class="my-4 leading-7">在预览窗口中，注意洋红色矩形相对于板框的位置。这是钻孔图表在钻孔图中的当前位置。确定相对于设计原点的钻孔图表位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">钻孔符号</strong>按钮，在&quot;钻孔符号对话框&quot;(第 1334 页)中，为要包含在图纸中的每个钻孔符号选择&quot;使用&quot;复选框；然后点击<strong class="font-semibold">确定</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在预览窗口中检查钻孔图表的位置，如有需要，编辑钻孔图表的位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>关闭绘图选项对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出设备区域，选择设备并根据需要更新设备设置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>将新文件配置添加到&quot;定义 CAM 文档对话框&quot;(第 1261 页)。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 虽然您可以在添加文档对话框中点击<strong class="font-semibold">运行</strong>创建输出文件，但建议点击<strong class="font-semibold">确定</strong>将此配置添加到定义 CAM 文档对话框中，以便需要时再次生成文件。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 CAM 目录列表中，选择保存输出文件的文件夹。</p>
+<p class="my-4 leading-7">如果要发送到打印机，可以跳过此步骤。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文档名称列表中选择要输出的文档，然后点击<strong class="font-semibold">运行</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">保存</strong>。如果关闭设计而不保存，您将丢失定义 CAM 文档对话框中的所有新增内容。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">如果不将输出发送到打印机，您的文件将出现在<em>C:\SailWind Projects\Cam</em>目录中(如果您创建了子目录，则在子目录中)。此外，钻孔图预览会根据您在全局钻孔符号对话框中的分配和设置的设计单位选项(密耳、公制或英寸)显示带有标记的钻孔位置和列出所有钻孔尺寸的钻孔图表。板上尺寸测量也可能显示在图纸上。</p>
+<h3 id="验证-gerber-文件" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">验证 Gerber 文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#验证-gerber-文件">#</a></h3>
+<p class="my-4 leading-7">使用验证照片打开*.pho*(gerber)文件进行查看。</p>
+<p class="my-4 leading-7">验证照片不仅仅是预览，它从实际的 Gerber 输出中获取数据，而不是从生成实际光绘之前的 PCB 文件中获取数据。这使您可以创建 Gerber 文件的硬拷贝纸质打印输出，进行视觉检查并保留绘图文件记录。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; CAM</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在定义 CAM 文档对话框中，点击<strong class="font-semibold">添加</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文档类型列表中，点击<strong class="font-semibold">验证照片</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在光绘输出文件名对话框中，浏览找到 gerber 文件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择 gerber 文件并点击<strong class="font-semibold">打开</strong>。文件路径显示在摘要区域。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">预览选择</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 CAM 预览窗口中查看您的 gerber 文件。</p>
+</li>
+</ol>
+<h3 id="创建所有输出" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">创建所有输出<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建所有输出">#</a></h3>
+<p class="my-4 leading-7">您可以对当前设计运行多个 CAM 文档配置。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 CAM 文档列表中选择文档配置。</p>
+<p class="my-4 leading-7">您也可以拖动或 Shift+点击选择多个相邻文档。使用 Ctrl+点击选择多个不相邻的文档。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">运行</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">提示窗口验证要创建的文档列表。生成的 CAM 输出发送到打印机或绘图仪，或写入 CAM 目录中的文件。</p>
+<p class="my-4 leading-7">当您在层设置对话框中指定为混合平面的层上运行 CAM 时，会出现消息&quot;检测到分割/混合平面。执行覆铜和 <code>DRC</code> 检查吗？&quot;。当在多个分割/混合平面层上运行 CAM 时，此消息仅出现一次。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">是</strong>在分割/混合平面上运行覆铜操作，执行平面检查或验证设计，并为该层生成分割/混合平面数据。平面检查使用混合平面设置对话框的选项运行。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">否</strong>取消过程。您可以手动从验证设计运行平面检查以获取有关错误的更多信息。</p>
+</li>
+</ul>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">当焊盘和其他对象与 PCB 封装编辑器中的铜关联时，CAM 会以不同方式解释它们。更多信息请参见&quot;选择项目对话框&quot;的&quot;带关联铜的管脚&quot;区域。</p>
+</div></div>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">对于彩色打印输出，如果文本与 2D 线组合或是尺寸线的一部分，则将使用灰度或预设颜色作为线项目。板上任何自由文本将使用在选择项目对话框中为文本分配的颜色。</p>
+</div></div>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">设计中的虚拟过孔作为过孔输出。</p>
+</div></div>
+<h2 id="创建可重复使用的制造注释" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建可重复使用的制造注释<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建可重复使用的制造注释">#</a></h2>
+<p class="my-4 leading-7">您可以将制造注释保存到库中以供重复使用。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">创建文本的各个行项目。</p>
+<p class="my-4 leading-7">更多信息请参见&quot;添加自由文本&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">由于单独的文本无法保存到库中，请使用 2D 线为制造注释标题添加下划线。</p>
+<p class="my-4 leading-7">更多信息请参见&quot;创建绘图对象&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将所有文本与线项目组合。</p>
+<p class="my-4 leading-7">更多信息请参见&quot;组合线和文本对象&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将注释保存到库中。</p>
+<p class="my-4 leading-7">更多信息请参见&quot;将绘图项目保存到库中&quot;。</p>
+</li>
+</ol>
+<h2 id="报告光绘文件的光圈" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">报告光绘文件的光圈<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#报告光绘文件的光圈">#</a></h2>
+<p class="my-4 leading-7">您可以生成 CAM 文档中使用光圈的报告。</p>
+<p class="my-4 leading-7">😎<strong class="font-semibold">前提</strong></p>
+<p class="my-4 leading-7">要生成光圈报告，必须已对设计运行 CAM 文档光绘配置。如果 CAM 文档设置为打印或笔输出，则不会生成报告。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; CAM</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 CAM 文档列表中选择 CAM 文档。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">光圈报告</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在光圈报告文件名对话框中，输入报告名称然后点击<strong class="font-semibold">保存</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">光圈报告在默认文本编辑器中打开。</p>
+<h2 id="truelayer-关联" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">TrueLayer 关联<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#truelayer-关联">#</a></h2>
+<p class="my-4 leading-7">默认情况下，当翻转元件时，元件属性会随之翻转。例如，您将元件从一侧翻转到另一侧。</p>
+<p class="my-4 leading-7">尽管参考标号属性可见并位于顶部丝印层，但它会自动翻转到底部丝印层。您正在使用 TrueLayer 关联。此功能还取决于您在层设置中正确关联层。您可以通过在软件启动时应用命令行开关来覆盖 TrueLayer 功能。</p>
+<p class="my-4 leading-7">更多信息请参见&quot;软件启动选项&quot;。</p>
+<h2 id="cam-文档中的颜色" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">CAM 文档中的颜色<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#cam-文档中的颜色">#</a></h2>
+<p class="my-4 leading-7">如果输出到打印机或笔式绘图仪，您可以为 CAM 文档对象应用颜色。</p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">调色板仅显示打印机或绘图仪可以输出的颜色。如果您的设备只能打印灰度，调色板将显示灰度。对于单色输出设备(打印机/绘图仪)，唯一可用的颜色是黑色。</p>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">对象颜色</strong></p>
+<p class="my-4 leading-7">您可以为打印对象类型分配颜色。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">在选择项目对话框中，在选定颜色区域，点击调色板中的颜色并点击设计对象旁边的框。必须选择设计对象的复选框，对象颜色样本才会出现。</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">单个网络的颜色</strong></p>
+<p class="my-4 leading-7">打印时可以使用在查看网络对话框中分配给网络的颜色。</p>
+<p class="my-4 leading-7">• 在选择项目对话框中，选择&quot;按网络颜色&quot;复选框以在输出中使用查看网络颜色。</p>
+<h2 id="将过欠尺寸值应用于所有层" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">将过(欠)尺寸值应用于所有层<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#将过欠尺寸值应用于所有层">#</a></h2>
+<p class="my-4 leading-7">您可以使用应用于属性层次结构 PCB 级别的属性将过(欠)尺寸值扩展到非电气层。</p>
+<p class="my-4 leading-7">在 PADS2007.1 或更高版本中，打开设计或导入 ASCII 文件时会自动将此属性添加到所有设计中。使用 PADS2007 版本创建的设计将此属性值设置为&quot;否&quot;，仅将过(欠)尺寸值应用于电气层。</p>
+<p class="my-4 leading-7">使用任何其他版本创建的设计将此属性设置为&quot;是&quot;，将过(欠)尺寸值应用于所有层。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在设计中选择对象(例如元件、元件焊盘或网络)，右键点击并点击<strong class="font-semibold">属性</strong>弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;属性为&quot;列表中，点击 PCB。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 这将显示属性层次结构 PCB 级别的任何 PCB 属性。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">&quot;CAM.Apply Oversize To All Pads&quot;属性出现在属性列表中。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用属性值&quot;是&quot;将过(欠)尺寸值应用于所有层，或使用&quot;否&quot;接受默认值仅应用于电气层。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">过(欠)尺寸值未正确应用？有一组应用于阻焊层和焊膏层的设置层次结构，过(欠)尺寸值的优先级最低。更多信息请参见&quot;阻焊层和焊膏层的控制&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">查看 PCB 属性时未列出该属性？添加具有正确值的属性。</p>
+</li>
+</ul>
+<h2 id="钻孔图选项" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">钻孔图选项<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#钻孔图选项">#</a></h2>
+<p class="my-4 leading-7">使用钻孔图选项对话框设置钻孔图图例和标记参数。</p>
+<h3 id="排序钻孔图表数据" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">排序钻孔图表数据<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#排序钻孔图表数据">#</a></h3>
+<p class="my-4 leading-7">您可以填充然后按钻孔尺寸或孔数量排序钻孔图表数据，然后按镀层类型排序。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 通过手动添加条目或使用<strong class="font-semibold">补充</strong>或<strong class="font-semibold">重新生成</strong>从设计数据库收集信息来填充钻孔图表数据。如果您没有保存任何新的默认设置且表格中之前没有数据，<strong class="font-semibold">补充</strong>或<strong class="font-semibold">重新生成</strong>将按尺寸升序排列填充表格，然后是有镀层孔，最后是无镀层孔。</p>
+</div></div>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击钻孔图表中的相应列(尺寸、数量或镀层)。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击另一列标题(尺寸、数量或镀层)也按该列排序。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">最终排序顺序由选择排序列的顺序决定。</p>
+<p class="my-4 leading-7">例如，首先点击尺寸列确定数据是按数字升序还是降序排列。如果然后点击镀层列，列表将重新排序，镀层或非镀层孔在前，同时保持之前选择的升序或降序数字排序顺序。如果然后点击数量列，数量排序顺序将覆盖之前的选择。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">示例</strong></p>
+<p class="my-4 leading-7">排序结果格式与您选择的筛选器相对应。</p>
+<p class="my-4 leading-7">表 135 显示了按尺寸(升序)然后按镀层类型排序的结果。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">表 135. 排序结果示例</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">符号</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">尺寸</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">数量</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">镀层</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">公差</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">+</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0.0135</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">35</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">+0.000/0.0135</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">X</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0.02</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">125</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">+/-0.003</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">矩形</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0.037</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">62</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">+/-0.003</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">菱形</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0.048 X 1.020</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">44</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">+/-0.003</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">矩形 +</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0.056</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">8</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">+/-0.003</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">矩形 X</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0.072</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">4</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">+/-0.003</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">菱形 +</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0.11</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">6</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">+/-0.005</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">圆形 +</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0.156</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">4</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">+0.005/-0.002</td>
+</tr>
+</tbody>
+</table>
+<h3 id="修改钻孔表条目" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">修改钻孔表条目<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改钻孔表条目">#</a></h3>
+<p class="my-4 leading-7">您可以在钻孔数据区域修改显示的钻孔表条目。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">符号使用具有排他性，如果创建重复符号分配，则无法保存更改</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">您不能编辑尺寸、数量或镀层列中的数据</p>
+</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要修改与特定钻孔条目关联的符号，请双击符号列中的目标符号条目，从可用钻孔符号列表中选择一个符号。</p>
+<p class="my-4 leading-7">下次点击该条目时，钻孔符号标记区域中的符号预览窗口将反映符号更改。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要为特定钻孔条目指定或更改公差值，请双击公差列中的目标公差条目，输入公差值。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 公差列允许输入最多 32 个字符的文本字符串，使您可以在公差值之外添加制造说明。通常，请确保输入合适的公差值。您可以在文本字段之间复制粘贴公差数据，但不能执行多单元格复制功能。</p>
+</div></div>
+<h2 id="装配变量" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">装配变量<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#装配变量">#</a></h2>
+<p class="my-4 leading-7">装配变量允许您创建包含元件替换和/或省略的多个装配版本，使一个基础设计能够在装配时支持多种产品配置。</p>
+<h3 id="为装配变量替换元件" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">为装配变量替换元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#为装配变量替换元件">#</a></h3>
+<p class="my-4 leading-7">当您选择替换装配变量中的元件时，将显示变量/替换对话框。替换后的元件称为活动元件，原始元件称为默认元件。默认元件存在于基础选项和原始数据库中。</p>
+<h4 id="替换元件操作" class="mt-8 leading-6 text-lg title_fb7eb">替换元件操作<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#替换元件操作">#</a></h4>
+<p class="my-4 leading-7">您可以使用装配变量替换装配体中的元件。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">工具 &gt; 装配变量</strong>菜单项</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择以下任一方式开始替换元件：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从变量<strong class="font-semibold">名称</strong>列表中选择装配变量，从变量名称列表中选择要更改的元件名称，然后在状态区域点击<strong class="font-semibold">替换</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在多列列表中选择元件，然后在状态区域点击<strong class="font-semibold">替换</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从动词模式列表中选择<strong class="font-semibold">替换</strong>，然后在布局编辑器中选择元件</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在变量/替换对话框的多列列表中，双击活动列中的元件类型</p>
+<p class="my-4 leading-7">多列列表显示您正在替换的元件属性(值)、默认值(第 1820 页)和活动值(第 1808 页的替换值)。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在列表中选择要用于替换的值</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>完成替换</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>保存替换并应用到装配变量</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要从库中选择不同的元件类型，点击<strong class="font-semibold">浏览</strong></p>
+</li>
+</ol>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">您不能替换系列、管脚数、门数或信号管脚。当您选择不同的元件类型时，这些信息会自动更新。</p>
+<h4 id="元件状态解释" class="mt-8 leading-6 text-lg title_fb7eb">元件状态解释<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#元件状态解释">#</a></h4>
+<p class="my-4 leading-7">状态区域解释元件的状态。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">当前</strong> 点击替换或动词模式前的状态</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">新</strong> 点击替换或动词模式后的状态</p>
+</li>
+</ul>
+<p class="my-4 leading-7">例如，如果一个元件已安装，您想替换它，当前状态显示&quot;已安装&quot;因为该元件已安装在变量中。新状态显示&quot;已替换&quot;因为您正在为元件创建新的替换。</p>
+<h4 id="显示替换差异" class="mt-8 leading-6 text-lg title_fb7eb">显示替换差异<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#显示替换差异">#</a></h4>
+<p class="my-4 leading-7">您可以在多列列表中仅显示默认元件和活动元件不同的值。这包括手动更改的项目和因选择不同元件类型而更改的项目。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">选择&quot;显示差异&quot;复选框，查看仅显示差异的更新列表。</p>
+<h4 id="预览变量" class="mt-8 leading-6 text-lg title_fb7eb">预览变量<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#预览变量">#</a></h4>
+<p class="my-4 leading-7">您可以预览替换结果。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">点击<strong class="font-semibold">预览</strong>按钮查看替换结果。</p>
+<p class="my-4 leading-7">更多信息请参见&quot;预览装配变量&quot;。</p>
+<h3 id="创建装配变量" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">创建装配变量<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建装配变量">#</a></h3>
+<p class="my-4 leading-7">使用装配变量对话框创建新变量，查看或编辑变量，预览变量，删除变量，以及为变量创建报告。</p>
+<h4 id="创建装配变量-1" class="mt-8 leading-6 text-lg title_fb7eb">创建装配变量<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建装配变量-1">#</a></h4>
+<p class="my-4 leading-7">您可以创建装配变量来表示最终装配的不同变量。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">工具 &gt; 装配变量</strong>菜单项</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在新变量名称框中输入新变量名称，最多 26 个字符</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">创建</strong>，将创建一个包含基础选项(第 x 页)中所有项目的新变量</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用<strong class="font-semibold">显示</strong>列表筛选要在多列列表中查看的项目</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">卸载或替换(第 968 页)您的设计元件</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">完成新变量定义后，点击<strong class="font-semibold">确定</strong>或<strong class="font-semibold">应用</strong>将更改保存到新变量</p>
+</li>
+</ol>
+<p class="my-4 leading-7">基础选项也会根据新变量更新。您可以继续创建新变量。</p>
+<h4 id="安装卸载或替换变量设计元件" class="mt-8 leading-6 text-lg title_fb7eb">安装、卸载或替换变量设计元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#安装卸载或替换变量设计元件">#</a></h4>
+<p class="my-4 leading-7">以下主题描述两种不同的方法，您可以使用它们来安装、卸载或替换变量设计元件。</p>
+<p class="my-4 leading-7">使用多列列表 使用设计区域/布局编辑器</p>
+<h5 id="使用多列列表" class="title_fb7eb">使用多列列表<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用多列列表">#</a></h5>
+<p class="my-4 leading-7">您可以使用多列列表和状态区域修改元件状态。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">由于您不能直接修改基础选项(基于其他变量)的状态，当您在多列列表中查看基础选项时，修改状态不可用。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在名称列表中选择一个变量</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在多列列表中选择要从新变量中卸载的项目，点击<strong class="font-semibold">未安装</strong></p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 点击列标题对多列列表进行排序。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在多列列表中选择要替换的项目，点击<strong class="font-semibold">替换</strong></p>
+<p class="my-4 leading-7">为每个项目显示变量/替换对话框(第 964 页)。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">进行所需替换后，点击<strong class="font-semibold">确定</strong>返回装配变量对话框。</p>
+</li>
+</ol>
+<h5 id="使用设计区域布局编辑器" class="title_fb7eb">使用设计区域/布局编辑器<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用设计区域布局编辑器">#</a></h5>
+<p class="my-4 leading-7">您也可以使用布局编辑器修改元件状态。通过动词模式，您可以决定要执行的操作并在布局编辑器(对话框外)中的元件上执行。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在名称列表中选择一个变量</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在管理器区域，从动词模式列表中选择安装、卸载或替换</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击对话框外</p>
+<p class="my-4 leading-7">对话框保持打开状态，但不活动。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在设计区域中，选择要执行操作的元件，一次一个</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 使用替换动词模式时，每次选择元件后都会显示变量/替换对话框(第 964 页)。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">完成元件选择或要更改动词模式时，点击对话框内</p>
+</li>
+</ol>
+<p class="my-4 leading-7">对话框中的多列列表更新以反映您对项目执行的操作。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">您不能修改基础选项。</p>
+<h4 id="修改装配变量" class="mt-8 leading-6 text-lg title_fb7eb">修改装配变量<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改装配变量">#</a></h4>
+<p class="my-4 leading-7">通过修改装配变量，例如，您可以选择卸载或替换已安装在您点击名称列表中的变量中的元件。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">工具 &gt; 装配变量</strong>菜单项</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在<strong class="font-semibold">名称</strong>列表中点击要查看状态的变量</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要查看装配变量中的所有元件，在显示列表中点击<strong class="font-semibold">全部</strong></p>
+<p class="my-4 leading-7">多列列表反映该变量元件的状态。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在多列列表中，点击要为变量安装、卸载或替换的元件</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 点击列标题对多列列表进行排序。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击已安装、未安装或替换</p>
+<p class="my-4 leading-7">点击替换时，为每个选择替换的变量显示变量/替换对话框(第 964 页)。</p>
+<p class="my-4 leading-7">如果将元件状态从替换更改为已安装，变量将使用默认元件(第 1820 页)。</p>
+<p class="my-4 leading-7">如果元件已在变量中替换，并且您想更改替换值，请在多列列表中选择元件，然后在状态区域点击<strong class="font-semibold">编辑</strong>。显示变量/替换对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在变量/替换对话框中进行替换，点击<strong class="font-semibold">确定</strong>返回装配变量对话框</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong></p>
+</li>
+</ol>
+<h4 id="按元件修改装配变量" class="mt-8 leading-6 text-lg title_fb7eb">按元件修改装配变量<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#按元件修改装配变量">#</a></h4>
+<p class="my-4 leading-7">当您在类型列表中点击元件时，可以修改装配变量。如果在名称列表中选择的元件已安装在选项中，您可以从选项中卸载或替换它。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">工具 &gt; 装配变量</strong>菜单项</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在类型列表中点击元件</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在名称列表中点击要查看状态的元件</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在显示列表中点击<strong class="font-semibold">全部</strong>查看元件在所有变量中的状态</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在多列列表中选择要安装、卸载或替换元件的变量</p>
+<p class="my-4 leading-7">如果元件已在变量中替换，并且您想更改替换，请在多列列表中选择变量，然后在状态区域点击<strong class="font-semibold">编辑</strong>。显示变量/替换对话框。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 点击列标题对多列列表进行排序。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击已安装、未安装或替换</p>
+<p class="my-4 leading-7">点击替换时，显示变量/替换对话框(第 964 页)。</p>
+<p class="my-4 leading-7">如果将元件状态从替换更改为已安装，变量将使用默认元件(第 1820 页)。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在变量/替换对话框中进行替换，点击<strong class="font-semibold">确定</strong></p>
+<p class="my-4 leading-7">返回装配变量对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>或<strong class="font-semibold">应用</strong>将更改保存到变量</p>
+</li>
+</ol>
+<p class="my-4 leading-7">替换项目从基础选项中删除。</p>
+<h4 id="删除装配变量" class="mt-8 leading-6 text-lg title_fb7eb">删除装配变量<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#删除装配变量">#</a></h4>
+<p class="my-4 leading-7">您可以在装配变量对话框中删除现有装配变量。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">工具 &gt; 装配变量</strong>菜单项</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在名称列表中选择要删除的变量</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">删除</strong>按钮</p>
+</li>
+</ol>
+<h4 id="预览装配变量" class="mt-8 leading-6 text-lg title_fb7eb">预览装配变量<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#预览装配变量">#</a></h4>
+<p class="my-4 leading-7">您可以在所有装配变量中显示已安装的元件。您可以选择显示、不显示或以不同颜色显示元件。</p>
+<p class="my-4 leading-7">您可以查看装配变量的统计信息，例如元件位置、元件如何与装配变量中的其他元件相关，以及您为哪些元件创建了替换。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">工具 &gt; 装配变量</strong>菜单项</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在<strong class="font-semibold">名称</strong>列表中选择要预览的变量</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">预览</strong>，显示&lt;变量&gt;预览对话框，显示变量的装配图</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">变量</strong>打开预览/选项对话框</p>
+<p class="my-4 leading-7">使用预览/选项对话框更改预览外观。多列列表框指示状态对象当前是否在变量的预览窗口中可见。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">双击装配变量中要更改可见性的元件单元格</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">否</strong>使元件不可见</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">是</strong>使元件可见</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">颜色</strong>选择显示元件颜色。显示颜色对话框。点击要显示所选元件的颜色，点击<strong class="font-semibold">确定</strong>。返回预览/选项对话框。多列列表反映元件的&quot;是&quot;状态。如果有颜色，则可见。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>返回变量预览对话框</p>
+<p class="my-4 leading-7">预览区域反映您设置的可见性状态。</p>
+</li>
+</ol>
+<h4 id="创建变量元件清单" class="mt-8 leading-6 text-lg title_fb7eb">创建变量元件清单<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建变量元件清单">#</a></h4>
+<p class="my-4 leading-7">您可以使用报告对话框的功能，基于装配变量创建元件清单。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">验证装配变量选择，然后点击<strong class="font-semibold">报告</strong>按钮。</p>
+<p class="my-4 leading-7">更多信息请参见&quot;使用装配变量运行报告&quot;。</p>
+<h4 id="创建装配变量装配图" class="mt-8 leading-6 text-lg title_fb7eb">创建装配变量装配图<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建装配变量装配图">#</a></h4>
+<p class="my-4 leading-7">您可以从装配变量创建装配图。</p>
+<p class="my-4 leading-7">更多信息请参见&quot;创建装配图&quot;(第 946 页)。</p>
+<h2 id="cam-预览" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">CAM 预览<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#cam-预览">#</a></h2>
+<p class="my-4 leading-7">在 CAM 文档操作期间，使用 CAM 预览对话框预览输出。它显示将出现在最终 CAM 文档中的所有项目及其在绘图范围内的位置。</p>
+<p class="my-4 leading-7">您也可以在&quot;验证设计&quot;后使用 CAM 预览对话框执行制造检查，并预览与错误层关联的 CAM 文档。</p>
+<p class="my-4 leading-7">使用 CAM 预览设置对话框反转、显示绘图方向或叠加多个 CAM 文档 - 您可以更改所有文档的预览属性。必须至少定义一个 CAM 文档才能使用预览设置。</p>
+<p class="my-4 leading-7">更多信息请参见&quot;CAM 预览对话框&quot;(第 1150 页)和&quot;CAM 预览设置对话框&quot;(第 1152 页)</p>
+<h2 id="打印" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">打印<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#打印">#</a></h2>
+<p class="my-4 leading-7">以下主题描述如何选择将 CAM 文档直接打印到 Windows 打印机，或打印到 PostScript 文件，然后可以查看或发送给制造商。</p>
+<h3 id="打印到-windows-打印机" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">打印到 Windows 打印机<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#打印到-windows-打印机">#</a></h3>
+<p class="my-4 leading-7">CAM 文档的输出选择之一是打印机。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 通过打印本帮助主题测试 Windows 与打印机之间的连接。</p>
+</div></div>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; CAM</strong>菜单项</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在定义 CAM 文档对话框中选择文档，点击编辑</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在编辑文档对话框(第 1044 页)中，在输出设备下点击<strong class="font-semibold">打印</strong>按钮</p>
+<p class="my-4 leading-7">这表示输出设备。所有打印均使用 Windows 打印机属性控制。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">设备设置</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在打印设置对话框设置打印机和文档属性，点击<strong class="font-semibold">确定</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文档名称下，为文档输入有意义的名称，点击<strong class="font-semibold">确定</strong></p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 有意义的名称应指示文档类型、输出类型和层。</p>
+</div></div>
+<p class="my-4 leading-7">您的文档将添加到定义 CAM 文档对话框的 CAM 文档列表中。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">层</strong>按钮显示选择项目对话框</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">设置输出信息的层，点击<strong class="font-semibold">添加</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">建立颜色更改：</p>
+<p class="my-4 leading-7">a. 从&quot;选择颜色&quot;区域点击要使用的颜色，并打开要分配颜色的对象的复选框。新颜色显示在对象右侧。</p>
+<p class="my-4 leading-7">b. 继续分配/重新定义颜色，点击颜色和对象的复选框</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">完成选项设置后，点击<strong class="font-semibold">确定</strong>返回编辑文档对话框</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要打印，点击<strong class="font-semibold">运行</strong>。显示消息&quot;是否生成以下输出？&quot;</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">是</strong>打印</p>
+</li>
+</ol>
+<h3 id="打印-postscript-到文件" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">打印 PostScript 到文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#打印-postscript-到文件">#</a></h3>
+<p class="my-4 leading-7">SailWind 布局支持通过 Windows 打印机属性将 PostScript 打印到文件。有关设置打印机和定义打印机属性的信息，请参阅 Microsoft Windows 帮助。在创建 PostScript 文件之前，必须设置打印机以打印到文件。</p>
+<h4 id="设置打印机输出到文件" class="mt-8 leading-6 text-lg title_fb7eb">设置打印机输出到文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设置打印机输出到文件">#</a></h4>
+<p class="my-4 leading-7">配置系统将打印输出到文件而非直接发送到打印机。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">根据您的平台定位打印机信息：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用 Windows 开始菜单，通过控制面板找到打印机和传真。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果难以找到打印机设置控件，请参考 Windows 文档。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">右键点击要用于打印到文件的 PostScript 打印机，然后点击<strong class="font-semibold">属性</strong>弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在属性对话框中，点击<strong class="font-semibold">端口</strong>选项卡。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;打印到以下端口&quot;下，端口列中选中 FILE:复选框，其描述为&quot;打印到文件&quot;。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 此操作适用于本地打印机。如果使用网络打印机，您可能没有权限选择或更改端口信息。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>。您现在可以打印到文件了。</p>
+</li>
+</ol>
+<h4 id="将-cam-文档打印到文件" class="mt-8 leading-6 text-lg title_fb7eb">将 CAM 文档打印到文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#将-cam-文档打印到文件">#</a></h4>
+<p class="my-4 leading-7">设置系统打印到文件后，您可以将 CAM 文档创建为打印文件。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">完成上述步骤设置打印机输出到文件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; CAM</strong>菜单项。出现定义 CAM 文档对话框（参见第 931 页）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从 CAM 目录框中选择输出 CAM 文件的默认文件夹。</p>
+<p class="my-4 leading-7">如果点击&lt;创建&gt;，可以新建文件夹。默认文件夹是*\SailWind Projects\Cam \default*。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 CAM 文档区域点击<strong class="font-semibold">添加</strong>。出现添加文档对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在添加文档对话框（参见第 1044 页）的文档类型列表中点击要使用的文档类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从出现的层关联对话框中选择要使用的层并点击<strong class="font-semibold">确定</strong>。</p>
+<p class="my-4 leading-7">所有关联的项目、走线和过孔都会添加到摘要区域。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出设备下，点击<strong class="font-semibold">打印</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">设备设置</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在打印设置对话框中选择打印机并设置打印机属性，然后点击<strong class="font-semibold">确定</strong>。</p>
+<p class="my-4 leading-7">有关此对话框的更多信息，请参阅 Microsoft Windows 帮助。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文档名称下，输入有意义的文档名称并点击<strong class="font-semibold">确定</strong>。</p>
+<p class="my-4 leading-7">当您对 CAM 文档定义满意并完成打印选项设置后，可以像平常一样打印。更多信息请参阅&quot;打印&quot;。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 为获得最佳效果，请确保在生成输出文件前已加载设计。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在定义 CAM 文档对话框中，选择您的文档并点击<strong class="font-semibold">运行</strong>。</p>
+<p class="my-4 leading-7">出现消息&quot;您希望生成以下输出吗？&quot;</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">是</strong>打印到文件。打印到文件对话框出现（前提是您选择了已定义为打印到文件的打印机）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用对话框指定输出文件的名称（可选路径）。默认路径是*\My Documents\SailWind Projects\Cam\default*，但您可能已在步骤 3 中更改此设置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>。打印机文件创建完成。</p>
+</li>
+</ol>
+<h2 id="cam-文档的-dfm-分析-" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">CAM 文档的 DFM 分析 ❌<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#cam-文档的-dfm-分析-">#</a></h2>
+<p class="my-4 leading-7">创建 CAM 文档后，您可以使用 DFM 分析功能对其进行分析。</p>
+<h3 id="设置-dfm-分析" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">设置 DFM 分析<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设置-dfm-分析">#</a></h3>
+<p class="my-4 leading-7">如果之前未设置 DFM 首选项，可以使用设置来指定分析 CAM 文档时要使用的选项。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">工具 &gt; DFM 分析 &gt; 设置</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择所需的首选项然后运行分析。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 要查看 DFM 分析的帮助，请在对话框打开时按 F1 键。</p>
+</div></div>
+<h3 id="运行-dfm-分析" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">运行 DFM 分析<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#运行-dfm-分析">#</a></h3>
+<p class="my-4 leading-7">如果已创建 DFM 首选项，可以直接运行分析。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">工具 &gt; DFM 分析 &gt; 开始分析</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">分析将运行并生成报告。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 要查看 DFM 分析的帮助，请在对话框打开时按 F1 键。</p>
+</div></div>
+<h2 id="cam-plus-组装机接口" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">CAM Plus 组装机接口<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#cam-plus-组装机接口">#</a></h2>
+<p class="my-4 leading-7">CAM Plus 命令生成与多种自动组装和贴片机兼容的计算机辅助制造(CAM)输出文件。支持的格式包括 Dynapert、Siemens、Universal 和 Quad。</p>
+<h3 id="批处理模式和掩码模式" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">批处理模式和掩码模式<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#批处理模式和掩码模式">#</a></h3>
+<p class="my-4 leading-7">CAM Plus 根据是否在元件列表中点击&quot;掩码&quot;并结合&quot;批处理元件定义文件&quot;来不同地使用<em>part.def</em>文件。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择&quot;掩码&quot;并选中&quot;批处理元件定义文件&quot;复选框时，CAM Plus 将元件按<em>part.def</em>文件中的定义分类到所有机器，忽略未定义的元件 D。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择&quot;掩码&quot;、清除&quot;批处理元件定义文件&quot;复选框并选择特定机器时，CAM Plus 仅分类<em>part.def</em>中定义为分配给该机器的元件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择&quot;掩码&quot;以外的选项并选中&quot;批处理元件定义文件&quot;复选框时，CAM Plus 将元件按<em>part.def</em>中的分配分类到相应机器，但将未定义元件包含在所有机器的文件中。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择&quot;掩码&quot;以外的选项、清除&quot;批处理元件定义文件&quot;复选框并选择特定机器时，CAM Plus 将所有元件发送到所选机器。</p>
+</li>
+</ul>
+<h3 id="运行-cam-plus" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">运行 CAM Plus<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#运行-cam-plus">#</a></h3>
+<p class="my-4 leading-7">您可以设置 CAM Plus 生成特定机器的输出文件。</p>
+<p class="my-4 leading-7">😎<strong class="font-semibold">前提</strong></p>
+<p class="my-4 leading-7">必须手动创建<em>part.def</em>文件才能使用 CAM Plus 选项。设计中使用的每个元件都必须列在<em>part.def</em>文件中。这可能需要制造工程协助确定哪些元件由哪些机器插入，并设置标准料位分配。此外，在启动 CAM Plus 前将所有设计组件放置在其最终位置。默认情况下，元件定义文件从*\Libraries*文件夹读取。更多信息请参阅元件定义文件格式。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; CAM Plus</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在元件定义文件名框中输入<em>part.def</em>。默认从*\Libraries*文件夹读取该文件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在设置区域：</p>
+<p class="my-4 leading-7">	a. 从侧面列表中选择板的一侧。</p>
+<p class="my-4 leading-7">	b. 从元件列表中选择要包含在报告中的元件类型。</p>
+<p class="my-4 leading-7">	​	可选择 SMT、通孔、全部和掩码。掩码元件是指那些被分配为所选格式插入类的元件。</p>
+<p class="my-4 leading-7">	c. 选中&quot;读取元件定义&quot;复选框，将元件定义文件<em>part.def</em>中包含的附加信息添加到设计中的元件。</p>
+<p class="my-4 leading-7">	此信息定义所有元件的插入类。读取元件定义会扫描元件定义文件以获取数据库中元件的信息。当数据库中的元件类型名称与定义文件中的元件类型名称完全匹配时，信息将组合以提供制造输出。</p>
+<p class="my-4 leading-7">	d. 选中&quot;读取值定义&quot;复选框，读取 <code>SailWind Layout</code> 设计中每个元件的 Value 属性，并在匹配元件定义文件<em>part.def</em>中的每个元件类型时将 Value 属性附加到元件类型名称。</p>
+<p class="my-4 leading-7">	例如，一个 Value 属性为 100K 的 R1/4W 元件类型在元件定义文件中可能有如下条目：R1/4W{100K},ins=un6241,bodydiam=200,leaddiam=30,anvil=2</p>
+<p class="my-4 leading-7">	e. 选中&quot;验证文件&quot;复选框生成 ASCII 验证文件。</p>
+<p class="my-4 leading-7">	此 ASCII 文件存储在*\SailWind Projects\Cam&lt;板文件名&gt;<em>文件夹中。该文件包含描述插入元件路径的 2D 线数据。文件名是创建的接口程序名称，扩展名为</em>.asc*。您可以使用 ASCII 输入命令将此文件读入 <code>SailWind Layout</code>。它将插入路径声明为第 19 层上的 2D 线。如果未找到元件的 Part_Num 值，则 Part_Num 设置为 Missing。</p>
+<p class="my-4 leading-7">	f. 选中&quot;批处理元件定义文件&quot;复选框，用单个命令运行所有输出。</p>
+<p class="my-4 leading-7">	对于您运行的每个程序，都会生成一个输出文件，名称后缀为 bt 或 bb，例如<em>dym318bt.smt</em>或<em>6241bb.put</em>。如果该文件已存在，则出现消息&quot;覆盖现有文件(Y/N)？&quot;。点击是或否。如果点击是，则文件被覆盖并放置在 CAM 子文件夹中。所选类别中的每个元件都会添加到文件中。名为<em>insert.lst</em>的报告列出每个元件及其插入机器。批处理命令不创建验证文件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在几何区域：</p>
+<p class="my-4 leading-7">a. 为板偏移输入一个值，定义机器定位销相对于 0,0 系统原点板的偏移。</p>
+<p class="my-4 leading-7">这些偏移值将设计坐标转换为机器原点。允许值从 0 到 10 英寸。偏移值以英寸为单位；例如，1250 是 1.25 英寸。您可能需要为每台机器定义新的板偏移。</p>
+<p class="my-4 leading-7">b. 为步进/重复值输入值，定义在创建输出程序文件时是将板视为单个设计，还是同时插入多个板。</p>
+<p class="my-4 leading-7">当插入多个板时，您可以定义 X 和 Y 方向的步数以及要使用的分布和重复间隔，如下表所示。CAM Plus 对偏移和分布和重复值使用当前设计单位。每台机器都有自己的单位类型，无论当前设计单位如何，数据总是转换为该类型。CAM Plus 生成用于在所有板上插入元件的组装程序文件。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">选项</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">X 计数</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">X 方向的副本数。最大为 20。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Y 计数</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Y 方向的副本数。最大为 20。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">X 步长</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">每块板原点之间 X 方向的步进距离。最大为 10 英寸。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Y 步长</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">每块板原点之间 Y 方向的步进距离。最大为 10 英寸。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 136. X 和 Y 步进与计数选项</strong></p>
+<p class="my-4 leading-7">默认为无分布和重复，相当于 X 和 Y 方向步进为 1。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出格式列表中，选择机器格式。</p>
+<p class="my-4 leading-7">为所选类别的所有元件生成文件：掩码、通孔、SMT、顶层、底层等。该类别的所有元件都包含在此输出文件中，无论其插入类是否定义为属于特定机器。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 Universal 工具和 Universal 轴向输出列表中，如果适用，选择所需设置。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 选择 Universal 机器格式或选中批处理元件定义文件时，可获取 Universal 特定说明。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击运行。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">检查状态消息框获取当前输出状态。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">导航到<em>C:\PadsProjects\CAM\Newfolder(设计名称)*检查输出文件。CAM Plus 在文件</em>padscim.err*中生成并打印错误消息。</p>
+</li>
+</ol>
+<h3 id="cam-plus-报告文件名" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">CAM Plus 报告文件名<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#cam-plus-报告文件名">#</a></h3>
+<p class="my-4 leading-7">CAM Plus 为各种插入机器创建的文件名格式为机器名称前缀和所选组件后缀。</p>
+<p class="my-4 leading-7">每种机器类型的前缀显示在 CAM Plus 支持的机器格式下各机器的标题下。输出文件名中最后两个字符(显示为 xx)由所选组件决定。</p>
+<p class="my-4 leading-7">表 137 显示了这对结束字符中的第一个字母。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">表 137. 输出文件名结束字符(第一个字母)</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">字母</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">M</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">如果选择的输出是掩码</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">S</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">如果选择表面贴装</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">T</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">如果选择通孔</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">A</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">如果选择所有元件</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7">表 138 显示了这对结束字符中的第二个字母。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">表 138. 输出文件名结束字符(第二个字母)</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">字母</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">T</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">如果选择顶层上的组件</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">B</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">如果选择底层上的组件</td>
+</tr>
+</tbody>
+</table>
+<h2 id="cam350" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">CAM350<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#cam350">#</a></h2>
+<p class="my-4 leading-7">CAM350 是一个结合了 DFM 分析、<code>DRC</code> 检查、测试夹具、规划和工具化的预生产 CAM 系统。CAM350 产品范围从 Gerber 查看器到将 PCB 数据库处理为可用制造和面板数据的功能齐全的 CAM 编辑器。</p>
+<p class="my-4 leading-7">CAM350 让您可以在制造前分析设计中的制造问题，大幅缩短周期时间和成本。这些工具基于完全智能的 CAD 数据库，可以输入和输出几乎任何 Gerber 格式、IPC-D-350/IPC-D-356 数据、CAD 数据库或网表。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">CAM350 链接</strong></p>
+<p class="my-4 leading-7">CAM350 链接是 <code>SailWind Layout</code> 的一个选项，可自动将设计数据库转换为 CAM350(6.0 及更高版本)数据库。您不再需要生成 ASCII 文件进行转换；CAM350 链接使用原生 <code>SailWind Layout</code> 文件格式并添加*.cam*扩展名。除了转换设计进行翻译外，您还可以从 CAM350 对话框启动 CAM350 并加载当前数据库。</p>
+<p class="my-4 leading-7">CAM350 链接还支持将制造设计(DFM)错误反向标注到 <code>SailWind Layout</code> 数据库，以便您可以在 <code>SailWind Layout</code> 中识别和纠正 DFM 错误，而不是在 CAM350 中进行更正。</p>
+<p class="my-4 leading-7">有关从 <code>SailWind Layout</code> 输出 CAM 文档的信息，请参阅&quot;创建 CAM 输出以制造 PCB&quot;主题。有关 CAM350 链接程序的信息，请参阅使用 CAM350 链接的 DFF 审核流程主题。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">CAM350 链接不支持的对象</strong></p>
+<p class="my-4 leading-7">在将 CAM 文档与网表转换以及将 CAD 层转换为 CAM 层时，某些设计对象不会从 <code>SailWind Layout</code> 传递到 CAM350。</p>
+<p class="my-4 leading-7">这些特定的设计对象是：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">关联管脚铜被合并为单层自定义光圈。关联管脚铜在转换到 CAM350 时总是合并到焊盘层。结果是关联铜不会在焊盘层以外的其他层上处理。此外，关联铜与焊盘闪光无法区分。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">组合文本不会与 CAM 文档中的所属线一起输出。当组合文本和线转换到 CAM350 时，组合文本的可见性由 CAM 文档本身的文本可见性控制，而不是由 CAM 文档设置中的线可见性控制。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">CAM 文档中的焊盘放大选项在转换到 CAM350 时不支持。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">网格铜不支持 PADS 格式 ASCII 导入。网格铜在转换到 CAM350 时转换为实心填充铜而不是网格铜。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">顶层或底层电气层上的封装线和文本与顶层或底层丝印层的线和文本无法区分。顶层和底层电气层的封装线和文本在 CAM350 转换期间移动到丝印层。顶层和底层线和文本的可见性控制无法与丝印线和文本的可见性控制区分开。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">跳线参考标识符和边框移动到丝印层。跳线参考标识符在 CAM350 中转换为自由文本，跳线边框转换为线。跳线参考标识符和边框在转换期间也移动到丝印层。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">CAM350 分析功能将跳线报告为网络连接错误。CAM350 不支持外安装层上的 CAM 负平面。CAM350 不支持外安装层的负平面层类型。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">CAM350 中的测试点</strong></p>
+<p class="my-4 leading-7">CAM350 中的测试点用于针床测试或飞针在线测试。<code>SailWind Layout</code> 中的测试点用于使用夹具进行在线测试。尽管测试配置和规则数据相似，但 <code>SailWind Layout</code> 测试点配置数据与 CAM350 配置数据之间没有直接映射。</p>
+<p class="my-4 leading-7">但是，测试点状态会传递到 CAM350 以供参考。测试点状态和访问侧从 ASCII 文件转换到 CAM350 数据库。</p>
+<p class="my-4 leading-7">测试点配置数据和间距规则不会从 <code>SailWind Layout</code> 传递到 CAM350。</p>
+<p class="my-4 leading-7">探针尺寸不会传递到 CAM350。仅传递测试点位置和探针侧。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">CAM350 链接文档转换</strong></p>
+<p class="my-4 leading-7"><code>SailWind Layout</code> CAM 文档组合了层和数据类型规范，以便在 CAM 光绘文件中输出。CAM350 文件中为每个 <code>SailWind Layout</code> CAM 文档创建一个新层。</p>
+<p class="my-4 leading-7">有关 CAM 文档的更多信息，请参阅&quot;创建 CAM 输出以制造 PCB&quot;主题。</p>
+<p class="my-4 leading-7">CAM 文档可以任意命名。这些任意名称用作 CAM350 数据库中的层名以保存 CAM 文档内容。CAM350 链接从 PADS 格式 ASCII 文件中提取 <code>SailWind Layout</code> 数据类型，用于 ASCII 文件的 MISC CAM 部分中指定的层。CAM350 数据库中的结果层与 <code>SailWind Layout</code> CAM 操作生成的 Gerber 光绘文件内容匹配。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 由于 CAM350 中文件名最大长度限制，CAM 文档名称被截断为 16 个字符。</p>
+</div></div>
+<p class="my-4 leading-7">CAM350 链接支持的 CAM 文档包括以下五种类型：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">平面：地平面(焊盘、过孔、铜、线、文本)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">布线：顶层(焊盘、过孔、走线、铜、线、文本)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">丝印：(边框顶层)</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">顶层：(参考标识、元件类型)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">丝印顶层：(线、文本、边框)</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">焊膏掩模：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">顶层：(焊盘)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">焊膏掩模顶层：(铜、线、文本)</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">阻焊层：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">顶层：(焊盘、测试点)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">阻焊顶层：(铜、线、文本、测试点)</p>
+</li>
+</ul>
+</li>
+</ul><!--/$--></div><div class="rspress-doc-footer"><footer class="mt-8"><div class="xs:flex pb-5 px-2 justify-end items-center"><div class="flex text-sm text-text-2 leading-6 sm:leading-8 font-medium"><p>最近更新时间<!-- -->: <span>2025/7/15 07:06:25</span></p></div></div><div class="flex flex-col"></div><div class="flex flex-col sm:flex-row sm:justify-around gap-4 pt-6"><div class="prev_c92d1 flex flex-col"><a href="/sailwind_docs/layout/guide/40_zh.html" class="link_a7cea pager-link_e0d2d"><span class="desc_dcc01">上一页</span><span class="title_a3acb">第 40 章 尺寸标注</span></a></div><div class="next_c11be flex flex-col"><a href="/sailwind_docs/layout/guide/42_zh.html" class="link_a7cea pager-link_e0d2d next_ad355"><span class="desc_dcc01">下一页</span><span class="title_a3acb">第 42 章 对象链接与嵌入 ❌</span></a></div></div></footer></div></div><div class="aside-container_bc5fa"><div class="flex flex-col"><div id="aside-container" class="relative text-sm font-medium"><div class="leading-7 block text-sm font-semibold pl-3">本页目录</div><nav class="mt-1"><ul class="relative"><li><a href="#cam-文档" title="CAM 文档" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">CAM 文档</span></a></li><li><a href="#关联布铜区与-cam" title="关联布铜区与 CAM" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">关联布铜区与 CAM</span></a></li><li><a href="#rs-274-x-格式" title="RS-274-X 格式" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">RS-274-X 格式</span></a></li><li><a href="#创建-cam-输出以制造-pcb" title="创建 CAM 输出以制造 PCB" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建 CAM 输出以制造 PCB</span></a></li><li><a href="#cam-输出创建" title="CAM 输出创建" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">CAM 输出创建</span></a></li><li><a href="#创建自定义-cam-输出" title="创建自定义 CAM 输出" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">创建自定义 CAM 输出</span></a></li><li><a href="#使用自动定义创建-cam-文档集" title="使用自动定义创建 CAM 文档集" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">使用自动定义创建 CAM 文档集</span></a></li><li><a href="#创建丝印-gerber-格式文件" title="创建丝印 Gerber 格式文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">创建丝印 Gerber 格式文件</span></a></li><li><a href="#创建阻焊-gerber-格式文件" title="创建阻焊 Gerber 格式文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">创建阻焊 Gerber 格式文件</span></a></li><li><a href="#创建焊膏层-gerber-格式文件" title="创建焊膏层 Gerber 格式文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">创建焊膏层 Gerber 格式文件</span></a></li><li><a href="#创建装配图" title="创建装配图" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">创建装配图</span></a></li><li><a href="#创建布线分割平面-gerber-格式文件" title="创建布线/分割平面 Gerber 格式文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">创建布线/分割平面 Gerber 格式文件</span></a></li><li><a href="#创建-cam-平面-gerber-格式文件" title="创建 CAM 平面 Gerber 格式文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">创建 CAM 平面 Gerber 格式文件</span></a></li><li><a href="#创建-nc-钻孔文件" title="创建 NC 钻孔文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">创建 NC 钻孔文件</span></a></li><li><a href="#创建带钻孔表的钻孔图" title="创建带钻孔表的钻孔图" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">创建带钻孔表的钻孔图</span></a></li><li><a href="#验证-gerber-文件" title="验证 Gerber 文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">验证 Gerber 文件</span></a></li><li><a href="#创建所有输出" title="创建所有输出" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">创建所有输出</span></a></li><li><a href="#创建可重复使用的制造注释" title="创建可重复使用的制造注释" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建可重复使用的制造注释</span></a></li><li><a href="#报告光绘文件的光圈" title="报告光绘文件的光圈" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">报告光绘文件的光圈</span></a></li><li><a href="#truelayer-关联" title="TrueLayer 关联" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">TrueLayer 关联</span></a></li><li><a href="#cam-文档中的颜色" title="CAM 文档中的颜色" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">CAM 文档中的颜色</span></a></li><li><a href="#将过欠尺寸值应用于所有层" title="将过(欠)尺寸值应用于所有层" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">将过(欠)尺寸值应用于所有层</span></a></li><li><a href="#钻孔图选项" title="钻孔图选项" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">钻孔图选项</span></a></li><li><a href="#排序钻孔图表数据" title="排序钻孔图表数据" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">排序钻孔图表数据</span></a></li><li><a href="#修改钻孔表条目" title="修改钻孔表条目" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">修改钻孔表条目</span></a></li><li><a href="#装配变量" title="装配变量" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">装配变量</span></a></li><li><a href="#为装配变量替换元件" title="为装配变量替换元件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">为装配变量替换元件</span></a></li><li><a href="#替换元件操作" title="替换元件操作" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">替换元件操作</span></a></li><li><a href="#元件状态解释" title="元件状态解释" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">元件状态解释</span></a></li><li><a href="#显示替换差异" title="显示替换差异" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">显示替换差异</span></a></li><li><a href="#预览变量" title="预览变量" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">预览变量</span></a></li><li><a href="#创建装配变量" title="创建装配变量" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">创建装配变量</span></a></li><li><a href="#创建装配变量-1" title="创建装配变量" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">创建装配变量</span></a></li><li><a href="#安装卸载或替换变量设计元件" title="安装、卸载或替换变量设计元件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">安装、卸载或替换变量设计元件</span></a></li><li><a href="#修改装配变量" title="修改装配变量" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">修改装配变量</span></a></li><li><a href="#按元件修改装配变量" title="按元件修改装配变量" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">按元件修改装配变量</span></a></li><li><a href="#删除装配变量" title="删除装配变量" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">删除装配变量</span></a></li><li><a href="#预览装配变量" title="预览装配变量" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">预览装配变量</span></a></li><li><a href="#创建变量元件清单" title="创建变量元件清单" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">创建变量元件清单</span></a></li><li><a href="#创建装配变量装配图" title="创建装配变量装配图" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">创建装配变量装配图</span></a></li><li><a href="#cam-预览" title="CAM 预览" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">CAM 预览</span></a></li><li><a href="#打印" title="打印" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">打印</span></a></li><li><a href="#打印到-windows-打印机" title="打印到 Windows 打印机" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">打印到 Windows 打印机</span></a></li><li><a href="#打印-postscript-到文件" title="打印 PostScript 到文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">打印 PostScript 到文件</span></a></li><li><a href="#设置打印机输出到文件" title="设置打印机输出到文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">设置打印机输出到文件</span></a></li><li><a href="#将-cam-文档打印到文件" title="将 CAM 文档打印到文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">将 CAM 文档打印到文件</span></a></li><li><a href="#cam-文档的-dfm-分析-" title="CAM 文档的 DFM 分析 ❌" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">CAM 文档的 DFM 分析 ❌</span></a></li><li><a href="#设置-dfm-分析" title="设置 DFM 分析" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">设置 DFM 分析</span></a></li><li><a href="#运行-dfm-分析" title="运行 DFM 分析" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">运行 DFM 分析</span></a></li><li><a href="#cam-plus-组装机接口" title="CAM Plus 组装机接口" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">CAM Plus 组装机接口</span></a></li><li><a href="#批处理模式和掩码模式" title="批处理模式和掩码模式" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">批处理模式和掩码模式</span></a></li><li><a href="#运行-cam-plus" title="运行 CAM Plus" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">运行 CAM Plus</span></a></li><li><a href="#cam-plus-报告文件名" title="CAM Plus 报告文件名" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">CAM Plus 报告文件名</span></a></li><li><a href="#cam350" title="CAM350" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">CAM350</span></a></li></ul></nav></div></div></div></div></div></div></section></div>
+    <div id="search-container"></div>
+  </body>
+</html>

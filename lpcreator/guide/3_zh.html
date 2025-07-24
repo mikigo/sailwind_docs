@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Rspress v1.45.0">
+    <title data-rh="true">第 3 章 焊盘图形计算器 - SailWind</title><meta data-rh="true" name="description" content="SailWind"/>
+  <script>{;const saved = localStorage.getItem('rspress-theme-appearance');const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;const isDark = !saved || saved === 'auto' ? preferDark : saved === 'dark';document.documentElement.classList.toggle('dark', isDark);document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';}</script><link rel="icon" href="/sailwind_docs/favicon.ico"><script defer src="/sailwind_docs/static/js/styles.f5ec16c7.js"></script><script defer src="/sailwind_docs/static/js/lib-react.36f9b428.js"></script><script defer src="/sailwind_docs/static/js/lib-router.971f4280.js"></script><script defer src="/sailwind_docs/static/js/2886.6c8a4c3c.js"></script><script defer src="/sailwind_docs/static/js/index.ef746291.js"></script><link href="/sailwind_docs/static/css/styles.6524924d.css" rel="stylesheet"></head>
+
+  <body >
+    <div id="root"><div class="navContainer_d18b1 rspress-nav px-6  sticky_ddfa7"><div class="container_e4235 flex justify-between items-center h-full"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div><div class="flex flex-1 justify-end items-center"><div class="rightNav_a2fea"><div class="flex sm:flex-1 items-center sm:pl-4 sm:pr-2"><div class="rspress-nav-search-button navSearchButton_df1fb"><button><svg width="18" height="18" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg><p class="searchWord_af2c1">搜索</p><div style="opacity:0"><span></span><span>K</span></div></button></div><div class="mobileNavSearchButton_d85a9"><svg width="24" height="24" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg></div></div><div class="rspress-nav-menu menu h-14"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div><div class="flex-center flex-row"><div class="mx-2"><div class="md:mr-2 rspress-nav-appearance"><div class="p-1 border border-solid border-gray-300 text-gray-400  cursor-pointer rounded-md hover:border-gray-600 hover:text-gray-600 dark:hover:border-gray-200 dark:hover:text-gray-200 transition-all duration-300 w-7 h-7"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="dark:hidden" width="18" height="18" fill="currentColor"><path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6m0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4M12 4c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M12 24c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M5.6 6.6c-.3 0-.5-.1-.7-.3L3.5 4.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.1.2-.4.3-.7.3M19.8 20.8c-.3 0-.5-.1-.7-.3l-1.4-1.4c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.2.2-.5.3-.7.3M3 13H1c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M23 13h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M4.2 20.8c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.4.3-.7.3M18.4 6.6c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.5.3-.7.3"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="hidden dark:block" width="18" height="18" fill="currentColor"><path d="M12.1 22h-.9c-5.5-.5-9.5-5.4-9-10.9.4-4.8 4.2-8.6 9-9 .4 0 .8.2 1 .5s.2.8-.1 1.1c-2 2.7-1.4 6.4 1.3 8.4 2.1 1.6 5 1.6 7.1 0 .3-.2.7-.3 1.1-.1.3.2.5.6.5 1-.2 2.7-1.5 5.1-3.6 6.8-1.9 1.4-4.1 2.2-6.4 2.2M9.3 4.4c-2.9 1-5 3.6-5.2 6.8-.4 4.4 2.8 8.3 7.2 8.7 2.1.2 4.2-.4 5.8-1.8 1.1-.9 1.9-2.1 2.4-3.4-2.5.9-5.3.5-7.5-1.1-2.8-2.2-3.9-5.9-2.7-9.2"></path></svg></div></div></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div><div class="mobileNavMenu_e7045"><div class="navScreen_ec30c  rspress-nav-screen" id="navScreen"><div class="container_c935d"><div class="navMenu_b887b"><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div></div><div class="flex-center flex-col gap-2"><div class="mt-2 navAppearance_bf893 flex justify-center"></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div></div><button aria-label="mobile hamburger" class=" rspress-mobile-hamburger navHamburger_ac64c text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><circle cx="8" cy="16" r="2" fill="currentColor"></circle><circle cx="16" cy="16" r="2" fill="currentColor"></circle><circle cx="24" cy="16" r="2" fill="currentColor"></circle></svg></button></div></div></div></div><section><div class="docLayout_af141 pt-0"><aside class="sidebar_dd719 rspress-sidebar "><div class="navTitleMask_fb17c"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div></div><div class="rspress-scrollbar sidebarContent_da296"><nav class="pb-2"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:14px;margin-left:0;border-radius:0 var(--rp-radius) var(--rp-radius) 0;padding-left:24px;font-weight:bold"><span>章节预览</span></div></a><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">指南(Guide)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 1 章 入门指南</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 2 章 用户偏好设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItemActive_de63c mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 3 章 焊盘图形计算器</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 4 章 库管理器</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 5 章 焊盘图形向导</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 6 章 孔和过孔计算器</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 7 章 命名规范</span></div></a></div></div></div></section></nav></div></aside><div class="flex-1 relative min-w-0"><div class="rspress-sidebar-menu-container "><div class="rspress-sidebar-menu"><button type="button" class="flex-center mr-auto"><div class="text-md mr-2"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"></path></svg></div><span class="text-sm">Menu</span></button><button type="button" class="flex-center ml-auto"><span class="text-sm">本页目录</span><div class="text-md mr-2" style="transform:rotate(0deg);transition:transform 0.2s ease-out;margin-top:2px"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></button><div class="rspress-local-toc-container "><ul><li><a href="#计算器工具栏控制" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">计算器工具栏控制</span></a></li><li><a href="#通用标签页控制" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">通用标签页控制</span></a></li><li><a href="#表面贴装网格阵列专用标签页控制" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">表面贴装网格阵列专用标签页控制</span></a></li><li><a href="#表面贴装器件非网格阵列专用标签页控制" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">表面贴装器件非网格阵列专用标签页控制</span></a></li><li><a href="#通孔器件专用标签页控制" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">通孔器件专用标签页控制</span></a></li><li><a href="#分析结果" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">分析结果</span></a></li></ul></div></div></div><div class="content_ff766 rspress-doc-container flex"><div class="flex-1 overflow-x-auto"><div class="rspress-doc"><!--$--><h1 id="第-3-章-焊盘图形计算器" class="rspress-doc-title text-3xl mb-10 leading-10 tracking-tight title_fb7eb">第 3 章 焊盘图形计算器<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#第-3-章-焊盘图形计算器">#</a></h1>
+<p class="my-4 leading-7">焊盘图形计算器允许您指定特定元件的尺寸，然后根据内部公式和用户自定义的.plb 文件设置计算正确的焊盘图形尺寸。</p>
+<p class="my-4 leading-7">计算器可通过两种方式打开：从主窗口的计算器工具栏按钮或从库管理器。</p>
+<p class="my-4 leading-7">当从库管理器打开时，计算器会显示当前库管理器中选择的焊盘图形。否则，将显示一个示例零件并提示您输入。</p>
+<p class="my-4 leading-7">与库管理器类似，计算器可以打开和搜索库。计算器搜索的不同之处在于只显示与计算器类型相同的元件。搜索可以根据您输入的元件数据进行过滤。</p>
+<p class="my-4 leading-7">每个计算器存储一组默认设置和环境值，这些值会根据元件数据自动应用。这些默认值是基于 IPC 关于表面贴装焊点可靠性的研究建议。如果需要，您可以替换自己的设置以自定义焊盘图形设计。</p>
+<p class="my-4 leading-7">计算器输入分为四类：工具栏控制、元件、计算器设置和全局设置。生成的计算分为两类：焊盘图形和统计信息。</p>
+<h2 id="计算器工具栏控制" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">计算器工具栏控制<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#计算器工具栏控制">#</a></h2>
+<p class="my-4 leading-7">计算器工具栏包含提供访问所有计算器功能的广泛按钮。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 12. 计算器工具栏</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/3/_page_0_Figure_11.jpeg" alt=""/></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">关闭</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">关闭计算器窗口并返回到其他打开的窗口（如果有）。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打印</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打印计算焊盘图形的两页&quot;数据表&quot;。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">向导</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开焊盘图形向导对话框，允许您将焊盘图形保存到 plb09 库文件或创建输出到选定的 <code>CAD</code> 工具。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 6. 计算器工具栏控制</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在线链接</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">如果显示的元件是从库中加载的，它可能有一个链接到制造商的网站，带有在线数据表。如果存在这样的链接，此工具栏按钮将启用，点击它将转到该链接。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">本地存档</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">如果显示的元件是从库中加载的，它可能有一个链接到带有元件文档的本地目录。如果存在这样的链接，此工具栏按钮将启用，点击它将打开该文件。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">查找</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开与计算器系列类型关联的默认库，并加载库以供查看和搜索。可以通过提供有关搜索对象特征的附加信息来&quot;过滤&quot;搜索结果。例如，如果搜索具有特定引脚配置的零件，输入间距和引脚总数以将搜索限制为具有该间距和引脚数的焊盘图形。某些特征不能用于过滤搜索。这些特征通常由值标签前面的&quot;~&quot;表示。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">图层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开一个图层控制面板，允许您打开和关闭图层、尺寸、引脚号和锁定到元件原点的显示网格。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">顶层视图<!-- -->图层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">此下拉菜单允许您选择将在显示中&quot;置顶&quot;的图层。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">建议</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">当遇到验证差异时，加载库焊盘图形可能会产生额外的建议。有关验证的信息，请参阅帮助主题验证焊盘图形。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">查看全部</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">调整显示，使所有元素在查看区域内可见。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">缩放</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将查看器左键功能设置为缩放窗口。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">平移</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将查看器左键功能设置为平移。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="通用标签页控制" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">通用标签页控制<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#通用标签页控制">#</a></h2>
+<p class="my-4 leading-7">标签页控制垂直显示。这些标签页允许访问元件组、焊盘图形和计算器的设置，以及全局设置和统计信息。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 13. （垂直）计算器标签页</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">元件标签页</strong></p>
+<p class="my-4 leading-7">此标签页包含用于输入元件数据的控件。每个计算器都有一个&quot;演示&quot;按钮，将为您加载并计算一个示例零件。</p>
+<p class="my-4 leading-7">将制造商数据表中的元件尺寸数据转移到计算器元件标签页的相应字段中。提供了替代输入格式选项，以便无论数据是以最小-最大还是标称值加正负公差的形式给出，都可以轻松输入元件数据。在某些情况下，替代输入格式还适应由于制造商提供的数据表规范变化而导致的不同可用元件数据组合。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/3/_page_2_Picture_6.jpeg" alt=""/></p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">虽然替代输入通常可以从一种格式转换为另一种格式，但最小-最大值很容易从标称值加公差得出，而标称值加公差不能准确从最小-最大值得出。</p>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">可选条目</strong></p>
+<p class="my-4 leading-7">当有可选条目时，数据字段将不可见或禁用，直到选中一个框或按钮表示要包含该选项。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">热焊盘/焊垫对 SOIC、SON、QFP 和 QFN 是可选的。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">提示</strong> 当您启用热焊盘时，可以选择将热焊盘信息附加到焊盘图形名称。请参见&quot;焊盘图形标签页&quot;第 60 页上的&quot;附加热焊盘名称&quot;复选框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">基准点对 BGA 和 QFP 是可选的。可选基准点会自动添加：当 BGA 的间距等于或小于 0.80mm 时；以及当 QFP 的间距等于或小于 0.50mm 时。您始终可以选择添加或删除基准点，但位置始终固定如下：BGA 在上右和下左角落的庭院交叉点；QFP 在上右和下左角落，与焊盘行居中。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">回拉引脚对 SON 和 QFN 在端子从本体边缘回拉时是可选的。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">一旦所有条目完成，点击确定。如果检测到任何错误，字段中将闪烁红色指示器。将光标移动到指示器上将显示一个&quot;工具提示&quot;，解释违规情况。</p>
+<p class="my-4 leading-7">此时将使用设置、环境、规则和绘图变量的默认首选项执行完整计算。除非选中用户单选按钮，否则这些变量的条目将被禁用。所有焊盘图形尺寸字段将填充，查看器窗口将显示元件和计算的焊盘图形。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">从库搜索中选择的零件可以修改以生成新的焊盘图形。如果您能找到与您寻找的零件接近的零件，只需修改不同的数字并点击<strong class="font-semibold">确定</strong>按钮。</p>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">焊盘图形标签页</strong></p>
+<p class="my-4 leading-7">此标签页用于查看计算的焊盘图形尺寸。它还允许您修改自动生成的名称。</p>
+<p class="my-4 leading-7">焊盘图形和焊盘栈名称是自动生成的，但您可以在保存或创建 <code>CAD</code> 焊盘图形（使用焊盘图形向导）之前更改它们。</p>
+<p class="my-4 leading-7">如果您在&quot;元件标签页&quot;第 59 页上选择了热焊盘复选框，则会出现附加热焊盘名称复选框。热焊盘对 SOIC、SON、QFP 和 QFN 系列是可选的。选择复选框后，必须点击<strong class="font-semibold">确定</strong>以使重新生成的名称出现。</p>
+<p class="my-4 leading-7">查看引脚和焊盘栈数据按钮打开引脚和焊盘栈标签页以列出相关数据。仅当尺寸区域已填充时，此按钮才可用。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 自动命名约定并非万无一失。不同的元件可能会产生相同的名称。这可能由于几个原因而发生。例如，如果高度不是焊盘图形名称中的一个因素，那么具有相同封装的零件可能有不同的高度元件，除非您在命名过程中进行干预。此外，自动生成的名称通常基于某些元件标称尺寸。标称尺寸是通过平均最小值和最大值得出的，因此具有相同标称值的两个尺寸可能有非常不同的最小值和最大值，这可能会导致不同的焊盘图形。当您将零件保存到 plb09 库时，将检查重复名称。如果遇到重复名称，您可以选择添加重复项、覆盖原始项或取消操作。有关如何处理重复名称的提示，请参阅帮助主题&quot;焊盘图形名称语法&quot;第 128 页。</p>
+</div></div>
+<p class="my-4 leading-7">默认设置和环境始终应用于新焊盘图形的第一次计算。之后，更改的条目将保留，直到使用&quot;清除&quot;按钮（在元件标签页上）清除元件数据字段并将计算器返回到其默认状态。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">计算器设置标签页</strong></p>
+<p class="my-4 leading-7">此标签页包含用于输入将影响焊盘图形计算方式的设计约束的控件。此标签页上的条目专门适用于正在创建的焊盘图形类型，BGA、芯片、QFP 等。此标签页上的所有值都可以由用户首选项分配默认值（参见&quot;用户首选项帮助主题，表面贴装和通孔器件&quot;第 31 页）。如果选中用户单选按钮，可以修改任何设置。</p>
+<p class="my-4 leading-7">&quot;(全局)&quot;环境列表可以包含在&quot;首选项，全局设置&quot;第 36 页上设置的多个用户指定环境和后缀。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">全局设置标签页</strong></p>
+<p class="my-4 leading-7">此标签页包含用于输入将影响所有焊盘图形计算方式的设计约束的控件。此标签页上的所有值都可以由用户首选项分配默认值（参见帮助主题&quot;首选项，全局设置&quot;第 36 页）。如果选中用户单选按钮，可以修改任何设置。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">统计信息标签页</strong></p>
+<p class="my-4 leading-7">此标签页显示有关计算如何满足环境目标的信息。参见帮助主题&quot;分析结果&quot;第 65 页。</p>
+<h2 id="表面贴装网格阵列专用标签页控制" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">表面贴装网格阵列专用标签页控制<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#表面贴装网格阵列专用标签页控制">#</a></h2>
+<p class="my-4 leading-7">BGA 计算器的设置与其他 SMD 计算器略有不同，因为设计变化的可能性多种多样。SMD 网格阵列计算器有许多可以从这些标签页访问的变量。这些包括元件组、焊盘图形和计算器的设置，以及全局设置和统计信息。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">SM 网格阵列器件的元件标签页</strong></p>
+<p class="my-4 leading-7">如帮助主题&quot;表面贴装器件非网格阵列专用标签页控制&quot;第 62 页所述，从制造商的数据表转移元件尺寸数据。以下是使 BGA 与其他元件类型系列区别开来的重要差异的枚举。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">基准点</strong>—是可选的。当 BGA 的间距等于或小于 0.80mm 时，基准点会自动添加。计算后，可以通过选中基准点复选框无条件添加或删除基准点。位置始终固定如下：在上右和下左角落的庭院交叉点。</p>
+<p class="my-4 leading-7">行或列的值可以是数字或字母数字。通过下拉菜单控件设置选择。字母数字值可以作为字母数字或数字输入。例如，具有 23 行的器件可以输入为&#x27;23&#x27;或其字母数字等效值&#x27;AC&#x27;。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">球类型 - 塌陷和非塌陷球</strong>—在某些情况下，球变得足够小，以至于零件的重量和球中焊料的表面张力阻止其塌陷。这会影响焊盘的大小，因为塌陷球的焊盘通常按球大小的百分比减小，而非塌陷球的焊盘通常按球大小的百分比增加。非塌陷球通常只出现在非常小的 BGA 上。</p>
+<p class="my-4 leading-7">一旦所有条目完成，点击确定。如果检测到任何错误，字段中将闪烁红色指示器。将光标移动到指示器上将显示一个&quot;工具提示&quot;，解释违规情况。</p>
+<p class="my-4 leading-7">此时将使用设置、环境、规则和绘图变量的默认首选项执行完整计算。除非选中用户单选按钮，否则这些变量的条目将被禁用。所有焊盘图形尺寸字段将填充，查看器窗口将显示元件和计算的焊盘图形。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<!-- -->
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">设置首次进行任何计算时应用。之后可以修改以重新计算。如果首选项更改，更改将不会出现，直到计算器重置（通过点击&#x27;清除&#x27;按钮）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从库搜索中选择的零件可以修改以生成新的焊盘图形。如果您能找到与您寻找的零件接近的零件，只需修改不同的数字并选择&quot;确定按钮&quot;。</p>
+</li>
+</ul>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">SM 网格阵列器件的计算器设置标签页</strong></p>
+<p class="my-4 leading-7">表面贴装网格阵列系列可以有许多可以基于球（或引脚）类型和大小应用于一系列元件的设置。设置可用于控制焊盘图形、阻焊层和焊膏层的尺寸。此标签页上的所有值都可以由用户首选项分配默认值（参见帮助主题&quot;表面贴装计算器，网格阵列页面&quot;第 47 页）。如果选中用户单选按钮，可以修改任何设置。应用于任何特定计算的规则定义显示在此标签页上的文本框集合上方。</p>
+<p class="my-4 leading-7">设置首次进行任何计算时应用。之后可以修改以重新计算。如果首选项更改，更改将不会出现，直到计算器重置（通过点击&#x27;清除&#x27;按钮）。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">SM 网格阵列器件的统计信息标签页</strong></p>
+<p class="my-4 leading-7">此标签页显示计算出的潜在材料条件。最大材料条件定义了焊盘图形尺寸。</p>
+<h2 id="表面贴装器件非网格阵列专用标签页控制" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">表面贴装器件非网格阵列专用标签页控制<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#表面贴装器件非网格阵列专用标签页控制">#</a></h2>
+<p class="my-4 leading-7">非网格阵列 SMD 计算器有许多可以从这些标签页访问的变量。这些包括元件组、焊盘图形和计算器的设置，以及全局设置和统计信息。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">SM 非网格阵列器件的元件标签页</strong></p>
+<p class="my-4 leading-7">此标签页包含用于输入元件数据的控件。每个计算器都有一个&quot;演示&quot;按钮，将为您加载并计算一个示例零件。</p>
+<p class="my-4 leading-7">从制造商的数据表转移元件尺寸数据到计算器元件标签页的相应字段中。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">可选条目</strong></p>
+<p class="my-4 leading-7">当有可选条目时，数据字段将不可见或禁用，直到选中一个框或按钮表示要包含该选项。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">热焊盘对 SOP、SON、QFP 和 QFN 是可选的。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">基准点对 BGA 和 QFP 是可选的。可选基准点会自动添加：当 BGA 的间距等于或小于 0.80mm 时；以及当 QFP 的间距等于或小于 0.50mm 时。您始终可以选择添加或删除基准点，但位置始终固定如下：BGA 在上右和下左角落的庭院交叉点；QFP 在上右和下左角落，与焊盘行居中。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">回拉引脚对 SON 和 QFN 在端子从本体边缘回拉时是可选的。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">一旦所有条目完成，点击确定。如果检测到任何错误，字段中将闪烁红色指示器。将光标移动到指示器上将显示一个&quot;工具提示&quot;，解释违规情况。</p>
+<p class="my-4 leading-7">此时将使用设置、环境、规则和绘图变量的默认首选项执行完整计算。除非选中用户单选按钮，否则这些变量的条目将被禁用。所有焊盘图形尺寸字段将填充，查看器窗口将显示元件和计算的焊盘图形。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<!-- -->
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">设置首次进行任何计算时应用。之后可以修改以重新计算。如果首选项更改，更改将不会出现，直到计算器重置（通过点击元件标签页上的&quot;清除&quot;按钮）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从库搜索中选择的零件可以修改以生成新的焊盘图形。如果您能找到与您寻找的零件接近的零件，只需修改不同的数字并选择&quot;确定按钮&quot;。</p>
+</li>
+</ul>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">SM 非网格阵列器件的焊盘图形标签页</strong></p>
+<p class="my-4 leading-7">此标签页用于查看计算的焊盘图形尺寸。它还允许您修改自动生成的名称。</p>
+<p class="my-4 leading-7">焊盘图形和焊盘栈名称是自动生成的，但您可以在保存或创建 <code>CAD</code> 焊盘图形（使用焊盘图形向导）之前更改它们。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">自动命名约定并非万无一失。不同的元件可能会产生相同的名称。这可能由于几个原因而发生。例如，如果高度不是焊盘图形名称中的一个因素，那么具有相同封装的零件可能有不同的高度元件，除非您在命名过程中进行干预。此外，自动生成的名称通常基于某些元件标称尺寸。标称尺寸是通过平均最小值和最大值得出的，因此具有相同标称值的两个尺寸可能有非常不同的最小值和最大值，这可能会导致不同的焊盘图形。当您将零件保存到 plb09 库时，将检查重复名称。如果遇到重复名称，您可以选择添加重复项、覆盖原始项或取消操作。有关如何处理重复名称的提示，请参阅帮助主题&quot;焊盘图形名称语法&quot;第 128 页。</p>
+<p class="my-4 leading-7">默认设置和环境始终应用于新焊盘图形的第一次计算。之后，更改的条目将保留，直到使用&quot;重置&quot;按钮清除元件数据字段并将计算器返回到其默认状态。</p>
+<p class="my-4 leading-7">有关首选项的详细信息，请参阅帮助主题&quot;表面贴装计算器，非网格阵列页面&quot;第 49 页。</p>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">SM 非网格阵列器件的计算器设置标签页</strong></p>
+<p class="my-4 leading-7">此标签页包含用于输入将影响焊盘图形计算方式的设计约束的控件。此标签页上的条目专门适用于正在创建的焊盘图形类型，BGA、芯片、QFP 等。此标签页上的所有值都可以由用户首选项分配默认值（参见帮助主题&quot;表面贴装计算器，非网格阵列页面&quot;第 49 页）。如果选中用户单选按钮，可以修改任何设置。</p>
+<p class="my-4 leading-7">&quot;(全局)&quot;环境列表可以包含在&quot;首选项，全局设置&quot;第 36 页上设置的多个用户指定环境和后缀。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">SM 非网格阵列器件的全局设置标签页</strong></p>
+<p class="my-4 leading-7">此标签页包含用于输入将影响所有焊盘图形计算方式的设计约束的控件。此标签页上的所有值都可以由用户首选项分配默认值（参见帮助主题&quot;首选项，全局设置&quot;第 36 页）。如果选中用户单选按钮，可以修改任何设置。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">SM 非网格阵列器件的统计信息标签页</strong></p>
+<p class="my-4 leading-7">此标签页显示有关计算如何满足环境目标的信息。参见帮助主题&quot;分析结果&quot;第 65 页。</p>
+<h2 id="通孔器件专用标签页控制" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">通孔器件专用标签页控制<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#通孔器件专用标签页控制">#</a></h2>
+<p class="my-4 leading-7">通孔计算器有许多可以从这些标签页访问的变量。这些包括元件组、焊盘图形和计算器的设置，以及全局设置。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">TH 器件的元件标签页</strong></p>
+<p class="my-4 leading-7">此标签页包含用于输入元件数据的控件。每个计算器都有一个&quot;演示&quot;按钮，将为您加载并计算一个示例零件。</p>
+<p class="my-4 leading-7">从制造商的数据表转移元件尺寸数据到计算器元件标签页的相应字段中。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">可选条目</strong></p>
+<p class="my-4 leading-7">当有可选条目时，数据字段将不可见或禁用，直到选中一个框或按钮表示要包含该选项。可选条目如果留空，将自动计算并优化以基于其他元件和设置数据生成一个值。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">可选条目可能不会出现在某些元件系列中。可选条目如果存在，将用星号(*)标注。如果留空，它们的值将自动计算并填充。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">引脚间距和安装高度对轴向元件系列是可选的。这两个值可以自动计算以补偿引脚弯曲，基于引脚直径，或由用户输入的值覆盖，只要可能。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">支架对径向元件系列是可选的。此值可以自动计算以补偿引脚弯曲，基于引脚直径，或由用户输入的值覆盖，只要可能。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">线规对线材元件系列是可选的。选择线规将自动生成线径。如果需要简单的直径，可以直接输入。</p>
+</li>
+</ul>
+</div></div>
+<p class="my-4 leading-7">一旦所有条目完成，点击确定。如果检测到任何错误，字段中将闪烁红色指示器。将光标移动到指示器上将显示一个&quot;工具提示&quot;，解释违规情况。</p>
+<p class="my-4 leading-7">此时将使用设置、环境、规则和绘图变量的默认首选项执行完整计算。除非选中用户单选按钮，否则这些变量的条目将被禁用。所有焊盘图形尺寸字段将填充，查看器窗口将显示元件和计算的焊盘图形。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<!-- -->
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">设置首次进行任何计算时应用。之后可以修改以重新计算。如果首选项更改，更改将不会出现，直到计算器重置（通过点击元件标签页上的&quot;清除&quot;按钮）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从库搜索中选择的零件可以修改以生成新的焊盘图形。如果您能找到与您寻找的零件接近的零件，只需修改不同的数字并选择&quot;确定按钮&quot;。</p>
+</li>
+</ul>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">TH 器件的计算器设置标签页</strong></p>
+<p class="my-4 leading-7">此标签页包含用于输入将影响焊盘图形计算方式的设计约束的控件。此标签页上的条目专门适用于正在创建的焊盘图形类型，轴向、径向、DIP 等。此标签页上的所有值都可以由用户首选项分配默认值（参见帮助主题&quot;通孔计算器，器件页面&quot;第 52 页）。如果选中用户单选按钮，可以修改任何设置。</p>
+<p class="my-4 leading-7">其他控件与帮助主题&quot;表面贴装器件非网格阵列专用标签页控制&quot;第 62 页中描述的相同。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/3/_page_8_Picture_4.jpeg" alt=""/></p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">默认设置和制造级别始终应用于新焊盘图形的第一次计算。之后，更改的条目将保留，直到使用&quot;清除&quot;按钮清除元件数据字段并将计算器返回到其默认状态。</p>
+<p class="my-4 leading-7">有关首选项的详细信息，请参阅帮助主题&quot;通孔计算器，器件页面&quot;第 52 页。</p>
+</div></div>
+<h2 id="分析结果" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">分析结果<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#分析结果">#</a></h2>
+<p class="my-4 leading-7"><em>焊点分析</em>是评估端子（引脚的接触区域）与焊盘图形之间关系的过程。理解这些关系对于确定计算器的正确设置和从焊盘图形生成过程中获得预期结果非常重要。</p>
+<p class="my-4 leading-7">焊点分析表为您提供了有关焊盘与端子关系的重要反馈。计算器考虑所有元件、工艺和环境变量，然后报告焊盘对于趾部焊角、跟部焊角和侧部焊角或没有垂直尺寸的端子的外围的最小和最大突出量。</p>
+<p class="my-4 leading-7">对于任何给定的焊盘图形突出或外围，将显示三个统计值：目标；最小值和最大值。</p>
+<p class="my-4 leading-7">目标当然是您指定的最小可接受值（这是在选择最多、标称或最少环境时分配给计算的值，或在用户环境中手动输入的值）。</p>
+<p class="my-4 leading-7">建议，如果您不熟悉焊点完整性，接受设置、公差和环境目标的默认值。</p>
+<p class="my-4 leading-7">最小值是一个计算值，如果元件处于极端条件，工艺（制造和组装）处于最大公差，包括指定的圆整条件和间距最小值所需的任何修整，将导致最坏情况。注意正值或负值没有意义。重要的是关系。此值越接近目标越好。如果大于目标，则使用了过多的板空间。如果小于目标，则其可靠性降低。</p>
+<p class="my-4 leading-7">最大值是一个计算值，如果元件处于标称条件，工艺保持在最小公差，包括指定的圆整条件和间距最小值所需的任何修整，将导致最有利的情况。</p>
+<p class="my-4 leading-7">计算和显示这些值的能力是焊盘图形计算器的真正价值，适用于那些需要 PCB 应用最佳可靠性的人。</p><!--/$--></div><div class="rspress-doc-footer"><footer class="mt-8"><div class="xs:flex pb-5 px-2 justify-end items-center"><div class="flex text-sm text-text-2 leading-6 sm:leading-8 font-medium"><p>最近更新时间<!-- -->: <span>2025/7/15 05:55:33</span></p></div></div><div class="flex flex-col"></div><div class="flex flex-col sm:flex-row sm:justify-around gap-4 pt-6"><div class="prev_c92d1 flex flex-col"><a href="/sailwind_docs/lpcreator/guide/2_zh.html" class="link_a7cea pager-link_e0d2d"><span class="desc_dcc01">上一页</span><span class="title_a3acb">第 2 章 用户偏好设置</span></a></div><div class="next_c11be flex flex-col"><a href="/sailwind_docs/lpcreator/guide/4_zh.html" class="link_a7cea pager-link_e0d2d next_ad355"><span class="desc_dcc01">下一页</span><span class="title_a3acb">第 4 章 库管理器</span></a></div></div></footer></div></div><div class="aside-container_bc5fa"><div class="flex flex-col"><div id="aside-container" class="relative text-sm font-medium"><div class="leading-7 block text-sm font-semibold pl-3">本页目录</div><nav class="mt-1"><ul class="relative"><li><a href="#计算器工具栏控制" title="计算器工具栏控制" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">计算器工具栏控制</span></a></li><li><a href="#通用标签页控制" title="通用标签页控制" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">通用标签页控制</span></a></li><li><a href="#表面贴装网格阵列专用标签页控制" title="表面贴装网格阵列专用标签页控制" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">表面贴装网格阵列专用标签页控制</span></a></li><li><a href="#表面贴装器件非网格阵列专用标签页控制" title="表面贴装器件非网格阵列专用标签页控制" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">表面贴装器件非网格阵列专用标签页控制</span></a></li><li><a href="#通孔器件专用标签页控制" title="通孔器件专用标签页控制" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">通孔器件专用标签页控制</span></a></li><li><a href="#分析结果" title="分析结果" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">分析结果</span></a></li></ul></nav></div></div></div></div></div></div></section></div>
+    <div id="search-container"></div>
+  </body>
+</html>

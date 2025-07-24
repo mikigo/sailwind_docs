@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Rspress v1.45.0">
+    <title data-rh="true">第 12 章 使用 SailWind Logic - SailWind</title><meta data-rh="true" name="description" content="SailWind"/>
+  <script>{;const saved = localStorage.getItem('rspress-theme-appearance');const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;const isDark = !saved || saved === 'auto' ? preferDark : saved === 'dark';document.documentElement.classList.toggle('dark', isDark);document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';}</script><link rel="icon" href="/sailwind_docs/favicon.ico"><script defer src="/sailwind_docs/static/js/styles.f5ec16c7.js"></script><script defer src="/sailwind_docs/static/js/lib-react.36f9b428.js"></script><script defer src="/sailwind_docs/static/js/lib-router.971f4280.js"></script><script defer src="/sailwind_docs/static/js/2886.6c8a4c3c.js"></script><script defer src="/sailwind_docs/static/js/index.ef746291.js"></script><link href="/sailwind_docs/static/css/styles.6524924d.css" rel="stylesheet"></head>
+
+  <body >
+    <div id="root"><div class="navContainer_d18b1 rspress-nav px-6  sticky_ddfa7"><div class="container_e4235 flex justify-between items-center h-full"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div><div class="flex flex-1 justify-end items-center"><div class="rightNav_a2fea"><div class="flex sm:flex-1 items-center sm:pl-4 sm:pr-2"><div class="rspress-nav-search-button navSearchButton_df1fb"><button><svg width="18" height="18" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg><p class="searchWord_af2c1">搜索</p><div style="opacity:0"><span></span><span>K</span></div></button></div><div class="mobileNavSearchButton_d85a9"><svg width="24" height="24" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg></div></div><div class="rspress-nav-menu menu h-14"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div><div class="flex-center flex-row"><div class="mx-2"><div class="md:mr-2 rspress-nav-appearance"><div class="p-1 border border-solid border-gray-300 text-gray-400  cursor-pointer rounded-md hover:border-gray-600 hover:text-gray-600 dark:hover:border-gray-200 dark:hover:text-gray-200 transition-all duration-300 w-7 h-7"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="dark:hidden" width="18" height="18" fill="currentColor"><path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6m0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4M12 4c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M12 24c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M5.6 6.6c-.3 0-.5-.1-.7-.3L3.5 4.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.1.2-.4.3-.7.3M19.8 20.8c-.3 0-.5-.1-.7-.3l-1.4-1.4c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.2.2-.5.3-.7.3M3 13H1c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M23 13h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M4.2 20.8c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.4.3-.7.3M18.4 6.6c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.5.3-.7.3"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="hidden dark:block" width="18" height="18" fill="currentColor"><path d="M12.1 22h-.9c-5.5-.5-9.5-5.4-9-10.9.4-4.8 4.2-8.6 9-9 .4 0 .8.2 1 .5s.2.8-.1 1.1c-2 2.7-1.4 6.4 1.3 8.4 2.1 1.6 5 1.6 7.1 0 .3-.2.7-.3 1.1-.1.3.2.5.6.5 1-.2 2.7-1.5 5.1-3.6 6.8-1.9 1.4-4.1 2.2-6.4 2.2M9.3 4.4c-2.9 1-5 3.6-5.2 6.8-.4 4.4 2.8 8.3 7.2 8.7 2.1.2 4.2-.4 5.8-1.8 1.1-.9 1.9-2.1 2.4-3.4-2.5.9-5.3.5-7.5-1.1-2.8-2.2-3.9-5.9-2.7-9.2"></path></svg></div></div></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div><div class="mobileNavMenu_e7045"><div class="navScreen_ec30c  rspress-nav-screen" id="navScreen"><div class="container_c935d"><div class="navMenu_b887b"><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div></div><div class="flex-center flex-col gap-2"><div class="mt-2 navAppearance_bf893 flex justify-center"></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div></div><button aria-label="mobile hamburger" class=" rspress-mobile-hamburger navHamburger_ac64c text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><circle cx="8" cy="16" r="2" fill="currentColor"></circle><circle cx="16" cy="16" r="2" fill="currentColor"></circle><circle cx="24" cy="16" r="2" fill="currentColor"></circle></svg></button></div></div></div></div><section><div class="docLayout_af141 pt-0"><aside class="sidebar_dd719 rspress-sidebar "><div class="navTitleMask_fb17c"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div></div><div class="rspress-scrollbar sidebarContent_da296"><nav class="pb-2"><a href="/sailwind_docs/layout/index.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:14px;margin-left:0;border-radius:0 var(--rp-radius) var(--rp-radius) 0;padding-left:24px;font-weight:bold"><span>章节预览</span></div></a><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">指南(Guide)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 2 章 用户界面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 3 章 无模命令与快捷键</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 4 章 设计与编辑基础</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 5 章 设置颜色</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 6 章 库与库数据管理</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 7 章 创建和编辑 PCB 封装</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 8 章 创建和修改元件类型</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 9 章 开始新设计</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 10 章 文件操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 11 章 设计环境设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItemActive_de63c mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 12 章 使用 SailWind Logic</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 13 章 导入与导出</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 14 章 层</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 15 章 过孔设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/16_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 16 章 电气网络</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/17_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 17 章 选项设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/18_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 18 章 属性控制</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/19_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 19 章 设置规则和使用禁止区</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/20_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 20 章 AI 驱动的先进功能</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/21_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 21 章 元件布局</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/22_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 22 章 SailWind 3D</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/23_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 23 章 与机械设计团队的数据交换</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/24_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 24 章 虚拟过孔</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/25_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 25 章 标签操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/26_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 26 章 设计或设计部分的复用</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/27_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 27 章 绘图操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/28_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 28 章 安全间距检查</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/29_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 29 章 铜箔操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/30_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 30 章 为布铜区或覆铜平面分配网络</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/31_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 31 章 覆铜平面操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/32_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 32 章 设计布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/33_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 33 章 SailWind 布线器</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/34_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 34 章 铜填充与覆铜平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/35_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 35 章 参考标志符</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/36_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 36 章 工程变更单(ECO)</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/37_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 37 章 设计比较</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/38_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 38 章 报告功能</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/39_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 39 章 设计错误检查</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/40_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 40 章 尺寸标注</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/41_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 41 章 CAM 输出</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/42_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 42 章 对象链接与嵌入 ❌</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/43_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 43 章 故障排除</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/44_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 44 章 SPECCTRA 链接</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/45_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 45 章 错误检测、BMW与BLT、脚本与宏</span></div></a></div><div class="rspress-sidebar-item"><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:18px"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex"><span class="flex-center" style="font-size:13px">第 46 - 55 章 Dialogs</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:0"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/46_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 46 章 GUI 参考元素 A</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/47_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 47 章 GUI 参考元素 B 至 C</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/48_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 48 章 GUI 参考元素 D</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/49_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 49 章 GUI 参考元素 E 至 G</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/50_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 50 章 GUI 参考元素 H 至 J</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/51_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 51 章 GUI 参考元素 K 至 O</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/52_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 52 章 GUI 参考元素 P</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/53_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 53 章 GUI 参考元素 Q 至 R</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/54_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 54 章 GUI 参考元素 S</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/55_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 55 章 GUI 参考元素 T 至 Z</span></div></a></div></div></div></section></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">教程(Tutorial)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>用户界面学习</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建库元件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>设计准备</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>导入设计数据</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>分配约束规则</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>移动与放置组件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建和编辑走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用动态布线创建走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用 <code>SailWind Router</code> 进行自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建分割平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建覆铜平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>添加尺寸标注</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>检查设计规则违规</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>更新原理图</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建报告和 CAM 文件</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">快速参考(Quick Reference)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/qr/modless.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>无模命令</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/qr/shortcut.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>键盘快捷键</span></div></a></div></div></div></section></nav></div></aside><div class="flex-1 relative min-w-0"><div class="rspress-sidebar-menu-container "><div class="rspress-sidebar-menu"><button type="button" class="flex-center mr-auto"><div class="text-md mr-2"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"></path></svg></div><span class="text-sm">Menu</span></button><button type="button" class="flex-center ml-auto"><span class="text-sm">本页目录</span><div class="text-md mr-2" style="transform:rotate(0deg);transition:transform 0.2s ease-out;margin-top:2px"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></button><div class="rspress-local-toc-container "><ul><li><a href="#通过手动导入-sailwind-logic-网表创建新的-pcb-设计" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">通过手动导入 <code>SailWind Logic</code> 网表创建新的 PCB 设计</span></a></li><li><a href="#网表处理故障排除" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">网表处理故障排除</span></a></li><li><a href="#按原理图分散元件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">按原理图分散元件</span></a></li><li><a href="#与-sailwind-logic-交叉探测" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">与 <code>SailWind Logic</code> 交叉探测</span></a></li><li><a href="#从-sailwind-logic-前向标注设计变更" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">从 <code>SailWind Logic</code> 前向标注设计变更</span></a></li><li><a href="#使用-sailwind-layout-生成的-eco-文件进行前向标注" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">使用 <code>SailWind Layout</code> 生成的 <code>ECO</code> 文件进行前向标注</span></a></li><li><a href="#通过从-sailwind-logic-导入-eco-文件进行前向标注" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">通过从 <code>SailWind Logic</code> 导入 <code>ECO</code> 文件进行前向标注</span></a></li><li><a href="#从-sailwind-layout-后向标注到-sailwind-logic" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">从 <code>SailWind Layout</code> 后向标注到 <code>SailWind Logic</code></span></a></li><li><a href="#使用自动化的-sailwind-layout-link-进行后向标注" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">使用自动化的 <code>SailWind Layout</code> Link 进行后向标注</span></a></li><li><a href="#使用-sailwind-layout-的-eco-文件进行后向标注" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">使用 <code>SailWind Layout</code> 的 <code>ECO</code> 文件进行后向标注</span></a></li><li><a href="#使用在-sailwind-logic-中创建的-eco-文件进行后向标注" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">使用在 <code>SailWind Logic</code> 中创建的 <code>ECO</code> 文件进行后向标注</span></a></li><li><a href="#后向标注结果" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">后向标注结果</span></a></li></ul></div></div></div><div class="content_ff766 rspress-doc-container flex"><div class="flex-1 overflow-x-auto"><div class="rspress-doc"><!--$--><h1 id="第-12-章-使用-sailwind-logic" class="rspress-doc-title text-3xl mb-10 leading-10 tracking-tight title_fb7eb">第 12 章 使用 SailWind Logic<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#第-12-章-使用-sailwind-logic">#</a></h1>
+<p class="my-4 leading-7">阅读以下主题，了解如何从 <code>SailWind Logic</code> 原理图创建 PCB 布局、交叉探测以及设计变更的前向和后向标注。</p>
+<h2 id="通过手动导入-sailwind-logic-网表创建新的-pcb-设计" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">通过手动导入 <code>SailWind Logic</code> 网表创建新的 PCB 设计<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#通过手动导入-sailwind-logic-网表创建新的-pcb-设计">#</a></h2>
+<p class="my-4 leading-7">如果您的计算机上没有同时安装 <code>SailWind Logic</code> 和 <code>SailWind Layout</code>，请使用此方法。此手动方法要求您从 <code>SailWind Logic</code> 手动导出网表，然后将其导入 <code>SailWind Layout</code>。</p>
+<p class="my-4 leading-7">或者，如果您的计算机上同时安装了 <code>SailWind Logic</code> 和 <code>SailWind Layout</code>，可以使用 <code>SailWind Logic</code> 中的 <code>SailWind Layout</code> Link 功能，这是一种更简单的方法。更多信息，请参阅《<code>SailWind Logic</code> 指南》中的&quot;使用自动化的 <code>SailWind Layout</code> Link 创建新的 PCB 设计&quot;。</p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">  对现有设计进行变更前向标注需要不同的流程。请参阅&quot;从<code>SailWind Logic</code> 前向标注设计变更&quot;。</p>
+</div></div>
+<p class="my-4 leading-7">😎<strong class="font-semibold">前提</strong></p>
+<p class="my-4 leading-7">这是 <code>SailWind Logic</code> 中启动的流程的延续。您必须拥有网表(<em>*.asc</em>)文件。更多信息，请参阅《<code>SailWind Logic</code> 指南》中的&quot;<code>SailWind Logic</code> 与 <code>SailWind Layout</code> 之间的手动网表处理流程&quot;。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 <code>SailWind Layout</code> 中，点击<strong class="font-semibold">主页&gt;导入</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件类型列表中选择&quot;ASCII 文件(*.asc)&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">导航至从 <code>SailWind Logic</code> 设计创建的网表文件位置，选择它并点击打开。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">导入流程会从库中获取所有元件类型和封装，并将封装堆叠在原点处。然后您可以点击<strong class="font-semibold">工具&gt;分散元件</strong>菜单项来展开元件。或者，您可以根据原理图排列元件。</p>
+<p class="my-4 leading-7">如果生成了错误报告文件(<em>ascii.err</em>)并在网表中发现错误，请参阅&quot;网表处理故障排除&quot;获取更多信息。</p>
+<h2 id="网表处理故障排除" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">网表处理故障排除<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#网表处理故障排除">#</a></h2>
+<p class="my-4 leading-7">如果 <code>SailWind Layout</code> 在网表导入过程中发现错误，它会生成错误报告文件(<em>ascii.err</em>)并在记事本窗口中显示错误报告文件。如果未发现任何错误，<code>SailWind Layout</code> 不会生成错误文件。</p>
+<p class="my-4 leading-7">以下是报告的错误及修复这些错误的步骤：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">库问题</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单管脚或无管脚网络</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">完全浮动的连接或子网</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">未命名的悬空连接(一端浮动)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">用于网络的电源和地符号，其名称与符号上的默认名称不同</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">多个子网网络，其中一个或多个子网缺少页间符号</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">带有页间符号的单子网网络(孤立子网警告)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">用户命名的子网没有可见的网络名称标签</p>
+</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 <code>SailWind Layout</code> 中，点击<strong class="font-semibold">主页&gt;新建</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">当提示保存设计时，点击<strong class="font-semibold">否</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将<em>ascii.err</em>文件中列出的任何缺失组件添加到您的库中，可以通过将包含缺失组件的库添加到库列表，或创建缺失的元件类型和封装。(有关说明，请参阅第 144 页的&quot;向库列表添加库&quot;、&quot;创建和修改元件类型&quot;和&quot;创建和编辑 PCB 封装&quot;)。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">解决<em>ascii.err</em>文件中发现的其他错误。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">当所有错误都解决后，重复您用于将网表从 <code>SailWind Logic</code> 传递到 <code>SailWind Layout</code> 的流程。</p>
+</li>
+</ol>
+<h2 id="按原理图分散元件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">按原理图分散元件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#按原理图分散元件">#</a></h2>
+<p class="my-4 leading-7">从 <code>SailWind Logic</code> 接收网表后，您可以使用&quot;按逻辑分散&quot;功能分散元件，同时保持它们在原理图中指示的相对位置。您还可以指定要对分散元件执行的操作。</p>
+<p class="my-4 leading-7">😎<strong class="font-semibold">前提</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">您必须拥有从 <code>SailWind Logic</code> 传递到 <code>SailWind Layout</code> 的网表(<em>*.asc</em>)文件，并且已解决<em>ascii.err</em>文件中的所有错误。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">与此功能一起使用的网表必须由 V3.0.34 之后版本的 <code>SailWind Logic</code> 生成。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在未选择任何内容的情况下，右键点击并选择弹出菜单中的<strong class="font-semibold">按逻辑分散</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;按逻辑分散&quot;对话框中，指定分散策略，详细信息如下所述。</p>
+</li>
+</ol>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">字段</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">最小间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">指定分散元件之间的最小允许间距(以 mil 为单位)。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组合/簇区域</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">指定通过点击分散全部/分散对分散元件执行的操作，选项如下：<!-- -->• 无(默认)：不执行其他操作<!-- -->• 创建组合：使用元件创建组合。<!-- -->• 创建簇：使用元件创建簇。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">图纸/元件区域</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 左侧的图纸列表：列出所有原理图图纸。<!-- -->• 右侧的元件表：显示所选原理图图纸中的元件信息，包括参考标识符、PCB<!-- -->封装和值。根据图纸列表中的选择而变化。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">分散全部</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">分散所有原理图图纸中的元件，除了那些被粘合或在组合/簇中的元件。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">分散</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">分散所选原理图图纸中的元件，除了那些被粘合或在组合/簇中的元件。<!-- -->注意：<!-- -->如果没有可用空间放置，元件会附着到指针上以便在设计中进行手动放置。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="与-sailwind-logic-交叉探测" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">与 <code>SailWind Logic</code> 交叉探测<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#与-sailwind-logic-交叉探测">#</a></h2>
+<p class="my-4 leading-7">您可以通过使用 <code>SailWind Logic</code> 中的 <code>SailWind Layout</code> Link 功能来控制与 <code>SailWind Logic</code> 的交叉探测。</p>
+<p class="my-4 leading-7">有关说明，请参阅《<code>SailWind Logic</code> 指南》中的&quot;SailWind 产品之间的交叉探测&quot;。</p>
+<h2 id="从-sailwind-logic-前向标注设计变更" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">从 <code>SailWind Logic</code> 前向标注设计变更<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#从-sailwind-logic-前向标注设计变更">#</a></h2>
+<p class="my-4 leading-7">您可以将设计变更从 <code>SailWind Logic</code> 导入 <code>SailWind Layout</code>。通过比较原理图和布局设计创建包含设计变更的 <code>ECO</code> 文件。然后，您可以使用以下三种方法之一将设计变更从 <code>SailWind Logic</code> 设计向前传递。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 如果您是通过首次导入网表来创建新的 PCB，请参阅第 271 页的&quot;通过手动导入<code>SailWind Logic</code> 网表创建新的 PCB 设计&quot;。</p>
+</div></div>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> &gt;前向标注导致的设计变更可能导致现有的&quot;电气网络&quot;被截断、分割或完全删除。如果更新组件的参考标识符前缀在电气网络对话框中指定，它也可能导致现有电气网络被扩展或创建新的电气网络。更多信息，请参阅第 337 页的&quot;电气网络&quot;。</p>
+<p class="my-4 leading-7">如果您的计算机上同时安装了 <code>SailWind Logic</code> 和 <code>SailWind Layout</code>，使用 <code>SailWind Logic</code> 中的&quot;<code>SailWind Layout</code> Link&quot;功能是最简单、最快速的自动化流程。更多信息，请参阅《<code>SailWind Logic</code> 指南》中的&quot;使用自动化的 <code>SailWind Layout</code> Link 进行前向标注&quot;。</p>
+<p class="my-4 leading-7">如果您的计算机上没有 <code>SailWind Logic</code>，您必须在 <code>SailWind Logic</code> 或 <code>SailWind Layout</code> 中比较原理图和布局设计，生成*.eco<em>文件以应用于布局设计。在 <code>SailWind Layout</code> 中使用比较/<code>ECO</code> 工具需要更少的步骤，因为它还可以自动导入生成的</em>.eco*文件的差异。</p>
+<p class="my-4 leading-7">使用 <code>SailWind Layout</code> 生成的 <code>ECO</code> 文件进行前向标注 通过从 <code>SailWind Logic</code> 导入 <code>ECO</code> 文件进行前向标注</p>
+</div></div>
+<h3 id="使用-sailwind-layout-生成的-eco-文件进行前向标注" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">使用 <code>SailWind Layout</code> 生成的 <code>ECO</code> 文件进行前向标注<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用-sailwind-layout-生成的-eco-文件进行前向标注">#</a></h3>
+<p class="my-4 leading-7"><code>SailWind Logic</code> 为您提供更新的网表文件，您可以将其与当前 PCB 布局进行比较以生成*.eco*文件。然后您可以导入该文件以更新 PCB 布局。</p>
+<p class="my-4 leading-7">此流程是《<code>SailWind Logic</code> 指南》中方法 2——在 <code>SailWind Layout</code> 中生成 <code>ECO</code> 文件流程的延续。</p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 前向标注导致的设计变更可能导致现有的电气网络被截断、分割或完全删除。如果更新组件的参考标识符前缀在电气网络对话框中指定，它也可能导致现有电气网络被扩展或创建新的电气网络。更多信息，请参阅第 337 页的&quot;电气网络&quot;。</p>
+</div></div>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在设计比较期间，重用定义被忽略，物理设计重用中的实际元素用于比较。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">传输非 <code>ECO</code> 注册元件和非电气元件受到限制。请参阅 <code>SailWind Logic</code> 选项对话框设计类别中的覆盖设置。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">😎<strong class="font-semibold">前提</strong></p>
+<p class="my-4 leading-7">您必须拥有更新的原理图网表(<em>.asc</em>)文件，并且在 <code>SailWind Layout</code> 中打开 PCB 设计。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">导入*.eco*文件后无法撤销。如果您认为可能需要恢复到导入前的设计状态，应保存 PCB 布局的副本。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 <code>SailWind Layout</code> 中点击<strong class="font-semibold">工具&gt;比较/ECO</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在比较/<code>ECO</code> 对话框中，点击第 1185 页的文档选项卡。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;要比较和更新的原始设计&quot;区域，选择&quot;使用当前 PCB 设计&quot;复选框。如果该复选框不可用，您需要先清除&quot;具有变更的新设计&quot;区域中同名的复选框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;具有变更的新设计&quot;区域，浏览更新的原理图网表(<em>.asc</em>)文件。您需要将文件类型更改为&quot;ASCII 文件(*.asc)&quot;以定位您的文件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击第 1181 页的比较选项卡，选择您想要用于设计比较的选项。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 为避免前向标注期间的意外变更，考虑在前向标注前比较数据。在<strong class="font-semibold">文档</strong>选项卡中仅选择生成差异报告复选框，并点击<strong class="font-semibold">运行</strong>。网表和 PCB 文件被比较，差异写入*\SailWind Projects<em>文件夹中的</em>Layout.rep*。点击流程状态对话框中的<strong class="font-semibold">显示报告</strong>查看差异。</p>
+</div></div>
+<ol start="7" class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在<strong class="font-semibold">文档</strong>选项卡中，选择生成 <code>ECO</code> 文件复选框，并验证 <code>ECO</code> 文件名。给文件一个唯一的名称以避免覆盖任何现有的 <code>ECO</code> 文件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击第 1187 页的更新选项卡，选择更新原始设计复选框。这将避免您手动导入生成的 <code>ECO</code> 文件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">设置其他更新选项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">运行</strong>。流程状态对话框打开。输出文件写入*\SailWind Projects<em>文件夹。比较期间发生的消息或错误也写入</em>\SailWind Projects<em>文件夹中的</em>Layout_Session.log<em>和</em>Layout.err*。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">生成的文件有：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><em>&lt;pcb_name&gt;mine.eco</em>  <code>ECO</code> 文件。包含描述将原始设计更新以匹配新设计所需变更的 <code>ECO</code> 命令。当您在比较/<code>ECO</code> 工具对话框的<strong class="font-semibold">文档</strong>选项卡中选择生成 <code>ECO</code> 文件复选框时生成。更多信息，请参阅《<code>SailWind Layout</code> 命令参考》中的&quot;<code>ECO</code> 文件命令&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><em>Layout.rep</em>  差异报告文件。描述&quot;旧&quot;和&quot;新&quot;比较文件之间的差异。当您从比较/<code>ECO</code> 工具对话框的<strong class="font-semibold">文档</strong>选项卡中选择生成差异报告复选框时生成。更多信息，请参阅第 848 页的&quot;差异报告&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><em>ecogtmp0.asc</em>  &quot;旧&quot;网表的临时副本</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><em>ecogtmp1.asc</em>  &quot;新&quot;网表的临时副本</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><em>ecogtmp[ 0|1 ].err</em>  仅在网表中发现错误时生成。此文件的链接显示在输出窗口中。</p>
+</li>
+</ul>
+<h3 id="通过从-sailwind-logic-导入-eco-文件进行前向标注" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">通过从 <code>SailWind Logic</code> 导入 <code>ECO</code> 文件进行前向标注<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#通过从-sailwind-logic-导入-eco-文件进行前向标注">#</a></h3>
+<p class="my-4 leading-7">您将设计变更的*.eco*文件导入 <code>SailWind Layout</code>。</p>
+<p class="my-4 leading-7">更多信息，请参阅《<code>SailWind Logic</code> 指南》中的方法 3——在 <code>SailWind Logic</code> 中生成 <code>ECO</code> 文件。</p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 前向标注导致的设计变更可能导致现有的电气网络被截断、分割或完全删除。如果更新组件的参考标识符前缀在电气网络对话框中指定，它也可能导致现有电气网络被扩展或创建新的电气网络。更多信息，请参阅第 337 页的&quot;电气网络&quot;。</p>
+</div></div>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在设计比较期间，重用定义被忽略，物理设计重用中的实际元素用于比较。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">传输非 <code>ECO</code> 注册元件和非电气元件受到限制。请参阅 <code>SailWind Logic</code> 选项对话框设计类别中的覆盖设置。</p>
+</li>
+</ul>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 只要 PCB 设计没有经过工程变更，可以将<code>SailWind Logic</code> 导出的最后一个*.asc<em>文件与 <code>SailWind Logic</code> 中的当前设计进行比较，生成设计中的工程变更</em>.eco<em>文件。如果最后导出的</em>.asc<em>文件丢失，您可以从 <code>SailWind Layout</code> 导出第 291 页的</em>.asc<em>文件，与当前原理图进行比较，生成导入 <code>SailWind Layout</code> 以更新 PCB 布局的</em>.eco<em>文件。使用&quot;使用 <code>SailWind Layout</code> 生成的 <code>ECO</code> 文件进行前向标注&quot;方法会产生相同的效果，但该方法通过自动导入</em>.eco*文件实现半自动化流程。</p>
+</div></div>
+<p class="my-4 leading-7">😎<strong class="font-semibold">前提</strong></p>
+<p class="my-4 leading-7">您必须获取*.eco*文件，并且在 <code>SailWind Layout</code> 中打开 PCB 设计。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">导入*.eco*文件后无法撤销。如果您认为可能需要恢复到导入前的设计状态，应保存 PCB 布局的副本。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页&gt;导入</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导入对话框中，选择&quot;<code>ECO</code> 文件(*.eco)&quot;文件类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览至要导入的文件并点击<strong class="font-semibold">打开</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">如果在导入过程中出现错误，<em>eco.err</em>文件会在您的默认文本编辑器中打开。在*.eco*文件无错误导入之前，不会对 PCB 布局进行任何更改。<code>ECO</code> 导入错误文件的链接也会写入输出窗口。</p>
+<h2 id="从-sailwind-layout-后向标注到-sailwind-logic" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">从 <code>SailWind Layout</code> 后向标注到 <code>SailWind Logic</code><a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#从-sailwind-layout-后向标注到-sailwind-logic">#</a></h2>
+<p class="my-4 leading-7">使用称为<em>后向标注</em>的流程，您可以将 PCB 布局变更&quot;回传&quot;到原理图。您可以发送元件、门、管脚、网络和属性变更。</p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> &gt;虽然有三种方法可以后向标注设计变更，但只推荐一种方法——使用<code>SailWind Layout</code> 的 <code>ECO</code> 文件进行后向标注。其他方法通过设计比较生成*.eco<em>文件——这是一个不太准确的过程。推荐的方法是在 <code>SailWind Layout</code> 中进行 <code>ECO</code> 变更时记录</em>.eco*文件，并手动将其导入 <code>SailWind Logic</code> 以获得最佳结果。更多信息，请参阅第 814 页的&quot;记录与生成 <code>ECO</code> 文件&quot;。</p>
+<p class="my-4 leading-7">使用自动化的 <code>SailWind Layout</code> Link 进行后向标注 使用 <code>SailWind Layout</code> 的 <code>ECO</code> 文件进行后向标注 使用在 <code>SailWind Logic</code> 中创建的 <code>ECO</code> 文件进行后向标注 后向标注结果</p>
+</div></div>
+<h3 id="使用自动化的-sailwind-layout-link-进行后向标注" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">使用自动化的 <code>SailWind Layout</code> Link 进行后向标注<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用自动化的-sailwind-layout-link-进行后向标注">#</a></h3>
+<p class="my-4 leading-7">如果 <code>SailWind Logic</code> 和 <code>SailWind Layout</code> 位于同一台计算机上，您可以使用 <code>SailWind Layout</code> Link 对话框比较更新的 PCB 设计与较旧的原理图，并从更新的 PCB 设计更新较旧的原理图。您还可以创建差异报告。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">传输非 <code>ECO</code> 注册元件和非电气元件受到限制。有关详细信息，请参阅选项对话框设计类别。</p>
+<p class="my-4 leading-7">在设计比较期间，重用定义被忽略，物理设计重用中的实际元素用于比较。</p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 此方法生成新的*.eco<em>文件，不使用记录的</em>.eco<em>文件。在</em>.eco*文件中记录确切的变更可获得最佳的后向标注结果。使用&quot;使用 <code>SailWind Layout</code> 的 <code>ECO</code> 文件进行后向标注&quot;可获得最佳结果。更多信息，请参阅第 814 页的&quot;记录与生成 <code>ECO</code> 文件&quot;。</p>
+</div></div>
+<p class="my-4 leading-7">😎<strong class="font-semibold">前提</strong></p>
+<p class="my-4 leading-7">您必须在 <code>SailWind Logic</code> 中打开较旧的原理图，在 <code>SailWind Layout</code> 中打开更新的 PCB 设计。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 <code>SailWind Logic</code> 中，点击<strong class="font-semibold">工具&gt;SailWind Layout</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果 <code>SailWind Layout</code> 尚未打开设计，将显示连接到 <code>SailWind Layout</code> 对话框。</p>
+<p class="my-4 leading-7">	a. 点击<strong class="font-semibold">打开</strong>在 <code>SailWind Layout</code> 中打开您要从中标注的 PCB 设计。</p>
+<p class="my-4 leading-7">	b. 在文件打开对话框中，选择 <em>.pcb</em> 文件并点击<strong class="font-semibold">打开</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 <code>SailWind Layout</code> Link 对话框中，点击设计选项卡。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 为避免后向标注期间的意外变更，考虑在后向标注前比较数据。如果您想在更新前检查设计差异，点击<strong class="font-semibold">比较 PCB</strong>按钮。两个版本被比较，差异写入*\SailWind Projects<em>文件夹中的</em>Logic.rep*。点击输出窗口中的<em>logic.rep</em>链接查看报告。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在首选项选项卡上，设置适当的选项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 <code>ECO</code> 名称选项卡上，设置适当的选项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在设计选项卡上：</p>
+</li>
+</ol>
+<p class="my-4 leading-7">a. 如果需要，选择&quot;比较设计规则&quot;和&quot;显示网络列表错误报告&quot;复选框。</p>
+<p class="my-4 leading-7">b. 点击<strong class="font-semibold">从 PCB 生成 ECO</strong>按钮。</p>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">如果您收到原理图网络列表可能有错误的消息，您不应继续，而应选择显示网络列表错误报告复选框并再次运行从 PCB 生成 <code>ECO</code> 以调查和修复错误，然后再继续。</p>
+<h3 id="使用-sailwind-layout-的-eco-文件进行后向标注" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">使用 <code>SailWind Layout</code> 的 <code>ECO</code> 文件进行后向标注<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用-sailwind-layout-的-eco-文件进行后向标注">#</a></h3>
+<p class="my-4 leading-7">使用 <code>SailWind Layout</code> 创建设计变更的*.eco*文件，然后将其导入 <code>SailWind Logic</code> 设计。</p>
+<p class="my-4 leading-7">记录设计工程变更是生成*.eco<em>文件的首选方法，因为它创建了变更的完美&quot;前后&quot;记录。您可以通过比较设计生成</em>.eco*文件；但是，它不会为元件类型和连接完全相同的组件创建完美的前后记录。更多信息，请参阅第 814 页的&quot;记录与生成 <code>ECO</code> 文件&quot;。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">传输非 <code>ECO</code> 注册元件和非电气元件受到限制。有关详细信息，请参阅&quot;选项对话框设计类别&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在设计比较期间，重用定义被忽略，物理设计重用中的实际元素用于比较。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">😎<strong class="font-semibold">前提</strong></p>
+<p class="my-4 leading-7">如果您忘记记录*.eco<em>变更并且必须通过比较两个设计生成</em>.eco*文件，请参阅&quot;比较设计的两个版本&quot;。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">在*.eco*文件中记录工程/网表变更。更多细节，请参阅第 814 页的&quot;记录 <code>ECO</code> 变更&quot;。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在 <code>SailWind Logic</code> 中，点击<strong class="font-semibold">设置 &gt; 选项</strong>菜单项。在选项对话框中，点击<strong class="font-semibold">设计</strong>类别。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">适当设置&quot;允许用库中的空白值覆盖设计中的属性值&quot;复选框，以允许或防止用库中的空白(&quot;占位符&quot;)值覆盖非空白属性值。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">点击<strong class="font-semibold">确定</strong>。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在 <code>SailWind Logic</code> 中，打开您的设计，点击<strong class="font-semibold">主页&gt;导入</strong>菜单项。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在文件导入对话框中，在文件类型列表中，选择&quot;<code>ECO</code> 文件(*.eco)&quot;。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">浏览并选择要导入的 <code>ECO</code> 文件。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">点击打开。</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">如果没有错误发生，原理图会被更新。如果发生错误，原理图不会被更新，错误以及 <code>ECO</code> 导入错误文件(<em>eco.err</em>)的链接会写入输出窗口。</p>
+<h3 id="使用在-sailwind-logic-中创建的-eco-文件进行后向标注" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">使用在 <code>SailWind Logic</code> 中创建的 <code>ECO</code> 文件进行后向标注<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用在-sailwind-logic-中创建的-eco-文件进行后向标注">#</a></h3>
+<p class="my-4 leading-7">您可以获取*.asc<em>文件格式的布局设计，并使用 <code>SailWind Logic</code> 比较/<code>ECO</code> 工具与原理图设计进行比较。然后您可以将设计变更的</em>.eco*文件导入 <code>SailWind Logic</code> 原理图设计。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">传输非 <code>ECO</code> 注册元件和非电气元件受到限制。有关详细信息，请参阅&quot;选项对话框设计类别&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在设计比较期间，重用定义被忽略，物理设计重用中的实际元素用于比较。</p>
+</li>
+</ul>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 此方法生成新的*.eco<em>文件，不使用记录的</em>.eco<em>文件。在</em>.eco*文件中记录确切的变更可获得最佳的后向标注结果。使用&quot;使用 <code>SailWind Layout</code> 的 <code>ECO</code> 文件进行后向标注&quot;可获得最佳结果。更多信息，请参阅第 814 页的&quot;记录与生成 <code>ECO</code> 文件&quot;。</p>
+</div></div>
+<p class="my-4 leading-7">😎<strong class="font-semibold">前提</strong></p>
+<p class="my-4 leading-7">您必须拥有从 <code>SailWind Layout</code> 导出的*.asc*文件。更多细节，请参阅第 291 页的&quot;导出 ASCII 文件&quot;。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 <code>SailWind Logic</code> 中，点击<strong class="font-semibold">设置 &gt; 选项</strong>菜单项。在选项对话框中，点击<strong class="font-semibold">设计</strong>类别。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">适当设置&quot;允许用库中的空白值覆盖设计中的属性值&quot;复选框，以允许或防止用库中的空白(&quot;占位符&quot;)值覆盖非空白属性值。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 <code>SailWind Logic</code> 中，点击<strong class="font-semibold">工具&gt;比较/ECO</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在比较/<code>ECO</code> 对话框中，点击文档选项卡。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;要比较和更新的原始设计&quot;区域，选择使用当前原理图设计复选框。如果该复选框不可用，您需要先清除&quot;具有变更的新原理图设计&quot;区域中同名的复选框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;具有变更的新原理图设计&quot;区域，浏览从 <code>SailWind Layout</code> 导出的新*.asc<em>文件。在新设计文件名对话框中，将文件类型更改为&quot;ASCII 文件(</em>.asc)&quot;以定位您的文件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击比较选项卡，选择您想要用于设计比较的选项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">可选地，如果您想在创建 <code>ECO</code> 文件前检查设计差异：</p>
+<p class="my-4 leading-7">	a. 在<strong class="font-semibold">文档</strong>选项卡中选择生成差异报告复选框。</p>
+<p class="my-4 leading-7">	b. 清除生成 <code>ECO</code> 文件复选框。</p>
+<p class="my-4 leading-7">	c. 点击<strong class="font-semibold">运行</strong>。网表和 PCB 文件被比较，差异写入*\SailWind Projects<em>文件夹中的</em>Logic.rep*。点击流程状态对话框中的<strong class="font-semibold">显示报告</strong>查看差异。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择生成 <code>ECO</code> 文件复选框，并验证 <code>ECO</code> 文件名。给文件一个唯一的名称以避免覆盖任何现有的 <code>ECO</code> 文件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">运行</strong>。输出文件写入*\SailWind Projects<em>文件夹。比较期间发生的消息或错误也写入</em>\SailWind Projects<em>文件夹中的</em>Logic_Session.log<em>和</em>Logic.err*。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 <code>SailWind Logic</code> 中，点击<strong class="font-semibold">主页&gt;导入</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导入对话框中，在文件类型列表中，点击&quot;<code>ECO</code> 文件(*.eco)&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览并选择要导入的 <code>ECO</code> 文件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<em>打开</em>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">如果没有错误发生，原理图会被更新。如果发生错误，原理图不会被更新，错误以及 <code>ECO</code> 导入错误文件(<em>eco.err</em>)的链接会写入输出窗口。您必须纠正错误才能导入文件。</p>
+<h3 id="后向标注结果" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">后向标注结果<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#后向标注结果">#</a></h3>
+<p class="my-4 leading-7">后向标注流程在向后标注到原理图时以不同方式处理各种布局变更。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">属性级别后向标注</strong></p>
+<p class="my-4 leading-7">您可以后向标注新属性和删除的属性。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">新属性</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">元件中的新属性更新所有相同类型的元件。如果属性名称不存在，则添加具有指定值的属性。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果元件不存在，则创建错误。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">忽略不支持的类型属性，如网络或网络类。</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">删除的属性</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">删除元件类型的属性会删除设计中该类型所有元件的属性。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果元件或属性名称不存在，则生成错误消息。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果属性命令指定了一般属性不支持的对象类型，如网络或网络类，则忽略属性命令。</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">元件级别后向标注</strong></p>
+<p class="my-4 leading-7">您可以后向标注添加的元件、变更的元件、删除的元件和参考标识符名称。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">添加的元件</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">创建新图纸并将所有新元件添加到图纸中。元件放置在网格上，以便中等大小的元件不会重叠。不尝试避免较大元件的重叠。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果新添加元件的参考标识符已存在或元件在库中不存在，则生成错误消息。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果参考标识符已存在，则不会将元件添加到原理图。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果元件包含信号管脚，这些管脚包含在添加管脚功能中。后向标注当前不支持信号管脚，因此会创建错误消息。</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">变更的元件</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果变更的元件是多门元件，则所有门都更新为新元件类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果新元件在设计或库中不存在，或者门或管脚计数不兼容，则生成错误消息。</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">删除的元件</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果删除的元件是多门元件，则删除所有门。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果元件仍连接到网络或元件不存在，则生成错误消息。</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">参考标识符名称</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">如果重命名的元件是多门元件，则更新所有门。如果旧参考标识符不存在，则生成错误消息。</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">门级别后向标注</strong></p>
+<p class="my-4 leading-7">您可以后向标注交换的门。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2"><code>SailWind Logic</code> 在每个交换的门处创建页间符号。如果门不存在，则创建错误消息。</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">网络级别后向标注</strong></p>
+<p class="my-4 leading-7">您可以后向标注连接的网络、通过分割现有网络创建的网络和重命名的网络。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">连接的网络</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">第一个网络重命名为与第二个网络相同的名称。</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">通过分割现有网络创建的网络</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">执行从网络中删除管脚操作以将它们从现有网络中移除，然后执行添加管脚到网络操作以将管脚添加到新网络。</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">重命名的网络</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">重命名所有图纸上旧网络的所有子网。如果任何子网包含没有网络名称的电源或地符号，则向这些符号添加网络名称。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果新网络已存在，则创建错误消息。</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">管脚级别后向标注</strong></p>
+<p class="my-4 leading-7">您可以后向标注交换的管脚、添加到网络的管脚和从网络断开的管脚。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">交换的管脚</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2"><code>SailWind Logic</code> 在每个交换的管脚处创建页间符号。</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">添加到网络的管脚</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">仅当管脚尚未连接到另一个网络时才能添加管脚。如果管脚是门管脚(门符号上的可见终端管脚)，则创建页间符号。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果管脚已连接或管脚是已分配到网络的信号管脚，则创建错误。</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">从网络断开的管脚</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果管脚是门管脚，则删除连接到连接点或页间符号的连接。如果连接通向另一个门管脚，则断开连接，并添加页间符号。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果管脚未连接到相关网络，则此命令生成错误消息。</p>
+</li>
+</ul><!--/$--></div><div class="rspress-doc-footer"><footer class="mt-8"><div class="xs:flex pb-5 px-2 justify-end items-center"><div class="flex text-sm text-text-2 leading-6 sm:leading-8 font-medium"><p>最近更新时间<!-- -->: <span>2025/7/15 05:55:33</span></p></div></div><div class="flex flex-col"></div><div class="flex flex-col sm:flex-row sm:justify-around gap-4 pt-6"><div class="prev_c92d1 flex flex-col"><a href="/sailwind_docs/layout/guide/11_zh.html" class="link_a7cea pager-link_e0d2d"><span class="desc_dcc01">上一页</span><span class="title_a3acb">第 11 章 设计环境设置</span></a></div><div class="next_c11be flex flex-col"><a href="/sailwind_docs/layout/guide/13_zh.html" class="link_a7cea pager-link_e0d2d next_ad355"><span class="desc_dcc01">下一页</span><span class="title_a3acb">第 13 章 导入与导出</span></a></div></div></footer></div></div><div class="aside-container_bc5fa"><div class="flex flex-col"><div id="aside-container" class="relative text-sm font-medium"><div class="leading-7 block text-sm font-semibold pl-3">本页目录</div><nav class="mt-1"><ul class="relative"><li><a href="#通过手动导入-sailwind-logic-网表创建新的-pcb-设计" title="通过手动导入 SailWind Logic 网表创建新的 PCB 设计" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">通过手动导入 <code>SailWind Logic</code> 网表创建新的 PCB 设计</span></a></li><li><a href="#网表处理故障排除" title="网表处理故障排除" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">网表处理故障排除</span></a></li><li><a href="#按原理图分散元件" title="按原理图分散元件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">按原理图分散元件</span></a></li><li><a href="#与-sailwind-logic-交叉探测" title="与 SailWind Logic 交叉探测" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">与 <code>SailWind Logic</code> 交叉探测</span></a></li><li><a href="#从-sailwind-logic-前向标注设计变更" title="从 SailWind Logic 前向标注设计变更" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">从 <code>SailWind Logic</code> 前向标注设计变更</span></a></li><li><a href="#使用-sailwind-layout-生成的-eco-文件进行前向标注" title="使用 SailWind Layout 生成的 ECO 文件进行前向标注" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">使用 <code>SailWind Layout</code> 生成的 <code>ECO</code> 文件进行前向标注</span></a></li><li><a href="#通过从-sailwind-logic-导入-eco-文件进行前向标注" title="通过从 SailWind Logic 导入 ECO 文件进行前向标注" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">通过从 <code>SailWind Logic</code> 导入 <code>ECO</code> 文件进行前向标注</span></a></li><li><a href="#从-sailwind-layout-后向标注到-sailwind-logic" title="从 SailWind Layout 后向标注到 SailWind Logic" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">从 <code>SailWind Layout</code> 后向标注到 <code>SailWind Logic</code></span></a></li><li><a href="#使用自动化的-sailwind-layout-link-进行后向标注" title="使用自动化的 SailWind Layout Link 进行后向标注" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">使用自动化的 <code>SailWind Layout</code> Link 进行后向标注</span></a></li><li><a href="#使用-sailwind-layout-的-eco-文件进行后向标注" title="使用 SailWind Layout 的 ECO 文件进行后向标注" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">使用 <code>SailWind Layout</code> 的 <code>ECO</code> 文件进行后向标注</span></a></li><li><a href="#使用在-sailwind-logic-中创建的-eco-文件进行后向标注" title="使用在 SailWind Logic 中创建的 ECO 文件进行后向标注" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">使用在 <code>SailWind Logic</code> 中创建的 <code>ECO</code> 文件进行后向标注</span></a></li><li><a href="#后向标注结果" title="后向标注结果" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">后向标注结果</span></a></li></ul></nav></div></div></div></div></div></div></section></div>
+    <div id="search-container"></div>
+  </body>
+</html>

@@ -1,0 +1,1808 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Rspress v1.45.0">
+    <title data-rh="true">第 11 章 设置规则 - SailWind</title><meta data-rh="true" name="description" content="SailWind"/>
+  <script>{;const saved = localStorage.getItem('rspress-theme-appearance');const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;const isDark = !saved || saved === 'auto' ? preferDark : saved === 'dark';document.documentElement.classList.toggle('dark', isDark);document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';}</script><link rel="icon" href="/sailwind_docs/favicon.ico"><script defer src="/sailwind_docs/static/js/styles.f5ec16c7.js"></script><script defer src="/sailwind_docs/static/js/lib-react.36f9b428.js"></script><script defer src="/sailwind_docs/static/js/lib-router.971f4280.js"></script><script defer src="/sailwind_docs/static/js/2886.6c8a4c3c.js"></script><script defer src="/sailwind_docs/static/js/index.ef746291.js"></script><link href="/sailwind_docs/static/css/styles.6524924d.css" rel="stylesheet"></head>
+
+  <body >
+    <div id="root"><div class="navContainer_d18b1 rspress-nav px-6  sticky_ddfa7"><div class="container_e4235 flex justify-between items-center h-full"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div><div class="flex flex-1 justify-end items-center"><div class="rightNav_a2fea"><div class="flex sm:flex-1 items-center sm:pl-4 sm:pr-2"><div class="rspress-nav-search-button navSearchButton_df1fb"><button><svg width="18" height="18" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg><p class="searchWord_af2c1">搜索</p><div style="opacity:0"><span></span><span>K</span></div></button></div><div class="mobileNavSearchButton_d85a9"><svg width="24" height="24" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg></div></div><div class="rspress-nav-menu menu h-14"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div><div class="flex-center flex-row"><div class="mx-2"><div class="md:mr-2 rspress-nav-appearance"><div class="p-1 border border-solid border-gray-300 text-gray-400  cursor-pointer rounded-md hover:border-gray-600 hover:text-gray-600 dark:hover:border-gray-200 dark:hover:text-gray-200 transition-all duration-300 w-7 h-7"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="dark:hidden" width="18" height="18" fill="currentColor"><path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6m0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4M12 4c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M12 24c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M5.6 6.6c-.3 0-.5-.1-.7-.3L3.5 4.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.1.2-.4.3-.7.3M19.8 20.8c-.3 0-.5-.1-.7-.3l-1.4-1.4c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.2.2-.5.3-.7.3M3 13H1c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M23 13h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M4.2 20.8c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.4.3-.7.3M18.4 6.6c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.5.3-.7.3"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="hidden dark:block" width="18" height="18" fill="currentColor"><path d="M12.1 22h-.9c-5.5-.5-9.5-5.4-9-10.9.4-4.8 4.2-8.6 9-9 .4 0 .8.2 1 .5s.2.8-.1 1.1c-2 2.7-1.4 6.4 1.3 8.4 2.1 1.6 5 1.6 7.1 0 .3-.2.7-.3 1.1-.1.3.2.5.6.5 1-.2 2.7-1.5 5.1-3.6 6.8-1.9 1.4-4.1 2.2-6.4 2.2M9.3 4.4c-2.9 1-5 3.6-5.2 6.8-.4 4.4 2.8 8.3 7.2 8.7 2.1.2 4.2-.4 5.8-1.8 1.1-.9 1.9-2.1 2.4-3.4-2.5.9-5.3.5-7.5-1.1-2.8-2.2-3.9-5.9-2.7-9.2"></path></svg></div></div></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div><div class="mobileNavMenu_e7045"><div class="navScreen_ec30c  rspress-nav-screen" id="navScreen"><div class="container_c935d"><div class="navMenu_b887b"><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div></div><div class="flex-center flex-col gap-2"><div class="mt-2 navAppearance_bf893 flex justify-center"></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div></div><button aria-label="mobile hamburger" class=" rspress-mobile-hamburger navHamburger_ac64c text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><circle cx="8" cy="16" r="2" fill="currentColor"></circle><circle cx="16" cy="16" r="2" fill="currentColor"></circle><circle cx="24" cy="16" r="2" fill="currentColor"></circle></svg></button></div></div></div></div><section><div class="docLayout_af141 pt-0"><aside class="sidebar_dd719 rspress-sidebar "><div class="navTitleMask_fb17c"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div></div><div class="rspress-scrollbar sidebarContent_da296"><nav class="pb-2"><a href="/sailwind_docs/router/index.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:14px;margin-left:0;border-radius:0 var(--rp-radius) var(--rp-radius) 0;padding-left:24px;font-weight:bold"><span>章节预览</span></div></a><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">指南(Guide)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 1 章 自动布线快速入门</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 2 章 交互式布线快速入门</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 3 章 设计准备</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 4 章 文件操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 5 章 界面元素</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 6 章 无模命令与快捷键</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 7 章 视图</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 8 章 撤销、重做、重复与删除</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 9 章 搜索与选择</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 10 章 电气网络</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItemActive_de63c mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 11 章 设置规则</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 12 章 启用设计规则检查</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 13 章 元件放置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 14 章 虚拟引脚</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 15 章 覆铜平面与铜形状</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/16_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 16 章 布线设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/17_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 17 章 自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/18_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 18 章 选择性自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/19_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 19 章 手动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/20_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 20 章 手动编辑</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/21_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 21 章 设计验证</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/22_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 22 章 报告</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/23_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 23 章 授权许可</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/24_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 24 章 SailWind 布线器 GUI 参考</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/25_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 25 章 软件启动选项</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/26_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 26 章 自定义界面</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">教程(Tutorial)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>学习用户界面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>约束条件分配</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>设计准备</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>元件放置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>交互式布线创建走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用交互式布线创建高速走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用 SailWind Router 进行自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>设计规则检查</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">快速参考(Quick Reference)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/qr/modless.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>无模命令</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/qr/shortcut.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>键盘快捷键</span></div></a></div></div></div></section></nav></div></aside><div class="flex-1 relative min-w-0"><div class="rspress-sidebar-menu-container "><div class="rspress-sidebar-menu"><button type="button" class="flex-center mr-auto"><div class="text-md mr-2"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"></path></svg></div><span class="text-sm">Menu</span></button><button type="button" class="flex-center ml-auto"><span class="text-sm">本页目录</span><div class="text-md mr-2" style="transform:rotate(0deg);transition:transform 0.2s ease-out;margin-top:2px"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></button><div class="rspress-local-toc-container "><ul><li><a href="#设置设计全局和默认属性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">设置设计（全局和默认）属性</span></a></li><li><a href="#设计规则" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">设计规则</span></a></li><li><a href="#规则层次结构" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">规则层次结构</span></a></li><li><a href="#从-sailwind-layout-传递的设计规则" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">从 SailWind Layout 传递的设计规则</span></a></li><li><a href="#sailwind-layout-设计规则与-sailwind-router-属性对比" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">SailWind Layout 设计规则与 SailWind Router 属性对比</span></a></li><li><a href="#引脚对与平面网络" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">引脚对与平面网络</span></a></li><li><a href="#同网络规则" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">同网络规则</span></a></li><li><a href="#焊盘入口规则" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">焊盘入口规则</span></a></li><li><a href="#拓扑限制" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">拓扑限制</span></a></li><li><a href="#扇出规则" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">扇出规则</span></a></li><li><a href="#封装规则" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">封装规则</span></a></li><li><a href="#错误规则" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">错误规则</span></a></li><li><a href="#间距规则" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">间距规则</span></a></li><li><a href="#设置间距" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">设置间距</span></a></li><li><a href="#网格规则" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">网格规则</span></a></li><li><a href="#设置网格" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">设置网格</span></a></li><li><a href="#设置层偏置规则" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">设置层偏置规则</span></a></li><li><a href="#设置层规则" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">设置层规则</span></a></li><li><a href="#设置在特定层上使用的过孔类型" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">设置在特定层上使用的过孔类型</span></a></li><li><a href="#设置对象属性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">设置对象属性</span></a></li><li><a href="#创建网络类" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建网络类</span></a></li><li><a href="#创建引脚对组" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建引脚对组</span></a></li><li><a href="#条件规则" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">条件规则</span></a></li><li><a href="#创建条件规则" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建条件规则</span></a></li><li><a href="#创建匹配长度网络组" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建匹配长度网络组</span></a></li><li><a href="#创建匹配长度引脚对组" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建匹配长度引脚对组</span></a></li><li><a href="#差分对规则" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">差分对规则</span></a></li><li><a href="#创建差分对" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建差分对</span></a></li><li><a href="#为多个差分对分配相同规则" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">为多个差分对分配相同规则</span></a></li><li><a href="#差分对层级结构" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">差分对层级结构</span></a></li><li><a href="#设置差分对属性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">设置差分对属性</span></a></li><li><a href="#组件规则" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">组件规则</span></a></li><li><a href="#长度规则" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">长度规则</span></a></li><li><a href="#布线规则" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">布线规则</span></a></li><li><a href="#处理多个对象属性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">处理多个对象属性</span></a></li></ul></div></div></div><div class="content_ff766 rspress-doc-container flex"><div class="flex-1 overflow-x-auto"><div class="rspress-doc"><!--$--><h1 id="第-11-章-设置规则" class="rspress-doc-title text-3xl mb-10 leading-10 tracking-tight title_fb7eb">第 11 章 设置规则<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#第-11-章-设置规则">#</a></h1>
+<p class="my-4 leading-7">设计规则允许您精确控制布线结果。通过多种设置，您可以指定设计对象之间的简单间距，或将规则扩展为包含网络、类组、引脚对和层之间的复杂关系。</p>
+<h2 id="设置设计全局和默认属性" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">设置设计（全局和默认）属性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设置设计全局和默认属性">#</a></h2>
+<p class="my-4 leading-7">当未选择任何对象时，使用&quot;设计属性&quot;对话框查看和修改设计属性。&quot;设计属性&quot;对话框设置全局规则属性。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在未选择任何对象的情况下，点击<strong class="font-semibold">属性</strong>按钮或右键点击并选择弹出菜单中的<strong class="font-semibold">属性</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击要修改属性的设计属性标签页：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">间距（第 468 页）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><a href="#page-10-1" class="link_a7cea  link_a9ef4 inline-link_f855c">扇出（第 163 页）</a></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><a href="#page-14-0" class="link_a7cea  link_a9ef4 inline-link_f855c">网格（第 167 页）</a></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><a href="#page-15-0" class="link_a7cea  link_a9ef4 inline-link_f855c">层偏置（第 168 页）</a></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><a href="#page-15-1" class="link_a7cea  link_a9ef4 inline-link_f855c">层（第 168 页）</a></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">焊盘入口（第 504 页）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><a href="#page-36-0" class="link_a7cea  link_a9ef4 inline-link_f855c">布线（第 189 页）</a></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">同网络（第 519 页）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">测试点（第 521 页）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">拓扑（第 291 页）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">过孔<a href="#page-16-0" class="link_a7cea  link_a9ef4 inline-link_f855c">偏置（第 169 页）</a></p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">根据需要修改标签页上的属性。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击其他标签页继续设置属性。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">完成后点击<strong class="font-semibold">确定</strong>。</p>
+</li>
+</ol>
+<h2 id="设计规则" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">设计规则<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设计规则">#</a></h2>
+<p class="my-4 leading-7">设计规则允许您为设计对象分配约束。分配约束可以控制对象之间的间距、为特定层分配过孔、控制用于布线的层、设置对象（或对象组）之间的复杂关系，以及定义许多其他设计约束。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">硬规则与软规则</strong></p>
+<p class="my-4 leading-7">设计规则有两种类型：<em>硬规则</em>和<em>软规则</em>。硬规则始终被遵循，即使会导致布线未完成。软规则在会导致布线未完成时会被忽略。</p>
+<p class="my-4 leading-7">大多数规则永久性地属于硬规则或软规则；少数规则是可切换的——即可以从硬规则变为软规则，反之亦然。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">硬规则示例</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">所有间距规则</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">所有过孔偏置规则</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">软规则示例</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">扇出规则</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">组件层上的布线限制</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">可切换的硬/软规则示例</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">长度规则——硬/软性由选项对话框<strong class="font-semibold">调整</strong>标签页中的&quot;必要时忽略长度规则以完成走线&quot;复选框控制。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">同网络第一转角规则——硬/软性由设计属性对话框<strong class="font-semibold">焊盘入口</strong>标签页中的&quot;必要时忽略第一转角规则以完成走线&quot;复选框控制。</p>
+</li>
+</ul>
+<h2 id="规则层次结构" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">规则层次结构<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#规则层次结构">#</a></h2>
+<p class="my-4 leading-7">某些规则优先于其他规则。例如，引脚对规则覆盖组规则，组规则覆盖网络规则。这种结构称为<em>规则层次结构</em>。</p>
+<p class="my-4 leading-7">默认规则位于第 1 级，优先级最低，代表规则层次结构的最低级别。电气网络规则位于第 34 级，优先级最高，代表规则层次结构的最高级别。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">默认</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">带条件层规则的默认</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">类</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">带条件层规则的类</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">网络</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">带条件层规则的网络</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">组</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">带条件层规则的组</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">引脚对</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">带条件层规则的引脚对</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">类对类</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">带条件层规则的类对类</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">网络对类</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">带条件层规则的网络对类</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">网络对网络</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">带条件层规则的网络对网络</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">组对类</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">带条件层规则的组对类</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">组对网络</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">带条件层规则的组对网络</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">组对组</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">带条件层规则的组对组</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">引脚对类</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">带条件层规则的引脚对类</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">引脚对网络</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">带条件层规则的引脚对网络</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">引脚对组</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">带条件层规则的引脚对组</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">引脚对引脚对</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">带条件层规则的引脚对引脚对</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">封装</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">组件</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">差分对</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">电气网络</p>
+</li>
+</ol>
+<h2 id="从-sailwind-layout-传递的设计规则" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">从 SailWind Layout 传递的设计规则<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#从-sailwind-layout-传递的设计规则">#</a></h2>
+<p class="my-4 leading-7">SailWind Layout 将设计中的大多数设计规则传递给 SailWind Router。在布线会话完成后，SailWind Router 将这些规则（及其任何修改）无缝传递回 SailWind Layout。</p>
+<p class="my-4 leading-7">除了高速规则和<a href="#page-6-0" class="link_a7cea  link_a9ef4 inline-link_f855c">平面网络引脚对规则（第 159 页）</a>外，SailWind Router 使用与 SailWind Layout 相同的设计规则（<a href="#page-4-1" class="link_a7cea  link_a9ef4 inline-link_f855c">表</a> <a href="#page-4-1" class="link_a7cea  link_a9ef4 inline-link_f855c">52</a>）。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">规则</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">由 SailWind<!-- -->Layout 维护</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">由 SailWind<!-- -->Router 维护</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">体到体间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是<!-- -->注意：<!-- -->转换为<!-- -->&quot;组件间最小间距&quot;<!-- -->值</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">同网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">线宽</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">布线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">长度最小化</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">布线选项</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层偏置</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">过孔偏置</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">高速</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">并行性</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是 (EDC)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">屏蔽</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">高速</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是 (EDC)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">长度匹配</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是 (EDC)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+</tr>
+</tbody>
+</table>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">规则</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">由 SailWind<!-- -->Layout 维护</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">由 SailWind<!-- -->Router 维护</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">条件</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">所有组合</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">差分对</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">所有定义</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">测试点</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">探针到走线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">探针到焊盘</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">测试点网格</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">分配</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sailwind-layout-设计规则与-sailwind-router-属性对比" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">SailWind Layout 设计规则与 SailWind Router 属性对比<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#sailwind-layout-设计规则与-sailwind-router-属性对比">#</a></h2>
+<p class="my-4 leading-7">在 SailWind Layout 中，您使用设计规则为设计对象分配约束。这些约束包括间距、过孔分配、层分配和其他复杂的设计对象关系。SailWind Router 支持大多数相同的规则；然而，SailWind Router 将它们称为<em>属性</em>。</p>
+<p class="my-4 leading-7">此表显示了 SailWind Layout 中特定设计规则的位置以及 SailWind Router 中相应属性的位置。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">SailWind Layout<!-- -->设置</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">SailWind Layout 对话框<!-- -->框</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">SailWind Router<!-- -->设置</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">SailWind Router<!-- -->对话框</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">默认规则,<!-- -->间距规则</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计属性,<!-- -->间距标签页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">默认规则,<!-- -->间距规则: 体<!-- -->到体</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组件间最小间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">选项, 制造<!-- -->类别</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">同网络间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">默认规则,<!-- -->间距规则</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">同网络间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计属性,<!-- -->同网络标签页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">线宽</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">默认规则,<!-- -->间距规则</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">线宽</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计属性,<!-- -->布线标签页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">拓扑</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">默认规则, 布线<!-- -->规则</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">拓扑</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计属性,<!-- -->拓扑标签页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">布线选项</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">默认规则, 布线<!-- -->规则</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">布线选项</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计属性,<!-- -->布线标签页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层偏置</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">默认规则, 布线<!-- -->规则</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层偏置</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计属性,<!-- -->层偏置标签页</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 53. SailWind Layout 与SailWind Router 之间的设计规则映射</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">SailWind Layout<!-- -->设置</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">SailWind Layout 对话框<!-- -->框</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">SailWind Router<!-- -->设置</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">SailWind Router<!-- -->对话框</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">过孔</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">默认规则, 布线<!-- -->规则</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">过孔偏置</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计属性,<!-- -->过孔偏置标签页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">最大过孔<!-- -->数量</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">默认规则, 布线<!-- -->规则</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">最大过孔<!-- -->数量</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计属性,<!-- -->布线标签页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">测试点审核</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DFT 审核, 属性</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">测试点</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计属性,<!-- -->测试点标签页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">测试点分配</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DFT 审核, 分配<!-- -->标签页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">测试点分配</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组件<!-- -->属性, 测试<!-- -->点标签页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">项目资源管理器, 过孔<!-- -->类型属性, 测试<!-- -->点标签页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">无等效</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计属性,<!-- -->层标签页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网格</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网格和捕捉选项,<!-- -->网格标签页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网格</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计属性,<!-- -->网格标签页</td>
+</tr>
+</tbody>
+</table>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">表 53. SailWind Layout 与SailWind Router 之间的设计规则映射（续）</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="引脚对与平面网络" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">引脚对与平面网络<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#引脚对与平面网络">#</a></h2>
+<p class="my-4 leading-7">SailWind Router 不允许为平面网络定义引脚对规则或引脚对组规则。这些规则会影响 SailWind Router 性能，因为它们呈现了技术上复杂的场景。</p>
+<p class="my-4 leading-7">如果在 SailWind Layout 中分配了平面网络引脚对，则在 SailWind Router 中打开设计后会删除这些规则。您不能在 SailWind Router 中分配这些规则。无论哪种情况，输出窗口都会显示以下消息：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">对于平面网络引脚对规则</strong> &quot;引脚对规则不能在平面网络中分配。&quot;</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">对于组中的平面网络引脚对</strong> &quot;引脚对不能包含在平面网络的组中。&quot;</p>
+</li>
+</ul>
+<p class="my-4 leading-7">对于非平面网络，可以通过<em>SailWindRouter.ini</em>文件中的以下设置控制限制：</p>
+<div class="language-bash"><div class="rspress-code-content rspress-scrollbar"><code>[General]
+
+NonPowerNetMaxPinCount=50
+</code></div></div>
+<p class="my-4 leading-7">通过此设置，如果一个网络有超过 50 个引脚，SailWind Router 会将其视为大型网络，并不支持其引脚对规则。</p>
+<h2 id="同网络规则" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">同网络规则<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#同网络规则">#</a></h2>
+<p class="my-4 leading-7">同网络规则指定网络中项目之间的最小间距。</p>
+<p class="my-4 leading-7">一些同网络规则是永久性的硬规则；您可以使用设计属性对话框<strong class="font-semibold">焊盘入口</strong>标签页中的&quot;必要时忽略第一转角规则以完成走线&quot;复选框将其他规则设为硬规则或软规则。<a href="#page-7-0" class="link_a7cea  link_a9ef4 inline-link_f855c">表</a> <a href="#page-7-0" class="link_a7cea  link_a9ef4 inline-link_f855c">54</a>和<a href="#page-7-1" class="link_a7cea  link_a9ef4 inline-link_f855c">图 16</a>显示了同网络中项目的不同规则类型。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">间距规则</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">规则类型</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">焊盘到转角</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">可切换的硬/软</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">非 SMD 焊盘与<!-- -->第一个走线弯曲点之间的最小间距。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SMD 到转角</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">可切换的硬/软</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">表面贴装焊盘<!-- -->与第一个走线弯曲点之间的最小间距。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SMD 到过孔</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">硬</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">表面贴装焊盘<!-- -->与过孔之间的最小间距。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">走线到转角</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">可切换的硬/软</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">段与相邻走线段的<!-- -->弯曲点之间的最小间距；例如，<!-- -->当走线在 T型连接处分叉<!-- -->且两条走线之一有弯曲点时。<!-- -->走线到转角也用作走线到走线<!-- -->规则。<!-- -->走线到转角规则仅用于布线<!-- -->且设计验证不检查此规则。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">过孔到过孔</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">硬</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">过孔之间的最小间距。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 54. 适用于同网络项目的边到边间距值</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 16. 同网络规则</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/11/_page_7_Figure_5.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">第一转角规则</strong></p>
+<p class="my-4 leading-7">第一转角规则确定在走线离开焊盘或过孔时如何强制执行间距。</p>
+<p class="my-4 leading-7">有三种第一转角规则：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">焊盘到转角（用于通孔引脚和过孔），</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">走线到转角，</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">SMD 到转角</p>
+</li>
+</ul>
+<p class="my-4 leading-7">焊盘到转角和 SMD 到转角规则防止在小于最小转角规则的情况下向进入或离开焊盘的走线添加转角。焊盘到转角或 SMD 到转角规则还防止在添加第一个转角后走线过于接近焊盘。<a href="#page-8-0" class="link_a7cea  link_a9ef4 inline-link_f855c">图 17</a>和<a href="#page-8-1" class="link_a7cea  link_a9ef4 inline-link_f855c">图 18</a>显示了 SailWind Layout 和SailWind Router 中的第一转角规则。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/11/_page_8_Figure_5.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 17. SailWind Layout 中的第一转角规则</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 18. SailWind Router 中的第一转角规则</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/11/_page_8_Figure_8.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">走线到转角规则</strong></p>
+<p class="my-4 leading-7">走线到转角规则类似于焊盘到转角规则，也用作走线到走线规则。在自动布线期间，SailWind Router 仅在避免走线未完成时违反此规则。您可以在平滑或优化过程中修复此类违规。</p>
+<p class="my-4 leading-7">软件仅将走线到转角规则<a href="#page-9-1" class="link_a7cea  link_a9ef4 inline-link_f855c">（图 19</a>)用于布线；在设计验证期间不检查此规则。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 19. 走线到转角规则</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/11/_page_9_Figure_2.jpeg" alt=""/></p>
+<h2 id="焊盘入口规则" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">焊盘入口规则<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#焊盘入口规则">#</a></h2>
+<p class="my-4 leading-7">焊盘入口是进入或离开引脚的走线首次穿过焊盘边缘的点。您可以在设计属性设置中定义焊盘入口规则。</p>
+<p class="my-4 leading-7">焊盘入口的质量由焊盘入口的角度衡量。完美的焊盘入口的焊盘角度等于或大于 90 度。<a href="#page-9-2" class="link_a7cea  link_a9ef4 inline-link_f855c">图 20</a>显示了一个不理想的焊盘入口；下部焊盘入口角度大于 90 度，但上部焊盘入口角度小于 90 度。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/11/_page_9_Figure_6.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 20. 不理想的焊盘入口</strong></p>
+<p class="my-4 leading-7">无论焊盘形状如何，都会尝试在所有进入引脚和过孔的走线上实现完美的焊盘入口。焊盘入口控制允许您选择焊盘出口类型（任意角度、侧面或转角）和软转角规则。有关更多信息，请参阅<a href="#page-2-1" class="link_a7cea  link_a9ef4 inline-link_f855c">&quot;硬规则与软规则&quot;（第 155 页）</a>。</p>
+<p class="my-4 leading-7">SailWind Router 根据需要为完成走线使用不同的焊盘入口<a href="#page-10-5" class="link_a7cea  link_a9ef4 inline-link_f855c">（图 21）</a>。当允许所有焊盘入口类型（包括软第一转角规则）时，软件可获得最佳结果。软件仅为了完成走线而做出不理想或不理想的焊盘入口。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/11/_page_10_Figure_1.jpeg" alt=""/></p>
+<p class="my-4 leading-7">为了维护引脚对规则，SailWind Router 不会在具有引脚对规则的网络上共享焊盘入口或出口。</p>
+<h2 id="拓扑限制" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">拓扑限制<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#拓扑限制">#</a></h2>
+<p class="my-4 leading-7">拓扑规则允许您指定网络拓扑类型以及是否允许设计中存在多个连接到过孔和走线。</p>
+<p class="my-4 leading-7">从属性设置对话框的 <strong class="font-semibold">拓扑</strong> 选项卡设置拓扑规则。适用以下限制：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">除&quot;最小化&quot;拓扑类型外，&quot;允许连接点&quot;设置对其他所有拓扑类型均不可用</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">&quot;最大残桩长度&quot;设置对&quot;最小化&quot;拓扑类型不可用</p>
+</li>
+</ul>
+<h2 id="扇出规则" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">扇出规则<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#扇出规则">#</a></h2>
+<p class="my-4 leading-7">扇出规则指定引脚、SMD、过孔和走线的扇出类型、过孔放置以及多连接选项。您可以将扇出设置为无限长度，也可以指定最大长度。扇出规则是软规则，这意味着当遵循这些规则会导致一条或多条未完成布线时，SailWind Router 会忽略这些规则。</p>
+<h2 id="封装规则" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">封装规则<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#封装规则">#</a></h2>
+<p class="my-4 leading-7">封装规则为使用特定封装的所有组件指定布线、焊盘入口、同网络、扇出、过孔偏置和间距规则。</p>
+<h2 id="错误规则" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">错误规则<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#错误规则">#</a></h2>
+<p class="my-4 leading-7">错误规则指定在验证操作期间是否忽略错误。</p>
+<h2 id="间距规则" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">间距规则<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#间距规则">#</a></h2>
+<p class="my-4 leading-7">间距规则指定设计中各对象类型之间的最小允许空气间隙。</p>
+<p class="my-4 leading-7">支持的对象类型包括：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">走线</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">过孔</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">通孔焊盘</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">表面贴装(SMD)焊盘</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">铜箔</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">钻孔</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">文本</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">板边</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">其他间距规则</strong></p>
+<p class="my-4 leading-7">额外的间距规则用于保持元件本体与钻孔之间的间距。</p>
+<p class="my-4 leading-7"><a href="#page-11-1" class="link_a7cea  link_a9ef4 inline-link_f855c">表</a> <a href="#page-11-1" class="link_a7cea  link_a9ef4 inline-link_f855c">55</a>总结了其他间距规则。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">规则</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">元件间最小间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">用于定义每个元件放置边框的线中心线之间的距离<!-- -->包括自动生成的放置边框<!-- -->以及从 SailWind Layout 第 20 层<!-- -->放置边框派生的边框。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">注意：<!-- -->当打开设计时，此值会填充<!-- -->为 SailWind Layout 中&quot;本体到本体&quot;间距设计规则<!-- -->的值。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">孔间最小间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">两个钻孔<!-- -->之间的最小边到边间距</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 55. 包含的其他间距规则</strong></p>
+<p class="my-4 leading-7"><a href="#page-11-1" class="link_a7cea  link_a9ef4 inline-link_f855c">表</a> <a href="#page-11-1" class="link_a7cea  link_a9ef4 inline-link_f855c">55</a>中的规则显示在选项对话框的 <strong class="font-semibold">制造</strong> 选项卡上。</p>
+<h2 id="设置间距" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">设置间距<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设置间距">#</a></h2>
+<p class="my-4 leading-7">使用属性设置对话框的 <strong class="font-semibold">间距</strong> 选项卡查看和修改最小间距。</p>
+<p class="my-4 leading-7">如果选择了对象，则设置该对象的间距属性。如果未选择任何对象，则设置整个设计的间距属性。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">属性</strong> 菜单项；然后单击 <strong class="font-semibold">间距</strong> 选项卡。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在行标题中列出的对象与列标题中列出的对象之间的间距框中键入间距值。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 要为整行或整列设置相同的值，请单击列标题、行标题或<strong class="font-semibold">全部</strong>。键入值并单击确定以应用该值。</p>
+</div></div>
+<ol start="3" class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">单击 <strong class="font-semibold">确定</strong>。</li>
+</ol>
+<h2 id="网格规则" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">网格规则<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#网格规则">#</a></h2>
+<p class="my-4 leading-7">SailWind Router 为您提供了多种不同的网格类型，以帮助您在设计过程中的布局、布线和测试点阶段。</p>
+<p class="my-4 leading-7">SailWind Router 使用以下五种布线网格：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">测试点</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">过孔</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">扇出</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">元件</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">布线</p>
+</li>
+</ul>
+<p class="my-4 leading-7">SailWind Router 还有两个额外的网格，显示网格和铜箔填充网格，在布线过程中不使用。</p>
+<p class="my-4 leading-7">使用设计属性对话框 <strong class="font-semibold">网格</strong> 选项卡上的&quot;对齐网格&quot;设置布线网格。如果清除&quot;对齐网格&quot;复选框，则忽略网格设置。</p>
+<p class="my-4 leading-7">布线网格为除元件、测试点、过孔和扇出操作期间添加的过孔之外的布线任务建立默认布线网格(<a href="#page-13-0" class="link_a7cea  link_a9ef4 inline-link_f855c">图 22</a>)。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/11/_page_13_Figure_2.jpeg" alt=""/></p>
+<p class="my-4 leading-7">如果走线拐角的至少一个坐标在网格上，则该拐角在网格上。如果走线段的两个端点在同一平面上都在网格上，则该段在网格上。<a href="#page-13-1" class="link_a7cea  link_a9ef4 inline-link_f855c">图 23</a>显示了走线拐角和走线段的布线网格。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/11/_page_13_Figure_5.jpeg" alt=""/></p>
+<p class="my-4 leading-7">保持走线拐角在网格上的规则是软规则。如果无法将走线拐角放置在网格上，则将拐角放置在网格外以完成走线。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">网格统计报告</strong></p>
+<p class="my-4 leading-7">您可以在输出窗口中创建网格统计报告，以报告引脚、过孔和走线段在网格上或网格外的情况。</p>
+<p class="my-4 leading-7">在创建网格统计报告之前，必须为第 491 页上的布线网格选择&quot;将对象对齐网格&quot;复选框。这是生成报告中&quot;网格外&quot;统计信息并在设计中的位置显示所有根据硬/软规则在网格外的引脚、过孔或走线段端点的标记所必需的。标记在屏幕重绘时消失。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 24. 网格统计网格外标记</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/11/_page_13_Picture_11.jpeg" alt=""/></p>
+<p class="my-4 leading-7">网格统计报告使用以下快捷(无模式)命令运行：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">GGS</strong> 软网格统计：如果走线段的端点之一具有 X或 Y坐标在布线网格上，则认为走线段在网格上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">GGM</strong> 中等网格统计。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">GGH</strong> 硬网格统计：如果走线段的端点之一具有 X和 Y坐标都在布线网格上，则认为走线段在网格上。</p>
+</li>
+</ul>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">当网格设置为 00000_00000 时，无论&quot;将对象对齐网格&quot;设置如何，报告中的&quot;对齐&quot;值始终显示&quot;关闭&quot;。</p>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">示例报告</strong></p>
+<p class="my-4 leading-7">这是一个软网格统计报告的示例。</p>
+<h2 id="设置网格" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">设置网格<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设置网格">#</a></h2>
+<p class="my-4 leading-7">使用 <strong class="font-semibold">网格</strong> 选项卡查看和修改设计中的所有网格设置。</p>
+<p class="my-4 leading-7">设置网格以将布线对象限制在特定的增量位置。下表列出了对象及其网格放置。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">对象</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">放置在此网格上</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">走线拐角</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">布线</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">过孔，过孔对</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">过孔</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">测试点</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">测试点</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 56. 对象与网格放置</strong></p>
+<p class="my-4 leading-7">如果走线段的至少一个坐标(X 或Y)在网格上，则认为该走线段&quot;在网格上&quot;。您不必将两个坐标都放在网格上。</p>
+<p class="my-4 leading-7">如果为网格选择了&quot;将对象对齐网格&quot;框，则指针移动会捕捉到网格。这可以防止您在网格点之间放置对象。有关更多信息，请参阅<a href="#page-12-0" class="link_a7cea  link_a9ef4 inline-link_f855c">&quot;网格规则&quot;</a> <a href="#page-12-0" class="link_a7cea  link_a9ef4 inline-link_f855c">第 165 页</a>。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在工作区中<strong class="font-semibold">右键</strong>单击(不选择任何对象)并选择 <strong class="font-semibold">属性</strong> 弹出菜单项，打开设计属性网格。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击 <strong class="font-semibold">网格</strong> 选项卡。在网格设置表中，键入要设置网格线间距的每个框中的值。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择&quot;将对象对齐网格&quot;复选框以启用对齐。清除复选框以禁用对齐。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击 <strong class="font-semibold">确定</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7"><a href="#page-1-0" class="link_a7cea  link_a9ef4 inline-link_f855c">设置设计（全局和默认）属性</a></p>
+<p class="my-4 leading-7"><a href="#page-1-1" class="link_a7cea  link_a9ef4 inline-link_f855c">设计规则</a></p>
+<h2 id="设置层偏置规则" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">设置层偏置规则<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设置层偏置规则">#</a></h2>
+<p class="my-4 leading-7">层偏置规则指定 SailWind Router 在布线时是否可以使用特定层。</p>
+<p class="my-4 leading-7">使用 <strong class="font-semibold">层偏置</strong> 选项卡将可用于网络和引脚对的层限制为某些层进行布线。层偏置提供了对层上布线的额外控制级别。</p>
+<p class="my-4 leading-7">例如：您希望仅在外层布线电源和地网络，并强制其他网络在内层布线。为此，在不选择任何对象的情况下，在常规设计属性中启用外层进行布线，但在 <strong class="font-semibold">层偏置</strong> 选项卡中禁用外层。然后，在电源和地网络的网络属性对话框中，在 <strong class="font-semibold">层偏置</strong> 选项卡中启用外层进行布线。</p>
+<p class="my-4 leading-7">如果选择了对象，则设置该对象的层偏置属性。如果未选择任何对象，则设置整个设计的层偏置属性。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">属性</strong> 弹出菜单项；然后，在属性对话框中，单击 <strong class="font-semibold">层偏置</strong> 选项卡。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择&quot;允许布线&quot;复选框以启用层上的布线。清除复选框以禁用它。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击 <strong class="font-semibold">确定</strong>。</p>
+</li>
+</ol>
+<h2 id="设置层规则" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">设置层规则<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设置层规则">#</a></h2>
+<p class="my-4 leading-7">层规则为指定层指定布线参数。仅显示电气层。</p>
+<p class="my-4 leading-7">使用 <strong class="font-semibold">层</strong> 选项卡为特定层设置布线参数。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在工作区中不选择任何对象的情况下，<strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">属性</strong> 弹出菜单项；然后，在属性对话框中，单击 <strong class="font-semibold">层</strong> 选项卡。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;层的布线参数&quot;区域中，选择&quot;布线&quot;复选框以启用层进行布线。清除复选框以禁用它。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击层的&quot;方向&quot;列，从列表中选择所需的布线方向。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击层的&quot;成本&quot;列，键入 0 到 100 之间的成本值。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">成本值指定在布线过程中使用该层的级别。数字越大，表示使用该层的次数越少。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">5. 单击确定。</strong></p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">显示层类型的&quot;类型&quot;列只能在 SailWind Layout 中更改。</p>
+<h2 id="设置在特定层上使用的过孔类型" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">设置在特定层上使用的过孔类型<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设置在特定层上使用的过孔类型">#</a></h2>
+<p class="my-4 leading-7">过孔偏置规则指定 SailWind Router 在布线时是否可以使用特定过孔类型。</p>
+<p class="my-4 leading-7">使用属性对话框的 <strong class="font-semibold">过孔偏置</strong> 选项卡限制 SailWind Router 在布线时使用的过孔类型。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">• 您无法在 SailWind Router 中更改过孔的大小或添加额外的过孔。要更改过孔的大小或创建新的过孔，请在 SailWind Layout 中打开设计并使用 SailWind Layout 中的焊盘栈属性对话框。</p>
+<p class="my-4 leading-7">如果选择了对象，则设置该对象的过孔偏置属性。如果未选择任何对象，则设置整个设计的过孔偏置属性。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">属性</strong> 弹出菜单项；然后，在属性对话框中，单击 <strong class="font-semibold">过孔偏置</strong> 选项卡。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择&quot;允许&quot;复选框以启用 SailWind Router 使用该过孔进行布线。清除复选框以禁用该过孔的使用。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击 <strong class="font-semibold">确定</strong>。</p>
+</li>
+</ol>
+<h2 id="设置对象属性" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">设置对象属性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设置对象属性">#</a></h2>
+<p class="my-4 leading-7">对象属性允许您为设计中的所有对象指定设计规则。您还可以构建对象组之间的复杂关系，以适应您最苛刻的设计约束。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">如果设计属性与所选对象的属性不同，则&quot;更改的属性&quot;图标会出现在选项卡上。不同的字段以黄色背景显示。</p>
+</div></div>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">选择对象，然后<strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">属性</strong> 弹出菜单项。</li>
+</ol>
+<p class="my-4 leading-7">结果对话框中显示的属性取决于所选对象。以这种方式设置的属性仅影响所选对象，而不影响全局设置。<a href="#page-17-0" class="link_a7cea  link_a9ef4 inline-link_f855c">表</a> <a href="#page-17-0" class="link_a7cea  link_a9ef4 inline-link_f855c">57</a>列出了每种对象类型的可用选项卡。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">对象</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">可用选项卡</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">元件</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 间距第 468 页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 元件第 469 页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 扇出第 486 页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 焊盘入口第 504 页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 布线第 517 页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 同网络第 519 页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 测试点第 523 页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 过孔偏置第 532 页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">条件规则</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 间距第 468 页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">铜箔平面</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 铜箔平面第 475 页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 填充第 489 页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">零件封装</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 间距第 468 页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 元件第 469 页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 扇出第 486 页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 焊盘入口第 504 页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 布线第 517 页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 同网络第 519 页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 过孔偏置第 532 页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">差分对</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• &quot;对&quot;第 184 页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">错误</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 错误第 366 页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">禁止区域</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 禁止区域第 495 页</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">匹配长度组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 组第 493 页</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 57. 属性对话框 — 对象类型的可用选项卡</strong></p>
+<p class="my-4 leading-7">| • 间距第 468 页<!-- -->网络<!-- -->• 层偏置第 497 页<!-- -->• 长度第 501 页<!-- -->• 网络第 502 页<!-- -->• 布线第 517 页<!-- -->• 同网络第 519 页<!-- -->• 测试点第 521 页<!-- -->• 拓扑第 524 页<!-- -->• 过孔偏置第 532 页<!-- -->• 间距第 468 页<!-- -->网络类<!-- -->• 层偏置第 497 页<!-- -->• 长度第 501 页<!-- -->• 布线第 517 页<!-- -->• 同网络第 519 页<!-- -->• 拓扑第 524 页<!-- -->• 过孔偏置第 532 页<!-- -->• 元件第 469 页<!-- -->引脚<!-- -->• 钻孔第 480 页<!-- -->• 焊盘栈第 506 页<!-- -->• 引脚第 513 页<!-- -->• 间距第 468 页<!-- -->引脚对<!-- -->• 层偏置第 497 页<!-- -->• 长度第 501 页<!-- -->• 布线第 517 页<!-- -->• 过孔偏置第 532 页<!-- -->• 间距第 468 页<!-- -->引脚对组<!-- -->• 层偏置第 497 页<!-- -->• 长度第 501 页<!-- -->• 布线第 517 页<!-- -->• 过孔偏置第 532 页<!-- -->• 无属性第 169 页<!-- -->文本<!-- -->• 走线第 526 页<!-- -->走线<!-- -->• 走线拐角第 479 页<!-- -->走线拐角 | 对象 | 可用选项卡 |</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">对象</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">可用选项卡</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">走线段(路径或部分选择)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 走线段第 528 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">取消布线(连接)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 无属性第 169 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">过孔</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 过孔第 530 页<!-- -->• 焊盘栈第 508 页<!-- -->• 钻孔第 482 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">过孔类型</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 焊盘栈第 508 页<!-- -->• 钻孔第 482 页<!-- -->• 测试点第 523 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7">某些选定的对象可能没有属性。例如，取消布线。在这种情况下，会出现&quot;无可用属性&quot;消息。如果选择了多种对象类型，则会出现&quot;多重选择&quot;消息。</p>
+<ol start="2" class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击选项卡并根据需要进行修改。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要清除所选对象的当前规则，请单击 <strong class="font-semibold">删除级别</strong> 按钮。将对象的下一个层次结构级别的规则应用于该对象。对象的层次结构级别显示在&quot;规则级别&quot;框中。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">如果使用设计规则，则<strong class="font-semibold">删除级别</strong> 按钮不可用。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击 <strong class="font-semibold">确定</strong>。</p>
+</li>
+</ol>
+<h2 id="创建网络类" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建网络类<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建网络类">#</a></h2>
+<p class="my-4 leading-7">通过在项目资源管理器和/或设计工作区中选择网络来创建网络类并分配属性(规则)。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">视频</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/11/_page_20_Picture_2.jpeg" alt=""/></p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">使用以下一种或多种方法选择要加入网络类的网络：</li>
+</ol>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">使用项目资源管理器</strong> 在项目资源管理器中使用网络名称列表选择网络。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">对于此类任务，您可能会发现拆分项目资源管理器(参见第 52 页)很有帮助。</p>
+</div></div>
+<p class="my-4 leading-7">i. 在项目资源管理器中，展开网络对象列表，然后展开网络列表。</p>
+<p class="my-4 leading-7">ii. 在网络列表中，选择一个或多个要添加到网络类的网络。您可以稍后向类中添加更多网络，或在需要时从类中删除网络。</p>
+<p class="my-4 leading-7">iii. <strong class="font-semibold">右键</strong>单击并选择复制，或从网络列表中拖动您的选择，然后<strong class="font-semibold">右键</strong>单击并选择粘贴，或将它们拖放到网络类列表中。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">使用工作区</strong> 使用指针在设计中选择网络。</p>
+<p class="my-4 leading-7">i. 在设计中选择一个或多个要添加到网络类的网络。您可以稍后向类中添加更多网络，或在需要时从类中删除网络。</p>
+<p class="my-4 leading-7">ii. <strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">创建类</strong>。</p>
+</li>
+</ul>
+<ol start="2" class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在项目资源管理器中，展开网络对象列表，然后展开网络类列表。网络类列表展开后会显示一个新的 Class<!-- -->，例如 Class1。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果需要，可以重命名该类以使其名称更有意义。</p>
+<p class="my-4 leading-7">	a. 单击选择新类。</p>
+<p class="my-4 leading-7">	b. 单击所选类的文本名称。文本被选中以便重命名。</p>
+<p class="my-4 leading-7">	c. 重命名该类并按 Enter 键。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在项目资源管理器中<strong class="font-semibold">右键</strong>单击并确保选中允许选择设置。在项目资源管理器中选择类还需要同时在设计区域中选择网络，才能打开新类的属性。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将指针移到新类名称上，<strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">属性</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在网络类属性对话框中，为该类设置唯一属性。对于对话框中的每个选项卡，您可以单击<strong class="font-semibold">帮助</strong>按钮获取每个设置的详细信息。</p>
+</li>
+</ol>
+<h2 id="创建引脚对组" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建引脚对组<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建引脚对组">#</a></h2>
+<p class="my-4 leading-7">通过在项目资源管理器和/或设计工作区中选择引脚对来创建引脚对组并分配属性(规则)。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">平面网络不能添加到引脚对组中。更多信息，请参见&quot;<a href="#page-6-0" class="link_a7cea  link_a9ef4 inline-link_f855c">引脚对和平面网络</a>&quot;。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用以下一种或多种方法选择要加入引脚对组的引脚对：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">使用项目资源管理器</strong> 在项目资源管理器中使用网络的引脚对列表选择引脚对。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">对于此类任务，您可能会发现拆分项目资源管理器(参见第 52 页)很有帮助。</p>
+</div></div>
+<p class="my-4 leading-7">i. 在项目资源管理器中，展开网络对象列表，然后展开网络列表。您必须展开单个网络才能查看该网络的引脚对。</p>
+<p class="my-4 leading-7">ii. 选择一个或多个要添加到引脚对组的引脚对。您可以稍后向组中添加更多引脚对，或在需要时从组中删除引脚对。</p>
+<p class="my-4 leading-7">iii. <strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">复制</strong>，或从引脚对列表中拖动您的选择，然后<strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">粘贴</strong>。您也可以将它们拖放到引脚对组列表中。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">使用工作区</strong> 使用指针在设计中选择引脚对。</p>
+<p class="my-4 leading-7">i. 在设计中选择一个或多个要添加到引脚对组的引脚对。您可以稍后向组中添加更多引脚对，或在需要时从组中删除引脚对。</p>
+<p class="my-4 leading-7">ii. <strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">创建引脚对组</strong>。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在项目资源管理器中，展开网络对象列表，然后展开引脚对组列表。引脚对组展开后会显示一个新的 Group<!-- -->，例如 Group1。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果需要，可以重命名该组以使其名称更有意义。</p>
+<p class="my-4 leading-7">	a. 单击选择新组。</p>
+<p class="my-4 leading-7">	b. 单击所选组的文本名称。文本被选中以便重命名。</p>
+<p class="my-4 leading-7">	c. 重命名该组并按 Enter 键。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在项目资源管理器中<strong class="font-semibold">右键</strong>单击并确保选中允许选择设置。在项目资源管理器中选择组还需要在设计区域中选择引脚对，才能打开新组的属性。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将指针移到新组名称上，<strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">属性</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在引脚对组属性对话框中，为该组设置唯一属性。对于对话框中的每个选项卡，您可以单击<strong class="font-semibold">帮助</strong>按钮获取每个设置的详细信息。</p>
+</li>
+</ol>
+<h2 id="条件规则" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">条件规则<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#条件规则">#</a></h2>
+<p class="my-4 leading-7">条件规则扩展了基本规则分配，为复杂设计提供了更多控制。例如，您可以为网络设置条件规则，该规则仅在该网络与特定网络相邻时生效。条件规则有一些额外的限制，使其与其他规则不同。</p>
+<p class="my-4 leading-7">条件规则名称不可由用户定义。条件规则使用自动命名过程。更多信息，请参见<a href="#page-25-1" class="link_a7cea  link_a9ef4 inline-link_f855c">表</a> <a href="#page-25-1" class="link_a7cea  link_a9ef4 inline-link_f855c">59 第 178 页</a>。</p>
+<p class="my-4 leading-7">在创建条件规则之前，您必须指定一组对象。</p>
+<p class="my-4 leading-7">以下列出了您可以创建的条件规则以及如何创建它们。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">特定层上的默认间距和走线宽度规则</strong> 复制或拖动特定电气层并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">特定层上的类间距和走线宽度规则</strong> 复制或拖动网络类和特定电气层并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">特定层上的网络间距和走线宽度规则</strong> 复制或拖动网络和特定电气层并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">特定层上的组间距和走线宽度规则</strong> 复制或拖动引脚对组和特定电气层并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">特定层上的引脚对间距和走线宽度规则</strong> 复制或拖动引脚对和特定电气层并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">类对类规则</strong> 复制或拖动两个网络类并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">特定层上的类对类规则</strong> 复制或拖动两个网络类和特定电气层并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">网络对类规则</strong> 复制或拖动网络和网络类并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">特定层上的网络对类规则</strong> 复制或拖动网络、网络类和特定电气层并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">网络对网络规则</strong> 复制或拖动两个网络并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">特定层上的网络对网络规则</strong> 复制或拖动两个网络和特定电气层并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">组对类规则</strong> 复制或拖动引脚对组和网络类并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">特定层上的组对类规则</strong> 复制或拖动引脚对组、网络类和特定电气层，并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">组对网络规则</strong> 复制或拖动引脚对组和网络并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">特定层上的组对网络规则</strong> 复制或拖动引脚对组、网络和特定电气层，并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">组对组规则</strong> 复制或拖动两个引脚对组并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">特定层上的组对组规则</strong> 复制或拖动两个引脚对组和特定电气层，并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">引脚对类规则</strong> 复制或拖动引脚对和网络类并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">特定层上的引脚对类规则</strong> 复制或拖动引脚对、网络类和特定电气层，并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">引脚对网络规则</strong> 复制或拖动引脚对和网络并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">特定层上的引脚对网络规则</strong> 复制或拖动引脚对、网络和特定电气层，并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">引脚对组规则</strong> 复制或拖动引脚对和引脚对组并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">特定层上的引脚对组规则</strong> 复制或拖动引脚对、引脚对组和特定电气层并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">引脚对引脚对规则</strong> 复制或拖动两个引脚对并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">特定层上的引脚对引脚对规则</strong> 复制或拖动两个引脚对和特定电气层并将其粘贴或拖放到项目资源管理器中的条件规则上。</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">条件规则对象</strong></p>
+<p class="my-4 leading-7">您可以在项目资源管理器中使用拖放或复制粘贴操作创建条件规则。您必须首先选择要包含在条件规则中的对象。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">第一个<!-- -->对象</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">第二个<!-- -->对象</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">第三个<!-- -->对象</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">结果规则</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">自动命名示例</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">所有: 所有 (层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">所有: 所有 (顶层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">类</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">类: 所有 (层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CLS1: 所有 (底层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络: 所有 (层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">+5V: 所有 (底层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组: 所有 (层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">GRP1: 所有 (底层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚对</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚对: 所有 (层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">R1.1-U1.2: 所有 (底层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">类</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">类</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">类: 类 (所有层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CLS1: CLS2 (所有层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">类</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">类</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">类: 类 (层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CLS1: CLS2 (顶层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">类</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">类: 网络 (所有层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CLS1: +5V (所有层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">类</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">类: 网络 (层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CLS1: +5V (顶层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">类</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">类: 组 (所有层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CLS1: GRP1 (所有层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">类</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">类: 组 (层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CLS1: GRP1 (顶层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">类</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚对</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">类: 引脚对 (所有层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CLS1: R1.1-U1.1 (所有层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">类</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚对</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">类: 引脚对 (所有层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CLS1: R1.1-U1.1 (顶层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络: (所有层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">GND: +5V (所有层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络: (层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">GND: +5V (顶层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络: 组 (所有层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">GND: GRP1 (所有层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络: 组 (层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">GND: GRP1 (顶层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚对</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络: 引脚对 (所有层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">GND: R1.1-U1.1 (所有层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚对</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络: 引脚对 (所有层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">GND: R1.1-U1.1 (顶层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组: 组 (所有层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">GND: GRP1 (所有层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组: 组 (层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">GND: GRP1 (顶层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚对</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组: 引脚对 (所有层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">GRP1: R1.1-U1.1 (所有层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚对</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">组: 引脚对 (所有层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">GRP1: R1.1-U1.1 (顶层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚对</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚对</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚对: 引脚对 (所有层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">R2.1-R3.1: R1.1-U1.1 (所有<!-- -->层)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚对</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚对</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚对: 引脚对 (所有层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">R2.1-R3.1: R1.1-U1.1 (顶层)</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 58. 可以添加到条件规则组以创建新规则的对象</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">条件规则自动命名</strong></p>
+<p class="my-4 leading-7">由于您无法为条件规则定义名称，自动命名可区分不同的规则。</p>
+<p class="my-4 leading-7">如<a href="#page-25-1" class="link_a7cea  link_a9ef4 inline-link_f855c">表</a> <a href="#page-25-1" class="link_a7cea  link_a9ef4 inline-link_f855c">59</a>所示，自动名称由规则中的对象名称和规则适用的层名称组成。自动名称同时出现在<strong class="font-semibold">对象视图</strong>选项卡和条件规则属性对话框的标题中。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">规则</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">自动名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络 +5V 对网络 GND 在顶层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">+5V : GND (顶层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">所有对象对 所有对象在底层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">所有 : 所有 (底层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络类 GROUND 对引脚对 R1.1 - U10.2 在<!-- -->所有层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">GROUND : R1.1-U10.2 (所有层)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 59. 条件规则自动命名</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">条件规则对象修改</strong></p>
+<p class="my-4 leading-7">您不能修改分配给条件规则的对象。您必须完全删除条件规则，然后为新对象集重新创建条件规则。</p>
+<h2 id="创建条件规则" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建条件规则<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建条件规则">#</a></h2>
+<p class="my-4 leading-7">通过在项目资源管理器中选择项目并将其复制到条件规则来创建条件组属性(规则)。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在项目资源管理器中，选择组成条件规则所需的项目。具体信息请参见&quot;<a href="#page-22-0" class="link_a7cea  link_a9ef4 inline-link_f855c">条件规则</a>&quot;。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">对于此类任务，您可能会发现拆分项目资源管理器(参见第 52 页)很有帮助。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择复制，或拖动您的选择，然后<strong class="font-semibold">右键</strong>单击并选择粘贴，或将其拖放到<strong class="font-semibold">条件规则</strong>上。您不能更改分配给条件规则的对象；必须删除条件规则，然后为新对象集重新创建条件规则。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在项目资源管理器中，展开<strong class="font-semibold">网络对象</strong>，然后展开<strong class="font-semibold">条件规则</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">条件规则展开后会显示一个新条件，格式为<em>源:目标(层)</em>，例如+12V:+5V(顶层)。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将指针移到新条件规则上，<strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">属性</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在条件规则对话框中，为该条件设置唯一属性。</p>
+</li>
+</ol>
+<p class="my-4 leading-7"><a href="#page-11-0" class="link_a7cea  link_a9ef4 inline-link_f855c">设置间距</a></p>
+<h2 id="创建匹配长度网络组" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建匹配长度网络组<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建匹配长度网络组">#</a></h2>
+<p class="my-4 leading-7">通过在项目资源管理器和/或设计工作区中选择网络来创建匹配长度网络组并分配属性(规则)。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用以下一种或多种方法选择要加入匹配长度网络组的网络：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">使用项目资源管理器</strong> 从项目资源管理器中的网络列表中选择。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">对于此任务，您可能会发现拆分项目资源管理器(参见第 52 页)很有帮助。</p>
+</div></div>
+<p class="my-4 leading-7">i. 在项目资源管理器中，展开网络对象列表，然后展开网络列表。</p>
+<p class="my-4 leading-7">ii. 在网络列表中，选择一个或多个要添加到匹配长度网络组的网络。您可以稍后向组中添加更多网络，或在需要时从中删除网络。</p>
+<p class="my-4 leading-7">iii. <strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">复制</strong>，或从网络列表中拖动您的选择，然后<strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">粘贴</strong>，或将它们拖放到匹配长度网络组列表中。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">使用工作区</strong> 使用指针在设计中选择网络。</p>
+<p class="my-4 leading-7">i. 在设计中选择一个或多个要添加到匹配长度网络组的网络。您可以稍后向组中添加更多网络，或在需要时从组中删除网络。</p>
+<p class="my-4 leading-7">ii. <strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">创建匹配长度网络组</strong>。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在项目资源管理器中，展开网络对象列表，然后展开匹配长度网络组列表。匹配长度网络组展开后会显示一个新的 MLNetGroup<!-- -->，例如 MLNetGroup1。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果需要，可以重命名该组以使其名称更有意义。</p>
+<p class="my-4 leading-7">	a. 单击选择新组。</p>
+<p class="my-4 leading-7">	b. 单击所选组的文本名称。文本被选中以便重命名。</p>
+<p class="my-4 leading-7">	c. 重命名该组并按 Enter 键。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在项目资源管理器中<strong class="font-semibold">右键</strong>单击并确保选中允许选择设置。在项目资源管理器中选择组还需要在设计区域中选择网络，才能打开新组的属性。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将指针移到新组名称上，<strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">属性</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在匹配长度组属性对话框中，为该组设置唯一属性：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">a. 在容差框中输入一个值，设置组中最短成员和最长成员之间的差异。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">b. 选中&quot;限制长度&quot;复选框以限制组的长度。与 SailWind Layout 不同，此程序在走线长度计算中计算重叠的走线段。</p>
+<p class="my-4 leading-7">	i. 在最小长度框中输入最小值。</p>
+<p class="my-4 leading-7">	ii. 在最大长度框中输入最大值。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击<strong class="font-semibold">确定</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">监控走线长度</p>
+<h2 id="创建匹配长度引脚对组" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建匹配长度引脚对组<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建匹配长度引脚对组">#</a></h2>
+<p class="my-4 leading-7">通过在项目资源管理器和/或设计工作区中选择引脚对来创建匹配长度引脚对组并分配属性(规则)。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用以下一种或多种方法选择要加入匹配长度引脚对组的引脚对：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">使用项目资源管理器</strong>—在项目资源管理器中使用网络的引脚对列表选择引脚对。</p>
+<p class="my-4 leading-7">i. 在项目资源管理器中，展开网络对象列表，然后展开网络列表。您必须展开单个网络才能查看该网络的引脚对。</p>
+<p class="my-4 leading-7">ii. 选择一个或多个要添加到匹配长度引脚对组的引脚对。您可以稍后向组中添加更多引脚对，或在需要时从组中删除引脚对。</p>
+<p class="my-4 leading-7">iii. <strong class="font-semibold">右键</strong>单击并选择<strong class="font-semibold">复制</strong>，或从引脚对列表中拖动您的选择，然后<strong class="font-semibold">右键</strong>单击并选择<strong class="font-semibold">粘贴</strong>，或将它们拖放到匹配长度引脚对组列表中。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">使用工作区</strong>—使用指针在设计中选择引脚对。</p>
+<p class="my-4 leading-7">i. 在设计中选择一个或多个要添加到匹配长度引脚对组的引脚对。您可以稍后向组中添加更多引脚对，或在需要时从组中删除引脚对。</p>
+<p class="my-4 leading-7">ii. <strong class="font-semibold">右键</strong>单击并选择<strong class="font-semibold">创建匹配长度引脚对组</strong>。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在项目资源管理器中，展开网络对象列表，然后展开匹配长度引脚对组列表。匹配长度引脚对组展开后会显示一个新的 MLPinPairGroup<!-- -->，例如 MLPinPairGroup1。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果需要，可以重命名该组以使其名称更有意义。</p>
+<p class="my-4 leading-7">	a. 单击选择新组。</p>
+<p class="my-4 leading-7">	b. 单击所选组的文本名称。文本被选中以便重命名。</p>
+<p class="my-4 leading-7">	c. 重命名该组并按 Enter 键。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在项目资源管理器中<strong class="font-semibold">右键</strong>单击并确保选中允许选择设置。在项目资源管理器中选择引脚对组还必须选择设计区域中的引脚对，才能打开新组的属性。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将指针移到新组名称上，<strong class="font-semibold">右键</strong>单击并选择<strong class="font-semibold">属性</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在匹配长度组属性对话框中，为该组设置唯一属性。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">a. 要设置组中最短成员和最长成员之间的差异，请在容差框中输入一个值。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">b. 选中&quot;限制长度&quot;复选框以限制组的长度。与 SailWind Layout 不同，此程序在走线长度计算中计算重叠的走线段。</p>
+<p class="my-4 leading-7">	i. 在最小长度框中输入最小值。</p>
+<p class="my-4 leading-7">	ii. 在最大长度框中输入最大值。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击<strong class="font-semibold">确定</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">监控走线长度</p>
+<h2 id="差分对规则" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">差分对规则<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#差分对规则">#</a></h2>
+<p class="my-4 leading-7">差分对规则为选定的网络对、电气网络对或引脚对对分配长度、间隙参数和障碍处理。在设置设计规则时，您可以配对两个网络或两个引脚对，并定义与这对相关的规则。如果需要，您还可以使用差分对规则来限制层更改。</p>
+<h2 id="创建差分对" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建差分对<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建差分对">#</a></h2>
+<p class="my-4 leading-7">通过在项目资源管理器和/或设计工作区中选择网络或引脚对来创建网络或引脚对的差分对并分配属性(规则)。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用以下一种或多种方法选择要加入匹配长度引脚对组的网络或引脚对：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">使用项目资源管理器</strong>  在项目管理器中使用网络或网络的引脚对列表选择引脚对。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">对于此类任务，您可能会发现拆分项目资源管理器(参见第 52 页)很有帮助。</p>
+</div></div>
+<p class="my-4 leading-7">i. 在项目资源管理器中，展开网络对象列表，然后展开网络列表。展开单个网络以查看其引脚对。</p>
+<p class="my-4 leading-7">ii. 选择两个网络或两个引脚对添加到差分对中。</p>
+<p class="my-4 leading-7">iii. <strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">复制</strong>，或从网络列表或引脚对列表中拖动您的选择，然后<strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">粘贴</strong>，或将它们拖放到差分对列表中。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">使用工作区</strong> 使用指针在设计中选择网络或引脚对。</p>
+<p class="my-4 leading-7">i. 在设计中选择两个网络或两个引脚对组成差分对。</p>
+<p class="my-4 leading-7">ii. <strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">创建差分网络</strong>或<strong class="font-semibold">创建差分引脚对</strong>。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在项目资源管理器中，展开网络对象列表，然后展开差分对列表。差分对列表展开后会显示一个新的网络&lt;-&gt;网络或引脚对&lt;-&gt;引脚对。例如，CLK1&lt;-&gt;CLK2。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在项目资源管理器中<strong class="font-semibold">右键</strong>单击并确保选中允许选择设置。在项目资源管理器中选择差分对还必须选择设计区域中的网络或引脚对，才能打开差分对的属性。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将指针移到新差分对上，<strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">属性</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;差分对属性对话框，配对选项卡&quot;第 511 页，为该对设置唯一属性。具体说明请参见&quot;设置差分对<a href="#page-31-0" class="link_a7cea  link_a9ef4 inline-link_f855c">属性&quot;第 184 页</a>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击确定。</p>
+</li>
+</ol>
+<h2 id="为多个差分对分配相同规则" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">为多个差分对分配相同规则<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#为多个差分对分配相同规则">#</a></h2>
+<p class="my-4 leading-7">同时设置多个引脚对的属性（规则）。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在项目资源管理器中，展开网络对象列表，然后展开差分对列表。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击项目资源管理器并确保勾选了&quot;允许选择&quot;设置。在项目资源管理器中选择差分对也必须选中设计区域中的网络或引脚对，才能打开差分对的属性。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用 Shift 或Ctrl 键选择多个差分对。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将指针悬停在其中一个差分对上，<strong class="font-semibold">右键</strong>单击并选择<strong class="font-semibold">属性</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;差分对属性对话框，配对选项卡&quot;（第 511 页）中，为配对设置唯一属性。具体说明请参见&quot;设置差分对属性&quot;（第 184 页）。</p>
+<p class="my-4 leading-7">某些现有设置可能是各个差分对独有的。如果某些值显示为空白，那是因为不同差分对之间的值不同。如果保留值为空白，则每个差分对将保留其原始唯一值。如果覆盖该值，则所有差分对都将继承该值。</p>
+<p class="my-4 leading-7"><code>&lt;All Layers&gt;</code> 始终显示为灰色文本。但是，如果列表中显示特定层但显示为灰色文本，则表示某些差分对调用了该特定层，而其他差分对则没有。</p>
+<p class="my-4 leading-7">复选框既未选中也未清除但显示为蓝色填充方块，表示某些差分对已选中该框，而其他差分对则没有。保持复选框处于此蓝色填充状态将保留差分对上的唯一设置。清除或选中复选框将禁用或将该状态分配给所有选定的差分对。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击<strong class="font-semibold">确定</strong>。</p>
+</li>
+</ol>
+<h2 id="差分对层级结构" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">差分对层级结构<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#差分对层级结构">#</a></h2>
+<p class="my-4 leading-7">您可以为层和层类别分配差分对宽度和间隙值；但是，一个层也可能属于一个或多个类别。</p>
+<p class="my-4 leading-7">例如，第 2 层也可能是平面层和外层。因此，遵循以下层次结构来确定哪些层设置具有优先级：</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">所有层</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">平面层</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">外层</p>
+<p class="my-4 leading-7">SailWind Router 指南 183</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">内层</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单个层</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">单个层具有最高优先级。</p>
+</div></div>
+<h2 id="设置差分对属性" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">设置差分对属性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设置差分对属性">#</a></h2>
+<p class="my-4 leading-7">使用差分对属性对话框的<strong class="font-semibold">配对</strong>选项卡设置差分对的间隙、走线宽度、长度和障碍处理。</p>
+<p class="my-4 leading-7">您可以为差分对设置不同的属性，这会影响它们的布线，无论您是交互式布线、自动布线还是编辑走线。差分对属性决定了受控间隙区域中走线之间的间隙、走线的最小和最大长度和宽度，以及受控间隙区域中的障碍行为。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/11/_page_31_Figure_8.jpeg" alt=""/></p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">创建差分对时，应注意以下事项：</p>
+</div></div>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">SailWind Router 使用差分对属性对话框中的默认走线宽度值来布线差分对。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">按层设置差分对宽度和间隙可以更好地控制阻抗。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个差分对，然后<strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">属性</strong>；然后单击<strong class="font-semibold">配对</strong>选项卡。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;按层设置配对的走线宽度和间隙&quot;区域中，在<code>&lt;All layers&gt;</code>行中输入宽度和间隙值。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">您不能删除<code>&lt;All layers&gt;</code>行。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要按层设置宽度和间隙，请单击<strong class="font-semibold">添加</strong>，在新添加的行中单击层单元格，并选择要设置宽度和间隙值的层。然后在适当的单元格中输入宽度和间隙值。间隙规则会覆盖定义差分对成员之间间距的任何其他规则。因此，间隙是最小间距，应尽可能提供。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 如果您选择多个差分对，并且某个层设置不属于所有选定的配对，则该层的层框不可用。如果输入新值，则仅适用于具有此层设置的差分对。</p>
+</div></div>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">请记住以下提示：</p>
+</div></div>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果您选择具有相同层设置但宽度和间隙值不匹配的多个差分对，则宽度和间隙单元格将显示为空。但是，您可以输入新值，当您单击<strong class="font-semibold">确定</strong>或<strong class="font-semibold">应用</strong>时，新值将应用于所有选定的差分对。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">您也可以使用电子表格窗口设置宽度和间隙值，按差分对排序。电子表格将显示为<!-- -->设置的宽度和间隙值。如果特定层有唯一设置，则宽度或间隙值旁边会出现星号。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">有关更多信息，请参见<a href="#page-30-1" class="link_a7cea  link_a9ef4 inline-link_f855c">差分</a>对层级结构。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;最小&quot;框中输入最小长度值。在&quot;最大&quot;框中输入最大长度值。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">您可以通过添加蛇形线来延长差分对。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选中&quot;自动布线期间限制层更改&quot;复选框，强制在单层上布线配对。（此设置不限制交互式布线时的层更改。）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选中&quot;允许配对绕过障碍物拆分&quot;复选框，暂时超过配对布线间隙。此设置适用于自动布线，不限制交互式布线时绕过障碍物的拆分。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;最大障碍物数量&quot;框中输入要绕过的最大障碍物数量。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> SailWind Router 不计算起始区域或结束区域中的障碍物。这是连接点和差分对肩部之间的区域。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;最大障碍物尺寸&quot;框中输入绕过障碍物时走线之间允许的最大间距。该尺寸适用于障碍物的最长水平或垂直尺寸。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> SailWind Router 不检查起始区域或结束区域中的障碍物尺寸。这是连接点和差分对肩部之间的区域。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击<strong class="font-semibold">确定</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7"><a href="#page-16-1" class="link_a7cea  link_a9ef4 inline-link_f855c">设置对象属性</a></p>
+<p class="my-4 leading-7">在次级组中创建新对象</p>
+<h2 id="组件规则" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">组件规则<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#组件规则">#</a></h2>
+<p class="my-4 leading-7">为了更好控制细间距元件或密集 BGA 的走线宽度，您可以在组件级别指定走线宽度规则，从而在组件边界内产生不同的走线宽度规则。</p>
+<p class="my-4 leading-7">您还可以在组件级别设置焊盘入口、扇出、间距、过孔偏置和相同网络规则。焊盘入口和扇出规则适用于组件中的所有引脚。</p>
+<p class="my-4 leading-7">组件间距规则基于引脚间距和其他特定于组件的设计规则。SailWind Router 会自动创建边界以指示组件规则的开始和停止位置。</p>
+<p class="my-4 leading-7">SailWind Router 通常在过孔和走线顶点处分配边界。软件在自动布线走线时会自动确定边界位置；但是，在交互式布线时，您可以定义何时开始和停止使用组件规则。</p>
+<p class="my-4 leading-7">当使用组件规则时，它适用于规则边界和组件引脚之间的走线对象。如果走线通过组件下方但不连接到组件，则软件不会根据组件的间距规则对其进行检查。</p>
+<p class="my-4 leading-7">规则边界（<a href="#page-33-1" class="link_a7cea  link_a9ef4 inline-link_f855c">图 26</a>）也会影响走线编辑（更多信息，请参阅&quot;使用组件规则创建走线&quot;第 308 页）。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/11/_page_33_Figure_11.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 26. 规则边界</strong></p>
+<p class="my-4 leading-7">过孔偏置规则适用于连接到组件的第一个和最后一个过孔。布线时，SailWind Router 从一个引脚开始，沿着路径到达链中的下一个引脚。因此，软件为走线路径上的第一个和最后一个过孔分配非组件规则过孔类型。如果这导致间距违规，则软件改用组件规则过孔类型。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">例外情况：存在一种特殊情况，组件边界不仅仅根据设计规则计算。例如，在 SailWind Router 中，您使用窄走线宽度退出细间距 BGA，但走线不会自动在组件边界边缘退出组件规则。您决定何时使用&quot;切换规则&quot;命令退出组件规则，根据设计层次结构中最相关的规则更改为更大的走线宽度。在这种情况下，您可以扩展组件规则远离组件并超出组件边界的计算区域。</p>
+</div></div>
+<p class="my-4 leading-7">SailWind Layout 不理解这些扩展的组件规则，可能会丢失扩展的边界位置。但是，如果您不在 SailWind Layout 中编辑设计并在 SailWind Router 中重新打开它，扩展的边界位置可能会正确重新计算。</p>
+<p class="my-4 leading-7">此外，在 SailWind Router 中，如果在用走线扩展组件规则后更改组件规则，重新计算的组件边界将对应于新的组件规则，并可能与旧边界不同 - 在走线中创建不可见的分裂。当设计在 SailWind Layout 中打开时，此位置变为固定点。</p>
+<h2 id="长度规则" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">长度规则<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#长度规则">#</a></h2>
+<p class="my-4 leading-7">长度规则指定走线的最小和最大长度。您可以为网络、电气网络或引脚对指定长度规则，并为两个或多个网络、电气网络或引脚对指定匹配的走线长度。</p>
+<p class="my-4 leading-7">您可以通过使用选项对话框<strong class="font-semibold">调整</strong>选项卡中的&quot;在需要完成走线时忽略长度规则&quot;复选框使长度规则变为硬性或软性。参见<a href="#page-2-1" class="link_a7cea  link_a9ef4 inline-link_f855c">硬性和软性规则</a>。</p>
+<p class="my-4 leading-7">您可以在层次结构的多个级别为网络和引脚对分配长度规则。这包括分配以下内容：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在网络和类规则级别的网络规则</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在组和引脚对规则级别的引脚对规则</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">为差分对成员分配网络或引脚对长度规则</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">为电气网络分配长度规则</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">通过将这些对象分组为匹配长度组，在网络、类、电气网络、组和引脚对规则级别分配匹配长度规则</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">匹配长度网络组可以包含网络、电气网络和网络类的混合</p>
+</li>
+</ul>
+<p class="my-4 leading-7">有关更多信息，请参阅<a href="#page-2-0" class="link_a7cea  link_a9ef4 inline-link_f855c">&quot;规则层次结构&quot;第 155 页</a>。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">计算长度</strong></p>
+<p class="my-4 leading-7">段端点之间的差值是走线段的长度。</p>
+<p class="my-4 leading-7">例如，水平段的两个端点具有共同的 Y坐标，但端点的 X坐标相差 1 英寸，则走线长度为 1 英寸<a href="#page-35-0" class="link_a7cea  link_a9ef4 inline-link_f855c">（图 27）</a>。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/11/_page_35_Figure_2.jpeg" alt=""/></p>
+<p class="my-4 leading-7">SailWind Router 通过总计所有走线段的长度（包括嵌入焊盘或过孔中的部分）来计算走线段的集合、引脚对或网络的长度[（图 28）](#page-35-1]。总走线长度计算包括与焊盘或过孔重叠的走线段。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">与 SailWind Layout 不同，SailWind Router 在走线长度计算中计算重叠的走线段。</p>
+</div></div>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/11/_page_35_Figure_6.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">匹配长度</strong></p>
+<p class="my-4 leading-7">匹配长度定义为两个或多个网络、电气网络或引脚对具有相等的总网络长度。匹配长度通常指定有容差。</p>
+<p class="my-4 leading-7"><a href="#page-36-2" class="link_a7cea  link_a9ef4 inline-link_f855c">图 29</a>显示了两个不同的网络具有匹配长度，尽管走线模式略有不同。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/11/_page_36_Figure_1.jpeg" alt=""/></p>
+<h2 id="布线规则" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">布线规则<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#布线规则">#</a></h2>
+<p class="my-4 leading-7">布线规则指定走线宽度容限以及自动布线操作期间应发生的情况。</p>
+<p class="my-4 leading-7">SailWind Router 功能会自动将走线宽度减小到焊盘，前提是走线宽度在最小和最大宽度规则范围内[（图 30）](#page-36-3]。走线的布线规则必须具有小于或等于焊盘宽度的最小宽度；否则 SailWind Router 不会使用该功能并且不会完成走线。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 30. 有和没有最小宽度规范的布线</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/11/_page_36_Figure_6.jpeg" alt=""/></p>
+<h2 id="处理多个对象属性" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">处理多个对象属性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#处理多个对象属性">#</a></h2>
+<p class="my-4 leading-7">您可以同时分配或编辑多个设计对象的设计属性。同时编辑减少了分配任务，并有助于为多个对象提供相同的设置。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择两个或多个相同类型的对象（例如，两个网络或两个组件）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">属性</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">如果选择了多种对象类型，则会出现&quot;无属性&quot;对话框。不支持多种对象类型选择。</p>
+<p class="my-4 leading-7">如果选择了多个对象，则对话框控件的表现会有所不同，具体取决于所选对象的状态。</p>
+<p class="my-4 leading-7">例如，如果您选择一个用作测试点的引脚和另一个不用的引脚（混合选择），则&quot;用作测试点&quot;复选框的状态为灰色并带有选中标记。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">控件类型和状态</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">状态</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">允许的操作</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">复选框 - 无法设置<!-- -->（数据库限制）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">灰色</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">不可修改</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">复选框 - 混合</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">灰色带选中标记</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">全部开或全部关</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">复选框 - 全部开</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">选中标记</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">全部关</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">复选框 - 全部关</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">清除</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">全部开</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">框 - 无法设置（数据库<!-- -->限制）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">灰色</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">不可修改</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">框 - 无法设置（全部只读）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">灰色</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">不可修改</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">框 - 全部相同</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">相同值</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">可编辑值</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">框 - 混合</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">无值</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">清除 - 可编辑</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">静态文本 - 全部相同</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">相同值</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">不可修改</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">静态文本 - 不全相同</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">提供对象计数</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">不可修改</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">预览 - 全部相同</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">相同视图</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">不可修改</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">预览 - 不全相同</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">灰色</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">不可修改</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 60. 多个对象 - 对话框行为</strong></p><!--/$--></div><div class="rspress-doc-footer"><footer class="mt-8"><div class="xs:flex pb-5 px-2 justify-end items-center"><div class="flex text-sm text-text-2 leading-6 sm:leading-8 font-medium"><p>最近更新时间<!-- -->: <span>2025/7/16 07:37:10</span></p></div></div><div class="flex flex-col"></div><div class="flex flex-col sm:flex-row sm:justify-around gap-4 pt-6"><div class="prev_c92d1 flex flex-col"><a href="/sailwind_docs/router/guide/10_zh.html" class="link_a7cea pager-link_e0d2d"><span class="desc_dcc01">上一页</span><span class="title_a3acb">第 10 章 电气网络</span></a></div><div class="next_c11be flex flex-col"><a href="/sailwind_docs/router/guide/12_zh.html" class="link_a7cea pager-link_e0d2d next_ad355"><span class="desc_dcc01">下一页</span><span class="title_a3acb">第 12 章 启用设计规则检查</span></a></div></div></footer></div></div><div class="aside-container_bc5fa"><div class="flex flex-col"><div id="aside-container" class="relative text-sm font-medium"><div class="leading-7 block text-sm font-semibold pl-3">本页目录</div><nav class="mt-1"><ul class="relative"><li><a href="#设置设计全局和默认属性" title="设置设计（全局和默认）属性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">设置设计（全局和默认）属性</span></a></li><li><a href="#设计规则" title="设计规则" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">设计规则</span></a></li><li><a href="#规则层次结构" title="规则层次结构" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">规则层次结构</span></a></li><li><a href="#从-sailwind-layout-传递的设计规则" title="从 SailWind Layout 传递的设计规则" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">从 SailWind Layout 传递的设计规则</span></a></li><li><a href="#sailwind-layout-设计规则与-sailwind-router-属性对比" title="SailWind Layout 设计规则与 SailWind Router 属性对比" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">SailWind Layout 设计规则与 SailWind Router 属性对比</span></a></li><li><a href="#引脚对与平面网络" title="引脚对与平面网络" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">引脚对与平面网络</span></a></li><li><a href="#同网络规则" title="同网络规则" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">同网络规则</span></a></li><li><a href="#焊盘入口规则" title="焊盘入口规则" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">焊盘入口规则</span></a></li><li><a href="#拓扑限制" title="拓扑限制" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">拓扑限制</span></a></li><li><a href="#扇出规则" title="扇出规则" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">扇出规则</span></a></li><li><a href="#封装规则" title="封装规则" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">封装规则</span></a></li><li><a href="#错误规则" title="错误规则" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">错误规则</span></a></li><li><a href="#间距规则" title="间距规则" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">间距规则</span></a></li><li><a href="#设置间距" title="设置间距" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">设置间距</span></a></li><li><a href="#网格规则" title="网格规则" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">网格规则</span></a></li><li><a href="#设置网格" title="设置网格" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">设置网格</span></a></li><li><a href="#设置层偏置规则" title="设置层偏置规则" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">设置层偏置规则</span></a></li><li><a href="#设置层规则" title="设置层规则" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">设置层规则</span></a></li><li><a href="#设置在特定层上使用的过孔类型" title="设置在特定层上使用的过孔类型" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">设置在特定层上使用的过孔类型</span></a></li><li><a href="#设置对象属性" title="设置对象属性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">设置对象属性</span></a></li><li><a href="#创建网络类" title="创建网络类" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建网络类</span></a></li><li><a href="#创建引脚对组" title="创建引脚对组" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建引脚对组</span></a></li><li><a href="#条件规则" title="条件规则" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">条件规则</span></a></li><li><a href="#创建条件规则" title="创建条件规则" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建条件规则</span></a></li><li><a href="#创建匹配长度网络组" title="创建匹配长度网络组" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建匹配长度网络组</span></a></li><li><a href="#创建匹配长度引脚对组" title="创建匹配长度引脚对组" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建匹配长度引脚对组</span></a></li><li><a href="#差分对规则" title="差分对规则" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">差分对规则</span></a></li><li><a href="#创建差分对" title="创建差分对" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建差分对</span></a></li><li><a href="#为多个差分对分配相同规则" title="为多个差分对分配相同规则" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">为多个差分对分配相同规则</span></a></li><li><a href="#差分对层级结构" title="差分对层级结构" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">差分对层级结构</span></a></li><li><a href="#设置差分对属性" title="设置差分对属性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">设置差分对属性</span></a></li><li><a href="#组件规则" title="组件规则" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">组件规则</span></a></li><li><a href="#长度规则" title="长度规则" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">长度规则</span></a></li><li><a href="#布线规则" title="布线规则" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">布线规则</span></a></li><li><a href="#处理多个对象属性" title="处理多个对象属性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">处理多个对象属性</span></a></li></ul></nav></div></div></div></div></div></div></section></div>
+    <div id="search-container"></div>
+  </body>
+</html>

@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Rspress v1.45.0">
+    <title data-rh="true">第 20 章 对象链接与嵌入 ❌ - SailWind</title><meta data-rh="true" name="description" content="SailWind"/>
+  <script>{;const saved = localStorage.getItem('rspress-theme-appearance');const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;const isDark = !saved || saved === 'auto' ? preferDark : saved === 'dark';document.documentElement.classList.toggle('dark', isDark);document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';}</script><link rel="icon" href="/sailwind_docs/favicon.ico"><script defer src="/sailwind_docs/static/js/styles.f5ec16c7.js"></script><script defer src="/sailwind_docs/static/js/lib-react.36f9b428.js"></script><script defer src="/sailwind_docs/static/js/lib-router.971f4280.js"></script><script defer src="/sailwind_docs/static/js/2886.6c8a4c3c.js"></script><script defer src="/sailwind_docs/static/js/index.ef746291.js"></script><link href="/sailwind_docs/static/css/styles.6524924d.css" rel="stylesheet"></head>
+
+  <body >
+    <div id="root"><div class="navContainer_d18b1 rspress-nav px-6  sticky_ddfa7"><div class="container_e4235 flex justify-between items-center h-full"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div><div class="flex flex-1 justify-end items-center"><div class="rightNav_a2fea"><div class="flex sm:flex-1 items-center sm:pl-4 sm:pr-2"><div class="rspress-nav-search-button navSearchButton_df1fb"><button><svg width="18" height="18" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg><p class="searchWord_af2c1">搜索</p><div style="opacity:0"><span></span><span>K</span></div></button></div><div class="mobileNavSearchButton_d85a9"><svg width="24" height="24" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg></div></div><div class="rspress-nav-menu menu h-14"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div><div class="flex-center flex-row"><div class="mx-2"><div class="md:mr-2 rspress-nav-appearance"><div class="p-1 border border-solid border-gray-300 text-gray-400  cursor-pointer rounded-md hover:border-gray-600 hover:text-gray-600 dark:hover:border-gray-200 dark:hover:text-gray-200 transition-all duration-300 w-7 h-7"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="dark:hidden" width="18" height="18" fill="currentColor"><path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6m0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4M12 4c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M12 24c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M5.6 6.6c-.3 0-.5-.1-.7-.3L3.5 4.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.1.2-.4.3-.7.3M19.8 20.8c-.3 0-.5-.1-.7-.3l-1.4-1.4c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.2.2-.5.3-.7.3M3 13H1c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M23 13h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M4.2 20.8c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.4.3-.7.3M18.4 6.6c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.5.3-.7.3"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="hidden dark:block" width="18" height="18" fill="currentColor"><path d="M12.1 22h-.9c-5.5-.5-9.5-5.4-9-10.9.4-4.8 4.2-8.6 9-9 .4 0 .8.2 1 .5s.2.8-.1 1.1c-2 2.7-1.4 6.4 1.3 8.4 2.1 1.6 5 1.6 7.1 0 .3-.2.7-.3 1.1-.1.3.2.5.6.5 1-.2 2.7-1.5 5.1-3.6 6.8-1.9 1.4-4.1 2.2-6.4 2.2M9.3 4.4c-2.9 1-5 3.6-5.2 6.8-.4 4.4 2.8 8.3 7.2 8.7 2.1.2 4.2-.4 5.8-1.8 1.1-.9 1.9-2.1 2.4-3.4-2.5.9-5.3.5-7.5-1.1-2.8-2.2-3.9-5.9-2.7-9.2"></path></svg></div></div></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div><div class="mobileNavMenu_e7045"><div class="navScreen_ec30c  rspress-nav-screen" id="navScreen"><div class="container_c935d"><div class="navMenu_b887b"><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div></div><div class="flex-center flex-col gap-2"><div class="mt-2 navAppearance_bf893 flex justify-center"></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div></div><button aria-label="mobile hamburger" class=" rspress-mobile-hamburger navHamburger_ac64c text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><circle cx="8" cy="16" r="2" fill="currentColor"></circle><circle cx="16" cy="16" r="2" fill="currentColor"></circle><circle cx="24" cy="16" r="2" fill="currentColor"></circle></svg></button></div></div></div></div><section><div class="docLayout_af141 pt-0"><aside class="sidebar_dd719 rspress-sidebar "><div class="navTitleMask_fb17c"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div></div><div class="rspress-scrollbar sidebarContent_da296"><nav class="pb-2"><a href="/sailwind_docs/logic/index.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:14px;margin-left:0;border-radius:0 var(--rp-radius) var(--rp-radius) 0;padding-left:24px;font-weight:bold"><span>章节预览</span></div></a><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">指南(Guide)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 1 章 SailWind Logic 快速开始</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 2 章 开始 SailWind Logic</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 3 章 用户界面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 4 章 文件操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 5 章 设计设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 6 章 管理库和库数据</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 7 章 库元件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 8 章 特殊示意图符号</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 9 章 设计和编辑基础</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 10 章 原理图元件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 11 章 图页</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 12 章 非电气对象</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 13 章 连接</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 14 章 层次化设计</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 15 章 原理图对象修改</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/16_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 16 章 规则</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/17_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 17 章 报告</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/18_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 18 章 与 Layout 和 Router 协作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/19_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 19 章 绘图和打印</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/20_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItemActive_de63c mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 20 章 对象链接与嵌入 ❌</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/21_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 21 章 使用高级程序 ❌</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/22_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 22 章 自定义界面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/23_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 23 章 崩溃检测、BMW 和 BLT</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/guide/24_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 24 章 SailWind Logic 对话框</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">教程(Tutorial)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>学习用户界面教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建库元件教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>添加与复制元件教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>添加连接教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>添加总线教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>编辑设计元素教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>分配约束教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建报告教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>连接 SailWind 布局教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>更新原理图设计变更教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>打印和绘制电路图教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>管理多页原理图教程</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/tutorial/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>模拟仿真设计教程</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">快速参考(Quick Reference)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/qr/modless.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>无模命令</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/logic/qr/shortcut.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>键盘快捷键</span></div></a></div></div></div></section></nav></div></aside><div class="flex-1 relative min-w-0"><div class="rspress-sidebar-menu-container "><div class="rspress-sidebar-menu"><button type="button" class="flex-center mr-auto"><div class="text-md mr-2"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"></path></svg></div><span class="text-sm">Menu</span></button><button type="button" class="flex-center ml-auto"><span class="text-sm">本页目录</span><div class="text-md mr-2" style="transform:rotate(0deg);transition:transform 0.2s ease-out;margin-top:2px"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></button><div class="rspress-local-toc-container "><ul><li><a href="#在-sailwind-logic-中插入-ole-对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">在 SailWind Logic 中插入 OLE 对象</span></a></li><li><a href="#插入新的嵌入式-ole-对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">插入新的嵌入式 OLE 对象</span></a></li><li><a href="#将现有文件作为嵌入对象插入" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">将现有文件作为嵌入对象插入</span></a></li><li><a href="#将现有文件作为链接对象插入" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">将现有文件作为链接对象插入</span></a></li><li><a href="#嵌入文本文档" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">嵌入文本文档</span></a></li><li><a href="#关闭-ole-对象的显示" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">关闭 OLE 对象的显示</span></a></li><li><a href="#ole-对象选择" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">OLE 对象选择</span></a></li><li><a href="#移动和调整-ole-对象的大小" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">移动和调整 OLE 对象的大小</span></a></li><li><a href="#更改-ole-对象的图标或标签" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">更改 OLE 对象的图标或标签</span></a></li><li><a href="#将-ole-对象转换为另一种类型" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">将 OLE 对象转换为另一种类型</span></a></li><li><a href="#ole-对象的编辑" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">OLE 对象的编辑</span></a></li><li><a href="#剪切复制和粘贴-sailwind-logic-ole-对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">剪切、复制和粘贴 SailWind Logic OLE 对象</span></a></li><li><a href="#编辑-ole-链接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">编辑 OLE 链接</span></a></li><li><a href="#更改链接的-ole-对象的源文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">更改链接的 OLE 对象的源文件</span></a></li><li><a href="#断开与链接的-ole-对象源文件的链接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">断开与链接的 OLE 对象源文件的链接</span></a></li><li><a href="#设置链接-ole-对象的更新模式" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">设置链接 OLE 对象的更新模式</span></a></li><li><a href="#手动更新链接的-ole-对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">手动更新链接的 OLE 对象</span></a></li><li><a href="#打开编辑转换-ole-对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">打开、编辑、转换 OLE 对象</span></a></li><li><a href="#在-sailwind-logic-中编辑-ole-对象的内容" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">在 SailWind Logic 中编辑 OLE 对象的内容</span></a></li><li><a href="#ole-和打印绘图" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">OLE 和打印/绘图</span></a></li><li><a href="#删除-ole-对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">删除 OLE 对象</span></a></li><li><a href="#重绘包含-ole-对象的屏幕" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">重绘包含 OLE 对象的屏幕</span></a></li><li><a href="#ole-和视图菜单命令" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">OLE 和视图菜单命令</span></a></li><li><a href="#更改-ole-对象背景颜色" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">更改 OLE 对象背景颜色</span></a></li><li><a href="#保存-ole-对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">保存 OLE 对象</span></a></li></ul></div></div></div><div class="content_ff766 rspress-doc-container flex"><div class="flex-1 overflow-x-auto"><div class="rspress-doc"><!--$--><h1 id="第-20-章-对象链接与嵌入-" class="rspress-doc-title text-3xl mb-10 leading-10 tracking-tight title_fb7eb">第 20 章 对象链接与嵌入 ❌<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#第-20-章-对象链接与嵌入-">#</a></h1>
+<details class="rspress-directive details"><summary class="rspress-directive-title">SailWind 4.0 不实现此功能 ❌</summary><div class="rspress-directive-content">
+<p class="my-4 leading-7">SailWind Logic 对象嵌入功能使设计工程师能够将对象嵌入到 SailWind Logic 设计文件中，并将其保存在其框架内。您还可以嵌入指向外部对象的链接，以便每次打开 SailWind Logic 数据库时，链接的对象都会自动更新。</p>
+<blockquote class="border-l-2 border-solid border-divider pl-4 my-6 transition-colors duration-500 blockquote_f1063">
+<p class="my-4 leading-7">[!TIP]</p>
+<p class="my-4 leading-7">不支持将 SailWind Logic、Layout 或 Router 文件作为 OLE 对象插入其他文件（包括其他 SailWind 文件）。任何插入其他文件的 SailWind Logic、Layout 或 Router 文件都将无法正常运行，并且无法在“容器”应用程序（可视化编辑）中进行编辑。</p>
+</blockquote>
+<p class="my-4 leading-7">您可以将其他文件或其他应用程序作为链接或嵌入对象插入到 SailWind Logic 原理图中。您可以插入 Microsoft Word 文档、包含物料清单的 Microsoft Excel 电子表格、视频或音频剪辑等等。SailWind Logic 无需理解插入对象的格式；SailWind Logic 会与创建该文件的应用程序进行通信，并由该源应用程序告知 SailWind Logic 要显示哪些信息以及如何显示。</p>
+<blockquote class="border-l-2 border-solid border-divider pl-4 my-6 transition-colors duration-500 blockquote_f1063">
+<p class="my-4 leading-7">[!TIP]</p>
+<p class="my-4 leading-7">您不能在元件编辑器中插入或修改 OLE 链接或嵌入的对象。</p>
+</blockquote>
+<h2 id="在-sailwind-logic-中插入-ole-对象" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">在 SailWind Logic 中插入 OLE 对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#在-sailwind-logic-中插入-ole-对象">#</a></h2>
+<p class="my-4 leading-7">当您在 SailWind Logic 示意图中插入 OLE 对象时，您可以选择嵌入它或链接到它。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">嵌入对象位于原理图中，只能在 SailWind Logic 内部访问。例如，嵌入的 Word 对象只能在其所在的原理图中打开和编辑。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">链接对象位于磁盘上，可以通过 SailWind Logic 或直接从磁盘在其相应的应用程序中打开。它不会被永久复制到原理图中，而是在每次打开原理图时从磁盘读取。</li>
+</ul>
+<blockquote class="border-l-2 border-solid border-divider pl-4 my-6 transition-colors duration-500 blockquote_f1063">
+<p class="my-4 leading-7">[!TIP]</p>
+<p class="my-4 leading-7">不支持将 SailWind Logic、Layout 或 Router 文件作为 OLE 对象插入其他文件（包括其他 SailWind 文件）。任何插入其他文件的 SailWind Logic、Layout 或 Router 文件都将无法正常运行，并且无法在“容器”应用程序（可视化编辑）中进行编辑。</p>
+</blockquote>
+<p class="my-4 leading-7">有三种方法可以在 SailWind Logic 示意图中插入 OLE 对象：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">插入一个新的（空的）嵌入对象，然后创建该对象的内容。例如，插入一个新的 Word 文档，然后在原理图中使用 Word 进行编辑。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">将现有应用程序或文件的副本作为嵌入对象插入。原始文件更新时，嵌入对象不会更新。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">将指向现有应用程序或文件的链接作为链接对象插入。只要链接对象所链接的文件更新，链接对象就会更新。</li>
+</ul>
+<p class="my-4 leading-7">本主题的以下部分介绍如何在 SailWind 示意图中插入 OLE 对象：</p>
+<p class="my-4 leading-7">插入新的嵌入式 OLE 对象</p>
+<p class="my-4 leading-7">将现有文件作为嵌入对象插入</p>
+<p class="my-4 leading-7">将现有文件作为链接对象插入</p>
+<h3 id="插入新的嵌入式-ole-对象" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">插入新的嵌入式 OLE 对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#插入新的嵌入式-ole-对象">#</a></h3>
+<p class="my-4 leading-7">您可以在 SailWind Logic 原理图中添加一个新的嵌入式 OLE 对象。通过嵌入对象，它不会受到外部源文件更改的影响。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击编辑 &gt; 插入新对象菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从插入对象对话框中，选择新建。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从对象类型列表框中，选择要创建的 OLE 对象的类型。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">您只能使用已在系统上安装并注册的 OLE 服务器应用程序来创建新的 OLE 对象。大多数 OLE 服务器都是 Microsoft 产品，例如 Word 或 Excel。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要将原理图中的新对象显示为图标，请选中“显示为图标”复选框。</p>
+<p class="my-4 leading-7">将显示的图标出现在复选框下方。</p>
+<p class="my-4 leading-7">取消选中该复选框以显示整个对象；例如，显示实际的 Word 文档而不是 Word 图标。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“确定”。与您选择的对象类型关联的应用程序将打开，您可以在第 364 页上编辑新对象的内容：</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果应用程序是 OLE 链接和嵌入服务器，它将在 SailWind Logic 内部打开，但在后台运行。应用程序的工具栏将接管 SailWind Logic 的工具栏。然后，您可以像在 SailWind Logic 外部启动一样操作源应用程序。这称为可视化编辑。</p>
+<p class="my-4 leading-7">单击对象外部，SailWind Logic 工具栏将再次接管。您可以继续在 SailWind Logic 中进行设计。该应用程序将继续在后台运行；因此，您可以随时单击该对象并在源应用程序中进行操作。</p>
+<p class="my-4 leading-7">如果与该对象关联的应用程序不是 OLE 链接和嵌入服务器，则该应用程序将在新窗口中打开。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">编辑完成后，请关闭该对象。您可以随时双击该对象重新打开它。</p>
+</li>
+</ol>
+<h3 id="将现有文件作为嵌入对象插入" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">将现有文件作为嵌入对象插入<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#将现有文件作为嵌入对象插入">#</a></h3>
+<p class="my-4 leading-7">作为嵌入对象插入到 SailWind Logic 原理图中的现有文件是其创建源文件的副本。它不链接到原始源文件，不会在源文件更改时更新，并且只能从 SailWind Logic 访问。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">单击编辑 &gt; 插入新对象菜单项。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">从插入对象对话框中，选择从文件创建。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在文件编辑框中，键入要插入的文件的路径名，或单击浏览按钮搜索文件。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">取消选中“链接”复选框以将 OLE 对象作为嵌入对象插入。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">要在原理图中将对象显示为图标，请勾选“显示为图标”复选框。显示的图标将显示在复选框下方。取消勾选复选框则显示整个对象；例如，显示实际的 Word 文档而不是 Word 图标。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“确定”。该对象已插入原理图。</li>
+</ol>
+<h3 id="将现有文件作为链接对象插入" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">将现有文件作为链接对象插入<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#将现有文件作为链接对象插入">#</a></h3>
+<p class="my-4 leading-7">作为链接对象插入到 SailWind Logic 原理图中的现有文件仅仅是指向磁盘上源文件的链接。该文件不会永久复制到原理图中，而是在每次打开原理图时从磁盘读取。该文件可以在 SailWind Logic 内部打开，也可以直接从磁盘打开。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">单击编辑 &gt; 插入新对象菜单项。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">从插入对象对话框中，选择从文件创建。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在文件编辑框中，键入要插入的文件的路径名，或单击浏览按钮搜索文件。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">选中“链接”复选框以将 OLE 对象作为链接对象插入。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">要在原理图中将对象显示为图标，请勾选“显示为图标”复选框。显示的图标将显示在复选框下方。取消勾选复选框则显示整个对象；例如，显示实际的 Word 文档而不是 Word 图标。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“确定”。该对象已插入原理图。</li>
+</ol>
+<h2 id="嵌入文本文档" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">嵌入文本文档<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#嵌入文本文档">#</a></h2>
+<p class="my-4 leading-7">使用 OLE，您可以在原理图内嵌入文本文档，以便更快地添加多行文本，因为原理图编辑工具栏上的创建文本工具只允许单行文本。</p>
+<p class="my-4 leading-7">建议使用嵌入而不是链接，因为嵌入的文档将驻留在 .sch 文件内，不会丢失或作为外部文件意外删除。</p>
+<p class="my-4 leading-7">您可以在 preview.sch 示例设计中看到此示例。请参阅图页 1 左下角的“注释”部分。双击文本即可激活 Microsoft Word 文档。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">OLE 对象只能打印。它们无法使用笔式绘图仪或光绘仪进行绘制。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">必须在第 606 页的“打印选项”对话框中启用 OLE 对象才能在打印输出中显示，但在查看“打印预览”时，它们将始终不可见。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">OLE 对象只能使用零绘图方向进行打印。</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">按照 SailWind Logic 中 OLE 对象插入中的相应说明进行操作。</p>
+<blockquote class="border-l-2 border-solid border-divider pl-4 my-6 transition-colors duration-500 blockquote_f1063">
+<p class="my-4 leading-7">[!TIP]</p>
+<p class="my-4 leading-7">当对象处于活动状态可供编辑时，您可以在设计中调整对象的大小。</p>
+</blockquote>
+<h2 id="关闭-ole-对象的显示" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">关闭 OLE 对象的显示<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#关闭-ole-对象的显示">#</a></h2>
+<p class="my-4 leading-7">SailWind Logic 无法识别插入对象的格式；它仅与创建 OLE 链接或嵌入对象的应用程序通信以显示信息。如果创建链接或嵌入 OLE 对象的应用程序已在您的系统上安装并注册，则 SailWind Logic 会调用该应用程序，在 SailWind Logic 中显示 OLE 对象，就像它在源应用程序中的显示方式一样。例如，Word 文档可以显示在 SailWind Logic 中，Word 工具栏也可以显示在 SailWind Logic 中。</p>
+<p class="my-4 leading-7">如果您的系统上未安装并注册源应用程序，SailWind Logic 只能将插入的 OLE 对象显示为图标。它无法像在源应用程序中那样打开或显示 OLE 对象。如果对象是应用程序，SailWind Logic 也会将 OLE 对象显示为图标。</p>
+<p class="my-4 leading-7">当 SailWind Logic 包含大量链接或嵌入对象时，您可能需要关闭 OLE 对象的显示，因为重绘速度可能会降低。如果实际显示 OLE 项的 OLE 链接和嵌入服务器或源应用程序未针对远程显示进行优化，重绘速度会显著降低。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">单击工具 &gt; 选项菜单项，然后在选项对话框中单击常规类别。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">清除“显示 OLE 对象”复选框。
+另请参阅“选项”对话框，“设计”类别。</li>
+</ol>
+<h2 id="ole-对象选择" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">OLE 对象选择<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#ole-对象选择">#</a></h2>
+<p class="my-4 leading-7">SailWind Logic 中 OLE 对象的选择与焊盘、网络、组件等其他对象的选择不同。</p>
+<p class="my-4 leading-7">不同之处在于：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">不能一次选择多个 OLE 对象。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">您不能使用区域选择来选择 OLE 对象。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">即使您同时选择了 SailWind Logic 对象，命令也仅适用于选定的 OLE 对象。OLE 对象的选择优先级高于 SailWind Logic 组件。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">OLE 对象始终位于顶部；要选择 OLE 对象下的 SailWind Logic 项目，必须移动 OLE 对象。</li>
+</ul>
+<p class="my-4 leading-7">当您在 SailWind Logic 中点击一个 OLE 对象时，它的行为类似于 Word 文件中的非文本项。也就是说，它会变成一个带有尺寸控点的矩形区域，以指示它已被选中。（尺寸控点是一些黑色的小方块，出现在选定对象周围的矩形区域的角落和边缘。）</p>
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击选定的 OLE 对象以访问快捷菜单，其中列出了可应用于 OLE 对象的所有命令。</p>
+<h2 id="移动和调整-ole-对象的大小" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">移动和调整 OLE 对象的大小<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#移动和调整-ole-对象的大小">#</a></h2>
+<p class="my-4 leading-7">移动和调整 OLE 链接或嵌入对象的大小，就像在 Word 中调整非文本对象的大小一样。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">选择对象。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">要移动 OLE 对象，请单击并按住鼠标左键。移动光标即可移动对象。当对象到达正确位置后，松开鼠标按钮。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">要调整 OLE 对象的大小，请在其中一个尺寸控点上单击并按住鼠标左键。移动光标；对象将根据光标的移动调整大小。当对象大小调整到正确大小后，松开鼠标按钮。</li>
+</ul>
+<h2 id="更改-ole-对象的图标或标签" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">更改 OLE 对象的图标或标签<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#更改-ole-对象的图标或标签">#</a></h2>
+<p class="my-4 leading-7">您可以更改原理图中嵌入或链接对象的图标，也可以更改图标下方显示的描述性标签。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">单击该对象以选择它。</li>
+<li class="[&amp;:not(:first-child)]:mt-2"><strong class="font-semibold">右键</strong>单击并选择 &gt; 转换以显示转换对话框。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击更改图标按钮以显示更改图标对话框。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在更改图标对话框中，单击图标单选按钮来选择对象的图标：</li>
+<li class="[&amp;:not(:first-child)]:mt-2">如果您想保留当前图标但更改对象的标签，请保留“当前”单选按钮的设置。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“默认”单选按钮可更改为默认图标。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">点击“来自文件”单选按钮，从文件中选择新图标。如果“来自文件”编辑框中未显示任何文件，请点击“浏览”按钮搜索包含您想要用于表示对象的图标的文件。然后在列表框中点击所需的图标。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">要更改对象的标签，请在标签编辑框中编辑它。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“确定”返回“转换”对话框。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在转换对话框中，单击确定以保存更改。</li>
+</ol>
+<h2 id="将-ole-对象转换为另一种类型" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">将 OLE 对象转换为另一种类型<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#将-ole-对象转换为另一种类型">#</a></h2>
+<p class="my-4 leading-7">您可以更改插入的 OLE 对象的文件格式，以便在您使用的应用程序中打开它。您可以临时更改格式（在单个编辑会话中，更改后对象将以其原始格式保存），也可以永久更改格式（将对象转换为新格式并以新格式保存）。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击该对象以选择它。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择 &gt; 转换以显示转换对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在对象类型列表框中，单击要将对象转换为的对象类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“转换为”或“激活为”指定转换模式：</p>
+<p class="my-4 leading-7">a. 单击“转换”将对象转换为“对象类型”框中选定的类型。</p>
+<div class="language-bash"><div class="rspress-code-content rspress-scrollbar"><code>对象将转换为新的对象类型并保存。
+</code></div></div>
+<p class="my-4 leading-7">b. 单击“激活为”以“对象类型”框中选定的类型打开对象。</p>
+<div class="language-bash"><div class="rspress-code-content rspress-scrollbar"><code>激活并编辑对象后，对象将恢复为当前类型。
+</code></div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要将原理图中插入的对象显示为图标，请选中“显示为图标”复选框。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">显示的图标将显示在复选框下方。</p>
+<p class="my-4 leading-7">取消选中该复选框将显示整个对象；例如，显示实际的 Word 文档，而不是 Word 图标。</p>
+<blockquote class="border-l-2 border-solid border-divider pl-4 my-6 transition-colors duration-500 blockquote_f1063">
+<p class="my-4 leading-7">[!TIP]</p>
+<p class="my-4 leading-7">如果对象的源应用程序未在您的系统上注册，则该对象只能显示为图标。</p>
+</blockquote>
+<ol start="6" class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">单击“确定”即可转换或激活该对象。</li>
+</ol>
+<h2 id="ole-对象的编辑" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">OLE 对象的编辑<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#ole-对象的编辑">#</a></h2>
+<p class="my-4 leading-7">您可以对 OLE 链接或嵌入的对象执行有限的编辑操作，包括复制、粘贴、删除、打开和转换 OLE 对象。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">剪切、复制和粘贴 SailWind Logic OLE 对象</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">编辑 &gt; 删除所有 OLE 对象 — 允许您删除设计中的所有 OLE 对象。系统将出现提示：“所有当前 OLE 链接和嵌入的对象都将从此设计中删除。是否继续？”。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">编辑 OLE 链接</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">打开、编辑、转换 OLE 对象</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 SailWind Logic 中编辑 OLE 对象的内容</p>
+</li>
+</ul>
+<h3 id="剪切复制和粘贴-sailwind-logic-ole-对象" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">剪切、复制和粘贴 SailWind Logic OLE 对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#剪切复制和粘贴-sailwind-logic-ole-对象">#</a></h3>
+<p class="my-4 leading-7">编辑 OLE 链接或嵌入对象与编辑 SailWind Logic 对象类似。您可以使用“编辑”菜单中的“剪切”、“复制”和“粘贴”命令来剪切、复制和粘贴 OLE 对象。您必须先选中 OLE 对象，然后才能编辑该对象。您可以将对象从一个图页复制到另一个图页。</p>
+<blockquote class="border-l-2 border-solid border-divider pl-4 my-6 transition-colors duration-500 blockquote_f1063">
+<p class="my-4 leading-7">[!TIP]</p>
+<p class="my-4 leading-7">在元件编辑器中，您不能剪切、复制或粘贴 OLE 对象。</p>
+</blockquote>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">按如下方式复制或剪切 OLE 对象：</p>
+<p class="my-4 leading-7">a. 选择 OLE 对象。</p>
+<p class="my-4 leading-7">b. 单击编辑 &gt; 复制菜单项（复制对象）或编辑 &gt; 剪切菜单项（剪切对象）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击编辑 &gt; 粘贴菜单项以粘贴对象。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">根据需要重新定位粘贴的对象。</p>
+</li>
+</ol>
+<h3 id="编辑-ole-链接" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">编辑 OLE 链接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#编辑-ole-链接">#</a></h3>
+<p class="my-4 leading-7">您可以编辑链接的 OLE 对象的链接来更改源文件、断开与源文件的链接、指定更新选项或手动更新链接对象。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">更改对象的源文件（即将对象链接到不同的文件）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">断开与源文件的链接，使链接对象成为嵌入对象。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择对象的更新模式，即指定对象是否自动更新（每当源文件更改时），或者仅在执行更新命令时更新。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">手动更新链接对象。</p>
+</li>
+</ul>
+<h4 id="更改链接的-ole-对象的源文件" class="mt-8 leading-6 text-lg title_fb7eb">更改链接的 OLE 对象的源文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#更改链接的-ole-对象的源文件">#</a></h4>
+<p class="my-4 leading-7">如果您的设计目标发生变化，您可以更改对象链接到的源文件。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">单击编辑 &gt; 链接菜单项。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">从“链接”对话框的列表中，选择要更改其源文件的对象。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“更改源”按钮。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在“更改源”对话框中，浏览并选择对象的新源文件，然后单击“打开”。
+该对象将链接到新的源文件。</li>
+</ol>
+<h4 id="断开与链接的-ole-对象源文件的链接" class="mt-8 leading-6 text-lg title_fb7eb">断开与链接的 OLE 对象源文件的链接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#断开与链接的-ole-对象源文件的链接">#</a></h4>
+<p class="my-4 leading-7">如果您不再想链接到源对象，您可以断开与对象源文件的链接，以便在源文件发生更改时它不会自动更新。</p>
+<blockquote class="border-l-2 border-solid border-divider pl-4 my-6 transition-colors duration-500 blockquote_f1063">
+<p class="my-4 leading-7">[!TIP]</p>
+<p class="my-4 leading-7">一旦对象的链接断开，就无法重新连接。</p>
+</blockquote>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击编辑 &gt; 链接菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从“链接”对话框的列表中，选择要断开其链接的对象。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击“断开链接”按钮，然后在弹出的窗口中点击“是”。链接断开，对象变为嵌入的 OLE 对象。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">如果断开链接的对象已图标化，则要查看该对象，必须先在第 362 页上将其转换为图片对象。</p>
+</div></div>
+</li>
+</ol>
+<h4 id="设置链接-ole-对象的更新模式" class="mt-8 leading-6 text-lg title_fb7eb">设置链接 OLE 对象的更新模式<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设置链接-ole-对象的更新模式">#</a></h4>
+<p class="my-4 leading-7">您可以设置链接的 OLE 对象的更新模式，并选择自动或手动更新。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击编辑 &gt; 链接菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从“链接”对话框的列表中，选择要设置更新模式的对象。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击“自动”或“手动”单选按钮设置更新模式：</p>
+<p class="my-4 leading-7">a. 单击“自动”，当您打开 SailWind Logic 文件时以及源文件发生更改时，对象都会自动更新。</p>
+<p class="my-4 leading-7">b. 单击“手动”，仅当您对对象执行更新命令时才更新对象。</p>
+</li>
+</ol>
+<h4 id="手动更新链接的-ole-对象" class="mt-8 leading-6 text-lg title_fb7eb">手动更新链接的 OLE 对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#手动更新链接的-ole-对象">#</a></h4>
+<p class="my-4 leading-7">您可以手动更新更新模式设置为“手动”的链接对象。（设置为“自动更新”的对象会自动更新，因此手动更新这些对象不会产生任何效果。）</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">单击编辑 &gt; 链接菜单项。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">从“链接”对话框的列表中，选择要更新的对象。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击立即更新按钮；对象已更新。</li>
+</ol>
+<h3 id="打开编辑转换-ole-对象" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">打开、编辑、转换 OLE 对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#打开编辑转换-ole-对象">#</a></h3>
+<p class="my-4 leading-7">插入 OLE 对象后，该对象的名称将显示在“编辑”菜单的底部。例如，如果您插入视频剪辑，“视频剪辑对象”将显示在“编辑”菜单的底部。如果您突出显示“视频剪辑对象”命令，则会出现另一个菜单，其中列出了您可以对链接或嵌入的 OLE 对象执行的所有命令。对于“视频剪辑对象”，您可以点击“播放”、“编辑”或“打开”。</p>
+<blockquote class="border-l-2 border-solid border-divider pl-4 my-6 transition-colors duration-500 blockquote_f1063">
+<p class="my-4 leading-7">[!TIP]</p>
+<p class="my-4 leading-7">每个对象显示的命令取决于对象类型；因此，Word 对象不会具有与视频剪辑相同的选项。</p>
+</blockquote>
+<p class="my-4 leading-7">您将看到的与 OLE 对象相关的一些更常见的命令是：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">编辑 — 使用“编辑”功能编辑 SailWind Logic 中链接或嵌入的 OLE 对象。您可以使用源应用程序的所有命令和工具来编辑该对象。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">打开 — 使用“打开”在源应用程序中打开链接或嵌入的 OLE 对象。然后您可以在源应用程序中编辑该对象。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">转换 — 您可以将一个 OLE 对象转换为另一个对象。您还可以将 OLE 对象从图标显示转换为实际对象；例如，将 Word 文档转换为图标。使用“转换”可以将链接或嵌入的 OLE 对象转换为其他类型的对象；例如，将 Word 文档转换为 Word 图片。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">对象的源应用程序决定了对象可以转换为什么。</p>
+</div></div>
+</li>
+</ul>
+<h3 id="在-sailwind-logic-中编辑-ole-对象的内容" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">在 SailWind Logic 中编辑 OLE 对象的内容<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#在-sailwind-logic-中编辑-ole-对象的内容">#</a></h3>
+<p class="my-4 leading-7">您可以在 SailWind Logic 中编辑对象的内容（称为就地可视化编辑），也可以在单独的窗口中编辑。无论哪种方式，您都可以像平常一样使用源应用程序的所有命令和工具来编辑其内容。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">现场可视化编辑</strong></p>
+<p class="my-4 leading-7">当链接或嵌入的 OLE 对象的源应用程序在 SailWind Logic 中打开时，即可进行可视化编辑。您也可以通过打开源应用程序并在创建对象的环境中编辑该对象来编辑 OLE 对象。</p>
+<p class="my-4 leading-7">要在 SailWind Logic 中编辑对象，请双击该对象。</p>
+<p class="my-4 leading-7">单击对象外部即可停用可视化编辑。更新将自动反映在对象中。</p>
+<blockquote class="border-l-2 border-solid border-divider pl-4 my-6 transition-colors duration-500 blockquote_f1063">
+<p class="my-4 leading-7">[!TIP]</p>
+<p class="my-4 leading-7">您无法使用可视化编辑功能在 SailWind Logic 中编辑嵌入的 SailWind 程序。</p>
+<p class="my-4 leading-7">选择对象进行就地编辑时，可能会出现以下例外情况：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">链接对象无法就地编辑：它们会在单独的窗口中打开进行编辑。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果容器应用程序不支持就地可视化编辑，则对象会在单独的窗口中打开。</p>
+</li>
+</ul>
+</blockquote>
+<p class="my-4 leading-7">单独窗口编辑</p>
+<p class="my-4 leading-7">您可以在单独的窗口中编辑 SailWind Logic 之外的对象。要编辑 SailWind Logic 之外的对象，请执行以下操作：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">选择 SailWind Logic 对象，然后单击编辑 &gt; （链接）文档对象 &gt; 编辑菜单项。您还可以从弹出菜单中选择“(链接的)文档对象 &gt; 编辑菜单项。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">按住 Ctrl + 双击要在源应用程序中编辑的 OLE 对象。源应用程序打开，您可以编辑该对象。</li>
+</ul>
+<p class="my-4 leading-7">要更新 SailWind Logic 中的对象：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击“主页 &gt; 更新文档菜单项。这将强制重新绘制对象。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在第 595 页上的“选项对话框，常规类别”中设置 SailWind Logic OLE 对象的首选项。当您选中重绘时更新复选框时，每当您在单独的编辑窗口中执行重绘时，容器应用程序中的对象都会更新。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">为了获得最佳性能，请清除此选项。</p>
+<p class="my-4 leading-7">要返回容器应用程序，请选择主页 &gt; 退出并返回菜单项。</p>
+<blockquote class="border-l-2 border-solid border-divider pl-4 my-6 transition-colors duration-500 blockquote_f1063">
+<p class="my-4 leading-7">[!TIP]</p>
+<p class="my-4 leading-7">如果您想在单独的窗口中保存编辑的对象，可以点击“主页 &gt; “ 将副本另存为”菜单项。该对象实际上是原始对象的副本，此命令可让您保存此副本。您无法在单独的窗口中打开其他文件、创建新文件或保存原始设计。</p>
+</blockquote>
+<h2 id="ole-和打印绘图" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">OLE 和打印/绘图<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#ole-和打印绘图">#</a></h2>
+<p class="my-4 leading-7">您可以将 OLE 链接或嵌入的对象打印到任何 Windows 支持的打印机或绘图仪。您无法使用照片打印或笔式打印 OLE 对象。此外，预览打印时不会显示 OLE 对象。</p>
+<p class="my-4 leading-7">另请参阅绘制输出。</p>
+<h2 id="删除-ole-对象" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">删除 OLE 对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#删除-ole-对象">#</a></h2>
+<p class="my-4 leading-7">如果您的设计中不再需要它们，您可以删除 OLE 链接或嵌入的对象。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择要删除的 OLE 对象。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击编辑 &gt; 删除菜单项，或单击 Delete 键。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">当您删除包含 OLE 对象的图页时，所有 OLE 对象也会被删除。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要删除设计中的所有 OLE 对象，请单击编辑 &gt; 删除所有 OLE 对象菜单项。</p>
+<p class="my-4 leading-7">这使您可以删除设计中的所有 OLE 对象。</p>
+<p class="my-4 leading-7">出现提示“所有当前 OLE 链接和嵌入对象都将从此设计中删除。是否继续？”。</p>
+</li>
+</ol>
+<h2 id="重绘包含-ole-对象的屏幕" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">重绘包含 OLE 对象的屏幕<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#重绘包含-ole-对象的屏幕">#</a></h2>
+<p class="my-4 leading-7">SailWind Logic 重绘时，会先重绘 SailWind Logic 组件，然后再重绘 OLE 链接或嵌入的对象。OLE 对象始终以相同的顺序重绘，并且始终在 SailWind Logic 对象之后重绘；因此，OLE 对象始终显示在 SailWind Logic 组件之上。</p>
+<p class="my-4 leading-7">您还可以选择在重绘工作区时更新链接对象和嵌入对象，方法是使用 &gt; ”全局类别中） 。当不存在 OLE 对象时，此选项将灰显。</p>
+<h2 id="ole-和视图菜单命令" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">OLE 和视图菜单命令<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#ole-和视图菜单命令">#</a></h2>
+<p class="my-4 leading-7">您可以将全部“视图”菜单命令与 OLE 链接或嵌入的对象一起使用；您可以放大或缩小对象。</p>
+<h2 id="更改-ole-对象背景颜色" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">更改 OLE 对象背景颜色<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#更改-ole-对象背景颜色">#</a></h2>
+<p class="my-4 leading-7">OLE 链接或嵌入对象显示为纯白色背景。在某些情况下，您可能希望使用透明背景显示 OLE 对象；例如，由于位图已包含背景，您可能希望使用透明背景。如果您的对象是 Word 文档，那么您可能更喜欢白色背景，因为透明背景上的黑色文本会显示为黑色，或者对象不可见。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择 OLE 对象。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击，然后单击“白色背景”以更改背景颜色。</p>
+<p class="my-4 leading-7">命令旁边的勾号表示该对象将使用白色背景。</p>
+</li>
+</ol>
+<h2 id="保存-ole-对象" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">保存 OLE 对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#保存-ole-对象">#</a></h2>
+<p class="my-4 leading-7">保存 SailWind Logic 原理图时，链接对象和嵌入对象会自动保存为原理图的一部分。如果您想单独保存 OLE 对象，请使用“主页 &gt; “导出” 将对象保存为 .ole 文件。然后，您可以使用 &gt; “ 导入”将对象导入其他设计。</p>
+<p class="my-4 leading-7">SailWind Logic 的 .ole 文件可以在其他支持 .ole 文件格式的应用程序中打开。例如，如果您将一个 Word 文档插入 SailWind Logic，然后保存该 Word 对象，之后您就可以打开 Word 并打开存储在 SailWind Logic .ole 文件中的 Word 文档。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">单击主页 &gt; 导出菜单项。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在“文件导出”对话框中，从“保存位置”下拉列表中选择文件的位置。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在文件名编辑框中，键入要保存的 OLE 文件的名称。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">从保存类型下拉列表框中，选择 OLE 文件 (*.ole)。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">为要保存的 OLE 文件键入一个名称。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">单击“保存”。</li>
+</ol>
+</div></details><!--/$--></div><div class="rspress-doc-footer"><footer class="mt-8"><div class="xs:flex pb-5 px-2 justify-end items-center"><div class="flex text-sm text-text-2 leading-6 sm:leading-8 font-medium"><p>最近更新时间<!-- -->: <span>2025/7/15 05:55:33</span></p></div></div><div class="flex flex-col"></div><div class="flex flex-col sm:flex-row sm:justify-around gap-4 pt-6"><div class="prev_c92d1 flex flex-col"><a href="/sailwind_docs/logic/guide/19_zh.html" class="link_a7cea pager-link_e0d2d"><span class="desc_dcc01">上一页</span><span class="title_a3acb">第 19 章 绘图和打印</span></a></div><div class="next_c11be flex flex-col"><a href="/sailwind_docs/logic/guide/21_zh.html" class="link_a7cea pager-link_e0d2d next_ad355"><span class="desc_dcc01">下一页</span><span class="title_a3acb">第 21 章 使用高级程序 ❌</span></a></div></div></footer></div></div><div class="aside-container_bc5fa"><div class="flex flex-col"><div id="aside-container" class="relative text-sm font-medium"><div class="leading-7 block text-sm font-semibold pl-3">本页目录</div><nav class="mt-1"><ul class="relative"><li><a href="#在-sailwind-logic-中插入-ole-对象" title="在 SailWind Logic 中插入 OLE 对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">在 SailWind Logic 中插入 OLE 对象</span></a></li><li><a href="#插入新的嵌入式-ole-对象" title="插入新的嵌入式 OLE 对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">插入新的嵌入式 OLE 对象</span></a></li><li><a href="#将现有文件作为嵌入对象插入" title="将现有文件作为嵌入对象插入" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">将现有文件作为嵌入对象插入</span></a></li><li><a href="#将现有文件作为链接对象插入" title="将现有文件作为链接对象插入" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">将现有文件作为链接对象插入</span></a></li><li><a href="#嵌入文本文档" title="嵌入文本文档" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">嵌入文本文档</span></a></li><li><a href="#关闭-ole-对象的显示" title="关闭 OLE 对象的显示" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">关闭 OLE 对象的显示</span></a></li><li><a href="#ole-对象选择" title="OLE 对象选择" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">OLE 对象选择</span></a></li><li><a href="#移动和调整-ole-对象的大小" title="移动和调整 OLE 对象的大小" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">移动和调整 OLE 对象的大小</span></a></li><li><a href="#更改-ole-对象的图标或标签" title="更改 OLE 对象的图标或标签" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">更改 OLE 对象的图标或标签</span></a></li><li><a href="#将-ole-对象转换为另一种类型" title="将 OLE 对象转换为另一种类型" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">将 OLE 对象转换为另一种类型</span></a></li><li><a href="#ole-对象的编辑" title="OLE 对象的编辑" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">OLE 对象的编辑</span></a></li><li><a href="#剪切复制和粘贴-sailwind-logic-ole-对象" title="剪切、复制和粘贴 SailWind Logic OLE 对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">剪切、复制和粘贴 SailWind Logic OLE 对象</span></a></li><li><a href="#编辑-ole-链接" title="编辑 OLE 链接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">编辑 OLE 链接</span></a></li><li><a href="#更改链接的-ole-对象的源文件" title="更改链接的 OLE 对象的源文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">更改链接的 OLE 对象的源文件</span></a></li><li><a href="#断开与链接的-ole-对象源文件的链接" title="断开与链接的 OLE 对象源文件的链接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">断开与链接的 OLE 对象源文件的链接</span></a></li><li><a href="#设置链接-ole-对象的更新模式" title="设置链接 OLE 对象的更新模式" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">设置链接 OLE 对象的更新模式</span></a></li><li><a href="#手动更新链接的-ole-对象" title="手动更新链接的 OLE 对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">手动更新链接的 OLE 对象</span></a></li><li><a href="#打开编辑转换-ole-对象" title="打开、编辑、转换 OLE 对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">打开、编辑、转换 OLE 对象</span></a></li><li><a href="#在-sailwind-logic-中编辑-ole-对象的内容" title="在 SailWind Logic 中编辑 OLE 对象的内容" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">在 SailWind Logic 中编辑 OLE 对象的内容</span></a></li><li><a href="#ole-和打印绘图" title="OLE 和打印/绘图" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">OLE 和打印/绘图</span></a></li><li><a href="#删除-ole-对象" title="删除 OLE 对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">删除 OLE 对象</span></a></li><li><a href="#重绘包含-ole-对象的屏幕" title="重绘包含 OLE 对象的屏幕" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">重绘包含 OLE 对象的屏幕</span></a></li><li><a href="#ole-和视图菜单命令" title="OLE 和视图菜单命令" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">OLE 和视图菜单命令</span></a></li><li><a href="#更改-ole-对象背景颜色" title="更改 OLE 对象背景颜色" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">更改 OLE 对象背景颜色</span></a></li><li><a href="#保存-ole-对象" title="保存 OLE 对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">保存 OLE 对象</span></a></li></ul></nav></div></div></div></div></div></div></section></div>
+    <div id="search-container"></div>
+  </body>
+</html>

@@ -1,0 +1,2067 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Rspress v1.45.0">
+    <title data-rh="true">第 7 章 命名规范 - SailWind</title><meta data-rh="true" name="description" content="SailWind"/>
+  <script>{;const saved = localStorage.getItem('rspress-theme-appearance');const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;const isDark = !saved || saved === 'auto' ? preferDark : saved === 'dark';document.documentElement.classList.toggle('dark', isDark);document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';}</script><link rel="icon" href="/sailwind_docs/favicon.ico"><script defer src="/sailwind_docs/static/js/styles.f5ec16c7.js"></script><script defer src="/sailwind_docs/static/js/lib-react.36f9b428.js"></script><script defer src="/sailwind_docs/static/js/lib-router.971f4280.js"></script><script defer src="/sailwind_docs/static/js/2886.6c8a4c3c.js"></script><script defer src="/sailwind_docs/static/js/index.ef746291.js"></script><link href="/sailwind_docs/static/css/styles.6524924d.css" rel="stylesheet"></head>
+
+  <body >
+    <div id="root"><div class="navContainer_d18b1 rspress-nav px-6  sticky_ddfa7"><div class="container_e4235 flex justify-between items-center h-full"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div><div class="flex flex-1 justify-end items-center"><div class="rightNav_a2fea"><div class="flex sm:flex-1 items-center sm:pl-4 sm:pr-2"><div class="rspress-nav-search-button navSearchButton_df1fb"><button><svg width="18" height="18" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg><p class="searchWord_af2c1">搜索</p><div style="opacity:0"><span></span><span>K</span></div></button></div><div class="mobileNavSearchButton_d85a9"><svg width="24" height="24" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg></div></div><div class="rspress-nav-menu menu h-14"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div><div class="flex-center flex-row"><div class="mx-2"><div class="md:mr-2 rspress-nav-appearance"><div class="p-1 border border-solid border-gray-300 text-gray-400  cursor-pointer rounded-md hover:border-gray-600 hover:text-gray-600 dark:hover:border-gray-200 dark:hover:text-gray-200 transition-all duration-300 w-7 h-7"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="dark:hidden" width="18" height="18" fill="currentColor"><path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6m0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4M12 4c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M12 24c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M5.6 6.6c-.3 0-.5-.1-.7-.3L3.5 4.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.1.2-.4.3-.7.3M19.8 20.8c-.3 0-.5-.1-.7-.3l-1.4-1.4c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.2.2-.5.3-.7.3M3 13H1c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M23 13h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M4.2 20.8c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.4.3-.7.3M18.4 6.6c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.5.3-.7.3"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="hidden dark:block" width="18" height="18" fill="currentColor"><path d="M12.1 22h-.9c-5.5-.5-9.5-5.4-9-10.9.4-4.8 4.2-8.6 9-9 .4 0 .8.2 1 .5s.2.8-.1 1.1c-2 2.7-1.4 6.4 1.3 8.4 2.1 1.6 5 1.6 7.1 0 .3-.2.7-.3 1.1-.1.3.2.5.6.5 1-.2 2.7-1.5 5.1-3.6 6.8-1.9 1.4-4.1 2.2-6.4 2.2M9.3 4.4c-2.9 1-5 3.6-5.2 6.8-.4 4.4 2.8 8.3 7.2 8.7 2.1.2 4.2-.4 5.8-1.8 1.1-.9 1.9-2.1 2.4-3.4-2.5.9-5.3.5-7.5-1.1-2.8-2.2-3.9-5.9-2.7-9.2"></path></svg></div></div></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div><div class="mobileNavMenu_e7045"><div class="navScreen_ec30c  rspress-nav-screen" id="navScreen"><div class="container_c935d"><div class="navMenu_b887b"><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div></div><div class="flex-center flex-col gap-2"><div class="mt-2 navAppearance_bf893 flex justify-center"></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div></div><button aria-label="mobile hamburger" class=" rspress-mobile-hamburger navHamburger_ac64c text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><circle cx="8" cy="16" r="2" fill="currentColor"></circle><circle cx="16" cy="16" r="2" fill="currentColor"></circle><circle cx="24" cy="16" r="2" fill="currentColor"></circle></svg></button></div></div></div></div><section><div class="docLayout_af141 pt-0"><aside class="sidebar_dd719 rspress-sidebar "><div class="navTitleMask_fb17c"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div></div><div class="rspress-scrollbar sidebarContent_da296"><nav class="pb-2"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:14px;margin-left:0;border-radius:0 var(--rp-radius) var(--rp-radius) 0;padding-left:24px;font-weight:bold"><span>章节预览</span></div></a><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">指南(Guide)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 1 章 入门指南</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 2 章 用户偏好设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 3 章 焊盘图形计算器</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 4 章 库管理器</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 5 章 焊盘图形向导</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 6 章 孔和过孔计算器</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItemActive_de63c mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 7 章 命名规范</span></div></a></div></div></div></section></nav></div></aside><div class="flex-1 relative min-w-0"><div class="rspress-sidebar-menu-container "><div class="rspress-sidebar-menu"><button type="button" class="flex-center mr-auto"><div class="text-md mr-2"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"></path></svg></div><span class="text-sm">Menu</span></button><button type="button" class="flex-center ml-auto"><span class="text-sm">本页目录</span><div class="text-md mr-2" style="transform:rotate(0deg);transition:transform 0.2s ease-out;margin-top:2px"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></button><div class="rspress-local-toc-container "><ul><li><a href="#免责声明" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">免责声明</span></a></li><li><a href="#ipc-7351b-标准-smt-焊盘图案命名规范" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">IPC-7351B 标准 SMT 焊盘图案命名规范</span></a></li><li><a href="#通孔命名规范" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">通孔命名规范</span></a></li><li><a href="#连接器命名规范" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">连接器命名规范</span></a></li><li><a href="#分段分类与零方向" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">分段分类与零方向</span></a></li><li><a href="#焊盘堆叠命名规范" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">焊盘堆叠命名规范</span></a></li><li><a href="#焊盘图形名称语法" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">焊盘图形名称语法</span></a></li><li><a href="#元件零旋转" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">元件零旋转</span></a></li></ul></div></div></div><div class="content_ff766 rspress-doc-container flex"><div class="flex-1 overflow-x-auto"><div class="rspress-doc"><!--$--><h1 id="第-7-章-命名规范" class="rspress-doc-title text-3xl mb-10 leading-10 tracking-tight title_fb7eb">第 7 章 命名规范<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#第-7-章-命名规范">#</a></h1>
+<p class="my-4 leading-7">以下主题描述了 SailWind 焊盘图案生成器及 SailWind 扩展库使用的命名规范。</p>
+<h2 id="免责声明" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">免责声明<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#免责声明">#</a></h2>
+<p class="my-4 leading-7">当前 SailWind 产品中包含的焊盘图案计算器基于 IPC-7351B《表面贴装设计与焊盘图案标准通用要求》中的建议进行计算。</p>
+<p class="my-4 leading-7">命名规范同样基于 IPC-7351B 以及 IPC-7251《通孔设计与焊盘图案标准通用要求》（草案）。SailWind 焊盘图案生成器创建的 <code>SailWind Layout</code> 扩展库旨在符合这些标准在库创建时的最新版本。</p>
+<p class="my-4 leading-7">成都派子互连电子技术有限公司提供这些库作为设计辅助工具，帮助客户熟悉库构建流程，并以“原样”提供，派子不提供任何担保。设计师需负责验证这些元件是否符合制造商的建议及公司特定的设计规则要求。</p>
+<p class="my-4 leading-7">若发现元件存在错误，请提交服务请求至<a href="mailto:market@pzeda.com" class="link_a7cea  link_a9ef4 inline-link_f855c" target="_blank" rel="noopener noreferrer">market@pzeda.com</a>，以便对元件进行单独审查并修复或从库中移除。</p>
+<h2 id="ipc-7351b-标准-smt-焊盘图案命名规范" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">IPC-7351B 标准 SMT 焊盘图案命名规范<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#ipc-7351b-标准-smt-焊盘图案命名规范">#</a></h2>
+<p class="my-4 leading-7">IPC-7351B 规范通过系统化的命名规范提供了全面描述 SMT 焊盘图案的方法。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">元件类别</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">焊盘图案名称</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">球栅阵列</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BGA + 引脚数量 + C 或 N + 间距 P + 球列数 X 球行数 _ 本体长度 X 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">双间距 BGA</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BGA + 引脚数量 + C 或 N + 列间距 X 行间距 P + 球列数 X 球行数 _ 本体长度 X 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">交错引脚 BGA</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BGAS + 引脚数量 + C 或 N + 间距 P + 球列数 X 球行数 _ 本体长度 X 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BGA 注：C = 可压缩；N = 不可压缩球</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">芯片电容、阵列、凹面</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAPCAV + 间距 P + 本体长度 X 本体宽度 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">芯片电容、阵列、平面</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAPCAF + 间距 P + 本体长度 X 本体宽度 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">非极性芯片电容</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAPC + 本体长度 + 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">极性芯片电容</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAPCP + 本体长度 + 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">矩形线芯片电容</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAPCWR + 本体长度 + 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">模压非极性电容</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAPM + 本体长度 + 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">模压极性电容</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAPMP + 本体长度 + 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">铝电解电容</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAPAE + 基体尺寸 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">陶瓷扁平封装</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CFP127P + 引脚跨距标称值 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">圆柱引脚列栅阵列</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CGA + 引脚数量 + C + 间距 P + 引脚列数 X 引脚行数 _ 本体长度 X 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">方形引脚列栅阵列</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CGA + 引脚数量 + S + 间距 P + 引脚列数 X 引脚行数 _ 本体长度 X 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">晶体（2 引脚）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">XTAL + 本体长度 X 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">双列直插封装（贴装）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DIP + 间距 P + 引脚跨距标称值 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">双扁平无引脚</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DFN + 本体长度 X 本体宽度 X 高度 – 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">芯片二极管</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DIOC + 本体长度 + 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">模压二极管</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DIOM + 本体长度 + 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">MELF 二极管</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DIOMELF + 本体长度 + 本体直径</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">侧凹二极管（2 引脚）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DIOSC + 本体长度 X 本体宽度 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">模压保险丝</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">FUSM + 本体长度 + 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">芯片电感</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">INDC + 本体长度 + 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">模压电感</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">INDM + 本体长度 + 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">精密绕线电感</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">INDP + 本体长度 + 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">凹面阵列芯片电感</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">INDCAV + 间距 P + 本体长度 X 本体宽度 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">平面阵列芯片电感</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">INDCAF + 间距 P + 本体长度 X 本体宽度 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">圆柱引脚栅阵列</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LGA + 引脚数量 + C + 间距 P + 引脚列数 X 引脚行数 _ 本体长度 X 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">方形引脚栅阵列</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LGA + 引脚数量 + S + 间距 P + 引脚列数 X 引脚行数 _ 本体长度 X 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">矩形引脚栅阵列</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LGA + 引脚数量 + R + 间距 P + 引脚列数 X 引脚行数 _ 本体长度 X 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">模压 LED</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LEDM + 本体长度 + 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">侧凹 LED（2 引脚）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LEDSC + 本体长度 X 本体宽度 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">侧凹 LED（4 引脚）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LEDSC + 间距 P + 本体长度 X 本体宽度 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">侧凹振荡器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">OSCSC + 间距 P + 本体长度 X 本体宽度 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">J 型引脚振荡器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">OSCJ + 间距 P + 本体长度 X 本体宽度 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">L 型弯曲引脚振荡器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">OSCL + 间距 P + 本体长度 X 本体宽度 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">角凹振荡器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">OSCCC + 本体长度 X 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">塑料引线芯片载体</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PLCC + 间距 P + 引脚跨距 L1X 引脚跨距 L2 标称值 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">方形塑料引线芯片载体插座</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PLCCS + 间距 P + 引脚跨距 L1X 引脚跨距 L2 标称值 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">四方扁平封装</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">QFP + 间距 P + 引脚跨距 L1X 引脚跨距 L2 标称值 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">陶瓷四方扁平封装</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CQFP + 间距 P + 引脚跨距 L1X 引脚跨距 L2 标称值 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">四方扁平无引脚</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">QFN + 间距 P + 本体宽度 X 本体长度 X 高度 - 引脚数量 + 散热焊盘</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">回拉四方扁平无引脚</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PQFN + 间距 P + 本体宽度 X 本体长度 X 高度 - 引脚数量 + 散热焊盘</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">无引脚陶瓷芯片载体</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LCC + 间距 P + 本体宽度 X 本体长度 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚 1 在侧的无引脚陶瓷芯片载体</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LCCS + 间距 P + 本体宽度 X 本体长度 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">芯片电阻</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">RESC + 本体长度 + 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">模压电阻</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">RESM + 本体长度 + 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">MELF 电阻</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">RESMELF + 本体长度 + 本体直径</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">凹面阵列芯片电阻</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">RESCAV + 间距 P + 本体长度 X 本体宽度 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">凸面阵列芯片电阻（均匀引脚）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">RESCAXE + 间距 P + 本体长度 X 本体宽度 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">凸面阵列芯片电阻（侧引脚差异）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">RESCAXS + 间距 P + 本体长度 X 本体宽度 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">平面阵列芯片电阻</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">RESCAF + 间距 P + 本体长度 X 本体宽度 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">扁平引脚小外形二极管</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SODFL + 引脚跨距标称值 + 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">J 型引脚小外形 IC</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SOJ + 间距 P + 引脚跨距标称值 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">小外形集成电路（50 密耳间距 SOIC）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SOIC127P + 引脚跨距标称值 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">小外形封装</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SOP + 间距 P + 引脚跨距标称值 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">小外形无引脚</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SON + 间距 P + 本体宽度 X 本体长度 X 高度 - 引脚数量 + 散热焊盘</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">回拉小外形无引脚</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PSON + 间距 P + 本体宽度 X 本体长度 X 高度 - 引脚数量 + 散热焊盘</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">扁平引脚小外形晶体管</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SOTFL + 间距 P + 引脚跨距标称值 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SOD（例如：SOD3717X135 = JEDEC SOD123）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SOD + 引脚跨距标称值 + 本体宽度 X 高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SOT89（JEDEC 标准封装）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SOT89</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SOT143 &amp; SOT343（JEDEC 标准封装）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SOT143 &amp; SOT343</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SOT143 &amp; SOT343 反向（JEDEC 标准封装）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SOT143R &amp; SOT343R</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SOT23 &amp; SOT223 封装（例如：SOT230P700X180-4）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SOT + 间距 P + 引脚跨距标称值 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TO（通用 DPAK - 例如：TO228P970X238-3）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TO + 间距 P + 引脚跨距 X 高度 - 引脚数量</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 12. 表面贴装焊盘图案（续）</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">IPC-7351B 焊盘图案命名规范说明</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">所有尺寸单位为公制。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">所有引脚跨距和高度数值保留小数点后两位，并包含末尾的零。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">所有引脚跨距和本体尺寸保留小数点前两位，并去除前导零。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">所有芯片元件本体尺寸在小数点前后各保留一位。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">间距数值在小数点左右各保留两位，无前导零但包含末尾零。</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">焊盘图案命名规范中的特殊字符使用</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">下划线“_”用于分隔隐藏和删除引脚的引脚数量。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">短横线“-”用于分隔引脚数量。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">大写字母“X”用于替代“by”分隔两个数字，例如高度 X 宽度，如“四方封装”。</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">IPC-7351B 焊盘图案后缀命名规范</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">通用 SMT 焊盘图案环境用途描述</strong></p>
+<p class="my-4 leading-7">此为每个名称的最后一个字符。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<!-- -->
+<p class="my-4 leading-7">BGA 元件家族不适用此规则。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">M = 最大材料条件（等级 A）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">N = 标称材料条件（等级 B）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">L = 最小材料条件（等级 C）</p>
+</li>
+</ul>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">不符合 JEDEC、EIA 或 IEC 标准的替代元件</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">A = 替代元件（主要用于 SOP 和 QFP，当元件公差或高度不同时）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">B = 第二替代元件</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">反向引脚顺序</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">-20RN = 20 引脚元件，反向引脚顺序，标称环境。</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">隐藏引脚</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">-20_24N = 24 引脚封装中的 20 引脚元件。引脚编号为 1 至 24，隐藏引脚被跳过。原理图符号显示最多 24 引脚。</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">删除引脚</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">-24_20N = 24 引脚封装中的 20 引脚元件。引脚编号为 1 至 20。原理图符号显示 20 引脚。</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">JEDEC 和 EIA 标准元件的多个替代封装</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">AA, AB, AC = JEDEC 或 EIA 元件标识符</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">通用后缀</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">_HS = 带散热片附件的焊盘图案，需要额外的孔或焊盘。例如：TO254P1055X160_HS-6N</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">_BEC = 基极、发射极和集电极（用于三引脚晶体管的引脚分配）。例如：SOT95P280X160_BEC-3N</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">_SGD = 源极、栅极和漏极（用于三引脚晶体管的引脚分配）。例如：SOT95P280X160_SGD-3N</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">_213 = 用于三引脚晶体管的替代引脚分配。例如：SOT95P280X160_213-3N</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">非标准 SMT 焊盘图案的命名规范建议</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">元件类别</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">焊盘图案名称</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">放大器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">AMP_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">电池</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BAT_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">可变电容</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAPV_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">凹面阵列芯片电容（2 或 4 侧引脚）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAPCAV_制造商系列号 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">平面阵列芯片电容（2 侧引脚）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAPCAF_制造商系列号 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">其他电容</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAP_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">晶体</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">XTAL_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">其他二极管</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DIO_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">桥式整流器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DIOB_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">铁氧体磁珠</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">FB_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">基准点</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">FID + 焊盘尺寸 X 阻焊尺寸</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">滤波器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">FIL_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">保险丝</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">FUSE_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">可复位保险丝</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">FUSER_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">其他电感</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">IND_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">凹面阵列芯片电感（2 或 4 侧引脚）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">INDCAV_制造商系列号 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">平面阵列芯片电感（2 侧引脚）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">INDCAF_制造商系列号 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">键盘</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">KEYPAD_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LED</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LED_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">芯片 LED</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LED_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">液晶显示器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LCD_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">麦克风</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">MIC_制造商元件编号</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 13. 非标准 SMT 焊盘图案</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">元件类别</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">焊盘图案名称</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">光隔离器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">OPTO_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">振荡器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">OSC_制造商元件编号 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">带缓冲角的四方扁平封装（引脚 1 在侧）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BQFP + 间距 P + 引脚跨距 L1X 引脚跨距 L2 标称值 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">带缓冲角的四方扁平封装（1 中心）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BQFPC + 间距 P + 引脚跨距 L1X 引脚跨距 L2 标称值 X 高度 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">凹面阵列芯片电阻（2 或 4 侧引脚）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">RESCAV_制造商系列号 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">凸面 E 型阵列芯片电阻（2 侧引脚）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">RESCAXE_制造商系列号 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">凸面 S 型阵列芯片电阻（2 侧引脚）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">RESCAXS_制造商系列号 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">平面阵列芯片电阻（2 侧引脚）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">RESCAF_制造商系列号 - 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">继电器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">RELAY_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">扬声器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SPKR_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">开关</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SW_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">圆形测试点</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TP + 焊盘尺寸（小数点前 1 位，后 2 位，例如 TP100 = 1.00mm）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">方形测试点</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TPS + 焊盘尺寸（小数点前 1 位，后 2 位）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">矩形测试点</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TP + 焊盘长度 X 焊盘宽度（小数点前 1 位，后 2 位）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">热敏电阻</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">THERM_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">收发器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">XCVR_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">传感器（IRDA）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">XDCR_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">瞬态电压抑制器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TVS_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">极性瞬态电压抑制器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TVSP_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">定制晶体管</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TRANS_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">变压器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">XFMR_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">微调器和电位器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TRIM_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">调谐器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TUNER_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">压敏电阻</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">VAR_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">压控振荡器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">VCO_制造商元件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">定制稳压器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">VREG_制造商元件编号</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 13. 非标准 SMT 焊盘图案（续）</strong></p>
+<h2 id="通孔命名规范" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">通孔命名规范<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#通孔命名规范">#</a></h2>
+<p class="my-4 leading-7">IPC-7251 规范通过系统化的命名规范提供了全面描述通孔焊盘图案的方法。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">IPC-7251 通孔焊盘图案命名规范</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">焊盘图案命名规范使用元件尺寸派生焊盘图案名称。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">名称的前 3 至 6 个字符描述元件家族。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">名称中的第一个数字表示引线间距或插入元件引线的孔到孔位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">引线间距后的所有数字为元件尺寸。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">这些字符用作元件本体标识符，优先顺序如下：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">P = 多引脚元件的间距</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">W = 最大引线宽度（或元件引线直径）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">L = 水平安装的本体长度</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">D = 圆形元件本体的直径</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">T = 矩形元件本体的厚度</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">H = 垂直安装的元件高度</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">Q = 多引脚元件的引脚数量</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">R = 连接器的行数</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">A、B 和 C = IPC-2221 和 IPC-2222 中定义的制造复杂度等级</p>
+</li>
+</ul>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<!-- -->
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">所有元件本体数值单位为毫米，保留小数点后两位，无前导零。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">示例中使用的复杂度等级均为“B”。</p>
+</li>
+</ul>
+</div></div>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">元件类别</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">焊盘图案名称</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">非极性轴向直径水平安装电容</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAPAD + 引线间距 + W 引线宽度 + L 本体长度 + D 本体直径</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：CAPAD800W52L600D150B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（引线间距 8.00；引线宽度 0.52；本体长度 6.00；本体直径 1.50）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">非极性轴向矩形电容</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAPAR + 引线间距 + W 引线宽度 + L 本体长度 + T 本体厚度 + H 本体高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：CAPAR800W52L600T50H70B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（引线间距 8.00；引线宽度 0.52；本体长度 6.00；本体厚度 0.50；本体高度 0.70）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">非极性轴向直径垂直安装电容</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAPADV + 引线间距 + W 引线宽度 + L 本体长度 + D 本体直径</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：CAPADV300W52L600D150B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（引线间距 3.00；引线宽度 0.52；本体长度 6.00；本体直径 1.50mm）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">非极性轴向矩形垂直安装电容</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAPARV + 引线间距 + W 引线宽度 + L 本体长度 + T 本体厚度 + H 本体高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：CAPARV300W52L600T50H70B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（引线间距 8.00；引线宽度 0.52；本体长度 6.00；本体厚度 0.50；本体高度 0.70）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">非极性径向直径电容</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAPRD + 引线间距 + W 引线宽度 + D 本体直径 + H 本体高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：CAPRD200W52D300H550B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（引线间距 2.00；引线宽度 0.52；本体直径 3.00；高度 5.50）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">非极性径向矩形电容</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAPRR + 引线间距 + W 引线宽度 + L 本体长度 + T 本体厚度 + H 本体高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：CAPRR200W52L50T70H550B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（引线间距 2.00；引线宽度 0.52；本体长度 0.50；本体厚度 0.70；高度 5.50）</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 14. 通孔焊盘图案</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">元件类别</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">焊盘图案名称</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">非极性径向盘状按钮电容</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAPRB + 引线间距 + W 引线宽度 + L 本体长度 + T 本体厚度 + H 本体高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：CAPRB200W52L50T70H550B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（引线间距 2.00；引线宽度 0.52；本体长度 0.50；本体厚度 0.70；高度 5.50）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">极性轴向直径水平安装电容</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAPPA + 引线间距 + W 引线宽度 + L 本体长度 + D 本体直径</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：CAPPAD800W52L600D150B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（引线间距 8.00；引线宽度 0.52；本体长度 6.00；本体直径 1.50）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">极性径向直径电容</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAPPR + 引线间距 + W 引线宽度 + D 本体直径 + H 本体高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：CAPPRD200W52D300H550B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（引线间距 2.00；引线宽度 0.52；本体直径 3.00；高度 5.50）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">轴向直径水平安装二极管</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DIOAD + 引线间距 + W 引线宽度 + L 本体长度 + D 本体直径</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：DIOAD800W52L600D150B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（引线间距 8.00；引线宽度 0.52；本体长度 6.00；本体直径 1.50）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">轴向直径垂直安装二极管</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DIOADV + 引线间距 + W 引线宽度 + L 本体长度 + D 本体直径</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：DIOADV300W52L600D150B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（引线间距 8.00；引线宽度 0.52；本体长度 6.00；本体直径 1.50）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">双列直插封装</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DIP + 引线跨距 + W 引线宽度 + P 引脚间距 + L 本体长度 + H 元件高度 + Q 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：DIP762W52P254L1905H508Q14B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（引线跨距 7.62；引线宽度 0.52；引脚间距 2.54；本体长度 19.05；本体高度 5.08；引脚数量 14）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">双列直插插座</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DIPS + 引线跨距 + W 引线宽度 + P 引脚间距 + L 本体长度 + H 元件高度 + Q 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：DIPS762W52P254L1905H508Q14B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（引线跨距 7.62；引线宽度 0.52；引脚间距 2.54；本体长度 19.05；本体高度 5.08；引脚数量 14）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">法兰安装水平晶体管</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TO + 引脚间距 P + 本体长度 X 本体宽度 X 最大高度 – 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：TO170P2207X1028X470-5A</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（1.70 引脚间距；22.07 本体长度；10.28 本体宽度；4.70 高度；5 引脚；制造等级 A）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">法兰安装垂直晶体管</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TO + 引脚间距 P + 本体长度 X 本体宽度 X 最大高度 – 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：TO127P817X1028X2084-5A</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（1.27 引脚间距；8.17 本体长度；10.28 本体宽度；20.84 高度；5 引脚；制造等级 A）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">圆柱形晶体管</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TO + 引脚间距 P + 本体直径 X 最大高度 – 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：TO508R895X660-4A</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（5.08 引脚半径；8.95 本体直径；6.60 高度；5 引脚；制造等级 A）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">垂直插头</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HDRV + 总引脚数 + W 引线宽度 + P 行间距（+ X 列间距[如果不同]） + _行数 + X 每行引脚数 + _本体长度 + X 本体厚度 + X 元件高度 + 制造等级</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例 1：（2.54mm 间距；0.635mm 引线宽度，20 引脚，2 行，10 引脚每行，25.40mm 长度 X2.54mm 宽度 X8.38mm 高度本体）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HDRV20W64P254_2X10_2540X254X838P</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例 2：（2.54mm 间距；0.635mm 引线宽度，50 引脚，3 行，25 引脚每行，63.50mm 长度 X2.54mm 宽度 X8.38mm 高度本体 - 3 行 X25 引脚，其中 25 引脚缺失）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HDRV50W64P254_3X25_6350X254X838P</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">直角插头</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HDRRA + 总引脚数 + W 引线宽度 + P 行间距（+ X 列间距[如果不同]） + _行数 + X 每行引脚数 + _本体长度 + X 本体厚度 + X 元件高度 + 制造等级</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：（2.54mm 间距；0.635mm 引线宽度，20 引脚，2 行，10 引脚每行，25.40mm 长度 X2.54mm 宽度 X5.08mm 高度本体）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HDRRA20W64P254_2X10_2540X254X508P</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">轴向直径水平安装电感</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">INDAD + 引线间距 + W 引线宽度 + L 本体长度 + D 本体直径</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：INDAD800W52L600D150B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（引线间距 8.00；引线宽度 0.52；本体长度 6.00；本体直径 1.50）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">轴向直径垂直安装电感</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">INDADV + 引线间距 + W 引线宽度 + L 本体长度 + D 本体直径</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：INDADV300W52L600D150B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（引线间距 3.00；引线宽度 0.52；本体长度 6.00；本体直径 1.50）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">线跳线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">JUMP + 引线间距 + W 引线宽度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：JUMP500W52B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（引线间距 5.00；引线宽度 0.52）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">安装孔</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">用于 ANSI 尺寸 6 的安装孔，带平垫圈，紧密配合，非镀孔；3.85mm 直径孔，8.7mm 焊盘，带 6 个过孔</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：MTGNP870H385V6P</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">MTG + NP（非镀孔） + 焊盘尺寸 + H + 孔尺寸 + V + 过孔数量 + 制造等级</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">安装孔</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">用于公制尺寸 M3.5 盘头螺钉的安装孔，紧密配合，镀孔；3.85mm 直径孔，7.35mm 焊盘</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：MTGP735H385Z735P</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">MTG + P（镀孔） + 焊盘尺寸 + H + 孔尺寸 + Z + 反焊盘尺寸 + 制造等级</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">安装孔</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">用于尺寸 2.75 mm 的安装孔，松散配合，镀孔；2.9mm 直径孔，4mm 焊盘</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：MTGP400H290Z400P</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">MTG + NP（镀孔） + 焊盘尺寸 + H + 孔尺寸 + Z + 反焊盘尺寸 + 制造等级</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">安装孔</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例 – 间隙孔 - 用于尺寸 2.25 mm 的安装孔，紧密配合，非镀孔；2.6mm 直径孔，1.3mm 焊盘</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：MTGNP130H260Z130P</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">MTG + NP（非镀孔） + 焊盘尺寸 + H + 孔尺寸 + Z + 反焊盘尺寸 + 制造等级</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">振荡器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">OSC + 引线跨距 + W 引线直径 + P 引脚间距 + L 本体长度 + H 元件高度 + Q 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">8 引脚振荡器示例：OSC762W46P762L1320H600Q8B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（引线跨距 7.62；引线直径 0.46；引脚间距 762；本体长度 13.20；本体高度 6.00；引脚数量 8）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">14 引脚振荡器示例：OSC762W53P1524L2080H508Q14B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（引线跨距 7.62；引线直径 0.53；引脚间距 762；本体长度 20.80；本体高度 508；引脚数量 14）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚栅阵列</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PGA + 引脚数量 + P 间距 + C 引脚列数 + R 引脚行数 + L 本体长度 X 本体宽度 + H 元件高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：PGA84P254C10R10L2500X2500H300B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（引脚数量 84；引脚间距 2.54；列数 10；行数 10；本体长度 25.00X25.00；元件高度 3.00）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">轴向直径水平安装电阻</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">RESAD + 引线间距 + W 引线宽度 + L 本体长度 + D 本体直径</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：RESAD800W52L600D150B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（引线间距 8.00；引线宽度 0.52；本体长度 6.00；本体直径 1.50）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">轴向直径垂直安装电阻</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">RESADV + 引线间距 + W 引线宽度 + L 本体长度 + D 本体直径</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：RESADV300W52L600D150B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（引线间距 3.00；引线宽度 0.52；本体长度 6.00；本体直径 1.50）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">轴向矩形水平安装电阻</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">RESAR + 引线间距 + W 引线宽度 + L 本体长度 + T 本体厚度 + H 本体高度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：RESAR800W52L600T50H70B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（引线间距 8.00；引线宽度 0.52；本体长度 6.00；本体厚度 0.50；本体高度 0.70）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">单列直插封装</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SIP + 本体宽度 + W 引线宽度 + P 引脚间距 + L 本体长度 + H 元件高度 + Q 引脚数量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：SIP150W52P254L1905H508Q8B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（本体宽度 1.5；引线宽度 0.52；引脚间距 2.54；本体长度 19.05；本体高度 5.08；引脚数量 8）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">测试点</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">测试点；0.635mm 引线宽度，圆形，2.54mm 直径 X5.84mm 高度本体。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例（带圆形或方形引线的圆形测试点）：TPCW64D254H584P</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TP + C + W + 引线宽度 + D + 本体直径 + H + 高度 + 制造等级</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">测试点</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">测试点；0.635mm 引线宽度，方形，2.54mm 宽度 X5.84mm 高度本体。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例（带圆形或方形引线的方形测试点）：TPRW64L254H584P</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TP + R + W + 引线宽度 + L + 本体尺寸 + H + 高度 + 制造等级</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">测试点</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">测试点；1.57mm 宽度 X0.635mm 厚度引线宽度，矩形，2.54mm 长度 X0.635mm 宽度 X3.30mm 高度本体。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例（带矩形引线的矩形测试点）：TPRW157X64L254T64H330P</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PAD + 线宽</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">示例：PAD52</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">非标准通孔焊盘图案的命名规范建议</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">表 15. 非标准 PTH 焊盘图形</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">元件类别</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">焊盘图形名称</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">放大器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">AMP_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">电池</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BAT_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">桥式整流器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DIOB_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">转换器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CONV_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">晶体</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">XTAL_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">铁氧体磁珠</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">FB_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">滤波器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">FIL_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">保险丝</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">FUSE_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">可复位保险丝</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">FUSER_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">散热片</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HSINK_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">电感器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">IND_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LED</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LED_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">液晶显示器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LCD_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">麦克风</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">MIC_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">压敏电阻</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">MOV_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">光隔离器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">OPTO_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">振荡器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">OSC_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">焊盘</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PAD + 焊盘尺寸 X 孔径 + H</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">光电探测器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PHODET_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">稳压器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">REG_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">继电器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">RELAY_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">屏蔽罩（现成品）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SHIELD_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">定制屏蔽罩</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SHIELD + 主体长度 X 主体宽度</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">扬声器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SPKR_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">加强件</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">STIF_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">开关</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SW_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">热敏电阻</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">THERM_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">传感器（红外）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">XDCR_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">瞬态电压抑制器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TVS + 制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">极性瞬态电压抑制器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TVSP + 制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">晶体管外形（JEDEC 标准封装）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TO- JEDEC 编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">定制晶体管外形</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TRANS_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">变压器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">XFMR_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">微调器和电位器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TRIM_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">调谐器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TUNER_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">变阻器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">VAR_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">压控振荡器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">VCO_制造商零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">稳压器（JEDEC 标准封装）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TO- JEDEC 编号</td>
+</tr>
+</tbody>
+</table>
+<h2 id="连接器命名规范" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">连接器命名规范<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#连接器命名规范">#</a></h2>
+<p class="my-4 leading-7">IPC-7x51 规范通过系统化的命名约定，提供了一种全面且详尽的方法来描述连接器焊盘图形。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">IPC-7x51 连接器焊盘图形命名规范</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">表 16. 连接器焊盘图形</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">元件类别</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">焊盘图形名称</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">3M™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">3M_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">AGILENT™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">AGILENT_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">AIRBORNE™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">AIRBORNE_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">AMPHENOL™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">AMPHENOL_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">AVX™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">AVX_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BERG™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BERG_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BLOCKMASTER ELECTRONICS™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BLOCKMASTER_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CUI-STACK™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CUI-STACK_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">E.F. JOHNSON™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">JOHNSON_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">ERNI</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">ERNI_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">FCI ELECTRONICS™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">FCI_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">FUJITSU™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">FUJITSU_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HIROSE™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HIROSE_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">ITT CANNON™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">ITT_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">JALCO™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">JALCO_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">JWT™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">JWT_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">JST™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">JST_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">KEYSTONE™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">KEYSTONE_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">KYCON™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">KYCON_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LEMO™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LEMO_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">MILL-MAX™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">MILL-MAX_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">MOLEX™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">MOLEX_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">NEUTRIK™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">NEUTRIK_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PHOENIX™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PHOENIX_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PULSE™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PULSE_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">RIA™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">RIA_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SAMTEC™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SAMTEC_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SIEMENS™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SIEMENS_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SPEEDTECH™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SPEEDTECH_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">STEWART™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">STEWART_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SULLINS™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SULLINS_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SWITCHCRAFT™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SWITCHCRAFT_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TYCO™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TYCO_零件编号</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">YAMAICHI™</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">YAMAICHI_零件编号</td>
+</tr>
+</tbody>
+</table>
+<h2 id="分段分类与零方向" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">分段分类与零方向<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#分段分类与零方向">#</a></h2>
+<p class="my-4 leading-7">IPC-7351B 规范进一步细分为多个分段分类，并包含与表面贴装和通孔焊盘图形的零方向相关的信息。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">IPC-7351 表面贴装焊盘图形分段分类</strong></p>
+<p class="my-4 leading-7">IPC-735* 元件家族分类</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">IPC-7351 = IEC 61188-5-1，通用要求 连接（焊盘/焊点）考虑 概述</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">IPC-7352 = IEC 61188-5-2，分段要求 连接（焊盘/焊点）考虑 分立元件</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">IPC-7353 = IEC 61188-5-3，分段要求 连接（焊盘/焊点）考虑 鸥翼引脚，两侧（SOP）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">IPC-7354 = IEC 61188-5-4，分段要求 连接（焊盘/焊点）考虑 J 形引脚，两侧（SOJ）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">IPC-7355 = IEC 61188-5-5，分段要求 连接（焊盘/焊点）考虑 鸥翼引脚，四侧（QFP）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">IPC-7356 = IEC 61188-5-6，分段要求 连接（焊盘/焊点）考虑 J 形引脚，四侧（PLCC）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">IPC-7357 = IEC 61188-5-7，分段要求 连接（焊盘/焊点）考虑 柱形引脚，两侧（DIP）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">IPC-7358 = IEC 61188-5-8，分段要求 连接（焊盘/焊点）考虑 面阵列元件（BGA）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">IPC-7359 = 无 IEC 文档，分段要求 连接（焊盘/焊点）考虑 无引脚元件（LCC）</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">IPC-7351 表面贴装焊盘图形零方向</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">片式电容器、电阻器和电感器（RES、CAP 和 IND）<strong class="font-semibold">引脚 1（正极）在左侧</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">模压电感器（INDM）、电阻器（RESM）、模压极性电容器（CAPMP）<strong class="font-semibold">引脚 1（正极）在左侧</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">精密线绕电感器 <strong class="font-semibold">引脚 1（正极）在左侧</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">MELF 二极管 <strong class="font-semibold">引脚 1（阴极）在左侧</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">SOD 二极管 <strong class="font-semibold">引脚 1（阴极）在左侧</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">铝电解电容器 <strong class="font-semibold">引脚 1（正极）在左侧</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">SOT 器件（SOT23、SOT23-5、SOT223、SOT89、SOT143 等）<strong class="font-semibold">引脚 1 在左上角</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">TO252 和 TO263（DPAK 型）器件 <strong class="font-semibold">引脚 1 在左上角</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">小外形鸥翼 IC（SOIC、SOP、TSOP、SSOP、TSSOP）<strong class="font-semibold">引脚 1 在左上角</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">陶瓷扁平封装（CFP）<strong class="font-semibold">引脚 1 在左上角</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">小外形 J 形引脚 IC（SOJ）<strong class="font-semibold">引脚 1 在左上角</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">四方扁平封装 IC（PQFP、SQFP）<strong class="font-semibold">引脚 1 在左上角</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">陶瓷四方扁平封装（CQFP）<strong class="font-semibold">引脚 1 在左上角</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">缓冲型和塑料四方扁平封装 IC（BQFPC、PQFPC 引脚 1 居中）<strong class="font-semibold">引脚 1 在顶部中心</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">塑料有引线芯片载体（PLCC）<strong class="font-semibold">引脚 1 在顶部中心</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">无引线芯片载体（LCC）<strong class="font-semibold">引脚 1 在顶部中心</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">无引线芯片载体（LCCS 引脚 1 在侧面）<strong class="font-semibold">引脚 1 在左上角</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">四方扁平无引脚 IC（QFN）QFNS、QFNRV、QFNRH <strong class="font-semibold">引脚 1 在左上角</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">球栅阵列（BGA）<strong class="font-semibold">引脚 A1 在左上角</strong></p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">IPC-7251 通孔焊盘图形分段分类</strong></p>
+<p class="my-4 leading-7">IPC-725* 元件家族分类</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">IPC-7251 = 通用要求 连接（焊盘/焊点）考虑 概述</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">IPC-7252 = 分段要求 连接（焊盘/焊点）考虑 分立元件（轴向和径向）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">IPC-7253 = 分段要求 连接（焊盘/焊点）考虑 双列直插封装（DIP）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">IPC-7254 = 分段要求 连接（焊盘/焊点）考虑 三引脚半导体</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">IPC-7255 = 分段要求 连接（焊盘/焊点）考虑 针栅阵列</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">IPC-7256 = 分段要求 连接（焊盘/焊点）考虑 多功能独特元件</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">IPC-7257 = 分段要求 连接（焊盘/焊点）考虑 连接器和插头</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">IPC-7258 = 分段要求 连接（焊盘/焊点）考虑 单列直插封装（SIP）电阻网络</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">IPC-7259 = 分段要求 连接（焊盘/焊点）考虑 安装硬件</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">IPC-7251 通孔焊盘图形零方向</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">轴向引脚电容器、电阻器、二极管和电感器（RES、CAP、DIO 和 IND）<strong class="font-semibold">引脚 1（正极或阴极）在左侧</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">径向引脚电容器（CAP）<strong class="font-semibold">引脚 1（正极）在左侧</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">双列直插封装（DIP）<strong class="font-semibold">引脚 1 在左上角</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">三引脚半导体 <strong class="font-semibold">引脚 1 在左上角</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">针栅阵列（PGA）<strong class="font-semibold">引脚 1 在左上角</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">多功能独特元件 <strong class="font-semibold">引脚 1 在左上角</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">连接器和插头（HDR）<strong class="font-semibold">引脚 1 在左上角</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单列直插封装（SIP）电阻网络 <strong class="font-semibold">引脚 1 在左上角</strong></p>
+</li>
+</ul>
+<h2 id="焊盘堆叠命名规范" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">焊盘堆叠命名规范<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#焊盘堆叠命名规范">#</a></h2>
+<p class="my-4 leading-7">焊盘堆叠由字母和数字的组合构成，代表印刷电路板不同层上的焊盘形状或尺寸。焊盘堆叠的名称需要体现所有不同的组合方式。这些名称与本文定义的焊盘图形规范结合使用，遵循 IPC-2220 设计标准中建立的规则。</p>
+<p class="my-4 leading-7">焊盘堆叠规范的第一部分由焊盘形状标识符组成。共有六种基本焊盘形状标识符：</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/7/_page_19_Picture_16.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">注：</strong> 所有字母字符均为“小写”，以便与数字区分。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">基本焊盘形状字母</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">c</strong> = 圆形</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">s</strong> = 方形</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">r</strong> = 矩形</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">b</strong> = 椭圆形</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">u</strong> = 用户定义（不规则形状）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">d</strong> = D 形（一端为方形，另一端为圆形）</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/7/_page_20_Picture_4.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">注：</strong></p>
+<p class="my-4 leading-7">字母“b”用于表示椭圆形，因为字母“o”容易与数字“0”混淆。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">焊盘堆叠默认值</strong></p>
+<p class="my-4 leading-7">以下是默认值，以保持焊盘堆叠名称简短。任何偏离这些默认值的情况都需要使用特殊修饰符。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">阻焊层与焊盘尺寸比例为 1:1（*参见阻焊层比例说明）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">锡膏层与焊盘尺寸比例为 1:1</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">装配层焊盘与焊盘尺寸比例为 1:1</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">内层焊盘形状与外层焊盘形状相同</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">主要和次要焊盘尺寸相同</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">内层焊盘形状为圆形</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">过孔为圆形</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">热风焊盘 ID、OD 和辐条宽度尺寸遵循 IPC 级别 A、B 或 C</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">平面间隙反焊盘尺寸遵循 IPC 级别 A、B 或 C</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">热风焊盘有 4 个辐条</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">安装孔为圆形</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/7/_page_20_Picture_20.jpeg" alt=""/></p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">非法字符（微软要求）包括：&quot; &quot;, ; : / \ [ ] ( ) . { } * &amp; % # $ ! @ ^ =</p>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">阻焊层比例</strong></p>
+<p class="my-4 leading-7">每个电路板制造商的阻焊层对位能力不同。1:1 比例的阻焊层默认值可以补偿这种变化，只要制造商遵循 IPC-6012 等标准规范，其中规定阻焊层不得对位不准。在创建用于不同线宽/间距组合的 <code>CAD</code> 库时，重要的是将阻焊层膨胀的责任留给制造 CAM 操作员，当他们进行 Gerber 或 ODB++数据拼板时。通过将所有阻焊层尺寸设置为与焊盘尺寸 1:1 比例，您为制造商提供了一个已知的起点。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">例外：</strong> 为 BGA 创建阻焊层定义的焊盘。IPC 不建议使用阻焊层定义的 BGA <code>CAD</code> 库元件，但某些公司对需要小直径焊盘尺寸的极细间距元件使用此技术。在这种情况下，阻焊层充当粘合剂，将焊盘固定在 PCB 半固化片上，以承受手持电子产品的跌落测试。手持电子设备跌落测试已证明，极细间距 BGA 焊点的牢固性高于焊盘与半固化片的附着力。即：在跌落测试期间，极细间距 BGA 焊盘会在 BGA 焊点失效之前从 PCB 半固化片材料上撕裂。参见图 1 作为阻焊层定义的 BGA 焊盘示例。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/7/_page_21_Figure_3.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/7/_page_21_Figure_4.jpeg" alt=""/></p>
+<p class="my-4 leading-7">阻焊层定义的焊盘也用于柔性电路板，原因相同，即将焊盘固定在 PCB 表面，防止焊盘从 PCB 材料上撕裂。当使用阻焊层定义的焊盘时，必须在制造图纸注释中指明哪些部分偏离了 1:1 比例的阻焊层规则，以通知 CAM 操作员不要膨胀这些阻焊层特征。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">焊盘堆叠构造</strong></p>
+<p class="my-4 leading-7">以下示例焊盘堆叠名称基于 IPC-7251/7351 焊盘堆叠命名规范。使用焊盘堆叠命名规范的示例（所有值均为公制单位）：</p>
+<p class="my-4 leading-7"><strong class="font-semibold">注：</strong> 每个数字小数点后保留两位，小数点前根据需要保留多位。例如：1150 = 11.50 mm 或 11500 µm，150 = 1.50 mm 或 1500 µm，15 = 0.15 mm 或 150 µm</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">c150h90</strong> — “c”表示直径为 1.50 的圆形焊盘，H 表示孔径为 0.90</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">v50h25</strong> — “v”表示过孔，焊盘直径为 0.50（默认圆形焊盘），H 表示孔径为 0.25</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">s150h90</strong> — “s”表示边长为 1.50 的方形焊盘，H 表示孔径为 0.90</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">s350</strong> — “s”表示边长为 3.50 的表面贴装方形焊盘</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">r200_100</strong> — “r”表示尺寸为 2.00 长 X 1.00 宽的矩形表面贴装焊盘</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">b300_150</strong> — “b”表示尺寸为 3.00 X 1.50 的表面贴装椭圆形焊盘</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">b400_200h100</strong> — “b”表示尺寸为 4.00 长 X 2.00 宽的椭圆形焊盘，孔径为 1.00</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">d300_150</strong> — “d”表示一端圆形、一端方形的焊盘（类似 D 形），尺寸为 3.00 X 1.50</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">v30h15l1-3</strong> — “v”表示 0.30 盲孔，孔径为 0.15；1 为起始层，3 为结束层</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">r200_100r5</strong> — 圆角矩形焊盘，尺寸为 2mm X 1mm，圆角半径为 0.05mm</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">r200_100c10</strong> — 倒角矩形焊盘，尺寸为 2mm X 1mm，倒角尺寸为 0.1mm</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">v30h15l3-6</strong> — “v”表示 0.30 埋孔，孔径为 0.15；3 为起始层，6 为结束层</p>
+</li>
+</ul>
+<p class="my-4 leading-7">通孔“IPC-7251 Padstacks.xls”文件应作为 IPC-7251 和 IPC-7351B 中新图表的基础。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/7/_page_22_Picture_10.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">注：</strong></p>
+<p class="my-4 leading-7">支持段落包含公式，记录了涉及的数学计算。假设焊盘堆叠在以下方面与安装层尺寸和形状具有相同的值：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">内层</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">反面</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">阻焊层</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">锡膏层</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">装配层</p>
+</li>
+</ul>
+<p class="my-4 leading-7">还假设“平面间隙”和“热风焊盘”数据遵循 IPC-2221 和 IPC-2222 标准中定义的通孔规范指南。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">当焊盘堆叠特征与默认值不同时使用的修饰符</strong></p>
+<p class="my-4 leading-7">这些是“变量”或“修饰符”，用于在需要通过不同尺寸或形状更改焊盘堆叠默认值时使用。在形状不同的情况下，这将成为一个双字母代码，修饰符在前，焊盘形状字母在后。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">n</strong> = 非镀通孔</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">z</strong> = 内层焊盘尺寸（如果与主要层焊盘不同）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">x</strong> = 特殊修饰符，单独使用或与其他修饰符一起使用，表示反面焊盘尺寸与主要层焊盘不同</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">t</strong> = 热风焊盘；如果与 IPC 标准焊盘堆叠 tid_od_sw（默认 4 辐条）不同</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">m</strong> = 阻焊层；如果与默认的 1:1 比例不同</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">p</strong> = 锡膏层；如果与默认的 1:1 比例不同</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">a</strong> = 装配表面焊盘；如果与默认的 1:1 比例不同</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">y</strong> = 平面间隙（反焊盘）；如果值与热风焊盘 OD 不同</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">o</strong> = 焊盘原点偏移</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">k</strong> = 禁止区域</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">r</strong> = 圆角矩形焊盘的圆角半径</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">c</strong> = 倒角矩形焊盘的倒角尺寸</p>
+</li>
+</ul>
+<p class="my-4 leading-7">形状更改是字符串中尺寸前的最后一个字母。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">焊盘堆叠命名规范的其他用途</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">字母 v 的使用</strong>：过孔可以使用焊盘堆叠命名规范命名。由于大多数过孔使用圆形焊盘，字母 V 将代替字母 C 在焊盘堆叠命名规范中使用。如果不正确，可以在字母 V 后添加修饰符以表示形状或尺寸的更改。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">字母 w 的使用</strong>：除了过孔，焊盘堆叠命名规范还可用于定义安装孔。字母 W 用于定义安装孔特性以及用于表面焊盘（镀或非镀）的任何相关焊盘。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">双字符修饰符示例</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">ts</strong> = 方形热风焊盘；如果与顶层焊盘形状和尺寸不同</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">sw</strong> = 热风焊盘辐条宽度</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">zs</strong> = 内层焊盘形状为方形（<strong class="font-semibold">注：</strong> 默认为圆形）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">m0</strong> = 无阻焊层</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">mxc</strong> = 反面阻焊层为圆形</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">mx0</strong> = 反面无阻焊层</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">xc</strong> = 反面为圆形</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">vs</strong> = 方形过孔焊盘</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">hn</strong> = 非镀通孔</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">通孔修饰符示例</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">s150h90zs150</strong> = “s”表示边长为 1.50 的方形焊盘，孔径为 0.90，内层（Z）为边长为 1.50 的方形焊盘</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">c150h90zc150</strong> = “c”表示直径为 1.50 的圆形焊盘，孔径为 0.90，内层（Z）为直径为 1.50 的圆形焊盘</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">过孔修饰符示例</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">vs50h25</strong> = “vs”表示边长为 0.50 的方形过孔，孔径为 0.25</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">v50h25xs70</strong> = “v”表示直径为 0.50 的圆形过孔，孔径为 0.25，反面为边长为 0.70 的方形焊盘</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">倒角和圆角修饰符</strong></p>
+<p class="my-4 leading-7">倒角和圆角修饰符用于指示哪些角被修改。优先顺序已赋予前 4 个修饰符。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/7/_page_24_Picture_11.jpeg" alt=""/></p>
+<p class="my-4 leading-7">修饰符：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">bl</strong> = 左下角</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">br</strong> = 右下角</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">ul</strong> = 左上角</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">ur</strong> = 右上角</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">ulr</strong> = 左上角和右上角</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">blr</strong> = 左下角和右下角</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">ubl</strong> = 左上角和左下角</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">ubr</strong> = 右上角和右下角</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">单角圆角和倒角焊盘修饰符示例</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">r100_200rbl50</strong> = 矩形焊盘 1.00 x 2.00，左下角圆角半径为 0.50</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">r100_200rbr50</strong> = 矩形焊盘 1.00 x 2.00，右下角圆角半径为 0.50</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">r100_200rul50</strong> = 矩形焊盘 1.00 x 2.00，左上角圆角半径为 0.50</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">r100_200rur50</strong> = 矩形焊盘 1.00 x 2.00，右上角圆角半径为 0.50</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">r100_200cbl50</strong> = 矩形焊盘 1.00 x 2.00，左下角倒角尺寸为 0.50</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">r100_200cbr50</strong> = 矩形焊盘 1.00 x 2.00，右下角倒角尺寸为 0.50</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">r100_200cul50</strong> = 矩形焊盘 1.00 x 2.00，左上角倒角尺寸为 0.50</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">r100_200cur50</strong> = 矩形焊盘 1.00 x 2.00，右上角倒角尺寸为 0.50</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/7/_page_25_Picture_12.jpeg" alt=""/></p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">所有四个角均倒角或圆角的矩形焊盘不需要角修饰符。</p>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">圆角矩形焊盘修饰符示例：</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/7/_page_25_Picture_16.jpeg" alt=""/></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">r200_100r50</strong> = 矩形焊盘 2.00 x 1.00，所有四个角圆角半径为 0.50</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">r200_100r50</strong> = 矩形焊盘 2.00 x 1.00，所有四个角圆角半径为 0.50</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">圆角矩形焊盘修饰符示例：</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/7/_page_26_Picture_2.jpeg" alt=""/></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">r200_100culr50</strong> = 矩形焊盘 2.00 x 1.00，两个角倒角尺寸为 0.50</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">r200_100c50</strong> = 矩形焊盘 2.00 x 1.00，所有四个角倒角尺寸为 0.50</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">QFN、SON、QFP 和 SOP 的热焊盘示例</strong></p>
+<p class="my-4 leading-7">热焊盘可以具有倒角和圆角的组合，但典型的应用有两种变量。最突出的是位于引脚 1 附近的倒角，第二种是位于引脚 1 附近的倒角，其他三个角为圆角。这两种变量是默认值。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2"><strong class="font-semibold">s480p4s152</strong> = 4.80mm 方形焊盘，带有 4 个 1.52mm 的锡膏方形开口</li>
+</ul>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/7/_page_26_Picture_8.jpeg" alt=""/></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2"><strong class="font-semibold">u480p4s152cul50</strong> = 4.80mm 方形焊盘，带有 4 个 1.52mm 的锡膏方形开口，左上角倒角尺寸为 0.50mm</li>
+</ul>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/7/_page_26_Picture_10.jpeg" alt=""/></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2"><strong class="font-semibold">u480p4s152cul50r25</strong> = 4.80mm 方形焊盘，带有 4 个 1.52mm 的锡膏方形开口，左上角倒角尺寸为 0.50mm，圆角半径为 0.25mm</li>
+</ul>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/7/_page_27_Picture_2.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">带孔的圆形焊盘堆叠示例（使用各种修饰符）</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">c150h90</strong> = 默认焊盘堆叠，直径为 1.50 的圆形焊盘，孔径为 0.90（未使用修饰符）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">c150hn90</strong> = 默认焊盘堆叠，直径为 1.50 的圆形焊盘，孔径为 0.90 的非镀通孔（未使用修饰符）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">c150h90z140</strong> = 内层焊盘比外层焊盘小，直径为 1.40（比外层小 0.10）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">c150h90z140x170</strong> = 反面焊盘比顶层焊盘大，直径为 1.70（比顶层大 0.20）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">c150h90z140x170m165mx185</strong> = 顶层和底层阻焊层开口比焊盘大 0.15</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">c150h90z140x170m165mX185a200</strong> = 装配图焊盘比主要焊盘大 0.50（1.50 主要焊盘）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">c150h90z140x170m165mx185a200y300</strong> = 平面间隙反焊盘直径为 3.00</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">c150h90z140x170m165mx85</strong> = 反面阻焊层开口比焊盘小 0.65</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">c150h90m165</strong> = 添加直径为 1.65 的阻焊层开口（比焊盘大 0.15）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">c150h90t150_180_40</strong> = 热风焊盘 ID 1.50，OD 1.80，辐条宽度 0.40，反焊盘 1.80</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">c150h90t150_180_40y200</strong> = 反焊盘 2.00（因为尺寸与热风焊盘 OD 不同）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">c150h90t150_180_80_2</strong> = 辐条宽度 0.80，2 个辐条</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">c150h90m165t150_180_40</strong> = 阻焊层 1.65</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">带槽孔的椭圆形焊盘堆叠示例</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">示例 b = 椭圆形焊盘形状，然后是“X”尺寸（长度），接着是下划线“_”和“Y”尺寸（宽度）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">b400_200h300_100</strong> = 椭圆形焊盘 4mm 长 X 2mm 宽，槽孔尺寸 3mm X 1mm</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">b400_200hn300_100</strong> = 椭圆形焊盘 4mm X 2mm，非镀槽孔尺寸 3mm X 1mm</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">表面贴装焊盘堆叠示例（使用各种修饰符）</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">b300_150</strong> = 默认焊盘堆叠，长度为 3.00，宽度为 1.50（未使用修饰符）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">b300_150m330_180</strong> = 阻焊层比焊盘大 0.30</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">b300_150m330_180p240_140</strong> = 锡膏层比焊盘小 0.10 宽度和 0.60 长度</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">b300_150b-50</strong> = 椭圆形焊盘 3.0mm X 1.5mm，原点偏移负 0.5mm</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">r400_200po430_230</strong> = 矩形表面贴装焊盘 4.00 X 2.00，椭圆形锡膏尺寸 4.30 X 2.30</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">安装孔示例</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">w700h400z520m720</strong> = 这是用于 6-32 螺丝的镀通安装孔，孔径为 4.00，主要和次要面为直径 7.00 的圆形焊盘，阻焊层间隙比 7.20 焊盘大 0.20。内层焊盘比外层小，直径为 5.20。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">w700hn400z520m720</strong> = 非镀版本</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">精细间距表面贴装元件的局部基准点示例</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">c100m200k200</strong> = 直径为 1.00 的圆形焊盘，阻焊层 2.00，禁止区域 2.00</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">s100m200k200</strong> = 边长为 1.00 的方形焊盘，阻焊层 2.00，禁止区域 2.00</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">图 20. 精细间距元件上的局部基准点应用</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/7/_page_29_Figure_5.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">比例镀通孔焊盘堆叠示例</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2"><strong class="font-semibold">c150h100</strong> = 1.5mm 圆形焊盘，孔径 1mm，阻焊层 1.5mm，平面间隙 1.5mm，装配边框 1.5mm，热风焊盘 4 辐条，辐条宽度 0.4mm，ID 1.5mm，OD 1.8mm</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">比例非镀通孔焊盘堆叠示例</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2"><strong class="font-semibold">c100h150</strong> = 1mm 圆形焊盘，孔径 1.5mm，阻焊层 1.5mm，平面间隙 2.35mm，禁止区域 2.1mm</li>
+</ul>
+<h2 id="焊盘图形名称语法" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">焊盘图形名称语法<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#焊盘图形名称语法">#</a></h2>
+<p class="my-4 leading-7">焊盘图形名称通常由元件类别名称、元件尺寸特征和引脚数量组合而成，后跟一个由环境应用派生的后缀。</p>
+<p class="my-4 leading-7">如果需要其他特征，应添加字母字符或字符组合，放在后缀之前。</p>
+<p class="my-4 leading-7">有关命名过程的完整描述，您应首先获取“IPC-7351 焊盘图形命名规范.pdf”文件。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">示例名称：</strong> QFP65P + 引脚跨度 L1 X 引脚跨度 L2 标称 - 引脚数量</p>
+<p class="my-4 leading-7">+（加号）表示“附加”（前缀和主体尺寸之间无空格）</p>
+<p class="my-4 leading-7">-（短横线）用于分隔引脚数量。</p>
+<p class="my-4 leading-7">X（大写字母 X）用于代替“by”来分隔两个数字，例如高度 X 宽度（如“四方封装”）。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">后缀</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">环境应用。</strong></p>
+<p class="my-4 leading-7">每个常见表面贴装焊盘图形的后缀描述了环境应用（这是每个名称的最后一个字符）</p>
+<p class="my-4 leading-7"><strong class="font-semibold">注：</strong> 不包括 BGA。</p>
+<p class="my-4 leading-7">为每个器件家族提供了三种焊盘图形几何变量：最大焊盘突出（密度级别 A）、中等焊盘突出（密度级别 B）和最小焊盘突出（密度级别 C）。在采用最小焊盘图形变量之前，应基于表 3-13 所示的条件考虑产品资格测试。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">M 密度级别 A：最大（最多）焊盘突出</strong> — 用于低密度产品应用，“最大”焊盘条件旨在适应无引脚芯片器件和有引脚鸥翼器件的波峰焊或流动焊。为这些器件提供的几何形状，以及向内和“J”形引脚接触器件家族，也可以为回流焊工艺提供更宽的工艺窗口。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">N 密度级别 B：中等（标称）焊盘突出</strong> — 具有中等元件密度的产品可以考虑采用“中等”焊盘图形几何形状。为所有器件家族提供的中等焊盘图形将为回流焊工艺提供稳健的焊点连接条件，并应适合无引脚芯片和有引脚鸥翼器件的波峰焊或回流焊。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">L 密度级别 C：最小（最少）焊盘突出</strong> — 便携式和手持产品应用的高元件密度可以考虑“最小”焊盘图形几何变量。选择最小焊盘图形几何形状可能不适合所有产品使用类别。性能类别（1、2 和 3）与元件密度级别（A、B 和 C）结合使用，用于解释电子组件的条件。例如，组合描述为级别 1A 或 3B 或 2C，将有助于理解特定组件的环境和制造要求。</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">不遵循 JEDEC、EIA 或 IEC 标准的替代元件。</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">A 替代元件（主要用于 SOP 和 QFP，当元件公差或高度不同时）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">AA、AB 等 — JEDEC 或 EIA 元件标识符（主要用于片式电阻器、电感器和电容器）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">B 第二替代元件</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">反向引脚顺序。</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">-20RN — 20 引脚元件，反向引脚顺序，标称环境。</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">隐藏引脚。</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">-20_24N — 24 引脚位置，20 引脚填充。引脚编号遵循引脚位置（引脚编号 1 至 24）。</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">删除引脚。</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">-24_20N — 24 引脚位置，20 引脚填充。引脚编号遵循填充引脚（引脚编号 1 至 20）。</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">通用后缀</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">HS</strong> — 需要额外孔或焊盘的散热片附件焊盘图形。示例：TO254P1055_HS-6N</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">BEC</strong> — 基极、发射极和集电极（用于三引脚晶体管的引脚分配）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">SGD</strong> — 源极、栅极和漏极（用于三引脚晶体管的引脚分配）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">213</strong> — 用于三引脚晶体管的替代引脚分配</p>
+</li>
+</ul>
+<h2 id="元件零旋转" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">元件零旋转<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#元件零旋转">#</a></h2>
+<p class="my-4 leading-7">IPC-7351B 和 IPC-7251 规范中描述的每个焊盘图形都包含基础焊盘图形的零旋转建议。这有助于为组装操作提供基线，以便贴片机可以正确调整其送料器方向，并以可预测的方向放置元件。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">引脚 1 方向</strong></p>
+<p class="my-4 leading-7">引脚 1 的位置（顶视图）通常位于焊盘图形的左上角。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 21. IPC-7351 零方向，引脚 1 在左上角</strong></p><!--/$--></div><div class="rspress-doc-footer"><footer class="mt-8"><div class="xs:flex pb-5 px-2 justify-end items-center"><div class="flex text-sm text-text-2 leading-6 sm:leading-8 font-medium"><p>最近更新时间<!-- -->: <span>2025/7/15 05:55:33</span></p></div></div><div class="flex flex-col"></div><div class="flex flex-col sm:flex-row sm:justify-around gap-4 pt-6"><div class="prev_c92d1 flex flex-col"><a href="/sailwind_docs/lpcreator/guide/6_zh.html" class="link_a7cea pager-link_e0d2d"><span class="desc_dcc01">上一页</span><span class="title_a3acb">第 6 章 孔和过孔计算器</span></a></div><div class="next_c11be flex flex-col"></div></div></footer></div></div><div class="aside-container_bc5fa"><div class="flex flex-col"><div id="aside-container" class="relative text-sm font-medium"><div class="leading-7 block text-sm font-semibold pl-3">本页目录</div><nav class="mt-1"><ul class="relative"><li><a href="#免责声明" title="免责声明" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">免责声明</span></a></li><li><a href="#ipc-7351b-标准-smt-焊盘图案命名规范" title="IPC-7351B 标准 SMT 焊盘图案命名规范" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">IPC-7351B 标准 SMT 焊盘图案命名规范</span></a></li><li><a href="#通孔命名规范" title="通孔命名规范" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">通孔命名规范</span></a></li><li><a href="#连接器命名规范" title="连接器命名规范" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">连接器命名规范</span></a></li><li><a href="#分段分类与零方向" title="分段分类与零方向" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">分段分类与零方向</span></a></li><li><a href="#焊盘堆叠命名规范" title="焊盘堆叠命名规范" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">焊盘堆叠命名规范</span></a></li><li><a href="#焊盘图形名称语法" title="焊盘图形名称语法" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">焊盘图形名称语法</span></a></li><li><a href="#元件零旋转" title="元件零旋转" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">元件零旋转</span></a></li></ul></nav></div></div></div></div></div></div></section></div>
+    <div id="search-container"></div>
+  </body>
+</html>

@@ -1,0 +1,1593 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Rspress v1.45.0">
+    <title data-rh="true">第 5 章 界面元素 - SailWind</title><meta data-rh="true" name="description" content="SailWind"/>
+  <script>{;const saved = localStorage.getItem('rspress-theme-appearance');const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;const isDark = !saved || saved === 'auto' ? preferDark : saved === 'dark';document.documentElement.classList.toggle('dark', isDark);document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';}</script><link rel="icon" href="/sailwind_docs/favicon.ico"><script defer src="/sailwind_docs/static/js/styles.f5ec16c7.js"></script><script defer src="/sailwind_docs/static/js/lib-react.36f9b428.js"></script><script defer src="/sailwind_docs/static/js/lib-router.971f4280.js"></script><script defer src="/sailwind_docs/static/js/2886.6c8a4c3c.js"></script><script defer src="/sailwind_docs/static/js/index.ef746291.js"></script><link href="/sailwind_docs/static/css/styles.6524924d.css" rel="stylesheet"></head>
+
+  <body >
+    <div id="root"><div class="navContainer_d18b1 rspress-nav px-6  sticky_ddfa7"><div class="container_e4235 flex justify-between items-center h-full"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div><div class="flex flex-1 justify-end items-center"><div class="rightNav_a2fea"><div class="flex sm:flex-1 items-center sm:pl-4 sm:pr-2"><div class="rspress-nav-search-button navSearchButton_df1fb"><button><svg width="18" height="18" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg><p class="searchWord_af2c1">搜索</p><div style="opacity:0"><span></span><span>K</span></div></button></div><div class="mobileNavSearchButton_d85a9"><svg width="24" height="24" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg></div></div><div class="rspress-nav-menu menu h-14"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div><div class="flex-center flex-row"><div class="mx-2"><div class="md:mr-2 rspress-nav-appearance"><div class="p-1 border border-solid border-gray-300 text-gray-400  cursor-pointer rounded-md hover:border-gray-600 hover:text-gray-600 dark:hover:border-gray-200 dark:hover:text-gray-200 transition-all duration-300 w-7 h-7"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="dark:hidden" width="18" height="18" fill="currentColor"><path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6m0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4M12 4c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M12 24c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M5.6 6.6c-.3 0-.5-.1-.7-.3L3.5 4.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.1.2-.4.3-.7.3M19.8 20.8c-.3 0-.5-.1-.7-.3l-1.4-1.4c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.2.2-.5.3-.7.3M3 13H1c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M23 13h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M4.2 20.8c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.4.3-.7.3M18.4 6.6c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.5.3-.7.3"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="hidden dark:block" width="18" height="18" fill="currentColor"><path d="M12.1 22h-.9c-5.5-.5-9.5-5.4-9-10.9.4-4.8 4.2-8.6 9-9 .4 0 .8.2 1 .5s.2.8-.1 1.1c-2 2.7-1.4 6.4 1.3 8.4 2.1 1.6 5 1.6 7.1 0 .3-.2.7-.3 1.1-.1.3.2.5.6.5 1-.2 2.7-1.5 5.1-3.6 6.8-1.9 1.4-4.1 2.2-6.4 2.2M9.3 4.4c-2.9 1-5 3.6-5.2 6.8-.4 4.4 2.8 8.3 7.2 8.7 2.1.2 4.2-.4 5.8-1.8 1.1-.9 1.9-2.1 2.4-3.4-2.5.9-5.3.5-7.5-1.1-2.8-2.2-3.9-5.9-2.7-9.2"></path></svg></div></div></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div><div class="mobileNavMenu_e7045"><div class="navScreen_ec30c  rspress-nav-screen" id="navScreen"><div class="container_c935d"><div class="navMenu_b887b"><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div></div><div class="flex-center flex-col gap-2"><div class="mt-2 navAppearance_bf893 flex justify-center"></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div></div><button aria-label="mobile hamburger" class=" rspress-mobile-hamburger navHamburger_ac64c text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><circle cx="8" cy="16" r="2" fill="currentColor"></circle><circle cx="16" cy="16" r="2" fill="currentColor"></circle><circle cx="24" cy="16" r="2" fill="currentColor"></circle></svg></button></div></div></div></div><section><div class="docLayout_af141 pt-0"><aside class="sidebar_dd719 rspress-sidebar "><div class="navTitleMask_fb17c"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div></div><div class="rspress-scrollbar sidebarContent_da296"><nav class="pb-2"><a href="/sailwind_docs/router/index.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:14px;margin-left:0;border-radius:0 var(--rp-radius) var(--rp-radius) 0;padding-left:24px;font-weight:bold"><span>章节预览</span></div></a><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">指南(Guide)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 1 章 自动布线快速入门</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 2 章 交互式布线快速入门</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 3 章 设计准备</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 4 章 文件操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItemActive_de63c mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 5 章 界面元素</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 6 章 无模命令与快捷键</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 7 章 视图</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 8 章 撤销、重做、重复与删除</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 9 章 搜索与选择</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 10 章 电气网络</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 11 章 设置规则</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 12 章 启用设计规则检查</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 13 章 元件放置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 14 章 虚拟引脚</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 15 章 覆铜平面与铜形状</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/16_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 16 章 布线设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/17_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 17 章 自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/18_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 18 章 选择性自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/19_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 19 章 手动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/20_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 20 章 手动编辑</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/21_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 21 章 设计验证</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/22_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 22 章 报告</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/23_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 23 章 授权许可</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/24_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 24 章 SailWind 布线器 GUI 参考</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/25_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 25 章 软件启动选项</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/26_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 26 章 自定义界面</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">教程(Tutorial)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>学习用户界面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>约束条件分配</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>设计准备</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>元件放置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>交互式布线创建走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用交互式布线创建高速走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用 SailWind Router 进行自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>设计规则检查</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">快速参考(Quick Reference)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/qr/modless.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>无模命令</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/qr/shortcut.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>键盘快捷键</span></div></a></div></div></div></section></nav></div></aside><div class="flex-1 relative min-w-0"><div class="rspress-sidebar-menu-container "><div class="rspress-sidebar-menu"><button type="button" class="flex-center mr-auto"><div class="text-md mr-2"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"></path></svg></div><span class="text-sm">Menu</span></button><button type="button" class="flex-center ml-auto"><span class="text-sm">本页目录</span><div class="text-md mr-2" style="transform:rotate(0deg);transition:transform 0.2s ease-out;margin-top:2px"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></button><div class="rspress-local-toc-container "><ul><li><a href="#项目资源管理器" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">项目资源管理器</span></a></li><li><a href="#项目资源管理器对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">项目资源管理器对象</span></a></li><li><a href="#项目资源管理器操作" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">项目资源管理器操作</span></a></li><li><a href="#拆分项目资源管理器视图" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">拆分项目资源管理器视图</span></a></li><li><a href="#在项目资源管理器中排序对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">在项目资源管理器中排序对象</span></a></li><li><a href="#在次级组中创建新对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">在次级组中创建新对象</span></a></li><li><a href="#从次级组中移除对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">从次级组中移除对象</span></a></li><li><a href="#重命名次级组元素" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">重命名次级组元素</span></a></li><li><a href="#输出窗口" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">输出窗口</span></a></li><li><a href="#状态选项卡" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">状态选项卡</span></a></li><li><a href="#宏选项卡" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">宏选项卡</span></a></li><li><a href="#创建宏" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">创建宏</span></a></li><li><a href="#管理宏" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">管理宏</span></a></li><li><a href="#播放宏" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">播放宏</span></a></li><li><a href="#停止播放宏" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">停止播放宏</span></a></li><li><a href="#调试宏脚本" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">调试宏脚本</span></a></li><li><a href="#获取宏语言帮助" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">获取宏语言帮助</span></a></li><li><a href="#基本选项卡" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">基本选项卡</span></a></li><li><a href="#管理脚本" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">管理脚本</span></a></li><li><a href="#创建脚本" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">创建脚本</span></a></li><li><a href="#运行脚本" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">运行脚本</span></a></li><li><a href="#调试脚本" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">调试脚本</span></a></li><li><a href="#访问-basic-语言帮助" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">访问 Basic 语言帮助</span></a></li><li><a href="#导航窗口" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">导航窗口</span></a></li><li><a href="#电子表格窗口" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">电子表格窗口</span></a></li><li><a href="#显示电子表格窗口" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">显示电子表格窗口</span></a></li><li><a href="#电子表格窗口标签页内容" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">电子表格窗口标签页内容</span></a></li><li><a href="#修改设计数据" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">修改设计数据</span></a></li><li><a href="#与电子表格之间的复制粘贴" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">与电子表格之间的复制粘贴</span></a></li><li><a href="#复制电子表格单元格" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">复制电子表格单元格</span></a></li><li><a href="#在电子表格中粘贴单元格" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">在电子表格中粘贴单元格</span></a></li><li><a href="#将单元格粘贴到其他-windows-应用程序" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">将单元格粘贴到其他 Windows 应用程序</span></a></li><li><a href="#同步标签页与项目资源管理器" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">同步标签页与项目资源管理器</span></a></li><li><a href="#同步标签页与工作区选择" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">同步标签页与工作区选择</span></a></li><li><a href="#组织电子表格标签页" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">组织电子表格标签页</span></a></li><li><a href="#电子表格窗口自定义" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">电子表格窗口自定义</span></a></li><li><a href="#向电子表格窗口添加标签页" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">向电子表格窗口添加标签页</span></a></li><li><a href="#重命名电子表格窗口中的标签页" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">重命名电子表格窗口中的标签页</span></a></li><li><a href="#从电子表格窗口移除标签页" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">从电子表格窗口移除标签页</span></a></li><li><a href="#更改列宽" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">更改列宽</span></a></li><li><a href="#对齐文本" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">对齐文本</span></a></li><li><a href="#电子表格排序" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">电子表格排序</span></a></li><li><a href="#打印电子表格标签页" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">打印电子表格标签页</span></a></li><li><a href="#在电子表格窗口中查找项目" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">在电子表格窗口中查找项目</span></a></li><li><a href="#创建简单搜索" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">创建简单搜索</span></a></li><li><a href="#创建多条件搜索" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">创建多条件搜索</span></a></li><li><a href="#筛选电子表格窗口" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">筛选电子表格窗口</span></a></li><li><a href="#创建简单筛选器" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">创建简单筛选器</span></a></li><li><a href="#创建多条件筛选器" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">创建多条件筛选器</span></a></li><li><a href="#导出电子表格" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">导出电子表格</span></a></li><li><a href="#使用电子表格方案格式" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">使用电子表格方案（格式）</span></a></li><li><a href="#创建新方案" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">创建新方案</span></a></li><li><a href="#删除方案" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">删除方案</span></a></li><li><a href="#更改为不同方案" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">更改为不同方案</span></a></li></ul></div></div></div><div class="content_ff766 rspress-doc-container flex"><div class="flex-1 overflow-x-auto"><div class="rspress-doc"><!--$--><h1 id="第-5-章-界面元素" class="rspress-doc-title text-3xl mb-10 leading-10 tracking-tight title_fb7eb">第 5 章 界面元素<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#第-5-章-界面元素">#</a></h1>
+<p class="my-4 leading-7">SailWind Router 界面提供了标准的 Windows 菜单和按钮用于访问命令和设置。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/5/_page_0_Figure_3.jpeg" alt=""/></p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 本文档中的图片仅供参考，旨在帮助用户更好地理解软件操作。如因版本变更导致界面差异，请以实际使用的 SailWind Router 界面为准。</p>
+</div></div>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">标题栏</strong> 显示应用程序图标、文档名称和应用程序名称。点击应用程序图标可打开 Windows 标准控制菜单，其中包含用于操作应用程序窗口的命令。文档名称会反映当前文档的状态。例如，当没有加载设计文件时，文档名称显示为&quot;Untitled - SailWind Router&quot;。加载设计文件后，标题栏会显示路径、文件名和文件扩展名（.pcb 或 .bre）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">菜单栏</strong> 列出了 SailWind Router 命令。菜单还显示相应的命令图标、访问键和快捷键。当命令以省略号(...)结尾时，表示需要更多信息才能完成该命令。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">标准工具栏</strong> 标准工具栏包含用于打开和保存设计、更改视图、重绘设计以及访问工具箱的命令。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">状态栏</strong> 状态栏包含状态消息、光标坐标和系统状态指示器。当系统状态指示器为绿色时，系统处于空闲或准备就绪状态。当系统状态指示器为红色时，系统无法接收用户输入。状态栏还有一个工具提示，用作布线进度指示器。更多信息请参见第 277 页的&quot;布线进度指示器&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">同步模式指示器</strong> 指示 SailWind Layout 和 SailWind Router 处于同步模式。还指示哪个程序是活动的，哪个是非活动的，或者非活动程序是否不同步。从 SailWind Layout 启用同步模式可使此指示器可用。更多信息请参见第 33 页的&quot;启用同步模式&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">线宽</strong> 显示当前线宽设置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">X,Y 坐标</strong> 显示光标距 0,0 点的水平距离作为 x坐标，垂直距离作为 y坐标。如果使用极坐标网格，还会显示极半径和极角。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">单位</strong> 显示设计中的当前单位：英寸、密耳、毫米或微米。对话框中的所有值都以这些单位显示，您输入的值也将以这些单位解释。有关设置设计单位的信息，请参见第 441 页的&quot;选项对话框，全局类别，常规子类别&quot;。</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><a href="#page-2-0" class="link_a7cea  link_a9ef4 inline-link_f855c">项目资源管理器</a> <a href="#page-9-0" class="link_a7cea  link_a9ef4 inline-link_f855c">输出窗口</a> <a href="#page-27-0" class="link_a7cea  link_a9ef4 inline-link_f855c">导航窗口</a> <a href="#page-32-0" class="link_a7cea  link_a9ef4 inline-link_f855c">电子表格窗口</a></p>
+<h2 id="项目资源管理器" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">项目资源管理器<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#项目资源管理器">#</a></h2>
+<p class="my-4 leading-7">项目资源管理器为您提供了设计对象的视图，与工作区中的视图不同。它不是显示电路板上的设计对象，而是以分层字母顺序列表的形式列出它们。项目资源管理器视图可以更轻松地查找和选择对象。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 要使在项目资源管理器中选择的对象也在工作区中高亮显示，请在窗口中<strong class="font-semibold">右键</strong>单击并选择<strong class="font-semibold">允许选择</strong>。要缩放到在项目资源管理器中选择的项目，请<strong class="font-semibold">右键</strong>单击并选择<strong class="font-semibold">缩放到选择</strong>。</p>
+</div></div>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/5/_page_2_Picture_5.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 4. 项目资源管理器</strong></p>
+<p class="my-4 leading-7">在项目资源管理器列表中，对象左上角的星号表示它具有非默认规则。对象右下角的星号表示其次级对象包含非默认规则。</p>
+<p class="my-4 leading-7">当您更改设计时，分层列表会自动更新以反映这些更改。</p>
+<p class="my-4 leading-7"><a href="#page-3-0" class="link_a7cea  link_a9ef4 inline-link_f855c">项目资源管理器对象</a> <a href="#page-4-0" class="link_a7cea  link_a9ef4 inline-link_f855c">项目资源管理器操作</a> 拆分项目 <a href="#page-5-0" class="link_a7cea  link_a9ef4 inline-link_f855c">资源管理器</a> 视图 <a href="#page-6-0" class="link_a7cea  link_a9ef4 inline-link_f855c">在项目资源管理器中排序对象</a> <a href="#page-6-1" class="link_a7cea  link_a9ef4 inline-link_f855c">在次级组中创建新对象</a> <a href="#page-8-0" class="link_a7cea  link_a9ef4 inline-link_f855c">从次级组中移除对象</a> <a href="#page-8-1" class="link_a7cea  link_a9ef4 inline-link_f855c">重命名次级组元素</a></p>
+<h3 id="项目资源管理器对象" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">项目资源管理器对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#项目资源管理器对象">#</a></h3>
+<p class="my-4 leading-7">项目资源管理器中的设计对象分为<em>主组</em>和<em>次级组</em>。</p>
+<p class="my-4 leading-7"><a href="#page-3-1" class="link_a7cea  link_a9ef4 inline-link_f855c">表</a> <a href="#page-3-1" class="link_a7cea  link_a9ef4 inline-link_f855c">5</a>显示了组和对象的层次结构。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">主组</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">次级组</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">电气层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列出所有启用了布线的层，包括平面层<!-- -->和布线层。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">常规层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列出所有非电气层，如阻焊层和<!-- -->丝印层。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">元件</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列出所有元件及其对应的引脚对。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">元件封装/PCB<!-- -->封装</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列出设计中的所有元件封装或所有使用<!-- -->所选元件封装的元件。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络对象</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络类</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列出属于网络类的所有网络。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">匹配长度<!-- -->网络组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列出设置为具有相等总网络长度的<!-- -->所有网络组。<!-- -->您可以直接从项目资源管理器创建匹配长度网络组。更多信息，请参见<!-- -->创建匹配长度网络组。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列出设计中的所有网络。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">电气网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列出设计中的所有电气网络。<!-- -->电气网络是由分立元件连接的<!-- -->网络阵列。更多信息，请参见电气网络。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">匹配长度引脚<!-- -->对组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列出设置为具有相等总网络<!-- -->长度的所有引脚对组。<!-- -->您可以直接从项目资源管理器创建匹配长度引脚对组。<!-- -->更多信息，请参见<!-- -->创建匹配长度引脚对组。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚对组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列出属于引脚对组的所有网络（包含引脚<!-- -->对规则）。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">条件规则</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列出所有有条件规则的网络。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">差分对</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列出所有分配为差分对的网络。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">您可以直接从项目资源管理器创建<!-- -->差分对。更多信息，请参见创建<!-- -->差分对。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 5. 项目资源管理器中的对象层次结构</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">主组</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">次级组</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">过孔类型</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列出设计中使用的过孔类型。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 5. 项目资源管理器中的对象层次结构(续)</strong></p>
+<h3 id="项目资源管理器操作" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">项目资源管理器操作<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#项目资源管理器操作">#</a></h3>
+<p class="my-4 leading-7">使用项目资源管理器可以创建、删除、重命名和排序次级组对象（规则对象）。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">在网表项目中对主组的操作</strong></p>
+<p class="my-4 leading-7">列在层、元件、元件封装、过孔类型和网络对象/网络组下的所有对象都是网表对象。由于 SailWind Router 是一个非 ECO 产品，不支持网表更改，因此您不能删除、重命名、移动或剪切这些对象中的任何一个。但是，您可以从这些组中复制对象以创建次级组的新成员。例如，您不能从网络组中删除网络；但您可以将网络复制到次级组网络类中，以创建包含此网络的新网络类。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">在网表项目中对次级组的操作</strong></p>
+<p class="my-4 leading-7">除网络组外，您可以在网络对象下的所有次级组中创建新成员，并且可以在一定程度上编辑这些组的所有成员。</p>
+<p class="my-4 leading-7">要创建组的新成员，请复制/粘贴或将适当的对象拖放到组中。例如，要创建新的网络类，请将一个或多个网络拖放到网络类组中。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 您还可以使用<strong class="font-semibold">右键</strong>单击 &gt; <strong class="font-semibold">新建</strong> 命令创建并命名网络类、匹配长度网络组、引脚对组和匹配长度引脚对组的新的<em>空</em>成员。</p>
+</div></div>
+<p class="my-4 leading-7"><a href="#page-4-1" class="link_a7cea  link_a9ef4 inline-link_f855c">表</a> <a href="#page-4-1" class="link_a7cea  link_a9ef4 inline-link_f855c">6</a>列出了您可以添加到每个这些次级组中以创建组新成员的对象。<a href="#page-5-1" class="link_a7cea  link_a9ef4 inline-link_f855c">表</a> <a href="#page-5-1" class="link_a7cea  link_a9ef4 inline-link_f855c">7</a>列出了您可以对组成员执行的操作。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">次级组</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">可添加的对象</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络类</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络<!-- -->提示<!-- -->您可以将电气网络拖放到网络类中，<!-- -->但这会将电气网络的各个网络添加到<!-- -->网络类中，而不是电气网络本身。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">电气网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">电气网络</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">匹配长度网络组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络类、网络、电气网络</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚对组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚对</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 6. 可添加到次级组的对象</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">次级组</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">可添加的对象</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">条件规则</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络类、网络、引脚对组、引脚对和层。更多<!-- -->信息，请参见第 175 页的&quot;条件规则&quot;。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">匹配长度引脚对组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚对组、引脚对</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">差分对</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络、引脚对、电气网络<!-- -->提示</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">一个差分对正好包含两个引脚对、两个网络，<!-- -->或两个电气网络。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 6. 可添加到次级组的对象(续)</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">次级组</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">对成员可用的操作</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络类</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">复制/粘贴或拖放到组中创建、新建、<!-- -->重命名、删除</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">电气网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">新建、删除</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">匹配长度网络组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">复制/粘贴或拖放到组中创建、新建、<!-- -->重命名、删除</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚对组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">复制/粘贴或拖放到组中创建、新建、<!-- -->重命名、删除</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">条件规则</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">删除</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">提示<!-- -->您不能移除条件规则的单个元素。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">匹配长度引脚对组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">复制/粘贴或拖放到组中创建、新建、<!-- -->重命名、删除</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">差分对</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">复制/粘贴或拖放到组中创建、删除</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">提示<!-- -->您不能移除差分对的单个元素。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 7. 对次级组成员的操作</strong></p>
+<h3 id="拆分项目资源管理器视图" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">拆分项目资源管理器视图<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#拆分项目资源管理器视图">#</a></h3>
+<p class="my-4 leading-7">您可以拆分项目资源管理器的视图以创建树的第二个实例。当您反复复制和粘贴或将对象拖放到网络对象子树中时，拆分视图很有用；例如，当您复制网络以创建网络类时。</p>
+<p class="my-4 leading-7">您可以水平或垂直拆分视图。垂直拆分显示更多的树并且需要较少的滚动，而水平拆分允许更宽的树视图和查看设计对象的全名而无需左右滚动，并且不会牺牲设计空间。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/5/_page_6_Picture_1.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 5. 项目资源管理器拆分视图</strong></p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将指针定位在项目资源管理器的树区域中。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">垂直拆分</strong>或<strong class="font-semibold">水平拆分</strong>。</p>
+</li>
+</ol>
+<h3 id="在项目资源管理器中排序对象" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">在项目资源管理器中排序对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#在项目资源管理器中排序对象">#</a></h3>
+<p class="my-4 leading-7">您可以按字母顺序或按规则排序对象。按规则排序将具有规则的对象列在列表顶部。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">要按规则排序视图，请<strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">按规则排序</strong>。要再次按字母顺序排序，请再次单击<strong class="font-semibold">按规则排序</strong>弹出菜单项。</p>
+<h3 id="在次级组中创建新对象" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">在次级组中创建新对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#在次级组中创建新对象">#</a></h3>
+<p class="my-4 leading-7">除网络组外，您可以在网络对象下的所有次级组中创建新成员。您还可以在一定程度上编辑这些组的所有成员。</p>
+<p class="my-4 leading-7">次级组包括网络类、引脚对组、条件规则、匹配长度网络组、匹配长度引脚对组、电气网络和差分对。</p>
+<p class="my-4 leading-7">下表提供了创建次级对象组新成员的方法摘要。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">要创建此对象</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">执行以下步骤：</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络类</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">任选其一：</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 从主对象组中将网络拖放到网络类主组中。此操作会自动创建一个新的网络类，然后您可以为其命名。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 选择网络类主组。<strong class="font-semibold">右键</strong>单击并选择新建。<!-- -->命名网络类，然后将网络拖放到其中。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">提示<!-- -->您可以将电气网络拖放到网络类中，但<!-- -->这会将电气网络的各个网络添加到网络类中，而不是电气网络本身。<!-- -->更多信息，请参见第 172 页的&quot;创建网络类&quot;。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚对组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">任选其一：</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 从主对象组中将引脚对拖放到引脚对组主组中。此操作会自动创建一个新的引脚对组，然后您可以为其命名。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 选择引脚对组主组。<strong class="font-semibold">右键</strong>单击并选择<!-- -->新建弹出菜单项。命名新组，然后将引脚对拖放到其中。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">更多信息，请参见第 174 页的&quot;创建引脚对组&quot;。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">条件规则</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">从主对象组中将网络对象拖放到条件规则主组中。此操作会自动创建一个新的条件规则并自动命名。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">更多信息，请参见第 178 页的&quot;创建条件规则&quot;。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">匹配长度网络组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">任选其一：</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 从主对象组中将网络和/或电气网络拖放到匹配长度网络组主组中。<!-- -->此操作会自动创建一个新组，然后您可以为其命名。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 选择匹配长度网络组主组。<strong class="font-semibold">右键</strong>单击并选择新建弹出菜单项。命名<!-- -->组，然后将网络拖放到其中。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">更多信息，请参见第 179 页的&quot;创建匹配长度网络组&quot;。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">匹配长度引脚对组</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">任选其一：</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 从主对象组中将引脚对拖放到匹配长度引脚对组主组中。此操作会自动创建一个新组，然后您可以为其命名。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 选择匹配长度引脚对组主组。<strong class="font-semibold">右键</strong>单击并选择新建弹出菜单项。命名<!-- -->组，然后将网络和/或电气网络拖放到其中。</td>
+</tr>
+</tbody>
+</table>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">要创建此对象</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">执行以下步骤：</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">更多信息，请参见第 180 页的&quot;创建匹配长度引脚对组&quot;。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">差分对</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在网络主组中选择两个网络，或在电气网络主组中选择两个电气网络，<strong class="font-semibold">右键</strong>单击，选择复制弹出<!-- -->菜单项，选择差分对主组，<strong class="font-semibold">右键</strong>单击，<!-- -->然后选择粘贴弹出菜单项。此操作会自动创建一个<!-- -->新的差分对。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">替代方法：在设计工作区中选择两个网络或两个电气网络，<strong class="font-semibold">右键</strong>单击，然后选择创建差分网络或<!-- -->创建差分电气网络弹出菜单项。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">更多信息，请参见第 181 页的&quot;创建差分对&quot;。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="从次级组中移除对象" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">从次级组中移除对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#从次级组中移除对象">#</a></h3>
+<p class="my-4 leading-7">您可以从网络类、电气网络、引脚对组、匹配长度网络组或匹配长度引脚对组中移除对象。</p>
+<p class="my-4 leading-7">您不能从差分对和条件规则中移除单个对象。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击要移除的对象并选择弹出菜单中的<strong class="font-semibold">删除</strong>。</p>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">对象仅从次级组中移除；它们<em>不会</em>从设计中删除。</p>
+<h3 id="重命名次级组元素" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">重命名次级组元素<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#重命名次级组元素">#</a></h3>
+<p class="my-4 leading-7">您可以重命名网络类、匹配长度网络组、匹配长度引脚对组和引脚对组的次级组元素。</p>
+<p class="my-4 leading-7">您不能重命名电气网络或差分对组。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击次级组名称，然后选择弹出菜单中的<strong class="font-semibold">重命名</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在先前名称上键入新名称，然后按 Enter 键。</p>
+</li>
+</ol>
+<h2 id="输出窗口" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">输出窗口<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#输出窗口">#</a></h2>
+<p class="my-4 leading-7">使用输出窗口的三个选项卡显示报告和会话日志，编辑和调试宏，以及进行自定义编程和调试。</p>
+<p class="my-4 leading-7">输出窗口位于界面的左下部分。您可以停靠或浮动输出窗口。您还可以打开或关闭输出窗口。</p>
+<p class="my-4 leading-7"><a href="#page-10-0" class="link_a7cea  link_a9ef4 inline-link_f855c">状态</a> 选项卡 <a href="#page-12-0" class="link_a7cea  link_a9ef4 inline-link_f855c">宏</a> 选项卡 <a href="#page-19-0" class="link_a7cea  link_a9ef4 inline-link_f855c">Basic</a> 选项卡</p>
+<h3 id="状态选项卡" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">状态选项卡<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#状态选项卡">#</a></h3>
+<p class="my-4 leading-7">💃访问方式：从标准工具栏中单击<strong class="font-semibold">输出窗口</strong>按钮，然后选择<strong class="font-semibold">状态</strong>选项卡。</p>
+<p class="my-4 leading-7">使用此选项卡记录、显示和打印会话日志、报告文件、网页以及打开程序文件。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">描述</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">状态</strong>选项卡显示有关当前会话的信息。它指定打开的 PCB 文件的文件名和保存的测试完整性文件的名称。在布线电路板时，它还会报告布线统计信息和消息。</p>
+<p class="my-4 leading-7">如果<strong class="font-semibold">状态</strong>选项卡已关闭，并且您在自动布线（或执行其他任务）时遇到错误，输出窗口将打开，<strong class="font-semibold">状态</strong>选项卡处于活动状态，并且错误以红色显示。输出窗口以其最近的状态（浮动或停靠）出现。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">对象</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">对象</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">会话日志</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">session.log 文件包含当前会话的所有程序输出，包括打开和保存的文件名、完整性<!-- -->测试结果、布线统计信息和消息。SailWind Router<!-- -->在自动布线期间不断更新会话日志。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">会话日志以不同颜色显示不同类型的信息。带下划线的项目是链接。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 红色 — 错误</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">绿色 — 警告</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">黑色 — 消息</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">蓝色 — 指向文件、网页和数据库对象的链接。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">导航按钮</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在会话日志的报告页面之间导航。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">筛选弹出菜单项</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">根据类型筛选会话日志消息：</td>
+</tr>
+</tbody>
+</table>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">对象</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 错误</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 警告</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 消息</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 显示全部</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">查找弹出菜单项</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"><strong class="font-semibold">右键</strong>单击并选择查找弹出菜单项以搜索<!-- -->会话日志内容。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打印弹出菜单项</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">使用打印弹出菜单项打印整个会话日志<!-- -->或通过<strong class="font-semibold">右键</strong>单击单个报告并选择<!-- -->打印弹出菜单项打印单个报告。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">查看弹出菜单项</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">单击任何报告以查看其详细信息。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">记录到文件弹出菜单项</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">保存会话日志以供将来参考。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">如果会话日志文件已存在，新信息将<!-- -->被追加。如果会话日志文件不存在，将<!-- -->创建一个新文件。会话日志文件的默认路径(\SailWind Projects)在安装程序时设置。在 SailWind Router 中，<!-- -->您可以在第 439 页的&quot;选项<!-- -->对话框，全局类别，文件位置子类别&quot;中更改默认文件名和路径。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">注意：<!-- -->您可以在每次打开文件时清除会话日志显示。清除会话日志可防止您意外<!-- -->查看先前打开的文件的日志信息；但是，<!-- -->它不会删除日志文件。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="宏选项卡" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">宏选项卡<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#宏选项卡">#</a></h3>
+<p class="my-4 leading-7">您可以在<strong class="font-semibold">宏</strong>选项卡中编辑、运行和调试宏脚本。您可以使用宏编辑器打开多个宏并嵌套宏。</p>
+<p class="my-4 leading-7">宏是您记录的命令、按键和鼠标点击的任意组合，可作为单个动作重放。您可以记录几乎任何一组程序步骤进行重放，从而简化重复性活动，例如设置首选项和图层/显示设置。</p>
+<p class="my-4 leading-7"><a href="#page-13-0" class="link_a7cea  link_a9ef4 inline-link_f855c">创建宏</a> <a href="#page-15-0" class="link_a7cea  link_a9ef4 inline-link_f855c">管理宏</a> <a href="#page-16-0" class="link_a7cea  link_a9ef4 inline-link_f855c">播放宏</a> <a href="#page-16-1" class="link_a7cea  link_a9ef4 inline-link_f855c">停止播放宏</a> <a href="#page-17-0" class="link_a7cea  link_a9ef4 inline-link_f855c">调试宏脚本</a> <a href="#page-18-0" class="link_a7cea  link_a9ef4 inline-link_f855c">获取宏语言帮助</a></p>
+<h4 id="创建宏" class="mt-8 leading-6 text-lg title_fb7eb">创建宏<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建宏">#</a></h4>
+<p class="my-4 leading-7">您可以创建宏来执行经常执行的操作。您可以记录一系列程序步骤作为单个动作重放；您也可以嵌套宏。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 对话框动作被记录为结果而非动作，因此在重放时，您不会在重放过程中看到对话框。因此，您无法创建在打开对话框时停止的宏；它必须继续执行到某个结果或动作。例如，您可以创建一个宏，选择文件菜单中的打开，选择一个文件，然后选择确定。当重放时，该宏会打开一个文件。</p>
+</div></div>
+<p class="my-4 leading-7"><a href="#page-13-1" class="link_a7cea  link_a9ef4 inline-link_f855c">创建新宏</a> <a href="#page-13-2" class="link_a7cea  link_a9ef4 inline-link_f855c">鼠标移动记录</a> <a href="#page-14-0" class="link_a7cea  link_a9ef4 inline-link_f855c">保存宏</a></p>
+<h5 id="创建新宏" class="title_fb7eb">创建新宏<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建新宏">#</a></h5>
+<p class="my-4 leading-7">为 SailWind Router 可能频繁执行的任务设置新宏。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">输出窗口</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在<strong class="font-semibold">宏</strong>选项卡上，点击<strong class="font-semibold">新建</strong>按钮。新宏被命名为 Macro#，其中#是一个数字序列，如 Macro1 或 Macro2。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">您可以点击<strong class="font-semibold">压缩鼠标移动</strong>和/或<strong class="font-semibold">相对鼠标移动</strong>按钮。有关更多信息，请参阅<a href="#page-13-2" class="link_a7cea  link_a9ef4 inline-link_f855c">鼠标移动记录</a>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在<strong class="font-semibold">宏</strong>选项卡工具栏上，点击<strong class="font-semibold">记录</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">执行要包含在宏中的按键、命令和鼠标点击。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在<strong class="font-semibold">宏</strong>选项卡工具栏上，点击<strong class="font-semibold">停止</strong>按钮。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">您也可以编写宏脚本，而不是记录鼠标动作。</p>
+</div></div>
+<h5 id="鼠标移动记录" class="title_fb7eb">鼠标移动记录<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#鼠标移动记录">#</a></h5>
+<p class="my-4 leading-7">您可以在宏中记录鼠标移动。您可以记录压缩或未压缩的鼠标移动以及相对或绝对移动。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">压缩鼠标模式</strong> - 压缩鼠标模式仅记录鼠标移动的起点和终点。它不记录起点和终点之间的任何中间坐标。在大多数情况下推荐使用压缩模式，因为它显著减小宏文件的大小。记录中间鼠标移动会增加文件大小，但如果特殊应用需要坐标信息，则可以记录。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">相对鼠标模式</strong> - 相对鼠标模式以增量坐标而非绝对坐标记录移动的起点和终点。</p>
+<h5 id="保存宏" class="title_fb7eb">保存宏<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#保存宏">#</a></h5>
+<p class="my-4 leading-7">完成宏后保存它。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">保存</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在标准 Windows 另存为对话框中，输入文件名（如果需要），然后点击<strong class="font-semibold">保存</strong>。</p>
+</li>
+</ol>
+<h4 id="管理宏" class="mt-8 leading-6 text-lg title_fb7eb">管理宏<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#管理宏">#</a></h4>
+<p class="my-4 leading-7">阅读以下主题以了解更多关于管理宏文件的信息。</p>
+<p class="my-4 leading-7"><a href="#page-15-1" class="link_a7cea  link_a9ef4 inline-link_f855c">打开现有宏文件</a> <a href="#page-15-2" class="link_a7cea  link_a9ef4 inline-link_f855c">查看多个打开的宏</a> <a href="#page-16-2" class="link_a7cea  link_a9ef4 inline-link_f855c">编辑宏</a> <a href="#page-16-3" class="link_a7cea  link_a9ef4 inline-link_f855c">保存宏编辑</a></p>
+<h5 id="打开现有宏文件" class="title_fb7eb">打开现有宏文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#打开现有宏文件">#</a></h5>
+<p class="my-4 leading-7">SailWind Router 将您创建的宏存储在(<em>.mcr</em>)文件中。您可以使用菜单或工具栏打开现有宏文件。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">您可以在宏编辑器中打开多个宏。宏编辑器还支持嵌套宏。</p>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出窗口中，点击<strong class="font-semibold">宏</strong>选项卡。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">打开</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在打开文件对话框中，选择要打开的宏文件并点击<strong class="font-semibold">打开</strong>。</p>
+</li>
+</ol>
+<h5 id="查看多个打开的宏" class="title_fb7eb">查看多个打开的宏<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#查看多个打开的宏">#</a></h5>
+<p class="my-4 leading-7">您可以在宏编辑器中打开多个宏并在它们之间切换。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">点击<strong class="font-semibold">宏</strong>选项卡的打开宏列表区域中您想要查看的宏。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/5/_page_15_Figure_16.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 7. 宏选项卡</strong></p>
+<h5 id="编辑宏" class="title_fb7eb">编辑宏<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#编辑宏">#</a></h5>
+<p class="my-4 leading-7">您可以将选定文本复制或剪切到剪贴板。将文本复制到剪贴板后，您可以将其粘贴到文本窗口中或粘贴到其他应用程序中。您还可以在打开的宏之间切换以编辑多个宏。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择要复制或剪切的文本。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出窗口中右键点击，然后点击<strong class="font-semibold">复制</strong>或<strong class="font-semibold">剪切</strong>弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在输出窗口中右键点击，然后点击<strong class="font-semibold">粘贴</strong>按钮。您将看到您的选择已粘贴在输出窗口的插入点处。</p>
+</li>
+</ol>
+<h5 id="保存宏编辑" class="title_fb7eb">保存宏编辑<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#保存宏编辑">#</a></h5>
+<p class="my-4 leading-7">完成宏编辑后，必须按照以下步骤保存它。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">保存</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在标准 Windows 另存为对话框中，输入文件名（如果需要），然后点击<strong class="font-semibold">保存</strong>。</p>
+</li>
+</ol>
+<h4 id="播放宏" class="mt-8 leading-6 text-lg title_fb7eb">播放宏<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#播放宏">#</a></h4>
+<p class="my-4 leading-7">创建宏后可以播放它。（播放宏时，您无法在工作区中使用鼠标。）</p>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在<strong class="font-semibold">宏</strong>选项卡上，点击<strong class="font-semibold">打开</strong>按钮并打开一个宏(.mcr)文件。最近的宏可以通过点击<strong class="font-semibold">工具 &gt; 宏</strong>菜单项找到。或者，您可以在<strong class="font-semibold">宏</strong>选项卡中右键点击并点击<strong class="font-semibold">运行</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在<strong class="font-semibold">宏</strong>选项卡工具栏上，点击<strong class="font-semibold">运行</strong>按钮。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">使用<strong class="font-semibold">宏</strong>选项卡工具栏中的<strong class="font-semibold">暂停</strong>和<strong class="font-semibold">播放</strong>按钮暂停和播放正在运行的宏。</p>
+</div></div>
+<h4 id="停止播放宏" class="mt-8 leading-6 text-lg title_fb7eb">停止播放宏<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#停止播放宏">#</a></h4>
+<p class="my-4 leading-7">您可以随时停止宏的播放。但是，停止后无法恢复宏的播放。当您点击运行时，宏会从头开始。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">右键点击并点击<strong class="font-semibold">停止</strong>弹出菜单项。</p>
+<h4 id="调试宏脚本" class="mt-8 leading-6 text-lg title_fb7eb">调试宏脚本<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#调试宏脚本">#</a></h4>
+<p class="my-4 leading-7">您可以通过逐步运行宏或允许它运行到脚本中的某个点来播放宏。要执行这些调试任务，请在您希望宏停止的位置插入断点。</p>
+<p class="my-4 leading-7"><a href="#page-17-1" class="link_a7cea  link_a9ef4 inline-link_f855c">设置和移除断点</a> <a href="#page-17-2" class="link_a7cea  link_a9ef4 inline-link_f855c">调试宏脚本</a> <a href="#page-18-1" class="link_a7cea  link_a9ef4 inline-link_f855c">纠正运行时错误</a></p>
+<h5 id="设置和移除断点" class="title_fb7eb">设置和移除断点<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设置和移除断点">#</a></h5>
+<p class="my-4 leading-7">在调试宏之前设置和移除断点。如果宏引擎在宏播放期间遇到断点，它会暂停宏。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将光标放在要添加断点的行上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在<strong class="font-semibold">宏</strong>选项卡中右键点击并点击<strong class="font-semibold">切换断点</strong>弹出菜单项。这会在当前光标位置插入断点。断点标记出现在装订线区域中。或者，在<strong class="font-semibold">宏</strong>选项卡工具栏上，点击<strong class="font-semibold">切换断点</strong>按钮。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">当宏引擎在播放宏时遇到断点，它会暂停宏。它还会用指令指针标记宏中的下一行。</p>
+<h5 id="调试宏脚本-1" class="title_fb7eb">调试宏脚本<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#调试宏脚本-1">#</a></h5>
+<p class="my-4 leading-7">插入断点后可以调试宏。</p>
+<p class="my-4 leading-7">使用下表中的命令进行调试：</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">执行此操作</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">执行以下步骤</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">播放宏的单个行。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 在宏选项卡中右键点击并点击单步跳过弹出菜单项<!-- -->或<!-- -->• 在宏选项卡工具栏上，点击单步跳过按钮</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在当前行执行子程序调用。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 在宏选项卡中右键点击并点击单步进入弹出菜单项<!-- -->或<!-- -->• 在宏选项卡工具栏上，点击单步进入按钮</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 8. 宏脚本调试命令</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">执行此操作</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">执行以下步骤</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">从子程序返回到调用它的点。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 在宏选项卡中右键点击并点击单步跳出弹出菜单项<!-- -->或<!-- -->• 在宏选项卡工具栏上，点击单步跳出按钮</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">播放宏到给定点。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 在宏选项卡中右键点击并点击运行到光标弹出菜单项<!-- -->或<!-- -->• 在宏选项卡工具栏上，点击运行到光标按钮</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">从当前点继续执行。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 在宏选项卡中右键点击并点击运行弹出菜单项<!-- -->或<!-- -->• 在宏选项卡工具栏上，点击运行按钮</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 8. 宏脚本调试命令(续)</strong></p>
+<h5 id="纠正运行时错误" class="title_fb7eb">纠正运行时错误<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#纠正运行时错误">#</a></h5>
+<p class="my-4 leading-7">如果发生运行时错误，宏调试器会切换到逐步模式并在状态栏上显示详细消息。指令指针显示产生错误的行。修复错误后，您可以恢复宏的播放。</p>
+<h4 id="获取宏语言帮助" class="mt-8 leading-6 text-lg title_fb7eb">获取宏语言帮助<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#获取宏语言帮助">#</a></h4>
+<p class="my-4 leading-7">在编写脚本或运行宏时，您可以获取有关宏语言调用的帮助。帮助主题提供术语信息和示例脚本。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">点击<strong class="font-semibold">宏</strong>选项卡的编辑区域并按 F1 键。</p>
+<h3 id="基本选项卡" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">基本选项卡<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#基本选项卡">#</a></h3>
+<p class="my-4 leading-7">使用<strong class="font-semibold">基本</strong>选项卡中的基本脚本编辑器在 SailWind 应用程序中创建、编辑、运行和排除基本脚本故障。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 8. 基本选项卡</strong></p>
+<p class="my-4 leading-7"><a href="#page-20-0" class="link_a7cea  link_a9ef4 inline-link_f855c">管理脚本</a> <a href="#page-23-0" class="link_a7cea  link_a9ef4 inline-link_f855c">创建脚本</a> <a href="#page-25-0" class="link_a7cea  link_a9ef4 inline-link_f855c">运行脚本</a> <a href="#page-26-0" class="link_a7cea  link_a9ef4 inline-link_f855c">调试脚本</a> <a href="#page-27-1" class="link_a7cea  link_a9ef4 inline-link_f855c">获取基本语言帮助</a></p>
+<h4 id="管理脚本" class="mt-8 leading-6 text-lg title_fb7eb">管理脚本<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#管理脚本">#</a></h4>
+<p class="my-4 leading-7">您可以直接从 SailWind Router 中打开、编辑、打印和保存脚本。</p>
+<p class="my-4 leading-7"><a href="#page-20-1" class="link_a7cea  link_a9ef4 inline-link_f855c">打开现有脚本</a> <a href="#page-20-2" class="link_a7cea  link_a9ef4 inline-link_f855c">管理打开的脚本</a> <a href="#page-21-0" class="link_a7cea  link_a9ef4 inline-link_f855c">编辑脚本</a> <a href="#page-21-1" class="link_a7cea  link_a9ef4 inline-link_f855c">编辑用户对话框</a> <a href="#page-21-2" class="link_a7cea  link_a9ef4 inline-link_f855c">查找自动化语句</a> <a href="#page-22-0" class="link_a7cea  link_a9ef4 inline-link_f855c">打印脚本</a> <a href="#page-22-1" class="link_a7cea  link_a9ef4 inline-link_f855c">保存脚本</a> <a href="#page-22-2" class="link_a7cea  link_a9ef4 inline-link_f855c">监视变量</a></p>
+<h5 id="打开现有脚本" class="title_fb7eb">打开现有脚本<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#打开现有脚本">#</a></h5>
+<p class="my-4 leading-7">使用以下步骤在 SailWind Router 中打开脚本。SailWind Router 可以打开的脚本具有*.bas<em>扩展名。</em>.bas<em>文件的默认位置是</em>C:\SailWind Projects*。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">您可以同时打开最多九个脚本。</p>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在基本脚本编辑器中，点击<strong class="font-semibold">打开</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在打开脚本窗口中，选择脚本然后点击<strong class="font-semibold">打开</strong>。</p>
+</li>
+</ol>
+<h5 id="管理打开的脚本" class="title_fb7eb">管理打开的脚本<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#管理打开的脚本">#</a></h5>
+<p class="my-4 leading-7">Sheet 子菜单上的命令提供脚本管理命令。由于您可以同时打开最多九个脚本，因此可以打开#uses、关闭工作表、关闭多个工作表，并选择要查看和编辑的脚本。</p>
+<p class="my-4 leading-7">在脚本中插入断点后，您可以使用下表中的命令进行调试。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">执行此操作</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">在基本脚本编辑器中执行以下步骤</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开#uses 模块。<!-- -->(#Uses 模块是从其他脚本中调用的基本脚本。)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">右键点击并点击 Sheet &gt; 打开 Uses。<!-- -->脚本中调用的#uses 模块作为脚本工作表出现在基本脚本编辑器中。它们被分配一个编号标签，您可以编辑或运行它们。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">关闭打开的脚本。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 右键点击并点击 Sheet &gt; 关闭菜单项<!-- -->或<!-- -->• 双击装订线中的脚本编号标签</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 9. Sheet 子菜单命令</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">执行此操作</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">在基本脚本编辑器中执行以下步骤</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">关闭所有打开的脚本。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">右键点击并点击 Sheet &gt; 全部关闭弹出菜单项。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">选择要查看的打开脚本。<!-- -->提示<!-- -->您可以同时打开最多九个脚本</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 右键点击并点击 Sheet 弹出菜单项；然后从子菜单上的打开脚本列表中选择您想要查看的脚本<!-- -->或<!-- -->• 点击装订线中的脚本编号标签。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 9. Sheet 子菜单命令(续)</strong></p>
+<h5 id="编辑脚本" class="title_fb7eb">编辑脚本<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#编辑脚本">#</a></h5>
+<p class="my-4 leading-7">您可以从基本脚本编辑器中将选定文本复制或剪切到剪贴板，并将剪贴板中的选择粘贴到文本窗口中。您还可以将剪贴板中的文本粘贴到其他应用程序中。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在基本脚本编辑器中，选择要复制或剪切的文本。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">右键点击并点击<strong class="font-semibold">复制</strong>或<strong class="font-semibold">剪切</strong>弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">右键点击并点击<strong class="font-semibold">粘贴</strong>弹出菜单项以粘贴脚本文本。您的选择将粘贴在输出窗口的插入点处。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">或者，您可以点击基本脚本编辑器工具栏上的复制、剪切和粘贴按钮。</p>
+<h5 id="编辑用户对话框" class="title_fb7eb">编辑用户对话框<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#编辑用户对话框">#</a></h5>
+<p class="my-4 leading-7">您可以图形化地编辑用户对话框。用户对话框由基本脚本中的&quot;Begin Dialog...End Dialog&quot;块定义。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在基本脚本编辑器中，将光标放在脚本的用户对话框块中。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">编辑用户对话框</strong>按钮。（此按钮位于工具栏的最右侧；您可能需要扩展输出窗口才能看到它。）</p>
+</li>
+</ol>
+<p class="my-4 leading-7">有关更多信息，请参阅<em>Sax Basic Editor 在线帮助</em>(<em>C:&lt;install_folder&gt;&lt;version&gt; \Programs\sbe5_000.hlp</em>)</p>
+<h5 id="查找自动化语句" class="title_fb7eb">查找自动化语句<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#查找自动化语句">#</a></h5>
+<p class="my-4 leading-7">如果您正在处理较长的脚本，可以搜索特定语句。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 Basic 脚本编辑器中，点击对象列表并选择对象类型。对象列表显示当前模块的所有对象。(General) 对象包含不属于任何特定对象的所有过程。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击过程列表并选择加粗的过程。过程列表显示当前对象的所有过程。选择加粗的过程可在脚本中定位该过程。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">该语句会显示在 Basic 脚本编辑器中。</p>
+<h5 id="打印脚本" class="title_fb7eb">打印脚本<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#打印脚本">#</a></h5>
+<p class="my-4 leading-7">您可以从 Basic 脚本编辑器中打印 Basic 脚本。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 Basic 脚本编辑器中打开脚本。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在工具栏上，点击 <strong class="font-semibold">打印</strong> 按钮。</p>
+</li>
+</ol>
+<h5 id="保存脚本" class="title_fb7eb">保存脚本<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#保存脚本">#</a></h5>
+<p class="my-4 leading-7">通过保存 Basic 脚本以备将来使用。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 Basic 脚本编辑器中，点击 <strong class="font-semibold">保存</strong> 按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">输入文件名，然后点击 <strong class="font-semibold">保存</strong>。</p>
+</li>
+</ol>
+<h5 id="监视变量" class="title_fb7eb">监视变量<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#监视变量">#</a></h5>
+<p class="my-4 leading-7">使用快速监视功能在即时窗口中显示光标下表达式的值。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">右键点击并选择 <strong class="font-semibold">快速监视</strong> 弹出菜单项，或点击 <strong class="font-semibold">快速监视</strong> 按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">另请参阅：<em>Sax Basic Editor 在线帮助</em> (<em>C:&lt;安装目录&gt;&lt;版本&gt;\Programs\sbe5_000.hlp</em>)。</p>
+</li>
+</ol>
+<h4 id="创建脚本" class="mt-8 leading-6 text-lg title_fb7eb">创建脚本<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建脚本">#</a></h4>
+<p class="my-4 leading-7">您可以创建脚本以在 SailWind Router 中执行经常执行的操作。</p>
+<p class="my-4 leading-7"><a href="#page-23-1" class="link_a7cea  link_a9ef4 inline-link_f855c">创建脚本</a> <a href="#page-23-2" class="link_a7cea  link_a9ef4 inline-link_f855c">使用对象和过程列表插入自动化语句</a> <a href="#page-23-3" class="link_a7cea  link_a9ef4 inline-link_f855c">使用 ActiveX 自动化成员对话框插入自动化语句</a> <a href="#page-24-0" class="link_a7cea  link_a9ef4 inline-link_f855c">设置下一条语句</a> <a href="#page-24-1" class="link_a7cea  link_a9ef4 inline-link_f855c">显示下一条语句</a> <a href="#page-24-2" class="link_a7cea  link_a9ef4 inline-link_f855c">保存脚本</a></p>
+<h5 id="创建脚本-1" class="title_fb7eb">创建脚本<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建脚本-1">#</a></h5>
+<p class="my-4 leading-7">您可以使用 Basic 脚本编辑器为 SailWind Router 编写脚本。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">工具 &gt; Basic 脚本 &gt; Basic 脚本编辑器</strong> 菜单项。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">Basic</strong> 标签页会在输出窗口中打开。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 在 SailWind Layout 和 SailWind Logic 中，会显示 SAX Basic 引擎对话框。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击 <strong class="font-semibold">新建</strong> 按钮。</p>
+</li>
+</ol>
+<h5 id="使用对象和过程列表插入自动化语句" class="title_fb7eb">使用对象和过程列表插入自动化语句<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用对象和过程列表插入自动化语句">#</a></h5>
+<p class="my-4 leading-7">使用对象和过程列表选择并插入语句。这些列表包含最常用的语句。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击对象列表并选择对象类型。对象列表显示当前模块的所有对象。(General) 对象包含不属于任何特定对象的所有过程。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击过程列表并选择非加粗的过程进行插入。过程列表显示当前对象的所有过程。选择非加粗的过程会插入该过程的正确过程定义。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">该语句会出现在脚本底部。</p>
+<h5 id="使用-activex-自动化成员对话框插入自动化语句" class="title_fb7eb">使用 ActiveX 自动化成员对话框插入自动化语句<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用-activex-自动化成员对话框插入自动化语句">#</a></h5>
+<p class="my-4 leading-7">使用对象和过程列表选择并插入语句。</p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 如果指针位于脚本中除最后一行以外的任何行上，该行将被覆盖。</p>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 Basic 脚本编辑器中，右键点击并选择 <strong class="font-semibold">浏览</strong> 弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用 ActiveX 自动化成员对话框选择并插入语句。此对话框包含大量语句列表。</p>
+</li>
+</ol>
+<h5 id="设置下一条语句" class="title_fb7eb">设置下一条语句<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设置下一条语句">#</a></h5>
+<p class="my-4 leading-7">您可以强制脚本中的特定行接下来运行。（您只能选择当前子程序或函数中的语句。）</p>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 Basic 脚本编辑器中，将光标放在您想要接下来运行的行上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">右键点击并选择 <strong class="font-semibold">设置下一条语句</strong> 弹出菜单项。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">指令指针会出现在所选行旁边。这一行，且只有这一行，将会接下来运行。如果您转到脚本的其他部分，可以通过点击 <strong class="font-semibold">显示下一条语句</strong> 返回到这一行。</p>
+<h5 id="显示下一条语句" class="title_fb7eb">显示下一条语句<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#显示下一条语句">#</a></h5>
+<p class="my-4 leading-7">您可以使用 Basic 脚本编辑器中的&quot;显示下一条语句&quot;功能定位脚本中接下来要运行的点。此功能在调试操作期间特别有用。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">在 Basic 脚本编辑器中，右键点击并选择 <strong class="font-semibold">显示下一条语句</strong> 弹出菜单项。</p>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">指令指针指示接下来要运行的语句。暂停正在运行的脚本或设置语句接下来运行会设置下一条语句。您可以从脚本中的任何位置定位已设置的语句。</p>
+<h5 id="保存脚本-1" class="title_fb7eb">保存脚本<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#保存脚本-1">#</a></h5>
+<p class="my-4 leading-7">通过从 Basic 脚本编辑器中保存脚本以备将来使用。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 Basic 脚本编辑器中，点击 <strong class="font-semibold">保存</strong> 按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">输入文件名，然后点击 <strong class="font-semibold">保存</strong>。</p>
+</li>
+</ol>
+<h4 id="运行脚本" class="mt-8 leading-6 text-lg title_fb7eb">运行脚本<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#运行脚本">#</a></h4>
+<p class="my-4 leading-7">您可以使用&quot;运行&quot;运行现有脚本或恢复暂停脚本的播放。（当您运行脚本时，不能在工作区中使用鼠标。）</p>
+<p class="my-4 leading-7"><a href="#page-25-1" class="link_a7cea  link_a9ef4 inline-link_f855c">运行脚本</a> <a href="#page-25-2" class="link_a7cea  link_a9ef4 inline-link_f855c">暂停和恢复正在运行的脚本</a> <a href="#page-25-3" class="link_a7cea  link_a9ef4 inline-link_f855c">停止正在运行的脚本</a></p>
+<h5 id="运行脚本-1" class="title_fb7eb">运行脚本<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#运行脚本-1">#</a></h5>
+<p class="my-4 leading-7">使用 Basic 脚本编辑器打开并运行脚本。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 Basic 脚本编辑器中，打开脚本文件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">右键点击并选择 <strong class="font-semibold">运行</strong> 弹出菜单项。或者，在 Basic 脚本编辑器工具栏上，点击 <strong class="font-semibold">运行</strong> 按钮。</p>
+</li>
+</ol>
+<h5 id="暂停和恢复正在运行的脚本" class="title_fb7eb">暂停和恢复正在运行的脚本<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#暂停和恢复正在运行的脚本">#</a></h5>
+<p class="my-4 leading-7">当运行长脚本时，您可以暂停它以执行其他设计活动，然后恢复它。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 Basic 脚本编辑器中，右键点击并选择 <strong class="font-semibold">暂停</strong> 弹出菜单项。（或点击工具栏中的 <strong class="font-semibold">暂停</strong> 按钮。）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">当您准备好恢复运行脚本时，在 Basic 脚本编辑器中右键点击并点击 <strong class="font-semibold">运行</strong>、<strong class="font-semibold">单步跳过</strong> 或 <strong class="font-semibold">运行到光标处</strong> 按钮。</p>
+</li>
+</ol>
+<h5 id="停止正在运行的脚本" class="title_fb7eb">停止正在运行的脚本<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#停止正在运行的脚本">#</a></h5>
+<p class="my-4 leading-7">您可以随时停止正在运行的脚本。但是，一旦停止脚本，就不能恢复运行。当您点击 <strong class="font-semibold">运行</strong> 时，脚本会从头开始。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">在 Basic 脚本编辑器中，右键点击并选择 <strong class="font-semibold">停止</strong>。（或点击工具栏中的 <strong class="font-semibold">停止</strong> 按钮。）</p>
+<h4 id="调试脚本" class="mt-8 leading-6 text-lg title_fb7eb">调试脚本<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#调试脚本">#</a></h4>
+<p class="my-4 leading-7">运行脚本时，您可以逐行运行或运行到脚本中的特定位置。要执行这些调试任务，请在希望脚本停止的点插入断点。</p>
+<p class="my-4 leading-7"><a href="#page-26-1" class="link_a7cea  link_a9ef4 inline-link_f855c">设置或移除断点</a> <a href="#page-26-2" class="link_a7cea  link_a9ef4 inline-link_f855c">调试脚本—命令</a> <a href="#page-27-2" class="link_a7cea  link_a9ef4 inline-link_f855c">纠正运行时错误</a></p>
+<h5 id="设置或移除断点" class="title_fb7eb">设置或移除断点<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设置或移除断点">#</a></h5>
+<p class="my-4 leading-7">设置或移除断点的能力在调试脚本时很有用。如果 Basic 引擎在运行脚本时遇到断点，它会暂停脚本的执行。指令指针标记脚本中的下一行。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将光标放在要添加断点的行上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 Basic 脚本编辑器工具栏上，点击 <strong class="font-semibold">切换断点</strong> 按钮。或者，在 Basic 编辑器中，右键点击并选择 <strong class="font-semibold">切换断点</strong> 弹出菜单项。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">在当前光标位置插入断点。断点标记出现在装订区域中。</p>
+<h5 id="调试脚本命令" class="title_fb7eb">调试脚本—命令<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#调试脚本命令">#</a></h5>
+<p class="my-4 leading-7">插入断点后，您可以开始调试脚本。</p>
+<p class="my-4 leading-7">使用以下命令调试脚本：</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">要执行此操作</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">在 Basic 脚本编辑器中执行这些步骤</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">运行脚本的单个行</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">点击工具栏上的单步跳过按钮。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在当前行执行子程序调用</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">点击工具栏上的单步进入按钮。（或在编辑区域右键点击并选择单步进入弹出菜单项。）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">从子程序返回到调用它的点</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">点击工具栏上的单步跳出按钮。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">运行脚本到给定点</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在编辑区域中，将光标放在要暂停的行上，然后右键点击并选择运行到光标处弹出菜单项</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">从当前点继续执行</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">点击工具栏上的运行按钮。（或右键点击并选择运行弹出菜单项。）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">移除所有断点</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在编辑区域中，右键点击并选择清除所有断点弹出菜单项。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="纠正运行时错误-1" class="title_fb7eb">纠正运行时错误<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#纠正运行时错误-1">#</a></h5>
+<p class="my-4 leading-7">如果发生运行时错误，脚本调试器会切换到逐步模式并在状态栏上显示详细消息。指令指针出现在产生错误的行上。修复错误后，您可以恢复运行脚本。</p>
+<h4 id="访问-basic-语言帮助" class="mt-8 leading-6 text-lg title_fb7eb">访问 Basic 语言帮助<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#访问-basic-语言帮助">#</a></h4>
+<p class="my-4 leading-7">在编写或运行脚本时，您可以访问提供 Basic 语言语句信息和示例脚本的帮助。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">在 Basic 脚本编辑器的编辑区域中选择或点击彩色项目，然后按 F1 键。</p>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">显示当前语句的帮助。</p>
+<h2 id="导航窗口" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">导航窗口<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#导航窗口">#</a></h2>
+<p class="my-4 leading-7">使用导航窗口显示工作区的不同视图，在其中可以筛选显示的项目并查看工作区中选择的对象的信息。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/5/_page_27_Figure_11.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 9. 导航窗口</strong></p>
+<p class="my-4 leading-7">导航窗口的内容取决于工作区中选择的内容，如下列主题所述。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">未选择任何内容</strong></p>
+<p class="my-4 leading-7">导航窗口中的视图被放大，并居中显示工作区中指针的位置；当指针移动时，导航窗口中的视图会跟随它。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">选择引脚或过孔</strong></p>
+<p class="my-4 leading-7">当您选择引脚或过孔时，导航窗口显示该对象的横截面（<a href="#page-28-0" class="link_a7cea  link_a9ef4 inline-link_f855c">图 10</a>）。显示的信息包括：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">焊盘尺寸</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">热连接</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">测试点状态</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">宽度</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">连接的走线层</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">钻孔尺寸</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">组件或过孔名称</p>
+</li>
+</ul>
+<p class="my-4 leading-7">基板的尺寸与其厚度成比例，厚度在 SailWind Layout 设置层对话框中设置。焊盘尺寸反映任何层上的非平面网络。对于 CAM 或分割/混合层上的平面网络，会出现反焊盘尺寸或热焊盘（显示热焊盘的内径）。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 10. 引脚/过孔横截面</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">选择组件</strong></p>
+<p class="my-4 leading-7">当选择组件时，导航窗口会放大所选组件（<a href="#page-29-0" class="link_a7cea  link_a9ef4 inline-link_f855c">图</a> 11）。导航窗口显示连接的走线和扇出以及组件。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/5/_page_29_Picture_1.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 11. 导航窗口中选择的组件</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">选择网络</strong></p>
+<p class="my-4 leading-7">如果选择网络对象，导航窗口会放大选定的网络类、网络、引脚对组、引脚对、电气网络、差分对或匹配长度组（<a href="#page-29-1" class="link_a7cea  link_a9ef4 inline-link_f855c">图 12</a>）。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/5/_page_29_Figure_5.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 12. 导航窗口中选择的网络</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">当布线长度控制对象，或选择和放置组件时</strong></p>
+<p class="my-4 leading-7">当交互式布线长度控制对象（例如匹配长度组和差分对、网络、电气网络或具有长度规则的引脚对）时，导航窗口会监视布线长度。它仅显示具有长度规则并受当前操作影响的那些网络、电气网络或匹配长度组。</p>
+<p class="my-4 leading-7">如果您选择或放置具有长度控制对象连接的组件，导航窗口会显示相同的信息。长度控制对象以不同颜色显示（<a href="#page-30-0" class="link_a7cea  link_a9ef4 inline-link_f855c">图 13</a>）。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/router/guide/5/_page_30_Picture_1.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 13. 导航窗口中的长度控制对象</strong></p>
+<p class="my-4 leading-7">有关更多信息，请参阅监视走线长度。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">导航窗口命令</strong></p>
+<p class="my-4 leading-7">使用下表中显示的导航窗口命令控制导航窗口中的显示。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">您也可以通过右键点击导航窗口选择这些命令。</p>
+</div></div>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">按钮</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">命令</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示组件。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示铜和灌铜。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示 2D 线。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示文本。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示走线和过孔。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示未布线。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示所有层。勾选时，显示所有电气层。未勾选时，显示快捷菜单中设置的层。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">或 F7</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在导航窗口和工作区之间交换视图。<!-- -->提示<!-- -->您也可以按 F7 键执行此操作。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">或 F8</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">锁定导航窗口中显示的视图。视图不会跟随工作区中的指针。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 11. 导航窗口命令</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">按钮</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">命令</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">提示<!-- -->您也可以按 F8 键执行此操作。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">F5</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">放大。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">F6</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">缩小。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 11. 导航窗口命令（续）</strong></p>
+<h2 id="电子表格窗口" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">电子表格窗口<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#电子表格窗口">#</a></h2>
+<p class="my-4 leading-7">使用电子表格窗口可查看和修改所有设计对象的属性。您可以自定义信息显示方式，还可将信息导出为 HTML 文件，便于通过网络与设计团队其他成员共享。</p>
+<p class="my-4 leading-7">默认情况下，电子表格窗口包含以下标签页：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">Selected Object</strong> 显示并修改设计对象信息</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">Errors</strong> 查看和组织错误，并定位设计中的错误。使用<strong class="font-semibold">Error</strong>标签页可查看错误类型、所在层、错误坐标及错误描述。这些字段仅用于显示，不可修改。也可使用<strong class="font-semibold">Error</strong>标签页忽略错误。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">Net Length Monitor</strong> 在交互式布线和路径编辑过程中动态显示网络对象的走线长度值。包含已分配离散长度的元件各连接引脚离散长度值的一半。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">Electrical Net Length Monitor</strong> 在交互式布线和路径编辑过程中动态显示电气网络对象的走线长度值。包含已分配离散长度的元件各连接引脚离散长度值的一半。</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><a href="#page-32-1" class="link_a7cea  link_a9ef4 inline-link_f855c">显示电子表格窗口</a> <a href="#page-33-0" class="link_a7cea  link_a9ef4 inline-link_f855c">电子表格</a> 窗口标签页内容 <a href="#page-34-0" class="link_a7cea  link_a9ef4 inline-link_f855c">修改设计数据</a> 与电子表格之间的 <a href="#page-35-0" class="link_a7cea  link_a9ef4 inline-link_f855c">复制粘贴</a> <a href="#page-36-0" class="link_a7cea  link_a9ef4 inline-link_f855c">同步</a> 标签页与项目资源管理器 <a href="#page-37-0" class="link_a7cea  link_a9ef4 inline-link_f855c">同步</a> 标签页与工作区选择 组织 <a href="#page-37-1" class="link_a7cea  link_a9ef4 inline-link_f855c">电子表格</a> 标签页 <a href="#page-38-0" class="link_a7cea  link_a9ef4 inline-link_f855c">电子表格窗口自定义</a> <a href="#page-39-0" class="link_a7cea  link_a9ef4 inline-link_f855c">电子表格排序</a> 打印 <a href="#page-39-1" class="link_a7cea  link_a9ef4 inline-link_f855c">电子表格</a> 标签页 <a href="#page-40-0" class="link_a7cea  link_a9ef4 inline-link_f855c">在电子表格窗口中查找项目</a> <a href="#page-42-0" class="link_a7cea  link_a9ef4 inline-link_f855c">筛选电子表格窗口</a> <a href="#page-43-0" class="link_a7cea  link_a9ef4 inline-link_f855c">导出电子表格</a> <a href="#page-44-0" class="link_a7cea  link_a9ef4 inline-link_f855c">使用电子表格方案（格式）</a></p>
+<h3 id="显示电子表格窗口" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">显示电子表格窗口<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#显示电子表格窗口">#</a></h3>
+<p class="my-4 leading-7">您可以显示或隐藏电子表格窗口。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">点击标准工具栏上的<strong class="font-semibold">Spreadsheet Window</strong>按钮可切换电子表格窗口的显示状态（或点击<strong class="font-semibold">View &gt; Spreadsheet Window</strong>菜单项）。</p>
+<h3 id="电子表格窗口标签页内容" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">电子表格窗口标签页内容<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#电子表格窗口标签页内容">#</a></h3>
+<p class="my-4 leading-7">您可以使用&quot;Display data for object type&quot;下拉列表指定所选<strong class="font-semibold">电子表格</strong>标签页显示的内容。</p>
+<p class="my-4 leading-7">可指定显示以下<em>任意一种</em>内容：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">当前在项目资源管理器中选择的对象</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">当前在工作区中选择的对象</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">以下<em>某一类</em>对象的所有实例：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">元件</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">封装</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">层</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">网络类</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">网络</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">电气网络</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">匹配长度引脚对组</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">匹配长度网络组</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">引脚对组</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">引脚对</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">差分对</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">禁止区域</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">过孔类型</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">铜箔</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">错误</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">跳线</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="修改设计数据" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">修改设计数据<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改设计数据">#</a></h3>
+<p class="my-4 leading-7">您可以在电子表格窗口中更改某些设计属性的值，如元件位置、走线宽度和层。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 您可以选择让 SailWind Router 通过点击<strong class="font-semibold">Auto update data</strong>按钮自动将更改保存到数据库。否则，每次需要保存更改时都必须点击<strong class="font-semibold">Update data and apply changes</strong>按钮。</p>
+</div></div>
+<p class="my-4 leading-7">如果复制一个单元格，可以将其内容粘贴到多个单元格中。这些单元格不必连续。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">粘贴一组单元格时，必须粘贴到比选定区域小的区域中。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在电子表格中，双击要更改值的单元格。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在单元格中输入新值，然后按 Enter 键。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果已点击<strong class="font-semibold">Auto update data</strong>按钮，更改将自动保存到数据库；否则，点击<strong class="font-semibold">Update data and apply changes</strong>按钮保存更改。</p>
+</li>
+</ol>
+<h3 id="与电子表格之间的复制粘贴" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">与电子表格之间的复制粘贴<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#与电子表格之间的复制粘贴">#</a></h3>
+<p class="my-4 leading-7">您可以将<strong class="font-semibold">电子表格</strong>标签页中选定的单元格以 HTML 表格格式复制到 Windows 剪贴板。然后按照标准 Windows 操作流程，将信息粘贴到 Microsoft Word 和Excel 等Windows 应用程序中。也可以粘贴到标签页的其他部分或其他标签页中。例如，您可以复制一个值（来自单个单元格）到剪贴板，然后选择要粘贴该值的一组单元格。</p>
+<p class="my-4 leading-7"><a href="#page-35-1" class="link_a7cea  link_a9ef4 inline-link_f855c">复制电子表格单元格</a> <a href="#page-35-2" class="link_a7cea  link_a9ef4 inline-link_f855c">在电子表格中粘贴单元格</a> <a href="#page-36-1" class="link_a7cea  link_a9ef4 inline-link_f855c">将单元格粘贴到其他 Windows 应用程序</a></p>
+<h4 id="复制电子表格单元格" class="mt-8 leading-6 text-lg title_fb7eb">复制电子表格单元格<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#复制电子表格单元格">#</a></h4>
+<p class="my-4 leading-7">您可以复制单元格并将其粘贴到电子表格的其他位置。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择要复制的单元格。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">粘贴一组单元格时，必须粘贴到比选定区域小的区域。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">Copy</strong>按钮。</p>
+</li>
+</ol>
+<p class="my-4 leading-7"><strong class="font-semibold">示例</strong></p>
+<p class="my-4 leading-7">您可能希望将单个值（例如元件的 Y位置）复制到多个单元格中。这样可一次性轻松更改多个元件的 Y位置。</p>
+<h4 id="在电子表格中粘贴单元格" class="mt-8 leading-6 text-lg title_fb7eb">在电子表格中粘贴单元格<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#在电子表格中粘贴单元格">#</a></h4>
+<p class="my-4 leading-7">您可以将复制的电子表格单元格粘贴到电子表格的其他单元格中。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">无法删除预定义方案。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">复制要粘贴的单元格。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击要粘贴单元格的目标标签页。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择要粘贴数据的单元格。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">您可以将单个单元格的内容粘贴到多个单元格中。这些单元格不必连续。</p>
+</div></div>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 粘贴一组单元格时，必须粘贴到比选定区域小的区域。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">Paste</strong>按钮。</p>
+</li>
+</ol>
+<h4 id="将单元格粘贴到其他-windows-应用程序" class="mt-8 leading-6 text-lg title_fb7eb">将单元格粘贴到其他 Windows 应用程序<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#将单元格粘贴到其他-windows-应用程序">#</a></h4>
+<p class="my-4 leading-7">您可以从电子表格单元格复制信息并粘贴到文本编辑器等其他应用程序中。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">打开要粘贴数据的应用程序，按照该应用程序的适当方式进行粘贴。</p>
+<h3 id="同步标签页与项目资源管理器" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">同步标签页与项目资源管理器<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#同步标签页与项目资源管理器">#</a></h3>
+<p class="my-4 leading-7">与项目资源管理器同步的标签页会显示当前在项目资源管理器中选择的对象。</p>
+<p class="my-4 leading-7">同步操作如下：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果在项目资源管理器中选择特定对象类型（如 Pin Pair），则电子表格窗口会显示该类型的所有对象。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果选择某些特定对象（如特定网络），则仅显示这些对象。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果同时选择多种类型的对象，则不显示任何对象。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">在 Display data for object type 下拉列表中，选择&quot;Sync with Project Explorer&quot;。（可能需要关闭 Output 窗口和/或 Navigation 窗口才能看到下拉列表。）</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">要暂停同步，从 Display data for object type 列表中选择&quot;Keep current objects&quot;。要恢复同步，再次点击&quot;Sync with Project Explorer&quot;。</p>
+</div></div>
+<h3 id="同步标签页与工作区选择" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">同步标签页与工作区选择<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#同步标签页与工作区选择">#</a></h3>
+<p class="my-4 leading-7">当您将电子表格窗口的选择标签页与工作区同步时，选择标签页会显示工作区中选择的对象。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">如果同时选择多种类型的对象，则不显示任何对象。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">在 Display data for object type 下拉列表中，选择&quot;Sync with selection&quot;。（可能需要关闭 Output 窗口和/或 Navigation 窗口才能看到下拉列表。）</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">要暂停同步，从 Display data for object type 下拉列表中选择&quot;Keep current objects&quot;。要恢复同步，再次点击&quot;Sync with Project Explorer&quot;。</p>
+</div></div>
+<h3 id="组织电子表格标签页" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">组织电子表格标签页<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#组织电子表格标签页">#</a></h3>
+<p class="my-4 leading-7">使用 Column Organizer 对话框选择所选标签页中显示的列并更改列的显示顺序。您还可以定义非滚动区域。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在电子表格窗口中，点击<strong class="font-semibold">Organize columns</strong>按钮打开 Column Organizer 对话框。（可能需要关闭 Output 窗口和/或 Navigation 窗口才能看到该按钮。）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要向标签页添加列，在 Available columns 框中选择要包含的列，点击右箭头按钮（<strong class="font-semibold">&gt;&gt;</strong>）将其移至 Displayed columns 框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要从标签页移除列，在 Displayed columns 框中选择要移除的列，点击左箭头按钮（<strong class="font-semibold">&lt;&lt;</strong>）将其移至 Available Columns 框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要更改电子表格中列的顺序，在 Displayed columns 框中选择要移动的列，点击向下箭头按钮将列向右移动，或点击向上箭头按钮将列向左移动。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要定义非滚动区域，选中&quot;Lock position of columns when scrolling&quot;复选框。在&quot;Number of columns locked (from left)&quot;框中输入要定义的列数。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">要取消非滚动属性，清除&quot;Lock position of columns when scrolling&quot;复选框。</p>
+</div></div>
+<h3 id="电子表格窗口自定义" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">电子表格窗口自定义<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#电子表格窗口自定义">#</a></h3>
+<p class="my-4 leading-7">您可以通过添加、重命名和移除标签页来更改电子表格窗口的外观。还可以更改列宽和对齐文本。</p>
+<p class="my-4 leading-7">向 <a href="#page-38-1" class="link_a7cea  link_a9ef4 inline-link_f855c">电子表格</a> 窗口添加标签页 重命名 <a href="#page-38-2" class="link_a7cea  link_a9ef4 inline-link_f855c">电子表格</a> 窗口中的标签页 从 <a href="#page-38-3" class="link_a7cea  link_a9ef4 inline-link_f855c">电子表格</a> 窗口移除标签页 <a href="#page-38-4" class="link_a7cea  link_a9ef4 inline-link_f855c">更改列宽</a> <a href="#page-39-2" class="link_a7cea  link_a9ef4 inline-link_f855c">对齐</a> 文本</p>
+<h4 id="向电子表格窗口添加标签页" class="mt-8 leading-6 text-lg title_fb7eb">向电子表格窗口添加标签页<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#向电子表格窗口添加标签页">#</a></h4>
+<p class="my-4 leading-7">您可以通过添加标签页在电子表格中显示更多内容。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">右键点击电子表格上的任意标签页，点击<strong class="font-semibold">Add Tab</strong>弹出菜单项。新标签页将出现在现有标签页的右侧。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">双击添加的标签页标题，输入新名称。</p>
+</li>
+</ol>
+<h4 id="重命名电子表格窗口中的标签页" class="mt-8 leading-6 text-lg title_fb7eb">重命名电子表格窗口中的标签页<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#重命名电子表格窗口中的标签页">#</a></h4>
+<p class="my-4 leading-7">您可以更改电子表格中任何标签页的名称。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">右键点击要重命名的标签页，点击<strong class="font-semibold">Rename Tab</strong>弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">输入新名称。</p>
+</li>
+</ol>
+<h4 id="从电子表格窗口移除标签页" class="mt-8 leading-6 text-lg title_fb7eb">从电子表格窗口移除标签页<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#从电子表格窗口移除标签页">#</a></h4>
+<p class="my-4 leading-7">您可以删除电子表格中的任何标签页。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">右键点击要移除的标签页，点击<strong class="font-semibold">Delete Tab</strong>弹出菜单项。</p>
+<h4 id="更改列宽" class="mt-8 leading-6 text-lg title_fb7eb">更改列宽<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#更改列宽">#</a></h4>
+<p class="my-4 leading-7">您可以使列宽适应文本内容。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择要调整大小的列。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">AutoFit to Contents</strong>按钮。（可能需要关闭 Output 窗口和/或 Navigation 窗口才能看到该按钮。）</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">也可以双击列的右侧分隔线自动调整大小。</p>
+</div></div>
+<h4 id="对齐文本" class="mt-8 leading-6 text-lg title_fb7eb">对齐文本<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#对齐文本">#</a></h4>
+<p class="my-4 leading-7">您可以将文本对齐到列的左侧、居中或右侧。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择要对齐的列。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击所需对齐类型的对应按钮（&quot;Align left&quot;、&quot;Center&quot;或&quot;Align right&quot;）。（可能需要关闭 Output 窗口和/或 Navigation 窗口才能看到对齐按钮。）</p>
+</li>
+</ol>
+<h3 id="电子表格排序" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">电子表格排序<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#电子表格排序">#</a></h3>
+<p class="my-4 leading-7">对电子表格进行排序可快速找到最重要的信息。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">Define sort order</strong>按钮。（可能需要关闭 Output 窗口和/或 Navigation 窗口才能看到该按钮。）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">按照要创建的排序顺序双击每个列标题，从最重要的列开始。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">列标题中会显示一个数字，表示该列在排序顺序中的优先级，电子表格会重新排序以包含该列。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">再次双击列可反转该列的排序顺序。</p>
+</div></div>
+<h3 id="打印电子表格标签页" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">打印电子表格标签页<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#打印电子表格标签页">#</a></h3>
+<p class="my-4 leading-7">如果需要，可以打印电子表格中任何标签页的内容。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击要打印的标签页。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">Print</strong>按钮，使用当前打印机设置打印标签页。</p>
+</li>
+</ol>
+<h3 id="在电子表格窗口中查找项目" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">在电子表格窗口中查找项目<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#在电子表格窗口中查找项目">#</a></h3>
+<p class="my-4 leading-7">您可以通过在查找对话框中指定搜索条件，在 Selection 标签页中查找项目。可以基于单一条件搜索，也可以创建包含多个条件的更复杂搜索。</p>
+<p class="my-4 leading-7"><a href="#page-40-1" class="link_a7cea  link_a9ef4 inline-link_f855c">创建简单搜索</a> <a href="#page-40-2" class="link_a7cea  link_a9ef4 inline-link_f855c">创建多条件搜索</a></p>
+<h4 id="创建简单搜索" class="mt-8 leading-6 text-lg title_fb7eb">创建简单搜索<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建简单搜索">#</a></h4>
+<p class="my-4 leading-7">您可以通过定义单一条件创建简单搜索表达式。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在电子表格窗口中，点击<strong class="font-semibold">Find object</strong>按钮。这将打开查找对话框。（可能需要关闭 Output 窗口和/或 Navigation 窗口才能看到<strong class="font-semibold">Find object</strong>按钮。）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果查找对话框中显示<strong class="font-semibold">Less</strong>按钮，点击它可折叠对话框的下部。仅保留简单搜索项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用 Property、Condition 和Value 控件，指定要搜索的属性以及测试该属性的条件和值。</p>
+</li>
+</ol>
+<p class="my-4 leading-7"><strong class="font-semibold">示例：</strong> 如果要查找 Routed Length 属性小于 1.1 的网络，从 Property 列表选择 Routed Length，从 Condition 列表选择&quot;Is less than&quot;，在 Value 框中输入&quot;1.1&quot;。</p>
+<ol start="4" class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果要从电子表格底部开始搜索，选中 Backward Search 复选框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">Find</strong>查找第一个对象并关闭对话框，或点击<strong class="font-semibold">Find Next</strong>连续搜索多个对象。</p>
+</li>
+</ol>
+<h4 id="创建多条件搜索" class="mt-8 leading-6 text-lg title_fb7eb">创建多条件搜索<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建多条件搜索">#</a></h4>
+<p class="my-4 leading-7">您可以创建包含多个条件的布尔搜索表达式。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在电子表格窗口中，点击<strong class="font-semibold">查找对象</strong>按钮。这将打开查找对话框。（您可能需要关闭输出窗口和/或导航窗口才能看到该按钮。）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在查找对话框中，如果<strong class="font-semibold">更多</strong>按钮可用，点击它以展开对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">新建</strong>按钮将第一个筛选条件添加到筛选表达式。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用属性、条件和值控件，指定要搜索的属性以及用于测试该属性的条件和值。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">示例：</strong> 如果要查找布线长度属性小于 1.1 的网络，从属性列表中选择 Routed Length，从条件列表中选择&quot;小于&quot;，并在值框中输入&quot;1.1&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">向搜索表达式添加另一个条件，步骤如下：</p>
+</li>
+</ol>
+<p class="my-4 leading-7">a. 点击<strong class="font-semibold">新建</strong>按钮。</p>
+<p class="my-4 leading-7">b. 选择一个布尔运算符。</p>
+<p class="my-4 leading-7">c. 使用属性、条件和值控件，指定要筛选的属性以及用于测试该属性的条件和值。</p>
+<ol start="6" class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果有其他条件要添加，返回步骤 5；否则继续步骤 7。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果要从电子表格底部开始搜索，选中向后搜索复选框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">查找</strong>查找第一个对象并关闭对话框，或点击<strong class="font-semibold">查找下一个</strong>连续查找多个对象。</p>
+</li>
+</ol>
+<h3 id="筛选电子表格窗口" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">筛选电子表格窗口<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#筛选电子表格窗口">#</a></h3>
+<p class="my-4 leading-7">您可以通过在编辑筛选器对话框中创建筛选表达式，然后点击<strong class="font-semibold">查看筛选数据</strong>按钮应用筛选器，来筛选选择选项卡中显示的信息。您可以创建包含一个条件的简单筛选器，或创建包含多个条件的更复杂筛选器。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">创建筛选器后，它将成为当前活动方案的一部分。</p>
+</div></div>
+<p class="my-4 leading-7">更多信息，请参阅&quot;编辑筛选器对话框&quot;。</p>
+<p class="my-4 leading-7"><a href="#page-42-1" class="link_a7cea  link_a9ef4 inline-link_f855c">创建简单筛选器</a> <a href="#page-42-2" class="link_a7cea  link_a9ef4 inline-link_f855c">创建多条件筛选器</a></p>
+<h4 id="创建简单筛选器" class="mt-8 leading-6 text-lg title_fb7eb">创建简单筛选器<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建简单筛选器">#</a></h4>
+<p class="my-4 leading-7">创建包含单个条件的简单筛选表达式。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在电子表格窗口中，点击<strong class="font-semibold">定义筛选设置</strong>按钮。这将打开&quot;编辑筛选器&quot;对话框。（您可能需要关闭输出窗口和/或导航窗口才能看到该按钮。）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在编辑筛选器对话框中，如果<strong class="font-semibold">更少</strong>按钮可用，点击它以折叠对话框的下部。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用属性、条件和值控件，指定要筛选的属性以及用于测试该属性的条件和值。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">示例：</strong> 如果要显示布线长度属性小于 1.1 的网络，从属性列表中选择 Routed Length，从条件列表中选择&quot;小于&quot;，并在值框中输入&quot;1.1&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>保存筛选器。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">筛选器将作为当前活动方案的一部分保存。要应用新筛选器，点击查看筛选数据按钮。</p>
+<h4 id="创建多条件筛选器" class="mt-8 leading-6 text-lg title_fb7eb">创建多条件筛选器<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建多条件筛选器">#</a></h4>
+<p class="my-4 leading-7">创建包含多个条件的布尔筛选表达式。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在电子表格窗口中，点击<strong class="font-semibold">定义筛选设置</strong>按钮。这将打开&quot;编辑筛选器&quot;对话框。（您可能需要关闭输出窗口和/或导航窗口才能看到该按钮。）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在编辑筛选器对话框中，如果<strong class="font-semibold">更多</strong>按钮可用，点击它以展开对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">新建</strong>按钮将第一个搜索条件添加到搜索表达式。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用属性、条件和值控件，指定要筛选的属性以及用于测试该属性的条件和值。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">示例：</strong> 如果要显示布线长度属性小于 1.1 的网络，从属性列表中选择 Routed Length，从条件列表中选择&quot;小于&quot;，并在值框中输入&quot;1.1&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">向筛选表达式添加另一个条件，步骤如下：</p>
+</li>
+</ol>
+<p class="my-4 leading-7">a. 点击<strong class="font-semibold">新建</strong>按钮。</p>
+<p class="my-4 leading-7">b. 选择一个布尔运算符。</p>
+<p class="my-4 leading-7">c. 使用属性、条件和值控件，指定要筛选的属性以及用于测试该属性的条件和值。</p>
+<ol start="6" class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果有其他条件要添加，返回步骤 5；否则继续步骤 7。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>保存筛选器。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">筛选器将作为当前活动方案的一部分保存。要应用新筛选器，点击<strong class="font-semibold">查看筛选数据</strong>按钮。</p>
+<h3 id="导出电子表格" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">导出电子表格<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#导出电子表格">#</a></h3>
+<p class="my-4 leading-7">您可以将数据保存为 HTML 格式，以便在 Web 浏览器中查看或导入到其他 Microsoft 应用程序（如 Excel）中。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择要保存的行或列。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">如果未选择电子表格的一部分，则将保存整个电子表格。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">导出为 HTML 文件</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">指定要保存文件的文件名和位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">保存</strong>。</p>
+</li>
+</ol>
+<h3 id="使用电子表格方案格式" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">使用电子表格方案（格式）<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用电子表格方案格式">#</a></h3>
+<p class="my-4 leading-7"><em>方案</em>保存您在电子表格窗口中自定义选项卡的方式。您可以将任意数量的方案与每种对象类型关联。</p>
+<p class="my-4 leading-7">程序包含每种对象类型的预定义方案。您不能删除预定义方案。</p>
+<p class="my-4 leading-7"><a href="#page-44-1" class="link_a7cea  link_a9ef4 inline-link_f855c">创建新方案</a> <a href="#page-44-2" class="link_a7cea  link_a9ef4 inline-link_f855c">删除方案</a> <a href="#page-45-0" class="link_a7cea  link_a9ef4 inline-link_f855c">更改为</a>不同方案</p>
+<h4 id="创建新方案" class="mt-8 leading-6 text-lg title_fb7eb">创建新方案<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建新方案">#</a></h4>
+<p class="my-4 leading-7">创建新的电子表格方案以自定义电子表格工作区的外观。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从&quot;显示对象类型数据&quot;下拉列表中，选择要为其创建方案的对象类型。您可能需要展开电子表格窗口才能看到该列表。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用自定义对话框自定义您的工作区；例如，您的工作区、工具栏、菜单和快捷键。</p>
+<p class="my-4 leading-7">更多信息，请参阅：&quot;自定义屏幕外观&quot;第 565 页</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">创建新方案</strong>按钮。SailWind Router 创建新方案并将其保存为默认名称 Scheme <em>N</em>（其中 N是数字）。如果不想使用默认名称，请在方案下拉列表中键入新方案的名称。</p>
+</li>
+</ol>
+<h4 id="删除方案" class="mt-8 leading-6 text-lg title_fb7eb">删除方案<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#删除方案">#</a></h4>
+<p class="my-4 leading-7">您可以删除方案，前提是它不是预定义方案。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">您不能删除预定义方案。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从方案下拉列表中，选择要删除的方案。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击工具栏的<strong class="font-semibold">删除当前方案</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">出现提示时，点击<strong class="font-semibold">是</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">所选方案被删除，当前方案变为该对象类型的预定义方案。</p>
+<h4 id="更改为不同方案" class="mt-8 leading-6 text-lg title_fb7eb">更改为不同方案<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#更改为不同方案">#</a></h4>
+<p class="my-4 leading-7">您可以从电子表格窗口中选择另一个电子表格方案。</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在打开方案列表中，选择要更改的方案。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要返回到上一个方案，点击<strong class="font-semibold">显示上一个方案</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要前进到列表中的下一个方案，点击<strong class="font-semibold">显示下一个方案</strong>按钮。</p>
+</li>
+</ol><!--/$--></div><div class="rspress-doc-footer"><footer class="mt-8"><div class="xs:flex pb-5 px-2 justify-end items-center"><div class="flex text-sm text-text-2 leading-6 sm:leading-8 font-medium"><p>最近更新时间<!-- -->: <span>2025/7/16 07:37:10</span></p></div></div><div class="flex flex-col"></div><div class="flex flex-col sm:flex-row sm:justify-around gap-4 pt-6"><div class="prev_c92d1 flex flex-col"><a href="/sailwind_docs/router/guide/4_zh.html" class="link_a7cea pager-link_e0d2d"><span class="desc_dcc01">上一页</span><span class="title_a3acb">第 4 章 文件操作</span></a></div><div class="next_c11be flex flex-col"><a href="/sailwind_docs/router/guide/6_zh.html" class="link_a7cea pager-link_e0d2d next_ad355"><span class="desc_dcc01">下一页</span><span class="title_a3acb">第 6 章 无模命令与快捷键</span></a></div></div></footer></div></div><div class="aside-container_bc5fa"><div class="flex flex-col"><div id="aside-container" class="relative text-sm font-medium"><div class="leading-7 block text-sm font-semibold pl-3">本页目录</div><nav class="mt-1"><ul class="relative"><li><a href="#项目资源管理器" title="项目资源管理器" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">项目资源管理器</span></a></li><li><a href="#项目资源管理器对象" title="项目资源管理器对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">项目资源管理器对象</span></a></li><li><a href="#项目资源管理器操作" title="项目资源管理器操作" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">项目资源管理器操作</span></a></li><li><a href="#拆分项目资源管理器视图" title="拆分项目资源管理器视图" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">拆分项目资源管理器视图</span></a></li><li><a href="#在项目资源管理器中排序对象" title="在项目资源管理器中排序对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">在项目资源管理器中排序对象</span></a></li><li><a href="#在次级组中创建新对象" title="在次级组中创建新对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">在次级组中创建新对象</span></a></li><li><a href="#从次级组中移除对象" title="从次级组中移除对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">从次级组中移除对象</span></a></li><li><a href="#重命名次级组元素" title="重命名次级组元素" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">重命名次级组元素</span></a></li><li><a href="#输出窗口" title="输出窗口" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">输出窗口</span></a></li><li><a href="#状态选项卡" title="状态选项卡" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">状态选项卡</span></a></li><li><a href="#宏选项卡" title="宏选项卡" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">宏选项卡</span></a></li><li><a href="#创建宏" title="创建宏" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">创建宏</span></a></li><li><a href="#管理宏" title="管理宏" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">管理宏</span></a></li><li><a href="#播放宏" title="播放宏" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">播放宏</span></a></li><li><a href="#停止播放宏" title="停止播放宏" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">停止播放宏</span></a></li><li><a href="#调试宏脚本" title="调试宏脚本" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">调试宏脚本</span></a></li><li><a href="#获取宏语言帮助" title="获取宏语言帮助" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">获取宏语言帮助</span></a></li><li><a href="#基本选项卡" title="基本选项卡" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">基本选项卡</span></a></li><li><a href="#管理脚本" title="管理脚本" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">管理脚本</span></a></li><li><a href="#创建脚本" title="创建脚本" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">创建脚本</span></a></li><li><a href="#运行脚本" title="运行脚本" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">运行脚本</span></a></li><li><a href="#调试脚本" title="调试脚本" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">调试脚本</span></a></li><li><a href="#访问-basic-语言帮助" title="访问 Basic 语言帮助" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">访问 Basic 语言帮助</span></a></li><li><a href="#导航窗口" title="导航窗口" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">导航窗口</span></a></li><li><a href="#电子表格窗口" title="电子表格窗口" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">电子表格窗口</span></a></li><li><a href="#显示电子表格窗口" title="显示电子表格窗口" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">显示电子表格窗口</span></a></li><li><a href="#电子表格窗口标签页内容" title="电子表格窗口标签页内容" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">电子表格窗口标签页内容</span></a></li><li><a href="#修改设计数据" title="修改设计数据" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">修改设计数据</span></a></li><li><a href="#与电子表格之间的复制粘贴" title="与电子表格之间的复制粘贴" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">与电子表格之间的复制粘贴</span></a></li><li><a href="#复制电子表格单元格" title="复制电子表格单元格" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">复制电子表格单元格</span></a></li><li><a href="#在电子表格中粘贴单元格" title="在电子表格中粘贴单元格" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">在电子表格中粘贴单元格</span></a></li><li><a href="#将单元格粘贴到其他-windows-应用程序" title="将单元格粘贴到其他 Windows 应用程序" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">将单元格粘贴到其他 Windows 应用程序</span></a></li><li><a href="#同步标签页与项目资源管理器" title="同步标签页与项目资源管理器" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">同步标签页与项目资源管理器</span></a></li><li><a href="#同步标签页与工作区选择" title="同步标签页与工作区选择" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">同步标签页与工作区选择</span></a></li><li><a href="#组织电子表格标签页" title="组织电子表格标签页" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">组织电子表格标签页</span></a></li><li><a href="#电子表格窗口自定义" title="电子表格窗口自定义" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">电子表格窗口自定义</span></a></li><li><a href="#向电子表格窗口添加标签页" title="向电子表格窗口添加标签页" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">向电子表格窗口添加标签页</span></a></li><li><a href="#重命名电子表格窗口中的标签页" title="重命名电子表格窗口中的标签页" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">重命名电子表格窗口中的标签页</span></a></li><li><a href="#从电子表格窗口移除标签页" title="从电子表格窗口移除标签页" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">从电子表格窗口移除标签页</span></a></li><li><a href="#更改列宽" title="更改列宽" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">更改列宽</span></a></li><li><a href="#对齐文本" title="对齐文本" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">对齐文本</span></a></li><li><a href="#电子表格排序" title="电子表格排序" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">电子表格排序</span></a></li><li><a href="#打印电子表格标签页" title="打印电子表格标签页" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">打印电子表格标签页</span></a></li><li><a href="#在电子表格窗口中查找项目" title="在电子表格窗口中查找项目" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">在电子表格窗口中查找项目</span></a></li><li><a href="#创建简单搜索" title="创建简单搜索" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">创建简单搜索</span></a></li><li><a href="#创建多条件搜索" title="创建多条件搜索" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">创建多条件搜索</span></a></li><li><a href="#筛选电子表格窗口" title="筛选电子表格窗口" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">筛选电子表格窗口</span></a></li><li><a href="#创建简单筛选器" title="创建简单筛选器" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">创建简单筛选器</span></a></li><li><a href="#创建多条件筛选器" title="创建多条件筛选器" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">创建多条件筛选器</span></a></li><li><a href="#导出电子表格" title="导出电子表格" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">导出电子表格</span></a></li><li><a href="#使用电子表格方案格式" title="使用电子表格方案（格式）" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">使用电子表格方案（格式）</span></a></li><li><a href="#创建新方案" title="创建新方案" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">创建新方案</span></a></li><li><a href="#删除方案" title="删除方案" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">删除方案</span></a></li><li><a href="#更改为不同方案" title="更改为不同方案" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">更改为不同方案</span></a></li></ul></nav></div></div></div></div></div></div></section></div>
+    <div id="search-container"></div>
+  </body>
+</html>

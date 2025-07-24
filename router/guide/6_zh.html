@@ -1,0 +1,1845 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Rspress v1.45.0">
+    <title data-rh="true">第 6 章 无模命令与快捷键 - SailWind</title><meta data-rh="true" name="description" content="SailWind"/>
+  <script>{;const saved = localStorage.getItem('rspress-theme-appearance');const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;const isDark = !saved || saved === 'auto' ? preferDark : saved === 'dark';document.documentElement.classList.toggle('dark', isDark);document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';}</script><link rel="icon" href="/sailwind_docs/favicon.ico"><script defer src="/sailwind_docs/static/js/styles.f5ec16c7.js"></script><script defer src="/sailwind_docs/static/js/lib-react.36f9b428.js"></script><script defer src="/sailwind_docs/static/js/lib-router.971f4280.js"></script><script defer src="/sailwind_docs/static/js/2886.6c8a4c3c.js"></script><script defer src="/sailwind_docs/static/js/index.ef746291.js"></script><link href="/sailwind_docs/static/css/styles.6524924d.css" rel="stylesheet"></head>
+
+  <body >
+    <div id="root"><div class="navContainer_d18b1 rspress-nav px-6  sticky_ddfa7"><div class="container_e4235 flex justify-between items-center h-full"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div><div class="flex flex-1 justify-end items-center"><div class="rightNav_a2fea"><div class="flex sm:flex-1 items-center sm:pl-4 sm:pr-2"><div class="rspress-nav-search-button navSearchButton_df1fb"><button><svg width="18" height="18" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg><p class="searchWord_af2c1">搜索</p><div style="opacity:0"><span></span><span>K</span></div></button></div><div class="mobileNavSearchButton_d85a9"><svg width="24" height="24" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg></div></div><div class="rspress-nav-menu menu h-14"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div><div class="flex-center flex-row"><div class="mx-2"><div class="md:mr-2 rspress-nav-appearance"><div class="p-1 border border-solid border-gray-300 text-gray-400  cursor-pointer rounded-md hover:border-gray-600 hover:text-gray-600 dark:hover:border-gray-200 dark:hover:text-gray-200 transition-all duration-300 w-7 h-7"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="dark:hidden" width="18" height="18" fill="currentColor"><path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6m0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4M12 4c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M12 24c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M5.6 6.6c-.3 0-.5-.1-.7-.3L3.5 4.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.1.2-.4.3-.7.3M19.8 20.8c-.3 0-.5-.1-.7-.3l-1.4-1.4c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.2.2-.5.3-.7.3M3 13H1c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M23 13h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M4.2 20.8c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.4.3-.7.3M18.4 6.6c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.5.3-.7.3"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="hidden dark:block" width="18" height="18" fill="currentColor"><path d="M12.1 22h-.9c-5.5-.5-9.5-5.4-9-10.9.4-4.8 4.2-8.6 9-9 .4 0 .8.2 1 .5s.2.8-.1 1.1c-2 2.7-1.4 6.4 1.3 8.4 2.1 1.6 5 1.6 7.1 0 .3-.2.7-.3 1.1-.1.3.2.5.6.5 1-.2 2.7-1.5 5.1-3.6 6.8-1.9 1.4-4.1 2.2-6.4 2.2M9.3 4.4c-2.9 1-5 3.6-5.2 6.8-.4 4.4 2.8 8.3 7.2 8.7 2.1.2 4.2-.4 5.8-1.8 1.1-.9 1.9-2.1 2.4-3.4-2.5.9-5.3.5-7.5-1.1-2.8-2.2-3.9-5.9-2.7-9.2"></path></svg></div></div></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div><div class="mobileNavMenu_e7045"><div class="navScreen_ec30c  rspress-nav-screen" id="navScreen"><div class="container_c935d"><div class="navMenu_b887b"><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div></div><div class="flex-center flex-col gap-2"><div class="mt-2 navAppearance_bf893 flex justify-center"></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div></div><button aria-label="mobile hamburger" class=" rspress-mobile-hamburger navHamburger_ac64c text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><circle cx="8" cy="16" r="2" fill="currentColor"></circle><circle cx="16" cy="16" r="2" fill="currentColor"></circle><circle cx="24" cy="16" r="2" fill="currentColor"></circle></svg></button></div></div></div></div><section><div class="docLayout_af141 pt-0"><aside class="sidebar_dd719 rspress-sidebar "><div class="navTitleMask_fb17c"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div></div><div class="rspress-scrollbar sidebarContent_da296"><nav class="pb-2"><a href="/sailwind_docs/router/index.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:14px;margin-left:0;border-radius:0 var(--rp-radius) var(--rp-radius) 0;padding-left:24px;font-weight:bold"><span>章节预览</span></div></a><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">指南(Guide)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 1 章 自动布线快速入门</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 2 章 交互式布线快速入门</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 3 章 设计准备</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 4 章 文件操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 5 章 界面元素</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItemActive_de63c mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 6 章 无模命令与快捷键</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 7 章 视图</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 8 章 撤销、重做、重复与删除</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 9 章 搜索与选择</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 10 章 电气网络</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 11 章 设置规则</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 12 章 启用设计规则检查</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 13 章 元件放置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 14 章 虚拟引脚</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 15 章 覆铜平面与铜形状</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/16_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 16 章 布线设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/17_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 17 章 自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/18_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 18 章 选择性自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/19_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 19 章 手动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/20_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 20 章 手动编辑</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/21_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 21 章 设计验证</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/22_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 22 章 报告</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/23_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 23 章 授权许可</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/24_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 24 章 SailWind 布线器 GUI 参考</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/25_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 25 章 软件启动选项</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/guide/26_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 26 章 自定义界面</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">教程(Tutorial)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>学习用户界面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>约束条件分配</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>设计准备</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>元件放置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>交互式布线创建走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用交互式布线创建高速走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用 SailWind Router 进行自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/tutorial/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>设计规则检查</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">快速参考(Quick Reference)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/qr/modless.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>无模命令</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/router/qr/shortcut.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>键盘快捷键</span></div></a></div></div></div></section></nav></div></aside><div class="flex-1 relative min-w-0"><div class="rspress-sidebar-menu-container "><div class="rspress-sidebar-menu"><button type="button" class="flex-center mr-auto"><div class="text-md mr-2"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"></path></svg></div><span class="text-sm">Menu</span></button><button type="button" class="flex-center ml-auto"><span class="text-sm">本页目录</span><div class="text-md mr-2" style="transform:rotate(0deg);transition:transform 0.2s ease-out;margin-top:2px"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></button><div class="rspress-local-toc-container "><ul><li><a href="#无模命令" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">无模命令</span></a></li><li><a href="#快捷键" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">快捷键</span></a></li><li><a href="#显示可用快捷键" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">显示可用快捷键</span></a></li><li><a href="#使用快捷键启动命令" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">使用快捷键启动命令</span></a></li><li><a href="#使用带参数的快捷键启动命令" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">使用带参数的快捷键启动命令</span></a></li><li><a href="#使用快捷键启动自定义系统命令" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">使用快捷键启动自定义系统命令</span></a></li><li><a href="#启动快捷键" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">启动快捷键</span></a></li><li><a href="#使用命令参数启动快捷键" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">使用命令参数启动快捷键</span></a></li><li><a href="#功能键" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">功能键</span></a></li><li><a href="#小键盘键" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">小键盘键</span></a></li><li><a href="#键盘快捷键" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">键盘快捷键</span></a></li></ul></div></div></div><div class="content_ff766 rspress-doc-container flex"><div class="flex-1 overflow-x-auto"><div class="rspress-doc"><!--$--><h1 id="第-6-章-无模命令与快捷键" class="rspress-doc-title text-3xl mb-10 leading-10 tracking-tight title_fb7eb">第 6 章 无模命令与快捷键<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#第-6-章-无模命令与快捷键">#</a></h1>
+<p class="my-4 leading-7">为提高设计效率，SailWind Router 提供了丰富的无模命令和快捷键，可快速执行常见设计任务。</p>
+<h2 id="无模命令" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">无模命令<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#无模命令">#</a></h2>
+<p class="my-4 leading-7">您可以通过输入命令代码字母、输入新值并点击 Enter 键，随时设置或更改某些设置和功能。这称为无模命令。</p>
+<p class="my-4 leading-7">无模命令通常适用于设计过程中频繁更改的值。例如，使用无模命令 G，通过按 g键、输入新设置并按 Enter 键来更改网格设置。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> (X,Y) = 坐标；(s) = 文本；(n) = 数字</p>
+</div></div>
+<p class="my-4 leading-7">下表列出了无模命令和快捷键中使用的约定。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">约定</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"><code>&lt; &gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">变量，或您可以输入的内容</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">{ }</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">可选命令参数</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">click</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">点击鼠标左键</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">middle-click</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">点击鼠标中键或滚轮</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">right-click</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">点击鼠标右键</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">wheel back</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">向后滚动滚轮（滚轮顶部向远离手掌方向旋转）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">wheel forward</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">向前滚动滚轮（滚轮顶部向手掌方向旋转）</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 12. 无模命令与快捷键表约定</strong></p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 在无模命令和快捷键中，空格具有特殊意义。例如，SS W1 和 S SW1 含义不同。SS W1 表示搜索并选择 W1，而 S SW1 表示搜索 SW1。</p>
+</div></div>
+<p class="my-4 leading-7">以下表格列出了所有无模命令：</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">命令</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设置设计单位为英寸</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">UI</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在选项对话框 &gt;<code> 全局类别 &gt;</code> 常规子类别中将设计单位设置为英寸。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设置设计单位为密尔</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">UM</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在选项对话框 &gt;<code> 全局类别 &gt;</code> 常规子类别中将设计单位设置为密尔（千分之一英寸）。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设置设计单位为毫米（公制）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">UMM</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在选项对话框 &gt;<code> 全局类别 &gt;</code> 常规子类别中将设计单位设置为公制（毫米）。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设置设计单位为微米</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">UUM</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在选项对话框 &gt;<code> 全局类别 &gt;</code> 常规子类别中将设计单位设置为微米（公制）。</td>
+</tr>
+</tbody>
+</table>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">命令</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">全局网格设置（显示除外）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">G <code>&lt;x&gt;</code> {<code>&lt;y&gt;</code>}</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设置第 491 页上的所有网格（布线、测试点、过孔、扇出、元件），除显示网格外。第二个参数可选。如果输入一个参数，则对<code>&lt;x&gt;</code>和<code>&lt;y&gt;</code>应用相同的值。例如：G 25、G 8.3 或 G 16-2/3、G 5 25。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">元件网格设置</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">GC <code>&lt;x&gt;</code> {<code>&lt;y&gt;</code>}</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设置第 491 页上的元件网格。第二个参数可选。如果输入一个参数，则对<code>&lt;x&gt;</code>和<code>&lt;y&gt;</code>应用相同的值。例如：GC 8-1/3、GC 25 25 或 GC 100。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示（点）网格设置</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">GD <code>&lt;x&gt;</code> {<code>&lt;y&gt;</code>}</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设置第 491 页上的显示（点）网格。第二个参数可选。如果输入一个参数，则对<code>&lt;x&gt;</code>和<code>&lt;y&gt;</code>应用相同的值。例如：GD 8-1/3、GD 25 25 或 GD 100。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">扇出网格设置</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">GF <code>&lt;x&gt;</code> {<code>&lt;y&gt;</code>}</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设置第 491 页上的扇出网格。第二个参数可选。如果输入一个参数，则对<code>&lt;x&gt;</code>和<code>&lt;y&gt;</code>应用相同的值。例如：GF 8-1/3、GF 25 25 或 GF 100。</td>
+</tr>
+</tbody>
+</table>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">命令</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">布线网格设置</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">GR <code>&lt;x&gt;</code> {<code>&lt;y&gt;</code>}</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设置第 491 页上的布线网格。第二个参数可选。如果输入一个参数，则对<code>&lt;x&gt;</code>和<code>&lt;y&gt;</code>应用相同的值。例如：GR 8-1/3、GR 25 25 或 GR 100。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网格捕捉开/关（仅布线网格）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">GS</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换第 491 页上是否捕捉到布线网格。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">测试点网格设置</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">GT <code>&lt;x&gt;</code> {<code>&lt;y&gt;</code>}</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设置第 491 页上的测试点网格。第二个参数可选。如果输入一个参数，则对<code>&lt;x&gt;</code>和<code>&lt;y&gt;</code>应用相同的值。例如：GT 8-1/3、GT 25 25 或 GT 100。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">过孔网格设置</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">GV <code>&lt;x&gt;</code> {<code>&lt;y&gt;</code>}</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设置第 491 页上的过孔网格。第二个参数可选。如果输入一个参数，则对<code>&lt;x&gt;</code>和<code>&lt;y&gt;</code>应用相同的值。例如：GV 8-1/3、GV 25 25 或 GV 100。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网格统计（硬）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">GGH</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">创建硬网格统计报告。报告显示在输出窗口中。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">要求：必须为布线网格选择&quot;捕捉对象到网格&quot;复选框，才能在报告中看到偏离网格的统计信息。使用 GS 无模命令可快速切换此设置。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">更多信息，请参见第 165 页&quot;网格规则&quot;中的网格统计报告。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网格统计（中）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">GGM</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">创建中等网格统计报告。报告显示在输出窗口中。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">要求：必须为布线网格选择&quot;捕捉对象到网格&quot;复选框，才能在报告中看到偏离网格的统计信息。使用 GS 无模命令可快速切换此设置。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">更多信息，请参见第 165 页&quot;网格规则&quot;中的网格统计报告</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网格统计（软）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">GGS</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">创建软网格统计报告。报告显示在输出窗口中。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">要求：必须为布线网格选择&quot;捕捉对象到网格&quot;复选框，才能在报告中看到偏离网格的统计信息。使用 GS 无模命令可快速切换此设置。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">更多信息，请参见第 165 页&quot;网格规则&quot;中的网格统计报告</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 15. 线/走线角度设置无模命令</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">命令</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">任意角度</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">AA</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">任意角度模式。在选项对话框 &gt;<code> 布线类别 &gt;</code> 常规子类别中将布线角度设置为&quot;任意角度&quot;（无角度限制）。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">对角线角度</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">AD</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">对角线角度模式。在选项对话框 &gt;<code> 布线类别 &gt;</code> 常规子类别中将布线角度设置为&quot;对角线&quot;（仅 45 度角）。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">正交角度</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">AO</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">正交角度模式。在选项对话框 &gt;<code> 布线类别 &gt;</code> 常规子类别中将布线角度设置为&quot;正交&quot;（仅 90 度角）。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 16. 线/走线宽度设置无模命令</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">命令</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">减少显示宽度</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">R <code>&lt;n&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设置最小显示线宽。宽度小于此值的走线不会以其真实宽度显示，而是以单像素宽度显示。此功能简化了微小走线段的选择。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将当前宽度更改为<code>&lt;n&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">W <code>&lt;n&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将当前走线或线宽更改为您输入的数字<code>&lt;n&gt;</code>，例如 W 5。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 17. DRC 设置无模命令</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">命令</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换 DRC 模式开/关</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DRC</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换在线 DRC 模式。设置 DRC 工具栏上的在线 DRC 按钮开/关。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">暂停</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SUS</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">暂停。您可以暂停（暂停）元件的移动或旋转，以释放光标检查电子表格窗口错误选项卡上的 DRC 问题。按 Esc 返回移动或旋转模式。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 18. 搜索无模命令</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">命令</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">绝对搜索</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">S <code>&lt;x&gt;</code> <code>&lt;y&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">绝对搜索。将指针移动到指定的 X和 Y坐标，例如 S 1000 1000。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">搜索（支持正则表达式?*[]）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">S <code>&lt;s&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">搜索字符串。将指针移动到命名对象，例如 S U3.10。您可以使用? *和[]正则表达式模式运算符替换对象名称中的字母数字字符</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">运算符。例如，参见第 560 页&quot;快捷键中的表达式&quot;。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">相对搜索</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SR <code>&lt;x&gt;</code> <code>&lt;y&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">相对搜索。按指定的 X和 Y偏移量移动指针，例如 SR -100 -50。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">相对 X搜索</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SRX <code>&lt;x&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在当前 Y位置相对 X搜索。按指定的 X偏移量移动指针，例如 SRX 300。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">相对 Y搜索</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SRY <code>&lt;y&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在当前 X位置相对 Y搜索。按指定的 Y偏移量移动指针，例如 SRY 400。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">搜索并选择</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SS <code>&lt;s&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">按参考标志符搜索并选择元件。将指针移动到命名对象，然后选择它，例如 SS U10。您还可以通过输入多个条目来搜索和选择多个元件，例如 SS U10 U5 R6。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">您可以使用? *和[]正则表达式模式运算符替换对象名称中的字母数字字符。例如，参见第 560 页&quot;快捷键中的表达式&quot;。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">提示<!-- -->在无模命令中，空格可能很重要。例如，SS W1 和 S SW1 含义不同。SS W1 告诉 SailWind Layout 搜索并选择 W1，而 S SW1 告诉它搜索 SW1。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">绝对移动到<code>&lt;n&gt;</code>，当前 Y</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SX <code>&lt;x&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在当前 Y位置绝对 X搜索。将指针移动到指定的 X坐标和当前 Y坐标，例如 SX 300。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">绝对移动到<code>&lt;n&gt;</code>，当前 X</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SY <code>&lt;y&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在当前 X位置绝对 Y搜索。将指针移动到指定的 Y坐标和当前 X坐标，例如 SY 400。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 19. 对象可见性无模命令</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">命令</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">区分受保护对象</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DP</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">通过以边框模式显示受保护对象来区分它们。命令切换此模式开和关。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">区分受保护对象开/关</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">I</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">通过以边框模式显示受保护对象来区分它们。命令切换此模式开和关。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">提示<!-- -->此命令不显示快捷键对话框，但更改状态显示在状态栏中。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">边框模式</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">O</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在仅显示对象边框或显示填充对象之间切换。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">提示<!-- -->此命令不显示快捷键对话框，但更改状态显示在状态栏中。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引脚编号显示开/关</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PN</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换引脚编号显示开/关。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">提示<!-- -->此命令切换选项对话框 &gt;` 颜色类别中的&quot;引脚编号&quot;列复选框。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">透明模式开/关</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">T</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换透明模式开或关。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">取消布线显示开/关</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">U</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换取消布线显示开或关。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">按网络启用颜色</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Y</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">根据&quot;查看网络对话框&quot;第 538 页中的设置，切换是否将自定义颜色应用于网络焊盘、引脚、过孔和（可选）走线。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 20. 网络名称可见性无模命令</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">命令</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换网络名称可见性</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">NN</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">根据 NNP、NNT 和NNV 命令的单独设置，切换引脚、走线和/或过孔上网络名称的可见性。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">提示：</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• • 此命令切换选项对话框 &gt; 颜色类别中的&quot;网络名称&quot;复选框。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• • 当使用 NN 命令关闭网络名称显示时，无论 NNP、NNT 和NNV 设置如何，都不会显示任何网络名称。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• • 当使用 NN 命令打开网络名称显示时，网络名称将根据 NNP、NNT 和NNV 设置显示或不显示。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• • 当&quot;网络名称&quot;列复选框启用时，网络名称可见性仍受限于</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">每层的颜色块和&quot;在走线、过孔、引脚上显示网络名称&quot;复选框。另请参见 NNP、NNT 和NNV 无模命令。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换引脚上网络名称显示</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">NNP</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换引脚上网络名称显示开/关。<!-- -->提示<!-- -->此命令切换选项对话框 &gt; 颜色类别中的&quot;引脚上网络名称&quot;复选框。<!-- -->限制：<!-- -->网络名称的显示还取决于&quot;网络名称列（可见性）复选框和选项对话框 &gt; 颜色类别中该层上非背景颜色块的存在。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换走线上网络名称显示</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">NNT</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换走线上网络名称显示开/关。<!-- -->提示<!-- -->此命令切换选项对话框 &gt; 颜色类别中的&quot;走线上网络名称&quot;复选框。<!-- -->限制：<!-- -->网络名称的显示还取决于&quot;网络名称列（可见性）复选框和选项对话框 &gt;` 颜色类别中该层上非背景颜色块的存在。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换过孔上网络名称显示</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">NNV</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换过孔上网络名称显示开/关。<!-- -->提示<!-- -->此命令切换选项对话框 &gt; 颜色类别中的&quot;过孔上网络名称&quot;复选框。<!-- -->限制：<!-- -->网络名称的显示还取决于&quot;网络名称列（可见性）复选框和选项对话框 &gt;` 颜色类别中该层上非背景颜色块的存在。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 21. 层可见性无模命令（快速层视图）</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">命令</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">快速层视图</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Z</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">没有命令参数时，Z 显示初始层视图。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">添加或从当前显示的层集中移除层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Z {+ <code>&lt;layer&gt;</code>}{-<code>&lt;layer&gt;</code>}</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">从当前显示的层集中添加或移除层。例如：<!-- -->• Z +O 使外层可见，但不改变其他层的可见性。<!-- -->• Z -O 使外层不可见，但不改变其他层的可见性。<!-- -->•Z -2 +O 使第 2 层不可见并使外层可见。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">仅查看您输入的范围层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Z <code>&lt;n-m&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">允许您将显示限制在指定的层范围内。例如，输入&quot;Z 2-4&quot;显示第 2、3 和 4 层。不要用方括号括起范围。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">仅查看您输入的层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Z <code>&lt;layer n=&quot;&quot;&gt;</code> {<code>&lt;layer m&gt;</code> …}</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">允许您将显示限制在仅您输入的层。例如，输入&quot;Z 2 4 d&quot;显示第 2、4 层和文档层。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">查看所有层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Z *</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示设计中的所有层。<!-- -->限制：<!-- -->Z 仅支持星号*正则表达式。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">查看第 0 层上的项目</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Z 0</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">仅查看在所有层上可见的项目。放置在第 0 层上的项目在所有层上都可见。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">查看活动层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Z A</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示当前活动层。如果活动层更改，对显示没有影响。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">仅查看底层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Z B</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将显示限制为仅显示底层。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">仅查看当前层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Z C <code>&lt;-C&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">更改显示以仅显示当前层。如果活动层更改，仅显示新的当前层。与 Z A 不同，它将您置于连续模式，其中除活动层外所有层都隐藏。当您更改层时，新层变为可见，所有其他层隐藏。使用 Z -C 退出此模式。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">查看所有文档层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Z D</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示设计中的所有文档层。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">查看所有电气层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Z E</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示设计中的所有电气层。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">提示<!-- -->您还可以显示单个电气层（使用 Z C 使当前层可见），然后使用 Alt+滚轮向后或 Alt+滚轮向前将显示切换到相邻电气层，跳过任何非电气层。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">查看所有内层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Z I</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">查看所有内层。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">仅查看外层（顶层和底层）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Z O</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">仅查看外层，即顶层和底层。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">仅查看顶层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Z T</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">仅查看顶层。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">查看未布线连接（在所有层上可见）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Z U</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换查看在所有层上可见的未布线连接。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">恢复快速层视图配置</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">ZR <code>&lt;name&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">恢复快速层视图配置。例如，ZR L23 恢复存储为 L23 的配置。<!-- -->提示<!-- -->输入 ZR 并按 Enter 查看此会话中 ZS 创建的所有层配置列表。<!-- -->另请参见 ZS。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将当前显示的层集保存为快速层视图配置</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">ZS <code>&lt;name&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将当前显示的层集保存为快速层视图配置。例如，ZS L23 将当前配置存储为 L23。快速层视图配置在退出程序前可用。<!-- -->另请参见 ZR。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 22. 层无模命令</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">命令</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将当前层更改为<code>&lt;n&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">L <code>&lt;n&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将当前层设置为您输入的数字或名称，例如(L 2)或(L top)。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">配对层命令</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PL <code>&lt;n1&gt;</code> <code>&lt;n2&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">配对层命令，其中<code>&lt;n1&gt;</code>和<code>&lt;n2&gt;</code>可以是层号或名称，例如，PL 1 2 或 PL top bottom。设置选项对话框 &gt;<code> 布线类别 &gt;</code> 常规子类别中的层对设置。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 23. 过孔无模命令</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">命令</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换末端过孔模式</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">E</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在以下三种设置之间循环切换末端过孔模式：</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 末端无过孔（走线在空间中结束）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 末端过孔（走线以过孔结束）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 末端测试点（走线以测试点过孔结束</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">提示<!-- -->此命令不显示快捷键对话框，但更改状态显示在状态栏中。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">选择过孔类型</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">V <code>&lt;name&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">过孔类型设置为输入的名称。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">自动过孔选择</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">VA</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">过孔类型设置为自动过孔选择。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">过孔引导切换</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">VG</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换过孔引导开或关。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">使用部分过孔</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">VP</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">过孔类型设置为仅部分过孔。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">使用通孔过孔</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">VT <code>&lt;name&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">过孔类型设置为仅通孔过孔。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 24. 高亮无模命令</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">命令</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">特定网络高亮开/关（支持正则表达式?*[]）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">H { <code>&lt;net&gt;</code>}</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网络高亮开或关。如果指定网络，可以使用? *和[]正则表达式模式运算符替换网络名称中的字母数字字符。例如，参见第 560 页&quot;快捷键中的表达式&quot;。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">高亮带规则的元件焊盘</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HCR</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">高亮带当前高亮对象显示第 441 页设置的元件焊盘，表示元件有元件规则。使用元件规则时会显示其他指示器。更多信息，请参见第 308 页&quot;使用元件规则创建走线&quot;。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">高亮暗淡颜色模式开/关</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HD</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">高亮暗淡。设置高亮对象显示第 441 页设置为通过暗淡其他对象颜色来区分高亮对象。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">高亮灰度模式开/关</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HG</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">高亮灰度。设置高亮对象显示第 441 页设置为通过灰度其他对象来区分高亮对象。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">高亮高亮模式开/关</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HH</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">高亮交叉线。设置高亮对象显示第 441 页设置为通过交叉线高亮对象来区分高亮对象。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">高亮开/关（当前对象）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HO</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换高亮对象的高亮开或关。关闭高亮对象显示第 441 页设置或使用最后使用的设置打开它。例如，当您使用编辑 &gt;` 高亮命令或布线网络时，对象会获得高亮。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 25. 布线器设置无模命令</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">命令</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">推挤背后走线模式</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PB</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在交互式布线期间为当前走线临时切换推挤背后走线开或关。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">点击后布线模式</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PC</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在交互式布线期间为当前走线临时启用点击后布线模式。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">指针布线模式</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PP</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在交互式布线期间为当前走线临时启用指针布线模式。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切线模式</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PR</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在交互式布线期间为当前走线临时启用布线器切线模式。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">无拉线器</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PX</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在交互式布线期间为当前走线临时禁用布线。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 26. 铺铜边框无模命令</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">命令</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">铺铜边框开/关</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PO</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">铺铜边框开/关。在铺铜边框和阴影边框之间切换覆铜平面的显示模式。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 27. 常规模式设置无模命令</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">命令</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">完成时平滑走线开/关</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SC</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换完成时平滑走线开或关。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">方向引导</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DG</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">当您移动走线段时切换方向引导开或关。方向引导是从指针辐射出的线，指示您可以继续的方向。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">引导表示第 450 页布线选项中的布线角度。</td>
+</tr>
+</tbody>
+</table>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">命令</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">快速测量</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Q</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">使用动态标尺快速测量。将测量线附加到指针并显示 dx、dy 和斜边信息，取决于指针移动。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将指针放在起点，然后输入&quot;q&quot;无模命令。拖动指针在测量的起点和终点之间创建一条线。当捕捉到网格开启时，捕捉到设计网格。当网格捕捉关闭时，测量无网格。动态报告当前设计单位中的 delta x、delta y 和 delta x,y。您可以使用此命令测量极坐标网格之间的精确欧几里得距离。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">有关使用 Q快捷键的更多信息，请参见第 211 页&quot;测量对象之间的距离&quot;。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">提示<!-- -->此命令不显示快捷键对话框，但状态栏提供使用提示。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 28. 测量无模命令</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">命令</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">顺序移动</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">MS</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">顺序移动。选择预定的一组元件后，使用顺序移动将元件依次放在指针上以放置在设计中。更多信息，请参见第 207 页&quot;顺序放置元件&quot;。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设置圆弧半径</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">RAD</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">圆弧半径设置为<code>&lt;radius&gt;</code>值，例如，RAD 45。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 30. 基本媒体向导/日志测试无模命令</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">命令</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">基本日志测试</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BLT</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">基本日志测试。打开日志测试对话框。BLT 查找并运行 BMW 会话回放媒体。<!-- -->另请参见第 576 页&quot;崩溃检测&quot;</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开基本媒体向导</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BMW</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开基本媒体向导对话框。<!-- -->• BMW 为有问题的 SailWind Logic、SailWind Layout 或SailWind Router 会话记录会话回放媒体。它可以基于您上次 SailWind 会话或当前会话创建回放媒体。此回放媒体可以使用 BLT 无模命令回放。<!-- -->• BMW 也是命令行选项。<!-- -->另请参见第 576 页&quot;崩溃检测&quot;</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">开始 BMW 会话记录</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BMW ON</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">开始 BMW 会话记录。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">停止 BMW 会话记录</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BMW OFF</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">停止 BMW 会话记录。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="快捷键" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">快捷键<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#快捷键">#</a></h2>
+<p class="my-4 leading-7">使用快捷键可以直接从键盘或鼠标启动命令，无需通过菜单导航。您可以使用快捷键（快捷方式）来启动命令、更改系统设置或运行宏。您也可以创建新的快捷键。</p>
+<p class="my-4 leading-7">快捷键具有上下文敏感性和模式敏感性。例如，在普通模式下按 Ctrl+A 会选中所有可选设计对象；而在交互式布线模式下，按 Ctrl+A 则会添加圆弧。</p>
+<p class="my-4 leading-7">当关联命令无法启动时，快捷键将不可用。例如，当没有加载设计时，SaveAs 命令的快捷键将不可用。</p>
+<h3 id="显示可用快捷键" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">显示可用快捷键<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#显示可用快捷键">#</a></h3>
+<p class="my-4 leading-7">SailWind Router 提供了多种方法来查看可用的快捷键选项。</p>
+<p class="my-4 leading-7">下表显示了如何显示可用快捷键：</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">来源</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">包含内容</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">显示方法</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在线帮助</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">仅标准快捷键</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">参见&quot;快捷键&quot;章节（第 106 页）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HTML 报告</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">所有快捷键，按通用和模式特定分组排序</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">参见&quot;列出可用快捷键&quot;章节（第 560 页）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">快捷键对话框</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">当前模式可用的标准和自定义快捷键</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">从标准工具栏或视图菜单打开快捷键对话框</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 31. 如何显示快捷键</strong></p>
+<h3 id="使用快捷键启动命令" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">使用快捷键启动命令<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用快捷键启动命令">#</a></h3>
+<p class="my-4 leading-7">您可以通过在工作区点击并输入快捷键序列及其可能带有的参数来启动命令。在输入过程中，命令可能立即启动，或者会打开快捷键对话框帮助您检查命令参数的准确性或从相似快捷键中选择。</p>
+<p class="my-4 leading-7">您也可以使用鼠标指针事件（如点击和滚轮旋转）来启动命令。但不能创建同时包含快捷键和鼠标指针事件的组合快捷键。</p>
+<p class="my-4 leading-7">程序区分长快捷键和短快捷键。长快捷键由两个或多个按键组成，第一个按键可能带有 Ctrl、Alt 或 Shift 修饰键组合。短快捷键由一个按键或鼠标指针事件组成，可能带有 Ctrl、Alt 或 Shift 修饰键组合：</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">响应</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">原因</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">立即启动命令。不打开任何与快捷键相关的对话框。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">快捷键具有以下所有特征：<!-- -->• 无命令参数<!-- -->• 短快捷键<!-- -->• 与其他快捷键不相似</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开快捷键对话框，您可以查看正在输入的按键序列、快捷键信息和语法（如果可用）。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">快捷键具有以下任一特征：<!-- -->• 一个或多个命令参数<!-- -->• 长快捷键<!-- -->• 与其他快捷键相似</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开命令参数对话框，提示您输入所需的命令参数。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在您提供所需的命令参数之前，快捷键无法启动命令。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 32. 对快捷键的响应</strong></p>
+<h3 id="使用带参数的快捷键启动命令" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">使用带参数的快捷键启动命令<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用带参数的快捷键启动命令">#</a></h3>
+<p class="my-4 leading-7">您可以使用快捷键启动 Change Layer 命令，然后交互式提供所需的层号参数。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">打开一个设计。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">输入 L（小写），这是 Change Layer 命令的标准快捷键。</p>
+<p class="my-4 leading-7">命令参数对话框将打开，文本框中显示&quot;Set Layer&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文本框中输入层号并按 Enter 键更改层。</p>
+</li>
+</ol>
+<h3 id="使用快捷键启动自定义系统命令" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">使用快捷键启动自定义系统命令<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用快捷键启动自定义系统命令">#</a></h3>
+<p class="my-4 leading-7">您可以使用自定义快捷键启动 Change Layer 命令并提供层号。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">为 Change Layer 命令&quot;创建自定义快捷键&quot;（第 558 页），其中包含命令参数值。本例假设您已创建名为 L3 的快捷键，其中包含 3 作为命令参数值。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">打开一个设计。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">输入按键序列 L3，这是您在步骤 1 中创建的自定义快捷键。</p>
+<p class="my-4 leading-7">快捷键对话框将打开，文本框中显示 L3。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">按 Enter 键将层更改为 3。</p>
+</li>
+</ol>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 更多信息请参阅&quot;创建新快捷键&quot;（第 558 页）和&quot;列出可用快捷键&quot;（第 560 页）。</p>
+</div></div>
+<h3 id="启动快捷键" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">启动快捷键<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#启动快捷键">#</a></h3>
+<p class="my-4 leading-7">快捷键对话框会在您输入时显示快捷键按键序列，让您在启动快捷键前检查其准确性。如果有可用信息，快捷键信息和语法会显示在文本框下方。可选参数用括号括起。相似快捷键显示在&quot;可用命令和宏&quot;框中；点击<strong class="font-semibold">更多</strong>显示该框。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">开始输入快捷键；快捷键对话框会自动打开。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">执行以下操作之一：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文本框中输入快捷键。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从&quot;可用命令和宏&quot;框中选择快捷键。要重新排序&quot;可用命令和宏&quot;框中的内容，点击列标题。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如有需要，在文本框中输入以空格分隔的命令参数。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 使用通配符 * 代替任意数量字符，使用通配符 ? 代替单个字符。例如，要高亮显示名称以字母 A 开头的所有网络，输入 H A*。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">按 Enter 键。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">要立即启动不带命令参数的多字符快捷键，请在自定义对话框（<strong class="font-semibold">工具 &gt; 自定义</strong>菜单项，<strong class="font-semibold">选项</strong>选项卡）中清除&quot;执行长快捷键前等待<code>&lt;Enter&gt;</code>&quot;复选框。</p>
+</div></div>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 要使用自定义对话框定义新快捷键，在快捷键对话框的大多数区域右键点击，选择<strong class="font-semibold">自定义</strong>，然后点击<strong class="font-semibold">键盘和鼠标</strong>选项卡。</p>
+</div></div>
+</li>
+</ol>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">如果通过输入快捷键打开快捷键对话框，则无法删除文本框中的初始字符。要显示所有可用快捷键，请通过点击主工具栏上的<strong class="font-semibold">快捷键对话框</strong>按钮打开快捷键对话框。</p>
+<h3 id="使用命令参数启动快捷键" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">使用命令参数启动快捷键<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用命令参数启动快捷键">#</a></h3>
+<p class="my-4 leading-7">命令参数对话框会在您输入时显示命令参数按键序列，让您在启动快捷键前检查其准确性。当您输入快捷键但尚未提供所需的命令参数时，命令参数对话框会自动打开。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">在文本框中输入以空格分隔的参数并按 Enter 键。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 如果有可用信息，快捷键信息和语法会显示在文本框下方。可选参数用括号括起。</p>
+</div></div>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">使用通配符 * 代替任意数量字符，使用通配符 ? 代替单个字符。</p>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">示例</strong></p>
+<p class="my-4 leading-7">要高亮显示名称以字母 A 开头的所有网络，输入按键序列 H A*。</p>
+<h2 id="功能键" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">功能键<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#功能键">#</a></h2>
+<p class="my-4 leading-7">功能键允许您使用标准键盘功能键来启动特定操作。</p>
+<p class="my-4 leading-7">下表定义了功能键命令分配：</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">功能键</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">F1</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开帮助（上下文相关）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">F2</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">未分配</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">F3</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">交互式布线（启用动态功能）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">F4</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">布线时切换层对。<!-- -->注意：<!-- -->F4 不再重复上一个命令。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">F5</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">放大（导航窗口）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">F6</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">缩小（导航窗口）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">F7</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">交换工作区和导航窗口内容</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">F8</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">锁定视图（导航窗口）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">F9</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">自动布线，开始</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">F10</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">自动布线，继续</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">F11</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">自动布线，暂停</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">F12</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">自动布线，停止</td>
+</tr>
+</tbody>
+</table>
+<h2 id="小键盘键" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">小键盘键<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#小键盘键">#</a></h2>
+<p class="my-4 leading-7">您可以使用键盘上的数字小键盘键来启动特定命令。</p>
+<p class="my-4 leading-7">下表定义了小键盘键命令分配。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">小键盘键</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">（数字键）NumLock 开启时</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">小键盘 (0)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">以指针位置为中心调整视图</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">小键盘 (1)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">重绘</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">小键盘 (2)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">工作区向下平移一个增量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">小键盘 (3)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">以指针为中心缩小</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">小键盘 (4)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">工作区向左平移一个增量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">小键盘 (5)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">从中心开始缩放（仅 Num Lock 开启时）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">小键盘 (6)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">工作区向右平移一个增量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">小键盘 (7)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">缩放至整个电路板</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">小键盘 (8)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">工作区向上平移一个增量</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">小键盘 (9)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">以指针位置为中心放大</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">小键盘 (.)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">从角落开始缩放（仅缩放模式）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="键盘快捷键" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">键盘快捷键<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#键盘快捷键">#</a></h2>
+<p class="my-4 leading-7">为实现无菜单操作，可使用快捷键启动命令。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">您也可以&quot;创建或更改快捷键分配&quot;（第 558 页）。</p>
+</div></div>
+<p class="my-4 leading-7">下表列出了所有键盘快捷键命令。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">快捷键</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">缩放至电路板</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HOME</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">缩放至电路板</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + B</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">缩放至范围</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + Alt + E</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">区域缩放进/出</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">MMB（拖动）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">从角落开始缩放</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Shift + MMB（拖动）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">缩放至选中对象</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + Z</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">缩放模式开/关</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + W</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">以指针位置为中心调整视图</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">MMB</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">以指针位置为中心调整视图</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">INSERT</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">动态平移</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + MMB（拖动）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">工作区向下平移（一行）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">滚轮后退</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">工作区向上平移（一行）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">滚轮前进</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">工作区向右平移（一行）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Shift + 滚轮后退</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">工作区向左平移（一行）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Shift + 滚轮前进</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">工作区向下平移（一个像素）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + Alt + 滚轮后退</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">工作区向上平移（一个像素）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + Alt + 滚轮前进</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">工作区向右平移（一个像素）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + Shift + 滚轮后退</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">工作区向左平移（一个像素）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + Shift + 滚轮前进</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 36. 选择的键盘快捷键</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">快捷键</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">选择</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LMB 点击</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">选择对象。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">选择</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"><code>&lt;spacebar&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">选择对象。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">选择所有电路板对象</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + A</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">根据选择过滤器选择设计中的所有对象。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">区域选择</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LMB（开始拖动）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">开始区域选择。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">区域完成</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LMB（结束拖动）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">完成区域选择。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">取消区域选择</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LMB（取消拖动）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">取消区域选择。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">循环选择</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"><code>&lt;tab&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在选择半径内循环选择相邻对象。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换选择</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + LMB 点击</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换对象选择。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换区域选择</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + LMB（拖动）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换区域选择。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 37. 文件操作的键盘快捷键</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">快捷键</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">创建新设计文件（空白）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + N</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">创建新的空白设计文件。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开文件（设计）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + O</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开设计文件。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打印/绘图</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + P</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打印/绘图</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">保存（快速保存）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + S</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">保存设计文件</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 38. 打开菜单和对话框的键盘快捷键</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">快捷键</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开文件菜单</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + F</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开文件菜单。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开编辑菜单</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + E</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开编辑菜单。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开视图菜单</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + V</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开视图菜单。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开设置菜单</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + S</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开设置菜单。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开工具菜单</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + T</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开工具菜单。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开帮助菜单</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + H</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开帮助菜单。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开快捷菜单</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">RMB</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开快捷菜单。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">属性（当前对象）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LMB 双击</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示当前选中对象的属性。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">属性（选中对象）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt+ <code>&lt;enter&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">为选中对象打开属性对话框，如未选中对象则为设计打开属性对话框。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">属性（选中对象）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + Q</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">为选中对象打开属性对话框，如未选中对象则为设计打开属性对话框。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">选项</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + <code>&lt;enter&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开选项对话框。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开选项对话框的颜色类别</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl-Alt + C</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开选项对话框的颜色类别。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开选项对话框（最后<!-- -->查看的）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl-Alt + D</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开上次查看的选项对话框类别。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开选项对话框（最后<!-- -->查看的）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl-Alt + G</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开上次查看的选项对话框类别。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开查看网络对话框</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl-Alt + N</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开查看网络对话框。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 39. 放置操作的键盘快捷键</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">快捷键</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">移动选中对象(s)</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + E</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">移动选中对象。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">旋转</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl-Shift + R</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">旋转元件（90 度）</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">旋转（移动过程中）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"><code>&lt;tab&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">旋转元件（元件移动模式中）。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">旋转元件（90 度）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + R</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">旋转选中元件（90 度）。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">旋转元件</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + I</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">旋转元件。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">翻转到另一面（选中）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + F</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将对象翻转到电路板另一面。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">翻转到另一面（元件）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Shift + F</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将元件翻转到电路板另一面。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 40. 布线操作的键盘快捷键</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">快捷键</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">添加拐角</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LMB 点击</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">添加拐角（交互式布线）。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">添加拐角</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"><code>&lt;spacebar&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">添加拐角（交互式布线）。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">添加半径圆弧</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + R</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">添加半径圆弧（交互式布线）。使用 RAD 快捷键设置半径。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">反转圆弧</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + I</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">反转圆弧（交互式布线）。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">添加过孔（交互式布线）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Shift + LMB 点击</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">添加过孔（交互式布线）。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">添加圆弧（交互式布线）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + A</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">添加圆弧（交互式布线）。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">回退</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"><code>&lt;backspace&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">移除走线的最后一个拐角或 2D 线的最后一个拐角（多边形或路径绘制模式中）。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">拉伸</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Shift + S</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">拉伸（交互式布线模式）。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">完成</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LMB 点击</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">完成（交互式布线）当指针靠近有效完成点时。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">完成</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LMB 双击</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">完成（交互式布线）当指针靠近有效完成点时。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">结束（布线）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + LMB 点击</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">结束（交互式布线）。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">长度最小化</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + M</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">运行长度最小化。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">重置长度监视器为 0</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Crtl + <code>&lt;pgdn&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">重置长度监视器为零（交互式布线）。</td>
+</tr>
+</tbody>
+</table>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">快捷键</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">长度监视器开/关</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + L</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换长度监视器开/关</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">估计长度切换（引脚<!-- -->对 vs 网络）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Shift + E</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在长度监视器中切换显示估计长度（Et）<!-- -->在引脚对长度和网络长度之间。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将走线移动到当前层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + MMB 点击</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将走线移动到当前层。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">布线时添加过孔</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt-Shift + LMB<!-- -->点击</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">布线时添加过孔。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">循环过孔模式（差分对）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + <code>&lt;tab&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">循环过孔对模式，差分对布线。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">结束布线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl-Alt + LMB<!-- -->点击</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">结束布线。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">上一个基准点</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Shift + <code>&lt;tab&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">上一个基准点。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">下一个基准点</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + Alt + <code>&lt;tab&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">下一个基准点。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">蛇形走线开始<!-- -->（交互式布线模式）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Shift + A</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">开始蛇形走线，交互式布线模式。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">结束蛇形走线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LMB 双击</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">结束蛇形走线，交互式布线。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">动态重新连接开/关</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Shift + N</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换动态重新连接开或关。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">动态模式开/关</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Shift + D</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换动态模式开或关，交互式<!-- -->布线。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网格捕捉开/关（仅布线<!-- -->网格）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + G</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换捕捉到布线网格开或关。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">保护带开/关</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Shift + G</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换保护带开或关。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换规则</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Shift + R</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换规则。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换走线（单独<!-- -->布线模式）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"><code>&lt;tab&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换走线，单独布线模式。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示备用走线长度<!-- -->（差分对模式中的走线长度监视器）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"><code>&lt;tab&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示差分对中备用走线的长度。<!-- -->将此与走线长度监视器一起使用以检查<!-- -->差分对每个成员的长度。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">绕开障碍物分割对（差分<!-- -->对模式）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Shift + X</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">绕开障碍物分割对，布线差分<!-- -->对。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">单独布线（差分对<!-- -->模式）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Shift + Z</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">单独布线，布线差分对。</td>
+</tr>
+</tbody>
+</table>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">快捷键</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将当前层更改为<!-- -->列表中的上一层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + <code>&lt;up arrow&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将当前层更改为列表中的上一层。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将当前层更改为列表中的下一层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + <code>&lt;down&lt;br&gt;Arrow&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将当前层更改为列表中的下一层。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将当前层更改为<!-- -->列表中的上一层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + 滚轮后退</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将当前层更改为列表中的上一层。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将当前层更改为列表中的下一层</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + 滚轮前进</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将当前层更改为列表中的上一层。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 41. 层列表导航的键盘快捷键</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">表 42. 对象保护的键盘快捷键</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">快捷键</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">保护对象</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Shift + P</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">保护对象。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">取消保护对象</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Shift + U</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">取消保护对象</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 43. DRC 操作的键盘快捷键</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">快捷键</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DRC 设置对话框</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + D</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开 DRC 设置对话框。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">解释最后一个错误</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + X</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">解释最后一个 DRC 错误（元件移动<!-- -->模式）。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 44. 编辑的键盘快捷键</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">快捷键</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">剪切</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + X</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">剪切</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">复制</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + C</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">复制。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">粘贴</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + V</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">粘贴。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">重绘</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"><code>&lt;end&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">重绘。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">重绘</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + D</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">重绘。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">删除</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"><code>&lt;delete&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">取消布线选中对象。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">取消</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"><code>&lt;escape&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">取消命令。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">重做</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + Y</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">重做。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">撤销</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + Z</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">撤销。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">高亮对象</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + H</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">高亮对象。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">取消高亮</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + U</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">取消当前对象的高亮。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换高亮</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + LMB 点击</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">高亮开或关。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">区域高亮</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + LMB（拖动）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">高亮显示封闭区域内的对象。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 45. 查看的键盘快捷键</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">快捷键</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">下一个视图</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + N</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示下一个视图。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">上一个视图</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Alt + P</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示上一个视图。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">上一个视图</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Ctrl + Alt + P</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示上一个视图。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 46. 鼠标按钮替代</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">快捷键</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">激活右键弹出<!-- -->菜单（右键）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">M</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">激活当前模式的快捷菜单。与右键点击相同。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">左键点击</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"><code>&lt;spacebar&gt;</code></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在当前指针位置激活左键点击（添加<!-- -->拐角、选择项目、完成等）。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 47. 其他键盘快捷键命令</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">快捷键</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">切换当前操作的<!-- -->间距检查</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Shift + C</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">检查间距。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">数据库完整性测试</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Shift + I</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">运行数据库完整性测试。</td>
+</tr>
+</tbody>
+</table><!--/$--></div><div class="rspress-doc-footer"><footer class="mt-8"><div class="xs:flex pb-5 px-2 justify-end items-center"><div class="flex text-sm text-text-2 leading-6 sm:leading-8 font-medium"><p>最近更新时间<!-- -->: <span>2025/7/24 08:10:13</span></p></div></div><div class="flex flex-col"></div><div class="flex flex-col sm:flex-row sm:justify-around gap-4 pt-6"><div class="prev_c92d1 flex flex-col"><a href="/sailwind_docs/router/guide/5_zh.html" class="link_a7cea pager-link_e0d2d"><span class="desc_dcc01">上一页</span><span class="title_a3acb">第 5 章 界面元素</span></a></div><div class="next_c11be flex flex-col"><a href="/sailwind_docs/router/guide/7_zh.html" class="link_a7cea pager-link_e0d2d next_ad355"><span class="desc_dcc01">下一页</span><span class="title_a3acb">第 7 章 视图</span></a></div></div></footer></div></div><div class="aside-container_bc5fa"><div class="flex flex-col"><div id="aside-container" class="relative text-sm font-medium"><div class="leading-7 block text-sm font-semibold pl-3">本页目录</div><nav class="mt-1"><ul class="relative"><li><a href="#无模命令" title="无模命令" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">无模命令</span></a></li><li><a href="#快捷键" title="快捷键" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">快捷键</span></a></li><li><a href="#显示可用快捷键" title="显示可用快捷键" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">显示可用快捷键</span></a></li><li><a href="#使用快捷键启动命令" title="使用快捷键启动命令" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">使用快捷键启动命令</span></a></li><li><a href="#使用带参数的快捷键启动命令" title="使用带参数的快捷键启动命令" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">使用带参数的快捷键启动命令</span></a></li><li><a href="#使用快捷键启动自定义系统命令" title="使用快捷键启动自定义系统命令" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">使用快捷键启动自定义系统命令</span></a></li><li><a href="#启动快捷键" title="启动快捷键" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">启动快捷键</span></a></li><li><a href="#使用命令参数启动快捷键" title="使用命令参数启动快捷键" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">使用命令参数启动快捷键</span></a></li><li><a href="#功能键" title="功能键" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">功能键</span></a></li><li><a href="#小键盘键" title="小键盘键" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">小键盘键</span></a></li><li><a href="#键盘快捷键" title="键盘快捷键" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">键盘快捷键</span></a></li></ul></nav></div></div></div></div></div></div></section></div>
+    <div id="search-container"></div>
+  </body>
+</html>

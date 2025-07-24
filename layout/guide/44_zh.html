@@ -1,0 +1,1133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Rspress v1.45.0">
+    <title data-rh="true">第 44 章 SPECCTRA 链接 - SailWind</title><meta data-rh="true" name="description" content="SailWind"/>
+  <script>{;const saved = localStorage.getItem('rspress-theme-appearance');const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;const isDark = !saved || saved === 'auto' ? preferDark : saved === 'dark';document.documentElement.classList.toggle('dark', isDark);document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';}</script><link rel="icon" href="/sailwind_docs/favicon.ico"><script defer src="/sailwind_docs/static/js/styles.f5ec16c7.js"></script><script defer src="/sailwind_docs/static/js/lib-react.36f9b428.js"></script><script defer src="/sailwind_docs/static/js/lib-router.971f4280.js"></script><script defer src="/sailwind_docs/static/js/2886.6c8a4c3c.js"></script><script defer src="/sailwind_docs/static/js/index.ef746291.js"></script><link href="/sailwind_docs/static/css/styles.6524924d.css" rel="stylesheet"></head>
+
+  <body >
+    <div id="root"><div class="navContainer_d18b1 rspress-nav px-6  sticky_ddfa7"><div class="container_e4235 flex justify-between items-center h-full"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div><div class="flex flex-1 justify-end items-center"><div class="rightNav_a2fea"><div class="flex sm:flex-1 items-center sm:pl-4 sm:pr-2"><div class="rspress-nav-search-button navSearchButton_df1fb"><button><svg width="18" height="18" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg><p class="searchWord_af2c1">搜索</p><div style="opacity:0"><span></span><span>K</span></div></button></div><div class="mobileNavSearchButton_d85a9"><svg width="24" height="24" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg></div></div><div class="rspress-nav-menu menu h-14"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div><div class="flex-center flex-row"><div class="mx-2"><div class="md:mr-2 rspress-nav-appearance"><div class="p-1 border border-solid border-gray-300 text-gray-400  cursor-pointer rounded-md hover:border-gray-600 hover:text-gray-600 dark:hover:border-gray-200 dark:hover:text-gray-200 transition-all duration-300 w-7 h-7"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="dark:hidden" width="18" height="18" fill="currentColor"><path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6m0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4M12 4c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M12 24c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M5.6 6.6c-.3 0-.5-.1-.7-.3L3.5 4.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.1.2-.4.3-.7.3M19.8 20.8c-.3 0-.5-.1-.7-.3l-1.4-1.4c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.2.2-.5.3-.7.3M3 13H1c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M23 13h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M4.2 20.8c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.4.3-.7.3M18.4 6.6c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.5.3-.7.3"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="hidden dark:block" width="18" height="18" fill="currentColor"><path d="M12.1 22h-.9c-5.5-.5-9.5-5.4-9-10.9.4-4.8 4.2-8.6 9-9 .4 0 .8.2 1 .5s.2.8-.1 1.1c-2 2.7-1.4 6.4 1.3 8.4 2.1 1.6 5 1.6 7.1 0 .3-.2.7-.3 1.1-.1.3.2.5.6.5 1-.2 2.7-1.5 5.1-3.6 6.8-1.9 1.4-4.1 2.2-6.4 2.2M9.3 4.4c-2.9 1-5 3.6-5.2 6.8-.4 4.4 2.8 8.3 7.2 8.7 2.1.2 4.2-.4 5.8-1.8 1.1-.9 1.9-2.1 2.4-3.4-2.5.9-5.3.5-7.5-1.1-2.8-2.2-3.9-5.9-2.7-9.2"></path></svg></div></div></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div><div class="mobileNavMenu_e7045"><div class="navScreen_ec30c  rspress-nav-screen" id="navScreen"><div class="container_c935d"><div class="navMenu_b887b"><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div></div><div class="flex-center flex-col gap-2"><div class="mt-2 navAppearance_bf893 flex justify-center"></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div></div><button aria-label="mobile hamburger" class=" rspress-mobile-hamburger navHamburger_ac64c text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><circle cx="8" cy="16" r="2" fill="currentColor"></circle><circle cx="16" cy="16" r="2" fill="currentColor"></circle><circle cx="24" cy="16" r="2" fill="currentColor"></circle></svg></button></div></div></div></div><section><div class="docLayout_af141 pt-0"><aside class="sidebar_dd719 rspress-sidebar "><div class="navTitleMask_fb17c"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div></div><div class="rspress-scrollbar sidebarContent_da296"><nav class="pb-2"><a href="/sailwind_docs/layout/index.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:14px;margin-left:0;border-radius:0 var(--rp-radius) var(--rp-radius) 0;padding-left:24px;font-weight:bold"><span>章节预览</span></div></a><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">指南(Guide)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 2 章 用户界面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 3 章 无模命令与快捷键</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 4 章 设计与编辑基础</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 5 章 设置颜色</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 6 章 库与库数据管理</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 7 章 创建和编辑 PCB 封装</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 8 章 创建和修改元件类型</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 9 章 开始新设计</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 10 章 文件操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 11 章 设计环境设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 12 章 使用 SailWind Logic</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 13 章 导入与导出</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 14 章 层</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 15 章 过孔设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/16_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 16 章 电气网络</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/17_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 17 章 选项设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/18_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 18 章 属性控制</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/19_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 19 章 设置规则和使用禁止区</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/20_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 20 章 AI 驱动的先进功能</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/21_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 21 章 元件布局</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/22_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 22 章 SailWind 3D</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/23_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 23 章 与机械设计团队的数据交换</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/24_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 24 章 虚拟过孔</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/25_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 25 章 标签操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/26_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 26 章 设计或设计部分的复用</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/27_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 27 章 绘图操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/28_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 28 章 安全间距检查</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/29_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 29 章 铜箔操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/30_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 30 章 为布铜区或覆铜平面分配网络</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/31_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 31 章 覆铜平面操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/32_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 32 章 设计布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/33_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 33 章 SailWind 布线器</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/34_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 34 章 铜填充与覆铜平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/35_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 35 章 参考标志符</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/36_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 36 章 工程变更单(ECO)</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/37_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 37 章 设计比较</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/38_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 38 章 报告功能</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/39_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 39 章 设计错误检查</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/40_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 40 章 尺寸标注</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/41_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 41 章 CAM 输出</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/42_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 42 章 对象链接与嵌入 ❌</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/43_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 43 章 故障排除</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/44_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItemActive_de63c mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 44 章 SPECCTRA 链接</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/45_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 45 章 错误检测、BMW与BLT、脚本与宏</span></div></a></div><div class="rspress-sidebar-item"><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:18px"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex"><span class="flex-center" style="font-size:13px">第 46 - 55 章 Dialogs</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:0"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/46_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 46 章 GUI 参考元素 A</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/47_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 47 章 GUI 参考元素 B 至 C</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/48_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 48 章 GUI 参考元素 D</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/49_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 49 章 GUI 参考元素 E 至 G</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/50_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 50 章 GUI 参考元素 H 至 J</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/51_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 51 章 GUI 参考元素 K 至 O</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/52_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 52 章 GUI 参考元素 P</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/53_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 53 章 GUI 参考元素 Q 至 R</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/54_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 54 章 GUI 参考元素 S</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/55_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 55 章 GUI 参考元素 T 至 Z</span></div></a></div></div></div></section></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">教程(Tutorial)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>用户界面学习</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建库元件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>设计准备</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>导入设计数据</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>分配约束规则</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>移动与放置组件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建和编辑走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用动态布线创建走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用 <code>SailWind Router</code> 进行自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建分割平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建覆铜平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>添加尺寸标注</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>检查设计规则违规</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>更新原理图</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建报告和 CAM 文件</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">快速参考(Quick Reference)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/qr/modless.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>无模命令</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/qr/shortcut.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>键盘快捷键</span></div></a></div></div></div></section></nav></div></aside><div class="flex-1 relative min-w-0"><div class="rspress-sidebar-menu-container "><div class="rspress-sidebar-menu"><button type="button" class="flex-center mr-auto"><div class="text-md mr-2"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"></path></svg></div><span class="text-sm">Menu</span></button><button type="button" class="flex-center ml-auto"><span class="text-sm">本页目录</span><div class="text-md mr-2" style="transform:rotate(0deg);transition:transform 0.2s ease-out;margin-top:2px"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></button><div class="rspress-local-toc-container "><ul><li><a href="#未使用管脚网络" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">未使用管脚网络</span></a></li><li><a href="#传递给-specctra-的数据" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">传递给 SPECCTRA 的数据</span></a></li><li><a href="#sailwind-布局到-specctra-规则转换" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">SailWind 布局到 SPECCTRA 规则转换</span></a></li><li><a href="#specctra-输出文件位置和布线器设置" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">SPECCTRA 输出文件位置和布线器设置</span></a></li><li><a href="#自动加载进出-specctra" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">自动加载进出 SPECCTRA</span></a></li><li><a href="#手动加载进出-specctra" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">手动加载进出 SPECCTRA</span></a></li><li><a href="#将设计数据从-sailwind-布局转换到-specctra" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">将设计数据从 SailWind 布局转换到 SPECCTRA</span></a></li><li><a href="#将设计数据从-specctra-转换到-sailwind-布局" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">将设计数据从 SPECCTRA 转换到 SailWind 布局</span></a></li><li><a href="#设置-specctra-选项" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">设置 SPECCTRA 选项</span></a></li><li><a href="#设置-specctra-自动启动信息" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">设置 SPECCTRA 自动启动信息</span></a></li><li><a href="#创建或编辑do-文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建或编辑.do 文件</span></a></li><li><a href="#设置-specctra-do-文件启动选项" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">设置 SPECCTRA .do 文件启动选项</span></a></li><li><a href="#specctra-与分割混合平面" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">SPECCTRA 与分割/混合平面</span></a></li><li><a href="#在-specctra-中布线前定义分割平面" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">在 SPECCTRA 中布线前定义分割平面</span></a></li><li><a href="#在-specctra-中布线后定义分割平面" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">在 SPECCTRA 中布线后定义分割平面</span></a></li></ul></div></div></div><div class="content_ff766 rspress-doc-container flex"><div class="flex-1 overflow-x-auto"><div class="rspress-doc"><!--$--><h1 id="第-44-章-specctra-链接" class="rspress-doc-title text-3xl mb-10 leading-10 tracking-tight title_fb7eb">第 44 章 SPECCTRA 链接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#第-44-章-specctra-链接">#</a></h1>
+<p class="my-4 leading-7">SPECCTRA 链接将 PCB 设计文件数据发送到 SPECCTRA 设计文件，然后将 SPECCTRA 结果导回 PCB 设计文件。该链接具有自动 DO 文件编辑器功能，可编辑现有或新的 DO 文件。参数会在会话之间自动保存。</p>
+<p class="my-4 leading-7">SPECCTRA 转换布线保护状态、物理设计重用、通孔和元件管脚上的测试点设置、封装禁区、板级禁区和板级切口。布线保护状态通过 SPECCTRA 的 fix 属性(用于走线)和 route 属性(用于通孔)在 SPECCTRA 与 PCB 设计文件之间传递。对于未布线走线的保护，仅当为完整连接(如起始和终止于元件管脚的布线链接)时才会传递给 SPECCTRA。更多信息请参阅&quot;布线保护状态传递给 SPECCTRA&quot;。</p>
+<h2 id="未使用管脚网络" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">未使用管脚网络<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#未使用管脚网络">#</a></h2>
+<p class="my-4 leading-7">SailWind 布局将未使用的管脚(未连接到网络的管脚)传递给 SPECCTRA。这些管脚及其扇出被添加到 SPECCTRA 中名为+UNUSED_PINS+的未使用管脚网络中(以前称为<em>UNUSED_PINS</em>)。当您将布线设计返回到 SailWind 布局时，也可以传递未使用管脚和扇出信息。+UNUSED_PINS+网络信息被转换为 SailWind 布局中的 NOT_CONNECTED 网络。您可以在 SPECCTRA 选项对话框中更改 NOT_CONNECTED 网络的名称，但该网络应具有唯一名称。</p>
+<p class="my-4 leading-7">NOT_CONNECTED 网络是 SailWind 布局中的一个普通网络，包含扇出通孔、走线和未使用管脚。由于此网络在 SailWind 布局中是普通网络，因此在后续 SPECCTRA 会话中不再将其中的管脚视为未使用管脚。使用现有的 DO 文件可以防止此网络在后续会话中被当作普通网络进行布线。要在 SPECCTRA 中重新创建此网络，请在布线设计前在 SailWind 布局中删除它。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> SailWind 布局无法为单管脚网络定义连接；因此，如果+UNUSED_PINS+网络仅包含单个元件管脚和扇出，SailWind 布局将无法解释它。</p>
+</div></div>
+<p class="my-4 leading-7">下图展示了 SPECCTRA 中未使用管脚的扇出。它还展示了 SailWind 布局如何解释这些扇出和未使用管脚。由于 SPECCTRA 现在转换元件管脚和通孔上的测试点属性，下图还展示了 SPECCTRA 如何传递分配给未使用管脚扇出的测试点。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 126. 未使用管脚的扇出</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/44/_page_1_Figure_5.jpeg" alt=""/></p>
+<h2 id="传递给-specctra-的数据" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">传递给 SPECCTRA 的数据<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#传递给-specctra-的数据">#</a></h2>
+<p class="my-4 leading-7">您可以将 DFT 审核设置和禁区传递给 SPECCTRA。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">DFT 审核设置传递给 SPECCTRA</strong></p>
+<p class="my-4 leading-7">您可以将 DFT 审核测试点放置选项传递给 SPECCTRA，供其测试点放置例程使用。SPECCTRA 通常在适用时使用这些选项。诸如测试点间距等选项会传递给 SPECCTRA。但诸如钉直径和夹具钻孔尺寸等选项仅由 DFT 审核使用。由于它们不影响 SPECCTRA 的测试点插入，因此不会传递此类信息。</p>
+<p class="my-4 leading-7">SPECCTRA 基于 DFT 审核选项进行间距计算。SPECCTRA 的间距选项在 SPECCTRA DO 文件对话框的&quot;设置测试点规则&quot;区域中设置。有关 DFT 审核的更多信息，请参阅&quot;测试设计&quot;。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> SPECCTRA 不允许为网络分配多个测试点。此设置不会传递给 SPECCTRA。</p>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">禁区传递给 SPECCTRA</strong></p>
+<p class="my-4 leading-7">SailWind 布局到 SPECCTRA 链接支持通孔禁区，并将其他类型的禁区(用于走线、弯曲、元件和管脚)传递给 SPECCTRA。任何层上的铜形状都以这种方式传递。通过操作此现有的禁区功能，您可以将其他特定禁区传递给 SPECCTRA。</p>
+<p class="my-4 leading-7">SailWind 布局支持布局编辑器中的禁区。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">开槽孔传递给 SPECCTRA</strong></p>
+<p class="my-4 leading-7">非镀层开槽孔转换为所有层的禁区。镀层开槽孔在电气中心使用圆形钻孔。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">布线保护状态传递给 SPECCTRA</strong></p>
+<p class="my-4 leading-7">您可以在 SailWind 布局中设置选项，防止在 SPECCTRA 中修改已布线的走线和通孔。此功能在交互式布线和自动布线器中的批量布线期间保护关键放置的布线。保护状态在 SPECCTRA 之间传递。与受保护布线或未布线相关联的元件、通孔、测试点和其他设计项也受到保护。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">受保护的走线和通孔传递给 SPECCTRA</strong></p>
+<p class="my-4 leading-7">具有保护状态的已布线走线以 fix 属性传递给 SPECCTRA。您不能修改固定的走线，布线器也不能布线到此走线。</p>
+<p class="my-4 leading-7">连接到至少一条受保护走线的通孔以 route 属性传递给 SPECCTRA。虽然您不能修改这些通孔，但可以布线到它们以完成连接。</p>
+<p class="my-4 leading-7">表 139 列出了 SPECCTRA 链接用于确定通孔属性的规则。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">通孔有受保护<!-- -->走线</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">锁定的测试点<!-- -->状态</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">胶合状态</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">SPECCTRA 通孔状态</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">任意</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">任意</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Route</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">任意</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Route</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Protect</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">正常(默认)</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 139. SPECCTRA 链接规则</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">受保护的未布线走线传递给 SPECCTRA</strong></p>
+<p class="my-4 leading-7">布线保护状态仅对那些 SailWind 布局中作为完整连接(起始和终止于元件管脚)的未布线走线传递给 SPECCTRA。未布线的连接以带有 fix 属性的 fromto 形式传递给 SPECCTRA。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">带有布线走线的受保护元件传递给 SPECCTRA</strong></p>
+<p class="my-4 leading-7">只要元件至少有一个管脚连接到具有布线保护的走线，就会以锁定状态传递给 SPECCTRA。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">从 SPECCTRA 接收布线走线的保护状态</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">具有 fix 属性的 SPECCTRA 走线作为具有布线保护的走线返回到 SailWind 布局。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 SPECCTRA 中具有 protect 属性的通孔在 SailWind 布局中转换为胶合状态。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 SPECCTRA 中具有 route 属性的通孔在 SailWind 布局中不会获得特殊保护。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">表 140 至表 142 提供了 SailWind 布局走线、通孔和未布线的传递和返回保护状态列表。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">SailWind 布局中的<!-- -->状态</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">传递给<!-- -->SPECCTRA 的状态</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">SPECCTRA 中的<!-- -->保护</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">从 SPECCTRA<!-- -->传递的状态</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">返回到 SailWind<!-- -->布局的状态</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">常规走线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">普通类型走线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">---</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">普通类型</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">常规走线</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">常规走线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">普通类型</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Protect</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Protect 类型</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">常规走线</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">常规走线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">普通类型</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Fix</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Protect 类型</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">常规走线</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">受保护走线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Fix 类型</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">---</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Fix 类型</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">受保护走线</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">受保护走线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Fix 类型</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Protect/Unprot<!-- -->ect</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Fix 类型</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">受保护走线</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">受保护走线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Fix 类型</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Fix/unfix</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Fix 类型</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">受保护走线</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 140. 走线的保护状态</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">表 141. 通孔的保护状态</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">SailWind 布局中<!-- -->走线的状态</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">有<!-- -->受保护<!-- -->走线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">锁定<!-- -->TP 状态</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">胶合<!-- -->状态</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">传递给<!-- -->SPECCTRA 的状态</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SPECCTRA 中的<!-- -->保护</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">从 SPECCTRA<!-- -->传递的状态</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">返回到<!-- -->SailWind<!-- -->布局的状态</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">任意</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">任意</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Route</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">任意</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Route</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">正常*</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">任意</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Route</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">任意</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Route</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">正常*</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Protect</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">---</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Protect</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">胶合</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Protect</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Unprotect</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Normal</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">正常**</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Protect</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Unfix</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Protect</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">胶合</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">是</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Protect</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Fix, protect</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Protect</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">胶合</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Normal</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">---</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Normal</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">正常</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Normal</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Fix, protect</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Protect</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">胶合</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7">如果在原始 SailWind 布局设计中定义，通孔的胶合状态将丢失。测试点由 SPECCTRA 保留并返回到 SailWind 布局设计。</p>
+<p class="my-4 leading-7">如果在 Unprotect 命令后在 SPECCTRA 中执行 route、edit 或 clean 命令，可以删除通孔。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">SailWind 布局中<!-- -->未布线的类型</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">传递给 SPECCTRA<!-- -->的形式</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">从 SPECCTRA 返回的形式</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">未受保护的未布线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">无特殊处理</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">无特殊处理</td>
+</tr>
+</tbody>
+</table>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">SailWind 布局中<!-- -->未布线的类型</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">传递给 SPECCTRA<!-- -->的形式</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">从 SPECCTRA 返回的形式</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">完全未布线的受保护<!-- -->连接</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Fromto 类型, Fix</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">无特殊处理—在 SailWind 布局中不受保护</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">部分布线连接的受保护<!-- -->未布线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">无特殊处理</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">无特殊处理</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 142. 未布线的保护状态(续)</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">物理设计重用传递给 SPECCTRA</strong></p>
+<p class="my-4 leading-7">作为物理设计重用元素的走线以 fix 属性传递给 SPECCTRA。因此，您不能修改或布线它们。SPECCTRA 仅连接到以 route 属性传递的物理设计重用中的通孔和铜。表 143 提供了物理设计重用处理的摘要。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">重用元素</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">传递给 SPECCTRA<!-- -->的形式</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">从 SPECCTRA 返回</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">元件</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">lock_type fix</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否(发出警告；无论是否<!-- -->更改，新放置都不会<!-- -->返回到 SailWind 布局。)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">通孔</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">type route</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">走线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">type fix</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">跳线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">lock_type fix</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">带有网络名的铜</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">type route</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">否</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">跳线传递给 SPECCTRA</strong></p>
+<p class="my-4 leading-7">您可以将跳线传递给 SPECCTRA。SPECCTRA 不会尝试布线 SailWind 布局跳线。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 不要使用 SPECCTRA 跳线；它们不向后兼容。</p>
+</div></div>
+<h2 id="sailwind-布局到-specctra-规则转换" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">SailWind 布局到 SPECCTRA 规则转换<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#sailwind-布局到-specctra-规则转换">#</a></h2>
+<p class="my-4 leading-7">设计规则使用关键字 RULE 和 CIRCUIT 转换为两种类型的 SPECCTRA 规则之一。转换中使用的类型针对每个 SPECCTRA 规则指示。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">布线、高速和间距规则</strong></p>
+<p class="my-4 leading-7">布线、高速和间距规则支持类、网络、组和管脚对。此外，如表 144 所示，SailWind 布局默认规则在可能时传递。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">SailWind 布局布线规则</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">SPECCTRA 布线规则</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">铜共享</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(rule (tjunction on/off))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">优先级</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(circuit (priority #))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">选定层*</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(circuit (use_layer # # #))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">选定通孔*</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(circuit (use_via a b c))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">*选定层和选定通孔规则需要 SPECCTRA 中的高级规则选项。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 144. 布线规则</strong></p>
+<p class="my-4 leading-7">链接将默认布线规则传递给 SPECCTRA。铜共享在 PCB 规则级别传递。</p>
+<p class="my-4 leading-7">链接还通过创建一个包含所有未分配到类的网络的人工类来传递优先级、选定层和选定通孔。此人工类名为 CLASS_nnnnnnn，其中 nnnnnnn 是从 0 到 9999999 的数字。然后，默认布线规则在此人工类中传递给 SPECCTRA，如表 145 所示。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">SailWind 布局高速规则</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">SPECCTRA 高速规则</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">最小/最大长度</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(circuit (length max min) (type actual))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">短截线长度</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(rule (max_stub #))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">匹配长度</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(circuit (match_fromto_length on/off) (tolerance dist))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">带间隙的屏蔽</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(circuit (shield on (use_net net)))(rule (shield_gap<!-- -->dist))网络必须是电源网络，否则 SPECCTRA 将在输入时失败。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">并行长度和间隙</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(rule (parallel_segment (gap dist) (limit dist)</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 145. 高速规则</strong></p>
+<p class="my-4 leading-7">链接将默认高速规则传递给 SPECCTRA。它通过创建一个包含所有未分配到类的网络的人工类来传递并行长度、串联长度和间隙、短截线长度和最小/最大长度。此人工类名为 CLASS_nnnnnnn，其中 nnnnnnn 是从 0 到 9999999 的数字。然后，高速规则在此人工类中传递给 SPECCTRA。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">间距规则</strong></p>
+<p class="my-4 leading-7">如表 146 所示，SPECCTRA 每条规则仅接受一个走线宽度，因此传递推荐宽度。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">SailWind 布局</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">SPECCTRA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(rule(width dist)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">走线到走线间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(clearance dist (type wire_wire))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">通孔到走线间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(clearance dist (type via_wire))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">通孔到通孔间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(clearance dist (type via_via))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">焊盘到走线间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(clearance dist (type pin_wire))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">焊盘到通孔间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(clearance dist (type pin_via))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">焊盘到焊盘间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(clearance dist (type pin_pin))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SMD 到走线间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(clearance dist (type smd_wire))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SMD 到通孔间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(clearance dist (type smd_via))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SMD 到焊盘间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(clearance dist (type smd_pin))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SMD 到 SMD 间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(clearance dist (type smd_smd))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">板到走线间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(clearance dist (type area_wire))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">板到通孔间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(clearance dist (type area_via))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">板到焊盘间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(clearance dist (type area_pin))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">板到 SMD 间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(clearance dist (type area_smd))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SMD 到通孔同网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(clearance dist (type<!-- -->smd_via_same_net))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SMD 到转角同网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(clearance dist (type<!-- -->smd_to_turn_gap))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">焊盘到转角同网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(clearance dist (type<!-- -->pad_to_turn_gap))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">通孔到通孔同网络</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(clearance dist (type<!-- -->via_to_via_same_net))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">钻孔到钻孔间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">(clearance dist (type drill_gap))</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">本体到本体间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">不支持</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 146. 间距规则</strong></p>
+<p class="my-4 leading-7">链接在 PCB 规则级别将默认间距规则传递给 SPECCTRA。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">铜被转换为 SPECCTRA 禁区。此外，板框被转换为边界。禁区和边界都使用上述区域间距。</p>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">SPECCTRA 文本转换</strong></p>
+<p class="my-4 leading-7">文本转换为禁区。在生成 SPECCTRA 禁区时，使用以下间距规则中定义的最大文本间距来扩展 SPECCTRA 禁区区域以允许所需的间距：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">文本到走线间距</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">文本到通孔间距</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">文本到钻孔间距</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">文本到 SMD 间距</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">差分对</strong></p>
+<p class="my-4 leading-7">SPECCTRA 不直接支持差分对的最小/最大长度。但是，您可以使用应用于网络对的布线规则添加这些限制。</p>
+<p class="my-4 leading-7">以下 SPECCTRA 语法支持网络对：</p>
+<div class="language-bash"><div class="rspress-code-content rspress-scrollbar"><code>(pair (nets nm1 nm2 (gap dist)))
+</code></div></div>
+<div class="language-bash"><div class="rspress-code-content rspress-scrollbar"><code>Pin pairs use the syntax:
+</code></div></div>
+<div class="language-bash"><div class="rspress-code-content rspress-scrollbar"><code>(pair (wires nm1 nm2 (gap dist)))
+</code></div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">条件规则</strong></p>
+<p class="my-4 leading-7">条件规则分为两类：高速和间距。SPECCTRA 可以接受层的条件规则。但是，任何其他规则只有在使用网络类时才能是有条件的。一个类只能包含网络，不能包含管脚对或组。因此，任何包含组或管脚对并且是高速规则的条件规则都不能传递给 SPECCTRA。</p>
+<p class="my-4 leading-7">条件规则中的网络会自动放入使用命名约定 NEW_CLASS_#的虚拟 SPECCTRA 类中，如下所示：</p>
+<div class="language-bash"><div class="rspress-code-content rspress-scrollbar"><code>(class NEW_CLASS1 $$$2016)
+</code></div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">高速条件规则</strong></p>
+<p class="my-4 leading-7">高速条件规则像非条件高速规则一样转换，只是它必须是类对类的形式，如下所示：</p>
+<div class="language-bash"><div class="rspress-code-content rspress-scrollbar"><code>### PADS Layout Conditional Rule ###
+
+(class_class
+
+(classes CLASS_0 CLASS_1)
+
+(rule (parallel_segment (gap dist) (limit dist)))
+
+(rule (tandem_segment (gap dist) (limit dist)))
+
+)
+</code></div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">间距条件规则</strong></p>
+<p class="my-4 leading-7">条件间距规则必须是对象对层的形式，如下所示：</p>
+<div class="language-bash"><div class="rspress-code-content rspress-scrollbar"><code>### PADS Layout Group Rule ###
+
+(group GROUP_0
+
+(fromto U2-2 U1-2
+
+)
+
+(fromto U4-9 U1-9
+
+)
+
+(fromto U3-10 U4-10
+
+)
+(layer_rule 1
+
+(rule
+
+(width dist)
+
+(clearance dist (type wire_wire))
+
+(clearance dist (type via_wire))
+
+etc.
+</code></div></div>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 与文本相关的条件规则被忽略。SPECCTRA 不识别文本。</p>
+</div></div>
+<h2 id="specctra-输出文件位置和布线器设置" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">SPECCTRA 输出文件位置和布线器设置<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#specctra-输出文件位置和布线器设置">#</a></h2>
+<p class="my-4 leading-7">使用设置 SPECCTRA 完成对话框指定输出文件位置，并设置 SPECCTRA 布线器在完成布线时要执行的操作的指令，例如运行斜切通道、运行重新拐角和插入测试点。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页&gt;导出</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导出对话框中，在&quot;保存类型&quot;列表中，点击 SPECCTRA 文件(*.dsn)。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览以覆盖文件或键入新文件名。点击<strong class="font-semibold">保存</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 SPECCTRA 链接对话框中，点击<strong class="font-semibold">DO 文件</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 SPECCTRA DO 文件对话框中，点击<strong class="font-semibold">完成</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要指示走线文件，在走线文件框中键入或浏览到位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要指示布线文件，在布线文件框中键入或浏览到位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要指示会话文件，在会话文件框中键入或浏览到位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在测试点区域选择您希望 SPECCTRA 安装的测试点选项。(更多信息，请参阅&quot;传递给 SPECCTRA 的数据&quot;，以及<em>SPECCTRA 帮助</em>中的&quot;测试点&quot;主题。)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从斜切区域选择斜切转换类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从重新拐角区域选择重新拐角选项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要删除交叉和间距冲突，点击<strong class="font-semibold">删除冲突</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要消除凹口和移除多余弯曲，点击<strong class="font-semibold">Critic</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果有空间，要添加额外空间，点击<strong class="font-semibold">Spread</strong>并在 Extra 框中键入扩展值。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从报告区域选择您希望在报告中包含的数据类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要指示报告文件，在报告文件框中键入或浏览到位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">应用</strong>。适当的行将添加到您的*.do*文件的最后一个指针位置。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 要删除一行，在编辑器区域中选择*.do*文件中的行，然后按键盘上的 Delete 键。</p>
+</div></div>
+<h2 id="自动加载进出-specctra" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">自动加载进出 SPECCTRA<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#自动加载进出-specctra">#</a></h2>
+<p class="my-4 leading-7">当您从 SailWind 布局内部启动 SPECCTRA 时，SPECCTRA 链接对话框使您能够自动加载进出 SPECCTRA。</p>
+<p class="my-4 leading-7">如果您在 SailWind 布局中设置了最大通孔数，SPECCTRA 链接会自动将它们传递给 SPECCTRA。</p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> &gt;如果您启用的许可 SPECCTRA 选项集不支持最大通孔数规则，SPECCTRA 可能会忽略此规则甚至禁用自动布线。</p>
+<p class="my-4 leading-7">SPECCTRA 链接自动将 SailWind 布局中的各种类型的禁区(如放置、走线和通孔禁区)传递给 SPECCTRA：放置禁区(作为 place_keepout)、走线禁区(作为 wire_keepout)和通孔禁区(作为 via_keepout)。</p>
+</div></div>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 如果您希望对 SPECCTRA 进行更精细的控制，请使用独立 SPECCTRA 链接对话框手动加载进出 SPECCTRA(见第 1012 页)。</p>
+</div></div>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件菜单上，点击<strong class="font-semibold">导出</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导出对话框中，在&quot;保存类型&quot;列表中，点击<strong class="font-semibold">SPECCTRA 文件(*.dsn)</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览以覆盖文件或键入新文件名。点击<strong class="font-semibold">保存</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 SPECCTRA 链接对话框中，键入或浏览您想要使用的*.DO*文件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要创建或编辑*.DO*文件，点击 DO 文件。更多信息，请参阅&quot;创建或编辑.do 文件&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要设置 SPECCTRA 自动启动信息，点击<strong class="font-semibold">设置</strong>。(更多信息，请参阅&quot;SPECCTRA 设置对话框&quot;第 1729 页。)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要指定输出文件(布线文件和会话文件)，在设置 SPECCTRA 完成对话框中键入它们的位置。要访问它，点击 SPECCTRA 链接对话框中的 DO 文件，然后点击<strong class="font-semibold">完成</strong>在 SPECCTRA DO 文件对话框中并输入文件位置。(更多信息，请参阅&quot;SPECCTRA 输出文件位置和布线器设置&quot;。)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要设置发送通孔禁区信息、传递高级规则、设置走线弧转换模式或返回未使用管脚网络的选项，点击<strong class="font-semibold">选项</strong>。(更多信息，请参阅&quot;设置 SPECCTRA 选项&quot;。)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">继续</strong>。设计加载到 SPECCTRA 中，布线器以批处理模式运行。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">当转换完成时，修改后的设计文件出现在屏幕上，加载到新的 SailWind 布局会话中(除非在设置对话框中清除了&quot;启动 SailWind 布局会话&quot;)。链接启动新会话，因此不会中断任何当前会话。如果您通宵运行布线器，可以关闭 SailWind 布局会话以节省内存。</p>
+<h2 id="手动加载进出-specctra" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">手动加载进出 SPECCTRA<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#手动加载进出-specctra">#</a></h2>
+<p class="my-4 leading-7">如果您独立于 SailWind 布局启动 SPECCTRA，可以手动控制 SPECCTRA 界面。这使您对如何使用 SPECCTRA 有更多控制权。您可以导入和导出到 SPECCTRA，并可以设置 SPECCTRA 布线器在完成布线时要执行的操作的指令(例如，运行斜切通道、运行重新拐角和插入测试点)。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 如果您想从 SailWind 布局内部启动 SPECCTRA，请使用 SPECCTRA 链接对话框自动加载进出 SPECCTRA(见第 1012 页)。</p>
+</div></div>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果您在 SailWind 布局中，保存 <em>.pcb</em> 文件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用 Windows 资源管理器导航到您的<em>C:&lt;安装文件夹&gt;\SailWind&lt;版本&gt;\Programs</em>目录，并双击<em>pads2sp.exe</em>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 SPECCTRA 链接对话框中，要设置 SPECCTRA 自动启动信息，点击<strong class="font-semibold">设置</strong>。(更多信息，请参阅&quot;设置 SPECCTRA 自动启动信息&quot;。)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要将 <em>.pcb</em> 文件转换为 SPECCTRA 格式，点击<strong class="font-semibold">到 SPECCTRA</strong>。出现&quot;到 SPECCTRA&quot;对话框。(更多信息，请参阅&quot;将设计数据从 SailWind 布局转换到 SPECCTRA&quot;。)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">启动 SPECCTRA。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 您也可以通过选中&quot;到 SPECCTRA&quot;对话框上的&quot;启动 SPECCTRA&quot;复选框来启动 SPECCTRA。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用 SPECCTRA 中的文件操作加载转换后的设计(<em>.dsn</em>)文件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">当您完成 SPECCTRA 时，要再次运行链接以将输出转换回 <em>.pcb</em> 设计文件，点击<strong class="font-semibold">从 SPECCTRA</strong>。(更多信息，请参阅&quot;将设计数据从 SPECCTRA 转换到 SailWind 布局&quot;。)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将新的 <em>.pcb</em> 文件加载到 SailWind 布局中。</p>
+</li>
+</ol>
+<h2 id="将设计数据从-sailwind-布局转换到-specctra" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">将设计数据从 SailWind 布局转换到 SPECCTRA<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#将设计数据从-sailwind-布局转换到-specctra">#</a></h2>
+<p class="my-4 leading-7">使用&quot;到 SPECCTRA&quot;对话框将 <em>.pcb</em> 设计文件转换为 SPECCTRA 设计文件。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用 Windows 资源管理器导航到您的<em>C:&lt;安装文件夹&gt;\SailWind&lt;版本&gt;\Programs</em>目录，并双击<em>pads2sp.exe</em>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 SPECCTRA 链接对话框中，点击<strong class="font-semibold">到 SPECCTRA</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要指示要发送到 SPECCTRA 的文件，在 PCB 文件框中键入或浏览到位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要指示 SPECCTRA 输入的设计文件(<em>.dsn</em>)，在设计文件框中键入或浏览到位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要指示要发送到 SPECCTRA 的*.do<em>文件，在 DO 文件框中键入或浏览到位置。</em>.do*文件是控制 SPECCTRA 操作的脚本文件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要指示 SPECCTRA 创建的输出文件(<em>.did</em>)，在 Did 文件框中键入或浏览到位置。此文件在后续 SPECCTRA 会话中用作输入*.do*文件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要在批处理转换完成后启动 SPECCTRA，点击<strong class="font-semibold">启动 SPECCTRA</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要创建或编辑*.DO*文件，点击<strong class="font-semibold">DO 文件</strong>。(更多信息，请参阅&quot;创建或编辑.do 文件。)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要设置发送通孔禁区信息、传递高级规则、设置走线弧转换模式或返回未使用管脚网络的选项，点击<strong class="font-semibold">选项</strong>。(更多信息，请参阅&quot;设置 SPECCTRA 选项&quot;。)</p>
+</li>
+</ol>
+<h2 id="将设计数据从-specctra-转换到-sailwind-布局" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">将设计数据从 SPECCTRA 转换到 SailWind 布局<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#将设计数据从-specctra-转换到-sailwind-布局">#</a></h2>
+<p class="my-4 leading-7">使用&quot;从 SPECCTRA&quot;对话框将 SPECCTRA 修改的设计数据转换回 <em>.pcb</em> 设计文件。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用 Windows 资源管理器导航到您的<em>C:&lt;安装文件夹&gt;\SailWind&lt;版本&gt;\Programs</em>目录，并双击<em>pads2sp.exe</em>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 SPECCTRA 链接对话框中，点击<strong class="font-semibold">从 SPECCTRA</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要指示 SPECCTRA 处理后返回的布线信息文件，在 SPECCTRA 布线框中键入或浏览到位置。在*.do*文件末尾包含写入此文件的命令后自动布线。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要指示放置和布线信息文件，在会话文件框中键入或浏览到位置。如果您没有使用任何 SPECCTRA 放置功能，则不需要提供此文件名。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要指示原始(源) <em>.pcb</em> 文件，在原始 PCB 文件框中键入或浏览到位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要指示要从 SPECCTRA 文件创建的文件，在新 PCB 文件框中键入或浏览到位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要设置发送通孔禁区信息、传递高级规则、设置走线弧转换模式或返回未使用管脚网络的选项，点击<strong class="font-semibold">选项</strong>。(更多信息，请参阅&quot;设置 SPECCTRA 选项&quot;。)</p>
+</li>
+</ol>
+<h2 id="设置-specctra-选项" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">设置 SPECCTRA 选项<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设置-specctra-选项">#</a></h2>
+<p class="my-4 leading-7">当您点击 SPECCTRA 链接对话框、&quot;到 SPECCTRA&quot;对话框(独立)或&quot;从 SPECCTRA&quot;对话框(独立)上的选项按钮时，会出现选项对话框。</p>
+<p class="my-4 leading-7">此对话框控制发送通孔禁区信息、将高级规则传递给 SPECCTRA、设置走线弧转换模式以及从 SPECCTRA 返回未使用管脚网络的选项。(更多信息，请参阅&quot;未使用管脚网络&quot;。)</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件菜单上，点击<strong class="font-semibold">导出</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导出对话框中，在&quot;保存类型&quot;列表中，点击<strong class="font-semibold">SPECCTRA 文件(*.do)</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览以覆盖文件或键入新文件名。点击<strong class="font-semibold">保存</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 SPECCTRA 链接对话框中，点击<strong class="font-semibold">选项</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要从您的封装向 SPECCTRA 发送通孔禁区区域，从&quot;包含通孔禁区形状的层&quot;列表中选择您想要的层。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> SailWind 布局完全支持布局编辑器中的禁区。创建通孔禁区的首选方法是在您的封装中定义禁区。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要将默认选定层和选定通孔规则传递给 SPECCTRA，点击<strong class="font-semibold">传递默认高级规则</strong>。这些规则需要 SPECCTRA 中的高级规则选项。如果您有此 SPECCTRA 选项，请打开此选项；否则，请关闭此选项。(更多信息，请参阅&quot;SailWind 布局到 SPECCTRA 规则转换&quot;。)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从三种模式中选择一种执行走线弧转换：</p>
+<p class="my-4 leading-7">转换为单段 — 用单段替换每个走线弧。这是默认模式。</p>
+<p class="my-4 leading-7">转换为多段 — 用多段替换走线弧。原始走线弧被分成较小的弧(大约等于 5 度)，然后每个较小的弧被单个段替换。结果是一个多段折线而不是弧。</p>
+<p class="my-4 leading-7">转换为四分之一弧(QARCs) — 将现有弧分成四分之一弧和其他段。(四分之一弧是起点和终点正好为 0-90、90-180、180-270 和 270-360 度的弧。)四分之一弧转换为 SPECCTRA QARC 结构。弧的其余部分转换为折线。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要将未使用管脚和扇出信息返回到 SailWind 布局，点击&quot;返回 UNUSED_PINS 布线到 SailWind 布局&quot;。键入 SailWind 布局设计中将包含未使用管脚的网络的名称。如果您不想使用默认名称，请提供新名称。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">SailWind 布局中的最大网络名称长度为 47 个字符。您可以使用任何字母数字字符，但不能使用大括号{ }、星号*或空格。</p>
+<p class="my-4 leading-7">清除此选项以在返回到 SailWind 布局时忽略未使用管脚和扇出信息。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> SPECCTRA 将未使用管脚网络命名为+UNUSED_PINS+，而早期版本将其命名为<em>UNUSED_PINS</em>。SPECCTRA 链接解释这两个名称。</p>
+</div></div>
+<h2 id="设置-specctra-自动启动信息" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">设置 SPECCTRA 自动启动信息<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设置-specctra-自动启动信息">#</a></h2>
+<p class="my-4 leading-7">使用 SPECCTRA 设置对话框设置 SPECCTRA 自动启动信息。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件菜单上，点击<strong class="font-semibold">导出</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导出对话框中，在&quot;保存类型&quot;列表中，点击<strong class="font-semibold">SPECCTRA 文件(*.do)</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览以覆盖文件或键入新文件名。点击<strong class="font-semibold">保存</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 SPECCTRA 链接对话框中，点击<strong class="font-semibold">设置</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要指示运行 SPECCTRA 所需的可执行文件，在可执行文件框中键入或浏览到位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要指示运行 SPECCTRA 所需的密码文件，在密码/服务器框中键入或浏览到位置。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 对于 teal key 节点锁定或浮动许可，在标准 port@host 格式中指向您的许可服务器。例如，7508@myserver。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要指示 SPECCTRA 消息输出文件，在消息输出框中键入或浏览到位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要指示 SPECCTRA 状态文件，在状态框中键入或浏览到位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要指示 SPECCTRA 颜色映射文件，在颜色映射框中键入或浏览到位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要禁用 SPECCTRA 图形显示并使 SPECCTRA 运行更快，点击<strong class="font-semibold">无图形</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要在处理*.do*文件命令后关闭 SPECCTRA，点击<strong class="font-semibold">处理后退出</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要在进入 SPECCTRA 前删除所有预布线，点击<strong class="font-semibold">无预布线</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要忽略没有网络分配的铜(在 SPECCTRA 中没有网络关联)，点击<strong class="font-semibold">不剥离孤立形状</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要将一英寸见方或更小的多边形转换为简单矩形，点击<strong class="font-semibold">简化多边形</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择您想要的许可类型：浮动、节点锁定(Flexid Key)或节点锁定(SSI key)。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要在处理*.do*文件命令后将布线设计重新加载到 SailWind 布局中，点击<strong class="font-semibold">启动 SailWind 布局会话</strong>。</p>
+</li>
+</ol>
+<h2 id="创建或编辑do-文件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建或编辑.do 文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建或编辑do-文件">#</a></h2>
+<p class="my-4 leading-7"><em>.do</em>文件是一个可编辑的批处理脚本文件，控制 SPECCTRA 操作。您可以在*.do<em>文件中添加或编辑命令行。当您启动编辑器时，将读取您在 SPECCTRA 链接对话框中指定的</em>.do*文件进行编辑。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件菜单上，点击<strong class="font-semibold">导出</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导出对话框中，在&quot;保存类型&quot;列表中，点击<strong class="font-semibold">SPECCTRA 文件(*.do)</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览以覆盖文件或键入新文件名。点击<strong class="font-semibold">保存</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 SPECCTRA 链接对话框中，执行以下操作之一：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要创建新文件，在 DO 文件名框中键入新*.do*文件的名称，然后点击<strong class="font-semibold">DO 文件</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要编辑现有文件，在 DO 文件名框中键入或浏览到*.do*文件的名称，然后点击<strong class="font-semibold">DO 文件</strong>。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">设置和所有区域的内容根据您在设置区域中选择的选项而变化。选择您想要的选项，然后点击<strong class="font-semibold">应用到编辑器</strong>将信息写入*.do*文件。命令出现在编辑器区域中。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">顺序 - 更改原始网络排序并控制网络是以菊花链还是星爆方式布线。(更多信息，请参阅<em>SPECCTRA 帮助</em>中的&quot;顺序&quot;和&quot;选择星爆或菊花链布线&quot;主题。)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">操作 - 控制走线重新布线、网络布线以及连接、通孔和层对自动布线的可用性。(更多信息，请参阅<em>SPECCTRA 帮助</em>中的&quot;保护/取消保护&quot;、&quot;固定/取消固定&quot;和&quot;选择/取消选择&quot;主题。)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">成本 - 控制布线成本并覆盖自动布线器内部成本表。(更多信息，请参阅<em>SPECCTRA 帮助</em>中的&quot;成本&quot;、&quot;限制&quot;、&quot;税收&quot;和&quot;使用标准自动布线命令&quot;主题。)</p>
+<p class="my-4 leading-7">如果您在成本区域点击成本，在所有区域点击层，类型区域会出现选项。(更多信息，请参阅<em>SPECCTRA 帮助</em>中的&quot;类型&quot;、&quot;长度&quot;、&quot;方式(成本)&quot;和&quot;方式(限制)&quot;主题。)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">测试点规则 - 控制将 DFT 审核测试点放置选项传递给 SPECCTRA，供其测试点放置例程使用。(更多信息，请参阅&quot;传递给 SPECCTRA 的数据&quot;，以及<em>SPECCTRA 帮助</em>中的&quot;测试点&quot;和&quot;测试点天线&quot;主题。)</p>
+</li>
+</ul>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">选项</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">功能</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">插入测试点</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">允许插入测试点并使<!-- -->测试点区域中的选项可用。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">允许在管脚上放置点</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">允许在元件管脚上放置测试点。<!-- -->DFT 审核中没有等效项；测试点<!-- -->始终允许在管脚上。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">允许天线</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">允许天线。设置长度。<!-- -->DFT 审核中没有等效项。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">最大长度</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设置天线的长度限制。默认<!-- -->最大长度为负一(-1)，无长度<!-- -->限制。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">中心到中心</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">测试点中心之间的距离。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">中心到元件边缘</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">测试点中心与元件<!-- -->边框之间的距离。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">图像边框间距</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">元件边框与测试点载体(通孔或元件管脚)之间的间距。如果<!-- -->图像边框间距为负，则设置<!-- -->为零(0)。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">测试侧</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在指定侧搜索测试点<!-- -->放置。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">使用通孔</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">使用通孔作为测试点。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">网格 X, Y</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">测试点网格。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">更多信息，请参阅&quot;网格选项<!-- -->第 1537 页&quot;。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 147. SPECCTRA 链接对话框选项</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">所有区域 - 将操作限制为某些选定对象。此区域的内容根据您在设置区域中选择的选项而变化。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">仅区域 - 将操作限制为某些选定对象。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用布线区域设置扇出规则：方向、管脚类型和最大长度，并设置总线方向并为每种类型输入通道数。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要根据设计的收敛情况自动布线您的设计，点击<strong class="font-semibold">智能布线</strong>。更多信息请参阅<em>SPECCTRA 帮助</em>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要将命令写入*.do*文件，点击<strong class="font-semibold">应用到编辑器</strong>。命令出现在编辑器区域中。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">启动</strong>设置启动信息。(更多信息，请参阅&quot;设置 SPECCTRA 自动启动信息&quot;。)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">完成</strong>并在设置 SPECCTRA 完成对话框中设置参数。(更多信息，请参阅&quot;SPECCTRA 输出文件位置和布线器设置&quot;。)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">应用</strong>保存参数。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">另存为</strong>保存文件并输入文件名。这是可选的。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">继续</strong>开始转换和加载过程。</p>
+</li>
+</ol>
+<h2 id="设置-specctra-do-文件启动选项" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">设置 SPECCTRA .do 文件启动选项<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#设置-specctra-do-文件启动选项">#</a></h2>
+<p class="my-4 leading-7">使用设置 SPECCTRA 启动对话框在您的*.do*文件中包含一行引用先前输入的布线(保存在走线或最佳保存文件中)。SPECCTRA 在启动时引用这些文件。您还可以包括状态文件的名称以及 SMD 通孔、种子通孔和种子通孔最小距离的参数。</p>
+<p class="my-4 leading-7">有关这些文件和功能的详细信息，请参阅 SPECCTRA 设计语言参考 PDF 文件<em>spdlr.pdf</em>(在 SPECCTRA 组中)。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">点击<strong class="font-semibold">主页&gt;导出</strong>菜单项。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在文件导出对话框中，在&quot;保存类型&quot;列表中，点击<strong class="font-semibold">SPECCTRA 文件(*.do)</strong>。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">浏览以覆盖文件或键入新文件名。点击保存。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在 SPECCTRA 链接对话框中，点击<strong class="font-semibold">DO 文件</strong>。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">在 SPECCTRA DO 文件对话框中，点击<strong class="font-semibold">启动</strong>。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">要指示走线文件，在走线文件框中键入或浏览到位置。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">要指示状态文件，在状态文件框中键入或浏览到位置。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">要指示最佳保存文件，在最佳保存框中键入或浏览到位置。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">要允许在 SMD 焊盘上放置通孔，在&quot;SMD 通孔&quot;区域选择&quot;开&quot;。要确保通孔位于网格点上，在&quot;网格&quot;区域选择&quot;开&quot;。要确保通孔适合焊盘，在&quot;适合&quot;区域选择&quot;开&quot;。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">要断开大于特定长度的两管脚连接，点击&quot;种子通孔&quot;并在距离框中键入长度值。</li>
+<li class="[&amp;:not(:first-child)]:mt-2">点击<strong class="font-semibold">应用</strong>。</li>
+</ol>
+<h2 id="specctra-与分割混合平面" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">SPECCTRA 与分割/混合平面<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#specctra-与分割混合平面">#</a></h2>
+<p class="my-4 leading-7">如果您计划使用 SPECCTRA 将电源网络扇出或以其他方式布线到其关联的平面区域多边形，请在 SailWind 布局中定义平面多边形之前阅读此重要信息。</p>
+<p class="my-4 leading-7">在 SailWind 布局中开发分割/混合平面功能期间，发现了有关 SPECCTRA 布线命令如何尊重平面多边形的一些操作细节。要在 SPECCTRA 中实现电源网络与平面多边形的正确连接，请使用以下分割平面定义过程之一。遵循这些步骤将确保从 SPECCTRA 获得最高质量的布线结果。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果您通常在 SPECCTRA 中布线设计后定义分割平面，请参阅&quot;在 SPECCTRA 中布线后定义分割平面&quot;主题。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果您通常在 SPECCTRA 中布线设计前定义分割平面，请参阅&quot;在 SPECCTRA 中布线前定义分割平面&quot;主题。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">SPECCTRA 将没有布线、命名铜或平面多边形的分割/混合平面层转换为电源层。SPECCTRA 不将电源层视为布线层，因此不能在这些层上布线。这最小化传递给布线器的层数。例如，您可以在许可用于两个布线层的 SPECCTRA 配置中布线具有两个电源层的四层设计。</p>
+<p class="my-4 leading-7">SPECCTRA 将整个平面视为连接元件管脚到所有平面网络的区域。SPECCTRA 扇出和布线命令通过从管脚布线短走线到通孔来连接 SMD 元件管脚，以满足与平面的连接。</p>
+<p class="my-4 leading-7">为了获得最佳结果：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在执行多次布线通道之前，通过插入扇出通道数对电源管脚执行多次扇出。例如，将&quot;fanout (pin_type power)&quot;更改为&quot;fanout 5 (pin_type power)&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择创建或编辑.do 文件中定义的适当扇出选项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">避免为与分割/混合平面层关联的网络分配设计规则。如果存在设计规则，设计将无法在 SPECCTRA 中打开。SPECCTRA 链接会自动删除或忽略与分割/混合平面层关联的设计规则。</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">SailWind 布局分割/混合平面层上的布线走线</strong></p>
+<p class="my-4 leading-7">使用 SailWind 布局，您可以在分割/混合平面层上布线走线。这在 SPECCTRA 中也是可能的，但文件会自动调整以在 SPECCTRA 中获得适当的结果。这些更改导致 SPECCTRA 中布线命令的行为修改，可能导致意外的布线模式。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">对设计的调整</strong></p>
+<p class="my-4 leading-7">SPECCTRA 将具有布线或命名铜的 SailWind 布局分割/混合平面层转换为混合层，而不是电源层。因此，SPECCTRA 如有必要会在这些层上布线以完成设计。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">SPECCTRA 中的行为变化</strong></p>
+<p class="my-4 leading-7">混合层被转换为布线层，增加了传递给 SPECCTRA 的层数。例如，具有两个布线层、一个电源层和一个混合层的四层设计被视为三个布线层设计，不能在仅许可用于两个布线层的 SPECCTRA 配置中打开。</p>
+<p class="my-4 leading-7">SPECCTRA 将混合层上的平面多边形视为可用于将元件管脚连接到平面网络的区域，但不认为它们是布线的障碍。因此，扇出和布线命令可以添加通过 SPECCTRA 混合层上的平面多边形的布线。</p>
+<p class="my-4 leading-7">可能会出现孤立的布线失败实例。失败可能包括扇出命令无法将管脚连接到平面多边形，或者当布线命令将连接的平面网络管脚移动到平面多边形定义的区域之外时，从而将管脚与平面网络隔离。</p>
+<p class="my-4 leading-7">为避免行为变化，请在您的设计过程中使用以下过程之一：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">布线后分割平面。更多信息，请参阅&quot;SPECCTRA 与分割/混合平面&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在继续之前取消布线违规走线。在将设计传递给 SPECCTRA 之前，取消布线分割/混合层中的任何走线。移除任何命名铜。在 SPECCTRA 中完成布线并将设计返回到 SailWind 布局后，重新布线您先前取消布线的走线，并将命名铜形状恢复到适当的分割/混合层。</p>
+</li>
+</ul>
+<h2 id="在-specctra-中布线前定义分割平面" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">在 SPECCTRA 中布线前定义分割平面<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#在-specctra-中布线前定义分割平面">#</a></h2>
+<p class="my-4 leading-7">当您可以在布线前定义分割平面时，您可以使用 SailWind 布局和 SPECCTRA 的高级功能快速布线您的分割平面设计。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将层分配为分割/混合层类型：在您可以将分割平面网络和数据添加到层之前，必须将层分配为分割/混合。(更多信息，请参阅&quot;层设置对话框和平面层网络对话框&quot;第 1640 页。)</p>
+<p class="my-4 leading-7">为了获得最佳结果，将分割/混合分配限制为内部嵌入式平面层。将外部布线层分配为分割/混合层可能会产生意外结果。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">定义平面多边形：使用&quot;创建平面区域&quot;和&quot;自动分离&quot;中描述的步骤为分配给平面层的每个网络创建分割平面多边形。</p>
+<p class="my-4 leading-7">使用 SailWind 布局，您可以定义重叠的平面多边形，但平面填充会检测重叠并自动调整平面填充区域以消除重叠。SPECCTRA 不提供自动调整重叠多边形的功能，并且在翻译大量重叠多边形时可能会产生意外结果。</p>
+<p class="my-4 leading-7">为了获得最佳结果：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">仅使用自动分离命令定义您的平面。这消除了平面区域或平面区域切口重叠的可能性。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果您更喜欢将平面创建为多边形矩形和圆形，请先创建较小的多边形，然后在它们周围添加多边形，而不是创建较大的多边形并在其中嵌入较小的多边形。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 SPECCTRA 中布线设计：一旦为平面层分配了适当的层和网络数据，您就可以将设计传输到 SPECCTRA。(更多信息，请参阅&quot;自动加载进出 SPECCTRA&quot;。)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">填充分割/混合平面多边形：在 SPECCTRA 中完成布线并将设计返回到 SailWind 布局后，填充平面多边形。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">验证平面网络连续性：填充平面后，验证平面网络的连续性。此过程扫描平面多边形和布线数据，并报告与平面多边形断开连接的网络部分。有关如何执行此操作的信息，请参阅&quot;验证设计&quot;、&quot;平面检查设置&quot;、&quot;手动创建覆铜平面&quot;、&quot;自动创建覆铜平面&quot;和&quot;平面检查设置&quot;。</p>
+</li>
+</ol>
+<h2 id="在-specctra-中布线后定义分割平面" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">在 SPECCTRA 中布线后定义分割平面<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#在-specctra-中布线后定义分割平面">#</a></h2>
+<p class="my-4 leading-7">当您的设计过程涉及在 SPECCTRA 中布线设计后分割平面时，您可以在 SailWind 布局中执行此操作。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将层分配为分割/混合平面层类型：在您可以将分割平面网络和数据添加到层之前，必须将层分配为分割/混合。(更多信息，请参阅&quot;层设置对话框&quot;和&quot;平面层网络对话框&quot;。)</p>
+<p class="my-4 leading-7">为了获得最佳结果：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 SPECCTRA 中自动布线之前，不要为分割/混合层定义平面区域多边形。SPECCTRA 认为整个平面层属于所有网络，并为连接到平面网络的 SMD 管脚提供短扇出走线。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将分割/混合分配限制为内部嵌入式平面层。将外部布线层分配为分割/混合层可能会产生意外结果。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 SPECCTRA 中布线设计：一旦为平面层分配了适当的层和网络数据，您就可以将设计传输到 SPECCTRA。(更多信息，请参阅&quot;自动加载进出 SPECCTRA&quot;。)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">定义平面多边形：使用&quot;创建平面区域&quot;和&quot;自动分离&quot;中描述的步骤为分配给平面层的每个网络创建分割平面多边形。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">     如果您想在定义分割/混合平面后再次将此设计传递给 SPECCTRA，请参阅以下信息。另请参阅 SailWind 布局分割/混合平面层上的布线走线。</p>
+</div></div>
+<p class="my-4 leading-7">使用 SailWind 布局，您可以定义重叠的平面多边形，但平面填充会检测重叠并自动调整平面填充区域以消除重叠。然而，SPECCTRA 不提供自动调整重叠多边形的功能。SPECCTRA 在翻译大量重叠多边形时可能会产生意外结果。</p>
+<p class="my-4 leading-7">为了获得最佳结果：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">仅使用自动分离定义平面。这消除了平面区域或平面区域切口重叠的可能性。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果您更喜欢将平面创建为多边形矩形和圆形，请先创建较小的多边形，然后在它们周围添加多边形，而不是创建较大的多边形并在其中嵌入较小的多边形。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">填充分割/混合平面多边形：在完成布线并将设计返回到 SailWind 布局后，填充平面多边形。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">验证平面网络连续性：填充平面后，验证平面网络的连续性。此过程扫描平面多边形和布线数据，并报告与平面多边形断开连接的网络部分。有关如何执行此操作的信息，请参阅&quot;验证设计&quot;、&quot;平面检查设置&quot;、&quot;手动创建覆铜平面&quot;、&quot;自动创建覆铜平面&quot;和&quot;平面检查设置&quot;。</p>
+</li>
+</ol><!--/$--></div><div class="rspress-doc-footer"><footer class="mt-8"><div class="xs:flex pb-5 px-2 justify-end items-center"><div class="flex text-sm text-text-2 leading-6 sm:leading-8 font-medium"><p>最近更新时间<!-- -->: <span>2025/7/15 05:55:33</span></p></div></div><div class="flex flex-col"></div><div class="flex flex-col sm:flex-row sm:justify-around gap-4 pt-6"><div class="prev_c92d1 flex flex-col"><a href="/sailwind_docs/layout/guide/43_zh.html" class="link_a7cea pager-link_e0d2d"><span class="desc_dcc01">上一页</span><span class="title_a3acb">第 43 章 故障排除</span></a></div><div class="next_c11be flex flex-col"><a href="/sailwind_docs/layout/guide/45_zh.html" class="link_a7cea pager-link_e0d2d next_ad355"><span class="desc_dcc01">下一页</span><span class="title_a3acb">第 45 章 错误检测、BMW与BLT、脚本与宏</span></a></div></div></footer></div></div><div class="aside-container_bc5fa"><div class="flex flex-col"><div id="aside-container" class="relative text-sm font-medium"><div class="leading-7 block text-sm font-semibold pl-3">本页目录</div><nav class="mt-1"><ul class="relative"><li><a href="#未使用管脚网络" title="未使用管脚网络" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">未使用管脚网络</span></a></li><li><a href="#传递给-specctra-的数据" title="传递给 SPECCTRA 的数据" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">传递给 SPECCTRA 的数据</span></a></li><li><a href="#sailwind-布局到-specctra-规则转换" title="SailWind 布局到 SPECCTRA 规则转换" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">SailWind 布局到 SPECCTRA 规则转换</span></a></li><li><a href="#specctra-输出文件位置和布线器设置" title="SPECCTRA 输出文件位置和布线器设置" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">SPECCTRA 输出文件位置和布线器设置</span></a></li><li><a href="#自动加载进出-specctra" title="自动加载进出 SPECCTRA" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">自动加载进出 SPECCTRA</span></a></li><li><a href="#手动加载进出-specctra" title="手动加载进出 SPECCTRA" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">手动加载进出 SPECCTRA</span></a></li><li><a href="#将设计数据从-sailwind-布局转换到-specctra" title="将设计数据从 SailWind 布局转换到 SPECCTRA" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">将设计数据从 SailWind 布局转换到 SPECCTRA</span></a></li><li><a href="#将设计数据从-specctra-转换到-sailwind-布局" title="将设计数据从 SPECCTRA 转换到 SailWind 布局" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">将设计数据从 SPECCTRA 转换到 SailWind 布局</span></a></li><li><a href="#设置-specctra-选项" title="设置 SPECCTRA 选项" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">设置 SPECCTRA 选项</span></a></li><li><a href="#设置-specctra-自动启动信息" title="设置 SPECCTRA 自动启动信息" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">设置 SPECCTRA 自动启动信息</span></a></li><li><a href="#创建或编辑do-文件" title="创建或编辑.do 文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建或编辑.do 文件</span></a></li><li><a href="#设置-specctra-do-文件启动选项" title="设置 SPECCTRA .do 文件启动选项" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">设置 SPECCTRA .do 文件启动选项</span></a></li><li><a href="#specctra-与分割混合平面" title="SPECCTRA 与分割/混合平面" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">SPECCTRA 与分割/混合平面</span></a></li><li><a href="#在-specctra-中布线前定义分割平面" title="在 SPECCTRA 中布线前定义分割平面" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">在 SPECCTRA 中布线前定义分割平面</span></a></li><li><a href="#在-specctra-中布线后定义分割平面" title="在 SPECCTRA 中布线后定义分割平面" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">在 SPECCTRA 中布线后定义分割平面</span></a></li></ul></nav></div></div></div></div></div></div></section></div>
+    <div id="search-container"></div>
+  </body>
+</html>

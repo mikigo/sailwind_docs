@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Rspress v1.45.0">
+    <title data-rh="true">第 31 章 覆铜平面操作 - SailWind</title><meta data-rh="true" name="description" content="SailWind"/>
+  <script>{;const saved = localStorage.getItem('rspress-theme-appearance');const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;const isDark = !saved || saved === 'auto' ? preferDark : saved === 'dark';document.documentElement.classList.toggle('dark', isDark);document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';}</script><link rel="icon" href="/sailwind_docs/favicon.ico"><script defer src="/sailwind_docs/static/js/styles.f5ec16c7.js"></script><script defer src="/sailwind_docs/static/js/lib-react.36f9b428.js"></script><script defer src="/sailwind_docs/static/js/lib-router.971f4280.js"></script><script defer src="/sailwind_docs/static/js/2886.6c8a4c3c.js"></script><script defer src="/sailwind_docs/static/js/index.ef746291.js"></script><link href="/sailwind_docs/static/css/styles.6524924d.css" rel="stylesheet"></head>
+
+  <body >
+    <div id="root"><div class="navContainer_d18b1 rspress-nav px-6  sticky_ddfa7"><div class="container_e4235 flex justify-between items-center h-full"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div><div class="flex flex-1 justify-end items-center"><div class="rightNav_a2fea"><div class="flex sm:flex-1 items-center sm:pl-4 sm:pr-2"><div class="rspress-nav-search-button navSearchButton_df1fb"><button><svg width="18" height="18" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg><p class="searchWord_af2c1">搜索</p><div style="opacity:0"><span></span><span>K</span></div></button></div><div class="mobileNavSearchButton_d85a9"><svg width="24" height="24" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg></div></div><div class="rspress-nav-menu menu h-14"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div><div class="flex-center flex-row"><div class="mx-2"><div class="md:mr-2 rspress-nav-appearance"><div class="p-1 border border-solid border-gray-300 text-gray-400  cursor-pointer rounded-md hover:border-gray-600 hover:text-gray-600 dark:hover:border-gray-200 dark:hover:text-gray-200 transition-all duration-300 w-7 h-7"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="dark:hidden" width="18" height="18" fill="currentColor"><path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6m0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4M12 4c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M12 24c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M5.6 6.6c-.3 0-.5-.1-.7-.3L3.5 4.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.1.2-.4.3-.7.3M19.8 20.8c-.3 0-.5-.1-.7-.3l-1.4-1.4c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.2.2-.5.3-.7.3M3 13H1c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M23 13h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M4.2 20.8c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.4.3-.7.3M18.4 6.6c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.5.3-.7.3"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="hidden dark:block" width="18" height="18" fill="currentColor"><path d="M12.1 22h-.9c-5.5-.5-9.5-5.4-9-10.9.4-4.8 4.2-8.6 9-9 .4 0 .8.2 1 .5s.2.8-.1 1.1c-2 2.7-1.4 6.4 1.3 8.4 2.1 1.6 5 1.6 7.1 0 .3-.2.7-.3 1.1-.1.3.2.5.6.5 1-.2 2.7-1.5 5.1-3.6 6.8-1.9 1.4-4.1 2.2-6.4 2.2M9.3 4.4c-2.9 1-5 3.6-5.2 6.8-.4 4.4 2.8 8.3 7.2 8.7 2.1.2 4.2-.4 5.8-1.8 1.1-.9 1.9-2.1 2.4-3.4-2.5.9-5.3.5-7.5-1.1-2.8-2.2-3.9-5.9-2.7-9.2"></path></svg></div></div></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div><div class="mobileNavMenu_e7045"><div class="navScreen_ec30c  rspress-nav-screen" id="navScreen"><div class="container_c935d"><div class="navMenu_b887b"><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div></div><div class="flex-center flex-col gap-2"><div class="mt-2 navAppearance_bf893 flex justify-center"></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div></div><button aria-label="mobile hamburger" class=" rspress-mobile-hamburger navHamburger_ac64c text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><circle cx="8" cy="16" r="2" fill="currentColor"></circle><circle cx="16" cy="16" r="2" fill="currentColor"></circle><circle cx="24" cy="16" r="2" fill="currentColor"></circle></svg></button></div></div></div></div><section><div class="docLayout_af141 pt-0"><aside class="sidebar_dd719 rspress-sidebar "><div class="navTitleMask_fb17c"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div></div><div class="rspress-scrollbar sidebarContent_da296"><nav class="pb-2"><a href="/sailwind_docs/layout/index.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:14px;margin-left:0;border-radius:0 var(--rp-radius) var(--rp-radius) 0;padding-left:24px;font-weight:bold"><span>章节预览</span></div></a><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">指南(Guide)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 2 章 用户界面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 3 章 无模命令与快捷键</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 4 章 设计与编辑基础</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 5 章 设置颜色</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 6 章 库与库数据管理</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 7 章 创建和编辑 PCB 封装</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 8 章 创建和修改元件类型</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 9 章 开始新设计</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 10 章 文件操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 11 章 设计环境设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 12 章 使用 SailWind Logic</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 13 章 导入与导出</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 14 章 层</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 15 章 过孔设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/16_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 16 章 电气网络</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/17_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 17 章 选项设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/18_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 18 章 属性控制</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/19_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 19 章 设置规则和使用禁止区</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/20_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 20 章 AI 驱动的先进功能</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/21_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 21 章 元件布局</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/22_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 22 章 SailWind 3D</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/23_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 23 章 与机械设计团队的数据交换</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/24_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 24 章 虚拟过孔</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/25_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 25 章 标签操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/26_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 26 章 设计或设计部分的复用</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/27_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 27 章 绘图操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/28_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 28 章 安全间距检查</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/29_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 29 章 铜箔操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/30_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 30 章 为布铜区或覆铜平面分配网络</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/31_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItemActive_de63c mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 31 章 覆铜平面操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/32_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 32 章 设计布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/33_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 33 章 SailWind 布线器</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/34_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 34 章 铜填充与覆铜平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/35_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 35 章 参考标志符</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/36_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 36 章 工程变更单(ECO)</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/37_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 37 章 设计比较</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/38_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 38 章 报告功能</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/39_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 39 章 设计错误检查</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/40_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 40 章 尺寸标注</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/41_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 41 章 CAM 输出</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/42_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 42 章 对象链接与嵌入 ❌</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/43_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 43 章 故障排除</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/44_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 44 章 SPECCTRA 链接</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/45_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 45 章 错误检测、BMW与BLT、脚本与宏</span></div></a></div><div class="rspress-sidebar-item"><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:18px"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex"><span class="flex-center" style="font-size:13px">第 46 - 55 章 Dialogs</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:0"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/46_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 46 章 GUI 参考元素 A</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/47_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 47 章 GUI 参考元素 B 至 C</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/48_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 48 章 GUI 参考元素 D</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/49_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 49 章 GUI 参考元素 E 至 G</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/50_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 50 章 GUI 参考元素 H 至 J</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/51_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 51 章 GUI 参考元素 K 至 O</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/52_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 52 章 GUI 参考元素 P</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/53_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 53 章 GUI 参考元素 Q 至 R</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/54_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 54 章 GUI 参考元素 S</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/55_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 55 章 GUI 参考元素 T 至 Z</span></div></a></div></div></div></section></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">教程(Tutorial)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>用户界面学习</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建库元件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>设计准备</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>导入设计数据</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>分配约束规则</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>移动与放置组件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建和编辑走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用动态布线创建走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用 <code>SailWind Router</code> 进行自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建分割平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建覆铜平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>添加尺寸标注</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>检查设计规则违规</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>更新原理图</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建报告和 CAM 文件</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">快速参考(Quick Reference)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/qr/modless.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>无模命令</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/qr/shortcut.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>键盘快捷键</span></div></a></div></div></div></section></nav></div></aside><div class="flex-1 relative min-w-0"><div class="rspress-sidebar-menu-container "><div class="rspress-sidebar-menu"><button type="button" class="flex-center mr-auto"><div class="text-md mr-2"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"></path></svg></div><span class="text-sm">Menu</span></button><button type="button" class="flex-center ml-auto"><span class="text-sm">本页目录</span><div class="text-md mr-2" style="transform:rotate(0deg);transition:transform 0.2s ease-out;margin-top:2px"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></button><div class="rspress-local-toc-container "><ul><li><a href="#手动创建覆铜平面" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">手动创建覆铜平面</span></a></li><li><a href="#自动创建覆铜平面" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">自动创建覆铜平面</span></a></li><li><a href="#自定义设计规则热焊盘" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">自定义设计规则热焊盘</span></a></li><li><a href="#自定义设计规则反焊盘" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">自定义设计规则反焊盘</span></a></li><li><a href="#将网络关联到覆铜平面" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">将网络关联到覆铜平面</span></a></li><li><a href="#为分割混合平面层分配网络" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">为分割/混合平面层分配网络</span></a></li><li><a href="#控制覆铜平面中热焊盘的显示" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">控制覆铜平面中热焊盘的显示</span></a></li><li><a href="#系统提示的覆铜平面填充" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">系统提示的覆铜平面填充</span></a></li><li><a href="#覆铜平面填充故障排除" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">覆铜平面填充故障排除</span></a></li><li><a href="#热焊盘结果故障排除" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">热焊盘结果故障排除</span></a></li><li><a href="#覆铜平面与板框之间的间距" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">覆铜平面与板框之间的间距</span></a></li><li><a href="#分割混合平面层" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">分割/混合平面层</span></a></li><li><a href="#分割平面的创建" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">分割平面的创建</span></a></li><li><a href="#自动分离覆铜平面" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">自动分离覆铜平面</span></a></li><li><a href="#嵌入式覆铜平面" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">嵌入式覆铜平面</span></a></li><li><a href="#从最外层到最内层区域创建嵌入式覆铜平面" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">从最外层到最内层区域创建嵌入式覆铜平面</span></a></li><li><a href="#通过优先排序添加切口和组合创建嵌入式覆铜平面" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">通过优先排序、添加切口和组合创建嵌入式覆铜平面</span></a></li><li><a href="#创建覆铜平面切口" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建覆铜平面切口</span></a></li><li><a href="#分配覆铜平面热特性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">分配覆铜平面热特性</span></a></li><li><a href="#保存时丢弃覆铜平面数据" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">保存时丢弃覆铜平面数据</span></a></li><li><a href="#连接到覆铜平面的焊盘连接显示" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">连接到覆铜平面的焊盘连接显示</span></a></li></ul></div></div></div><div class="content_ff766 rspress-doc-container flex"><div class="flex-1 overflow-x-auto"><div class="rspress-doc"><!--$--><h1 id="第-31-章-覆铜平面操作" class="rspress-doc-title text-3xl mb-10 leading-10 tracking-tight title_fb7eb">第 31 章 覆铜平面操作<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#第-31-章-覆铜平面操作">#</a></h1>
+<p class="my-4 leading-7"><em>覆铜平面</em>是一个封闭的、不自交的多边形，提供对全局必需网络（如电源和地）的访问。一个设计可能使用多个覆铜平面。大多数 PCB 设计将平面放置在仅用于平面的内层上，尽管您也可以将它们放置在外层。平面区域可以占据其所在层的全部或部分。两个或多个部分平面可以占据一个层，每个服务于不同的网络。这种配置称为<em>分割平面</em>。</p>
+<p class="my-4 leading-7">覆铜平面上可以有绝缘走线和过孔穿过平面区域，只要走线不分割平面破坏连接性。</p>
+<p class="my-4 leading-7">您可以使用绘图工具在 667 页手动创建平面区域，或使用创建覆铜平面功能在 668 页自动创建，以板框为参考。在将层标识为分割/混合平面层并为层分配网络后，您可以添加平面区域。</p>
+<p class="my-4 leading-7">更多信息请参见 779 页的&quot;铜形状和覆铜平面之间的差异&quot;，以及 683 页的&quot;分割/混合平面层&quot;。</p>
+<p class="my-4 leading-7">以下主题描述了创建覆铜平面的方法以及如何为它们分配网络。它们还提供了与覆铜平面填充、分割平面区域、热连接和故障排除相关的详细信息。</p>
+<h2 id="手动创建覆铜平面" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">手动创建覆铜平面<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#手动创建覆铜平面">#</a></h2>
+<p class="my-4 leading-7">使用覆铜平面创建一个铜区域，避免与其关联网络不连接的物体，同时与连接到其关联网络的物体建立热连接。</p>
+<p class="my-4 leading-7">填充的覆铜平面会自动与不共享相同网络分配的走线、管脚和其他物体保持间距。</p>
+<p class="my-4 leading-7">更多信息请参见 779 页的&quot;铜形状和覆铜平面之间的差异&quot;。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在<strong class="font-semibold">绘图</strong>菜单中，点击<strong class="font-semibold">覆铜平面</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>点击，并点击命令以更改绘图对象的值。更多信息请参见&quot;在创建绘图对象前设置值&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用以下方法之一创建形状：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">创建<strong class="font-semibold">圆形</strong>绘图对象</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">创建<strong class="font-semibold">多边形</strong>或路径绘图对象</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">创建<strong class="font-semibold">矩形</strong>绘图对象</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在显示的添加绘图特性对话框 1328 页中：</p>
+<p class="my-4 leading-7">a. 通过在网络列表中选择网络名称来分配网络；或者您可以点击<strong class="font-semibold">通过点击分配网络</strong>按钮并点击连接到网络的绘图对象。</p>
+<p class="my-4 leading-7">当您在分割/混合层上创建覆铜平面时，可以选择&quot;仅显示平面网络&quot;复选框，将网络限制为仅在层设置中分配给分割/混合平面层的网络。</p>
+<p class="my-4 leading-7">b. 对覆铜平面特性进行其他适当的更改。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">查看结果形状。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果焊盘与铜之间的热焊盘或反焊盘间隙不正确，请参见 669 页的&quot;自定义设计规则热焊盘&quot;或 670 页的&quot;自定义设计规则反焊盘&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果形状边缘不正确，请参见 615 页的&quot;绘图形状的边缘精度&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果需要修改形状，请参见&quot;绘图对象特性&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果要重新开始，请参见&quot;删除绘图段或对象&quot;。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="自动创建覆铜平面" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">自动创建覆铜平面<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#自动创建覆铜平面">#</a></h2>
+<p class="my-4 leading-7">您可以通过复制板框的形状来创建覆铜平面。生成的形状比边框按比例缩小，并包括板框中存在的斜角或小凹口。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">设置 &gt; 层定义</strong>，在<strong class="font-semibold">平面类型</strong>中，将活动层设置为<strong class="font-semibold">非平面</strong>层或<strong class="font-semibold">分割/混合</strong>平面层。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择板框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">右键点击并点击<strong class="font-semibold">创建覆铜平面</strong>弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在添加绘图对话框中，在网络分配区域，使用网络下拉列表或<strong class="font-semibold">通过点击分配网络</strong>按钮为覆铜平面分配网络。</p>
+<p class="my-4 leading-7">您可以使用&quot;仅显示平面网络&quot;复选框将网络列表限制为仅在层设置中分配给层的网络。您也可以从下拉列表中选择&quot;无&quot;，稍后再关联网络。如果列表中仅显示&quot;无&quot;，则表示在层设置中尚未将网络分配给分割/混合平面层。当您为覆铜平面分配网络时，与这些网络关联的焊盘如果位于适当的多边形内，将获得热指示器。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 当您使用创建覆铜平面时，可能会收到一条错误消息，指示 625 页的自交多边形。这是因为生成的平面区域比板框按比例缩小，软件无法使用指定的线宽在板框中创建小的斜角和/或凹口。通过减小板框与平面之间的距离来纠正此错误。在<strong class="font-semibold">设置 &gt; 选项</strong>（菜单项），<strong class="font-semibold">覆铜平面</strong>类别，<strong class="font-semibold">灌注和填充</strong>子类别中，为自动分离间隙设置输入较小的值。或者，您可以为覆铜平面使用较小的线宽（如果选择此方法，您还需要减小铜填充网格以匹配，以保持覆铜平面的实心填充。生成更多填充线会消耗更多内存，如果线宽大大减小，可能会减慢操作速度）。</p>
+</div></div>
+</li>
+</ol>
+<h2 id="自定义设计规则热焊盘" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">自定义设计规则热焊盘<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#自定义设计规则热焊盘">#</a></h2>
+<p class="my-4 leading-7">您可以自定义覆铜平面内管脚、虚拟过孔和过孔的默认热焊盘。默认热焊盘取决于热焊盘选项的辐条设置以及管脚焊盘或过孔焊盘与铜之间的铜到焊盘或铜到过孔间距规则值。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择<strong class="font-semibold">设置 &gt; 选项</strong>菜单项，然后选择<strong class="font-semibold">覆铜平面</strong>类别，再选择<strong class="font-semibold">热焊盘</strong>子类别以查看 1514 页的热焊盘选项。</p>
+<p class="my-4 leading-7">有单独的设置用于钻孔（通孔）和 SMT（表面贴装）焊盘。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在辐条宽度框中设置辐条的宽度。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在辐条最小值框中设置允许的最小辐条数。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于每个焊盘形状，设置辐条的方向。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">    如果您只想在过孔上填充，可以在覆铜平面的特性中启用一个选项。参见&quot;灌注和填充选项对话框&quot;中的&quot;在过孔上填充&quot;复选框。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果您希望布线的焊盘也具有热连接，请选择&quot;为布线组件焊盘添加热焊盘&quot;复选框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">打开 1674 页的设计规则。在设计规则层次结构的任何适用级别中，在 1167 页的间距规则中，根据设计需要设置铜到焊盘和铜到过孔的值。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">填充覆铜平面后，如果任何焊盘接收的辐条少于最小辐条值，则会生成<em>therm.err</em>报告。例如，如果焊盘与覆铜平面的边界相交，可能无法创建所有四个辐条。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">填充覆铜平面后，如果任何焊盘未能接收到热焊盘，请使用选择筛选条件检查焊盘上的走线残段。如果选择了&quot;为布线组件焊盘添加热焊盘&quot;复选框（在选项对话框中，<strong class="font-semibold">覆铜平面</strong>类别，<strong class="font-semibold">热焊盘</strong>子类别），连接到焊盘的小残留走线段会阻止焊盘接收热焊盘。将选择筛选条件设置为走线、拐角和钉以选择和移除连接到焊盘的走线段。</p>
+</li>
+</ul>
+<h2 id="自定义设计规则反焊盘" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">自定义设计规则反焊盘<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#自定义设计规则反焊盘">#</a></h2>
+<p class="my-4 leading-7">您可以自定义覆铜平面内管脚、过孔或钻孔周围出现的默认反焊盘。默认反焊盘取决于铜到焊盘、铜到过孔或铜到钻孔间距规则值，用于焊盘、过孔焊盘或钻孔与铜之间的间距。您可以将间距值应用于覆铜平面的网络或焊盘/过孔的网络。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">设置&gt; 设计规则</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 1674 页的设计规则对话框中，在设计规则层次结构的任何适用级别中，在 1167 页的间距规则中，根据设计需要设置铜到焊盘、铜到过孔和铜到钻孔的值。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 通过将间距应用于覆铜平面的网络而不是焊盘，您可以影响覆铜平面内的所有焊盘、过孔和钻孔。但通过将间距应用于焊盘和过孔的网络而不是覆铜平面，您可以实现不同的反焊盘间距。或者您可以使用组合 - 将一般最小间距应用于覆铜平面的网络，并将较大的间距应用于需要较大反焊盘的物体的网络。</p>
+</div></div>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">当您处理反焊盘时，涉及两个网络。如果您没有得到预期的结果，请确保所涉及的其他网络的间距值不与您已更改的值冲突。较大的间距值始终具有优先权。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于通孔管脚和过孔，如果选择了&quot;使用设计规则进行热焊盘和反焊盘&quot;复选框，则应用铜到钻孔值。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">设置 &gt; 选项</strong>（菜单项），<strong class="font-semibold">覆铜平面</strong>（类别），<strong class="font-semibold">热焊盘</strong>（子类别）选项&quot;移除未使用的焊盘&quot;和&quot;使用设计规则进行热焊盘和反焊盘&quot;都会影响反焊盘的间距。</p>
+</li>
+</ul>
+<h2 id="将网络关联到覆铜平面" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">将网络关联到覆铜平面<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#将网络关联到覆铜平面">#</a></h2>
+<p class="my-4 leading-7">您可以在设计过程中的任何时候将网络与覆铜平面关联。这使您可以在创建时灵活地为覆铜平面分配网络，或者创建覆铜平面，然后在将来的某个时间将特定网络与覆铜平面关联。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择覆铜平面边框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">右键点击并点击<strong class="font-semibold">特性</strong>弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从<strong class="font-semibold">网络</strong>列表中选择一个网络。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7"><strong class="font-semibold">示例</strong></p>
+<p class="my-4 leading-7">使用绘图特性对话框将网络关联到覆铜平面，如果：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">您在将网络分配给层设置对话框中的覆铜平面之前创建了覆铜平面。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">当您分割覆铜平面时，您从&quot;为所选多边形分配网络&quot;对话框中选择&quot;无&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">您希望将不同的网络关联到覆铜平面。</p>
+</li>
+</ul>
+<h2 id="为分割混合平面层分配网络" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">为分割/混合平面层分配网络<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#为分割混合平面层分配网络">#</a></h2>
+<p class="my-4 leading-7">定义平面层后，您可以将适当的网络分配给这些层，以建立设计中所需的连接性。</p>
+<p class="my-4 leading-7">使用层设置对话框中的分配网络为一个或多个网络分配分割/混合平面层。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">设置&gt; 层定义</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择一个分割/混合平面层并点击<strong class="font-semibold">分配网络</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从所有网络列表中选择一个网络。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 您可以根据需要将网络分配给多个层。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">添加</strong>将网络移动到分配的网络列表框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">重复上述步骤以关联其他网络。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>关闭平面层网络对话框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>关闭层设置对话框。</p>
+</li>
+</ol>
+<h2 id="控制覆铜平面中热焊盘的显示" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">控制覆铜平面中热焊盘的显示<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#控制覆铜平面中热焊盘的显示">#</a></h2>
+<p class="my-4 leading-7">使用选项对话框 &gt; <strong class="font-semibold">覆铜平面</strong>类别 &gt; <strong class="font-semibold">热焊盘</strong>子类别来控制热信息的显示。</p>
+<p class="my-4 leading-7">更多信息请参见&quot;分配覆铜平面热特性&quot;。</p>
+<p class="my-4 leading-7">使用&quot;活动层前置&quot;复选框在<strong class="font-semibold">设置 &gt; 选项</strong>（菜单项），<strong class="font-semibold">全局</strong>（类别），1531 页的常规子类别中查看热焊盘和反焊盘间距的更多细节。当选择此复选框时，当当前层是分割/混合平面层时，可以看到焊盘或过孔形状的小边框。如果热焊盘显示特性设置正确，热焊盘图形会出现在属于覆铜平面网络的所有管脚和过孔上。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/31/_page_6_Picture_1.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 80. 活动层设置禁用（上）和启用（下）</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/31/_page_6_Picture_3.jpeg" alt=""/></p>
+<h2 id="系统提示的覆铜平面填充" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">系统提示的覆铜平面填充<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#系统提示的覆铜平面填充">#</a></h2>
+<p class="my-4 leading-7">当您使用某些命令操作时，系统会提示您填充覆铜平面。填充提示在您验证设计或运行 CAM 生成命令时出现。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">验证设计</strong></p>
+<p class="my-4 leading-7">当您使用<strong class="font-semibold">工具 &gt; 验证设计</strong>菜单项，并执行覆铜平面检查（并在设置中选择&quot;检查间距和连接性&quot;选项）时，软件会检查正确的设置，如果需要，创建覆铜平面（如果仅分配了一个网络）。然后软件会提示您自动填充覆铜平面。更多信息请参见&quot;验证设计&quot;。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">运行 CAM</strong></p>
+<p class="my-4 leading-7">当您在分割/混合平面层上运行 CAM 时，软件会检查正确的设置，如果需要，创建覆铜平面。然后软件会提示您自动填充覆铜平面。更多信息请参见&quot;创建所有输出&quot;。</p>
+<h2 id="覆铜平面填充故障排除" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">覆铜平面填充故障排除<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#覆铜平面填充故障排除">#</a></h2>
+<p class="my-4 leading-7">覆铜平面填充需要特别注意，以确保连接性与设计意图匹配。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">解决方案</strong></p>
+<p class="my-4 leading-7">以下情况可能会阻止覆铜平面填充。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">覆铜平面内没有网络的焊盘</strong></p>
+<p class="my-4 leading-7">确保至少有一个分配给覆铜平面的网络的焊盘位于形状内。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">覆铜平面内没有钻孔焊盘</strong></p>
+<p class="my-4 leading-7">通常，非钻孔焊盘的默认设置是不启用平面热焊盘特性。为非钻孔焊盘启用平面热焊盘特性，允许它们通过热焊盘连接到覆铜平面。选择焊盘，右键点击并点击<strong class="font-semibold">特性</strong>弹出菜单项。在管脚特性对话框中，选择平面热焊盘复选框。这会导致系统根据层和网络重新检查哪些管脚应该获得平面热焊盘。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">覆铜平面内没有焊盘或过孔启用了平面热焊盘特性</strong></p>
+<p class="my-4 leading-7">为焊盘和过孔启用平面热焊盘特性，允许它们通过热焊盘连接到覆铜平面。选择焊盘，右键点击并点击<strong class="font-semibold">特性</strong>弹出菜单项。在管脚特性对话框中，选择平面热焊盘复选框。这会导致系统根据层和网络重新检查哪些管脚和过孔应该获得平面热焊盘。对过孔重复此过程。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">未定义覆铜平面</strong></p>
+<p class="my-4 leading-7">确保您可以看到覆铜平面的边框。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">多个覆铜平面相交或定义在彼此之上</strong></p>
+<p class="my-4 leading-7">其中一个覆铜平面必须具有优先权，您必须创建另一个平面的切口。您可能会受益于启用&quot;在嵌入式覆铜平面周围创建切口&quot;选项，通过选择<strong class="font-semibold">设置 &gt; 选项</strong>菜单项，覆铜平面（类别），1511 页的&quot;灌注和填充&quot;子类别找到。有关为覆铜平面提供填充优先权的信息，请参见&quot;灌注和填充选项对话框&quot;中的填充优先权设置。填充优先权数字对于内部嵌套的覆铜平面应该最低，对于外部覆铜平面应该最大。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">您在覆铜平面区域填充时修改了覆铜平面边框</strong></p>
+<p class="my-4 leading-7">使用无模命令 PO 将平面区域返回到基本平面边框，然后修改边框的形状。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">您有嵌入式/嵌套覆铜平面</strong></p>
+<p class="my-4 leading-7">您必须首先创建最大的覆铜平面，然后创建较小的内部覆铜平面。（只要您选择<strong class="font-semibold">设置 &gt; 选项</strong>菜单项，然后<strong class="font-semibold">覆铜平面</strong>（类别），<strong class="font-semibold">灌注和填充</strong>（子类别），然后&quot;在嵌入式覆铜平面周围创建切口&quot;复选框，这会自动分配正确的填充优先权并在较大的分割平面内创建所需的覆铜平面切口。）</p>
+<p class="my-4 leading-7">如果您忽略了选择&quot;在嵌入式覆铜平面周围创建切口&quot;选项，或者您只是首先创建了内部覆铜平面区域，则覆铜平面区域具有冲突的填充优先权值并且无法填充。您必须决定覆铜平面应填充的顺序，并相应地调整它们的填充优先权。有关为覆铜平面提供填充优先权的信息，请参见&quot;灌注和填充选项对话框&quot;1381 页中的填充优先权设置。如果您只有一个内部覆铜平面，有一种更快的方法可以给它更高的填充优先权。使用 PO 无模命令将平面返回到边框模式。选择平面区域形状，右键点击并点击<strong class="font-semibold">前置</strong>弹出菜单项。系统识别新的填充优先权并填充覆铜平面。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">走线或管脚阻止填充与同一网络的任何焊盘连接</strong></p>
+<p class="my-4 leading-7">您必须释放当前宽度和网格设置的填充空间，以流动并至少与同一网络的一个焊盘通过热焊盘连接。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">您的最小填充区域设置太大</strong></p>
+<p class="my-4 leading-7">在<strong class="font-semibold">设置 &gt; 选项</strong>（菜单项），<strong class="font-semibold">覆铜平面</strong>（类别），1511 页的&quot;灌注和填充&quot;子类别中，检查&quot;最小填充区域&quot;并确保输入的值不大于覆铜平面大小。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">您的禁止区域限制了覆铜平面</strong></p>
+<p class="my-4 leading-7">为所有层的禁止区域分配颜色，并确保它们不限制覆铜平面的位置和层。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">您隐藏了填充</strong></p>
+<p class="my-4 leading-7">确保填充可见。<strong class="font-semibold">设置 &gt; 选项</strong>（菜单项），<strong class="font-semibold">覆铜平面</strong>（类别），1511 页的&quot;灌注和填充&quot;子类别，在填充视图区域，点击正常而不是无填充。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">您将热焊盘选项设置为不连接</strong></p>
+<p class="my-4 leading-7">确保钻孔和非钻孔焊盘在 1514 页的热焊盘选项中有正交、对角线或填充设置。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">您已经布线到位于平面区域内同一网络的所有可用焊盘</strong></p>
+<p class="my-4 leading-7">如果与填充或平面同名的网络已经布线，请确保在 1514 页的热焊盘选项中选择了&quot;为布线组件焊盘添加热焊盘&quot;复选框。</p>
+<h2 id="热焊盘结果故障排除" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">热焊盘结果故障排除<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#热焊盘结果故障排除">#</a></h2>
+<p class="my-4 leading-7">当您填充（填充/浇注）覆铜平面时，热焊盘错误报告（<em>therm.err</em>）可能会出现在您的默认文本编辑器中。当覆铜平面内的焊盘根据您在<strong class="font-semibold">设置 &gt; 选项</strong>菜单项，覆铜平面（类别），热焊盘（子类别）中的设置未接收到最小数量的辐条时，会出现此文件。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">热焊盘错误报告</strong></p>
+<p class="my-4 leading-7">报告部分说明是否有少于 100%甚至 50%的热焊盘延伸。在每个部分下方，列出了参考标识符与管脚号（如果是组件焊盘）、焊盘坐标位置以及实际生成的热焊盘辐条数量。</p>
+<p class="my-4 leading-7">例如：</p>
+<div class="language-bash"><div class="rspress-code-content rspress-scrollbar"><code>
+钻孔焊盘
+
+热焊盘延伸少于 50%
+
+热焊盘辐条生成器报告
+
+在主组件侧：
+
+J1.5 (455, 650) # = 2
+
+</code></div></div>
+<p class="my-4 leading-7">这表示参考标识符 J1 的管脚 5，坐标 455, 650 仅生成了 2 个热焊盘辐条。此焊盘所需的热焊盘辐条应为 4 个或更多。热焊盘辐条数量减少可能有多种原因，例如走线太靠近焊盘的间距问题，或者覆铜平面边框宽度和填充网格对于铜在组件管脚之间填充来说太大等。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">解释热焊盘结果</strong></p>
+<p class="my-4 leading-7">您可以解释热焊盘结果以检测设计中的问题热焊盘问题。</p>
+<p class="my-4 leading-7">如果结果不符合预期，请考虑以下事项：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果大量焊盘和/或过孔生成了零个热焊盘辐条，则可能存在未填充的覆铜平面。更多信息请参见&quot;覆铜平面填充故障排除&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果只有少数焊盘或过孔生成了零个热焊盘辐条，并且没有明显的障碍阻止它们的创建，您可能遇到这些焊盘或过孔未启用平面热焊盘特性的情况。为这些焊盘和过孔启用平面热焊盘特性，允许它们通过热焊盘连接到覆铜平面。选择焊盘，右键点击并点击<strong class="font-semibold">特性</strong>弹出菜单项。在管脚特性对话框中，选择平面热焊盘复选框。这会导致系统根据层和网络重新检查哪些管脚和过孔应该获得平面热焊盘。对过孔重复此过程。</p>
+</li>
+</ul>
+<h2 id="覆铜平面与板框之间的间距" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">覆铜平面与板框之间的间距<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#覆铜平面与板框之间的间距">#</a></h2>
+<p class="my-4 leading-7">许多因素会影响您构建覆铜平面的方式以及它们与设计中其他物体的关系。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">平面边缘退缩</strong></p>
+<p class="my-4 leading-7">对于任何平面区域，希望填充的平面边缘稍微从板的边缘退缩。这可以防止平面边缘在板修剪过程中暴露，并消除平面意外短路到另一个设计或包装物体的可能性。在自动生成平面区域时，您必须考虑两个重要测量：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">板框与平面区域边框之间的距离</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">板框与填充后平面区域内的铜（填充边框）之间的距离</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">板框</strong></p>
+<p class="my-4 leading-7">绘制的 2D 线表示板框。选项对话框的<strong class="font-semibold">文本和线</strong>类别中的默认宽度设置确定生成时的线宽。您可以通过选择板框并在绘图特性对话框中更改宽度来更改板框宽度。</p>
+<p class="my-4 leading-7">用于表示板框的线旨在作为视觉参考，指示设计工作区以及 CAM 图中的板周长。更改此线的宽度不会改变板的尺寸，因为实际的板边缘位于此 2D 线的中心线上。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">平面区域浇注边框</strong></p>
+<p class="my-4 leading-7">您可以通过定义其浇注边框来创建平面区域。当您创建平面区域浇注边框时，您指定表示形状可见边界的线的宽度。此边框的外边缘表示形状填充时铜的最大范围。板到铜间距规则影响设计如何引用此形状的边缘，并可以在需要时修改铜填充的范围。</p>
+<p class="my-4 leading-7">有关如何创建平面区域浇注边框的更多信息，请参见 615 页的&quot;绘图形状的边缘精度&quot;。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">自动分离间隙</strong></p>
+<p class="my-4 leading-7">您可以将单个平面区域形状分割为两个或多个形状。当您分割平面区域时，您可以通过为自动分离间隙指定一个值来控制这些多个平面区域形状之间的所需间距（选择<strong class="font-semibold">设置 &gt; 选项</strong>菜单项并点击<strong class="font-semibold">覆铜平面</strong>类别 &gt; <strong class="font-semibold">灌注和填充</strong>子类别以访问此设置）。</p>
+<p class="my-4 leading-7">用于创建平面区域浇注边框的线是绘图对象并具有宽度。如果您为自动分离间隙指定了一个值，则此值用于计算这些线边缘之间的距离。因此，如果您为自动分离间隙指定 25 mil 的值，平面区域浇注边框将彼此相隔 25 mil 的距离。此距离是用于绘制平面区域形状的线外边缘之间测量的。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/31/_page_11_Figure_1.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 81. 自动分离间隙</strong></p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> &gt;当同一层上存在多个平面区域时，填充优先权分配确定最终分离间隙（参见填充优先权设置）。</p>
+<p class="my-4 leading-7">当使用板框形状自动生成平面区域时，自动分离间隙在用于确定平面区域从板边缘退缩的距离的计算中被考虑。</p>
+</div></div>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">如果为自动分离间隙指定 0 的值，则在此计算中使用 10 mil 的不可编辑系统默认值。</p>
+</div></div>
+<p class="my-4 leading-7">有关如何创建分割平面的更多信息，请参见 683 页的&quot;分割/混合平面层&quot;。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">平面区域浇注边框从板框退缩</strong></p>
+<p class="my-4 leading-7">绘制板框的线是绘图对象，因此它具有宽度，因此任何与板框共享边界的平面区域使用自动分离间隙值来确定它们必须从板边缘退缩的最小距离。</p>
+<p class="my-4 leading-7">此退缩距离是从用于绘制板框的线的内边缘测量的。由于板边缘位于定义板框的线的中心，此线宽度的一半在板边缘内部，因此产生的平面区域浇注边框退缩距离是自动分离间隙指定的值加上用于绘制板框的线宽度的一半的总和。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">示例：</strong> 如果板框宽度为 10 mil，自动分离间隙设置为 25 mil，则产生的平面区域浇注边框退缩距离将是自动分离间隙值（25 mil）加上线宽度值的一半（5 mil），总共距离板边缘 30 mil。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/31/_page_12_Figure_1.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 82. 平面区域浇注边框从板框退缩</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">例外示例：</strong> 如果没有为自动分离间隙指定值，系统使用系统默认值并将平面区域浇注边框放置在用于绘制板框的线的内边缘 10 mil 处，因此产生的平面区域浇注边框退缩距离将是系统默认值（10 mil）加上线宽度值的一半（5 mil），总共距离板边缘 15 mil。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/31/_page_12_Figure_4.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/31/_page_12_Figure_5.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">平面填充填充边框从板框退缩</strong></p>
+<p class="my-4 leading-7">当平面区域靠近板边缘时，设计规则中的板到铜间距值通常控制平面填充填充边框退缩。但是，如果确定平面区域浇注边框退缩的计算结果值大于板到铜设计规则，则它具有优先权。</p>
+<p class="my-4 leading-7">平面区域根据以下条件填充：</p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果板到铜值大于自动分离间隙加上板框宽度的一半，则平面填充边界（填充边框）被退缩，铜填充从板边缘退缩到等于板到铜间距值的距离。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果在板到铜间距中设置的值等于或小于自动分离间隙加上板框线宽度的一半，则平面填充边界不减小，区域填充到现有的平面形状边缘。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">有关平面填充填充边框如何填充的更多信息，请参见 617 页的&quot;铜和覆铜平面的填充&quot;</p>
+<p class="my-4 leading-7"><strong class="font-semibold">平面填充从板框退缩的示例</strong></p>
+<p class="my-4 leading-7"><code>SailWind Layout</code> 根据各种设计条件计算平面填充退缩距离。下表提供了如何计算平面填充退缩距离的示例。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">参数</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">示例 A</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">示例 B</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">示例 C</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">示例 D</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">板框宽度</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">10 mil</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">10 mil</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">10 mil</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">10 mil</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">自动分离间隙</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">25 mil</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">25 mil</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">板到铜</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">50 mil</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">50 mil</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">0</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">结果</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">到浇注边框的距离</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">30 mil</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">15 mil</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">30 mil</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">15 mil</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">到填充边框的距离</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">50 mil</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">50 mil</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">30 mil</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">15 mil</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 110. 确定平面填充退缩距离的示例数据</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">示例 A</strong></p>
+<p class="my-4 leading-7">板到铜值大于计算的平面区域浇注边框退缩，因此板到铜值用于填充边框退缩。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/31/_page_14_Figure_1.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 84. 平面退缩示例 A</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">示例 B</strong></p>
+<p class="my-4 leading-7">板到铜值大于计算的平面区域浇注边框退缩（使用自动分离间隙默认值），因此板到铜值用于填充边框退缩。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/31/_page_14_Figure_5.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 85. 平面退缩示例 B</strong></p>
+<p class="my-4 leading-7"><strong class="font-semibold">示例 C</strong></p>
+<p class="my-4 leading-7">板到铜值等于或小于计算的平面区域浇注边框退缩，因此平面区域浇注边框退缩值用于填充边框退缩（与浇注边框重合）。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/31/_page_15_Figure_1.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">示例 D</strong></p>
+<p class="my-4 leading-7">板到铜值大于计算的平面区域浇注边框退缩（使用自动分离间隙默认值），因此板到铜值用于填充边框退缩。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/31/_page_15_Figure_4.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 87. 平面退缩示例 D</strong></p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 由于填充操作可以减少实际填充区域，填充操作后始终检查平面连接性，以确保没有不连续性或热焊盘不足。</p>
+</div></div>
+<h2 id="分割混合平面层" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">分割/混合平面层<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#分割混合平面层">#</a></h2>
+<p class="my-4 leading-7"><code>SailWind Layout</code> 支持创建分割和混合平面层。分割平面层是具有一个或多个具有不同网络分配的隔离铜区域的平面层。混合平面层是具有一个或多个覆铜平面和任意数量信号布线的平面层。</p>
+<p class="my-4 leading-7">在许多设计中，通常需要为电压和地网络创建大的铜区域。为此，创建一个专用于单个网络（通常是电源或地网络）的内部层。尽管通常有一个平面层专用于单个网络，但具有多个电压要求的设计需要您将平面层分离或分割为隔离区域。在设计非常密集的设计时，您可以使用分割/混合平面层进行正常信号布线。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">设置&gt; 层定义</strong>菜单项包括一个用于标识分割/混合平面层的选项，2-D 绘图命令包含用于创建封闭形状以定义覆铜平面和空隙（无铜区域）的选项。当您在标识为分割/混合平面层的层上布线时，会自动在走线和管脚对周围创建间距：走线实际上是通过覆铜平面犁过的。</p>
+<p class="my-4 leading-7">覆铜平面操作还充分利用了设计规则驱动的间距和热焊盘生成。当您创建带有嵌入式走线的覆铜平面时，它们的间距可以基于自定义热焊盘间距、设计规则间距或全局间距。</p>
+<p class="my-4 leading-7">如果您使用分割/混合平面并且还使用 SPECCTRA 进行布线，请参见&quot;SPECCTRA 和分割/混合平面&quot;。</p>
+<h2 id="分割平面的创建" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">分割平面的创建<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#分割平面的创建">#</a></h2>
+<p class="my-4 leading-7">您可以在分割/混合平面层上创建多个覆铜平面。</p>
+<p class="my-4 leading-7">有三种推荐的方法来分割平面层：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">创建多个覆铜平面</strong> 更多信息请参见 667 页的&quot;手动创建覆铜平面&quot;和 668 页的&quot;自动创建覆铜平面&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">自动分离覆铜平面</strong> 使用自动平面分离工具将覆盖整个层或大区域的覆铜平面分割为两个或多个覆铜平面。更多信息请参见 683 页的&quot;自动分离覆铜平面&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">创建嵌入式覆铜平面</strong> 在另一个覆铜平面内嵌入一个覆铜平面。更多信息请参见 685 页的&quot;嵌入式覆铜平面&quot;。</p>
+</li>
+</ul>
+<h2 id="自动分离覆铜平面" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">自动分离覆铜平面<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#自动分离覆铜平面">#</a></h2>
+<p class="my-4 leading-7">使用<strong class="font-semibold">自动分离</strong>按钮将覆铜平面分割为两个新的覆铜平面。使用自动分离，您可以从覆铜平面的一侧绘制路径到同一平面的另一侧。此路径定义了两个新覆铜平面之间的分离中心，并将覆铜平面分割为两个不同的形状。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">您必须开始和结束在同一覆铜平面多边形上的分离。</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在标准工具栏上，在层列表中点击分割/混合平面层。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用以下方法之一：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于对象模式，右键点击并点击<strong class="font-semibold">选择任何对象</strong>弹出菜单项。点击覆铜平面段上的分割起点。右键点击并点击<strong class="font-semibold">自动分离</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于动词模式，在标准工具栏上，点击<strong class="font-semibold">绘图工具栏</strong>按钮。在<strong class="font-semibold">绘图</strong>菜单中，点击<strong class="font-semibold">自动覆铜平面分离</strong>按钮。点击以指示覆铜平面多边形周边上的起始位置。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在覆铜平面边框上的结束点双击以完成自动分离命令。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">分配网络到所选多边形对话框显示并自动选择一个新的覆铜平面。对话框中出现的网络名称是在层设置中分配给分割/混合层的网络名称。</p>
+<ol start="4" class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从选择现有网络区域，点击一个网络分配给所选覆铜平面。</p>
+<p class="my-4 leading-7">这分配网络，取消选择覆铜平面，并选择另一个覆铜平面。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 自动分离路径的任何段都不能在多边形之外，否则会出现消息&quot;所有段必须在覆铜平面多边形内&quot;。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">为另一个覆铜平面点击一个网络。这分配网络，取消选择覆铜平面并关闭对话框。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 使用<strong class="font-semibold">设置 &gt; 选项</strong>（菜单项），覆铜平面（类别），1511 页的灌注和填充（子类别），自动分离间隙选项定义两个覆铜平面之间的距离。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果出现消息&quot;无法缩小多边形#1&quot;或&quot;无法缩小多边形#2&quot;，则将每个新多边形缩小线宽的一半。在此操作期间发生错误（可能是自交）。</p>
+</li>
+</ol>
+<h2 id="嵌入式覆铜平面" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">嵌入式覆铜平面<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#嵌入式覆铜平面">#</a></h2>
+<p class="my-4 leading-7">嵌入式覆铜平面使您能够在特定层上创建多个覆铜平面，并控制它们的构造如何相互交互。</p>
+<p class="my-4 leading-7">您可以使用以下方法之一嵌入覆铜平面（在一个覆铜平面内创建另一个覆铜平面）：</p>
+<p class="my-4 leading-7">从最外层到最内层区域创建嵌入式覆铜平面 通过优先排序、添加切口和组合创建嵌入式覆铜平面</p>
+<h3 id="从最外层到最内层区域创建嵌入式覆铜平面" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">从最外层到最内层区域创建嵌入式覆铜平面<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#从最外层到最内层区域创建嵌入式覆铜平面">#</a></h3>
+<p class="my-4 leading-7">创建嵌入式覆铜平面时，从最外层区域到最内层区域工作，以确保所有区域按预期填充。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">通过绘制覆铜平面创建最外层覆铜平面，如&quot;手动创建覆铜平面&quot;和&quot;自动创建覆铜平面&quot;中所述。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用绘图工具栏上的<strong class="font-semibold">覆铜平面</strong>按钮创建内部覆铜平面。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">继续嵌套覆铜平面，直到您定义了层的所有嵌入式覆铜平面。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 嵌入式覆铜平面会自动前置，以便正确填充。要分配不同的填充优先权，请参见&quot;灌注和填充选项对话框&quot;。</p>
+</div></div>
+<h3 id="通过优先排序添加切口和组合创建嵌入式覆铜平面" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">通过优先排序、添加切口和组合创建嵌入式覆铜平面<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#通过优先排序添加切口和组合创建嵌入式覆铜平面">#</a></h3>
+<p class="my-4 leading-7">如果您在创建最外层覆铜平面之前绘制最内层覆铜平面，则无法确保正确填充。为确保嵌入式覆铜平面的正确填充，您可以执行两种方法之一：您可以更改嵌入式覆铜平面的填充优先权，或者您可以在嵌入式覆铜平面的外围创建覆铜平面切口，然后将其与外部覆铜平面组合。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">选择以下之一：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择嵌入式覆铜平面，右键点击并点击<strong class="font-semibold">前置</strong>弹出菜单项。这将嵌入式覆铜平面设置为较低的&quot;填充优先权&quot;，确保它在外部覆铜平面之前填充。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">或者，执行以下步骤：</p>
+<p class="my-4 leading-7">i. 在所有嵌入式覆铜平面的外围创建覆铜平面切口。（更多信息请参见创建覆铜平面切口。）</p>
+<p class="my-4 leading-7">ii. 选择覆铜平面切口多边形形状。</p>
+<p class="my-4 leading-7">iii. 按下 Ctrl 键并选择下一个外部覆铜平面。</p>
+<p class="my-4 leading-7">iv. 右键点击并点击<strong class="font-semibold">组合</strong>弹出菜单项。</p>
+</li>
+</ul>
+<h2 id="创建覆铜平面切口" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建覆铜平面切口<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建覆铜平面切口">#</a></h2>
+<p class="my-4 leading-7">覆铜平面切口是一个封闭的、不自交的多边形，定义覆铜平面内的空隙。创建切口涉及将覆铜平面形状与覆铜平面切口形状组合。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 您可以在覆铜平面之前创建切口，或者在覆铜平面之前创建切口。</p>
+</div></div>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">尽管在填充边框模式下似乎会在覆铜平面的边缘或边框中创建空隙，但覆铜平面切口实际上不会改变覆铜平面边框。创建覆铜平面边框作为多边形形状以在边框中创建特征。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">您必须将覆铜平面切口放在与覆铜平面相同的层上。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在<strong class="font-semibold">绘图</strong>菜单中，点击<strong class="font-semibold">覆铜平面切口</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">为覆铜平面创建一个或多个切口区域。</p>
+<p class="my-4 leading-7">参见&quot;创建绘图对象&quot;获取更多信息。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">右键点击并点击<strong class="font-semibold">选择形状</strong>。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 如果您无法看到覆铜平面形状内的切口，因为形状已填充，请输入无模命令<strong class="font-semibold">PO</strong>将覆铜平面返回到浇注边框显示模式。一旦您将切口与覆铜平面组合，您将需要重新填充覆铜平面。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">拖动一个框以组选择覆铜平面和切口。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 某些情况下不允许拖动组选择框。相反，使用 Ctrl +点击选择覆铜平面和切口。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">右键点击并点击<strong class="font-semibold">组合</strong>弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">&quot;填充覆铜平面&quot;780 页。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">覆铜平面区域内的切口区域自动移除。如果您需要移动或编辑覆铜平面或切口，请注意您对覆铜平面形状（移动、旋转、斜接等）的任何修改也会影响组合的切口。您可能需要先取消组合。有关说明，请参见 643 页的&quot;取消组合绘图对象&quot;。</p>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 从 VX.2.3 开始，铜填充到完成的切口边框的内边缘，而不是中心线。在 VX.2.3 之前，切口会增长线宽的一半，因为铜会填充到其中心线而不是作为预期边界的内边缘。</p>
+</div></div>
+<p class="my-4 leading-7">当您绘制切口形状时，绘制的几何图形以单屏幕像素线显示。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/31/_page_20_Picture_9.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 88. 绘制形状时的切口边框</strong></p>
+<p class="my-4 leading-7">完成后，边框使用实际线宽，但完全位于绘制几何图形的外围之外，以帮助在填充前可视化切口。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/31/_page_21_Picture_1.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 89. 绘制和显示边框的复合</strong></p>
+<p class="my-4 leading-7">一旦铜被浇注，它会浇注到绘制几何图形的外围 - 切口显示边框的内边缘。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/31/_page_21_Picture_4.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 90. 围绕切口几何图形的浇注</strong></p>
+<h2 id="分配覆铜平面热特性" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">分配覆铜平面热特性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#分配覆铜平面热特性">#</a></h2>
+<p class="my-4 leading-7">热焊盘设置自动分配给设计中的所有焊盘栈。</p>
+<p class="my-4 leading-7">使用管脚特性 1632 页、过孔特性 1779 页和跳线管脚特性 1422 页对话框中的平面热焊盘复选框来确定焊盘栈是否是合格的热焊盘候选。如果您不希望焊盘栈的任何层上有任何类型的热焊盘，请关闭平面热焊盘复选框。</p>
+<p class="my-4 leading-7">更多信息请参见&quot;生成热焊盘&quot;。</p>
+<h2 id="保存时丢弃覆铜平面数据" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">保存时丢弃覆铜平面数据<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#保存时丢弃覆铜平面数据">#</a></h2>
+<p class="my-4 leading-7">如果需要，您可以丢弃覆铜平面数据，并在保存设计文件时仅保存平面多边形。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">设置 &gt; 选项</strong>菜单项，<strong class="font-semibold">覆铜平面</strong>（类别），<strong class="font-semibold">灌注和填充</strong>（子类别）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在保存到 PCB 文件区域，选择&quot;覆铜平面多边形边框&quot;选项并点击<strong class="font-semibold">确定</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">绘图 &gt; 覆铜平面管理器</strong>菜单项以填充覆铜平面 780 页。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">保存设计。</p>
+<p class="my-4 leading-7">&quot;丢弃覆铜平面数据对话框&quot;1314 页出现。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">继续</strong>仅保存覆铜平面多边形。点击<strong class="font-semibold">全部保存</strong>保存所有覆铜平面数据并更改未来保存的选项。</p>
+</li>
+</ol>
+<h2 id="连接到覆铜平面的焊盘连接显示" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">连接到覆铜平面的焊盘连接显示<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#连接到覆铜平面的焊盘连接显示">#</a></h2>
+<p class="my-4 leading-7">您可以隐藏分配给覆铜平面的网络的连接线（鼠线或未布线连接）。平面网络通常是电源或地网络；隐藏它们可以帮助清理设计空间，并减少需要更困难布线的连接。</p>
+<p class="my-4 leading-7">平面网络连接可以通过通孔管脚直接连接到覆铜平面，或通过扇出（短走线末端带有过孔）连接。这些网络通常不需要长走线，并且在元件的战略放置中通常不重要 - 除非它们所连接的覆铜平面仅在板的某个区域。您可以使用查看网络对话框隐藏设计中任何或所有网络的未布线连接。</p>
+<p class="my-4 leading-7">更多信息请参见&quot;查看网络对话框&quot;。</p><!--/$--></div><div class="rspress-doc-footer"><footer class="mt-8"><div class="xs:flex pb-5 px-2 justify-end items-center"><div class="flex text-sm text-text-2 leading-6 sm:leading-8 font-medium"><p>最近更新时间<!-- -->: <span>2025/7/15 05:55:33</span></p></div></div><div class="flex flex-col"></div><div class="flex flex-col sm:flex-row sm:justify-around gap-4 pt-6"><div class="prev_c92d1 flex flex-col"><a href="/sailwind_docs/layout/guide/30_zh.html" class="link_a7cea pager-link_e0d2d"><span class="desc_dcc01">上一页</span><span class="title_a3acb">第 30 章 为布铜区或覆铜平面分配网络</span></a></div><div class="next_c11be flex flex-col"><a href="/sailwind_docs/layout/guide/32_zh.html" class="link_a7cea pager-link_e0d2d next_ad355"><span class="desc_dcc01">下一页</span><span class="title_a3acb">第 32 章 设计布线</span></a></div></div></footer></div></div><div class="aside-container_bc5fa"><div class="flex flex-col"><div id="aside-container" class="relative text-sm font-medium"><div class="leading-7 block text-sm font-semibold pl-3">本页目录</div><nav class="mt-1"><ul class="relative"><li><a href="#手动创建覆铜平面" title="手动创建覆铜平面" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">手动创建覆铜平面</span></a></li><li><a href="#自动创建覆铜平面" title="自动创建覆铜平面" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">自动创建覆铜平面</span></a></li><li><a href="#自定义设计规则热焊盘" title="自定义设计规则热焊盘" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">自定义设计规则热焊盘</span></a></li><li><a href="#自定义设计规则反焊盘" title="自定义设计规则反焊盘" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">自定义设计规则反焊盘</span></a></li><li><a href="#将网络关联到覆铜平面" title="将网络关联到覆铜平面" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">将网络关联到覆铜平面</span></a></li><li><a href="#为分割混合平面层分配网络" title="为分割/混合平面层分配网络" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">为分割/混合平面层分配网络</span></a></li><li><a href="#控制覆铜平面中热焊盘的显示" title="控制覆铜平面中热焊盘的显示" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">控制覆铜平面中热焊盘的显示</span></a></li><li><a href="#系统提示的覆铜平面填充" title="系统提示的覆铜平面填充" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">系统提示的覆铜平面填充</span></a></li><li><a href="#覆铜平面填充故障排除" title="覆铜平面填充故障排除" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">覆铜平面填充故障排除</span></a></li><li><a href="#热焊盘结果故障排除" title="热焊盘结果故障排除" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">热焊盘结果故障排除</span></a></li><li><a href="#覆铜平面与板框之间的间距" title="覆铜平面与板框之间的间距" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">覆铜平面与板框之间的间距</span></a></li><li><a href="#分割混合平面层" title="分割/混合平面层" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">分割/混合平面层</span></a></li><li><a href="#分割平面的创建" title="分割平面的创建" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">分割平面的创建</span></a></li><li><a href="#自动分离覆铜平面" title="自动分离覆铜平面" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">自动分离覆铜平面</span></a></li><li><a href="#嵌入式覆铜平面" title="嵌入式覆铜平面" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">嵌入式覆铜平面</span></a></li><li><a href="#从最外层到最内层区域创建嵌入式覆铜平面" title="从最外层到最内层区域创建嵌入式覆铜平面" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">从最外层到最内层区域创建嵌入式覆铜平面</span></a></li><li><a href="#通过优先排序添加切口和组合创建嵌入式覆铜平面" title="通过优先排序、添加切口和组合创建嵌入式覆铜平面" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">通过优先排序、添加切口和组合创建嵌入式覆铜平面</span></a></li><li><a href="#创建覆铜平面切口" title="创建覆铜平面切口" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建覆铜平面切口</span></a></li><li><a href="#分配覆铜平面热特性" title="分配覆铜平面热特性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">分配覆铜平面热特性</span></a></li><li><a href="#保存时丢弃覆铜平面数据" title="保存时丢弃覆铜平面数据" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">保存时丢弃覆铜平面数据</span></a></li><li><a href="#连接到覆铜平面的焊盘连接显示" title="连接到覆铜平面的焊盘连接显示" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">连接到覆铜平面的焊盘连接显示</span></a></li></ul></nav></div></div></div></div></div></div></section></div>
+    <div id="search-container"></div>
+  </body>
+</html>

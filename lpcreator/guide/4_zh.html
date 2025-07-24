@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Rspress v1.45.0">
+    <title data-rh="true">第 4 章 库管理器 - SailWind</title><meta data-rh="true" name="description" content="SailWind"/>
+  <script>{;const saved = localStorage.getItem('rspress-theme-appearance');const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;const isDark = !saved || saved === 'auto' ? preferDark : saved === 'dark';document.documentElement.classList.toggle('dark', isDark);document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';}</script><link rel="icon" href="/sailwind_docs/favicon.ico"><script defer src="/sailwind_docs/static/js/styles.f5ec16c7.js"></script><script defer src="/sailwind_docs/static/js/lib-react.36f9b428.js"></script><script defer src="/sailwind_docs/static/js/lib-router.971f4280.js"></script><script defer src="/sailwind_docs/static/js/2886.6c8a4c3c.js"></script><script defer src="/sailwind_docs/static/js/index.ef746291.js"></script><link href="/sailwind_docs/static/css/styles.6524924d.css" rel="stylesheet"></head>
+
+  <body >
+    <div id="root"><div class="navContainer_d18b1 rspress-nav px-6  sticky_ddfa7"><div class="container_e4235 flex justify-between items-center h-full"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div><div class="flex flex-1 justify-end items-center"><div class="rightNav_a2fea"><div class="flex sm:flex-1 items-center sm:pl-4 sm:pr-2"><div class="rspress-nav-search-button navSearchButton_df1fb"><button><svg width="18" height="18" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg><p class="searchWord_af2c1">搜索</p><div style="opacity:0"><span></span><span>K</span></div></button></div><div class="mobileNavSearchButton_d85a9"><svg width="24" height="24" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg></div></div><div class="rspress-nav-menu menu h-14"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div><div class="flex-center flex-row"><div class="mx-2"><div class="md:mr-2 rspress-nav-appearance"><div class="p-1 border border-solid border-gray-300 text-gray-400  cursor-pointer rounded-md hover:border-gray-600 hover:text-gray-600 dark:hover:border-gray-200 dark:hover:text-gray-200 transition-all duration-300 w-7 h-7"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="dark:hidden" width="18" height="18" fill="currentColor"><path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6m0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4M12 4c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M12 24c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M5.6 6.6c-.3 0-.5-.1-.7-.3L3.5 4.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.1.2-.4.3-.7.3M19.8 20.8c-.3 0-.5-.1-.7-.3l-1.4-1.4c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.2.2-.5.3-.7.3M3 13H1c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M23 13h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M4.2 20.8c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.4.3-.7.3M18.4 6.6c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.5.3-.7.3"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="hidden dark:block" width="18" height="18" fill="currentColor"><path d="M12.1 22h-.9c-5.5-.5-9.5-5.4-9-10.9.4-4.8 4.2-8.6 9-9 .4 0 .8.2 1 .5s.2.8-.1 1.1c-2 2.7-1.4 6.4 1.3 8.4 2.1 1.6 5 1.6 7.1 0 .3-.2.7-.3 1.1-.1.3.2.5.6.5 1-.2 2.7-1.5 5.1-3.6 6.8-1.9 1.4-4.1 2.2-6.4 2.2M9.3 4.4c-2.9 1-5 3.6-5.2 6.8-.4 4.4 2.8 8.3 7.2 8.7 2.1.2 4.2-.4 5.8-1.8 1.1-.9 1.9-2.1 2.4-3.4-2.5.9-5.3.5-7.5-1.1-2.8-2.2-3.9-5.9-2.7-9.2"></path></svg></div></div></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div><div class="mobileNavMenu_e7045"><div class="navScreen_ec30c  rspress-nav-screen" id="navScreen"><div class="container_c935d"><div class="navMenu_b887b"><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div></div><div class="flex-center flex-col gap-2"><div class="mt-2 navAppearance_bf893 flex justify-center"></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div></div><button aria-label="mobile hamburger" class=" rspress-mobile-hamburger navHamburger_ac64c text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><circle cx="8" cy="16" r="2" fill="currentColor"></circle><circle cx="16" cy="16" r="2" fill="currentColor"></circle><circle cx="24" cy="16" r="2" fill="currentColor"></circle></svg></button></div></div></div></div><section><div class="docLayout_af141 pt-0"><aside class="sidebar_dd719 rspress-sidebar "><div class="navTitleMask_fb17c"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div></div><div class="rspress-scrollbar sidebarContent_da296"><nav class="pb-2"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:14px;margin-left:0;border-radius:0 var(--rp-radius) var(--rp-radius) 0;padding-left:24px;font-weight:bold"><span>章节预览</span></div></a><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">指南(Guide)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 1 章 入门指南</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 2 章 用户偏好设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 3 章 焊盘图形计算器</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItemActive_de63c mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 4 章 库管理器</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 5 章 焊盘图形向导</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 6 章 孔和过孔计算器</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/lpcreator/guide/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 7 章 命名规范</span></div></a></div></div></div></section></nav></div></aside><div class="flex-1 relative min-w-0"><div class="rspress-sidebar-menu-container "><div class="rspress-sidebar-menu"><button type="button" class="flex-center mr-auto"><div class="text-md mr-2"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"></path></svg></div><span class="text-sm">Menu</span></button><button type="button" class="flex-center ml-auto"><span class="text-sm">本页目录</span><div class="text-md mr-2" style="transform:rotate(0deg);transition:transform 0.2s ease-out;margin-top:2px"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></button><div class="rspress-local-toc-container "><ul><li><a href="#供应库的使用模型与免责声明" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">供应库的使用模型与免责声明</span></a></li><li><a href="#模式对比" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">模式对比</span></a></li><li><a href="#库管理器工具栏控件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">库管理器工具栏控件</span></a></li><li><a href="#上下文菜单" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">上下文菜单</span></a></li><li><a href="#查找替换对话框" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">查找/替换对话框</span></a></li><li><a href="#编辑选项" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">编辑选项</span></a></li><li><a href="#验证焊盘图形" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">验证焊盘图形</span></a></li><li><a href="#运行多元件向导" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">运行多元件向导</span></a></li><li><a href="#多元件向导对话框" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">多元件向导对话框</span></a></li><li><a href="#多元件向导报告txt-日志文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">多元件向导报告.txt 日志文件</span></a></li><li><a href="#运行链接检查器" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">运行链接检查器</span></a></li></ul></div></div></div><div class="content_ff766 rspress-doc-container flex"><div class="flex-1 overflow-x-auto"><div class="rspress-doc"><!--$--><h1 id="第-4-章-库管理器" class="rspress-doc-title text-3xl mb-10 leading-10 tracking-tight title_fb7eb">第 4 章 库管理器<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#第-4-章-库管理器">#</a></h1>
+<p class="my-4 leading-7">库管理器可在两种模式（或同时）下打开：仅搜索模式或搜索编辑模式。编辑模式仅在授权安装中可用。</p>
+<h2 id="供应库的使用模型与免责声明" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">供应库的使用模型与免责声明<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#供应库的使用模型与免责声明">#</a></h2>
+<p class="my-4 leading-7">软件随附的 PCBM-STARTER.plb09 库仅供&quot;参考使用&quot;，可能包含名称相同但制造商不同的焊盘图形。该库不适用于多元件向导，当遇到重复的焊盘图形名称时会产生导入错误/警告。</p>
+<p class="my-4 leading-7">SM_MFR.plb09、CONNECTORS.plb09 和 TH.plb09.plb09 包含在 <code>CAD</code> 工具中手动构建的元件。您无法在 SailWind 焊盘图形创建器中查看这些元件，但可以使用多元件向导逐个构建它们或批量创建整个库。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">由于这些焊盘图形是手动构建的，Paizi 对其准确性或完整性不承担任何责任。在将这些库元件添加到您的 <code>CAD</code> 库之前，请格外小心检查。</p>
+</div></div>
+<p class="my-4 leading-7">所有 <code>PLB</code> 库文件均作为示例焊盘图形免费提供，为您提供大量可供&quot;采集&quot;的焊盘图形选择，仅供&quot;参考使用&quot;。与所有组件一样，组件链接、描述和可用性等可能会随时更改，恕不另行通知。请使用我们新的链接检查器来帮助您确定提供的示例库和您创建的带有在线链接的库文件中的损坏链接。</p>
+<h2 id="模式对比" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">模式对比<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#模式对比">#</a></h2>
+<p class="my-4 leading-7">库管理器可在搜索模式或搜索编辑模式下使用。每种模式都有其独特的功能集。了解这些功能的差异有助于您确定应使用哪种模式。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">搜索模式</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">可以加载库并浏览或搜索其内容。任何给定库的内容可能各不相同，并可进行结构化以满足您的需求。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">焊盘图形可以在计算器中打开和查看。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">可以打开在线或本地存档数据的链接。</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">搜索编辑模式（仅限授权安装）</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">搜索模式的所有功能均可用。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">查找和替换选项可用。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">可以修改和保存库，请参阅帮助主题&quot;编辑选项&quot;第 72 页。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">可以验证库，请参阅帮助主题&quot;验证 焊盘图形&quot;第 73 页。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">可以构建或重建库，请参阅帮助主题&quot;运行多元件向导&quot;第 74 页。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">可以通过拖放列来创建新顺序。用鼠标左键单击任何列标题，按住按钮的同时将列拖动到新位置。必须保存库以保留任何列移动更改。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">可以编辑列标题。用鼠标左键双击任何列标题以启用列标题编辑。</p>
+</li>
+</ul>
+<h2 id="库管理器工具栏控件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">库管理器工具栏控件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#库管理器工具栏控件">#</a></h2>
+<p class="my-4 leading-7">库管理器工具栏包含一系列按钮，提供对所有库管理器功能的访问。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 14. 库管理器工具栏</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/lpcreator/4/_page_1_Figure_18.jpeg" alt=""/></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">关闭</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">关闭库管理器窗口。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">保存（搜索模式下<!-- -->不可用）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">下拉选项包括：<!-- -->• 保存 - 当前库以其当前名称保存。<!-- -->• 另存为 - 当前库以用户定义的名称保存。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">查找</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">打开&#x27;查找/替换&#x27;对话框，可用于定位并（如果需要）<!-- -->替换当前库中的字符串值。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">类别</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示当前库中存在的焊盘图形的一般集合列表。除非<!-- -->通过此按钮特别激活，否则此列表通常不可见。从类别列表中选择<!-- -->项目将在库表中显示具有该类别特征的焊盘图形的完整列表。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示全部</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">显示库的全部内容。这在调用类别或查找 &gt; 列出全部后<!-- -->显示库时非常有用。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">撤销</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将库返回到上次编辑之前的状态。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">重做</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将库返回到上次撤销之后的状态。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">查看（屏幕上）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">重新计算并使用计算器/查看器显示选定的焊盘图形。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">注意：<code>PLB</code> 库可以包含使用该<!-- -->软件创建的焊盘图形和仅为文档目的手动创建并添加到库文件<!-- -->中的焊盘图形。只有计算器创建的焊盘图形才能在屏幕上查看。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在线链接</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">如果有在线数据的链接可用，此按钮将启用并可<!-- -->用于启动 Internet 浏览器到为选定焊盘<!-- -->图形提供的链接。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">本地存档</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">如果有本地访问数据的链接可用，此按钮将启用并可<!-- -->用于打开为选定焊盘图形提供的数据文件。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">工具（搜索模式下<!-- -->不可用）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">下拉菜单选项包括：<!-- -->• 验证 - 使用当前用户<!-- -->偏好重新计算当前库并与当前<!-- -->库文件中包含的参考值进行比较（参见帮助主题&quot;验证焊盘图形&quot;第 73 页）。<!-- -->• 向导 - 根据某些用户选项重新计算当前库<!-- -->（参见帮助主题&quot;运行多元件向导&quot;第 74 页）。<!-- -->• 链接检查器 - 此工具可定期用于验证<!-- -->在线链接数据网站的有效性（参见帮助主题&quot;运行链接检查器&quot;<!-- -->第 79 页）。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 7. 库管理器工具栏控件</strong></p>
+<h2 id="上下文菜单" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">上下文菜单<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#上下文菜单">#</a></h2>
+<p class="my-4 leading-7">在库数据表中单击鼠标右键可显示通常与编辑功能相关的选项列表。</p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">查看（与<!-- -->工具栏功能相同）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 屏幕上</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 在线链接<!-- -->• 本地存档</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">新建</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 行 - 向库数据表添加新行。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 列 - 向库数据表添加新列。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">复制</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将单元格的内容（如果选中单元格且其内容为<!-- -->高亮显示）或行（如果通过单击行<!-- -->标题选中整行）复制到 Windows 剪贴板。可以选择并复制多行。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">粘贴</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将 Windows 剪贴板的内容粘贴到单元格（如果选中单元格）<!-- -->或库数据表（如果未选中单元格）。可以复制单行或多行。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">自动调整列宽</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">调整所有列的宽度以显示该列中最大单元格<!-- -->的全部内容。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">删除</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 行 - 删除所有高亮显示的行。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 列 - 删除包含选定单元格的列。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">工具（与<!-- -->工具栏功能相同）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 验证</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 向导</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">• 链接检查器</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 8. 库数据表上下文菜单项</strong></p>
+<h2 id="查找替换对话框" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">查找/替换对话框<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#查找替换对话框">#</a></h2>
+<p class="my-4 leading-7">💃访问方式：库管理器工具栏 &gt; <strong class="font-semibold">查找</strong> 按钮</p>
+<p class="my-4 leading-7">在搜索模式下，此对话框以仅查找模式打开；在编辑模式下，以查找和替换模式打开。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">对象</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">查找/替换（模式<!-- -->按钮）</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">确定操作模式。在&#x27;查找&#x27;模式下没有替换选项<!-- -->可见。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">查找内容框</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">定义要查找的字符串（参见下面的区分大小写和全字匹配）。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">替换为框</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">定义用于替换任何找到的字符串的替换字符串。查找<!-- -->模式下不可用。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">查找范围列表</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">定义要在其中执行查找操作的区域或区域。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">区分大小写复选框</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">如果选中，要查找的字符串必须与搜索字符串完全匹配。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">全字匹配复选框</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">如果选中，要查找的字符串必须与搜索字符串完全匹配（不<!-- -->区分大小写）。如果未选中，要查找的字符串只需包含<!-- -->搜索字符串的实例即可。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">查找下一个</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">单击按钮时，光标将前进到下一个找到的字符串。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">列出全部</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">单击按钮时，仅显示包含找到字符串的行。在这些行中，包含找到字符串的单元格将高亮显示。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">替换</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">单击按钮时，选定的找到字符串将被替换字符串替换。查找模式下不可用。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">全部替换</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">单击按钮时，所有找到的字符串将被替换字符串替换。查找模式下不可用。</td>
+</tr>
+</tbody>
+</table>
+<h2 id="编辑选项" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">编辑选项<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#编辑选项">#</a></h2>
+<p class="my-4 leading-7">库编辑器允许您在维护程序所需文件格式的同时编辑库。可以编辑库文件以手动修改现有内容、添加或删除内容或创建新库。</p>
+<p class="my-4 leading-7">打开两个编辑器会话允许将任何库的内容复制到另一个库。</p>
+<p class="my-4 leading-7">要打开现有库，请从库下拉列表中选择它。如果库未出现在列表中，请单击&quot;添加库&quot;按钮浏览库。默认情况下，所有库组件的文档都包含在程序子目录 <code>CAD</code>Data 中扩展名为&quot;.plb09&quot;的文件中。选择后，库将加载到库显示表中。</p>
+<p class="my-4 leading-7">要创建新库，请从库下拉列表中选择&quot;新建库&quot;。</p>
+<p class="my-4 leading-7">所有编辑选项都在鼠标右键（RMB）弹出菜单中可用。</p>
+<p class="my-4 leading-7">可以通过单击空单元格或高亮显示单元格内容并输入新值来编辑单个单元格。</p>
+<p class="my-4 leading-7">可以执行查找和替换来编辑任何单元格或单元格集合的内容。</p>
+<p class="my-4 leading-7">可以通过高亮显示单元格内容然后 RMB 复制将单个单元格的内容复制到另一个单元格。将光标移动到目标单元格并 RMB 粘贴。</p>
+<p class="my-4 leading-7">可以通过单击行标题（或 shift-单击标题）然后 RMB 复制来复制单个或多个行。RMB 粘贴会将复制的行添加到目标库。</p>
+<p class="my-4 leading-7">可以添加、删除列或通过拖放更改从左到右的顺序。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">通常，任何添加的列的名称由您自行决定，但有一些保留的列标题：</p>
+</div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">• 焊盘图形</strong></p>
+<p class="my-4 leading-7">此列包含库中所有焊盘图形的名称，不能删除。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">• 描述</strong></p>
+<p class="my-4 leading-7">此列包含焊盘图形的一般描述。描述由计算器自动生成。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">• 在线链接</strong></p>
+<p class="my-4 leading-7">此列保留用于焊盘图形数据的 Internet 链接。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">• 本地存档</strong></p>
+<p class="my-4 leading-7">此列保留用于可能存储在本地存储设备（如硬盘）上的焊盘图形数据的链接。</p>
+<p class="my-4 leading-7">撤销和重做可用于最多 32 次最近的编辑。</p>
+<p class="my-4 leading-7">无法撤销的修改包括源和目标具有不同列内容的复制粘贴操作。当此情况发生时，目标列将重新映射以包含任何不存在的源列。当此情况存在时，将显示一条消息允许取消操作。</p>
+<p class="my-4 leading-7">完成更改后，单击工具栏上的<strong class="font-semibold">保存</strong>按钮。然后系统将提示您输入文件名。如果保持与原始文件相同的名称，将创建原始文件的备份文件，扩展名为&#x27;bak&#x27;。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">您不应在使用向导在同一库中创建元件的同时编辑该库中的元件。这样做可能会导致一方的工作覆盖另一方的工作。此外，向导添加的任何元件在重新加载库之前不会在编辑器中显示。</p>
+</div></div>
+<h2 id="验证焊盘图形" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">验证焊盘图形<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#验证焊盘图形">#</a></h2>
+<p class="my-4 leading-7">验证功能用于检查使用软件先前版本创建的焊盘图形与使用当前版本创建的相同焊盘图形。这对于识别由于标准计算公式修改、用户偏好更改或软件中可能的异常导致的焊盘图形计算变化非常有用。</p>
+<p class="my-4 leading-7">验证在计算器中打开的每个焊盘图形上执行。如果生成通知，&#x27;通知&#x27;工具栏按钮将闪烁。单击按钮将打开一个消息框，显示有关通知的信息。并非所有通知都表示问题。许多只是建议性的。</p>
+<p class="my-4 leading-7">库管理器编辑器可以生成验证报告，并可对使用计算器创建的焊盘图形或完整库执行验证。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">加载要执行验证的库。有关选择和加载库的更多信息，请参阅帮助内容部分&quot;编辑选项&quot;第 72 页。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">通过单击行标题选择整行，选择包含要验证的焊盘图形的行或多行。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击<strong class="font-semibold">工具</strong>工具栏按钮并选择下拉选项<strong class="font-semibold">验证</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">执行验证并生成报告，其中包含差异列表（如果有）。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">验证使用创建原始焊盘图形时使用的所有相同组件数据和设置执行计算。然后，它将新计算与使用 plb09 库文件中保存的原始计算信息进行的原始计算进行比较。验证可以发现以下类型的差异：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">可能由于用户选择的偏好或默认设置更改而产生的差异。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">可能由于程序计算方法或公式更改而产生的差异。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">验证检查基本焊盘图形尺寸，如焊盘长度、宽度、间距、焊盘栈名称以及用于计算这些尺寸的基本设置。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">验证不会检查所有内容！</p>
+<p class="my-4 leading-7">以下是一些验证可能检测到或可能未检测到的潜在焊盘图形差异的示例：</p>
+<p class="my-4 leading-7">验证可以告诉您焊盘图形是使用&#x27;默认&#x27;或&#x27;用户&#x27;绘图或规则偏好创建的，但目前这些相同的偏好设置不同。除此之外，它不会提醒您实际设置中的具体差异。例如，它不会检测原始丝印线宽和当前线宽之间的差异，但如果原始丝印线宽设置为默认线宽而当前线宽设置为用户线宽，则会提醒您。</p>
+<p class="my-4 leading-7">验证将提醒您直接影响焊盘图形功能特征的设置之间的差异。例如，如果当前默认阻焊层超差与原始超差不匹配，将生成通知。</p>
+<p class="my-4 leading-7">验证不会将库的环境与当前选定的环境进行比较。例如，如果当前默认偏好是在标称环境中创建焊盘图形，但正在验证的库处于最小环境中，则无论选定的默认环境如何，都将根据当前默认最小环境验证库。</p>
+</div></div>
+<h2 id="运行多元件向导" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">运行多元件向导<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#运行多元件向导">#</a></h2>
+<p class="my-4 leading-7">多元件功能用于重新创建一组焊盘图形或整个库。这对于快速将库从一个环境转换到另一个环境或重建一组焊盘图形以更正或修改一个或多个用户设置非常有用。多元件可用于更新 plb 库数据或与焊盘图形向导一起为各种可用的 <code>CAD</code> 工具创建焊盘图形。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 在继续之前，请阅读&quot;供应库的使用模型与免责声明&quot;第 67 页。</p>
+</div></div>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">这只能对使用计算器创建的焊盘图形执行。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">加载要执行多元件功能的库。有关选择和加载库的更多信息，请参阅帮助内容部分&quot;编辑选项&quot;第 72 页。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择包含要使用多元件创建的焊盘图形的行或多行。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 您选择的<code>CAD</code> 数据（plb09）文件将被完全覆盖！</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在库编辑器工具栏上单击<strong class="font-semibold">工具</strong>，然后单击<strong class="font-semibold">向导</strong>。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">替代方法：</strong> 在焊盘图形列表中，<strong class="font-semibold">右键</strong>单击，指向工具并单击向导。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;多元件向导对话框&quot;第 76 页中进行所需的设置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">完成向导设置后，可以在&quot;焊盘图形向导对话框&quot;第 82 页中设置 <code>CAD</code> 输出选项。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7"><a href="#page-11-0" class="link_a7cea  link_a9ef4 inline-link_f855c">&quot;多元件向导报告.txt 日志文件&quot;第 78 页</a>会自动生成并显示在您的文本编辑器中。</p>
+<h2 id="多元件向导对话框" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">多元件向导对话框<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#多元件向导对话框">#</a></h2>
+<p class="my-4 leading-7">💃访问方式：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在库编辑器工具栏上单击<strong class="font-semibold">工具</strong>，然后单击<strong class="font-semibold">向导</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在焊盘图形列表中，<strong class="font-semibold">右键</strong>单击，指向工具并单击向导。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">多元件向导对话框用于设置多元件向导。仔细查看本主题中的内容，以确保您获得预期的结果！设置包括制造和装配公差、舍入、间距和环境。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">对象</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">名称</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">使用当前偏好</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">使用用户偏好中设置的当前设置。当您选择</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设置</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">此选项时，您还可以修改环境变量。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">限制：<!-- -->用户设置包括所有偏好设置，除了<!-- -->SMD 环境和 PTH 制造级别的设置。参见&quot;应用<!-- -->环境和制造级别全局&quot;描述。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">使用原始设置</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">使用最初应用<!-- -->上次创建库时的设置重新创建焊盘图形。当您选择此选项时，您<!-- -->将无法修改任何环境变量。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">为所有元件生成新描述</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">选择生成新描述；未选中时，将保存<!-- -->原始库文件中的描述。<!-- -->注意：<!-- -->如果您手动编辑或创建<!-- -->了焊盘图形的描述并且不想丢失<!-- -->这些描述，请不要选中此框！</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">为所有元件生成新焊盘栈</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">选择为选定的焊盘图形生成新焊盘栈名称；<!-- -->未选中时，将保存原始库中的焊盘栈名称。<!-- -->注意：<!-- -->如果您手动编辑或创建了焊盘栈<!-- -->名称并且不想丢失这些<!-- -->名称，请不要选中此框！</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">焊盘图形名称选项<!-- -->限制：<!-- -->只有在您选择&quot;使用当前偏好设置&quot;选项时，以下所有部分才可用。</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">生成新名称</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">选择基于 IPC 标准<!-- -->命名约定创建新焊盘图形名称。有关焊盘图形名称的详细信息，请参阅帮助<!-- -->主题 IPC-7351B 标准 SMT 焊盘图形命名约定。<!-- -->注意：<!-- -->如果您手动编辑或创建了名称<!-- -->您的焊盘图形并且不想丢失这些名称，请不要选中此框！</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">保留原始名称</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">选择应用原始库中的焊盘图形名称。<!-- -->注意：<!-- -->如果您手动编辑或创建了名称<!-- -->您的焊盘图形并且不想丢失这些名称，请选中此框，除非您<!-- -->正在不同的环境中重新创建库 - 参见下一项！</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">保留原始名称但<!-- -->更新环境和制造<!-- -->级别</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">选择应用原始库中的焊盘图形名称但<!-- -->将原始环境后缀替换为用户偏好定义的默认后缀。在提供的空间中，输入将<!-- -->被替换的后缀。例如，如果将标称环境库转换<!-- -->为最小环境库，您将输入字符&#x27;N&#x27;表示<!-- -->您希望将环境后缀&#x27;N&#x27;替换为最小环境的默认后缀<!-- -->（SOIC127P1032X264-16N 将变为<!-- -->SOIC127P1032X264-16L）。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">全局设置</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">在焊盘图形名称中包含高度<!-- -->图案名称</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">选择将高度属性添加到自动生成的焊盘<!-- -->图形名称中。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">限制：<!-- -->如果您选择&quot;保留原始名称&quot;，则此复选框不可用。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">应用环境和制造<!-- -->级别全局</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">选择将选定的环境应用于所有选定的焊盘图形<!-- -->（如适用）。</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">限制：<!-- -->只有在您选择&quot;生成新名称&quot;时，此复选框才可用。</td>
+</tr>
+</tbody>
+</table>
+<p class="my-4 leading-7"><strong class="font-semibold">表 9. 多元件向导对话框对象（续）</strong></p>
+<h2 id="多元件向导报告txt-日志文件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">多元件向导报告.txt 日志文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#多元件向导报告txt-日志文件">#</a></h2>
+<p class="my-4 leading-7"><em>多元件向导报告.txt</em> 日志文件在每次执行多元件向导时自动生成并显示在记事本中。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">日志文件格式</strong></p>
+<div class="language-bash"><div class="rspress-code-content rspress-scrollbar"><code>
+LP Suite Multi-Part Wizard Report
+
+LP Program Version: &lt;program version&gt;
+
+&lt;time stamp&gt;
+
+&lt;number&gt; Land patterns were added to plb file:
+
+&lt;.plb file path&gt;
+
+&lt;number&gt; Land patterns were added to library:
+
+&lt;folder path&gt;
+
+&lt;error messages&gt;
+
+</code></div></div>
+<p class="my-4 leading-7"><strong class="font-semibold">错误消息</strong></p>
+<p class="my-4 leading-7">&lt;错误消息&gt;（如果有）可以是以下列表中的一种：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在焊盘图形 &lt;焊盘图形名称&gt; 中未找到环境后缀</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">无法构建 &lt;焊盘图形名称&gt; 计算失败</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">无法构建 &lt;焊盘图形名称&gt; 构建数据错误</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">无法构建 &lt;焊盘图形名称&gt; 组件数据错误</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">示例日志文件</strong></p>
+<div class="language-bash"><div class="rspress-code-content rspress-scrollbar"><code>
+LP Suite Multi-Part Wizard Report
+
+LP Program Version: 10.4
+
+9/5/2011 11:53:53 AM
+
+4 Land patterns were added to plb file:
+
+D:\MyLPW_Libs\LPWizard\`CAD` Data\Wizard.plb09.
+
+4 Land patterns were added to library:
+
+C:\Users\gmueller\Desktop\NewParts\NewParts.
+
+Unable to Build BGA100C100P10X10_1100X1100X200 - bad build data
+
+</code></div></div>
+<h2 id="运行链接检查器" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">运行链接检查器<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#运行链接检查器">#</a></h2>
+<p class="my-4 leading-7">Internet 链接经常更改或变得过时。链接检查功能可用于验证制造商在线数据表的链接完整性。</p>
+<p class="my-4 leading-7">库管理器编辑器可以对使用计算器创建并包含在线链接属性的焊盘图形或完整库执行链接完整性检查。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">链接检查例程必然很慢，并且在运行时不能使用其他 SailWind 焊盘图形创建器功能。检查链接的速度取决于许多变量，但主要取决于 Internet 连接的速度。预计每个要检查的链接需要等待约 1-2 秒。可以随时取消操作。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">加载要执行链接检查的库。有关选择和加载库的更多信息，请参阅帮助内容部分&quot;编辑选项&quot;第 72 页。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">通过单击行标题选择整行，选择包含要验证的 Internet 链接的行或多行。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击<strong class="font-semibold">工具</strong>工具栏按钮并选择下拉选项&quot;检查在线链接&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">执行检查。具有有效链接的选定行以绿色高亮显示，具有无效链接的行（如果有）以红色高亮显示。当加载当前选定的或新的库文件时，高亮显示将被移除。</p>
+</li>
+</ol><!--/$--></div><div class="rspress-doc-footer"><footer class="mt-8"><div class="xs:flex pb-5 px-2 justify-end items-center"><div class="flex text-sm text-text-2 leading-6 sm:leading-8 font-medium"><p>最近更新时间<!-- -->: <span>2025/7/15 05:55:33</span></p></div></div><div class="flex flex-col"></div><div class="flex flex-col sm:flex-row sm:justify-around gap-4 pt-6"><div class="prev_c92d1 flex flex-col"><a href="/sailwind_docs/lpcreator/guide/3_zh.html" class="link_a7cea pager-link_e0d2d"><span class="desc_dcc01">上一页</span><span class="title_a3acb">第 3 章 焊盘图形计算器</span></a></div><div class="next_c11be flex flex-col"><a href="/sailwind_docs/lpcreator/guide/5_zh.html" class="link_a7cea pager-link_e0d2d next_ad355"><span class="desc_dcc01">下一页</span><span class="title_a3acb">第 5 章 焊盘图形向导</span></a></div></div></footer></div></div><div class="aside-container_bc5fa"><div class="flex flex-col"><div id="aside-container" class="relative text-sm font-medium"><div class="leading-7 block text-sm font-semibold pl-3">本页目录</div><nav class="mt-1"><ul class="relative"><li><a href="#供应库的使用模型与免责声明" title="供应库的使用模型与免责声明" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">供应库的使用模型与免责声明</span></a></li><li><a href="#模式对比" title="模式对比" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">模式对比</span></a></li><li><a href="#库管理器工具栏控件" title="库管理器工具栏控件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">库管理器工具栏控件</span></a></li><li><a href="#上下文菜单" title="上下文菜单" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">上下文菜单</span></a></li><li><a href="#查找替换对话框" title="查找/替换对话框" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">查找/替换对话框</span></a></li><li><a href="#编辑选项" title="编辑选项" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">编辑选项</span></a></li><li><a href="#验证焊盘图形" title="验证焊盘图形" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">验证焊盘图形</span></a></li><li><a href="#运行多元件向导" title="运行多元件向导" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">运行多元件向导</span></a></li><li><a href="#多元件向导对话框" title="多元件向导对话框" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">多元件向导对话框</span></a></li><li><a href="#多元件向导报告txt-日志文件" title="多元件向导报告.txt 日志文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">多元件向导报告.txt 日志文件</span></a></li><li><a href="#运行链接检查器" title="运行链接检查器" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">运行链接检查器</span></a></li></ul></nav></div></div></div></div></div></div></section></div>
+    <div id="search-container"></div>
+  </body>
+</html>

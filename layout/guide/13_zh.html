@@ -1,0 +1,1047 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Rspress v1.45.0">
+    <title data-rh="true">第 13 章 导入与导出 - SailWind</title><meta data-rh="true" name="description" content="SailWind"/>
+  <script>{;const saved = localStorage.getItem('rspress-theme-appearance');const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;const isDark = !saved || saved === 'auto' ? preferDark : saved === 'dark';document.documentElement.classList.toggle('dark', isDark);document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';}</script><link rel="icon" href="/sailwind_docs/favicon.ico"><script defer src="/sailwind_docs/static/js/styles.f5ec16c7.js"></script><script defer src="/sailwind_docs/static/js/lib-react.36f9b428.js"></script><script defer src="/sailwind_docs/static/js/lib-router.971f4280.js"></script><script defer src="/sailwind_docs/static/js/2886.6c8a4c3c.js"></script><script defer src="/sailwind_docs/static/js/index.ef746291.js"></script><link href="/sailwind_docs/static/css/styles.6524924d.css" rel="stylesheet"></head>
+
+  <body >
+    <div id="root"><div class="navContainer_d18b1 rspress-nav px-6  sticky_ddfa7"><div class="container_e4235 flex justify-between items-center h-full"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div><div class="flex flex-1 justify-end items-center"><div class="rightNav_a2fea"><div class="flex sm:flex-1 items-center sm:pl-4 sm:pr-2"><div class="rspress-nav-search-button navSearchButton_df1fb"><button><svg width="18" height="18" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg><p class="searchWord_af2c1">搜索</p><div style="opacity:0"><span></span><span>K</span></div></button></div><div class="mobileNavSearchButton_d85a9"><svg width="24" height="24" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg></div></div><div class="rspress-nav-menu menu h-14"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div><div class="flex-center flex-row"><div class="mx-2"><div class="md:mr-2 rspress-nav-appearance"><div class="p-1 border border-solid border-gray-300 text-gray-400  cursor-pointer rounded-md hover:border-gray-600 hover:text-gray-600 dark:hover:border-gray-200 dark:hover:text-gray-200 transition-all duration-300 w-7 h-7"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="dark:hidden" width="18" height="18" fill="currentColor"><path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6m0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4M12 4c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M12 24c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M5.6 6.6c-.3 0-.5-.1-.7-.3L3.5 4.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.1.2-.4.3-.7.3M19.8 20.8c-.3 0-.5-.1-.7-.3l-1.4-1.4c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.2.2-.5.3-.7.3M3 13H1c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M23 13h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M4.2 20.8c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.4.3-.7.3M18.4 6.6c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.5.3-.7.3"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="hidden dark:block" width="18" height="18" fill="currentColor"><path d="M12.1 22h-.9c-5.5-.5-9.5-5.4-9-10.9.4-4.8 4.2-8.6 9-9 .4 0 .8.2 1 .5s.2.8-.1 1.1c-2 2.7-1.4 6.4 1.3 8.4 2.1 1.6 5 1.6 7.1 0 .3-.2.7-.3 1.1-.1.3.2.5.6.5 1-.2 2.7-1.5 5.1-3.6 6.8-1.9 1.4-4.1 2.2-6.4 2.2M9.3 4.4c-2.9 1-5 3.6-5.2 6.8-.4 4.4 2.8 8.3 7.2 8.7 2.1.2 4.2-.4 5.8-1.8 1.1-.9 1.9-2.1 2.4-3.4-2.5.9-5.3.5-7.5-1.1-2.8-2.2-3.9-5.9-2.7-9.2"></path></svg></div></div></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div><div class="mobileNavMenu_e7045"><div class="navScreen_ec30c  rspress-nav-screen" id="navScreen"><div class="container_c935d"><div class="navMenu_b887b"><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div></div><div class="flex-center flex-col gap-2"><div class="mt-2 navAppearance_bf893 flex justify-center"></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div></div><button aria-label="mobile hamburger" class=" rspress-mobile-hamburger navHamburger_ac64c text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><circle cx="8" cy="16" r="2" fill="currentColor"></circle><circle cx="16" cy="16" r="2" fill="currentColor"></circle><circle cx="24" cy="16" r="2" fill="currentColor"></circle></svg></button></div></div></div></div><section><div class="docLayout_af141 pt-0"><aside class="sidebar_dd719 rspress-sidebar "><div class="navTitleMask_fb17c"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div></div><div class="rspress-scrollbar sidebarContent_da296"><nav class="pb-2"><a href="/sailwind_docs/layout/index.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:14px;margin-left:0;border-radius:0 var(--rp-radius) var(--rp-radius) 0;padding-left:24px;font-weight:bold"><span>章节预览</span></div></a><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">指南(Guide)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 2 章 用户界面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 3 章 无模命令与快捷键</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 4 章 设计与编辑基础</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 5 章 设置颜色</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 6 章 库与库数据管理</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 7 章 创建和编辑 PCB 封装</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 8 章 创建和修改元件类型</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 9 章 开始新设计</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 10 章 文件操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 11 章 设计环境设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 12 章 使用 SailWind Logic</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItemActive_de63c mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 13 章 导入与导出</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 14 章 层</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 15 章 过孔设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/16_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 16 章 电气网络</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/17_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 17 章 选项设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/18_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 18 章 属性控制</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/19_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 19 章 设置规则和使用禁止区</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/20_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 20 章 AI 驱动的先进功能</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/21_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 21 章 元件布局</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/22_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 22 章 SailWind 3D</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/23_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 23 章 与机械设计团队的数据交换</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/24_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 24 章 虚拟过孔</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/25_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 25 章 标签操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/26_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 26 章 设计或设计部分的复用</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/27_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 27 章 绘图操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/28_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 28 章 安全间距检查</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/29_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 29 章 铜箔操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/30_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 30 章 为布铜区或覆铜平面分配网络</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/31_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 31 章 覆铜平面操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/32_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 32 章 设计布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/33_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 33 章 SailWind 布线器</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/34_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 34 章 铜填充与覆铜平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/35_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 35 章 参考标志符</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/36_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 36 章 工程变更单(ECO)</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/37_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 37 章 设计比较</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/38_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 38 章 报告功能</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/39_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 39 章 设计错误检查</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/40_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 40 章 尺寸标注</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/41_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 41 章 CAM 输出</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/42_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 42 章 对象链接与嵌入 ❌</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/43_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 43 章 故障排除</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/44_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 44 章 SPECCTRA 链接</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/45_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 45 章 错误检测、BMW与BLT、脚本与宏</span></div></a></div><div class="rspress-sidebar-item"><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:18px"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex"><span class="flex-center" style="font-size:13px">第 46 - 55 章 Dialogs</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:0"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/46_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 46 章 GUI 参考元素 A</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/47_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 47 章 GUI 参考元素 B 至 C</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/48_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 48 章 GUI 参考元素 D</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/49_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 49 章 GUI 参考元素 E 至 G</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/50_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 50 章 GUI 参考元素 H 至 J</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/51_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 51 章 GUI 参考元素 K 至 O</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/52_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 52 章 GUI 参考元素 P</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/53_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 53 章 GUI 参考元素 Q 至 R</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/54_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 54 章 GUI 参考元素 S</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/55_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 55 章 GUI 参考元素 T 至 Z</span></div></a></div></div></div></section></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">教程(Tutorial)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>用户界面学习</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建库元件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>设计准备</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>导入设计数据</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>分配约束规则</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>移动与放置组件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建和编辑走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用动态布线创建走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用 <code>SailWind Router</code> 进行自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建分割平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建覆铜平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>添加尺寸标注</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>检查设计规则违规</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>更新原理图</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建报告和 CAM 文件</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">快速参考(Quick Reference)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/qr/modless.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>无模命令</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/qr/shortcut.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>键盘快捷键</span></div></a></div></div></div></section></nav></div></aside><div class="flex-1 relative min-w-0"><div class="rspress-sidebar-menu-container "><div class="rspress-sidebar-menu"><button type="button" class="flex-center mr-auto"><div class="text-md mr-2"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"></path></svg></div><span class="text-sm">Menu</span></button><button type="button" class="flex-center ml-auto"><span class="text-sm">本页目录</span><div class="text-md mr-2" style="transform:rotate(0deg);transition:transform 0.2s ease-out;margin-top:2px"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></button><div class="rspress-local-toc-container "><ul><li><a href="#文件导入格式" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">文件导入格式</span></a></li><li><a href="#文件导出格式" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">文件导出格式</span></a></li><li><a href="#导入-ascii-文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">导入 ASCII 文件</span></a></li><li><a href="#导出-ascii-文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">导出 ASCII 文件</span></a></li><li><a href="#导出-ole-文件-" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">导出 OLE 文件 ❌</span></a></li><li><a href="#导入-ole-文件-" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">导入 OLE 文件 ❌</span></a></li><li><a href="#dxf-格式" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">DXF 格式</span></a></li><li><a href="#导入-dxf-文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">导入 DXF 文件</span></a></li><li><a href="#导出-dxf-文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">导出 DXF 文件</span></a></li><li><a href="#指定-dxf-钻孔尺寸和符号" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">指定 DXF 钻孔尺寸和符号</span></a></li><li><a href="#导入-idf-文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">导入 IDF 文件</span></a></li><li><a href="#导出-idf-文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">导出 IDF 文件</span></a></li><li><a href="#为-idf-导出定义-idf-特定元件边框" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">为 IDF 导出定义 IDF 特定元件边框</span></a></li><li><a href="#为-idf-导出添加-idf-特定钻孔信息" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">为 IDF 导出添加 IDF 特定钻孔信息</span></a></li><li><a href="#为-idf-导出设置-idf-特定元件高度信息" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">为 IDF 导出设置 IDF 特定元件高度信息</span></a></li><li><a href="#导入-protel-99se-设计数据库文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">导入 Protel 99SE 设计数据库文件</span></a></li><li><a href="#导入-protel-pcb98-设计文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">导入 Protel PCB98 设计文件</span></a></li><li><a href="#导入-protel-dxp--altium-designer-设计文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">导入 Protel DXP / Altium Designer 设计文件</span></a></li><li><a href="#导入-p-cad-设计文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">导入 P-CAD 设计文件</span></a></li><li><a href="#导入-cadstar-pcb-设计文件-" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">导入 CADSTAR PCB 设计文件 ❌</span></a></li><li><a href="#导入-cadstar-归档文件-" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">导入 CADSTAR 归档文件 ❌</span></a></li><li><a href="#导入-orcad-板文件-" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">导入 OrCAD 板文件 ❌</span></a></li><li><a href="#导入-eagle-设计文件" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">导入 Eagle 设计文件</span></a></li><li><a href="#导入-pads-maker-设计文件-" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">导入 PADS Maker 设计文件 ❌</span></a></li><li><a href="#导出-odb文件-" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">导出 ODB++文件 ❌</span></a></li><li><a href="#导出-cce-文件-" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">导出 CCE 文件 ❌</span></a></li><li><a href="#ipc-d-356-网表" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">IPC-D-356 网表</span></a></li><li><a href="#导出-ipc-d-356-网表" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">导出 IPC-D-356 网表</span></a></li></ul></div></div></div><div class="content_ff766 rspress-doc-container flex"><div class="flex-1 overflow-x-auto"><div class="rspress-doc"><!--$--><h1 id="第-13-章-导入与导出" class="rspress-doc-title text-3xl mb-10 leading-10 tracking-tight title_fb7eb">第 13 章 导入与导出<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#第-13-章-导入与导出">#</a></h1>
+<p class="my-4 leading-7">阅读以下主题了解各种文件类型的导入和导出操作。</p>
+<h2 id="文件导入格式" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">文件导入格式<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#文件导入格式">#</a></h2>
+<p class="my-4 leading-7"><strong class="font-semibold">主页 &gt; 导入</strong>菜单项可将设计数据从其他文件导入到 <em>.pcb</em> 设计中。</p>
+<p class="my-4 leading-7">支持的文件格式如表 70 所示。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">表 70. 导入数据格式</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">格式</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">扩展名</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">ASCII 第 290 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.asc</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PADS-ASCII 格式文本<!-- -->例外：<code>SailWind Layout</code> 不再<!-- -->导入 Perform 6 ASCII 格式文件</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">数据交换格式(DXF) 第 297 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.dxf</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">AutoCAD 和其他 CAD 系统使用的<!-- -->图形信息格式</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">工程变更单</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.eco</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">包含在原理图捕获包中生成的<!-- -->前向或后向标注信息，涉及设计的<!-- -->逻辑变更<!-- -->更多信息请参阅&quot;使用 <code>SailWind Logic</code>&quot;</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">中间数据格式(IDF) 第 300 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.emn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">IDF 2.0 或 3.0 格式数据<!-- -->导入 IDF 文件需要 <code>SailWind Layout</code> 中的<!-- -->IDF 接口选项<!-- -->更多信息请参阅&quot;中间数据格式&quot;</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">OLE 第 293 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.ole</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">可使用编辑 &gt; 插入新对象<!-- -->菜单项将其他应用程序的文件作为<!-- -->OLE 对象嵌入到设计中<!-- -->如果将这些对象导出到 OLE 文件，<!-- -->可使用文件 &gt; 导入菜单项<!-- -->将其作为集合嵌入到另一个设计中<!-- -->更多信息请参阅&quot;在 <code>SailWind Layout</code> 中插入 OLE 对象&quot;</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">协作</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.clb, .cle</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">协作文件(.clb)和加密协作文件(.cle)<!-- -->格式中的设计标记<!-- -->更多信息请参阅&quot;使用标记对话框导入标记&quot;<!-- -->和&quot;使用文件 &gt; 导入导入标记&quot;</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Protel 99SE 设计数据库 第 303 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.ddb</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Protel 99 设计文件(二进制或 ASCII 格式)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Protel 99SE 设计 第 304 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.pcb</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Protel 98 设计文件(二进制或 ASCII 格式)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Protel DXP/Altium Designer 设计 第 304 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.pcbdoc</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Altium DXP/2004/2006/Altium Designer<!-- -->设计文件(二进制或 ASCII 格式)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">P-CAD 设计 第 305 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.pcb</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">P-CAD 2001、2002、2004 或 2006 生成的<!-- -->P-CAD 设计文件(二进制和 ASCII 格式)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CADSTAR PCB 设计 第 305 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.pcb</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CADSTAR 5.0、6.0、7.0 或 8.0 生成的<!-- -->CADSTAR 设计文件(二进制格式)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CADSTAR PCB 归档 第 306 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.cpa</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CADSTAR 5.0、6.0、7.0 或 8.0 生成的<!-- -->CADSTAR 文件(ASCII 格式)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">OrCAD 板 第 306 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.max</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">OrCAD Layout 9.X、10.X 生成的<!-- -->OrCAD Layout 设计文件(二进制格式)</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Eagle 板</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.brd</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">Eagle 设计文件</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PADS Maker</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.pcb</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PADS Maker(Digi-Key®提供的 PCB 设计软件，<!-- -->基于西门子数字工业软件)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="文件导出格式" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">文件导出格式<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#文件导出格式">#</a></h2>
+<p class="my-4 leading-7">导出操作从当前 <em>.pcb</em> 文件中选择性提取数据并保存为其他格式的文件。</p>
+<p class="my-4 leading-7">支持的格式如下表所示。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">表 71. <code>SailWind Layout</code> 导出数据格式</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">格式</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">扩展名</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">ASCII 导出 第 291 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.asc</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PADS-ASCII 格式文本</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">限制：<code>SailWind Layout</code> 不导出 Perform 6<!-- -->ASCII 格式文件</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">如果导出到早于 PADS 9.5 的版本格式，<!-- -->设计中的虚拟过孔将作为过孔导出</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">数据交换格式(DXF) 第 298 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.dxf</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">AutoCAD 和其他 CAD 系统使用的<!-- -->图形信息格式</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">中间数据格式(IDF) 第 301 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.emn 和.emp</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">导出数据到 IDF 2.0 和 3.0 格式</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">导出 IDF 文件需要 <code>SailWind Layout</code> 中的<!-- -->IDF 接口选项</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">设计中的虚拟过孔将作为过孔导出</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">更多信息请参阅&quot;中间数据格式&quot;</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">OLE 第 293 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.ole</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">可使用编辑 &gt; 插入新对象<!-- -->菜单项将其他应用程序的文件作为<!-- -->OLE 对象嵌入到设计中<!-- -->如果将这些对象导出到 OLE 文件，<!-- -->可使用文件 &gt; 导入菜单项<!-- -->将其作为集合嵌入到另一个设计中</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">更多信息请参阅&quot;在 <code>SailWind Layout</code> 中插入 OLE 对象&quot;</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PADS HyperLynx HYP 第页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.hyp</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">可使用文件 &gt; 导出菜单项将<!-- -->设计导出为.hyp 文件<!-- -->设计中的虚拟过孔将作为过孔导出</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">IPC-D-356 或 IPC-D-356A 第 310 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.ipc</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将数据导出为 IPC-D-356 或 IPC-D-356<!-- -->修订版 A 格式<!-- -->设计中的虚拟过孔将作为过孔导出</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">ODB++ 第 308 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.tgz</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">将数据导出为 ASCII 开放格式<!-- -->此格式自包含，可在计算机间传输<!-- -->而不会丢失数据<!-- -->设计中的虚拟过孔将作为过孔导出</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">协作文件</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.cle</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">以加密协作文件格式导出标记，<!-- -->用于协作软件<!-- -->更多信息请参阅&quot;使用标记对话框导出标记&quot;<!-- -->和&quot;使用文件 &gt; 导出来导出标记&quot;</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CCE 文件 第 309 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.cce</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">以压缩(.cce)格式导出设计，<!-- -->用于设计评审和协作软件，<!-- -->如 CAMCAD 或 visECAD<!-- -->设计中的虚拟过孔将作为过孔导出</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CAM350 文件 第 876 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.cam</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">启动 CAM350 链接导出 CAM350<!-- -->数据和/或在 CAM350 中打开文件<!-- -->设计中的虚拟过孔将作为过孔导出</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">SPECCTRA 第 1001 页</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">.do</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">启动 Specctra 转换器创建<!-- -->用于 Specctra 自动布线的.do 文件<!-- -->设计中的虚拟过孔将作为过孔导出</td>
+</tr>
+</tbody>
+</table>
+<h2 id="导入-ascii-文件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">导入 ASCII 文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#导入-ascii-文件">#</a></h2>
+<p class="my-4 leading-7">您可以导入由早期版本的 <code>SailWind Layout</code> 创建的 ASCII 文件。</p>
+<p class="my-4 leading-7">如果您的数据需要格式或其他更改(如添加属性辞典)以更新到当前 SailWind 版本，<code>SailWind Layout</code> 会在导入时进行更新。如果 ASCII 文件包含测试点，<code>SailWind Layout</code> 会移除不可访问的测试点并将其列在报告文件中。导入 ASCII 文件时，<code>SailWind Layout</code> 会保留物理设计重用。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在以下任一情况下无法导入 ASCII 文件：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">设计处于默认层模式而 ASCII 文件处于增加层模式。使用层设置对话框将设计更改为增加层模式。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">ASCII 文件的电气层数少于当前设计。使用层设置对话框增加设计中的电气层数以匹配导入的 ASCII 文件中的数量。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">ASCII 文件由 Perform 6 ASCII 创建。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">PADS 9.2 中引入的热释放定义改进可能导致在将早期版本的 ASCII 文件导入 PADS 9.2 或更高版本时，热焊盘外观、覆铜结果和 CAM 输出(对于 CAM 平面层)发生变化。如果在导入此类文件时发现不兼容性，将显示警告提示并将不兼容性写入<em>ascii.err</em>文件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从 PADS 9.0 开始，芯片元件和倒装芯片不再由其系列名称(DIE 或 FLP)标识，而是由元件信息对话框常规选项卡中的特殊用途设置标识。当您导入由 PADS 9.0 之前版本创建的 ASCII 文件时，这些特殊用途设置会自动设置为具有 DIE 或 FLP 逻辑系列的元件。元件的系列名称保持不变。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; 导入</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导入对话框中，选择 ASCII 文件(*.asc)文件类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览到要导入的文件并点击<strong class="font-semibold">打开</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">文件被导入，导入过程信息被写入*...\SailWind Projects<em>文件夹中的</em>ascii.err*。</p>
+<h2 id="导出-ascii-文件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">导出 ASCII 文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#导出-ascii-文件">#</a></h2>
+<p class="my-4 leading-7">您可以使用 ASCII 文件在 <code>SailWind Layout</code> 与外部转换器或早期版本的 <code>SailWind Layout</code> 之间交换设计数据。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><code>SailWind Layout</code> 不导出到 PADS-Perform 6 ASCII 格式。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">导出到旧格式将导致任何新软件功能(旧格式不支持)的丢失。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">PADS 9.2 中引入的热释放定义改进可能导致在将设计从 PADS 9.2 或更高版本导出到早期版本时，热焊盘外观、覆铜结果和 CAM 输出(对于 CAM 平面层)发生变化。如果在导出设计时发现不兼容性，将显示警告提示并将不兼容性写入<em>Powerpcb.Rep</em>文件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从 PADS 9.0 开始，芯片元件和倒装芯片不再由其系列名称(DIE 或 FLP)标识，而是由元件信息对话框常规选项卡中的特殊用途设置标识。当您将设计导出到 PADS 9.0 之前版本的 ASCII 文件时，会发生以下变化：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">任何芯片元件和倒装芯片的特殊用途设置被清除。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">具有 DIE 和 FLP 以外系列名称的芯片元件和倒装芯片将失去其芯片元件或倒装芯片的特殊用途，变为普通元件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">任何具有 DIE 或 FLP 系列名称的普通元件在早期 PADS 版本中将被视为芯片元件或倒装芯片。</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果导出到早于 PADS 9.5 的版本格式，设计中的虚拟过孔将作为过孔导出。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; 导出</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导出对话框中，选择 ASCII 文件(*.asc)文件类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">指定要导出的文件名并点击<strong class="font-semibold">保存</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 ASCII 输出对话框中，勾选适当的复选框以指定要写入 ASCII 文件的设计部分，或点击<strong class="font-semibold">全选</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在格式列表中，选择格式版本。(如果要导出到 Power<code>BGA</code> V3.0，请使用 PowerPCB V3.0 格式。)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在单位列表中，选择要导出的单位。如果计划将 ASCII 文件用于外部转换器或其他 ASCII 读取程序，请选择当前。如果计划重新导入 ASCII 文件并将其保存为 <em>.pcb</em> 数据库，请选择基本。基本单位表示值在软件中的存储方式，不使用标准计量单位，但记录数据库项目的精确定位值。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果要导出从属性层次结构中更高级别继承的属性，根据需要勾选元件和网络复选框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">创建*.asc<em>文件。导出状态日志文件</em>ascii.err<em>和导出报告文件</em>Powerpcb.Rep<em>在</em>\SailWind Projects*文件夹中创建。现有的物理设计重用信息被保留。</p>
+<h2 id="导出-ole-文件-" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">导出 OLE 文件 ❌<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#导出-ole-文件-">#</a></h2>
+<p class="my-4 leading-7">您可以将设计中的所有 OLE 对象导出到 OLE 文件，然后可以将其导入到另一个设计中。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; 导出</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导出对话框中，选择 OLE 文件(*.ole)文件类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">指定要导出的文件名并点击<strong class="font-semibold">保存</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">创建包含设计中所有 OLE 对象的*.ole*文件。</p>
+<h2 id="导入-ole-文件-" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">导入 OLE 文件 ❌<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#导入-ole-文件-">#</a></h2>
+<p class="my-4 leading-7">您可以将 OLE 文件(如屏幕截图)导入到设计中。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">将 OLE 文件导入设计时，设计中的所有现有 OLE 对象将被删除。</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; 导入</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导入对话框中，选择 OLE 文件(*.ole)文件类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览到要导入的文件并点击<strong class="font-semibold">打开</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在出现的两个提示中点击<strong class="font-semibold">是</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">设计中的任何现有 OLE 对象被移除，所选 OLE 文件中的 OLE 对象被导入到设计中。</p>
+<h2 id="dxf-格式" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">DXF 格式<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#dxf-格式">#</a></h2>
+<p class="my-4 leading-7">DXF 格式处理数据库对象的方式与 ASCII 文件不同。DXF 不支持物理设计重用。DXF 也不支持布线保护信息；因此，在导入或导出 DXF 文件时，该过程会移除所有布线保护信息。然而，DXF 确实存储了用于导入和导出的槽孔信息。由于跳线虽然不属于元件列表，但被视为过孔，因此可以将其导出到 DXF。</p>
+<p class="my-4 leading-7"><code>SailWind Layout</code> 不导入 PowerPCB 1.3 及更早版本的 DXF 文件。PowerPCB 3.0 之前的版本无法读取 PowerPCB 4.0 创建的 DXF 文件。</p>
+<p class="my-4 leading-7">如果导入包含椭圆的 DXF 文件，或包含半径对数据库而言过大的缩放弧的 DXF 文件，将出现一个对话框，要求您输入近似误差。近似误差决定如何将椭圆/弧分解为线段。</p>
+<p class="my-4 leading-7">有关创建正确转换为铜多边形并避免创建自相交多边形的对象的信息，请参阅在 AutoCAD 中定义铜对象。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">DXF 消息</strong></p>
+<p class="my-4 leading-7">以下是可能的 DXF 消息：</p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 导入填充实体时发现自相交铜片。文件行：XXXX。继续处理？</p>
+</div></div>
+<p class="my-4 leading-7">DXF 文件包含自相交多边形。文件行：XXXX 指发生错误的行。在 AutoCAD 应用程序中更正多边形。有关创建正确转换为铜多边形并避免创建自相交多边形的信息，请参阅在 AutoCAD 中定义铜对象。</p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 包含点&lt;x,y&gt;的板切割与包含&lt;x,y&gt;的现有板切割相交。未从 DXF 文件导入新切割。</p>
+</div></div>
+<p class="my-4 leading-7">导入 DXF 文件时，重叠的板切割会报告为警告。点击<strong class="font-semibold">确定</strong>继续导入或点击<strong class="font-semibold">取消</strong>取消。</p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 包含点&lt;x,y&gt;的板切割与板框相交。未从 DXF 文件导入切割。</p>
+</div></div>
+<p class="my-4 leading-7">与板框重叠的切割会报告为警告。点击<strong class="font-semibold">确定</strong>继续导入或点击<strong class="font-semibold">取消</strong>取消。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">在 AutoCAD 中定义铜对象</strong></p>
+<p class="my-4 leading-7">要在 AutoCAD 中定义一个正确转换为铜多边形的对象，请创建一个不自相交的闭合多段线并指定实心填充类型。如果以这种方式创建多边形，它将在 <code>SailWind Layout</code> 中转换为铜多边形(图 24)。此外，铜多边形在 <code>SailWind Layout</code> 中的创建方式使得多边形的外边缘与 AutoCAD 中形状的边缘对齐，确保整个形状的尺寸和检查正确。下图演示了此转换。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 24. 闭合多边形(实心填充类型)的铜对象</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/13/_page_8_Figure_4.jpeg" alt=""/></p>
+<p class="my-4 leading-7">如果在 AutoCAD 中创建没有填充的多边形，该多边形将在 <code>SailWind Layout</code> 中转换为 2D 线(图 25)。在这种情况下，2D 线的中心线与 AutoCAD 中形状的边缘对齐。下图演示了此转换。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 25. 闭合多边形(无填充)的铜对象</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/13/_page_8_Figure_7.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">填充多边形的 DXF 导出</strong></p>
+<p class="my-4 leading-7">填充的铜多边形导出为带有实心填充的多段线。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">旧版层映射</strong></p>
+<p class="my-4 leading-7">以下是 PADS 产品各个版本中使用的 DXF 层名称的交叉引用。我们不建议尝试将旧的 DXF 文件导入到 <code>SailWind Layout</code> 的新版本中。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">表 72. PADS 旧版层映射</strong></p>
+<table class="block border-collapse text-base my-5 overflow-x-auto leading-7 border-gray-light-3 dark:border-divider">
+<thead>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">PADS<!-- -->Perform</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">PowerPCB v1.1 - v1.3</th>
+<th class="border border-solid px-4 py-2 text-text-1 text-base font-semibold border-gray-light-3 dark:border-divider">PowerPCB v1.5 - current</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TXTnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TEXTnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TEXT_nn</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LINnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">2D_LINEnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">2D_LINE_nn</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">COPnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">COPPERnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">COPPER_nn</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CCOnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">COPPER_CUTOUTnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">COPPER_CUTOUT_nn</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CPRnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">POUR_UNFLOOD</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">POUR_VOID_nn</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CPOnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">POUR_FLOOD</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">POUR_HEADER_nn</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HOLnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HATCH_OUTLINEnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">POUR_OULINE_nn</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HVOnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">HATCH_VOIDnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">POUR_VOID_nn</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">THVnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">VIA_THERMALnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">POUR_VIATHERM_nn</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">THRnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PAD_THERMALnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">POUR_PADTHERM_nn</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BRD00</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BOARD_OUTLINE</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BOARD_OUTLINE_00</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CONnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CONNECTIONnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">LINK_00</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PADXnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PADS_INNER</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PADS_INNER</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PADXBnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PADS_BOTTOMnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PADS_BOT</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PADSTnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PADS_TOPnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PADS_TOP</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PNM00</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PART_NAME_TOP and<!-- -->PART_NAME_BOTTOM</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PART_NAME_TOP and<!-- -->PART_NAME_BOT</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CMB00</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PART_TOP</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PART_TYPE_TOP</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">COM01</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PART_BOTTOM</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PART_TYPE_BOT</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BDYnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">BODYnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider"></td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DRLTPnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DRIL_PLTE_THRUnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DRIL_PLTE_THRU_nn</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DRLTN</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DRIL_NO_PLTE_THRUnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DRIL_NPLTE_THRU_nn</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DRLNP</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DRIL_PLTE_PRTLnn-nn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DRIL_PLTE_PRTL_nn</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DRLNN</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DRIL_NPLTE_PRTLnn-nn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DRIL_NPLTE_PRTL_nn</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TRKnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TRACKSnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">TRACE_nn</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">VIAi</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">VIAi</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">VIA</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PKGnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PARTINFO</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PART_INFO</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PCB30</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PADS_PARAMETERS</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PCB_PARAMS</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">KEY00</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DRILL_SYMBOL</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">DRIL_SYMBOL</td>
+</tr>
+<tr class="border border-solid transition-colors duration-500 even:bg-soft border-gray-light-3 dark:border-divider">
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">CTBnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">COMPONENT_TEXTnn</td>
+<td class="border border-solid px-4 py-2 border-gray-light-3 dark:border-divider">PART_TOP_TEXT_nn and<!-- -->PART_BOT_TEXT_nn</td>
+</tr>
+</tbody>
+</table>
+<h2 id="导入-dxf-文件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">导入 DXF 文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#导入-dxf-文件">#</a></h2>
+<p class="my-4 leading-7">您可以导入 AutoCAD 2004 DXF 格式的 DXF 文件。</p>
+<p class="my-4 leading-7">有两种接口可以导入 DXF 文件。此过程使用专为高级导入任何和所有设计对象而设计的接口。它从 AutoCAD 中特别命名的块和层名称导入设计对象。此映射是硬编码的，无法更改。</p>
+<p class="my-4 leading-7">如果需要简单地将 RF 形状导入到封装或设计中，请使用在 DXF 格式中导入 RF 形状中给出的过程。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">如果设计处于默认层模式而 DXF 文件处于增加层模式，则无法将 DXF 文件导入到设计中。使用层设置对话框将设计更改为增加层模式。</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; 导入</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导入对话框中，在文件类型列表中选择 DXF 文件(*.dxf)。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览到要导入的文件并点击<strong class="font-semibold">打开</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 DXF 导入对话框中，在层选择区域，选择要从中导入信息的层。</p>
+<p class="my-4 leading-7">要添加单个层，请在可用列表中选择层名称并点击<strong class="font-semibold">添加</strong>按钮。要移除单个层，请在已选列表中选择层名称并点击<strong class="font-semibold">移除</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在选择输入项区域，勾选适当的复选框以指定要导入的项目，或点击<strong class="font-semibold">全选</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 DXF 文件单位列表中，选择要在 DXF 文件中使用的单位。如果不需要设置单位，则此列表不可用。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在模式区域，点击导入模式。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7"><em>.dxf</em> 文件被导入并在 <code>SailWind Layout</code> 中打开。</p>
+<p class="my-4 leading-7">DXF 文件中导入的线型与 <code>SailWind Layout</code> 的五种线型匹配。当线型与任何 <code>SailWind Layout</code> 线型不相似时，将创建实线。</p>
+<p class="my-4 leading-7">如果导入的几何图形已作为多个线项导入，并且您希望将它们转换为单个对象，请使用连接和闭合 2D 线和铜形状中列出的过程来完成此操作。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"><em>.dxf</em>文件格式不支持用铜桥接的网络。如果导入先前导出时桥接了铜的文件，它们将作为常规铜形状导入。</p>
+</div></div>
+<h2 id="导出-dxf-文件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">导出 DXF 文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#导出-dxf-文件">#</a></h2>
+<p class="my-4 leading-7">您可以导出 DXF 文件以将设计元素传输到 AutoCAD。例如，您可以导出带有设计的组件高度信息以创建 3D 模型。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">导出的 <em>.dxf</em> 文件版本为 12 格式。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><em>.dxf</em> 文件格式不支持用铜桥接的网络，它们将作为常规铜形状导出。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">尽管在 <code>SailWind Layout</code> 中 2D 线是用圆笔绘制的，但在 DXF 中它们是方形的(不是圆形的)。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">此外，许多 DXF 软件工具将样式线的图案显示为空心而不是实心。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在<strong class="font-semibold">主页</strong>菜单上点击<strong class="font-semibold">导出</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导出对话框中，在保存类型列表中选择&quot;DXF 文件(*.dxf)&quot;。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览以覆盖文件，或键入新文件名。点击<strong class="font-semibold">保存</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;DXF 导出对话框&quot;第 1338 页上，在导出类型区域，选择标准或平面输出。</p>
+<p class="my-4 leading-7">如果选择平面输出，则无法设置 DXF 钻孔尺寸和符号，并且 2D 线样式(虚线、点线、点划线、双点划线)将转换为实线。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在层选择区域，将要从中导出信息的层移动到已选列表。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在选择输入项区域，勾选要导出的项目，或点击<strong class="font-semibold">所有项目</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 DXF 文件单位列表中，选择要在 DXF 文件中使用的单位。如果不需要设置单位，则此列表不可用。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果要导出标准文件，并且想要定义 DXF 钻孔尺寸和符号，请执行以下步骤：</p>
+<p class="my-4 leading-7">a. 点击<strong class="font-semibold">设置</strong>。</p>
+<p class="my-4 leading-7">b. 在设置 DXF 钻孔尺寸和符号对话框中，要为 2D 线库项指定钻孔尺寸，请点击<strong class="font-semibold">添加</strong>，在钻孔尺寸框中键入值，然后在库等效框中键入库项名称。</p>
+<p class="my-4 leading-7">​	如果没有将钻孔尺寸与 2D 线库项关联，则为该项导出默认钻孔符号。</p>
+<p class="my-4 leading-7">c. 要移除 2D 线库项的钻孔尺寸，请在钻孔尺寸和库等效区域选择该项，然后点击<strong class="font-semibold">删除</strong>。</p>
+<p class="my-4 leading-7">d. 如果要更改符号单位，请从系统单位列表中选择单位。</p>
+<p class="my-4 leading-7">e. 如果要更改默认钻孔符号的外观(在 DXF 文件中显示为加号+)，请在符号尺寸框中键入加号的长度/宽度，然后在线宽框中键入加号的线宽。</p>
+<p class="my-4 leading-7">f. 点击<strong class="font-semibold">确定</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">创建 <em>.dxf</em> 文件。</p>
+<h2 id="指定-dxf-钻孔尺寸和符号" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">指定 DXF 钻孔尺寸和符号<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#指定-dxf-钻孔尺寸和符号">#</a></h2>
+<p class="my-4 leading-7">使用&quot;设置 DXF 钻孔尺寸和符号&quot;对话框为要导出到 DXF 的 2D 线库项指定钻孔尺寸。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; 导出</strong>菜单项。保存为 DXF 类型并在导出对话框中点击<strong class="font-semibold">设置</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果要为 2D 线库项指定钻孔尺寸，请点击<strong class="font-semibold">添加</strong>，在钻孔尺寸框中键入值，然后在库等效框中键入库项名称。</p>
+<p class="my-4 leading-7">如果没有将钻孔尺寸与 2D 线库项关联，则为该项导出默认钻孔符号。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果要移除 2D 线库项的钻孔尺寸，请在钻孔尺寸和库等效区域选择该项，然后点击<strong class="font-semibold">删除</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果要更改符号单位，请从系统单位列表中选择单位。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果要更改默认钻孔符号的外观(在 DXF 文件中显示为加号+)，请在符号尺寸框中键入加号的长度/宽度，然后在线宽框中键入加号的线宽。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<em>确定</em>。</p>
+</li>
+</ol>
+<h2 id="导入-idf-文件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">导入 IDF 文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#导入-idf-文件">#</a></h2>
+<p class="my-4 leading-7">您可以通过导入从机械设计系统导出的 IDF <em>.emn</em> 文件，将板框、禁止区、组件和孔导入到 <code>SailWind Layout</code> 设计中。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><code>SailWind Layout</code> 无法导入*.emp*库文件中的信息。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">您导入的一些组件是未注册 <code>ECO</code> 的机械对象，如板安装孔和卡导轨。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; 导入</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导入对话框中，选择 IDF 文件(*.emn)文件类型。您可以导入 IDF 2.0 或 3.0 <em>.emn</em>文件。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览到要导入的文件并点击<strong class="font-semibold">打开</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 IDF 导入对话框中，在选择导入项区域，勾选要导入的项目的复选框，或点击<strong class="font-semibold">所有项目</strong>以导入所有内容。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击确定。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7"><em>.emn</em> 板文件被导入并在 <code>SailWind Layout</code> 中打开。状态日志文件被写入<em>C:\SailWind Projects\idfimport.sts</em>。</p>
+<h2 id="导出-idf-文件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">导出 IDF 文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#导出-idf-文件">#</a></h2>
+<p class="my-4 leading-7">您可以创建 IDF 文件以将板框、禁止区、组件和孔导出到机械设计系统。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 为了更准确地导出 IDF，在导出之前设置任何 IDF 特定的元件高度、钻孔和元件边框信息。更多信息请参阅&quot;为 IDF 导出设置 IDF 特定元件高度信息&quot;、&quot;为 IDF 导出添加 IDF 特定钻孔信息&quot;和&quot;为 IDF 导出定义 IDF 特定元件边框&quot;。</p>
+</div></div>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; 导出</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导出对话框中，选择 IDF 文件(*.emn, *.emp)文件类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">指定要导出的文件并点击<strong class="font-semibold">保存</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 IDF 导出对话框中，在形状层列表中，选择包含要发送到机械设计系统的封装边框信息的层。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在格式列表中，选择要使用的 IDF 版本。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在选择导出项区域，勾选要导出的项目，或点击<strong class="font-semibold">所有项目</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">通过在顶部和底部框中键入最小元件高度来指定要导出的组件的最小高度。小于这些高度的组件不会被导出。如果元件由于最小高度值未被导出，则会在状态日志文件中写入消息。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果任何导出的元件类型和封装对的 Geometry.Height 属性不存在或设置为零，则每个对都会出现缺少高度对话框。如果要在导出元件类型和封装对之前指定高度信息，请在高度框中键入高度。</p>
+<p class="my-4 leading-7">如果不指定高度(或将其指定为零)，机械设计系统在导入 IDF 文件时可能会提示您输入高度。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 如果要为所有元件类型和封装对应用高度，请勾选&quot;对于所有元件&quot;复选框。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">创建*.emn*(板和放置)和*.emp*(元件库)文件。状态日志文件被写入<em>C: \SailWind Projects\idfexport.sts</em>。</p>
+<h2 id="为-idf-导出定义-idf-特定元件边框" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">为 IDF 导出定义 IDF 特定元件边框<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#为-idf-导出定义-idf-特定元件边框">#</a></h2>
+<p class="my-4 leading-7">为了更准确地导出 IDF，在导出到 IDF 之前创建任何 IDF 特定的元件边框。IDF 库文件需要所有元件的边框信息。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">工具 &gt; PCB 封装编辑器</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">打开要定义边框的封装。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击要在其上定义边框的层。对于 IDF，必须在每个封装中使用相同的层来定义所有元件边框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">定义元件边框。边框必须是单个特殊类型的闭合曲线，可以是圆形或一系列不自相交的弧和连续线段。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">保存封装。</p>
+</li>
+</ol>
+<h2 id="为-idf-导出添加-idf-特定钻孔信息" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">为 IDF 导出添加 IDF 特定钻孔信息<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#为-idf-导出添加-idf-特定钻孔信息">#</a></h2>
+<p class="my-4 leading-7">为了更准确地导出 IDF，在导出到 IDF 之前使用 HOLE 元件属性为单管脚元件设置任何 IDF 特定的钻孔信息。(过孔和多管脚元件，尽管在机械设计系统中显示为钻孔，但不使用 HOLE 属性。)</p>
+<p class="my-4 leading-7">机械设计系统将钻孔解释为板钻孔。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; 库</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在库管理器对话框中，点击<strong class="font-semibold">元件</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从元件类型列表中，选择要添加钻孔信息的单管脚元件，然后点击<strong class="font-semibold">编辑</strong>。(即使对孔和非孔使用具有不同封装的相同元件类型，也请在元件类型中设置 HOLE 属性。)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在元件信息对话框的<strong class="font-semibold">属性</strong>选项卡中，添加 HOLE 元件属性。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>。</p>
+</li>
+</ol>
+<h2 id="为-idf-导出设置-idf-特定元件高度信息" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">为 IDF 导出设置 IDF 特定元件高度信息<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#为-idf-导出设置-idf-特定元件高度信息">#</a></h2>
+<p class="my-4 leading-7">为了更准确地导出 IDF，在导出到 IDF 之前设置任何 IDF 特定的元件高度信息。您可以通过在封装或元件类型层次结构中分配 Geometry.Height 属性来完成此操作。</p>
+<p class="my-4 leading-7">有关如何执行此操作的信息，请参阅&quot;使用对象属性对话框为设计对象分配属性&quot;。</p>
+<h2 id="导入-protel-99se-设计数据库文件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">导入 Protel 99SE 设计数据库文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#导入-protel-99se-设计数据库文件">#</a></h2>
+<p class="my-4 leading-7">您可以直接将 Protel <em>.ddb</em>文件导入到 <code>SailWind Layout</code> 中。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 运行独立转换器以控制转换的其他方面，包括文件放置和属性映射。更多信息请参阅<code>SailWind Layout</code> 转换器用户指南。<code>SailWind Layout</code> 转换器可以在开始菜单的 SailWind 文件夹中找到，对于已安装的版本，在 Windows 7 中位于转换器文件夹中。</p>
+</div></div>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; 导入</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导入对话框中，选择&quot;Protel 99SE 设计数据库(*.ddb)&quot;文件类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览到要导入的文件并点击<strong class="font-semibold">打开</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7"><em>.ddb</em>文件被导入并在 <code>SailWind Layout</code> 中打开。生成的 <code>SailWind Layout</code> 文件保存在与原始文件相同的文件夹中，后缀为<em>_pads</em>。例如，如果原始文件名为 ProtelTest.ddb，则新文件名将为<em>ProtelTest_pads.pcb</em>。</p>
+<p class="my-4 leading-7">如果文件夹中已存在具有新名称的文件，则会在文件名后添加顺序号。例如，<em>ProtelTest_pads_1.pcb</em>、<em>ProtelTest_pads_2.pcb</em>，依此类推。</p>
+<p class="my-4 leading-7">默认情况下，与生成的 <em>.pcb</em> 文件同名的日志文件保存在*\SailWind Projects*文件夹中。</p>
+<h2 id="导入-protel-pcb98-设计文件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">导入 Protel PCB98 设计文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#导入-protel-pcb98-设计文件">#</a></h2>
+<p class="my-4 leading-7">您可以直接将 Protel  <em>.pcb</em> 文件导入到 <code>SailWind Layout</code> 中。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 运行独立转换器以控制转换的其他方面，包括文件放置和属性映射。更多信息请参阅<code>SailWind Layout</code> 转换器用户指南。<code>SailWind Layout</code> 转换器可以在开始菜单的 SailWind 文件夹中找到，对于已安装的版本，在 Windows 7 中位于转换器文件夹中。</p>
+</div></div>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; 导入</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导入对话框中，选择&quot;Protel PCB98 设计(*.pcb)&quot;文件类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览到要导入的文件并点击<strong class="font-semibold">打开</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7"><em>.pcb</em> 文件被导入并在 <code>SailWind Layout</code> 中打开。生成的 <code>SailWind Layout</code> 文件保存在与原始文件相同的文件夹中，后缀为<em>_pads</em>。例如，如果原始文件名为<em>ProtelTest.pcb</em>，则新文件名将为<em>ProtelTest_pads.pcb</em>。</p>
+<p class="my-4 leading-7">如果文件夹中已存在具有新名称的文件，则会在文件名后添加顺序号。例如，ProtelTest_pads_1.pcb、ProtelTest_pads_2.pcb，依此类推。</p>
+<p class="my-4 leading-7">默认情况下，与生成的 <em>.pcb</em> 文件同名的日志文件保存在*\SailWind Projects*文件夹中。</p>
+<h2 id="导入-protel-dxp--altium-designer-设计文件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">导入 Protel DXP / Altium Designer 设计文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#导入-protel-dxp--altium-designer-设计文件">#</a></h2>
+<p class="my-4 leading-7">您可以直接将*.pcbdoc*文件导入到 <code>SailWind Layout</code> 中。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 运行独立转换器以控制转换的其他方面，包括文件放置和属性映射。更多信息请参阅<code>SailWind Layout</code> 转换器用户指南。<code>SailWind Layout</code> 转换器可以在开始菜单的 SailWind 文件夹中找到，对于已安装的版本，在 Windows 7 中位于转换器文件夹中。</p>
+</div></div>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; 导入</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导入对话框中，选择&quot;Protel DXP / Altium Designer 设计(*.pcbdoc)&quot;文件类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览到要导入的文件并点击<strong class="font-semibold">打开</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7"><em>.pcbdoc</em>文件被导入并在 <code>SailWind Layout</code> 中打开。生成的 <code>SailWind Layout</code> 文件保存在与原始文件相同的文件夹中，后缀为<em>_pads</em>。例如，如果原始文件名为<em>ProtelTest.pcbdoc</em>，则新文件名将为<em>ProtelTest_pads.pcb</em>。</p>
+<p class="my-4 leading-7">如果文件夹中已存在具有新名称的文件，则会在文件名后添加顺序号。例如，<em>ProtelTest_pads_1.pcb</em>、<em>ProtelTest_pads_2.pcb</em>，依此类推。</p>
+<p class="my-4 leading-7">默认情况下，与生成的 <em>.pcb</em> 文件同名的日志文件保存在*\SailWind Projects*文件夹中。</p>
+<h2 id="导入-p-cad-设计文件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">导入 P-CAD 设计文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#导入-p-cad-设计文件">#</a></h2>
+<p class="my-4 leading-7">您可以直接将 <em>.pcb</em> 文件导入到 <code>SailWind Layout</code> 中。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 运行独立转换器以控制转换的其他方面，包括文件放置和属性映射。更多信息请参阅<code>SailWind Layout</code> 转换器用户指南。<code>SailWind Layout</code> 转换器可以在开始菜单的 SailWind 文件夹中找到，对于已安装的版本，在 Windows 7 中位于转换器文件夹中。</p>
+</div></div>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; 导入</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导入对话框中，选择&quot;P-CAD 设计文件(*.pcb)&quot;文件类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览到要导入的文件并点击<strong class="font-semibold">打开</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7"><em>.pcb</em> 文件被导入并在 <code>SailWind Layout</code> 中打开。生成的 <code>SailWind Layout</code> 文件保存在与原始文件相同的文件夹中，后缀为<em>_pads</em>。例如，如果原始文件名为<em>PCADTest.pcb</em>，则新文件名将为<em>PCADTest_pads.pcb</em>。</p>
+<p class="my-4 leading-7">如果文件夹中已存在具有新名称的文件，则会在文件名后添加顺序号。例如，<em>PCADTest_pads_1.pcb</em>、<em>PCADTest_pads_2.pcb</em>，依此类推。</p>
+<p class="my-4 leading-7">默认情况下，与生成的 <em>.pcb</em> 文件同名的日志文件保存在*\SailWind Projects*文件夹中。</p>
+<h2 id="导入-cadstar-pcb-设计文件-" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">导入 CADSTAR PCB 设计文件 ❌<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#导入-cadstar-pcb-设计文件-">#</a></h2>
+<p class="my-4 leading-7">您可以直接将 <em>.pcb</em> 文件导入到 <code>SailWind Layout</code> 中。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 运行独立转换器以控制转换的其他方面，包括文件放置和属性映射。更多信息请参阅<code>SailWind Layout</code> 转换器用户指南。<code>SailWind Layout</code> 转换器可以在开始菜单的 SailWind 文件夹中找到，对于已安装的版本，在 Windows 7 中位于转换器文件夹中。</p>
+</div></div>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; 导入</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导入对话框中，选择&quot;CADSTAR PCB 设计文件(*.pcb)&quot;文件类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览到要导入的文件并点击<strong class="font-semibold">打开</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7"><em>.pcb</em> 文件被导入并在 <code>SailWind Layout</code> 中打开。生成的 <code>SailWind Layout</code> 文件保存在与原始文件相同的文件夹中，后缀为<em>_pads</em>。例如，如果原始文件名为<em>CADSTARTest.pcb</em>，则新文件名将为<em>CADSTARTest_pads.pcb</em>。</p>
+<p class="my-4 leading-7">如果文件夹中已存在具有新名称的文件，则会在文件名后添加顺序号。例如，<em>CADSTARTest_pads_1.pcb</em>、<em>CADSTARTest_pads_2.pcb</em>，依此类推。</p>
+<p class="my-4 leading-7">默认情况下，与生成的 <em>.pcb</em> 文件同名的日志文件保存在*\SailWind Projects*文件夹中。</p>
+<h2 id="导入-cadstar-归档文件-" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">导入 CADSTAR 归档文件 ❌<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#导入-cadstar-归档文件-">#</a></h2>
+<p class="my-4 leading-7">您可以直接将*.cpa*文件导入到 <code>SailWind Layout</code> 中。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; 导入</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导入对话框中，选择&quot;CADSTAR 归档(*.cpa)&quot;文件类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览到要导入的文件并点击<strong class="font-semibold">打开</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7"><em>.cpa</em>文件被导入并在 <code>SailWind Layout</code> 中打开。生成的 <code>SailWind Layout</code> 文件保存在与原始文件相同的文件夹中，后缀为<em>_pads</em>。例如，如果原始文件名为<em>CADSTARTest.cpa</em>，则新文件名将为<em>CADSTARTest_pads.pcb</em>。</p>
+<p class="my-4 leading-7">如果文件夹中已存在具有新名称的文件，则会在文件名后添加顺序号。例如，<em>CADSTARTest_pads_1.pcb</em>、<em>CADSTARTest_pads_2.pcb</em>，依此类推。</p>
+<p class="my-4 leading-7">默认情况下，与生成的 <em>.pcb</em> 文件同名的日志文件保存在*\SailWind Projects*文件夹中。</p>
+<h2 id="导入-orcad-板文件-" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">导入 OrCAD 板文件 ❌<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#导入-orcad-板文件-">#</a></h2>
+<p class="my-4 leading-7">您可以直接将*.max*文件导入到 <code>SailWind Layout</code> 中。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 运行独立转换器以控制转换的其他方面，包括文件放置和属性映射。更多信息请参阅<code>SailWind Layout</code> 转换器用户指南。<code>SailWind Layout</code> 转换器可以在开始菜单的 SailWind 文件夹中找到，对于已安装的版本，在 Windows 7 中位于转换器文件夹中。</p>
+</div></div>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; 导入</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导入对话框中，选择&quot;OrCAD 板文件(*.max)&quot;文件类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览到要导入的文件并点击<strong class="font-semibold">打开</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7"><em>.max</em>文件被导入并在 <code>SailWind Layout</code> 中打开。生成的 <code>SailWind Layout</code> 文件保存在与原始文件相同的文件夹中，后缀为<em>_pads</em>。例如，如果原始文件名为<em>OrCADTest.max</em>，则新文件名将为<em>OrCADTest_pads.pcb</em>。</p>
+<p class="my-4 leading-7">如果文件夹中已存在具有新名称的文件，则会在文件名后添加顺序号。例如，<em>OrCADTest_pads_1.pcb</em>、<em>OrCADTest_pads_2.pcb</em>，依此类推。</p>
+<p class="my-4 leading-7">默认情况下，与生成的 <em>.pcb</em> 文件同名的日志文件保存在*\SailWind Projects*文件夹中。</p>
+<h2 id="导入-eagle-设计文件" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">导入 Eagle 设计文件<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#导入-eagle-设计文件">#</a></h2>
+<p class="my-4 leading-7">您可以直接将 <em>.brd</em> 文件导入到 <code>SailWind Layout</code> 中。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 运行独立转换器以控制转换的其他方面，包括文件放置和属性映射。更多信息请参阅<code>SailWind Layout</code> 转换器用户指南。<code>SailWind Layout</code> 转换器可以在开始菜单的 SailWind 文件夹中找到，对于已安装的版本，在 Windows 7 中位于转换器文件夹中。</p>
+</div></div>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; 导入</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导入对话框中，选择&quot;Eagle 板文件(*.brd)&quot;文件类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览到要导入的文件并点击<strong class="font-semibold">打开</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7"><em>.brd</em> 文件被导入并在 <code>SailWind Layout</code> 中打开。生成的 <code>SailWind Layout</code> 文件保存在与原始文件相同的文件夹中，后缀为<em>_pads</em>。例如，如果原始文件名为<em>EagleTest.pcb</em>，则新文件名将为<em>EagleTest_pads.pcb</em>。</p>
+<p class="my-4 leading-7">如果文件夹中已存在具有新名称的文件，则会在文件名后添加顺序号。例如，<em>EagleTest_pads_1.pcb</em>、<em>EagleTest_pads_2.pcb</em>，依此类推。</p>
+<p class="my-4 leading-7">默认情况下，与生成的 <em>.pcb</em> 文件同名的日志文件保存在*\SailWind Projects*文件夹中。</p>
+<h2 id="导入-pads-maker-设计文件-" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">导入 PADS Maker 设计文件 ❌<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#导入-pads-maker-设计文件-">#</a></h2>
+<p class="my-4 leading-7">您可以直接将 <em>.pcb</em> 文件导入到 <code>SailWind Layout</code> 中。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; 导入</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导入对话框中，选择 PADS Maker 布局文件(*.pcb)文件类型。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览到要导入的文件并点击<strong class="font-semibold">打开</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7"><em>.pcb</em> 文件被导入并在 <code>SailWind Layout</code> 中打开。生成的 <code>SailWind Layout</code> 文件保存在与原始文件相同的文件夹中，后缀为<em>_pads</em>。例如，如果原始文件名为 <em>PADSMakerTest.pcb</em>，则新文件名将为<em>PADSMakerTest_pads.pcb</em>。</p>
+<p class="my-4 leading-7">如果文件夹中已存在具有新名称的文件，则会在文件名后添加顺序号。例如，</p>
+<p class="my-4 leading-7"><em>PADSMakerTest_pads_1.pcb</em>、<em>PADSMakerTest_pads_2.pcb</em>，依此类推。</p>
+<p class="my-4 leading-7">默认情况下，与生成的 <em>.pcb</em> 文件同名的日志文件保存在*\SailWind Projects*文件夹中。</p>
+<h2 id="导出-odb文件-" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">导出 ODB++文件 ❌<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#导出-odb文件-">#</a></h2>
+<p class="my-4 leading-7">您可以将整个设计导出为 ODB++ 作业，该作业可以在计算机之间传输而不会丢失任何数据。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">ODB++ 导出基于从设计生成的 CAM 文档。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果尚未生成 CAM 文档并继续操作，软件将使用默认配置生成一组 CAM 文档并将其用于 ODB++导出。生成的自动生成的 CAM 文档可能与您创建的文档不同。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果在创建 CAM 文档的过程中无意中重复了一个或多个层，将出现警告。</p>
+</li>
+</ul>
+</div></div>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 设计中的虚拟过孔将作为过孔导出。</p>
+</div></div>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; 导出</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导出对话框中，从保存在列表中选择作业的位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在保存类型列表中，选择 ODB++(*.tgz)。</p>
+<p class="my-4 leading-7">如果有未覆铜的覆铜平面，则在生成 CAM 文档时会自动覆铜。</p>
+<p class="my-4 leading-7">如果尚未为设计创建所有必需的 CAM 文档，则会提示缺少文档列表。您可以取消操作并创建这些文档，或者继续并使用默认设置创建的 CAM 文档。</p>
+<p class="my-4 leading-7">如果尚未为设计创建任何必需的 CAM 文档，则会提示生成默认文档。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 ODB++ 导出对话框中进行适当的设置更改。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">保存</strong>。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">ODB++ 作业(由 <em>.tgz</em> 文件和关联的报告文件(<em>_odbppExport.rep</em>)组成)被创建并放置在步骤 2 中指示的位置。例如，如果文件为<em>preview.pcb</em>，则结果文件将为同一目录中的 <em>preview.tgz</em> 和 <em>previewodbpp_Export.rep</em>。</p>
+<h2 id="导出-cce-文件-" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">导出 CCE 文件 ❌<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#导出-cce-文件-">#</a></h2>
+<p class="my-4 leading-7">您可以导出 CCE (原 CC/CCZ)文件中的设计元素以导入到 CAMCAD 和 visECAD 中。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; 导出</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导出对话框中，在保存类型列表中，选择 CCE 文件(*.cce)。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览以选择要覆盖的文件，或键入新文件名。文件名默认为现有设计名称。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">保存</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 CCE 导出对话框中，指定阻焊层、焊膏层和组件边框层选项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>。</p>
+</li>
+</ol>
+<h2 id="ipc-d-356-网表" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">IPC-D-356 网表<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#ipc-d-356-网表">#</a></h2>
+<p class="my-4 leading-7">IPC-D-356 网表格式以 X、Y 位置描述网表，这是测试裸板所需的格式。</p>
+<p class="my-4 leading-7">IPC-D-356 格式是一种机器可读的 ASCII 格式，包含网络连接点的 X,Y 位置，确保制造的印刷电路板不仅正确，而且与原始设计一致。</p>
+<p class="my-4 leading-7">在 IPC-D-356 网表之前，ASCII 文件输出是唯一的文件输出。此输出通过其参考标志描述管脚之间的连接。然而，机器需要坐标，CAM 输出仅由艺术品文件组成。可以根据艺术品文件的层叠发现连接性，但永远无法对照原始设计进行检查。</p>
+<p class="my-4 leading-7">IPC-D-356 网表包括网络名称、参考标志和管脚编号。这不是测试坐标之间连接性所必需的，但它会产生更容易理解的结果。</p>
+<p class="my-4 leading-7">您还可以使用更新的 IPC-D-356A 格式，这是对 D-356 网表格式的更新修订。修订版 A 格式具有更多功能，是对原始 D-356 格式的改进。</p>
+<h2 id="导出-ipc-d-356-网表" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">导出 IPC-D-356 网表<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#导出-ipc-d-356-网表">#</a></h2>
+<p class="my-4 leading-7">您可以导出 IPC-D-356 网表或 IPC-D-356 修订版 A 网表。</p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 当将设计导出到*.ipc*(IPC356)文件格式时，用铜桥接的网络将被合并。</p>
+</div></div>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">主页 &gt; 导出</strong>菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在文件导出对话框中，在保存类型列表中，选择 IPC356 文件(*.ipc)。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">浏览以覆盖文件或键入新文件名。点击<strong class="font-semibold">保存</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 IPC 导出对话框中，选择两种网表格式之一。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>。创建*.ipc*文件。</p>
+</li>
+</ol><!--/$--></div><div class="rspress-doc-footer"><footer class="mt-8"><div class="xs:flex pb-5 px-2 justify-end items-center"><div class="flex text-sm text-text-2 leading-6 sm:leading-8 font-medium"><p>最近更新时间<!-- -->: <span>2025/7/15 05:55:33</span></p></div></div><div class="flex flex-col"></div><div class="flex flex-col sm:flex-row sm:justify-around gap-4 pt-6"><div class="prev_c92d1 flex flex-col"><a href="/sailwind_docs/layout/guide/12_zh.html" class="link_a7cea pager-link_e0d2d"><span class="desc_dcc01">上一页</span><span class="title_a3acb">第 12 章 使用 SailWind Logic</span></a></div><div class="next_c11be flex flex-col"><a href="/sailwind_docs/layout/guide/14_zh.html" class="link_a7cea pager-link_e0d2d next_ad355"><span class="desc_dcc01">下一页</span><span class="title_a3acb">第 14 章 层</span></a></div></div></footer></div></div><div class="aside-container_bc5fa"><div class="flex flex-col"><div id="aside-container" class="relative text-sm font-medium"><div class="leading-7 block text-sm font-semibold pl-3">本页目录</div><nav class="mt-1"><ul class="relative"><li><a href="#文件导入格式" title="文件导入格式" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">文件导入格式</span></a></li><li><a href="#文件导出格式" title="文件导出格式" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">文件导出格式</span></a></li><li><a href="#导入-ascii-文件" title="导入 ASCII 文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">导入 ASCII 文件</span></a></li><li><a href="#导出-ascii-文件" title="导出 ASCII 文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">导出 ASCII 文件</span></a></li><li><a href="#导出-ole-文件-" title="导出 OLE 文件 ❌" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">导出 OLE 文件 ❌</span></a></li><li><a href="#导入-ole-文件-" title="导入 OLE 文件 ❌" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">导入 OLE 文件 ❌</span></a></li><li><a href="#dxf-格式" title="DXF 格式" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">DXF 格式</span></a></li><li><a href="#导入-dxf-文件" title="导入 DXF 文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">导入 DXF 文件</span></a></li><li><a href="#导出-dxf-文件" title="导出 DXF 文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">导出 DXF 文件</span></a></li><li><a href="#指定-dxf-钻孔尺寸和符号" title="指定 DXF 钻孔尺寸和符号" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">指定 DXF 钻孔尺寸和符号</span></a></li><li><a href="#导入-idf-文件" title="导入 IDF 文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">导入 IDF 文件</span></a></li><li><a href="#导出-idf-文件" title="导出 IDF 文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">导出 IDF 文件</span></a></li><li><a href="#为-idf-导出定义-idf-特定元件边框" title="为 IDF 导出定义 IDF 特定元件边框" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">为 IDF 导出定义 IDF 特定元件边框</span></a></li><li><a href="#为-idf-导出添加-idf-特定钻孔信息" title="为 IDF 导出添加 IDF 特定钻孔信息" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">为 IDF 导出添加 IDF 特定钻孔信息</span></a></li><li><a href="#为-idf-导出设置-idf-特定元件高度信息" title="为 IDF 导出设置 IDF 特定元件高度信息" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">为 IDF 导出设置 IDF 特定元件高度信息</span></a></li><li><a href="#导入-protel-99se-设计数据库文件" title="导入 Protel 99SE 设计数据库文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">导入 Protel 99SE 设计数据库文件</span></a></li><li><a href="#导入-protel-pcb98-设计文件" title="导入 Protel PCB98 设计文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">导入 Protel PCB98 设计文件</span></a></li><li><a href="#导入-protel-dxp--altium-designer-设计文件" title="导入 Protel DXP / Altium Designer 设计文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">导入 Protel DXP / Altium Designer 设计文件</span></a></li><li><a href="#导入-p-cad-设计文件" title="导入 P-CAD 设计文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">导入 P-CAD 设计文件</span></a></li><li><a href="#导入-cadstar-pcb-设计文件-" title="导入 CADSTAR PCB 设计文件 ❌" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">导入 CADSTAR PCB 设计文件 ❌</span></a></li><li><a href="#导入-cadstar-归档文件-" title="导入 CADSTAR 归档文件 ❌" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">导入 CADSTAR 归档文件 ❌</span></a></li><li><a href="#导入-orcad-板文件-" title="导入 OrCAD 板文件 ❌" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">导入 OrCAD 板文件 ❌</span></a></li><li><a href="#导入-eagle-设计文件" title="导入 Eagle 设计文件" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">导入 Eagle 设计文件</span></a></li><li><a href="#导入-pads-maker-设计文件-" title="导入 PADS Maker 设计文件 ❌" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">导入 PADS Maker 设计文件 ❌</span></a></li><li><a href="#导出-odb文件-" title="导出 ODB++文件 ❌" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">导出 ODB++文件 ❌</span></a></li><li><a href="#导出-cce-文件-" title="导出 CCE 文件 ❌" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">导出 CCE 文件 ❌</span></a></li><li><a href="#ipc-d-356-网表" title="IPC-D-356 网表" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">IPC-D-356 网表</span></a></li><li><a href="#导出-ipc-d-356-网表" title="导出 IPC-D-356 网表" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">导出 IPC-D-356 网表</span></a></li></ul></nav></div></div></div></div></div></div></section></div>
+    <div id="search-container"></div>
+  </body>
+</html>

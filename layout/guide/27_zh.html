@@ -1,0 +1,1009 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content="Rspress v1.45.0">
+    <title data-rh="true">第 27 章 绘图操作 - SailWind</title><meta data-rh="true" name="description" content="SailWind"/>
+  <script>{;const saved = localStorage.getItem('rspress-theme-appearance');const preferDark = window.matchMedia('(prefers-color-scheme: dark)').matches;const isDark = !saved || saved === 'auto' ? preferDark : saved === 'dark';document.documentElement.classList.toggle('dark', isDark);document.documentElement.style.colorScheme = isDark ? 'dark' : 'light';}</script><link rel="icon" href="/sailwind_docs/favicon.ico"><script defer src="/sailwind_docs/static/js/styles.f5ec16c7.js"></script><script defer src="/sailwind_docs/static/js/lib-react.36f9b428.js"></script><script defer src="/sailwind_docs/static/js/lib-router.971f4280.js"></script><script defer src="/sailwind_docs/static/js/2886.6c8a4c3c.js"></script><script defer src="/sailwind_docs/static/js/index.ef746291.js"></script><link href="/sailwind_docs/static/css/styles.6524924d.css" rel="stylesheet"></head>
+
+  <body >
+    <div id="root"><div class="navContainer_d18b1 rspress-nav px-6  sticky_ddfa7"><div class="container_e4235 flex justify-between items-center h-full"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div><div class="flex flex-1 justify-end items-center"><div class="rightNav_a2fea"><div class="flex sm:flex-1 items-center sm:pl-4 sm:pr-2"><div class="rspress-nav-search-button navSearchButton_df1fb"><button><svg width="18" height="18" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg><p class="searchWord_af2c1">搜索</p><div style="opacity:0"><span></span><span>K</span></div></button></div><div class="mobileNavSearchButton_d85a9"><svg width="24" height="24" viewBox="0 0 32 32"><path fill="var(--rp-c-gray)" d="m29 27.586-7.552-7.552a11.018 11.018 0 1 0-1.414 1.414L27.586 29ZM4 13a9 9 0 1 1 9 9 9.01 9.01 0 0 1-9-9"></path></svg></div></div><div class="rspress-nav-menu menu h-14"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div><div class="flex-center flex-row"><div class="mx-2"><div class="md:mr-2 rspress-nav-appearance"><div class="p-1 border border-solid border-gray-300 text-gray-400  cursor-pointer rounded-md hover:border-gray-600 hover:text-gray-600 dark:hover:border-gray-200 dark:hover:text-gray-200 transition-all duration-300 w-7 h-7"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="dark:hidden" width="18" height="18" fill="currentColor"><path d="M12 18c-3.3 0-6-2.7-6-6s2.7-6 6-6 6 2.7 6 6-2.7 6-6 6m0-10c-2.2 0-4 1.8-4 4s1.8 4 4 4 4-1.8 4-4-1.8-4-4-4M12 4c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M12 24c-.6 0-1-.4-1-1v-2c0-.6.4-1 1-1s1 .4 1 1v2c0 .6-.4 1-1 1M5.6 6.6c-.3 0-.5-.1-.7-.3L3.5 4.9c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.1.2-.4.3-.7.3M19.8 20.8c-.3 0-.5-.1-.7-.3l-1.4-1.4c-.4-.4-.4-1 0-1.4s1-.4 1.4 0l1.4 1.4c.4.4.4 1 0 1.4-.2.2-.5.3-.7.3M3 13H1c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M23 13h-2c-.6 0-1-.4-1-1s.4-1 1-1h2c.6 0 1 .4 1 1s-.4 1-1 1M4.2 20.8c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.4.3-.7.3M18.4 6.6c-.3 0-.5-.1-.7-.3-.4-.4-.4-1 0-1.4l1.4-1.4c.4-.4 1-.4 1.4 0s.4 1 0 1.4l-1.4 1.4c-.2.2-.5.3-.7.3"></path></svg><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" viewBox="0 0 24 24" class="hidden dark:block" width="18" height="18" fill="currentColor"><path d="M12.1 22h-.9c-5.5-.5-9.5-5.4-9-10.9.4-4.8 4.2-8.6 9-9 .4 0 .8.2 1 .5s.2.8-.1 1.1c-2 2.7-1.4 6.4 1.3 8.4 2.1 1.6 5 1.6 7.1 0 .3-.2.7-.3 1.1-.1.3.2.5.6.5 1-.2 2.7-1.5 5.1-3.6 6.8-1.9 1.4-4.1 2.2-6.4 2.2M9.3 4.4c-2.9 1-5 3.6-5.2 6.8-.4 4.4 2.8 8.3 7.2 8.7 2.1.2 4.2-.4 5.8-1.8 1.1-.9 1.9-2.1 2.4-3.4-2.5.9-5.3.5-7.5-1.1-2.8-2.2-3.9-5.9-2.7-9.2"></path></svg></div></div></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div><div class="mobileNavMenu_e7045"><div class="navScreen_ec30c  rspress-nav-screen" id="navScreen"><div class="container_c935d"><div class="navMenu_b887b"><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/logic/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">原理图 (Logic)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/layout/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154 activeItem_a28b5 text-sm font-medium mx-1.5 px-3 py-2 flex items-center">物理版图 (Layout)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/router/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">自动布线 (Router)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/lpcreator/index.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">焊盘图形 (LPW)</div></a></div><div class="navMenuItem_e7978 w-full"><a href="/sailwind_docs/about.html" class="link_a7cea "><div class="rspress-nav-menu-item singleItem_c1154  text-sm font-medium mx-1.5 px-3 py-2 flex items-center">关于</div></a></div></div><div class="flex-center flex-col gap-2"><div class="mt-2 navAppearance_bf893 flex justify-center"></div><div class="social-links menu-item_e90a6 flex-center relative"><div class="flex-center h-full gap-x-4 transition-colors duration-300 md:mr-2"><a href="https://github.com/mikigo/sailwind_docs/" target="_blank" rel="noopener noreferrer" class="social-links"><div class="social-links-icon_a4ad0"><div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24"><path fill="currentColor" d="M12 .297c-6.63 0-12 5.373-12 12c0 5.303 3.438 9.8 8.205 11.385c.6.113.82-.258.82-.577c0-.285-.01-1.04-.015-2.04c-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729c1.205.084 1.838 1.236 1.838 1.236c1.07 1.835 2.809 1.305 3.495.998c.108-.776.417-1.305.76-1.605c-2.665-.3-5.466-1.332-5.466-5.93c0-1.31.465-2.38 1.235-3.22c-.135-.303-.54-1.523.105-3.176c0 0 1.005-.322 3.3 1.23c.96-.267 1.98-.399 3-.405c1.02.006 2.04.138 3 .405c2.28-1.552 3.285-1.23 3.285-1.23c.645 1.653.24 2.873.12 3.176c.765.84 1.23 1.91 1.23 3.22c0 4.61-2.805 5.625-5.475 5.92c.42.36.81 1.096.81 2.22c0 1.606-.015 2.896-.015 3.286c0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></div></div></a></div></div></div></div></div><button aria-label="mobile hamburger" class=" rspress-mobile-hamburger navHamburger_ac64c text-gray-500"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="currentColor"><circle cx="8" cy="16" r="2" fill="currentColor"></circle><circle cx="16" cy="16" r="2" fill="currentColor"></circle><circle cx="24" cy="16" r="2" fill="currentColor"></circle></svg></button></div></div></div></div><section><div class="docLayout_af141 pt-0"><aside class="sidebar_dd719 rspress-sidebar "><div class="navTitleMask_fb17c"><div class="navBarTitle_c5f07"><a href="/sailwind_docs/index.html" class="link_a7cea flex items-center w-full h-full text-base font-semibold transition-opacity duration-300 hover:opacity-60"><div class="mr-1 min-w-8"><img src="/sailwind_docs/logo.png" alt="logo" id="logo" class="rspress-logo"/></div><span>SailWind</span></a></div></div><div class="rspress-scrollbar sidebarContent_da296"><nav class="pb-2"><a href="/sailwind_docs/layout/index.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:14px;margin-left:0;border-radius:0 var(--rp-radius) var(--rp-radius) 0;padding-left:24px;font-weight:bold"><span>章节预览</span></div></a><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">指南(Guide)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 2 章 用户界面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 3 章 无模命令与快捷键</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 4 章 设计与编辑基础</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 5 章 设置颜色</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 6 章 库与库数据管理</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 7 章 创建和编辑 PCB 封装</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 8 章 创建和修改元件类型</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 9 章 开始新设计</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 10 章 文件操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 11 章 设计环境设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 12 章 使用 SailWind Logic</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 13 章 导入与导出</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 14 章 层</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 15 章 过孔设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/16_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 16 章 电气网络</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/17_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 17 章 选项设置</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/18_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 18 章 属性控制</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/19_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 19 章 设置规则和使用禁止区</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/20_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 20 章 AI 驱动的先进功能</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/21_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 21 章 元件布局</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/22_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 22 章 SailWind 3D</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/23_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 23 章 与机械设计团队的数据交换</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/24_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 24 章 虚拟过孔</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/25_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 25 章 标签操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/26_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 26 章 设计或设计部分的复用</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/27_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItemActive_de63c mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 27 章 绘图操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/28_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 28 章 安全间距检查</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/29_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 29 章 铜箔操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/30_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 30 章 为布铜区或覆铜平面分配网络</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/31_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 31 章 覆铜平面操作</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/32_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 32 章 设计布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/33_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 33 章 SailWind 布线器</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/34_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 34 章 铜填充与覆铜平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/35_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 35 章 参考标志符</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/36_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 36 章 工程变更单(ECO)</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/37_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 37 章 设计比较</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/38_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 38 章 报告功能</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/39_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 39 章 设计错误检查</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/40_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 40 章 尺寸标注</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/41_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 41 章 CAM 输出</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/42_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 42 章 对象链接与嵌入 ❌</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/43_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 43 章 故障排除</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/44_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 44 章 SPECCTRA 链接</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/45_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 45 章 错误检测、BMW与BLT、脚本与宏</span></div></a></div><div class="rspress-sidebar-item"><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:18px"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex"><span class="flex-center" style="font-size:13px">第 46 - 55 章 Dialogs</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:0"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/46_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 46 章 GUI 参考元素 A</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/47_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 47 章 GUI 参考元素 B 至 C</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/48_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 48 章 GUI 参考元素 D</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/49_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 49 章 GUI 参考元素 E 至 G</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/50_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 50 章 GUI 参考元素 H 至 J</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/51_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 51 章 GUI 参考元素 K 至 O</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/52_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 52 章 GUI 参考元素 P</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/53_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 53 章 GUI 参考元素 Q 至 R</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/54_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 54 章 GUI 参考元素 S</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/guide/Dialogs/55_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>第 55 章 GUI 参考元素 T 至 Z</span></div></a></div></div></div></section></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">教程(Tutorial)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/1_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>用户界面学习</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/2_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建库元件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/3_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>设计准备</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/4_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>导入设计数据</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/5_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>分配约束规则</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/6_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>移动与放置组件</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/7_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建和编辑走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/8_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用动态布线创建走线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/9_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>使用 <code>SailWind Router</code> 进行自动布线</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/10_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建分割平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/11_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建覆铜平面</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/12_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>添加尺寸标注</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/13_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>检查设计规则违规</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/14_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>更新原理图</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/tutorial/15_zh.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>创建报告和 CAM 文件</span></div></a></div></div></div></section><section class="rspress-sidebar-section mt-0.5 block" style="margin-left:0"><div class="rspress-sidebar-collapse flex justify-between items-center menuItem_ac22e" style="border-radius:0 var(--rp-radius) var(--rp-radius) 0;cursor:pointer"><h2 class="py-2 px-3 text-sm font-medium flex" style="font-size:14px;padding-left:24px;font-weight:bold"><span class="flex-center" style="font-size:14px">快速参考(Quick Reference)</span></h2><div class="collapseContainer_d6e4e p-2 rounded-xl"><div style="cursor:pointer;transition:transform 0.2s ease-out;transform:rotate(0deg)"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></div></div><div class="transition-all duration-300 ease-in-out" style="overflow:hidden;max-height:0"><div class="rspress-sidebar-group transition-opacity duration-500 ease-in-out" style="opacity:0;margin-left:12px"><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/qr/modless.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>无模命令</span></div></a></div><div class="rspress-sidebar-item"><a href="/sailwind_docs/layout/qr/shortcut.html" class="link_a7cea menuLink_bb039"><div class="menuItem_ac22e mt-0.5 py-2 px-3 font-medium flex" style="font-size:13px;margin-left:18px;border-radius:0 var(--rp-radius) var(--rp-radius) 0"><span>键盘快捷键</span></div></a></div></div></div></section></nav></div></aside><div class="flex-1 relative min-w-0"><div class="rspress-sidebar-menu-container "><div class="rspress-sidebar-menu"><button type="button" class="flex-center mr-auto"><div class="text-md mr-2"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M4 6h24v2H4zm0 18h24v2H4zm0-12h24v2H4zm0 6h24v2H4z"></path></svg></div><span class="text-sm">Menu</span></button><button type="button" class="flex-center ml-auto"><span class="text-sm">本页目录</span><div class="text-md mr-2" style="transform:rotate(0deg);transition:transform 0.2s ease-out;margin-top:2px"><svg width="1em" height="1em" viewBox="0 0 32 32"><path fill="currentColor" d="M22 16 12 26l-1.4-1.4 8.6-8.6-8.6-8.6L12 6z"></path></svg></div></button><div class="rspress-local-toc-container "><ul><li><a href="#创建绘图对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建绘图对象</span></a></li><li><a href="#创建绘图对象前设置值" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建绘图对象前设置值</span></a></li><li><a href="#绘图形状的边缘精度" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">绘图形状的边缘精度</span></a></li><li><a href="#铜箔和覆铜平面的填充" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">铜箔和覆铜平面的填充</span></a></li><li><a href="#迁移至覆铜平面" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">迁移至覆铜平面</span></a></li><li><a href="#平面与网络连接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">平面与网络连接</span></a></li><li><a href="#创建多边形或路径绘图对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建多边形或路径绘图对象</span></a></li><li><a href="#创建圆形绘图对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建圆形绘图对象</span></a></li><li><a href="#创建矩形绘图对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">创建矩形绘图对象</span></a></li><li><a href="#自相交多边形" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">自相交多边形</span></a></li><li><a href="#文本" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">文本</span></a></li><li><a href="#添加自由文本" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">添加自由文本</span></a></li><li><a href="#修改文本特性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">修改文本特性</span></a></li><li><a href="#镜像文本" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">镜像文本</span></a></li><li><a href="#移动文本和标签" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">移动文本和标签</span></a></li><li><a href="#修改铜倒角路径特性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">修改铜倒角路径特性</span></a></li><li><a href="#缩放-2d-线条对象和尺寸" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">缩放 2D 线条对象和尺寸</span></a></li><li><a href="#修改绘图对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">修改绘图对象</span></a></li><li><a href="#移动绘图对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">移动绘图对象</span></a></li><li><a href="#修改绘图边特性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">修改绘图边特性</span></a></li><li><a href="#修改绘图角特性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">修改绘图角特性</span></a></li><li><a href="#绘图对象特性" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">绘图对象特性</span></a></li><li><a href="#转换绘图形状" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">转换绘图形状</span></a></li><li><a href="#更改线宽" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">更改线宽</span></a></li><li><a href="#缩放" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">缩放</span></a></li><li><a href="#用实心铜填充形状" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">用实心铜填充形状</span></a></li><li><a href="#更改层" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:24px"><span class="rspress-toc-link-text block">更改层</span></a></li><li><a href="#移动斜接" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">移动斜接</span></a></li><li><a href="#从绘图段角拉出圆弧" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">从绘图段/角拉出圆弧</span></a></li><li><a href="#删除绘图线段或对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">删除绘图线段或对象</span></a></li><li><a href="#删除项目" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">删除项目</span></a></li><li><a href="#组合绘图对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">组合绘图对象</span></a></li><li><a href="#组合线型与文本对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">组合线型与文本对象</span></a></li><li><a href="#分解组合对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">分解组合对象</span></a></li><li><a href="#从组合中移除文本对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">从组合中移除文本对象</span></a></li><li><a href="#连接和闭合-2d-线型与铜箔图形" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">连接和闭合 2D 线型与铜箔图形</span></a></li><li><a href="#使用连接和闭合命令连接-2d-线型与铜箔图形" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">使用连接和闭合命令连接 2D 线型与铜箔图形</span></a></li><li><a href="#合并-2d-线型与铜箔图形" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">合并 2D 线型与铜箔图形</span></a></li><li><a href="#闭合-2d-线型与铜箔图形" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">闭合 2D 线型与铜箔图形</span></a></li><li><a href="#打散对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">打散对象</span></a></li><li><a href="#保存绘图项目到库" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">保存绘图项目到库</span></a></li><li><a href="#从库中添加绘图项目" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">从库中添加绘图项目</span></a></li><li><a href="#修改-2d-线型库中的对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">修改 2D 线型库中的对象</span></a></li><li><a href="#修改走线或绘图对象的宽度" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">修改走线或绘图对象的宽度</span></a></li><li><a href="#修改已布线段的宽度" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">修改已布线段的宽度</span></a></li><li><a href="#查找相似宽度的所有走线" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">查找相似宽度的所有走线</span></a></li><li><a href="#绘制线宽" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">绘制线宽</span></a></li><li><a href="#按指针位置粘贴项目" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">按指针位置粘贴项目</span></a></li><li><a href="#绘图对象的选择" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:0"><span class="rspress-toc-link-text block">绘图对象的选择</span></a></li><li><a href="#选择绘图对象边框" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">选择绘图对象边框</span></a></li><li><a href="#选择完整绘图对象" class="link_a7cea rspress-toc-link sm:text-normal text-sm" style="margin-left:12px"><span class="rspress-toc-link-text block">选择完整绘图对象</span></a></li></ul></div></div></div><div class="content_ff766 rspress-doc-container flex"><div class="flex-1 overflow-x-auto"><div class="rspress-doc"><!--$--><h1 id="第-27-章-绘图操作" class="rspress-doc-title text-3xl mb-10 leading-10 tracking-tight title_fb7eb">第 27 章 绘图操作<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#第-27-章-绘图操作">#</a></h1>
+<p class="my-4 leading-7">阅读以下主题以了解绘图工具栏上可用的绘图命令。使用绘图命令创建和编辑绘图对象，包括板框、铜箔区域、禁止区域、简单线形、文本以及其他通常与元件放置或布线无关的所有项目。</p>
+<h2 id="创建绘图对象" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建绘图对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建绘图对象">#</a></h2>
+<p class="my-4 leading-7">所有绘图对象的创建方法均相同。这些说明适用于创建 2D 线、铜箔、铜箔切割、板框、板框切割、禁止区域、覆铜平面和覆铜平面切割。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击绘图工具栏上的按钮后，<strong class="font-semibold">右键</strong>单击可在<a href="#%E5%88%9B%E5%BB%BA%E7%BB%98%E5%9B%BE%E5%AF%B9%E8%B1%A1%E5%89%8D%E8%AE%BE%E7%BD%AE" class="link_a7cea  link_a9ef4 inline-link_f855c">创建绘图对象前设置</a>任何值。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并从弹出菜单中选择以下任意形状进行绘制：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><a href="#%E5%88%9B%E5%BB%BA%E5%9C%86%E5%BD%A2%E7%BB%98%E5%9B%BE%E5%AF%B9%E8%B1%A1" class="link_a7cea  link_a9ef4 inline-link_f855c">圆形</a></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><a href="#%E5%88%9B%E5%BB%BA%E5%A4%9A%E8%BE%B9%E5%BD%A2%E6%88%96%E8%B7%AF%E5%BE%84%E7%BB%98%E5%9B%BE%E5%AF%B9%E8%B1%A1" class="link_a7cea  link_a9ef4 inline-link_f855c">多边形或路径</a></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><a href="#%E5%88%9B%E5%BB%BA%E7%9F%A9%E5%BD%A2%E7%BB%98%E5%9B%BE%E5%AF%B9%E8%B1%A1" class="link_a7cea  link_a9ef4 inline-link_f855c">矩形</a></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><a href="#%E8%87%AA%E7%9B%B8%E4%BA%A4%E5%A4%9A%E8%BE%B9%E5%BD%A2" class="link_a7cea  link_a9ef4 inline-link_f855c">倒角路径</a></p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="创建绘图对象前设置值" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建绘图对象前设置值<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建绘图对象前设置值">#</a></h2>
+<p class="my-4 leading-7">使用绘图工具栏添加绘图对象，如铜箔形状、禁止区域以及通常与放置和布线无关的非电气绘制项目。在点击要添加的项目类型按钮后，放置绘图对象前，您可以设置各种值。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">设置线宽</strong></p>
+<p class="my-4 leading-7">选择以下方法之一设置正在创建的绘图对象中线宽：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">输入 W<code>&lt;nn&gt;</code>，其中<code>&lt;nn&gt;</code>为宽度值</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并点击<strong class="font-semibold">宽度</strong>弹出菜单项并输入值</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;<a href="/sailwind_docs/layout/guide/Dialogs/51_zh.html#选项对话框，文本与线条类别" class="link_a7cea  link_a9ef4 inline-link_f855c">文本和线</a>&quot;选项中设置默认宽度值</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">设置线型</strong></p>
+<p class="my-4 leading-7">仅针对 2D 线，选择以下方法之一设置线型：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并点击<strong class="font-semibold">线型</strong>弹出菜单项，然后从列表中选择线型</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">输入 LS 无模命令之一设置线型</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">设置层放置</strong></p>
+<p class="my-4 leading-7">选择以下方法之一选择绘图对象的放置层：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">输入 L<code>&lt;n&gt;</code>，其中<code>&lt;n&gt;</code>为层号</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并点击<strong class="font-semibold">层</strong>弹出菜单项指定要放置绘图对象的层</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用标准工具栏上的层列表指定层</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">设置拐角自动斜切</strong></p>
+<p class="my-4 leading-7">选择以下方法之一自动斜切拐角（对角斜切或圆弧）：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并点击**<a href="/sailwind_docs/layout/guide/Dialogs/51_zh.html#选项对话框，设计类别" class="link_a7cea  link_a9ef4 inline-link_f855c">自动斜切</a>**弹出菜单项斜切所有添加的拐角。在设计选项中定义斜切类型和大小（第 1503 页）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在设计选项的斜切区域（第 1503 页）中，选择自动斜切复选框</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">设置捕捉到对象</strong></p>
+<p class="my-4 leading-7">您可以捕捉到现有对象而非设计网格上的位置。可以从对象捕捉点开始绘制或绘制到对象捕捉点。可以在对象捕捉选项（第 1540 页）或绘制绘图对象时的弹出菜单中启用对象捕捉。也可以使用 OS 无模命令。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并点击<strong class="font-semibold">捕捉到对象</strong>弹出菜单项。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">要过滤可捕捉的对象，<strong class="font-semibold">右键</strong>单击，选择弹出菜单中的<strong class="font-semibold">捕捉到</strong>，然后点击添加或移除要捕捉的对象类型旁边的复选标记。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">设置拐角角度</strong></p>
+<p class="my-4 leading-7">选择以下方法之一选择拐角角度：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并点击<strong class="font-semibold">正交</strong>、<strong class="font-semibold">对角</strong>或<strong class="font-semibold">任意角度</strong>弹出菜单项</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在设计选项（第 1503 页）的线/走线角度区域中选择设置</p>
+</li>
+</ul>
+<h2 id="绘图形状的边缘精度" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">绘图形状的边缘精度<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#绘图形状的边缘精度">#</a></h2>
+<p class="my-4 leading-7">您通常需要精确控制绘图形状的边缘，因为许多因素会影响该边缘。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">线宽</strong></p>
+<p class="my-4 leading-7">边缘精度由用于创建形状的线宽控制。默认线宽在选项对话框的<strong class="font-semibold">文本和线</strong>类别中设置。但是，您可以在创建形状之前或之后更改线宽。使用非常窄的边框宽度可获得锐角，或增加该值以获得钝角。所有拐角均以等于边框宽度一半的半径进行圆角处理。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/27/_page_3_Figure_1.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">设计和填充网格</strong></p>
+<p class="my-4 leading-7">线条用于创建形状的边框，也用于创建电气绘图项目内部的填充。线条或边框放置在设计网格上。然后使用放置在填充网格上的水平线填充形状。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/27/_page_3_Figure_4.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/27/_page_3_Figure_5.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">间距规则</strong></p>
+<p class="my-4 leading-7">如果您正在创建覆铜平面且绘图形状靠近另一个对象，则生成的灌注边框可能会被该对象的间距规则移位。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/27/_page_4_Figure_1.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 68. 间距规则对填充边框的影响</strong></p>
+<h2 id="铜箔和覆铜平面的填充" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">铜箔和覆铜平面的填充<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#铜箔和覆铜平面的填充">#</a></h2>
+<p class="my-4 leading-7"><code>SailWind Layout</code> 使用绘制在铜箔填充网格上的绘图线生成铜箔和覆铜平面形状的填充。如果使用小于铜箔填充网格值的线宽值创建形状，则会产生填充图案。如果使用等于或大于铜网格值的线宽值，则会产生实心铜箔形状。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/27/_page_4_Figure_5.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 69. 实心和填充图案示例</strong></p>
+<p class="my-4 leading-7">形状可以用铜箔以不同程度的填充直至实心图案进行灌注。默认情况下，当您灌注形状时使用的图案由选项对话框中两个设置的相对值决定：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">绘图/文本和线选项类别中的默认宽度值（第 1553 页）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">网格选项类别中的铜箔填充网格值（第 1537 页）</p>
+</li>
+</ul>
+<p class="my-4 leading-7">您可以在创建对象之前或之后设置线宽和网格设置。绘制形状后，您可以在绘图特性中更改设置（第 1328 页）。如果需要为覆铜平面形状自定义铜箔填充网格，可以在 Flood 中设置网格值（第 1381 页）。</p>
+<p class="my-4 leading-7">有关创建具有所需填充图案的形状的更多信息，请参见创建铜箔形状和第 667 页的&quot;手动创建覆铜平面&quot;。</p>
+<h2 id="迁移至覆铜平面" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">迁移至覆铜平面<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#迁移至覆铜平面">#</a></h2>
+<p class="my-4 leading-7">在 VX.2.4 版本之前，<code>SailWind Layout</code> 在&quot;非平面&quot;层上使用铜箔灌注，在&quot;分割/混合&quot;层上使用平面区域。对于所有后续版本，软件将铜箔灌注和平面区域统一为&quot;覆铜平面&quot;。如果您打开早期版本保存的设计，PADS 会将所有铜箔灌注和平面区域迁移或转换为覆铜平面，并相应地应用设计规则。您的设计中可能会出现某些间距和连接性变化。</p>
+<p class="my-4 leading-7">迁移至覆铜平面时会发生以下变化：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">&quot;移除未使用焊盘&quot;设置（位于&quot;热焊盘选项&quot;第 1514 页）扩展到&quot;非平面&quot;层。启用此设置后，除非管脚连接到该层上的走线或覆铜平面，否则所有内部&quot;非平面&quot;和&quot;分割/混合&quot;层上的所有焊盘都将被移除。在 PADS VX.2.4 版本之前，未使用的焊盘仅从&quot;分割/混合&quot;层移除。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">转换为覆铜平面的铜箔灌注受平面热焊盘复选框（在管脚或过孔特性对话框第 797 页）影响。在 PADS VX.2.4 之前，该设置仅适用于&quot;分割/混合&quot;层上的平面区域。这意味着，例如，如果您通过清除&quot;平面热焊盘&quot;复选框禁用了焊盘或过孔的热焊盘连接，则在将设计导入较新版本时，软件会移除&quot;非平面&quot;层上覆铜平面（旧铜箔灌注）的热焊盘连接。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">除了&quot;分割/混合&quot;层外，您还可以在&quot;非平面&quot;层上为覆铜平面应用自定义热焊盘和自定义反焊盘。在 PADS VX.2.4 之前，自定义热焊盘和反焊盘仅适用于&quot;分割/混合&quot;层上的平面区域。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 PADS VX.2.4 之前，即使有走线连接到管脚，管脚也可能接收到&quot;分割/混合&quot;层上平面区域的热焊盘连接。在后续版本中，如果&quot;热焊盘选项&quot;（第 1514 页）中&quot;为已布线元件焊盘添加热焊盘&quot;设置被禁用，则任何带有连接走线的元件管脚都不会接收到热焊盘连接。从 PADS VX.2.3 版本开始，铜箔灌注已经是这种情况，并且在后续版本中已扩展到&quot;分割/混合&quot;层上的覆铜平面。在 PADS VX.2.3 之前，即使存在连接走线且&quot;为已布线元件焊盘添加热焊盘&quot;设置被禁用，如果管脚上存在额外的未布线管脚对连接，管脚也可能接收到铜箔灌注的热焊盘连接。无论设置如何，过孔焊盘仍将接收到覆铜平面的热焊盘连接。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">平面指示器（以前仅显示在&quot;分割/混合&quot;层和&quot;CAM 平面&quot;层上）扩展到&quot;非平面&quot;层上被覆铜平面包围的管脚和过孔。&quot;显示通用覆铜平面指示器&quot;设置位于&quot;热焊盘选项&quot;（第 1514 页）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">&quot;填充和灌注选项&quot;（第 1511 页）中的一个平滑半径设置适用于所有覆铜平面，无论它们位于哪一层。以前的版本对铜箔灌注和平面区域有单独平滑半径设置。现有设计的填充和灌注中的值在 VX.2.4 及后续版本中保留。如果在早期版本中不存在而在后续版本中出现连接性错误，则可能需要调整平滑半径值。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">&quot;移除违反的热焊盘辐条&quot;设置已被移除。默认情况下，所有违反的热焊盘辐条均被移除。这是一个硬编码设置，无法修改。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">无模命令&quot;PO&quot;在灌注边框和填充显示之间切换覆铜平面。&quot;SPO&quot;、&quot;SPI&quot;和&quot;SPD&quot;命令不再使用。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">&quot;填充和灌注选项&quot;（第 1511 页）中的&quot;在嵌入式平面周围创建切割&quot;设置除了&quot;分割/混合&quot;层外，还适用于&quot;非平面&quot;层。以前，该设置仅适用于&quot;分割/混合&quot;层。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">从 VX.2.3 开始，铜箔灌注到完成的切割边框的内边缘而不是中心线。在 VX.2.3 之前，切割会增长线宽的一半，因为铜箔会灌注到其中心线而不是作为预期边界的内边缘。有关更多信息，请参见&quot;创建覆铜平面切割&quot;（第 686 页）。</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/27/_page_6_Picture_6.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 70. 切割灌注边界变化</strong></p>
+<p class="my-4 leading-7">• 从 PADS VX.2.6 开始，覆铜平面填充网格的原点从预灌注形状的左下角（如果存在或计算得出）计算。如果您在 VX.2.6 之前的设计中使用填充填充而不是实心填充，则填充网格的原点和填充网格线的放置可能不同。因此，接触并连接到填充网格的管脚或过孔可能未连接。其他未接触或未连接到填充网格的管脚可能处于连接位置。</p>
+<p class="my-4 leading-7">填充网格图案的原点由围绕覆铜平面形状范围的假想框定义。范围框减少覆铜平面形状线宽的½，填充网格原点放置在范围框的左下角。对于简单的矩形覆铜平面形状，填充网格原点将位于形状的左下角。对于更复杂的形状，范围的左下角可能是覆铜平面形状外部的点。这不是覆铜平面形状的原点，只是覆铜平面填充图案的原点。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/27/_page_8_Picture_1.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 71. 实际左下填充原点</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/27/_page_9_Figure_1.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 72. 计算左下填充原点</strong></p>
+<h2 id="平面与网络连接" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">平面与网络连接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#平面与网络连接">#</a></h2>
+<p class="my-4 leading-7"><em>平面</em>是提供对普遍需要的网络（如电源或地）访问的大面积铜箔区域。一个设计可能使用多个平面区域。</p>
+<p class="my-4 leading-7">大多数 PCB 设计将平面定位在仅专用于平面的内层上，尽管您可以将它们放置在外层上。平面区域可以占据层的全部或仅部分。</p>
+<p class="my-4 leading-7">覆铜平面可能有绝缘走线和过孔穿过平面区域，只要走线不分隔平面以破坏连接性。</p>
+<p class="my-4 leading-7">应该连接到平面的管脚通常使用辐条热焊盘进行制造绘图。不连接到平面的管脚称为未使用焊盘，通常从内层平面移除并替换为反焊盘。</p>
+<p class="my-4 leading-7">建立平面区域并将适当的网络连接到它通常是设计过程中的第一个布线任务之一。以下两种方法建立平面区域：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将层定义为分割/混合类型并绘制覆铜平面</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在非平面层上绘制覆铜平面</p>
+</li>
+</ul>
+<p class="my-4 leading-7"><strong class="font-semibold">使用通用平面指示器显示连接性</strong></p>
+<p class="my-4 leading-7">使用选项对话框中<strong class="font-semibold">覆铜平面</strong>类别 &gt; <strong class="font-semibold">热焊盘</strong>子类别中的&quot;显示通用覆铜平面指示器&quot;设置查看哪些管脚具有热焊盘。&quot;平面热焊盘&quot;管脚特性设置决定是否为管脚生成热焊盘。</p>
+<p class="my-4 leading-7">使用管脚、过孔和跳线管脚的特性对话框设置平面热焊盘选项。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 非平面或分割/混合层上的覆铜平面在功能上是等效的。使用分割/混合层提供绘图特性中的&quot;仅显示平面网络&quot;复选框和验证设计中的平面检查。某些其他软件工具可能利用专门设置为分割/混合的层来使用某些功能。</p>
+</div></div>
+<h2 id="创建多边形或路径绘图对象" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建多边形或路径绘图对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建多边形或路径绘图对象">#</a></h2>
+<p class="my-4 leading-7">使用绘图工具栏添加绘图对象，如铜箔形状、禁止区域以及通常与放置和布线无关的非电气绘制项目。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击要添加的项目类型的按钮：<strong class="font-semibold">2D 线</strong>、<strong class="font-semibold">铜箔</strong>、<strong class="font-semibold">铜箔切割</strong>、<strong class="font-semibold">禁止区域</strong>、<strong class="font-semibold">覆铜平面</strong>、<strong class="font-semibold">覆铜平面切割</strong>或<strong class="font-semibold">板框和切割</strong>。该对象类型的添加命令将附加到您的指针。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并设置绘图值（第 614 页）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要开始绘图对象并完成每个段或放置每个角，请使用以下方法之一：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用指针定位每个坐标，并单击开始并指示连续角。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">输入 S<code>&lt;x&gt;</code>, <code>&lt;y&gt;</code>，其中<code>&lt;x&gt;</code>和<code>&lt;y&gt;</code>为起点和连续角的坐标值。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">输入 SR<code>&lt;x&gt;</code>, <code>&lt;y&gt;</code>如果要为起点和连续角指定相对坐标值。</p>
+</li>
+</ul>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并点击<strong class="font-semibold">添加圆弧</strong>弹出菜单项以添加圆弧而不是直线段。</p>
+</div></div>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">您可以按 BackSpace 键移除最后输入的角。也可以按 Esc 键取消操作。</p>
+</div></div>
+<ol start="4" class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">双击或<strong class="font-semibold">右键</strong>单击并点击<strong class="font-semibold">完成</strong>弹出菜单项以结束形状。多边形自动闭合；路径在最后定义的角处终止。</p>
+</li>
+</ol>
+<h2 id="创建圆形绘图对象" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建圆形绘图对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建圆形绘图对象">#</a></h2>
+<p class="my-4 leading-7">使用绘图工具栏添加绘图对象，如铜箔形状、禁止区域以及通常与放置和布线无关的非电气绘制项目。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击要添加的项目类型的按钮：<strong class="font-semibold">2D 线</strong>、<strong class="font-semibold">铜箔</strong>、<strong class="font-semibold">铜箔切割</strong>、<strong class="font-semibold">禁止区域</strong>、<strong class="font-semibold">覆铜平面</strong>、<strong class="font-semibold">覆铜平面切割</strong>或<strong class="font-semibold">板框和切割</strong>。该对象类型的添加命令将附加到您的指针。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并设置绘图值（第 614 页）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击指示圆心的位置。除了使用指针外，您还可以使用以下方法输入坐标：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">输入 S<code>&lt;x&gt;</code>, <code>&lt;y&gt;</code>，其中<code>&lt;x&gt;</code>和<code>&lt;y&gt;</code>为起点和终点的坐标值。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">输入 SR<code>&lt;x&gt;</code>, <code>&lt;y&gt;</code>如果要为起点和终点指定相对坐标值。</p>
+</li>
+</ul>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 按 Esc 键取消操作。</p>
+</div></div>
+<ol start="4" class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击指示圆的半径以完成圆定义。</p>
+</li>
+</ol>
+<h2 id="创建矩形绘图对象" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">创建矩形绘图对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#创建矩形绘图对象">#</a></h2>
+<p class="my-4 leading-7">使用绘图工具栏添加绘图对象，如铜箔形状、禁止区域以及通常与放置和布线无关的非电气绘制项目。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击要添加的项目类型的按钮：<strong class="font-semibold">2D 线</strong>、<strong class="font-semibold">铜箔</strong>、<strong class="font-semibold">铜箔切割</strong>、<strong class="font-semibold">禁止区域</strong>、<strong class="font-semibold">覆铜平面</strong>、<strong class="font-semibold">覆铜平面切割</strong>或<strong class="font-semibold">板框和切割</strong>。该对象类型的添加命令将附加到您的指针。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并设置绘图值（第 614 页）。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击指示矩形的一个角。除了使用指针外，您还可以使用以下方法输入坐标：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">输入 S<code>&lt;x&gt;</code>, <code>&lt;y&gt;</code>，其中<code>&lt;x&gt;</code>和<code>&lt;y&gt;</code>为起点和终点的坐标值。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">输入 SR<code>&lt;x&gt;</code>, <code>&lt;y&gt;</code>如果要为起点和终点指定相对坐标值。</p>
+</li>
+</ul>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 按 Esc 键取消操作。</p>
+</div></div>
+<ol start="4" class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击指示对角线的对角位置。</p>
+</li>
+</ol>
+<h2 id="自相交多边形" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">自相交多边形<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#自相交多边形">#</a></h2>
+<p class="my-4 leading-7"><em>自相交多边形</em>是指形状边框的任何部分与同一形状的另一部分重叠时发生的情况。在某些情况下，使用过大线宽创建多边形边框也可能导致某些部分重叠。</p>
+<p class="my-4 leading-7">当使用多边形绘制覆铜平面和形状时，您可以在绘图特性对话框中设置边框线宽。选择较窄的线宽使您能够在细节区域创建具有更高精度的形状，如下所示。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/27/_page_13_Figure_1.jpeg" alt=""/></p>
+<p class="my-4 leading-7">您可以根据设计需要设置线宽；然而，随着宽度增加，形状分辨率降低。参考前图中的示例，随着铜箔形状边框线宽的增加，线条的外边缘保持原位，内边缘向内扩展。结果如下图所示。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/27/_page_14_Figure_1.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 74. 增加线宽后的形状细节</strong></p>
+<p class="my-4 leading-7">如果将边框线宽设置得过宽，两个边缘段的中心线可能相互重叠，导致自相交多边形。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/27/_page_15_Figure_1.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 75. 重叠的中心线</strong></p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">[!warning] 当您打开铜箔灌注时，重叠最为明显。
+[!warning]
+[!warning] 请记住，当平面区域因间距值而缩小时，从板框形状创建的平面也可能发生自相交多边形。同样，由于自动分隔间隙，使用自动分隔功能时也可能发生自相交多边形。</p>
+</div></div>
+<h2 id="文本" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">文本<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#文本">#</a></h2>
+<p class="my-4 leading-7">使用自由文本将文本信息添加到设计中。自由文本不与特定设计对象关联；您可以使用它添加诸如板标识命名法等描述。</p>
+<p class="my-4 leading-7">添加自由文本 修改文本特性 镜像文本 移动文本和标签</p>
+<h3 id="添加自由文本" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">添加自由文本<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#添加自由文本">#</a></h3>
+<p class="my-4 leading-7">您可以向设计添加单行自由文本（不属于对象的文本）。</p>
+<p class="my-4 leading-7">添加文本时，文本本身周围有一个不可见的边界矩形（第 1813 页）或边框框。输入 X 无模命令可切换边框框的开关。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 要向设计添加多行文本，请参见&quot;嵌入式文本文档&quot;（第 986 页）。</p>
+</div></div>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">绘图工具栏</strong>按钮打开绘图工具栏，然后点击<strong class="font-semibold">文本</strong>按钮。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在添加自由文本对话框中，在文本框中输入要使用的文本字符串。每个文本字符串最多 128 个字符。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在字体列表中，选择要使用的字体。对话框打开时，默认字体名称和样式显示在字体框中。选择笔画字体或系统字体。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 对于系统字体，您还可以点击字体样式按钮或任意组合按钮：<strong class="font-semibold">B</strong>表示粗体，<strong class="font-semibold">I</strong>表示斜体，或<strong class="font-semibold">U</strong>表示下划线。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在层列表中，选择要放置文本的层。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 X,Y 位置框中，输入值将文本字符串移动到指定位置。如果未指定，文本字符串将附加到指针以进行放置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">旋转框显示文本字符串的当前方向。输入新值以更改旋转度数。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">大小框显示用于显示或 CAM 输出的文本字符串的当前大小。输入新值以更改大小。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于笔画字体，输入线宽。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果要翻转文本，选择镜像复选框。选中镜像时，文本被认为从板的底部可读。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在对齐区域，设置文本的水平和垂直对齐，以确保在文本、特性值、大小或宽度更改时对象之间的正确定位。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于垂直对齐，点击<strong class="font-semibold">左</strong>、<strong class="font-semibold">中</strong>或<strong class="font-semibold">右</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于水平对齐，选择<strong class="font-semibold">上</strong>、<strong class="font-semibold">中</strong>或<strong class="font-semibold">下</strong>。</p>
+</li>
+</ul>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"><br/>
+<!-- -->您可以在关闭添加自由文本对话框后在设计中设置对齐。选择文本，然后<strong class="font-semibold">右键</strong>单击并点击<strong class="font-semibold">水平对齐</strong>，然后点击<strong class="font-semibold">左</strong>、<strong class="font-semibold">中</strong>或<strong class="font-semibold">右</strong>弹出菜单项；<strong class="font-semibold">右键</strong>单击并点击<strong class="font-semibold">垂直对齐</strong>，然后点击<strong class="font-semibold">上</strong>、<strong class="font-semibold">中</strong>或<strong class="font-semibold">下</strong>弹出菜单项。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>关闭对话框。如果未输入坐标放置文本，文本将动态附加到指针。单击指示文本的位置。放置文本后，添加自由文本对话框重新出现，以便您可以创建其他字符串。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 将自由文本和特性值放置在丝印顶层以避免<code>DRC</code> 违规或短路。</p>
+</div></div>
+<h3 id="修改文本特性" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">修改文本特性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改文本特性">#</a></h3>
+<p class="my-4 leading-7">使用文本特性对话框可修改自由文本。您可以更改字体、字体样式、层分配、方向、旋转、大小、线宽、镜像状态和对齐方式。如果文本字符串与绘图对象组合，您还可以访问父对象。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择文本字符串，<strong class="font-semibold">右键</strong>单击，然后选择弹出菜单中的<strong class="font-semibold">特性</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">文本特性对话框显示所选文本字符串。修改现有文本字符串或输入新文本字符串。</p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">如果文本是物理设计重用的一部分，则此对话框中的多个选项不可用。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在字体区域，选择要使用的字体。可选择笔画字体或系统字体。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 对于系统字体，您还可以单击字体样式按钮或任意组合按钮：<strong class="font-semibold">B</strong>表示粗体，<strong class="font-semibold">I</strong>表示斜体，<strong class="font-semibold">U</strong>表示下划线。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在层区域，选择文本所在的层。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 X,Y 位置框中输入新值，将文本字符串移动到指定位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">旋转框显示文本字符串的当前方向。输入新值可更改旋转角度。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">大小框显示用于显示或 CAM 输出的文本字符串当前大小。输入新值可更改大小。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于笔画字体，输入线宽。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如需翻转文本，选中镜像复选框。当选中镜像时，文本被视为从板底部可读。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在对齐区域，设置文本的水平和对齐方式，确保当文本、特性值、大小或宽度变化时对象之间的正确定位。</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于垂直对齐，单击<strong class="font-semibold">左</strong>、<strong class="font-semibold">中</strong>或<strong class="font-semibold">右</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对于水平对齐，选择<strong class="font-semibold">上</strong>、<strong class="font-semibold">中</strong>或<strong class="font-semibold">下</strong>。</p>
+</li>
+</ul>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">     您可以在关闭添加自由文本对话框后设置设计中的对齐方式。选择文本，然后<strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">水平对齐</strong>，然后单击<strong class="font-semibold">左</strong>、<strong class="font-semibold">中</strong>或<strong class="font-semibold">右</strong>；<strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">垂直对齐</strong>，然后单击<strong class="font-semibold">上</strong>、<strong class="font-semibold">中</strong>或<strong class="font-semibold">下</strong>。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击<strong class="font-semibold">确定</strong>。如果在关闭对话框前选择另一个文本对象，文本信息将更新。</p>
+</li>
+</ol>
+<h3 id="镜像文本" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">镜像文本<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#镜像文本">#</a></h3>
+<p class="my-4 leading-7">您可以在设计中镜像文本对象。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择对象。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">镜像</strong>。</p>
+</li>
+</ol>
+<h3 id="移动文本和标签" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">移动文本和标签<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#移动文本和标签">#</a></h3>
+<p class="my-4 leading-7">您可以在设计中移动文本和标签。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择文本或标签，<strong class="font-semibold">右键</strong>单击，然后选择弹出菜单中的<strong class="font-semibold">移动</strong>。</p>
+<p class="my-4 leading-7">对象将附着到指针上。如果移动与其他绘图对象组合的文本对象（见第 642 页），所有组合对象都会移动。您还可以通过拖放操作或使用设计工具栏中的移动按钮来移动文本和标签。在移动文本或标签时，您仍具有相同的编辑能力。移动参考指示符时可以使用方向键。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">当文本或标签附着在指针上时，您可以打开特性对话框，旋转、翻转、镜像或对齐所选文本或标签。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击完成移动。</p>
+</li>
+</ol>
+<h2 id="修改铜倒角路径特性" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">修改铜倒角路径特性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改铜倒角路径特性">#</a></h2>
+<p class="my-4 leading-7">您可以选择网络的铜倒角路径来更改其特性。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在设计中选择网络。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">选择倒角路径</strong>。</p>
+<p class="my-4 leading-7">或者，您可以在 RF 工具栏下单击。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">特性</strong>。</p>
+</li>
+</ol>
+<h2 id="缩放-2d-线条对象和尺寸" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">缩放 2D 线条对象和尺寸<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#缩放-2d-线条对象和尺寸">#</a></h2>
+<p class="my-4 leading-7">使用 2D 线条或尺寸对象特性中的缩放来更改对象大小。</p>
+<p class="my-4 leading-7">如果圆弧半径大于 14 英寸或其中心位于数据库坐标区域外，则圆弧过大。数据库坐标区域为(-28, -28)到(28, 28)英寸。圆弧用多个直线段近似表示。</p>
+<p class="my-4 leading-7">缩放文本或尺寸时，请将它们与其他线条对象组合。线宽不会被缩放。</p>
+<p class="my-4 leading-7">组合文本或尺寸文本被缩放时，最大文本高度为 1000 密耳，最大文本宽度为 50 密耳。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">缩放对象的位置</strong></p>
+<p class="my-4 leading-7">如果缩放模型包含多个对象且您希望保持它们的相对位置，请在使用缩放前组合这些对象。</p>
+<p class="my-4 leading-7">在下图中，两个未组合的对象被缩放。对象具有单独的起点，如左侧所示。缩放时使用这些不同的起点，创建重叠对象，如右侧所示。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">图 76. 未组合对象</strong></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/27/_page_20_Figure_12.jpeg" alt=""/></p>
+<p class="my-4 leading-7">在下图中，两个组合的对象被缩放。对象具有单一起点，如左侧所示。缩放时使用此起点，创建原始对象的较大副本，如右侧所示。</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/27/_page_20_Figure_14.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/27/_page_20_Figure_15.jpeg" alt=""/></p>
+<h2 id="修改绘图对象" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">修改绘图对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改绘图对象">#</a></h2>
+<p class="my-4 leading-7">将绘图对象添加到设计后，您可以根据设计需求移动、编辑或删除它们。</p>
+<p class="my-4 leading-7">移动绘图对象 修改绘图边特性 修改绘图角特性 绘图对象特性 移动斜接 从绘图段/角拉出圆弧 删除绘图段或对象 删除项目</p>
+<h3 id="移动绘图对象" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">移动绘图对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#移动绘图对象">#</a></h3>
+<p class="my-4 leading-7">您可以在保持形状的同时移动整个绘图对象。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用以下方法之一选择要移动的绘图对象：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">未选择任何内容时，<strong class="font-semibold">右键</strong>单击，然后选择弹出菜单中的<strong class="font-semibold">选择形状</strong>，并单击对象的某个段。即使对于单条线等开放形状，选择形状筛选器设置也是选择绘图对象的最佳筛选器。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择对象的某个段，<strong class="font-semibold">右键</strong>单击，然后选择弹出菜单中的<strong class="font-semibold">选择形状</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">按住 Shift 键单击对象的某个段</p>
+</li>
+</ul>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">移动</strong>。</p>
+<p class="my-4 leading-7">或者，如果您的拖动移动设置允许（见第 1531 页），您可以拖动所选对象。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">形状将根据移动首选项设置（见第 1503 页）附着到光标上。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 如果移动与其他绘图对象组合的绘图对象，所有组合对象都会移动。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果在移动组件前需要对其进行其他更改，您可以<strong class="font-semibold">右键</strong>单击并激活旋转、翻转或镜像命令，或管理对象捕捉设置（见第 1540 页）。</p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 您不能修改、移动或删除作为物理设计重用一部分的任何类型（2D 线条、铜或灌铜）的多边形。如果尝试修改多边形，将显示&quot;重用元素无法修改。请先断开重用&quot;消息。单击<strong class="font-semibold">确定</strong>取消操作。</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将绘图对象移动到新位置并单击放置。</p>
+</li>
+</ol>
+<h3 id="修改绘图边特性" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">修改绘图边特性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改绘图边特性">#</a></h3>
+<p class="my-4 leading-7">您可以编辑或更改绘图边的特性。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">要选择边，请单击它一次。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">特性</strong>。绘图边特性对话框打开；显示项目是什么类型的绘图对象以及规则信息。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 如果边是物理设计重用的一部分，则此对话框中的多个选项不可用。</p>
+</div></div>
+<h3 id="修改绘图角特性" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">修改绘图角特性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改绘图角特性">#</a></h3>
+<p class="my-4 leading-7">您可以编辑或更改绘图角的特性，例如位置。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择绘图角，<strong class="font-semibold">右键</strong>单击，然后选择弹出菜单中的<strong class="font-semibold">特性</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 X 和 Y 框中，输入绘图角的 X 和 Y 位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击<strong class="font-semibold">网络</strong>修改绘图角所属网络的设置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击<strong class="font-semibold">父级</strong>修改角所属的绘图对象。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 如果角是物理设计重用的一部分，则此对话框中的多个选项不可用。</p>
+</div></div>
+<h3 id="绘图对象特性" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">绘图对象特性<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#绘图对象特性">#</a></h3>
+<p class="my-4 leading-7">您可以选择并编辑绘图形状的部分或整个项目。可修改的特性取决于您选择的是绘图对象的角、边还是整个项目，或者是 2D 线条、铜或文本的父对象。</p>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 如果对象是物理设计重用的一部分，则此对话框中的多个选项不可用。</p>
+</div></div>
+<h4 id="转换绘图形状" class="mt-8 leading-6 text-lg title_fb7eb">转换绘图形状<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#转换绘图形状">#</a></h4>
+<p class="my-4 leading-7">您可以将闭合的绘图对象转换为另一种形状。在布局编辑器中，您可以将任何闭合的绘图对象转换为 2D 线条、板框、板切口、铜、铜切口、禁止区域或覆铜平面。在 PCB 封装编辑器中，您可以将任何闭合的绘图对象转换为 2D 线条、铜、铜切口或禁止区域。</p>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">转换形状时，适用以下限制：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果设计中没有板框，则板切口类型不会出现在绘图特性对话框的类型列表中。在创建板切口前，必须首先有板框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">如果设计中已有板框，则板框选项不会出现在对话框中，因为不能有两个板框。</p>
+</li>
+</ul>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择绘图项目，<strong class="font-semibold">右键</strong>单击，然后选择弹出菜单中的<strong class="font-semibold">特性</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在类型列表中，选择新的形状类型。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 铜切口类型也用于覆铜平面中的切口。</p>
+</div></div>
+<h4 id="更改线宽" class="mt-8 leading-6 text-lg title_fb7eb">更改线宽<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#更改线宽">#</a></h4>
+<p class="my-4 leading-7">您可以根据需要修改绘图对象边框和填充线的线宽。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择绘图项目，<strong class="font-semibold">右键</strong>单击，然后选择弹出菜单中的<strong class="font-semibold">特性</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在绘图特性对话框的宽度框中输入值。</p>
+</li>
+</ol>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 某些绘图对象线宽无法更改。</p>
+</div></div>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 与其他线宽一样，如果设计的最小显示宽度选项大于路径的多边形边框宽度，则倒角路径不会显示为正确的宽度。路径显示的宽度会减小多边形边框宽度的值。</p>
+</div></div>
+<h4 id="缩放" class="mt-8 leading-6 text-lg title_fb7eb">缩放<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#缩放">#</a></h4>
+<p class="my-4 leading-7">调整绘图对象的大小。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择绘图项目。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">对象将从形状的起点放大或缩小。如有必要，<strong class="font-semibold">右键</strong>单击并选择设置起点（见第 474 页）弹出菜单项来设置缩放模型的起点。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击，然后选择弹出菜单中的<strong class="font-semibold">特性</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在绘图特性对话框中设置缩放选项。</p>
+</li>
+</ol>
+<p class="my-4 leading-7">输入大于 0 的浮点数。不支持分数。大于 1 的值将增加大小，小于 1 的值将缩小对象。缩放值为 2 将使形状大小加倍，缩放值为 0.5 将使形状大小减半。线宽不会被缩放。</p>
+<ol start="5" class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">单击<strong class="font-semibold">确定</strong>。</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">• 如果缩放更改了尺寸，请选择尺寸，<strong class="font-semibold">右键</strong>单击并选择弹出菜单中的<strong class="font-semibold">重置测量</strong>以更新尺寸测量。</p>
+<h4 id="用实心铜填充形状" class="mt-8 leading-6 text-lg title_fb7eb">用实心铜填充形状<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#用实心铜填充形状">#</a></h4>
+<p class="my-4 leading-7">SailWind 布局使用铜填充网格和绘图默认宽度的设置来填充铜。如果需要，您可以忽略这些设置并用实心铜填充形状。创建倒角路径时，它们显示为实心铜。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择铜绘图对象，<strong class="font-semibold">右键</strong>单击然后选择弹出菜单中的<strong class="font-semibold">特性</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在绘图特性对话框（见第 1328 页）中，选中<strong class="font-semibold">实心铜</strong>复选框。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 实心铜复选框强制铜使用走线间距规则。</p>
+</div></div>
+<h4 id="更改层" class="mt-8 leading-6 text-lg title_fb7eb">更改层<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#更改层">#</a></h4>
+<p class="my-4 leading-7">您可以更改绘图对象所在的层。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择绘图项目，<strong class="font-semibold">右键</strong>单击，然后选择弹出菜单中的<strong class="font-semibold">特性</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在绘图特性对话框的层列表中，选择新层。</p>
+</li>
+</ol>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 将分配的铜移动到非电气层会断开铜形状的连接。将铜放回电气层以重新分配连接。</p>
+</div></div>
+<h3 id="移动斜接" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">移动斜接<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#移动斜接">#</a></h3>
+<p class="my-4 leading-7">您可以使用移动斜接命令在绘图段上展开或收缩斜接或圆弧。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择斜接段或圆弧，<strong class="font-semibold">右键</strong>单击，然后选择弹出菜单中的<strong class="font-semibold">移动斜接</strong>。对象动态附着到指针上。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">移动指针以展开或收缩对象。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击指示新的斜接位置以完成。在两线交点外指示位置可将圆弧或斜接转换回角。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用拉伸命令修改路径上的圆弧或斜接。</p>
+</li>
+</ol>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">您不能修改、移动或删除作为物理设计重用一部分的任何类型（2D 线条、铜或覆铜平面）的多边形。如果尝试修改多边形，将显示&quot;重用元素无法修改。请先断开重用&quot;消息。单击<strong class="font-semibold">确定</strong>取消操作。</p>
+</div></div>
+<h3 id="从绘图段角拉出圆弧" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">从绘图段/角拉出圆弧<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#从绘图段角拉出圆弧">#</a></h3>
+<p class="my-4 leading-7">使用拉出圆弧命令将绘图段或角转换为圆弧。绘图段的起点成为新圆弧的起始和终止角度。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择段或角，<strong class="font-semibold">右键</strong>单击，然后选择弹出菜单中的<strong class="font-semibold">拉出圆弧</strong>。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">段或角附着到指针并变为圆弧。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">单击指示圆弧的新位置。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用移动斜接（见第 639 页）命令修改已创建圆弧或斜接的半径。</p>
+</li>
+</ol>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">您不能修改、移动或删除作为物理设计重用一部分的任何类型（2D 线条、铜或覆铜平面）的多边形。如果尝试修改多边形，将显示&quot;重用元素无法修改。请先断开重用&quot;消息。单击<strong class="font-semibold">确定</strong>取消操作。</p>
+</div></div>
+<h3 id="删除绘图线段或对象" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">删除绘图线段或对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#删除绘图线段或对象">#</a></h3>
+<p class="my-4 leading-7">您可以根据需要删除设计中的绘图线段或对象。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择线段或对象。请参阅&quot;绘图对象选择方法&quot;</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">按 Delete 键或点击<strong class="font-semibold">编辑&gt;删除</strong>菜单项</p>
+</li>
+</ol>
+<p class="my-4 leading-7">🙊<strong class="font-semibold">限制</strong></p>
+<p class="my-4 leading-7">您不能修改、移动或删除作为物理设计复用部分的多边形（2D 线、铜箔或覆铜平面）。如果尝试修改多边形，将显示&quot;复用元素无法修改，请先解除复用&quot;提示。点击<strong class="font-semibold">确定</strong>取消操作。</p>
+<h3 id="删除项目" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">删除项目<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#删除项目">#</a></h3>
+<p class="my-4 leading-7">使用删除命令从设计移除选中的项目。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择要删除的项目</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">编辑&gt;删除</strong>菜单项。项目将从设计移除</p>
+</li>
+</ol>
+<h2 id="组合绘图对象" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">组合绘图对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#组合绘图对象">#</a></h2>
+<p class="my-4 leading-7">您可以将绘图对象组合，以便作为整体移动。如果设计变更，可以分解或解除绘图对象组合。</p>
+<p class="my-4 leading-7">组合线型与文本对象 | 分解组合对象 | 解除绘图对象组合 | 从组合中移除文本对象</p>
+<h3 id="组合线型与文本对象" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">组合线型与文本对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#组合线型与文本对象">#</a></h3>
+<p class="my-4 leading-7">您可以将文本对象和线型对象组合形成单一组。组合对象后，可以作为一个项目进行选择和移动，并保存到库中。当移动与其他对象组合的对象时，所有组合对象都会移动。可在布局编辑器和封装编辑器中同时使用组合命令。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用 Shift+点击选择要组合的整个绘图图形</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">图形高亮显示时，使用 Ctrl+点击选择要组合的文本</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">右键点击<strong class="font-semibold">组合</strong>弹出菜单项（不能单独组合文本对象）</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">组合对象后，每个对象的选择特性会改变。Shift+点击图形时，整个图形和文本都会被选中。可将组合对象重新定位或作为整体保存到库中。如果选择文本，则仅高亮显示文本进行编辑。</p>
+<p class="my-4 leading-7">可通过右键菜单<strong class="font-semibold">解除组合</strong>移除对象，或使用<strong class="font-semibold">分解</strong>命令解除整个组合。</p>
+<h3 id="分解组合对象" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">分解组合对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#分解组合对象">#</a></h3>
+<p class="my-4 leading-7">使用分解命令移除组合对象中的所有项目。组合对象由多个绘图和文本对象组成。可在布局编辑器和 PCB 封装编辑器中使用。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择组合对象</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 选择组合时，右键点击<strong class="font-semibold">选择图形</strong>弹出菜单项</p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">右键点击<strong class="font-semibold">分解</strong>弹出菜单项</p>
+</li>
+</ol>
+<h3 id="从组合中移除文本对象" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">从组合中移除文本对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#从组合中移除文本对象">#</a></h3>
+<p class="my-4 leading-7">可通过解除组合移除文本对象。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择文本对象</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">右键点击<strong class="font-semibold">解除组合</strong>弹出菜单项</p>
+</li>
+</ol>
+<h3 id="连接和闭合-2d-线型与铜箔图形" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">连接和闭合 2D 线型与铜箔图形<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#连接和闭合-2d-线型与铜箔图形">#</a></h3>
+<p class="my-4 leading-7">您可以连接和闭合 2D 线型与铜箔图形，使修改应用于所有连接对象。</p>
+<p class="my-4 leading-7">使用连接和闭合命令连接 2D 线型与铜箔图形 | 连接 2D 线型与铜箔图形 | 闭合 2D 线型与铜箔图形 | 打散对象</p>
+<h3 id="使用连接和闭合命令连接-2d-线型与铜箔图形" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">使用连接和闭合命令连接 2D 线型与铜箔图形<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#使用连接和闭合命令连接-2d-线型与铜箔图形">#</a></h3>
+<p class="my-4 leading-7">使用连接和闭合命令连接 2D 线型与铜箔图形，创建单一对象以修改特性。例如，可创建闭合 2D 线型后修改为&quot;铜箔&quot;特性。</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 这些命令在导入*.dxf*文件后特别有用</p>
+</div></div>
+<p class="my-4 leading-7">当线端&quot;足够接近&quot;时可用：接触、轻微交叉或完全匹配。如果线型未接触或交叉过多，命令无效。</p>
+<p class="my-4 leading-7"><strong class="font-semibold">示例</strong></p>
+<p class="my-4 leading-7">命令适用于以下情况：</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/27/_page_31_Figure_11.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/27/_page_31_Figure_12.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/27/_page_31_Figure_15.jpeg" alt=""/></p>
+<p class="my-4 leading-7"><strong class="font-semibold">不适用情况</strong></p>
+<p class="my-4 leading-7">命令不适用于：</p>
+<p class="my-4 leading-7"><img src="/sailwind_docs/layout/guide/27/_page_32_Figure_1.jpeg" alt=""/></p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">当选择包含以下情况时无法连接或闭合：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">非 2D 线型对象（如禁止区）</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">不同层的 2D 线型</p>
+</li>
+</ul>
+</div></div>
+<blockquote class="border-l-2 border-solid border-divider pl-4 my-6 transition-colors duration-500 blockquote_f1063">
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">复用部分的 2D 线型</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">已闭合或圆形的 2D 线型</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">多个等距连接点</p>
+</li>
+</ul>
+</blockquote>
+<div class="rspress-directive warning"><div class="rspress-directive-title">WARNING</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">当两端连接距离不小于当前距离时可用</p>
+</div></div>
+<h3 id="合并-2d-线型与铜箔图形" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">合并 2D 线型与铜箔图形<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#合并-2d-线型与铜箔图形">#</a></h3>
+<p class="my-4 leading-7">使用合并命令合并&quot;足够接近&quot;的 2D 线型或铜箔图形。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">选择要合并的两个 2D 线型或铜箔图形</li>
+<li class="[&amp;:not(:first-child)]:mt-2">右键点击<strong class="font-semibold">合并</strong>弹出菜单项<!-- -->
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">如果两线段末端交叉，则缩短线段并在交叉点合并</li>
+<li class="[&amp;:not(:first-child)]:mt-2">如未交叉，则添加额外线段</li>
+</ul>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">成功时，状态栏显示&quot;2D 线型&quot;，可选择整个合并对象。失败时，输出窗口显示&quot;合并命令终止&quot;。</p>
+<h3 id="闭合-2d-线型与铜箔图形" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">闭合 2D 线型与铜箔图形<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#闭合-2d-线型与铜箔图形">#</a></h3>
+<p class="my-4 leading-7">使用闭合命令创建连续线型组成的闭合图形。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择要闭合的 2D 线型或铜箔图形</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">右键点击<strong class="font-semibold">闭合</strong>弹出菜单项</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">成功时，状态栏显示&quot;2D 线型&quot;，可选择整个闭合对象。失败时，输出窗口显示&quot;闭合命令终止&quot;。</p>
+<h3 id="打散对象" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">打散对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#打散对象">#</a></h3>
+<p class="my-4 leading-7">可将非单一直线或弧线的 2D 线型或铜箔图形打散为多个 2D 线型。</p>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">不能打散圆形或复用元素。</p>
+</div></div>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择要打散的对象</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">右键点击<strong class="font-semibold">打散</strong>弹出菜单项</p>
+</li>
+</ol>
+<p class="my-4 leading-7">👀‍<strong class="font-semibold">结果</strong></p>
+<p class="my-4 leading-7">成功时，状态栏显示&quot;多选&quot;，可单独选择各线段。</p>
+<h3 id="保存绘图项目到库" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">保存绘图项目到库<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#保存绘图项目到库">#</a></h3>
+<p class="my-4 leading-7">将绘图项目添加到库中以便重用。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">按 Shift 键选择整个图形（而非线段或边角）</p>
+<p class="my-4 leading-7">可选择板框、2D 线型、铜箔对象、禁止区对象等。不能单独保存文本，需与 2D 线型组合后保存。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">右键点击<strong class="font-semibold">保存到库</strong>弹出菜单项</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在保存到库对话框中，选择目标库并输入项目名称</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong></p>
+</li>
+</ol>
+<p class="my-4 leading-7">绘图项目已存入库中。使用库管理器中的线型筛选器查找项目。</p>
+<h3 id="从库中添加绘图项目" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">从库中添加绘图项目<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#从库中添加绘图项目">#</a></h3>
+<p class="my-4 leading-7">可从库中选择绘图项目添加到设计中。</p>
+<p class="my-4 leading-7">😎<strong class="font-semibold">前提</strong></p>
+<p class="my-4 leading-7">仅当在线 <code>DRC</code> 关闭时，才能从库中放置板框、铜箔对象或禁止区对象。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在标准工具栏点击<strong class="font-semibold">绘图工具栏</strong>按钮</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在绘图工具栏点击<strong class="font-semibold">从库中</strong>按钮</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在从库获取绘图项目对话框中，选择库中的项目</p>
+<p class="my-4 leading-7">使用库列表查看所有库或特定库中的绘图项目。使用筛选器中的通配符限制显示项目。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">确定</strong>。项目将附着到指针。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">移动项目到目标位置并点击放置。</p>
+</li>
+</ol>
+<div class="rspress-directive danger"><div class="rspress-directive-title">DANGER</div><div class="rspress-directive-content">
+<p class="my-4 leading-7">如果设计处于默认层模式而对象处于增强层模式，则无法添加绘图对象。需使用层设置对话框将设计改为增强层模式。</p>
+</div></div>
+<h3 id="修改-2d-线型库中的对象" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">修改 2D 线型库中的对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改-2d-线型库中的对象">#</a></h3>
+<p class="my-4 leading-7">要编辑 2D 线型库中的对象，需先将其导入设计工作区，编辑后再保存回库。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在 SailWind 布局工作区，点击绘图工具栏的<strong class="font-semibold">从库中</strong>按钮</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在从库获取绘图项目对话框中，选择项目并点击<strong class="font-semibold">确定</strong>。项目将附着到光标</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在设计工作区点击放置项目</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">使用绘图工具栏和右键菜单命令进行编辑</p>
+<div class="rspress-directive tip"><div class="rspress-directive-title">TIP</div><div class="rspress-directive-content">
+<p class="my-4 leading-7"> 要保存包含线和文本的多个对象，需先选择所有项目，右键菜单选择<strong class="font-semibold">组合</strong>，再选择<strong class="font-semibold">保存到库</strong></p>
+</div></div>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">完成编辑后，选择组成绘图项目的对象，右键点击<strong class="font-semibold">保存到库</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">可选择覆盖原项目或另存为新项目。点击<strong class="font-semibold">确定</strong>保存回 2D 线型库</p>
+</li>
+</ol>
+<h3 id="修改走线或绘图对象的宽度" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">修改走线或绘图对象的宽度<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改走线或绘图对象的宽度">#</a></h3>
+<p class="my-4 leading-7">设计过程中可通过两种方法修改绘图对象或走线的宽度。</p>
+<p class="my-4 leading-7">修改已布线段的宽度 | 查找相似宽度的所有走线 | 绘制线宽</p>
+<h3 id="修改已布线段的宽度" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">修改已布线段的宽度<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#修改已布线段的宽度">#</a></h3>
+<p class="my-4 leading-7">可通过修改特性改变已布线段的宽度。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择项目，右键点击<strong class="font-semibold">特性</strong>弹出菜单项</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在绘图特性对话框的宽度框中输入新值</p>
+</li>
+</ol>
+<h3 id="查找相似宽度的所有走线" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">查找相似宽度的所有走线<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#查找相似宽度的所有走线">#</a></h3>
+<p class="my-4 leading-7">可定位并修改所有相同宽度的走线。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">编辑&gt;查找</strong>菜单项</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在查找对话框的查找依据列表中选择线宽</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在线型框中选择走线</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">选择宽度值后点击<strong class="font-semibold">确定</strong></p>
+</li>
+</ol>
+<h3 id="绘制线宽" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">绘制线宽<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#绘制线宽">#</a></h3>
+<p class="my-4 leading-7">绘制线宽是开始绘制形状时应用的宽度。</p>
+<p class="my-4 leading-7">绘制线宽的默认设置与布线宽度不同。使用选项对话框中的绘图/文本和线型类别设置默认绘制线宽。要修改现有形状的宽度，选择形状后右键点击<strong class="font-semibold">特性</strong>。使用查找对话框搜索并修改所有相同宽度的线型。</p>
+<h3 id="按指针位置粘贴项目" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">按指针位置粘贴项目<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#按指针位置粘贴项目">#</a></h3>
+<p class="my-4 leading-7">默认粘贴原点为缓冲区内容区域的左下角。可按复制或剪切时的指针位置粘贴设计项目。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击<strong class="font-semibold">设置 &gt; 选项</strong>菜单项，选择设计类别</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在&quot;移动偏好&quot;区域点击&quot;按光标位置移动&quot;后点击<strong class="font-semibold">确定</strong></p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">在设计中选择要剪切或复制的项目</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">将指针置于新原点位置，按 Ctrl+X(剪切)或 Ctrl+C(复制)</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">按 Ctrl+V。项目将出现在光标上</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">找到新位置并点击放置对象</p>
+</li>
+</ol>
+<h2 id="绘图对象的选择" class="mt-12 mb-6 pt-8 text-2xl tracking-tight border-t-[1px] border-divider-light title_fb7eb">绘图对象的选择<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#绘图对象的选择">#</a></h2>
+<p class="my-4 leading-7">绘图对象由线段边框组成，有时包含填充区域。有时您需要选择单个线段，而其他时候则需要选择包含填充的完整边框。</p>
+<p class="my-4 leading-7">选择绘图对象边框  选择完整绘图对象</p>
+<h3 id="选择绘图对象边框" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">选择绘图对象边框<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#选择绘图对象边框">#</a></h3>
+<p class="my-4 leading-7">选择绘图对象的边框可移动边框并改变对象形状。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<ol class="list-decimal pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">选择任意对象</strong> 弹出菜单项。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">点击形状的边框线。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7"><strong class="font-semibold">右键</strong>单击并根据需要选择修改线段的命令。</p>
+</li>
+</ol>
+<h3 id="选择完整绘图对象" class="mt-10 mb-2 leading-7 text-xl title_fb7eb">选择完整绘图对象<a class="link_a7cea header-anchor link_a9ef4 inline-link_f855c" aria-hidden="true" href="#选择完整绘图对象">#</a></h3>
+<p class="my-4 leading-7">选择绘图对象的边框和填充区域可移动对象或修改整个对象的特性。</p>
+<p class="my-4 leading-7">🏃‍♂️‍<strong class="font-semibold">步骤</strong></p>
+<p class="my-4 leading-7">使用以下方法之一：</p>
+<ul class="list-disc pl-5 my-4 leading-7">
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">未选择任何对象时，<strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">选择形状</strong> 弹出菜单项，然后点击目标对象。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">未选择任何对象时，<strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">选择任意对象</strong> 弹出菜单项，然后按住 Shift 键点击对象边框。</p>
+</li>
+<li class="[&amp;:not(:first-child)]:mt-2">
+<p class="my-4 leading-7">未选择任何对象时，<strong class="font-semibold">右键</strong>单击并选择 <strong class="font-semibold">选择任意对象</strong> 弹出菜单项，然后拖动选择框框选边框线段。</p>
+</li>
+</ul><!--/$--></div><div class="rspress-doc-footer"><footer class="mt-8"><div class="xs:flex pb-5 px-2 justify-end items-center"><div class="flex text-sm text-text-2 leading-6 sm:leading-8 font-medium"><p>最近更新时间<!-- -->: <span>2025/7/15 05:55:33</span></p></div></div><div class="flex flex-col"></div><div class="flex flex-col sm:flex-row sm:justify-around gap-4 pt-6"><div class="prev_c92d1 flex flex-col"><a href="/sailwind_docs/layout/guide/26_zh.html" class="link_a7cea pager-link_e0d2d"><span class="desc_dcc01">上一页</span><span class="title_a3acb">第 26 章 设计或设计部分的复用</span></a></div><div class="next_c11be flex flex-col"><a href="/sailwind_docs/layout/guide/28_zh.html" class="link_a7cea pager-link_e0d2d next_ad355"><span class="desc_dcc01">下一页</span><span class="title_a3acb">第 28 章 安全间距检查</span></a></div></div></footer></div></div><div class="aside-container_bc5fa"><div class="flex flex-col"><div id="aside-container" class="relative text-sm font-medium"><div class="leading-7 block text-sm font-semibold pl-3">本页目录</div><nav class="mt-1"><ul class="relative"><li><a href="#创建绘图对象" title="创建绘图对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建绘图对象</span></a></li><li><a href="#创建绘图对象前设置值" title="创建绘图对象前设置值" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建绘图对象前设置值</span></a></li><li><a href="#绘图形状的边缘精度" title="绘图形状的边缘精度" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">绘图形状的边缘精度</span></a></li><li><a href="#铜箔和覆铜平面的填充" title="铜箔和覆铜平面的填充" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">铜箔和覆铜平面的填充</span></a></li><li><a href="#迁移至覆铜平面" title="迁移至覆铜平面" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">迁移至覆铜平面</span></a></li><li><a href="#平面与网络连接" title="平面与网络连接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">平面与网络连接</span></a></li><li><a href="#创建多边形或路径绘图对象" title="创建多边形或路径绘图对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建多边形或路径绘图对象</span></a></li><li><a href="#创建圆形绘图对象" title="创建圆形绘图对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建圆形绘图对象</span></a></li><li><a href="#创建矩形绘图对象" title="创建矩形绘图对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">创建矩形绘图对象</span></a></li><li><a href="#自相交多边形" title="自相交多边形" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">自相交多边形</span></a></li><li><a href="#文本" title="文本" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">文本</span></a></li><li><a href="#添加自由文本" title="添加自由文本" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">添加自由文本</span></a></li><li><a href="#修改文本特性" title="修改文本特性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">修改文本特性</span></a></li><li><a href="#镜像文本" title="镜像文本" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">镜像文本</span></a></li><li><a href="#移动文本和标签" title="移动文本和标签" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">移动文本和标签</span></a></li><li><a href="#修改铜倒角路径特性" title="修改铜倒角路径特性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">修改铜倒角路径特性</span></a></li><li><a href="#缩放-2d-线条对象和尺寸" title="缩放 2D 线条对象和尺寸" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">缩放 2D 线条对象和尺寸</span></a></li><li><a href="#修改绘图对象" title="修改绘图对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">修改绘图对象</span></a></li><li><a href="#移动绘图对象" title="移动绘图对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">移动绘图对象</span></a></li><li><a href="#修改绘图边特性" title="修改绘图边特性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">修改绘图边特性</span></a></li><li><a href="#修改绘图角特性" title="修改绘图角特性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">修改绘图角特性</span></a></li><li><a href="#绘图对象特性" title="绘图对象特性" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">绘图对象特性</span></a></li><li><a href="#转换绘图形状" title="转换绘图形状" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">转换绘图形状</span></a></li><li><a href="#更改线宽" title="更改线宽" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">更改线宽</span></a></li><li><a href="#缩放" title="缩放" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">缩放</span></a></li><li><a href="#用实心铜填充形状" title="用实心铜填充形状" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">用实心铜填充形状</span></a></li><li><a href="#更改层" title="更改层" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:24px;font-weight:semibold"><span class="aside-link-text block">更改层</span></a></li><li><a href="#移动斜接" title="移动斜接" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">移动斜接</span></a></li><li><a href="#从绘图段角拉出圆弧" title="从绘图段/角拉出圆弧" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">从绘图段/角拉出圆弧</span></a></li><li><a href="#删除绘图线段或对象" title="删除绘图线段或对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">删除绘图线段或对象</span></a></li><li><a href="#删除项目" title="删除项目" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">删除项目</span></a></li><li><a href="#组合绘图对象" title="组合绘图对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">组合绘图对象</span></a></li><li><a href="#组合线型与文本对象" title="组合线型与文本对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">组合线型与文本对象</span></a></li><li><a href="#分解组合对象" title="分解组合对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">分解组合对象</span></a></li><li><a href="#从组合中移除文本对象" title="从组合中移除文本对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">从组合中移除文本对象</span></a></li><li><a href="#连接和闭合-2d-线型与铜箔图形" title="连接和闭合 2D 线型与铜箔图形" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">连接和闭合 2D 线型与铜箔图形</span></a></li><li><a href="#使用连接和闭合命令连接-2d-线型与铜箔图形" title="使用连接和闭合命令连接 2D 线型与铜箔图形" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">使用连接和闭合命令连接 2D 线型与铜箔图形</span></a></li><li><a href="#合并-2d-线型与铜箔图形" title="合并 2D 线型与铜箔图形" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">合并 2D 线型与铜箔图形</span></a></li><li><a href="#闭合-2d-线型与铜箔图形" title="闭合 2D 线型与铜箔图形" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">闭合 2D 线型与铜箔图形</span></a></li><li><a href="#打散对象" title="打散对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">打散对象</span></a></li><li><a href="#保存绘图项目到库" title="保存绘图项目到库" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">保存绘图项目到库</span></a></li><li><a href="#从库中添加绘图项目" title="从库中添加绘图项目" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">从库中添加绘图项目</span></a></li><li><a href="#修改-2d-线型库中的对象" title="修改 2D 线型库中的对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">修改 2D 线型库中的对象</span></a></li><li><a href="#修改走线或绘图对象的宽度" title="修改走线或绘图对象的宽度" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">修改走线或绘图对象的宽度</span></a></li><li><a href="#修改已布线段的宽度" title="修改已布线段的宽度" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">修改已布线段的宽度</span></a></li><li><a href="#查找相似宽度的所有走线" title="查找相似宽度的所有走线" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">查找相似宽度的所有走线</span></a></li><li><a href="#绘制线宽" title="绘制线宽" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">绘制线宽</span></a></li><li><a href="#按指针位置粘贴项目" title="按指针位置粘贴项目" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">按指针位置粘贴项目</span></a></li><li><a href="#绘图对象的选择" title="绘图对象的选择" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:0;font-weight:semibold"><span class="aside-link-text block">绘图对象的选择</span></a></li><li><a href="#选择绘图对象边框" title="选择绘图对象边框" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">选择绘图对象边框</span></a></li><li><a href="#选择完整绘图对象" title="选择完整绘图对象" class="aside-link transition-all duration-300 hover:text-text-1 text-text-2 block" style="margin-left:12px;font-weight:semibold"><span class="aside-link-text block">选择完整绘图对象</span></a></li></ul></nav></div></div></div></div></div></div></section></div>
+    <div id="search-container"></div>
+  </body>
+</html>
