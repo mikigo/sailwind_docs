@@ -64,7 +64,7 @@ Wizard `PLB` 文件主要用于练习构建库元件。它不包含任何元件�
 
 1. 要创建个人 XML 偏好文件，请点击主工具栏中的"Preferences"按钮。
 
-   ![](/lpcreator/1/_page_2_Picture_9.jpeg)
+   
 
    > [!warning] 本文档中的图片仅供参考。如因版本变更等因素导致界面差异，以实际使用的 `SailWind Land Pattern Creator` 界面为准。
 
@@ -123,11 +123,11 @@ Wizard `PLB` 文件主要用于练习构建库元件。它不包含任何元件�
 
 1. 选择下拉按钮"Library"并点击"Editor"。
 
-   ![](/lpcreator/1/_page_7_Picture_3.jpeg)
+   
 
 2. 在库编辑器中，选择"Library:"下拉菜单并选择最后一个选项"New Library"。
 
-   ![](/lpcreator/1/_page_7_Picture_5.jpeg)
+   
 
 3. 您刚刚创建了带有个人属性的个人 `PLB` 文件。请注意"公司零件编号"位于"描述"和"标准名称"之间的属性标题中。现在选择下拉"保存"并点击"另存为..."
 
@@ -141,7 +141,7 @@ Wizard `PLB` 文件主要用于练习构建库元件。它不包含任何元件�
 
 1. [创建个人 `PLB` 文件](#2-3)后，您需要将其加载到库管理器偏好设置中。选择主工具栏中的"Preferences"按钮。
 
-   ![](/lpcreator/1/_page_8_Picture_8.jpeg)
+   
 
 2. 然后在左上角选择"Library Manager"文件夹，在库文件部分点击"添加"按钮。
 
@@ -223,29 +223,29 @@ Wizard `PLB` 文件主要用于练习构建库元件。它不包含任何元件�
 
 1. 在主工具栏中选择"Calculate"下拉菜单并选择"SMD Calculator"。
 
-   ![](/lpcreator/1/_page_14_Picture_5.jpeg)
+   
 
 2. 在列表中选择"Quad Flat Plack (QFP)"元件系列，然后点击**OK**打开计算器。
 
-   ![](/lpcreator/1/_page_15_Figure_1.jpeg)
+   
 
 3. 例如，点击**Clear**清除所有参数，然后输入制造商数据表中的一些元件尺寸，如间距(P)= 0.50 和管脚计数(用于搜索)= 100，然后选择工具栏中的"Find"按钮。只有包含该搜索条件的元件才会出现在图片上方的列表中。您在元件尺寸列中输入的内容越多，搜索结果就越精细。目标是快速浏览现有库，查看您要查找的元件是否已在库中。
 
-   ![](/lpcreator/1/_page_16_Figure_1.jpeg)
+   
 
 4. 您可以通过"点击"每列的标题对属性列进行排序。例如：如果您正在搜索 Texas Instruments 焊盘图形，您将能够快速滚动到该制造商，以查看 `PLB` 文件中的尺寸数据是否与数据表上的元件尺寸匹配。当您找到要查找的正确元件时，"双击"该行项目以在计算器中打开焊盘图形。
 
-   ![](/lpcreator/1/_page_17_Figure_1.jpeg)
+   
    
    找不到与数据表匹配的现有焊盘图形，请打开具有最多尺寸匹配的焊盘图形，然后更新尺寸以使它们全部匹配您的元件尺寸数据表。
 
 5. 完成后选择"OK"按钮。
 
-   ![](/lpcreator/1/_page_17_Figure_6.jpeg)
+   
 
 6. 接下来选择工具栏中的"Wizard"按钮以创建库元件并将元件尺寸和规则数据写入个人 `PLB` 文件。
 
-   ![](/lpcreator/1/_page_18_Picture_1.jpeg)
+   
    
    当 `SailWind Land Pattern Creator` 菜单打开时，您的个人用户 `PLB` 文件将被加载并准备写入 `CAD` 工具，库目录和库名称已设置并准备就绪。
    
@@ -321,7 +321,7 @@ Wizard `PLB` 文件主要用于练习构建库元件。它不包含任何元件�
 
 所有功能都使用工具栏按钮访问。
 
-![](/lpcreator/1/_page_21_Figure_13.jpeg)
+
 
 - **Exit**—关闭程序。
 
@@ -343,7 +343,7 @@ Wizard `PLB` 文件主要用于练习构建库元件。它不包含任何元件�
 
 **图 2. 操作模式示例 - 计算器**
 
-![](/lpcreator/1/_page_22_Picture_8.jpeg)
+
 
 - **Viewer**—(基本共享软件模式)包括焊盘图形查看器和库管理器搜索功能。
 

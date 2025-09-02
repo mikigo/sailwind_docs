@@ -1,6 +1,6 @@
 # 第 9 章 搜索与选择
 
-您可以直接在工作区、[项目资源管理器](/layout/guide/2_zh.md#12)(Project Explorer)和[电子表格窗口](/router/guide/5_zh.md#4)(Spreadsheet Window)中选择设计对象。
+您可以直接在工作区、项目资源管理器(Project Explorer)和[电子表格窗口](/router/guide/5_zh.md#4)(Spreadsheet Window)中选择设计对象。
 
 ## 选择模式 \{#1}
 
@@ -30,17 +30,17 @@ SailWind Router 提供了多种选择设计对象的方式。
 
 - 在对象附近点击并使用**循环**按钮循环选择附近对象
 
-- 使用[查找对话框](/layout/guide/Dialogs/49_zh.md#15)(Find Dialog Box)定位并选择对象
+- 使用[查找对话框](/router/guide/24_zh.md#20)(Find Dialog Box)定位并选择对象
 
-- 在[项目资源管理器](/layout/guide/2_zh.md#12)(Project Explorer)中点击对象（如有需要，可右键点击并选择弹出菜单中的**允许选择**以启用[项目资源管理器](/layout/guide/2_zh.md#12)中的对象选择）
+- 在项目资源管理器(Project Explorer)中点击对象（如有需要，可右键点击并选择弹出菜单中的**允许选择**以启用项目资源管理器中的对象选择）
 
-- 使用[查找对话框](/layout/guide/Dialogs/49_zh.md#15)(Find Dialog Box)、[电子表格窗口](/router/guide/5_zh.md#4)(Spreadsheet Window)定位并选择对象
+- 使用[查找对话框](/router/guide/24_zh.md#20)(Find Dialog Box)、[电子表格窗口](/router/guide/5_zh.md#4)(Spreadsheet Window)定位并选择对象
 
-当您[选择一个对象](/logic/guide/9_zh.md#3-1)时，其所有元素都会被选中并高亮显示。例如，当您选择一个元件时，其所有管脚、铜箔和文本也会被选中。任何先前选中的对象将被取消选中。
+当您选择一个对象时，其所有元素都会被选中并高亮显示。例如，当您选择一个元件时，其所有管脚、铜箔和文本也会被选中。任何先前选中的对象将被取消选中。
 
 如果双击一个对象，它会被选中并显示其属性对话框。如果按 Esc 键或右键点击并选择取消，所有对象将被取消选中。
 
-您可以通过[选项对话框](/logic/guide/24_zh.md#78)(Options dialog box) > **全局**类别 > 常规子类别(General subcategory)中的"通过以下方式区分高亮对象"列表设置选中对象在屏幕上的显示方式。
+您可以通过选项对话框(Options dialog box) > **全局**类别 > 常规子类别(General subcategory)中的"通过以下方式区分高亮对象"列表设置选中对象在屏幕上的显示方式。
 
 下表总结了选择对象的不同方法：
 
@@ -75,9 +75,9 @@ SailWind Router 提供了多种选择设计对象的方式。
 
 ## 扩展选择 \{#4}
 
-按住 Shift 键并点击对象会选择该对象及其关联项。选中的对象会变为[选项对话框](/logic/guide/24_zh.md#78)(Options dialog box)中**显示**选项卡(Display tab)为选择项设置的颜色。
+按住 Shift 键并点击对象会选择该对象及其关联项。选中的对象会变为选项对话框(Options dialog box)中**显示**选项卡(Display tab)为选择项设置的颜色。
 
-[表](#page-2-2) [51](#page-2-2)总结了按住 Shift 键点击对象的效果。
+表 51总结了按住 Shift 键点击对象的效果。
 
 
 | 对象                        | Shift+点击选择                                       |

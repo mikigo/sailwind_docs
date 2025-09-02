@@ -1,6 +1,6 @@
 # 使用 `SailWind Router` 进行自动布线
 
-通过 `SailWind Router` 链接，您可以在 `SailWind Layout` 中设置[自动布线选项](/router/tutorial/7_zh.md#4)，然后将设计发送至 `SailWind Router` 进行自动布线。当自动布线完成后，`SailWind Router` 会自动关闭，并在 `SailWind Layout` 中打开一个新的会话，其中包含已布线的设计文件。
+通过 `SailWind Router` 链接，您可以在 `SailWind Layout` 中设置自动布线选项，然后将设计发送至 `SailWind Router` 进行自动布线。当自动布线完成后，`SailWind Router` 会自动关闭，并在 `SailWind Layout` 中打开一个新的会话，其中包含已布线的设计文件。
 
 该链接提供了两种选择：自动在当前设计文件中查看布线进度，或在后台进行自动布线以加快流程。
 
@@ -49,7 +49,7 @@
 1. **工具**菜单 > **SailWind Router**。
 2. 在 `SailWind Router` 链接对话框中，点击**前台自动布线**以观察自动布线过程。
 3. 在选项区域，点击**网格**，然后点击**设置**。
-4. 在[选项对话框](/logic/guide/24_zh.md#78)的网格页面，关闭设计、过孔和扇出网格的**对齐到网格**复选框。
+4. 在选项对话框的网格页面，关闭设计、过孔和扇出网格的**对齐到网格**复选框。
 5. 点击**确定**。
 6. 准备开始在 `SailWind Router` 中自动布线时，点击**继续**。片刻之后，`SailWind Router` 会话将出现并自动开始布线设计。
 

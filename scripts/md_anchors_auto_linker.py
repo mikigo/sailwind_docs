@@ -198,6 +198,18 @@ def main(root_dir,base_prefix):
 
 
 if __name__ == '__main__':
-    root_dir = r'D:\downloads\sailwind_docs\docs'
+    root_dir = r'D:\sailwind_docs\docs'
     base_prefix = root_dir
-    main(root_dir,base_prefix)
+
+    # 定义需要单独处理的子文件夹列表
+    sub_dirs = ['router', 'layout', 'logic', 'lpcreator']
+    # main(root_dir, base_prefix)  # 不需要整个目录的处理
+
+    # 分别处理每个子目录
+    for sub_dir in sub_dirs:
+        sub_dir_path = os.path.join(root_dir, sub_dir)
+        if os.path.exists(sub_dir_path):
+            print(f"\n{'=' * 50}\nProcessing subdirectory: {sub_dir}\n{'=' * 50}")
+            main(sub_dir_path, base_prefix)
+        else:
+            print(f"未找到该目录: {sub_dir_path}")
