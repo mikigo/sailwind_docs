@@ -6,38 +6,37 @@ SailWind Logic 工作流程将指导您完成创建原理图设计所需的步�
 
 创建系统原理图设计需要多个步骤，从初始概念到最终设计。每个步骤都按逻辑顺序呈现，以便您管理整个系统原理图创建过程。
 
-test
 
 1. 设置新设计
-   - 创建新设计（参见创建新原理图文件）
+   - 创建新设计（参见[创建新原理图文件](/logic/guide/4_zh.md#1)）
    - 选择👉图页尺寸（请参阅[设置原理图编辑器选项](/logic/guide/5_zh.md#1-1)）
    - 添加 2D 线对象（请参阅[从库中添加绘图项目](/logic/guide/12_zh.md#13)）
    - 设置选项 
      - 全局（参见[选项对话框，常规类别](/logic/guide/24_zh.md#78-2)）
      - 设计（参见[选项对话框，设计类别](/logic/guide/24_zh.md#78-1)）
 2. 设置规则和约束
-   - 确定您需要哪些设计规则（参见设置规则）
-   - 设置设计规则（参见规则设置）
+   - 确定您需要哪些设计规则（参见[设置规则](/logic/guide/16_zh.md#6)）
+   - 设置设计规则（参见[规则设置](/logic/guide/16_zh.md#1)）
 3. 放置元件
 
-   - 在库中定位元件（请参阅管理库和库数据）
-   - 放置元件（参见元件示意图）
+   - 在库中定位元件（请参阅[管理库和库数据](/logic/guide/6_zh.md)）
+   - 放置元件（参见[元件示意图](/logic/guide/10_zh.md)）
 
-   - 设置属性（参见属性概述）
+   - 设置属性（参见[属性概述](/logic/guide/10_zh.md#17)）
 4. 连接原理图
 
-   - 连接组件（请参阅连接）
-   - 编辑连接（请参阅更改连接）
-   - 命名连接（请参阅命名连接）
+   - 连接组件（请参阅[连接](/logic/guide/13_zh.md)）
+   - 编辑连接（请参阅[更改连接](/logic/guide/13_zh.md#9)）
+   - 命名连接（请参阅[命名连接](/logic/guide/13_zh.md#2)）
    - 分配网络约束（设计规则）（请参阅[设置网络规则](/logic/guide/16_zh.md#10)）
 5. 准备布局设计
 
-   - 将网表输出到 SailWind Layout（请参阅从 SailWind 逻辑设计创建新的 PCB 布局）
-   - 生成报告（请参阅报告）
+   - 将网表输出到 SailWind Layout（请参阅[从 SailWind 逻辑设计创建新的 PCB 布局](/logic/guide/18_zh.md#1)）
+   - 生成报告（请参阅[报告](/logic/guide/17_zh.md)）
 6. 执行设计注释 
 
-   - 将设计变更向前注释到 SailWind Layout（参见从 SailWind Logic 到 SailWind Layout 的前向注释）
-   -  将设计变更从 SailWind Layout 向后注释（参见从 SailWind Layout 到 SailWind Logic 的向后注释）
+   - 将设计变更向前注释到 SailWind Layout（参见[从 将标注从 SailWind Logic 转发到 SailWind Layout](/logic/guide/18_zh.md#3)）
+   -  将设计变更从 SailWind Layout 向后注释（参见[从 从 SailWind Layout 到 SailWind Logic 的反向标注](/logic/guide/18_zh.md#4)）
 
 ## 启动选项 ಠ_ಠ \{#2}
 
@@ -49,9 +48,9 @@ test
 
 | 选项 | 描述 |
 | --- | --- |
-| 文件名 | 启动 SailWind Logic 时打开指定的设计文件。输入📝文件夹路径和文件名。对于包含空格的目录或文件名，请使用引号。例如：“C:\SailWind Projects\Sampleslpreviewpart.sch” 限制：> 请勿在命令行中的文件名前使用正斜杠 (/ )。 |
-| /BMW首字母] | 打开媒体向导。使用媒体向导开始记录会话日志，或将之前的会话日志转换为可由基本日志测试重放的媒体。    要为当前 SailWind Logic 会话创建[[会话媒体文件](/logic/guide/23_zh.md#4)，请使用 BMW 无模命令。要使用 BMW 命令行开关，请在命令行中输入📝 /BMW 或 /BMWxx，其中 xx 是您的姓名首字母。大写。[] 表示可选文本。     此选项与另一个无模命令 BLT 相关联。BLT 是日志测试；它查找并运行 BMW 创建的会话媒体，以播放记录的 SailWind Logic 会话。有关信息，请参阅无模命令和键盘 |
-| / | 鼠标快捷方式。 |
+| 文件名 | 启动 SailWind Logic 时打开指定的设计文件。输入📝文件夹路径和文件名。对于包含空格的目录或文件名，请使用引号。例如：“C:\SailWind Projects\Samples\previewpart.sch”<br><br> **限制：**<br><br> 请勿在命令行中的文件名前使用正斜杠 (/ )。 |
+| /BMW[首字母] | 打开媒体向导。使用媒体向导开始记录会话日志，或将之前的会话日志转换为可由基本日志测试重放的媒体。    要为当前 SailWind Logic 会话创建[会话媒体文件](/logic/guide/23_zh.md#4)，请使用 BMW 无模命令。<br><br>要使用 BMW 命令行开关，请在命令行中输入📝 /BMW 或 /BMWxx，其中 xx 是您的姓名首字母。大写。[] 表示可选文本。    <br><br>此选项与另一个无模命令 BLT 相关联。BLT 是日志测试；它查找并运行 BMW 创建的会话媒体，以播放记录的 SailWind Logic 会话。有关信息，请参阅无模命令和键盘 |
+| /l | 启动sailwind logic时，打开最后一个文件 |
 | /m 宏名称 | 打开启动 SailWind Logic 时打开的最后一个文件。运行默认宏文件中指定的宏。例如，要运行宏 |
 | /M 宏文件 | MyMacro，请输入📝 /mMyMacro。指定要用作默认宏文件的文件。例如，要运行文件 user1.mcr 中包含的宏 MyMacro，请输入📝 /Muser1.mcr /mMyMacro。注意 |
 | /nc | 需要大写。启动 SailWind Logic 时不显示包含版权信息的启动画面。 |
