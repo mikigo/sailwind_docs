@@ -172,6 +172,10 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+<<<<<<< HEAD
+环境.md
+=======
 
 # pnpm v11 引入的新安全配置，用于允许特定依赖包执行构建脚本
 pnpm-workspace.yaml
+>>>>>>> 8376ef89f5c164e3db1cada6d9499d0393137535

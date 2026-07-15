@@ -13,6 +13,7 @@ export default defineConfig({
     icon: '/favicon.ico',
     logo:  '/logo.png',
     logoText: 'SailWind',
+    lang: "zh",
     i18nSource: {
         outlineTitle: { zh: '本页目录' },
         prevPageText: { zh: '上一页' },
