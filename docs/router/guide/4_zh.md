@@ -8,14 +8,14 @@ SailWind Router 可打开特定文件类型。但打开每种文件类型都存�
 
 ### 文件类型 \{#1-1}
 
-SailWind Router 允许打开 SailWind Layout 和 PowerPCB 或 PowerBGA 文件，也可打开 SailWind Router 备份文件。
+SailWind Router 允许打开 SailWind Layout ~~和 PowerPCB 或 PowerBGA~~ 文件，也可打开 SailWind Router 备份文件。
 
 SailWind Router 支持以下文件类型：
 
-- SailWind Layout 2005（或更高版本）.*pcb* 文件
+- ~~SailWind Layout 2005（或更高版本）.*pcb* 文件~~
 
-- PowerPCB 和 PowerBGA 3.5（或更高版本）.*pcb* 文件
-
+- ~~PowerPCB 和 PowerBGA 3.5（或更高版本）.*pcb* 文件~~
+- SailWind Layout 设计（*.pcb*）文件
 - SailWind Router 备份（*.bre*）文件
 
 无法打开已被其他用户打开的文件。
